@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
+	'hostname' => 'fashiongrosir-ind.com',
 	'username' => 'u1219380_likeyoudo',
 	'password' => 'P1nacate88_',
 	'database' => 'u1219380_gfashion',

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="Fashion Girl" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Server (FashionGrosir)" autoUploadExternalChanges="true">
     <serverData>
-      <paths name="Fashion Girl">
+      <paths name="Server">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="Server">
+      <paths name="Server (FashionGrosir)">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
