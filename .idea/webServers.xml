@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="1b1e136b-eea1-43f5-8790-47481866053c" name="Server (FashionGrosir)" url="http://dev.eazy-dev.xyz/FashionGrosir/">
+        <fileTransfer host="dev.eazy-dev.xyz" port="2211" rootFolder="/fashiongrosir" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="2211" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

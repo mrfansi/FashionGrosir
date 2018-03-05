@@ -780,6 +780,23 @@ class MY_Model extends CI_Model
         return $this;
     }
 
+
+    /**
+     * A wrapper to $this->_database->group_by()
+     */
+    public function group_by($criteria)
+    {
+        if (is_array($criteria)) {
+            foreach ($criteria as $key => $value) {
+                $this->_database->group_by($value);
+            }
+        } else {
+            $this->_database->group_by($criteria);
+        }
+
+        return $this;
+    }
+
     /* --------------------------------------------------------------
      * INTERNAL METHODS
      * ------------------------------------------------------------ */

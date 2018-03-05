@@ -5,9 +5,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 	    $this->load->library('Ongkir');
-        if (!empty($this->ongkir)) {
-            $cities = $this->ongkir->city();
-        }
+        $cities = $this->ongkir->city();
         echo $cost = $this->ongkir->cost(151, 128, 1000, "jne");
 	}
 }
