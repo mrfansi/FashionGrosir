@@ -27,7 +27,7 @@
                                autocomplete="no">
                         <label for="login-password" class="label-material">Password</label>
                     </div>
-                    <a id="login" href="index.html" class="btn btn-block btn-primary">Login</a>
+                    <a id="login" href="dashboard.html" class="btn btn-block btn-primary">Login</a>
                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                 </form>
             </div>
