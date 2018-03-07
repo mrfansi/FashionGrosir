@@ -12,16 +12,6 @@ class Layout
     {
         $this->CI =& get_instance();
         $this->CI->load->helper('url');
-
-
-        // default CSS and JS that they must be load in any pages
-        $this->addCSS(base_url("assets/vendor/bootstrap/css/bootstrap.css"));
-        $this->addCSS(base_url("assets/vendor/bootstrap/css/fasion-style.css"));
-
-//        $this->addJS(base_url('assets/js/jquery.min.js'));
-//        $this->addJS(base_url('assets/js/bootstrap.min.js'));
-
-
     }
 
     public function addCSS($name)
