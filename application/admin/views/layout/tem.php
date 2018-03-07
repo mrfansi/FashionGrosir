@@ -1,152 +1,214 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <?php echo $html_CSS; ?>
-    <?php echo $html_JS; ?>
-
-    <title><?php echo $html_title; ?></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/font-awesome/css/font-awesome.min.css'); ?>">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <!-- jQuery Circle-->
+    <link rel="stylesheet" href="<?= base_url('assets/css/grasp_mobile_progress_circle-1.0.0.min.css'); ?>">
+    <!-- Custom Scrollbar-->
+    <link rel="stylesheet"
+          href="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css" id="theme-stylesheet'); ?>">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
-
-<!-- ======================================================================================= -->
-
 <body>
-
-<!-- Alert Promo -->
-<div class="container-fluid text-center clear-header" role="alert">
-    Selamat datang di <b>Fasion Grosir</b> &nbsp;|&nbsp; Info Promo <a href="" class="alert-link f-link">(Klik)</a>
-    <!-- <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-love"></i></a> -->
-</div>
-<!-- End Alert Promo -->
-
-<!-- Header -->
-<div class="container-fluid f-color">
-    <div class="row f-padding-header">
-        <!-- Brand -->
-        <div class="col-md-2">
-            <a href="#home" class="navbar-brand f-logo">
-                <img src="assets/brand/citrus-logo.png" alt="">
-            </a>
+<!-- Side Navbar -->
+<nav class="side-navbar">
+    <div class="side-navbar-wrapper">
+        <!-- Sidebar Header    -->
+        <div class="sidenav-header d-flex align-items-center justify-content-center">
+            <!-- User Info-->
+            <div class="sidenav-header-inner text-center"><img src="img/avatar-1.jpg" alt="person"
+                                                               class="img-fluid rounded-circle">
+                <h2 class="h5">Anderson Hardy</h2><span>Web Developer</span>
+            </div>
+            <!-- Small Brand information, appears on minimized sidebar-->
+            <div class="sidenav-header-logo"><a href="dashboard.html" class="brand-small text-center">
+                    <strong>B</strong><strong class="text-primary">D</strong></a></div>
         </div>
-        <!-- End Brand -->
-
-        <!-- Search -->
-        <nav class="navbar navbar-light">
-            <form class="form-inline">
-                <input class="form-control mr-sm-2 f-search f-border-color" type="search" placeholder="Search"
-                       aria-label="Search">
-                <button class="btn f-button-color my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </nav>
-        <!-- Search -->
-    </div>
-
-
-    <!-- Navigasi Bar -->
-    <hr class="f-hr">
-    <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-light f-nav f-color">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav f-nav-size">
-                    <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <!-- Sidebar Navigation Menus-->
+        <div class="main-menu">
+            <h5 class="sidenav-heading">Main</h5>
+            <ul id="side-main-menu" class="side-menu list-unstyled">
+                <li><a href="dashboard.html"> <i class="icon-home"></i>Home </a></li>
+                <li><a href="forms.html"> <i class="icon-form"></i>Forms </a></li>
+                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
+                <li><a href="tables.html"> <i class="icon-grid"></i>Tables </a></li>
+                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
+                                class="icon-interface-windows"></i>Example dropdown </a>
+                    <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                        <li><a href="#">Page</a></li>
+                        <li><a href="#">Page</a></li>
+                        <li><a href="#">Page</a></li>
+                    </ul>
                     </li>
-                    <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="#">Produk Terbaru</a>
-                    </li>
-                    <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="#">Sale</a>
-                    </li>
-                    <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="#">Atasan</a>
-                    </li>
-                    <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="#">Dress</a>
-                    </li>
-                    <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="#">Jumpsuit</a>
-                    </li>
-                    <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="#">Blazer</a>
-                    </li>
-                    <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="#">Piama</a>
-                    </li>
-                    <li class="nav-item dropdown f-nav-margin">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false">
-                            Lain-lain
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
+                <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page </a></li>
+                <li><a href="#"> <i class="icon-mail"></i>Demo
+                        <div class="badge badge-warning">6 New</div>
+                    </a></li>
+            </ul>
+        </div>
+        <div class="admin-menu">
+            <h5 class="sidenav-heading">Second menu</h5>
+            <ul id="side-admin-menu" class="side-menu list-unstyled">
+                <li><a href="#"> <i class="icon-screen"> </i>Demo</a></li>
+                <li><a href="#"> <i class="icon-flask"> </i>Demo
+                        <div class="badge badge-info">Special</div>
+                    </a></li>
+                <li><a href=""> <i class="icon-flask"> </i>Demo</a></li>
+                <li><a href=""> <i class="icon-picture"> </i>Demo</a></li>
                 </ul>
             </div>
-        </nav>
-    </div>
-    <!-- End Navigasi Bar -->
-</div>
-<!-- End Header -->
-
-<?php
-echo $html_content;
-?>
-
-<!-- Nav Footer -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light f-footer">
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <li class="nav-item f-nav-margin">
-                <a class="nav-link" href="#">Tentang Kami</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-                <a class="nav-link" href="#">Hubungi Kami</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-                <a class="nav-link" href="#">Menjadi Mitra</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-                <a class="nav-link" href="#">FAQ</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-                <a class="nav-link" href="#">Bantuan</a>
-            </li>
-        </ul>
     </div>
 </nav>
-<!-- End Nav Footer -->
+<div class="page">
+    <!-- navbar-->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-center justify-content-between">
+                    <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i
+                                    class="icon-bars"> </i></a><a href="dashboard.html" class="navbar-brand">
+                            <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong
+                                        class="text-primary">Dashboard</strong></div>
+                        </a></div>
+                    <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                        <li class="nav-item dropdown"><a id="notifications" rel="nofollow" data-target="#" href="#"
+                                                         data-toggle="dropdown" aria-haspopup="true"
+                                                         aria-expanded="false" class="nav-link"><i
+                                        class="fa fa-bell"></i><span class="badge badge-warning">12</span></a>
+                            <ul aria-labelledby="notifications" class="dropdown-menu">
+                                <li><a rel="nofollow" href="#" class="dropdown-item">
+                                        <div class="notification d-flex justify-content-between">
+                                            <div class="notification-content"><i class="fa fa-envelope"></i>You have 6
+                                                new
+                                                messages
+                                            </div>
+                                            <div class="notification-time">
+                                                <small>4 minutes ago</small>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                <li><a rel="nofollow" href="#" class="dropdown-item">
+                                        <div class="notification d-flex justify-content-between">
+                                            <div class="notification-content"><i class="fa fa-twitter"></i>You have 2
+                                                followers
+                                            </div>
+                                            <div class="notification-time">
+                                                <small>4 minutes ago</small>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                <li><a rel="nofollow" href="#" class="dropdown-item">
+                                        <div class="notification d-flex justify-content-between">
+                                            <div class="notification-content"><i class="fa fa-upload"></i>Server
+                                                Rebooted
+                                            </div>
+                                            <div class="notification-time">
+                                                <small>4 minutes ago</small>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                <li><a rel="nofollow" href="#" class="dropdown-item">
+                                        <div class="notification d-flex justify-content-between">
+                                            <div class="notification-content"><i class="fa fa-twitter"></i>You have 2
+                                                followers
+                                            </div>
+                                            <div class="notification-time">
+                                                <small>10 minutes ago</small>
+                                            </div>
+                                        </div>
+                                    </a></li>
+                                <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center">
+                                        <strong> <i class="fa fa-bell"></i>view all notifications </strong></a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown"><a id="messages" rel="nofollow" data-target="#" href="#"
+                                                         data-toggle="dropdown" aria-haspopup="true"
+                                                         aria-expanded="false" class="nav-link"><i
+                                        class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
+                            <ul aria-labelledby="notifications" class="dropdown-menu">
+                                <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
+                                        <div class="msg-profile"><img src="img/avatar-1.jpg" alt="..."
+                                                                      class="img-fluid rounded-circle"></div>
+                                        <div class="msg-body">
+                                            <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span>
+                                            <small>3 days ago at 7:58 pm - 10.06.2014</small>
+                                        </div>
+                                    </a></li>
+                                <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
+                                        <div class="msg-profile"><img src="img/avatar-2.jpg" alt="..."
+                                                                      class="img-fluid rounded-circle"></div>
+                                        <div class="msg-body">
+                                            <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span>
+                                            <small>3 days ago at 7:58 pm - 10.06.2014</small>
+                                        </div>
+                                    </a></li>
+                                <li><a rel="nofollow" href="#" class="dropdown-item d-flex">
+                                        <div class="msg-profile"><img src="img/avatar-3.jpg" alt="..."
+                                                                      class="img-fluid rounded-circle"></div>
+                                        <div class="msg-body">
+                                            <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span>
+                                            <small>3 days ago at 7:58 pm - 10.06.2014</small>
+                                        </div>
+                                    </a></li>
+                                <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center">
+                                        <strong> <i class="fa fa-envelope"></i>Read all messages </strong></a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="login.html" class="nav-link logout">Logout<i
+                                        class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
+    <?= $html_content ?>
 
-<!-- Footer -->
-<div class="container-fluid text-center clear-footer" role="alert">
-    &copy; Copyright Fasion Grosir 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
-    <!-- <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-love"></i></a> -->
+    <footer class="main-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>Your company &copy; 2017-2019</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+                    <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
-<!-- End Footer -->
-
-
-<!-- ======================================================================================= -->
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+<!-- Javascript files-->
+<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/popper.js/umd/popper.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
+<script src="<?= base_url('assets/js/grasp_mobile_progress_circle-1.0.0.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/jquery.cookie/jquery.cookie.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/chart.js/Chart.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/jquery-validation/jquery.validate.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
+<!-- Main File-->
+<script src="<?= base_url('assets/js/front.js'); ?>"></script>
 </body>
 </html>
