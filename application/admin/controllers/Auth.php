@@ -14,9 +14,14 @@ class Auth extends CI_Controller
         parent::__construct();
     }
 
+    public function index()
+    {
+        $this->login();
+    }
+
     public function login()
     {
-
+        $this->load->view('Login');
     }
 
     public function logout()

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?= $html_title; ?></title>
+    <title>Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -12,19 +12,20 @@
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/font-awesome/css/font-awesome.min.css'); ?>">
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="<?= base_url('css/fontastic.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <!-- jQuery Circle-->
-    <link rel="stylesheet" href="<?= base_url('css/grasp_mobile_progress_circle-1.0.0.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/grasp_mobile_progress_circle-1.0.0.min.css'); ?>">
     <!-- Custom Scrollbar-->
-    <link rel="stylesheet" href="<?= base_url('vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
+    <link rel="stylesheet"
+          href="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="<?= base_url('css/style.default.css" id="theme-stylesheet'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css" id="theme-stylesheet'); ?>">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="<?= base_url('css/custom.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="<?= base_url('img/favicon.ico'); ?>">
+    <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -32,12 +33,11 @@
 <body>
 <div class="page login-page">
     <div class="container">
-        <div class="form-outer text-center d-flex align-items-center">
+        <div class="form-outer text-center align-items-center">
             <div class="form-inner">
-                <div class="logo text-uppercase"><span>Bootstrap</span><strong class="text-primary">Dashboard</strong>
+                <div class="logo text-uppercase"><strong class="text-primary">Login</strong>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                <p>Administrator</p>
                 <form id="login-form" method="post">
                     <div class="form-group-material">
                         <input id="login-username" type="text" name="loginUsername" required class="input-material">
@@ -47,30 +47,27 @@
                         <input id="login-password" type="password" name="loginPassword" required class="input-material">
                         <label for="login-password" class="label-material">Password</label>
                     </div>
-                    <a id="login" href="dashboard.html" class="btn btn-primary">Login</a>
+                    <a id="login" href="dashboard.html" class="btn btn-block btn-primary">Login</a>
                     <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                 </form>
-                <a href="#" class="forgot-pass">Forgot Password?</a>
-                <small>Do not have an account?</small>
-                <a href="register.html" class="signup">Signup</a>
             </div>
             <div class="copyrights text-center">
-                <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+                <p><a href="https://fashiongrosir-ind.com" class="external">Fashion Grosir</a></p>
                 <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
             </div>
         </div>
     </div>
 </div>
 <!-- Javascript files-->
-<script src="<?= base_url('vendor/jquery/jquery.min.js'); ?>"></script>
-<script src="<?= base_url('vendor/popper.js/umd/popper.min.js'); ?>"></script>
-<script src="<?= base_url('vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
-<script src="<?= base_url('js/grasp_mobile_progress_circle-1.0.0.min.js'); ?>"></script>
-<script src="<?= base_url('vendor/jquery.cookie/jquery.cookie.js'); ?>"></script>
-<script src="<?= base_url('vendor/chart.js/Chart.min.js'); ?>"></script>
-<script src="<?= base_url('vendor/jquery-validation/jquery.validate.min.js'); ?>"></script>
-<script src="<?= base_url('vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/popper.js/umd/popper.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
+<script src="<?= base_url('assets/js/grasp_mobile_progress_circle-1.0.0.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/jquery.cookie/jquery.cookie.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/chart.js/Chart.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/jquery-validation/jquery.validate.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
 <!-- Main File-->
-<script src="<?= base_url('js/front.js'); ?>"></script>
+<script src="<?= base_url('assets/js/front.js'); ?>"></script>
 </body>
 </html>
