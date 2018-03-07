@@ -33,7 +33,7 @@ class Layout
 
     public function show($page, $data = null)
     {
-        if (!file_exists('application/views/' . $page . '.php')) {
+        if (!file_exists('application/admin/views/' . $page . '.php')) {
             show_404();
         } else {
             $this->data['crud'] = $data;
@@ -74,7 +74,7 @@ class Layout
 
     public function show_message($page, $data = null)
     {
-        if (!file_exists('application/views/' . $page . '.php')) {
+        if (!file_exists('application/admin/views/' . $page . '.php')) {
             show_404();
         } else {
             $this->load_JS_and_css();
