@@ -40,18 +40,34 @@
                 <div class="logo text-uppercase"><strong class="text-primary">Login</strong>
                 </div>
                 <p>Administrator</p>
-                <form id="login-form" method="post">
-                    <div class="form-group-material">
-                        <input id="login-username" type="text" name="loginUsername" required class="input-material">
-                        <label for="login-username" class="label-material">Username</label>
-                    </div>
-                    <div class="form-group-material">
-                        <input id="login-password" type="password" name="loginPassword" required class="input-material">
-                        <label for="login-password" class="label-material">Password</label>
-                    </div>
-                    <a id="login" href="dashboard.html" class="btn btn-block btn-primary">Login</a>
-                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
-                </form>
+                <div ng-app="ez" ng-controller="loginFormCtrl">
+                    <form id="loginForm" name="loginForm" ng-submit="loginValidation(loginForm.$valid)" novalidate>
+                        <div class="form-group-material"
+                             ng-class="{'is-invalid' : loginForm.loginUsername.$invalid && !loginForm.loginUsername.$pristine}">
+                            <input id="login-username" type="text" ng-model="loginUsername" name="loginUsername"
+                                   class="input-material" required="required">
+                            <label for="login-username" class="label-material">Username</label>
+                            <div ng-show="loginForm.loginUsername.$invalid && !loginForm.loginUsername.$pristine"
+                                 class="text-left invalid-feedback">Username tidak valid.
+                            </div>
+                        </div>
+                        <div class="form-group-material"
+                             ng-class="{'is-invalid' : loginForm.loginPassword.$invalid && !loginForm.loginPassword.$pristine}">
+                            <input id="login-password" type="password" ng-model="loginPassword" name="loginPassword"
+                                   class="input-material" required="required">
+                            <label for="login-password" class="label-material">Password</label>
+                            <div ng-show="loginForm.loginPassword.$invalid && !loginForm.loginPassword.$pristine"
+                                 class="text-left invalid-feedback">Password tidak valid.
+                            </div>
+                        </div>
+                        <button id="login" class="btn btn-block btn-primary"
+                                ng-disabled="loginForm.$invalid">Login
+                        </button>
+                        <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+                    </form>
+
+                </div>
+
             </div>
             <div class="copyrights text-center">
                 <p><a href="https://fashiongrosir-ind.com" class="external">Fashion Grosir</a></p>
