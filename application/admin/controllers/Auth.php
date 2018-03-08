@@ -12,16 +12,39 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('url');
+
+        // model
+        $this->load->model('Ms_user', 'user');
     }
 
     public function index()
     {
-        $this->login();
+        $data = new stdClass();
+        $data->current_url = base_url('adm.php/auth/login');
+        $this->load->view('Login', $data);
     }
 
     public function login()
     {
-        $this->load->view('Login');
+        $data = new stdClass();
+        $data->status_code = '';
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+            $username = $this->input->post('loginUsername');
+            $password = $this->input->post('loginPassword');
+
+            $user = $this->user->login_auth($username);
+
+            if ($user != null && $user->user_password == $password) {
+                echo 'ok';
+            } else {
+                echo 'password salah';
+            }
+        } else if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            redirect(base_url('adm.php/auth'));
+        }
+
     }
 
     public function logout()

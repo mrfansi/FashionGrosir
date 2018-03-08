@@ -45,7 +45,7 @@
                         <div class="form-group-material"
                              ng-class="{'is-invalid' : loginForm.loginUsername.$invalid && !loginForm.loginUsername.$pristine}">
                             <input id="login-username" type="text" ng-model="loginUsername" name="loginUsername"
-                                   class="input-material" required="required">
+                                   class="input-material" required="required" autocomplete="no" autofocus>
                             <label for="login-username" class="label-material">Username</label>
                             <div ng-show="loginForm.loginUsername.$invalid && !loginForm.loginUsername.$pristine"
                                  class="text-left invalid-feedback">Username tidak valid.
@@ -54,7 +54,7 @@
                         <div class="form-group-material"
                              ng-class="{'is-invalid' : loginForm.loginPassword.$invalid && !loginForm.loginPassword.$pristine}">
                             <input id="login-password" type="password" ng-model="loginPassword" name="loginPassword"
-                                   class="input-material" required="required">
+                                   class="input-material" required="required" autocomplete="no">
                             <label for="login-password" class="label-material">Password</label>
                             <div ng-show="loginForm.loginPassword.$invalid && !loginForm.loginPassword.$pristine"
                                  class="text-left invalid-feedback">Password tidak valid.
