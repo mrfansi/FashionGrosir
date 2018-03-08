@@ -41,7 +41,7 @@
             <!-- User Info-->
             <div class="sidenav-header-inner text-center"><img src="img/avatar-1.jpg" alt="person"
                                                                class="img-fluid rounded-circle">
-                <h2 class="h5">Anderson Hardy</h2><span>Web Developer</span>
+                <h2 class="h5">Anderson Hardy</h2><span>Administrator</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
             <div class="sidenav-header-logo"><a href="dashboard.html" class="brand-small text-center">

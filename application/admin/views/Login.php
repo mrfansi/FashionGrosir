@@ -59,13 +59,14 @@
                             <div ng-show="loginForm.loginPassword.$invalid && !loginForm.loginPassword.$pristine"
                                  class="text-left invalid-feedback">Password tidak valid.
                             </div>
+
                         </div>
                         <button id="login" class="btn btn-block btn-primary"
                                 ng-disabled="loginForm.$invalid">Login
                         </button>
                         <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                     </form>
-
+                    <div>{{xxx.status_msg}}</div>
                 </div>
 
             </div>

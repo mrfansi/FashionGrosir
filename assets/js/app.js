@@ -22,14 +22,42 @@ app.controller('loginFormCtrl', function ($scope, $http) {
 
             $http(post).then(function success(res) {
                 console.log(res.data);
-                $scope.status = res.data;
+                $scope.xxx = res.data;
                 // window.location.href = 'adm.php/dashboard';
             }, function error(res) {
                 console.log(res.status.text);
                 $scope.status = res.status.text;
-            });
+            })
         } else {
 
         }
     }
+});
+
+app.controller('dashboard', function ($scope, $http) {
+    $scope.item_count = function () {
+        var get = {
+            method: "GET",
+            url: "dashboard/item_count"
+        };
+        $http(get).then(function (res) {
+            $scope.total_item = res.data;
+        }, function (res) {
+            console.log(res.data);
+        })
+    };
+
+    $scope.cust_count = function () {
+        var get = {
+            method: "GET",
+            url: "dashboard/cust_count"
+        };
+        $http(get).then(function (res) {
+            $scope.total_cust = res.data;
+        }, function (res) {
+            console.log(res.data);
+        })
+    };
+
+
 });

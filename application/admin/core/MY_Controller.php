@@ -24,6 +24,10 @@ class MY_Controller extends CI_Controller
         $this->meta_title = $this->config->item('webname');
         $this->meta_content = $this->config->item('webdeskripsi');
         $this->meta_keywords = $this->config->item('webkeywords');
+
+        if (!$this->session->loggedin) {
+            redirect(base_url('adm.php/auth'));
+        }
         //$this->output->cache(1);
     }
 
