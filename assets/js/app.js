@@ -5,7 +5,7 @@ app.controller('LoginController', function ($scope, $http) {
         if (valid) {
             var data = $.param(
                 {
-                    token_fg: $scope.loginToken,
+                    token_fg: $scope.token_fg,
                     loginUsername: $scope.loginUsername,
                     loginPassword: $scope.loginPassword
                 }
@@ -24,9 +24,9 @@ app.controller('LoginController', function ($scope, $http) {
             $http(post).then(function success(res) {
                 console.log(res.data);
                 $scope.xxx = res.data;
-                window.location.href = 'dashboard';
+                window.location.href = 'get';
             }, function error(res) {
-                console.log(res.status.text);
+                console.log(res);
             });
         } else {
 
@@ -35,48 +35,37 @@ app.controller('LoginController', function ($scope, $http) {
 });
 
 app.controller('DashboardController', function ($scope, $http) {
-    $scope.item_count = function () {
-        var get = {
+    angular.element(document).ready(function () {
+        $http({
             method: "GET",
-            url: "dashboard/item_count"
-        };
-        $http(get).then(function (res) {
-            $scope.total_item = res.data;
+            url: "get/total_customers"
+        }).then(function (res) {
+            $scope.total_customers = res.data;
         }, function (res) {
-            console.log(res.data);
+            console.log(res.statusText);
         });
-    };
 
-    $scope.cust_count = function () {
-        var get = {
+        $http({
             method: "GET",
-            url: "dashboard/cust_count"
-        };
-        $http(get).then(function (res) {
-            $scope.total_cust = res.data;
+            url: "get/total_items"
+        }).then(function (res) {
+            $scope.total_items = res.data;
         }, function (res) {
-            console.log(res.data);
+            console.log(res.statusText);
         });
-    };
-
+    });
 });
 
-app.controller('TemController', function ($http) {
-    var tem = this;
-    tem.list_kategori = [];
-
-    var get = {
-        method: "GET",
-        url: "dashboard/list_kategori",
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
-    $http(get).then(function (res) {
-        console.log(res.data);
-        tem.list_kategori = res.data
-    }, function (res) {
-        console.log(res.data);
+app.controller('TemController', function ($scope, $http) {
+    angular.element(document).ready(function () {
+        $http({
+            method: "GET",
+            url: "get/list_kategori"
+        }).then(function (res) {
+            console.log(res.data);
+            $scope.kategories = res.data;
+        }, function (res) {
+            console.log(res.data);
+        });
     });
 });

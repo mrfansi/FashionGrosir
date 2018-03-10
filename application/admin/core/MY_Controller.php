@@ -25,6 +25,8 @@ class MY_Controller extends CI_Controller
         $this->meta_content = $this->config->item('webdeskripsi');
         $this->meta_keywords = $this->config->item('webkeywords');
 
+
+        // check if user already login
         if (!$this->session->loggedin) {
             redirect(base_url('adm.php/auth'));
         }

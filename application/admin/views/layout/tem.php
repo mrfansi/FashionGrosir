@@ -29,7 +29,7 @@
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-    <script src="<?= base_url('assets/vendor/angularjs/angular.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/angularjs/angular.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/app.js'); ?>"></script>
 </head>
 <body>
@@ -50,31 +50,36 @@
         <div class="main-menu" ng-controller="TemController">
             <h5 class="sidenav-heading">Main</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li><a href="<?= base_url('adm.php/dashboard') ?>"> <i class="icon-home"></i>Home </a></li>
+                <li><a href="<?= base_url('adm.php/dashboard') ?>"> <i class="icon-home"></i>DASHBOARD </a></li>
                 <li><a href="#itemsdown" aria-expanded="false" data-toggle="collapse"> <i
-                                class="icon-interface-windows"></i>Items </a>
-                    <ul id="itemsdown" class="collapse list-unstyled"
-                        ng-repeat="kategori in TemController.list_kategori">
-                        <li ng-repeat="(key, value) in kategori">
-                            <a href="<?= base_url('adm.php/item/list/'); ?>{{value.kat_kode}}">{{value.kat_nama}}</a>
+                                class="icon-interface-windows"></i>ITEMS </a>
+                    <ul id="itemsdown" class="collapse list-unstyled">
+                        <li><a href="<?= base_url('adm.php/item/create_new'); ?>"> <i class="fa fa-plus"></i> BUAT
+                                KATEGORI</a></li>
+                        <li><a href="<?= base_url('adm.php/item'); ?>">ALL</a></li>
+                        <li ng-repeat="kategori in kategories">
+                            <a href="<?= base_url('adm.php/item/list/'); ?>{{kategori.kat_kode}}">{{kategori.kat_nama}}</a>
                         </li>
                     </ul>
                 </li>
                 <li><a href="#transaksidown" aria-expanded="false" data-toggle="collapse"> <i
-                                class="icon-interface-windows"></i>Transaksi </a>
+                                class="icon-interface-windows"></i>TRANSAKSI </a>
                     <ul id="transaksidown" class="collapse list-unstyled">
                         <li>
-                            <a href="<?= base_url('adm.php/transaksi/penjualan'); ?>">Penjualan</a>
+                            <a href="<?= base_url('adm.php/transaksi/penjualan'); ?>">PENJUALAN</a>
                         </li>
                         <li>
-                            <a href="<?= base_url('adm.php/transaksi/invoice'); ?>">Invoice</a>
+                            <a href="<?= base_url('adm.php/transaksi/invoice'); ?>">INVOICE</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('adm.php/transaksi/pembayaran'); ?>">PEMBAYARAN</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="#"> <i class="fa fa-bar-chart"></i>Statistik
+                <li><a href="#"> <i class="fa fa-bar-chart"></i>STATISTIK
                         <div class="badge badge-info">Coming soon</div>
                     </a></li>
-                <li><a href="<?= base_url('adm.php/customers'); ?>""> <i class="fa fa-users"></i>Customers </a></li>
+                <li><a href="<?= base_url('adm.php/customers'); ?>""> <i class="fa fa-users"></i>CUSTOMERS </a></li>
                 <!--                <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page </a></li>-->
                 <!--                <li><a href="#"> <i class="icon-mail"></i>Demo-->
                 <!--                        <div class="badge badge-warning">6 New</div>-->
@@ -87,11 +92,11 @@
             </h5>
             <ul id="side-admin-menu" class="side-menu list-unstyled">
                 <li>
-                    <a href="#"> <i class="fa fa-user"> </i>Profil
+                    <a href="#"> <i class="fa fa-user"> </i>PROFIL
                         <div class="badge badge-info">Coming soon</div>
                     </a>
                 </li>
-                <li><a href="#"> <i class="fa fa-cogs"> </i>Konfigurasi </a></li>
+                <li><a href="#"> <i class="fa fa-cogs"> </i>KONFIGURASI </a></li>
             </ul>
         </div>
     </div>

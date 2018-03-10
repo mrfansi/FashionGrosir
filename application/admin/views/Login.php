@@ -29,7 +29,7 @@
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-    <script src="<?= base_url('assets/vendor/angularjs/angular.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/angularjs/angular.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/app.js'); ?>"></script>
 </head>
 <body>
@@ -42,8 +42,8 @@
                 <p>Administrator</p>
                 <div ng-controller="LoginController">
                     <form id="loginForm" name="loginForm" ng-submit="loginValidation(loginForm.$valid)" novalidate>
-                        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" ng-model="loginToken"
-                               value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
+                        <input type="hidden" name="token_fg" ng-model="token_fg"
+                               ng-init="token_fg = '<?= $this->security->get_csrf_hash(); ?>'">
                         <div class="form-group-material"
                              ng-class="{'is-invalid' : loginForm.loginUsername.$invalid && !loginForm.loginUsername.$pristine}">
                             <input id="login-username" type="text" ng-model="loginUsername" name="loginUsername"

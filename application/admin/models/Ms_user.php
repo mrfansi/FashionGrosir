@@ -14,4 +14,10 @@ class Ms_user extends MY_Model {
     {
         return $this->get_by('user_username', $username);
     }
+
+    public function get_password($username)
+    {
+        return $this->get_by('user_username', $username)->user_password;
+    }
+
 }
