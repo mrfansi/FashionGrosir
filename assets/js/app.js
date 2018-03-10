@@ -13,7 +13,7 @@ app.controller('LoginController', function ($scope, $http) {
 
             var post = {
                 method: "POST",
-                url: "auth/login",
+                url: base_url + "adm.php/auth/login",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                 },
@@ -38,7 +38,7 @@ app.controller('DashboardController', function ($scope, $http) {
     angular.element(document).ready(function () {
         $http({
             method: "GET",
-            url: "get/total_customers"
+            url: base_url + "adm.php/get/total_customers"
         }).then(function (res) {
             $scope.total_customers = res.data;
         }, function (res) {
@@ -47,7 +47,7 @@ app.controller('DashboardController', function ($scope, $http) {
 
         $http({
             method: "GET",
-            url: "get/total_items"
+            url: base_url + "adm.php/get/total_items"
         }).then(function (res) {
             $scope.total_items = res.data;
         }, function (res) {
@@ -60,7 +60,7 @@ app.controller('TemController', function ($scope, $http) {
     angular.element(document).ready(function () {
         $http({
             method: "GET",
-            url: "get/list_kategori"
+            url: base_url + "adm.php/get/list_kategori"
         }).then(function (res) {
             console.log(res.data);
             $scope.kategories = res.data;
