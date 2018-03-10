@@ -4,6 +4,14 @@
 #Require valid-user
 
 RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
+# To externally redirect /dir/foo.php to /dir/file.html
+RewriteCond %{THE_REQUEST} \s/+(.+)\.ez[\s?] [NC]
+RewriteRule ^ /%1.php [R=301,L]
+
+# To internally rewrite /dir/file.html to /dir/file.php
+RewriteCond %{DOCUMENT_ROOT}/$1\.php -f
+RewriteRule ^(.+)\.ez$ $1.php [L]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php?/$1 [L,QSA]

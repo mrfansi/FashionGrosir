@@ -63,6 +63,7 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-
+        session_destroy();
+        redirect(base_url('adm.php/auth'));
     }
 }

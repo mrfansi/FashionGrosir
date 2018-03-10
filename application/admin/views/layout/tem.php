@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="admFashionGrosir">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,47 +39,61 @@
         <!-- Sidebar Header    -->
         <div class="sidenav-header d-flex align-items-center justify-content-center">
             <!-- User Info-->
-            <div class="sidenav-header-inner text-center"><img src="img/avatar-1.jpg" alt="person"
-                                                               class="img-fluid rounded-circle">
-                <h2 class="h5">Anderson Hardy</h2><span>Administrator</span>
+            <div class="sidenav-header-inner text-center">
+                <h2 class="h5"><?= $_SESSION['nama'] ?></h2><span>Administrator</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
-            <div class="sidenav-header-logo"><a href="dashboard.html" class="brand-small text-center">
-                    <strong>B</strong><strong class="text-primary">D</strong></a></div>
+            <div class="sidenav-header-logo"><a href="<?= base_url('dashboard') ?>" class="brand-small text-center">
+                    <strong>F</strong><strong class="text-primary">G</strong></a></div>
         </div>
         <!-- Sidebar Navigation Menus-->
-        <div class="main-menu">
+        <div class="main-menu" ng-controller="TemController">
             <h5 class="sidenav-heading">Main</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li><a href="dashboard.html"> <i class="icon-home"></i>Home </a></li>
-                <li><a href="forms.html"> <i class="icon-form"></i>Forms </a></li>
-                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
-                <li><a href="tables.html"> <i class="icon-grid"></i>Tables </a></li>
-                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
-                                class="icon-interface-windows"></i>Example dropdown </a>
-                    <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
+                <li><a href="<?= base_url('adm.php/dashboard') ?>"> <i class="icon-home"></i>Home </a></li>
+                <li><a href="#itemsdown" aria-expanded="false" data-toggle="collapse"> <i
+                                class="icon-interface-windows"></i>Items </a>
+                    <ul id="itemsdown" class="collapse list-unstyled"
+                        ng-repeat="kategori in TemController.list_kategori">
+                        <li ng-repeat="(key, value) in kategori">
+                            <a href="<?= base_url('adm.php/item/list/'); ?>{{value.kat_kode}}">{{value.kat_nama}}</a>
+                        </li>
                     </ul>
-                    </li>
-                <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page </a></li>
-                <li><a href="#"> <i class="icon-mail"></i>Demo
-                        <div class="badge badge-warning">6 New</div>
+                </li>
+                <li><a href="#transaksidown" aria-expanded="false" data-toggle="collapse"> <i
+                                class="icon-interface-windows"></i>Transaksi </a>
+                    <ul id="transaksidown" class="collapse list-unstyled">
+                        <li>
+                            <a href="<?= base_url('adm.php/transaksi/penjualan'); ?>">Penjualan</a>
+                        </li>
+                        <li>
+                            <a href="<?= base_url('adm.php/transaksi/invoice'); ?>">Invoice</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#"> <i class="fa fa-bar-chart"></i>Statistik
+                        <div class="badge badge-info">Coming soon</div>
                     </a></li>
+                <li><a href="<?= base_url('adm.php/customers'); ?>""> <i class="fa fa-users"></i>Customers </a></li>
+                <!--                <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page </a></li>-->
+                <!--                <li><a href="#"> <i class="icon-mail"></i>Demo-->
+                <!--                        <div class="badge badge-warning">6 New</div>-->
+                <!--                    </a></li>-->
             </ul>
         </div>
         <div class="admin-menu">
-            <h5 class="sidenav-heading">Second menu</h5>
+            <h5 class="sidenav-heading">
+                Opsi
+            </h5>
             <ul id="side-admin-menu" class="side-menu list-unstyled">
-                <li><a href="#"> <i class="icon-screen"> </i>Demo</a></li>
-                <li><a href="#"> <i class="icon-flask"> </i>Demo
-                        <div class="badge badge-info">Special</div>
-                    </a></li>
-                <li><a href=""> <i class="icon-flask"> </i>Demo</a></li>
-                <li><a href=""> <i class="icon-picture"> </i>Demo</a></li>
-                </ul>
-            </div>
+                <li>
+                    <a href="#"> <i class="fa fa-user"> </i>Profil
+                        <div class="badge badge-info">Coming soon</div>
+                    </a>
+                </li>
+                <li><a href="#"> <i class="fa fa-cogs"> </i>Konfigurasi </a></li>
+            </ul>
+        </div>
     </div>
 </nav>
 <div class="page">
@@ -89,9 +103,10 @@
             <div class="container-fluid">
                 <div class="navbar-holder d-flex align-items-center justify-content-between">
                     <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i
-                                    class="icon-bars"> </i></a><a href="dashboard.html" class="navbar-brand">
-                            <div class="brand-text d-none d-md-inline-block"><span>Bootstrap </span><strong
-                                        class="text-primary">Dashboard</strong></div>
+                                    class="icon-bars"> </i></a><a href="<?= base_url('adm.php/dashboard') ?>"
+                                                                  class="navbar-brand">
+                            <div class="brand-text d-none d-md-inline-block"><strong
+                                        class="text-primary"><?= $html_title ?></strong></div>
                         </a></div>
                     <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                         <li class="nav-item dropdown"><a id="notifications" rel="nofollow" data-target="#" href="#"
@@ -177,7 +192,7 @@
                                         <strong> <i class="fa fa-envelope"></i>Read all messages </strong></a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a href="login.html" class="nav-link logout">Logout<i
+                        <li class="nav-item"><a href="<?= base_url('adm.php/auth/logout') ?>" class="nav-link logout">Logout<i
                                         class="fa fa-sign-out"></i></a></li>
                     </ul>
                 </div>
@@ -191,10 +206,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <p>Your company &copy; 2017-2019</p>
+                    <p>Fashion Grosir &copy; 2018</p>
                 </div>
                 <div class="col-sm-6 text-right">
-                    <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a></p>
+                    <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a> and Minifier by
+                        <a href="#" class="external">Eazy Dev</a></p>
                     <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
                 </div>
             </div>

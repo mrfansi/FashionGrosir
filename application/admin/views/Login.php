@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="admFashionGrosir">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,12 +40,14 @@
                 <div class="logo text-uppercase"><strong class="text-primary">Login</strong>
                 </div>
                 <p>Administrator</p>
-                <div ng-app="ez" ng-controller="loginFormCtrl">
+                <div ng-controller="LoginController">
                     <form id="loginForm" name="loginForm" ng-submit="loginValidation(loginForm.$valid)" novalidate>
+                        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" ng-model="loginToken"
+                               value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
                         <div class="form-group-material"
                              ng-class="{'is-invalid' : loginForm.loginUsername.$invalid && !loginForm.loginUsername.$pristine}">
                             <input id="login-username" type="text" ng-model="loginUsername" name="loginUsername"
-                                   class="input-material" required="required" autocomplete="no" autofocus>
+                                   class="input-material" required="required">
                             <label for="login-username" class="label-material">Username</label>
                             <div ng-show="loginForm.loginUsername.$invalid && !loginForm.loginUsername.$pristine"
                                  class="text-left invalid-feedback">Username tidak valid.
@@ -54,7 +56,7 @@
                         <div class="form-group-material"
                              ng-class="{'is-invalid' : loginForm.loginPassword.$invalid && !loginForm.loginPassword.$pristine}">
                             <input id="login-password" type="password" ng-model="loginPassword" name="loginPassword"
-                                   class="input-material" required="required" autocomplete="no">
+                                   class="input-material" autocomplete="no">
                             <label for="login-password" class="label-material">Password</label>
                             <div ng-show="loginForm.loginPassword.$invalid && !loginForm.loginPassword.$pristine"
                                  class="text-left invalid-feedback">Password tidak valid.
@@ -66,7 +68,7 @@
                         </button>
                         <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                     </form>
-                    <div>{{xxx.status_msg}}</div>
+                    <div ng-class="">{{xxx.status_msg}}</div>
                 </div>
 
             </div>
