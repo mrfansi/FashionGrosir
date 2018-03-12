@@ -2,11 +2,9 @@
 /**
  * Created by PhpStorm.
  * User: irfandihati
- * Date: 08/03/2018
- * Time: 01.07
+ * Date: 12/03/2018
+ * Time: 22.54
  */
-
-defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends MY_Controller
 {
@@ -15,8 +13,23 @@ class Dashboard extends MY_Controller
         parent::__construct();
     }
 
+
     public function index()
     {
-        $this->_show_content('Dashboard', 'Dashboard');
+        echo 'Request tidak diperbolehkan';
+    }
+
+    public function dashboard_totalitem()
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            $this->index();
+        } else {
+            echo $this->item->count_all();
+        }
+    }
+
+    public function dashboard_totalcust()
+    {
+
     }
 }

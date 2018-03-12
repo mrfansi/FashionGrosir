@@ -18,6 +18,4 @@ class Transaksi extends MY_Controller
     {
 
     }
-
-
 }

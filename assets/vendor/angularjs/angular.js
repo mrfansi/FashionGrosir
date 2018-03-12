@@ -13422,9 +13422,6 @@
       *               }
       *             }, 100);
       *           };
-
-
-
       *
       *           $scope.stopFight = function() {
       *             if (angular.isDefined(stop)) {
@@ -13432,17 +13429,11 @@
       *               stop = undefined;
       *             }
       *           };
-
-
-
       *
       *           $scope.resetFight = function() {
       *             $scope.blood_1 = 100;
       *             $scope.blood_2 = 120;
       *           };
-
-
-
       *
       *           $scope.$on('$destroy', function() {
       *             // Make sure that the interval is destroyed too
@@ -27285,24 +27276,15 @@
  *     $scope.greet = function() {
  *       alert($scope.name);
  *     };
-
-
-
  *
  *     $scope.addContact = function() {
  *       $scope.contacts.push({type:'email', value:'yourname@example.org'});
  *     };
-
-
-
  *
  *     $scope.removeContact = function(contactToRemove) {
  *       var index = $scope.contacts.indexOf(contactToRemove);
  *       $scope.contacts.splice(index, 1);
  *     };
-
-
-
  *
  *     $scope.clearContact = function(contact) {
  *       contact.type = 'phone';

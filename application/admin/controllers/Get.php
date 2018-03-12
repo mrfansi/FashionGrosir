@@ -43,6 +43,16 @@ class Get extends MY_Controller
         return 0;
     }
 
+    public function kategori($kategori = '')
+    {
+        if ($kategori == 'all' OR $kategori == '') {
+            $hasil = $this->item->as_array()->get_all();
+        } else {
+            $hasil = $this->item->as_array()->get_many_by('kat_kode', $kategori);
+        }
+        echo json_encode($hasil);
+    }
+
     public function list_kategori()
     {
         $hasil = $this->kategori->as_array()->get_all();

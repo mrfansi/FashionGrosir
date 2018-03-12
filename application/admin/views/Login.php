@@ -32,8 +32,9 @@
     <script src="<?= base_url('assets/vendor/angularjs/angular.min.js'); ?>"></script>
     <script>
         var base_url = '<?= base_url(); ?>';
+        var hashing = '<?= $this->security->get_csrf_hash(); ?>';
     </script>
-    <script src="<?= base_url('assets/js/app.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/login.js'); ?>"></script>
 </head>
 <body>
 <div class="page login-page">
@@ -45,8 +46,6 @@
                 <p>Administrator</p>
                 <div ng-controller="LoginController">
                     <form id="loginForm" name="loginForm" ng-submit="loginValidation(loginForm.$valid)" novalidate>
-                        <input type="hidden" name="token_fg" ng-model="token_fg"
-                               ng-init="token_fg = '<?= $this->security->get_csrf_hash(); ?>'">
                         <div class="form-group-material"
                              ng-class="{'is-invalid' : loginForm.loginUsername.$invalid && !loginForm.loginUsername.$pristine}">
                             <input id="login-username" type="text" ng-model="loginUsername" name="loginUsername"
