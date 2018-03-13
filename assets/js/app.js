@@ -1,4 +1,4 @@
-var app = angular.module('admFashionGrosir', ['ngRoute', 'rzModule']);
+var app = angular.module('admFashionGrosir', ['ngRoute', 'rzModule', 'ui.bootstrap']);
 
 app.run(function ($animate) {
     $animate.enabled(true);
@@ -117,8 +117,9 @@ app.config(function ($routeProvider) {
 // CONTROLLER
 app.controller('MainController', function ($scope, $http, $location, Page) {
     $scope.Page = Page;
+    $scope.isCollapsed = false;
     angular.element(document).ready(function () {
-        $scope.list_kategories = function () {
+        $scope.init = function () {
             $http({
                 method: "GET",
                 url: base_url + "adm.php/get/list_kategori"
@@ -128,6 +129,8 @@ app.controller('MainController', function ($scope, $http, $location, Page) {
                 console.log(res.data);
             });
         };
+
+        $scope.init();
     });
 });
 
