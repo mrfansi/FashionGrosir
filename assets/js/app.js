@@ -1,4 +1,4 @@
-var app = angular.module('admFashionGrosir', ['ngRoute']);
+var app = angular.module('admFashionGrosir', ['ngRoute','rzModule']);
 
 app.run(function($animate) {
     $animate.enabled(true);
@@ -90,34 +90,47 @@ app.controller('DashboardController', function ($scope, $http, Page) {
     });
 });
 
-app.controller('ItemsController', function ($scope, $http, Page, $routeParams) {
+app.controller('ItemsController', function ($scope, $http, Page, $routeParams, $timeout) {
     // judul
     Page.setTitle('Items');
     angular.element(document).ready(function () {
-        $scope.slider = {
-            minValue: 100,
-            maxValue: 400,
-            options: {
-                floor: 0,
-                ceil: 500,
-                translate: function(value, sliderId, label) {
-                    switch (label) {
-                        case 'model':
-                            return '<b>Min harga:</b> Rp.' + value;
-                        case 'high':
-                            return '<b>Max harga:</b> Rp.' + value;
-                        default:
-                            return 'Rp.' + value
-                    }
-                }
-            }
-        };
-
+        var min, max;
         $http({
             method: "GET",
             url: base_url + "adm.php/get/kategori/" + $routeParams.id
         }).then(function (res) {
             $scope.items = res.data;
+        }, function (res) {
+            console.log(res.data);
+        });
+
+        $http({
+            method: "GET",
+            url: base_url + "adm.php/item/range_harga"
+        }).then(function (res) {
+            var min = parseInt(res.data.min[0]['item_harga1']);
+            var max = parseInt(res.data.max[0]['item_harga1']);
+
+            $scope.slider = {
+                minValue: min + 10000,
+                maxValue: max - 10000,
+                options: {
+                    floor: min,
+                    ceil: max,
+                    draggableRange: true,
+                    translate: function(value, sliderId, label) {
+                        switch (label) {
+                            case 'model':
+                                return '<b>Hrg. min:</b> Rp.' + value;
+                            case 'high':
+                                return '<b>Hrg. max:</b> Rp.' + value;
+                            default:
+                                return 'Rp.' + value
+                        }
+                    }
+                }
+            };
+
         }, function (res) {
             console.log(res.data);
         });

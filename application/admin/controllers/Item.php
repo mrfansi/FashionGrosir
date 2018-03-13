@@ -28,9 +28,17 @@ class Item extends MY_Controller
         }
     }
 
+
     public function kategori($kat)
     {
         return json_encode($this->item->as_array()->get_many_by('kat_kode', $kat));
+    }
+
+    public function range_harga() {
+        $array_data = [];
+        $array_data['min'] = $this->item->get_min();
+        $array_data['max'] = $this->item->get_max();
+        echo json_encode($array_data);
     }
 
 

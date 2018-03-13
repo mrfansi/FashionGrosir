@@ -24,4 +24,14 @@ class Ms_item extends MY_Model {
         $hasil = $this->group_by('kat_kode')->limit($limit)->get_all();
         return $hasil;
     }
+
+    public function get_max() {
+        $hasil = $this->db->select_max('item_harga1')->get($this->_table)->result();
+        return $hasil;
+    }
+
+    public function get_min() {
+        $hasil = $this->db->select_min('item_harga1')->get($this->_table)->result();
+        return $hasil;
+    }
 }

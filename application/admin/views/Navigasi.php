@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css" id="theme-stylesheet'); ?>">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/1.6.9/rzslider.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/rzslider/rzslider.min.css'); ?>">
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -37,7 +37,7 @@
         var base_url = '<?= base_url(); ?>';
         var hashing = '<?= $this->security->get_csrf_hash(); ?>';
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/1.6.9/rzslider.min.js"></script>
+    <script src="<?= base_url('assets/vendor/rzslider/rzslider.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/app.js'); ?>"></script>
 </head>
 <body>
@@ -61,17 +61,20 @@
                 <li><a href="#!/dashboard"> <i class="icon-home"></i>DASHBOARD </a></li>
                 <li><a href="#itemsdown" aria-expanded="false" data-toggle="collapse" ng-click="list_kategories()"> <i
                                 class="icon-interface-windows"></i>ITEMS </a>
-                    <ul id="itemsdown" class="collapse list-unstyled">
+                    <ul id="itemsdown" class="collapse list-unstyled" ng-if="kategories.length">
                         <li><a href="#!/item/baru"> <i class="fa fa-plus"></i> BUAT
                                 KATEGORI</a></li>
                         <li><a href="#!/item/kategori/all">ALL</a></li>
+                        <li><a href="#!/item/kategori/terbaru">HOT <div class="badge badge-danger">New</div></a></li>
                         <li ng-repeat="kategori in kategories">
                             <a href="#!/item/kategori/{{kategori.kat_kode}}">{{kategori.kat_nama}}</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="#transaksidown" aria-expanded="false" data-toggle="collapse"> <i
-                                class="icon-interface-windows"></i>TRANSAKSI </a>
+                <li><a href="#transaksidown" aria-expanded="false" data-toggle="collapse">
+                        <i class="icon-interface-windows"></i>
+                        TRANSAKSI
+                    </a>
                     <ul id="transaksidown" class="collapse list-unstyled">
                         <li>
                             <a href="#!/transaksi/modul/penjualan">PENJUALAN</a>
@@ -92,7 +95,7 @@
         </div>
         <div class="admin-menu">
             <h5 class="sidenav-heading">
-                Opsi
+                Admin
             </h5>
             <ul id="side-admin-menu" class="side-menu list-unstyled">
                 <li>
@@ -100,7 +103,7 @@
                         <div class="badge badge-info">Coming soon</div>
                     </a>
                 </li>
-                <li><a href="#!/konfigurasi"> <i class="fa fa-cogs"> </i>KONFIGURASI </a></li>
+                <li><a href="#!/konfigurasi"> <i class="fa fa-cogs"> </i>OPSI </a></li>
             </ul>
         </div>
     </div>
@@ -153,6 +156,7 @@
 <script src="<?= base_url('assets/vendor/chart.js/Chart.min.js'); ?>"></script>
 <script src="<?= base_url('assets/vendor/jquery-validation/jquery.validate.min.js'); ?>"></script>
 <script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.6.0/src/loadingoverlay.min.js"></script>
 <!-- Main File-->
 <script src="<?= base_url('assets/js/front.js'); ?>"></script>
 </body>
