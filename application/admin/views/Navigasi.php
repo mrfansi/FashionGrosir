@@ -130,7 +130,7 @@
     </header>
 
     <!--    <div ng-html="content_view"></div>-->
-    <div ng-view></div>
+    <div ng-view loading-listener class="loading-content"></div>
 
     <footer class="main-footer">
         <div class="container-fluid">
@@ -156,7 +156,8 @@
 <script src="<?= base_url('assets/vendor/chart.js/Chart.min.js'); ?>"></script>
 <script src="<?= base_url('assets/vendor/jquery-validation/jquery.validate.min.js'); ?>"></script>
 <script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
-<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.6.0/src/loadingoverlay.min.js"></script>
+<script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
 <!-- Main File-->
 <script src="<?= base_url('assets/js/front.js'); ?>"></script>
 </body>

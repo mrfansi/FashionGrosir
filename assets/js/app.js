@@ -1,8 +1,88 @@
-var app = angular.module('admFashionGrosir', ['ngRoute','rzModule']);
+var app = angular.module('admFashionGrosir', ['ngRoute', 'rzModule']);
 
-app.run(function($animate) {
+app.run(function ($animate) {
     $animate.enabled(true);
 });
+
+// FACTORY
+app.factory('LoadingListener', [ '$q', '$rootScope', function($q, $rootScope) {
+    var reqsActive = 0;
+
+    function onResponse() {
+        reqsActive--;
+        if (reqsActive === 0) {
+            $rootScope.$broadcast('loading:completed');
+        }
+    }
+
+    return {
+        'request': function(config) {
+            if (reqsActive === 0) {
+                $rootScope.$broadcast('loading:started');
+            }
+            reqsActive++;
+            return config;
+        },
+        'response': function(response) {
+            if (!response || !response.config) {
+                return response;
+            }
+            onResponse();
+            return response;
+        },
+        'responseError': function(rejection) {
+            if (!rejection || !rejection.config) {
+                return $q.reject(rejection);
+            }
+            onResponse();
+            return $q.reject(rejection);
+        },
+        isLoadingActive : function() {
+            return reqsActive === 0;
+        }
+    };
+}]);
+
+app.factory('Page', function () {
+    var title = 'Default';
+    return {
+        title: function () {
+            return title;
+        },
+        setTitle: function (newTitle) {
+            title = newTitle;
+        }
+    };
+});
+// END FACTORY
+
+// DIRECTIVE
+app.directive('loadingListener', [ '$rootScope', 'LoadingListener', function($rootScope, LoadingListener) {
+    return {
+        restrict: 'CA',
+        link: function linkFn(scope, elem, attr) {
+            if (!LoadingListener.isLoadingActive()) {
+                $('.loading-content').LoadingOverlay('hide');
+            }
+
+            $rootScope.$on('loading:started', function () {
+                $('.loading-content').LoadingOverlay('show', {
+                    image       : "",
+                    fontawesome : "fa fa-spinner fa-spin"
+                });
+            });
+            $rootScope.$on('loading:completed', function () {
+                $('.loading-content').LoadingOverlay('hide');
+            });
+        }
+    };
+}]);
+// END DIRECTIVE
+
+// CONFIG
+app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.interceptors.push('LoadingListener');
+}]);
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -32,19 +112,9 @@ app.config(function ($routeProvider) {
             reloadOnSearch: false
         });
 });
+// END CONFIG
 
-app.factory('Page', function () {
-    var title = 'Default';
-    return {
-        title: function () {
-            return title;
-        },
-        setTitle: function (newTitle) {
-            title = newTitle;
-        }
-    };
-});
-
+// CONTROLLER
 app.controller('MainController', function ($scope, $http, $location, Page) {
     $scope.Page = Page;
     angular.element(document).ready(function () {
@@ -93,8 +163,11 @@ app.controller('DashboardController', function ($scope, $http, Page) {
 app.controller('ItemsController', function ($scope, $http, Page, $routeParams, $timeout) {
     // judul
     Page.setTitle('Items');
-    angular.element(document).ready(function () {
+
+    // init
+    $scope.init = function () {
         var min, max;
+
         $http({
             method: "GET",
             url: base_url + "adm.php/get/kategori/" + $routeParams.id
@@ -118,7 +191,7 @@ app.controller('ItemsController', function ($scope, $http, Page, $routeParams, $
                     floor: min,
                     ceil: max,
                     draggableRange: true,
-                    translate: function(value, sliderId, label) {
+                    translate: function (value, sliderId, label) {
                         switch (label) {
                             case 'model':
                                 return '<b>Hrg. min:</b> Rp.' + value;
@@ -134,5 +207,9 @@ app.controller('ItemsController', function ($scope, $http, Page, $routeParams, $
         }, function (res) {
             console.log(res.data);
         });
-    });
+    };
+
+    $scope.init();
+
 });
+// END CONTROLLER
