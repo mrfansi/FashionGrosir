@@ -1,5 +1,9 @@
 var app = angular.module('admFashionGrosir', ['ngRoute']);
 
+app.run(function($animate) {
+    $animate.enabled(true);
+});
+
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/dashboard', {
@@ -13,8 +17,12 @@ app.config(function ($routeProvider) {
             },
             reloadOnSearch: false
         })
-        .when('/item/buatbaru', {
-            templateUrl: base_url + "adm.php/item/buatbaru",
+        .when('/item/kategori/baru', {
+            templateUrl: base_url + "adm.php/kategori/baru",
+            reloadOnSearch: false
+        })
+        .when('/item/baru', {
+            templateUrl: base_url + "adm.php/item/baru",
             reloadOnSearch: false
         })
         .when('/item/:action/:id', {
@@ -86,11 +94,29 @@ app.controller('ItemsController', function ($scope, $http, Page, $routeParams) {
     // judul
     Page.setTitle('Items');
     angular.element(document).ready(function () {
+        $scope.slider = {
+            minValue: 100,
+            maxValue: 400,
+            options: {
+                floor: 0,
+                ceil: 500,
+                translate: function(value, sliderId, label) {
+                    switch (label) {
+                        case 'model':
+                            return '<b>Min harga:</b> Rp.' + value;
+                        case 'high':
+                            return '<b>Max harga:</b> Rp.' + value;
+                        default:
+                            return 'Rp.' + value
+                    }
+                }
+            }
+        };
+
         $http({
             method: "GET",
             url: base_url + "adm.php/get/kategori/" + $routeParams.id
         }).then(function (res) {
-            console.log($routeParams);
             $scope.items = res.data;
         }, function (res) {
             console.log(res.data);

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css" id="theme-stylesheet'); ?>">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/1.6.9/rzslider.min.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -31,10 +32,12 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <script src="<?= base_url('assets/vendor/angularjs/angular.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/angularjs/angular-route.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/angularjs/angular-animate.min.js'); ?>"></script>
     <script>
         var base_url = '<?= base_url(); ?>';
         var hashing = '<?= $this->security->get_csrf_hash(); ?>';
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/1.6.9/rzslider.min.js"></script>
     <script src="<?= base_url('assets/js/app.js'); ?>"></script>
 </head>
 <body>
@@ -59,7 +62,7 @@
                 <li><a href="#itemsdown" aria-expanded="false" data-toggle="collapse" ng-click="list_kategories()"> <i
                                 class="icon-interface-windows"></i>ITEMS </a>
                     <ul id="itemsdown" class="collapse list-unstyled">
-                        <li><a href="#!/item/buatbaru"> <i class="fa fa-plus"></i> BUAT
+                        <li><a href="#!/item/baru"> <i class="fa fa-plus"></i> BUAT
                                 KATEGORI</a></li>
                         <li><a href="#!/item/kategori/all">ALL</a></li>
                         <li ng-repeat="kategori in kategories">
