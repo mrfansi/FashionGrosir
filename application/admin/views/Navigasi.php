@@ -27,9 +27,6 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/rzslider/rzslider.min.css'); ?>">
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <script src="<?= base_url('assets/vendor/angularjs/angular.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/angularjs/angular-route.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/angularjs/angular-animate.min.js'); ?>"></script>
@@ -119,7 +116,7 @@
                                     class="icon-bars"> </i></a><a href="<?= base_url('adm.php/dashboard') ?>"
                                                                   class="navbar-brand">
                             <div class="brand-text d-none d-md-inline-block"><strong
-                                        class="text-primary">PANEL</strong></div>
+                                        class="text-primary">FASHION GROSIR</strong></div>
                         </a></div>
                     <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                         <li class="nav-item"><a href="<?= base_url('adm.php/auth/logout') ?>" class="nav-link logout">Logout<i
