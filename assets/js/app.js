@@ -80,6 +80,10 @@ app.directive('loadingListener', [ '$rootScope', 'LoadingListener', function($ro
 // END DIRECTIVE
 
 // CONFIG
+// app.config('$locationProvider', function ($locationProvider) {
+//     $locationProvider.hashPrefix('?');
+// });
+
 app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.interceptors.push('LoadingListener');
 }]);
@@ -117,7 +121,8 @@ app.config(function ($routeProvider) {
 // CONTROLLER
 app.controller('MainController', function ($scope, $http, $location, Page) {
     $scope.Page = Page;
-    $scope.isCollapsed = false;
+    $scope.itemsIsCollapsed = true;
+    $scope.transaksiIsCollapsed = true;
     angular.element(document).ready(function () {
         $scope.init = function () {
             $http({
@@ -163,7 +168,7 @@ app.controller('DashboardController', function ($scope, $http, Page) {
     });
 });
 
-app.controller('ItemsController', function ($scope, $http, Page, $routeParams, $timeout) {
+app.controller('ItemsController', function ($scope, $http, Page, $routeParams) {
     // judul
     Page.setTitle('Items');
 

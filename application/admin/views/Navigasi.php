@@ -33,7 +33,7 @@
     <script src="<?= base_url('assets/vendor/angularjs/angular.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/angularjs/angular-route.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/angularjs/angular-animate.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/vendor/angularjs/ui-bootstrap-2.5.0.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/angularjs/ui-bootstrap-3.0.3.min.js'); ?>"></script>
     <script>
         var base_url = '<?= base_url(); ?>';
         var hashing = '<?= $this->security->get_csrf_hash(); ?>';
@@ -60,9 +60,9 @@
             <h5 class="sidenav-heading">Main</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="#!/dashboard"> <i class="icon-home"></i>DASHBOARD </a></li>
-                <li><a href="javascript:" aria-expanded="false" data-toggle="collapse" ng-click="isCollapsed = !isCollapsed"> <i
+                <li><a role="button" href="javascript:" aria-expanded="false" data-toggle="collapse" ng-click="itemsIsCollapsed = !itemsIsCollapsed"> <i
                                 class="icon-interface-windows"></i>ITEMS </a>
-                    <ul uib-collapse="isCollapsed" class="collapse list-unstyled show">
+                    <ul uib-collapse="itemsIsCollapsed" class="collapse list-unstyled">
                         <li><a href="#!/item/baru"> <i class="fa fa-plus"></i> BUAT
                                 KATEGORI</a></li>
                         <li><a href="#!/item/kategori/all">ALL</a></li>
@@ -72,11 +72,11 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="javascript:" aria-expanded="false" data-toggle="collapse" ng-click="isCollapsed = !isCollapsed">
+                <li><a href="javascript:" aria-expanded="false" data-toggle="collapse" ng-click="transaksiIsCollapsed = !transaksiIsCollapsed">
                         <i class="icon-interface-windows"></i>
                         TRANSAKSI
                     </a>
-                    <ul class="collapse list-unstyled show">
+                    <ul uib-collapse="transaksiIsCollapsed" class="collapse list-unstyled">
                         <li>
                             <a href="#!/transaksi/modul/penjualan">PENJUALAN</a>
                         </li>
