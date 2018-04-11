@@ -60,8 +60,10 @@
                 <li><a role="button" href="javascript:" aria-expanded="false" data-toggle="collapse" ng-click="itemsIsCollapsed = !itemsIsCollapsed"> <i
                                 class="icon-interface-windows"></i>ITEMS </a>
                     <ul uib-collapse="itemsIsCollapsed" class="collapse list-unstyled">
-                        <li><a href="#!/item/baru"> <i class="fa fa-plus"></i> BUAT
+                        <li><a href="#!/item/kategori_new"> <i class="fa fa-plus"></i> BUAT
                                 KATEGORI</a></li>
+                        <li><a href="#!/item/item_new"> <i class="fa fa-plus"></i> BUAT
+                                ITEM</a></li>
                         <li><a href="#!/item/kategori/all">ALL</a></li>
                         <li><a href="#!/item/kategori/terbaru">HOT <div class="badge badge-danger">New</div></a></li>
                         <li ng-repeat="kategori in kategories">
@@ -69,6 +71,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li><a href="javascript:" aria-expanded="false" data-toggle="collapse" ng-click="transaksiIsCollapsed = !transaksiIsCollapsed">
                         <i class="icon-interface-windows"></i>
                         TRANSAKSI

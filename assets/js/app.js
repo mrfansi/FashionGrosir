@@ -101,11 +101,11 @@ app.config(function ($routeProvider) {
             },
             reloadOnSearch: false
         })
-        .when('/item/kategori/baru', {
+        .when('/item/kategori_new', {
             templateUrl: base_url + "adm.php/kategori/baru",
             reloadOnSearch: false
         })
-        .when('/item/baru', {
+        .when('/item/item_new', {
             templateUrl: base_url + "adm.php/item/baru",
             reloadOnSearch: false
         })
@@ -123,6 +123,7 @@ app.controller('MainController', function ($scope, $http, $location, Page) {
     $scope.Page = Page;
     $scope.itemsIsCollapsed = true;
     $scope.transaksiIsCollapsed = true;
+
     angular.element(document).ready(function () {
         $scope.init = function () {
             $http({
