@@ -1,5 +1,5 @@
+<br>
 <section ng-controller="ItemsController" ng-animate-children>
-    <br>
     <div class="col">
         <div class="card">
             <div class="card-header">
