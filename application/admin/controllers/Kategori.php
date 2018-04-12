@@ -31,7 +31,7 @@ class Kategori extends MY_Controller
     public function baru()
     {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            $this->load->view('CRUD_Item');
+            $this->load->view('CRUD_Kategori');
         } else if ($this->input->server('REQUEST_METHOD') == 'POST') {
             return 0;
         }
