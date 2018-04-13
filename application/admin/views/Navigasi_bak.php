@@ -29,7 +29,6 @@
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
     <script src="<?= base_url('assets/vendor/angularjs/angular.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/angularjs/angular-route.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/vendor/angularjs/angular-animate.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/angularjs/ui-bootstrap-3.0.3.min.js'); ?>"></script>
     <script>
         var base_url = '<?= base_url(); ?>';

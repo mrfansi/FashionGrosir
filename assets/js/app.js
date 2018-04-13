@@ -1,9 +1,5 @@
 var app = angular.module('admFashionGrosir', ['ngRoute', 'rzModule', 'ui.bootstrap']);
 
-app.run(function ($animate) {
-    $animate.enabled(true);
-});
-
 // FACTORY
 app.factory('LoadingListener', [ '$q', '$rootScope', function($q, $rootScope) {
     var reqsActive = 0;
