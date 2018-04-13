@@ -8,11 +8,14 @@
             <div class="card-body">
                 <form>
                     <div class="row">
-                        <div class="col-sm-12 form-group">
-                            <label>Kategori Item</label>
+                        <div class="col-sm-8 form-group">
                             <select class="form-control">
                                 <option value="0">Pilih Kategori</option>
                             </select>
+                        </div>
+
+                        <div class="col-sm-4 form-group">
+                            <button class="btn btn-primary">Buat Kategori</button>
                         </div>
                     </div>
 

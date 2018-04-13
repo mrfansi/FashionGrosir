@@ -173,43 +173,53 @@ app.controller('DashboardController', function ($scope, $http, Page) {
     });
 });
 
-app.controller('ItemsController', function ($scope, $http, Page, $routeParams, $q) {
+app.controller('ItemsController', function ($scope, $http, Page, $routeParams) {
     // judul
     Page.setTitle('Items');
 
     // init
     $scope.init = function () {
+        var min, max;
 
-        $scope.get_kategori = $http.get(base_url + "adm.php/get/kategori/" + $routeParams.id, {cache: false});
-        // $scope.get_range_hrg = $http.get(base_url + "adm.php/item/range_harga", {cache: false});
-
-        $q.all([$scope.get_kategori]).then(function(values) {
-
-            // var min = parseInt(values[1].data.min[0]['item_harga1']);
-            // var max = parseInt(values[1].data.max[0]['item_harga1']);
-            // $scope.slider = {
-            //     minValue: min + 10000,
-            //     maxValue: max - 10000,
-            //     options: {
-            //         floor: min,
-            //         ceil: max,
-            //         draggableRange: true,
-            //         translate: function (value, sliderId, label) {
-            //             switch (label) {
-            //                 case 'model':
-            //                     return '<b>Hrg. min:</b> Rp.' + value;
-            //                 case 'high':
-            //                     return '<b>Hrg. max:</b> Rp.' + value;
-            //                 default:
-            //                     return 'Rp.' + value
-            //             }
-            //         }
-            //     }
-            // };
-
-            $scope.items = values[0].data;
+        $http({
+            method: "GET",
+            url: base_url + "adm.php/get/kategori/" + $routeParams.id
+        }).then(function (res) {
+            $scope.items = res.data;
+        }, function (res) {
+            console.log(res.data);
         });
 
+        $http({
+            method: "GET",
+            url: base_url + "adm.php/item/range_harga"
+        }).then(function (res) {
+            var min = parseInt(res.data.min[0]['item_harga1']);
+            var max = parseInt(res.data.max[0]['item_harga1']);
+
+            $scope.slider = {
+                minValue: min + 10000,
+                maxValue: max - 10000,
+                options: {
+                    floor: min,
+                    ceil: max,
+                    draggableRange: true,
+                    translate: function (value, sliderId, label) {
+                        switch (label) {
+                            case 'model':
+                                return '<b>Hrg. min:</b> Rp.' + value;
+                            case 'high':
+                                return '<b>Hrg. max:</b> Rp.' + value;
+                            default:
+                                return 'Rp.' + value
+                        }
+                    }
+                }
+            };
+
+        }, function (res) {
+            console.log(res.data);
+        });
     };
 
     $scope.init();

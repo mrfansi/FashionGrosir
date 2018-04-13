@@ -1,30 +1,30 @@
 <br>
 <section ng-controller="ItemsController" ng-animate-children>
-    <div class="col">
-        <div class="card">
-            <div class="card-header">
-                <h4>Filter</h4>
-            </div>
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col mb-2">
-                            <rzslider rz-slider-model="slider.minValue"
-                                      rz-slider-high="slider.maxValue"
-                                      rz-slider-options="slider.options"></rzslider>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-2">
-                            <input class="form-control" type="text" name="search" placeholder="Filter data"
-                                   ng-model="filterdata">
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!--    <div class="col">-->
+<!--        <div class="card">-->
+<!--            <div class="card-header">-->
+<!--                <h4>Filter</h4>-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--                <div class="container">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col mb-2">-->
+<!--                            <rzslider rz-slider-model="slider.minValue"-->
+<!--                                      rz-slider-high="slider.maxValue"-->
+<!--                                      rz-slider-options="slider.options"></rzslider>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col mb-2">-->
+<!--                            <input class="form-control" type="text" name="search" placeholder="Filter data"-->
+<!--                                   ng-model="filterdata">-->
+<!--                        </div>-->
+<!---->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="col">
         <div class="card">
             <div class="card-header">

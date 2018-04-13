@@ -42,13 +42,24 @@
 <!-- Side Navbar -->
 <nav class="side-navbar">
     <div class="side-navbar-wrapper">
+        <!-- Sidebar Header    -->
+        <div class="sidenav-header d-flex align-items-center justify-content-center">
+            <!-- User Info-->
+            <div class="sidenav-header-inner text-center">
+                <h2 class="h5"><?= $_SESSION['nama'] ?></h2><span>Administrator</span>
+            </div>
+            <!-- Small Brand information, appears on minimized sidebar-->
+            <div class="sidenav-header-logo"><a href="#dashboard" class="brand-small text-center">
+                    <strong>F</strong><strong class="text-primary">G</strong></a></div>
+        </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
             <h5 class="sidenav-heading">Main</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="#!/dashboard"> <i class="icon-home"></i>DASHBOARD </a></li>
-                <li><a> <i class="icon-interface-windows"></i>ITEMS </a>
-                    <ul>
+                <li><a role="button" href="javascript:" aria-expanded="false" data-toggle="collapse" ng-click="itemsIsCollapsed = !itemsIsCollapsed"> <i
+                                class="icon-interface-windows"></i>ITEMS </a>
+                    <ul uib-collapse="itemsIsCollapsed" class="collapse list-unstyled">
                         <li><a href="#!/item/kategori_new"> <i class="fa fa-plus"></i> BUAT
                                 KATEGORI</a></li>
                         <li><a href="#!/item/item_new"> <i class="fa fa-plus"></i> BUAT
@@ -61,8 +72,11 @@
                     </ul>
                 </li>
 
-                <li><a><i class="icon-interface-windows"></i>TRANSAKSI</a>
-                    <ul>
+                <li><a href="javascript:" aria-expanded="false" data-toggle="collapse" ng-click="transaksiIsCollapsed = !transaksiIsCollapsed">
+                        <i class="icon-interface-windows"></i>
+                        TRANSAKSI
+                    </a>
+                    <ul uib-collapse="transaksiIsCollapsed" class="collapse list-unstyled">
                         <li>
                             <a href="#!/transaksi/modul/penjualan">ORDER</a>
                         </li>
@@ -83,15 +97,11 @@
             </h5>
             <ul id="side-admin-menu" class="side-menu list-unstyled">
                 <li>
-                    <a href="#!/profil"><i class="fa fa-user"></i>PROFIL
+                    <a href="#!/profil"> <i class="fa fa-user"> </i>PROFIL
                         <div class="badge badge-info">Coming soon</div>
                     </a>
                 </li>
-                <li>
-                    <a href="#!/users"><i class="fa fa-users"></i>USERS
-                    </a>
-                </li>
-                <li><a href="#!/konfigurasi"><i class="fa fa-cogs"></i>OPSI </a></li>
+                <li><a href="#!/konfigurasi"> <i class="fa fa-cogs"> </i>OPSI </a></li>
             </ul>
         </div>
     </div>
