@@ -31,6 +31,11 @@ class Navigasi extends MY_Controller
         $this->load->view('Item');
     }
 
+    public function customers()
+    {
+        $this->load->view('Customers');
+    }
+
     public function transaksi()
     {
 

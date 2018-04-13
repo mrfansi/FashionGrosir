@@ -88,9 +88,9 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#!/statistik"> <i class="fa fa-bar-chart"></i>STATISTIK
-                        <div class="badge badge-info">Coming soon</div>
-                    </a></li>
+<!--                <li><a href="#!/statistik"> <i class="fa fa-bar-chart"></i>STATISTIK-->
+<!--                        <div class="badge badge-info">Coming soon</div>-->
+<!--                    </a></li>-->
                 <li><a href="#!/customers"> <i class="fa fa-users"></i>CUSTOMERS </a></li>
             </ul>
         </div>
@@ -139,11 +139,7 @@
                 <div class="col-sm-6">
                     <p>Fashion Grosir &copy; 2018</p>
                 </div>
-                <div class="col-sm-6 text-right">
-                    <p>Design by <a href="https://bootstrapious.com" class="external">Bootstrapious</a> and Minifier by
-                        <a href="#" class="external">Eazy Dev</a></p>
-                    <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-                </div>
+
             </div>
         </div>
     </footer>

@@ -1,6 +1,6 @@
 <br>
 <section>
-    <div class="container-fluid">
+    <div class="col">
         <div class="card">
             <div class="card-header d-flex align-items-center">
                 <h2>Buat Kategori Baru</h2>

@@ -109,6 +109,10 @@ app.config(function ($routeProvider) {
             templateUrl: base_url + "adm.php/item/baru",
             reloadOnSearch: false
         })
+        .when('/customers', {
+            templateUrl: base_url + "adm.php/navigasi/customers",
+            reloadOnSearch: false
+        })
         .when('/item/:action/:id', {
             templateUrl: function (param) {
                 return base_url + "adm.php/item/" + param.action + "/" + param.id;
@@ -220,5 +224,10 @@ app.controller('ItemsController', function ($scope, $http, Page, $routeParams) {
 
     $scope.init();
 
+});
+
+app.controller('CustomersController', function ($scope, $http, Page) {
+    // judul
+    Page.setTitle('Customers');
 });
 // END CONTROLLER
