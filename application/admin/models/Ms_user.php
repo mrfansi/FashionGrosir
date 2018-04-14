@@ -17,7 +17,7 @@ class Ms_user extends MY_Model {
 
     public function get_password($username)
     {
-        return $this->get_by('User_Name', $username)->user_password;
+        return $this->get_by('User_Name', $username)->User_Pass;
     }
 
 }
