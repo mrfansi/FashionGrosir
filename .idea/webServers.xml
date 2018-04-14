@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="1b1e136b-eea1-43f5-8790-47481866053c" name="Server (FashionGrosir)" url="http://dev.eazy-dev.xyz/FashionGrosir/">
-        <fileTransfer host="dev.eazy-dev.xyz" port="2211" rootFolder="/fashiongrosir" accessType="SFTP">
+        <fileTransfer host="dev.eazy-dev.xyz" port="2211" rootFolder="/var/www/html/fashiongrosir" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
