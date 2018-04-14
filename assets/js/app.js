@@ -287,32 +287,34 @@ app.controller('CustomersController', function ($scope, $http, Page) {
 
 app.controller('CrudKategoriController', function ($scope, $http) {
 
-    $scope.katsimpan = function () {
-        var data = $.param(
-            {
-                token_fg:   hashing,
-                nama:       $scope.kat_nama,
-                parent:     $scope.kat_parent_id
-            }
-        );
+    $scope.katsimpan = function (valid) {
+        if (valid)
+        {
+            var data = $.param(
+                {
+                    token_fg:   hashing,
+                    nama:       $scope.kat_nama,
+                    parent:     $scope.kat_parent_id
+                }
+            );
 
-        var post = {
-            method: "POST",
-            url: base_url + "adm.php/item/baru",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            },
+            var post = {
+                method: "POST",
+                url: base_url + "adm.php/item/baru",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                },
 
-            data: data
-        };
+                data: data
+            };
 
-        $http(post).then(function success(res) {
-            console.log(res.data);
-            $scope.msg = res.data;
-        }, function error(res) {
-            console.log(res);
-        });
+            $http(post).then(function success(res) {
+                console.log(res.data);
+                $scope.msg = res.data;
+            }, function error(res) {
+                console.log(res);
+            });
+        }
     }
-
 });
 // END CONTROLLER
