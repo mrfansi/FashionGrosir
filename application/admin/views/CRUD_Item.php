@@ -1,3 +1,4 @@
+<script src="<?= base_url('assets/js/crud_kategori.js'); ?>"></script>
 <br>
 <section>
     <div class="col">

@@ -36,11 +36,10 @@ class Auth extends CI_Controller
 
             $user = $this->user->login_auth($username);
 
-            if ($user != null && $user->user_password == $password) {
+            if ($user != null && $user->User_Pass == $password) {
                 $data_array = array(
-                    'id' => $user->user_id,
-                    'nama' => $user->user_nama,
-                    'username' => $user->user_username,
+                    'User_Code' => $user->User_Code,
+                    'User_Name' => $user->User_Name,
                     'loggedin' => 'true'
                 );
 
