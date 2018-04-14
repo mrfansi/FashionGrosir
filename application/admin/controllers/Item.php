@@ -40,7 +40,7 @@ class Item extends MY_Controller
                 $msg['status'] = false;
             }
 
-            echo $msg;
+            echo $msg['status'];
         }
     }
 

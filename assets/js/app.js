@@ -284,4 +284,35 @@ app.controller('CustomersController', function ($scope, $http, Page) {
     // judul
     Page.setTitle('Customers');
 });
+
+app.controller('CrudKategoriController', function ($scope, $http) {
+
+    $scope.katsimpan = function () {
+        var data = $.param(
+            {
+                token_fg:   hashing,
+                nama:       $scope.kat_nama,
+                parent:     $scope.kat_parent_id
+            }
+        );
+
+        var post = {
+            method: "POST",
+            url: base_url + "adm.php/item/baru",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            },
+
+            data: data
+        };
+
+        $http(post).then(function success(res) {
+            console.log(res.data);
+            $scope.msg = res.data;
+        }, function error(res) {
+            console.log(res);
+        });
+    }
+
+});
 // END CONTROLLER

@@ -7,6 +7,6 @@
  */
 
 class Ms_kategori extends MY_Model {
-    public $_table = 'ms_kategori';
-    public $primary_key = 'rowid';
+    public $_table = 'ms_Item_Kategori';
+    public $primary_key = 'Kat_ID';
 }
