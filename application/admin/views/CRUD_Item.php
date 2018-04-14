@@ -3,7 +3,17 @@
     <div class="col">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h2>Buat Item Baru</h2>
+                <h4>Gambar Item</h4>
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h4>Detil Item</h4>
             </div>
             <div class="card-body">
                 <form>
@@ -33,30 +43,60 @@
                     <div class="row">
                         <div class="col-sm-3 form-group">
                             <label>Harga Item (1)</label>
-                            <input type="text" placeholder="Harga Item (1)" class="form-control">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp.</div>
+                                </div>
+                                <input type="text" placeholder="Harga Item (1)" class="form-control" ng-model="harga1" real-time-currency>
+                            </div>
                         </div>
                         <div class="col-sm-3 form-group">
                             <label>Harga Item (2)</label>
-                            <input type="text" placeholder="Harga Item (2)" class="form-control">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp.</div>
+                                </div>
+                                <input type="text" placeholder="Harga Item (2)" class="form-control" ng-model="harga2" real-time-currency>
+                            </div>
                         </div>
                         <div class="col-sm-3 form-group">
                             <label>Harga Item (3)</label>
-                            <input type="text" placeholder="Harga Item (3)" class="form-control">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp.</div>
+                                </div>
+                                <input type="text" placeholder="Harga Item (3)" class="form-control" ng-model="harga3" real-time-currency>
+                            </div>
                         </div>
                         <div class="col-sm-3 form-group">
                             <label>Harga Item (4)</label>
-                            <input type="text" placeholder="Harga Item (4)" class="form-control">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp.</div>
+                                </div>
+                                <input type="text" placeholder="Harga Item (4)" class="form-control" ng-model="harga4" real-time-currency>
+                            </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-4 form-group">
                             <label>Harga Item Modal</label>
-                            <input type="text" placeholder="Harga Item Modal" class="form-control">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp.</div>
+                                </div>
+                                <input type="text" placeholder="Harga Modal" class="form-control" ng-model="hargamodal" real-time-currency>
+                            </div>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>Harga Item Sale</label>
-                            <input type="text" placeholder="Harga Item Modal" class="form-control">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">Rp.</div>
+                                </div>
+                                <input type="text" placeholder="Harga Sale" class="form-control" ng-model="hargasale" real-time-currency>
+                            </div>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>Warna</label>

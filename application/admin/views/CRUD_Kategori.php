@@ -3,7 +3,7 @@
     <div class="col">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h2>Buat Kategori Baru</h2>
+                <h4>Buat Kategori Baru</h4>
             </div>
             <div class="card-body">
                 <form>
