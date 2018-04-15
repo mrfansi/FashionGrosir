@@ -33,7 +33,20 @@ class Kategori extends MY_Controller
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
             $this->load->view('CRUD_Kategori');
         } else if ($this->input->server('REQUEST_METHOD') == 'POST') {
-            return 0;
+            $data = array(
+                'Kat_Nama'      => $this->input->post('nama'),
+                'Kat_Parent_ID' => $this->input->post('parent')
+            );
+
+            if ($this->kat_item->insert($data))
+            {
+                $msg['status'] = true;
+            }
+            else{
+                $msg['status'] = false;
+            }
+
+            echo $msg['status'];
         }
     }
 

@@ -169,8 +169,32 @@ app.config(function ($routeProvider) {
             templateUrl: base_url + "adm.php/kategori/baru",
             reloadOnSearch: false
         })
+        .when('/item/kategori_edit/:id', {
+            templateUrl: function(param) {
+                return base_url + "adm.php/kategori/edit/" + param.id
+            },
+            reloadOnSearch: false
+        })
+        .when('/item/kategori_hapus/:id', {
+            templateUrl: function(param) {
+                return base_url + "adm.php/kategori/hapus/" + param.id
+            },
+            reloadOnSearch: false
+        })
         .when('/item/item_new', {
             templateUrl: base_url + "adm.php/item/baru",
+            reloadOnSearch: false
+        })
+        .when('/item/item_edit/:id', {
+            templateUrl: function(param) {
+                return base_url + "adm.php/item/edit/" + param.id
+            },
+            reloadOnSearch: false
+        })
+        .when('/item/item_hapus/:id', {
+            templateUrl: function(param) {
+                return base_url + "adm.php/item/hapus/" + param.id
+            },
             reloadOnSearch: false
         })
         .when('/customers', {
@@ -287,7 +311,7 @@ app.controller('CustomersController', function ($scope, $http, Page) {
 
 app.controller('CrudKategoriController', function ($scope, $http) {
 
-    $scope.katsimpan = function (valid) {
+    $scope.kategoriSimpan = function(valid) {
         if (valid)
         {
             var data = $.param(
@@ -300,7 +324,7 @@ app.controller('CrudKategoriController', function ($scope, $http) {
 
             var post = {
                 method: "POST",
-                url: base_url + "adm.php/item/baru",
+                url: base_url + "adm.php/item/kategori_baru",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                 },
@@ -309,12 +333,25 @@ app.controller('CrudKategoriController', function ($scope, $http) {
             };
 
             $http(post).then(function success(res) {
-                console.log(res.data);
                 $scope.msg = res.data;
             }, function error(res) {
-                console.log(res);
             });
         }
-    }
+    };
+
+    angular.element(document).ready(function () {
+        $scope.init = function () {
+            $http({
+                method: "GET",
+                url: base_url + "adm.php/get/list_kategori"
+            }).then(function (res) {
+                $scope.kategories = res.data;
+            }, function (res) {
+                console.log(res.data);
+            });
+        };
+
+        $scope.init();
+    });
 });
 // END CONTROLLER

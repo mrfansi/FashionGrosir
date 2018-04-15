@@ -46,8 +46,7 @@
                 <p>Administrator</p>
                 <div ng-controller="LoginController">
                     <form id="loginForm" name="loginForm" ng-submit="loginValidation(loginForm.$valid)" novalidate>
-                        <div class="form-group-material"
-                             ng-class="{'is-invalid' : loginForm.loginUsername.$invalid && !loginForm.loginUsername.$pristine}">
+                        <div class="form-group-material" ng-class="{'is-invalid' : loginForm.loginUsername.$invalid && !loginForm.loginUsername.$pristine}">
                             <input id="login-username" type="text" ng-model="loginUsername" name="loginUsername"
                                    class="input-material" required="required">
                             <label for="login-username" class="label-material">Username</label>
@@ -55,8 +54,7 @@
                                  class="text-left invalid-feedback">Username tidak valid.
                             </div>
                         </div>
-                        <div class="form-group-material"
-                             ng-class="{'is-invalid' : loginForm.loginPassword.$invalid && !loginForm.loginPassword.$pristine}">
+                        <div class="form-group-material" ng-class="{'is-invalid' : loginForm.loginPassword.$invalid && !loginForm.loginPassword.$pristine}">
                             <input id="login-password" type="password" ng-model="loginPassword" name="loginPassword"
                                    class="input-material" autocomplete="no">
                             <label for="login-password" class="label-material">Password</label>

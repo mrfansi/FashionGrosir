@@ -27,21 +27,13 @@ class Item extends MY_Controller
             $this->load->view('CRUD_Item');
         } else if ($this->input->server('REQUEST_METHOD') == 'POST') {
 
-            $data = array(
-                'Kat_Nama'      => $this->input->post('nama'),
-                'Kat_Parent_ID' => $this->input->post('parent')
-            );
 
-            if ($this->kat_item->insert($data))
-            {
-                $msg['status'] = true;
-            }
-            else{
-                $msg['status'] = false;
-            }
-
-            echo $msg['status'];
         }
+    }
+
+    public function hapus($id)
+    {
+
     }
 
     public function kategori($kat)
