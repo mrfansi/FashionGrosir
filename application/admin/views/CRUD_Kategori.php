@@ -73,11 +73,11 @@
                     <form class="container" ng-submit="ubahKategori()">
                             <div class="form-group">
                                 <label for="">Nama</label>
-                                <input type="text" class="form-control" ng-model="u_kat_nama">
+                                <input type="text" class="form-control" ng-model="u_kat_nama" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Parent</label>
-                                <select class="form-control" ng-model="u_kat_parent_id">
+                                <select class="form-control" ng-model="u_kat_parent_id" required>
                                     <option value="0">Root</option>
                                 </select>
                             </div>
