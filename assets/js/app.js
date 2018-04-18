@@ -311,6 +311,29 @@ app.controller('CustomersController', function ($scope, $http, Page) {
 
 app.controller('CrudKategoriController', function ($scope, $http) {
 
+    $scope.ubahKategori = function(index) {
+        $scope.init = function () {
+            $http({
+                method: "GET",
+                url: base_url + "adm.php/kategori/get/" + index
+            }).then(function (res) {
+                $scope.kategori = res.data;
+            }, function (res) {
+                console.log(res.data);
+            });
+        };
+
+        $scope.init();
+    };
+
+    $scope.buatKategori = function(index) {
+        console.log(index);
+    };
+
+    $scope.hapusKategori = function(index) {
+        console.log(index);
+    };
+
     $scope.kategoriSimpan = function(valid) {
         if (valid)
         {

@@ -8,30 +8,15 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header d-flex align-items-center">
-                    <h4>Kategori</h4>
+                    <div class="col-sm-10">
+                        <h4>Kategori</h4>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#buatKategori">Buat</button>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <form id="kategoriForm" name="kategoriForm" ng-submit="kategoriSimpan(kategoriForm.$valid)" novalidate>
-                        <div class="row">
-                            <div class="col-sm-5 form-group" ng-class="{'is-invalid' : kategoriForm.kat_nama.$invalid && !kategoriForm.kat_nama.$pristine}">
-                                <input type="text" class="form-control" placeholder="Nama Kategori" ng-model="kat_nama" name="kat_nama" required>
-                            </div>
 
-                            <div class="col-sm-5 form-group" ng-class="{'is-invalid' : kategoriForm.kat_parent_id.$invalid && !kategoriForm.kat_parent_id.$pristine}">
-                                <select class="form-control" ng-model="kat_parent_id" name="kat_parent_id" required>
-                                    <option value="0" selected>Root</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-2 form-group">
-                                <button class="btn btn-primary btn-block" ng-disabled="kategoriForm.$invalid">Buat</button>
-                            </div>
-                        </div>
-                        <!--                        <div class="row" ng-show="msg">-->
-                        <!--                            <div class="col-sm-12">-->
-                        <!--                                -->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                    </form>
                     <div class="table-responsive">
                         <table class="table table-sm">
                             <thead>
@@ -47,8 +32,8 @@
                                 <td>{{kategori.Kat_Nama}}</td>
                                 <td>{{kategori.Kat_Parent_ID}}</td>
                                 <td>
-                                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ubahKategori">Ubah</button>
-                                    <button class="btn btn-danger btn-sm">Hapus</button>
+                                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ubahKategori" ng-click="ubahKategori(kategori.Kat_ID)">Ubah</button>
+                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusKategori" ng-click="hapusKategori(kategori.Kat_ID)">Hapus</button>
                                 </td>
                             </tr>
 
@@ -72,19 +57,70 @@
                 <div class="modal-body">
                     <form class="container" ng-submit="ubahKategori()">
                             <div class="form-group">
-                                <label for="">Nama</label>
-                                <input type="text" class="form-control" ng-model="u_kat_nama" required>
+                                <label for="u_kat_nama">Nama</label>
+                                <input type="text" class="form-control" ng-model="u_kat_nama = kategori.Kat_Nama" required focused>
                             </div>
                             <div class="form-group">
-                                <label for="">Parent</label>
-                                <select class="form-control" ng-model="u_kat_parent_id" required>
-                                    <option value="0">Root</option>
+                                <label for="u_kat_parent_id">Kategori</label>
+                                <select class="form-control" ng-model="u_kat_parent_id = kategori.Kat_Parent_ID" required>
+                                    <option value="">Pilih kategori</option>
+                                    <option value="0" selected>Root</option>
+                                    <option ng-repeat="kategori in kategories" value="{{kategori.Kat_ID}}">{{kategori.Kat_Nama}}</option>
                                 </select>
                             </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" ng-click="ubahKategori()">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="buatKategori" tabindex="-1" role="dialog" aria-labelledby="buatKategori" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Buat Kategori</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="container" ng-submit="buatKategori()">
+                        <div class="form-group">
+                            <label for="b_kat_nama">Nama</label>
+                            <input type="text" class="form-control" ng-model="u_kat_nama = ''" required focused>
+                        </div>
+                        <div class="form-group">
+                            <label for="b_kat_parent_id">Kategori</label>
+                            <select class="form-control" ng-model="u_kat_parent_id = ''" required>
+                                <option value="">Pilih kategori</option>
+                                <option value="0" selected>Root</option>
+                                <option ng-repeat="kategori in kategories" value="{{kategori.Kat_ID}}">{{kategori.Kat_Nama}}</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="buatKategori()">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="hapusKategori" tabindex="-1" role="dialog" aria-labelledby="hapusKategori" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Hapus Kategori</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus kategori ini ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" ng-click="hapusKategori()">Hapus</button>
                 </div>
             </div>
         </div>

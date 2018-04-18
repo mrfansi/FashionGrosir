@@ -28,6 +28,13 @@ class Kategori extends MY_Controller
         echo 'Request tidak diperbolehkan.';
     }
 
+    public function get($id)
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'GET') {
+            echo json_encode($this->kategori->as_array()->get($id));
+        }
+    }
+
     public function baru()
     {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
@@ -38,7 +45,7 @@ class Kategori extends MY_Controller
                 'Kat_Parent_ID' => $this->input->post('parent')
             );
 
-            if ($this->kat_item->insert($data))
+            if ($this->kategori->insert($data))
             {
                 $msg['status'] = true;
             }
