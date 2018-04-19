@@ -1,7 +1,6 @@
 <script>
     var base_url = '<?= base_url(); ?>';
     var hashing = '<?= $this->security->get_csrf_hash(); ?>';
-    var keyid = '<?= 'KAT-' . date('Ymd') . '-' . date('His'); ?>';
 </script>
 <br>
 <section class="container" ng-controller="CrudKategoriController">
@@ -39,7 +38,7 @@
                                             data-target="#ubahKategori" ng-click="ubahKategori(kategori.Kat_ID)">Ubah
                                     </button>
                                     <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                            data-target="#hapusKategori" ng-click="hapusKategori(kategori.Kat_ID)">Hapus
+                                            data-target="#hapusKategori">Hapus
                                     </button>
                                 </td>
                             </tr>
@@ -111,7 +110,7 @@
                             <select class="form-control" ng-model="b_kat_parent_id" required>
                                 <option value="">Pilih kategori</option>
                                 <option value="0" selected>Root</option>
-                                <option ng-repeat="kategori in kategories" value="{{kategori.Kat_ID}}">
+                                <option ng-repeat="kategori in kategories track by $index" value="{{kategori.Kat_ID}}">
                                     {{kategori.Kat_Nama}}
                                 </option>
                             </select>
@@ -144,7 +143,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Hapus"
-                            ng-click="hapusKategori()">Hapus
+                            ng-click="hapusKategori($scope.hapusid)">Hapus
                     </button>
                 </div>
             </div>

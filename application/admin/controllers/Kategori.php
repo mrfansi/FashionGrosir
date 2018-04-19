@@ -29,7 +29,7 @@ class Kategori extends MY_Controller
     }
 
     public function get_key() {
-        echo json_encode('KAT-' . date('Ymd') . '-' . date('His'));
+        echo 'KAT-' . date('Ymd') . '-' . date('His');
     }
 
     public function get($id)

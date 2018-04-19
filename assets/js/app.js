@@ -51,14 +51,18 @@ app.factory('Page', function () {
     };
 });
 
-app.factory('MyKey', ['$http', function ($http) {
-    return {
-        kategori: function () {
-            return $http.get(base_url + 'adm.php/kategori/get_key', {cache: false}).then(function (resp) {
-                return resp.data
-            });
-        }
+app.factory('Key', ['$http', function ($http) {
+    var key = {};
+
+    key.kategori = function () {
+        return $http.get(base_url + 'adm.php/kategori/get_key')
     };
+
+    key.item = function () {
+        return $http.get(base_url + 'adm.php/item/get_key')
+    };
+
+    return key;
 }]);
 // END FACTORY
 
@@ -319,11 +323,20 @@ app.controller('CustomersController', function ($scope, $http, Page) {
     Page.setTitle('Customers');
 });
 
-app.controller('CrudKategoriController', function ($scope, MyKey, $http) {
-
-
+app.controller('CrudKategoriController', function (Page, Key, $scope, $http) {
+    debugger;
+    Page.setTitle('Items > Kategori');
+    $scope.getkey = function () {
+        Key.kategori()
+            .then(function (res) {
+                $scope.primarykey = res.data;
+            }, function (error) {
+                console.log(error.message)
+            })
+    };
 
     $scope.showCRUD = function () {
+        $scope.getkey();
         $scope.b_kat_nama = "";
         $scope.b_kat_parent_id = "";
     };
@@ -349,7 +362,7 @@ app.controller('CrudKategoriController', function ($scope, MyKey, $http) {
             var data = $.param(
                 {
                     token_fg: hashing,
-                    id: MyKey.kategori().then(function (d){ return d; }),
+                    id: $scope.primarykey,
                     nama: $scope.b_kat_nama,
                     parent: $scope.b_kat_parent_id
                 }
@@ -364,7 +377,6 @@ app.controller('CrudKategoriController', function ($scope, MyKey, $http) {
 
                 data: data
             };
-
             $http(post).then(function success(res) {
                 console.log(res.data);
                 $scope.kategories.push(
@@ -380,6 +392,7 @@ app.controller('CrudKategoriController', function ($scope, MyKey, $http) {
     };
 
     $scope.hapusKategori = function (index) {
+        debugger;
         $scope.init = function () {
             $http({
                 method: "GET",
