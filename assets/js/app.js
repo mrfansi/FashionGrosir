@@ -229,6 +229,7 @@ app.controller('MainController', function ($scope, $http, $location, Page) {
     $scope.Page = Page;
     $scope.itemsIsCollapsed = true;
     $scope.transaksiIsCollapsed = true;
+    $scope.limitChar = 20;
 
     angular.element(document).ready(function () {
         $scope.init = function () {
@@ -324,8 +325,10 @@ app.controller('CustomersController', function ($scope, $http, Page) {
 });
 
 app.controller('CrudKategoriController', function (Page, Key, $scope, $http) {
-    debugger;
     Page.setTitle('Items > Kategori');
+
+    $scope.limitChar = 20;
+    $scope.showmodal = false;
     $scope.getkey = function () {
         Key.kategori()
             .then(function (res) {
@@ -378,10 +381,9 @@ app.controller('CrudKategoriController', function (Page, Key, $scope, $http) {
                 data: data
             };
             $http(post).then(function success(res) {
-                console.log(res.data);
                 $scope.kategories.push(
                     {
-                        Kat_ID: $scope.b_kat_id,
+                        Kat_ID: $scope.primarykey,
                         Kat_Nama: $scope.b_kat_nama,
                         Kat_Parent_ID: $scope.b_kat_parent_id
                     }
@@ -391,21 +393,31 @@ app.controller('CrudKategoriController', function (Page, Key, $scope, $http) {
         }
     };
 
-    $scope.hapusKategori = function (index) {
-        debugger;
-        $scope.init = function () {
-            $http({
-                method: "GET",
-                url: base_url + "adm.php/kategori/hapus/" + index
-            }).then(function (res) {
-                console.log(res);
-            }, function (res) {
-                console.log(res.data);
-            });
-        };
 
-        $scope.init();
-        $scope.kategories.splice(index, 1);
+    $scope.hapusKategori = function () {
+        var valid = $scope.showmodal;
+        var id = $scope.deleted;
+        if (valid && id) {
+            $scope.init = function () {
+                $http({
+                    method: "GET",
+                    url: base_url + "adm.php/kategori/hapus/" + id
+                }).then(function (res) {
+                    console.log(res);
+                }, function (res) {
+                    console.log(res.data);
+                });
+            };
+
+            $scope.init();
+            $scope.kategories.splice(id, 1);
+        }
+
+    };
+
+    $scope.konfirmasihapus = function (index) {
+        $scope.showmodal = true;
+        $scope.deleted = index;
     };
 
     angular.element(document).ready(function () {

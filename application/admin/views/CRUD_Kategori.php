@@ -3,49 +3,48 @@
     var hashing = '<?= $this->security->get_csrf_hash(); ?>';
 </script>
 <br>
-<section class="container" ng-controller="CrudKategoriController">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header d-flex align-items-center">
-                    <div class="col-sm-10">
-                        <h4>Kategori</h4>
-                    </div>
-                    <div class="col-sm-2">
-                        <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#buatKategori"
-                                ng-click="showCRUD()">Buat
-                        </button>
-                    </div>
+<section ng-controller="CrudKategoriController">
+    <div class="col">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <div class="col-sm-10">
+                    <h2>KATEGORI</h2>
                 </div>
-                <div class="card-body">
+                <div class="col-sm-2">
+                    <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#buatKategori"
+                            ng-click="showCRUD()">Buat
+                    </button>
+                </div>
 
-                    <div class="table-responsive">
-                        <table class="table table-sm">
-                            <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Parent</th>
-                                <th>Aksi</th>
-                            </tr>
-                            </thead>
+            </div>
+            <div class="card-body">
 
-                            <tbody>
-                            <tr ng-repeat="kategori in kategories track by $index">
-                                <td>{{kategori.Kat_Nama}}</td>
-                                <td>{{kategori.Kat_Parent_ID}}</td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm" data-toggle="modal"
-                                            data-target="#ubahKategori" ng-click="ubahKategori(kategori.Kat_ID)">Ubah
-                                    </button>
-                                    <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                            data-target="#hapusKategori">Hapus
-                                    </button>
-                                </td>
-                            </tr>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <!--                                <th>Parent</th>-->
+                            <th>Aksi</th>
+                        </tr>
+                        </thead>
 
-                            </tbody>
-                        </table>
-                    </div>
+                        <tbody>
+                        <tr ng-repeat="kategori in kategories track by $index">
+                            <td class="text-uppercase">{{kategori.Kat_Nama | limitTo:limitChar}}</td>
+                            <!--                                <td>{{kategori.Kat_Parent_ID}}</td>-->
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal"
+                                        data-target="#ubahKategori" ng-click="ubahKategori(kategori.Kat_ID)">Ubah
+                                </button>
+                                <button class="btn btn-danger btn-sm" data-toggle="modal"
+                                        data-target="#hapusKategori" ng-click="konfirmasihapus(kategori.Kat_ID)">Hapus
+                                </button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -66,11 +65,13 @@
 
                         <div class="form-group">
                             <label for="u_kat_nama">Nama</label>
-                            <input type="text" class="form-control" id="u_kat_nama" name="u_kat_nama" ng-model="u_kat_nama" required autofocus>
+                            <input type="text" class="form-control" id="u_kat_nama"
+                                   ng-model="u_kat_nama" required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="u_kat_parent_id">Kategori</label>
-                            <select class="form-control" id="u_kat_parent_id" name="u_kat_parent_id" ng-model="u_kat_parent_id" required>
+                            <select class="form-control" id="u_kat_parent_id" name="u_kat_parent_id"
+                                    ng-model="u_kat_parent_id" required>
                                 <option value="">Pilih kategori</option>
                                 <option value="0" selected>Root</option>
                                 <option ng-repeat="kategori in kategories" value="{{kategori.Kat_ID}}">
@@ -102,7 +103,8 @@
                         <div class="form-group"
                              ng-class="{'is-invalid' : buatKategoriForm.b_kat_nama.$invalid && !buatKategoriForm.b_kat_nama.$pristine}">
                             <label for="b_kat_nama">Nama</label>
-                            <input type="text" class="form-control" id="b_kat_nama" ng-model="b_kat_nama" required autofocus>
+                            <input type="text" class="form-control" id="b_kat_nama" ng-model="b_kat_nama" required
+                                   autofocus>
                         </div>
                         <div class="form-group"
                              ng-class="{'is-invalid' : buatKategoriForm.b_kat_parent_id.$invalid && !buatKategoriForm.b_kat_parent_id.$pristine}">
@@ -119,10 +121,10 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-primary"
-                            data-dismiss="modal"
-                            aria-label="Buat"
-                            ng-disabled="buatKategoriForm.$invalid"
-                            ng-click="buatKategori(buatKategoriForm.$valid)" value="Simpan">
+                           data-dismiss="modal"
+                           aria-label="Buat"
+                           ng-disabled="buatKategoriForm.$invalid"
+                           ng-click="buatKategori(buatKategoriForm.$valid)" value="Simpan">
                 </div>
             </div>
         </div>
@@ -142,7 +144,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Hapus"
-                            ng-click="hapusKategori($scope.hapusid)">Hapus
+                            ng-click="hapusKategori()">Hapus
                     </button>
                 </div>
             </div>

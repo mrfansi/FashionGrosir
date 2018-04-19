@@ -55,7 +55,7 @@
                         <li><a href="#!/item/kategori/all">ALL</a></li>
                         <li><a href="#!/item/kategori/terbaru">HOT <div class="badge badge-danger">New</div></a></li>
                         <li ng-repeat="kategori in kategories">
-                            <a href="#!/item/kategori/{{kategori.Kat_ID}}">{{kategori.Kat_Nama}}</a>
+                            <a href="#!/item/kategori/{{kategori.Kat_ID}}" class="text-uppercase">{{kategori.Kat_Nama | limitTo:limitChar}}</a>
                         </li>
                     </ul>
                 </li>
