@@ -66,11 +66,11 @@
 
                         <div class="form-group">
                             <label for="u_kat_nama">Nama</label>
-                            <input type="text" class="form-control" ng-model="u_kat_nama" required autofocus>
+                            <input type="text" class="form-control" id="u_kat_nama" name="u_kat_nama" ng-model="u_kat_nama" required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="u_kat_parent_id">Kategori</label>
-                            <select class="form-control" ng-model="u_kat_parent_id" required>
+                            <select class="form-control" id="u_kat_parent_id" name="u_kat_parent_id" ng-model="u_kat_parent_id" required>
                                 <option value="">Pilih kategori</option>
                                 <option value="0" selected>Root</option>
                                 <option ng-repeat="kategori in kategories" value="{{kategori.Kat_ID}}">
@@ -102,12 +102,12 @@
                         <div class="form-group"
                              ng-class="{'is-invalid' : buatKategoriForm.b_kat_nama.$invalid && !buatKategoriForm.b_kat_nama.$pristine}">
                             <label for="b_kat_nama">Nama</label>
-                            <input type="text" class="form-control" ng-model="b_kat_nama" required autofocus>
+                            <input type="text" class="form-control" id="b_kat_nama" ng-model="b_kat_nama" required autofocus>
                         </div>
                         <div class="form-group"
                              ng-class="{'is-invalid' : buatKategoriForm.b_kat_parent_id.$invalid && !buatKategoriForm.b_kat_parent_id.$pristine}">
                             <label for="b_kat_parent_id">Kategori</label>
-                            <select class="form-control" ng-model="b_kat_parent_id" required>
+                            <select class="form-control" id="b_kat_parent_id" ng-model="b_kat_parent_id" required>
                                 <option value="">Pilih kategori</option>
                                 <option value="0" selected>Root</option>
                                 <option ng-repeat="kategori in kategories track by $index" value="{{kategori.Kat_ID}}">
@@ -118,12 +118,11 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary"
+                    <input type="button" class="btn btn-primary"
                             data-dismiss="modal"
                             aria-label="Buat"
                             ng-disabled="buatKategoriForm.$invalid"
-                            ng-click="buatKategori(buatKategoriForm.$valid)">Simpan
-                    </button>
+                            ng-click="buatKategori(buatKategoriForm.$valid)" value="Simpan">
                 </div>
             </div>
         </div>
