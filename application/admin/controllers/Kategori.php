@@ -28,6 +28,10 @@ class Kategori extends MY_Controller
         echo 'Request tidak diperbolehkan.';
     }
 
+    public function get_key() {
+        echo json_encode('KAT-' . date('Ymd') . '-' . date('His'));
+    }
+
     public function get($id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
@@ -41,28 +45,19 @@ class Kategori extends MY_Controller
             $this->load->view('CRUD_Kategori');
         } else if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $data = array(
+                'Kat_ID'        => $this->input->post('id'),
                 'Kat_Nama'      => $this->input->post('nama'),
                 'Kat_Parent_ID' => $this->input->post('parent')
             );
 
-            if ($this->kategori->insert($data))
-            {
-                $msg['status'] = true;
-            }
-            else{
-                $msg['status'] = false;
-            }
-
-            echo $msg['status'];
+            $this->kategori->insert($data);
         }
     }
 
     public function hapus($id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            redirect(base_url('adm.php/navigasi/CRUD_Kategori'));
-        } else if ($this->input->server('REQUEST_METHOD') == 'POST') {
-            return 0;
+            return $this->kategori->delete($id);
         }
     }
 

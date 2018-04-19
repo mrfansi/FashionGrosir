@@ -1,7 +1,7 @@
 var app = angular.module('admFashionGrosir', ['ngRoute', 'rzModule', 'ui.bootstrap']);
 
 // FACTORY
-app.factory('LoadingListener', [ '$q', '$rootScope', function($q, $rootScope) {
+app.factory('LoadingListener', ['$q', '$rootScope', function ($q, $rootScope) {
     var reqsActive = 0;
 
     function onResponse() {
@@ -12,28 +12,28 @@ app.factory('LoadingListener', [ '$q', '$rootScope', function($q, $rootScope) {
     }
 
     return {
-        'request': function(config) {
+        'request': function (config) {
             if (reqsActive === 0) {
                 $rootScope.$broadcast('loading:started');
             }
             reqsActive++;
             return config;
         },
-        'response': function(response) {
+        'response': function (response) {
             if (!response || !response.config) {
                 return response;
             }
             onResponse();
             return response;
         },
-        'responseError': function(rejection) {
+        'responseError': function (rejection) {
             if (!rejection || !rejection.config) {
                 return $q.reject(rejection);
             }
             onResponse();
             return $q.reject(rejection);
         },
-        isLoadingActive : function() {
+        isLoadingActive: function () {
             return reqsActive === 0;
         }
     };
@@ -50,10 +50,20 @@ app.factory('Page', function () {
         }
     };
 });
+
+app.factory('MyKey', ['$http', function ($http) {
+    return {
+        kategori: function () {
+            return $http.get(base_url + 'adm.php/kategori/get_key', {cache: false}).then(function (resp) {
+                return resp.data
+            });
+        }
+    };
+}]);
 // END FACTORY
 
 // DIRECTIVE
-app.directive('loadingListener', [ '$rootScope', 'LoadingListener', function($rootScope, LoadingListener) {
+app.directive('loadingListener', ['$rootScope', 'LoadingListener', function ($rootScope, LoadingListener) {
     return {
         restrict: 'CA',
         link: function linkFn(scope, elem, attr) {
@@ -63,8 +73,8 @@ app.directive('loadingListener', [ '$rootScope', 'LoadingListener', function($ro
 
             $rootScope.$on('loading:started', function () {
                 $('.loading-content').LoadingOverlay('show', {
-                    image       : "",
-                    fontawesome : "fa fa-cog fa-spin"
+                    image: "",
+                    fontawesome: "fa fa-cog fa-spin"
                 });
             });
             $rootScope.$on('loading:completed', function () {
@@ -77,12 +87,11 @@ app.directive('loadingListener', [ '$rootScope', 'LoadingListener', function($ro
 app.directive('realTimeCurrency', function ($filter, $locale) {
     var decimalSep = $locale.NUMBER_FORMATS.DECIMAL_SEP;
     var toNumberRegex = new RegExp('[^0-9\\' + decimalSep + ']', 'g');
-    var trailingZerosRegex = new RegExp('\\' + decimalSep + '0+$');
     var filterFunc = function (value) {
         return $filter('currency')(value, '');
     };
 
-    function getCaretPosition(input){
+    function getCaretPosition(input) {
         if (!input) return 0;
         if (input.selectionStart !== undefined) {
             return input.selectionStart;
@@ -96,7 +105,7 @@ app.directive('realTimeCurrency', function ($filter, $locale) {
         return 0;
     }
 
-    function setCaretPosition(input, pos){
+    function setCaretPosition(input, pos) {
         if (!input) return 0;
         if (input.offsetWidth === 0 || input.offsetHeight === 0) {
             return; // Input's hidden
@@ -148,7 +157,7 @@ app.directive('realTimeCurrency', function ($filter, $locale) {
 //     $locationProvider.hashPrefix('?');
 // });
 
-app.config(['$httpProvider', function($httpProvider) {
+app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.interceptors.push('LoadingListener');
 }]);
 
@@ -170,13 +179,13 @@ app.config(function ($routeProvider) {
             reloadOnSearch: false
         })
         .when('/item/kategori_edit/:id', {
-            templateUrl: function(param) {
+            templateUrl: function (param) {
                 return base_url + "adm.php/kategori/edit/" + param.id
             },
             reloadOnSearch: false
         })
         .when('/item/kategori_hapus/:id', {
-            templateUrl: function(param) {
+            templateUrl: function (param) {
                 return base_url + "adm.php/kategori/hapus/" + param.id
             },
             reloadOnSearch: false
@@ -186,13 +195,13 @@ app.config(function ($routeProvider) {
             reloadOnSearch: false
         })
         .when('/item/item_edit/:id', {
-            templateUrl: function(param) {
+            templateUrl: function (param) {
                 return base_url + "adm.php/item/edit/" + param.id
             },
             reloadOnSearch: false
         })
         .when('/item/item_hapus/:id', {
-            templateUrl: function(param) {
+            templateUrl: function (param) {
                 return base_url + "adm.php/item/hapus/" + param.id
             },
             reloadOnSearch: false
@@ -209,6 +218,7 @@ app.config(function ($routeProvider) {
         });
 });
 // END CONFIG
+
 
 // CONTROLLER
 app.controller('MainController', function ($scope, $http, $location, Page) {
@@ -271,7 +281,7 @@ app.controller('ItemsController', function ($scope, $http, Page, $routeParams, $
         $scope.get_kategori = $http.get(base_url + "adm.php/get/kategori/" + $routeParams.id, {cache: false});
         // $scope.get_range_hrg = $http.get(base_url + "adm.php/item/range_harga", {cache: false});
 
-        $q.all([$scope.get_kategori]).then(function(values) {
+        $q.all([$scope.get_kategori]).then(function (values) {
 
             // var min = parseInt(values[1].data.min[0]['item_harga1']);
             // var max = parseInt(values[1].data.max[0]['item_harga1']);
@@ -309,15 +319,23 @@ app.controller('CustomersController', function ($scope, $http, Page) {
     Page.setTitle('Customers');
 });
 
-app.controller('CrudKategoriController', function ($scope, $http) {
+app.controller('CrudKategoriController', function ($scope, MyKey, $http) {
 
-    $scope.ubahKategori = function(index) {
+
+
+    $scope.showCRUD = function () {
+        $scope.b_kat_nama = "";
+        $scope.b_kat_parent_id = "";
+    };
+
+    $scope.ubahKategori = function (index) {
         $scope.init = function () {
             $http({
                 method: "GET",
                 url: base_url + "adm.php/kategori/get/" + index
             }).then(function (res) {
-                $scope.kategori = res.data;
+                $scope.u_kat_nama = res.data.Kat_Nama;
+                $scope.u_kat_parent_id = res.data.Kat_Parent_ID;
             }, function (res) {
                 console.log(res.data);
             });
@@ -326,28 +344,20 @@ app.controller('CrudKategoriController', function ($scope, $http) {
         $scope.init();
     };
 
-    $scope.buatKategori = function(index) {
-        console.log(index);
-    };
-
-    $scope.hapusKategori = function(index) {
-        console.log(index);
-    };
-
-    $scope.kategoriSimpan = function(valid) {
-        if (valid)
-        {
+    $scope.buatKategori = function (valid) {
+        if (valid) {
             var data = $.param(
                 {
-                    token_fg:   hashing,
-                    nama:       $scope.kat_nama,
-                    parent:     $scope.kat_parent_id
+                    token_fg: hashing,
+                    id: MyKey.kategori().then(function (d){ return d; }),
+                    nama: $scope.b_kat_nama,
+                    parent: $scope.b_kat_parent_id
                 }
             );
 
             var post = {
                 method: "POST",
-                url: base_url + "adm.php/item/kategori_baru",
+                url: base_url + "adm.php/kategori/baru",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                 },
@@ -356,10 +366,33 @@ app.controller('CrudKategoriController', function ($scope, $http) {
             };
 
             $http(post).then(function success(res) {
-                $scope.msg = res.data;
+                console.log(res.data);
+                $scope.kategories.push(
+                    {
+                        Kat_ID: $scope.b_kat_id,
+                        Kat_Nama: $scope.b_kat_nama,
+                        Kat_Parent_ID: $scope.b_kat_parent_id
+                    }
+                );
             }, function error(res) {
             });
         }
+    };
+
+    $scope.hapusKategori = function (index) {
+        $scope.init = function () {
+            $http({
+                method: "GET",
+                url: base_url + "adm.php/kategori/hapus/" + index
+            }).then(function (res) {
+                console.log(res);
+            }, function (res) {
+                console.log(res.data);
+            });
+        };
+
+        $scope.init();
+        $scope.kategories.splice(index, 1);
     };
 
     angular.element(document).ready(function () {
