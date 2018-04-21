@@ -27,22 +27,22 @@ class MY_Controller extends CI_Controller
 
 
         // check if user already login
-        if (!$this->session->loggedin) {
-            redirect(base_url('adm.php/auth'));
-        }
-        //$this->output->cache(1);
-        $allow = array(
-            '192.168.66.1',
-            '122.144.3.2',
-            'localhost',
-            '127.0.0.1',
-            'dev.eazy-dev.xyz'
-        );
-        if (!in_array($_SERVER['REMOTE_ADDR'], $allow))
-        {
-            echo 'Akses tidak diperbolehkan';
-            exit();
-        }
+//        if (!$this->session->loggedin) {
+//            redirect(base_url('adm.php/auth'));
+//        }
+//        $this->output->cache(1);
+//        $allow = array(
+//            '192.168.66.1',
+//            '122.144.3.2',
+//            'localhost',
+//            '127.0.0.1',
+//            'dev.eazy-dev.xyz'
+//        );
+//        if (!in_array($_SERVER['REMOTE_ADDR'], $allow))
+//        {
+//            echo 'Akses tidak diperbolehkan';
+//            exit();
+//        }
     }
 
     public function _show_content($title, $page, $data = null)

@@ -8,30 +8,12 @@
 
 class Ms_item extends MY_Model {
 
-    protected $_table = 'ms_item';
-    protected $primary_key = 'rowid';
-    protected $soft_delete = TRUE;
-    protected $soft_delete_key = 'item_del';
-
-    public function item_terbaru()
+    public $table = 'Ms_Item'; // you MUST mention the table name
+    public $primary_key = 'rowid'; // you MUST mention the primary key
+    public $fillable = array(); // If you want, you can set an array with the fields that can be filled by insert/update
+    public $protected = array('rowid'); // ...Or you can set an array with the fields that cannot be filled by insert/update
+    public function __construct()
     {
-        $hasil = $this->order_by('item_input')->limit(8)->get_all();
-        return $hasil;
-    }
-
-    public function item_by_kategori($limit = 10)
-    {
-        $hasil = $this->group_by('kat_kode')->limit($limit)->get_all();
-        return $hasil;
-    }
-
-    public function get_max() {
-        $hasil = $this->db->select_max('item_harga1')->get($this->_table)->result();
-        return $hasil;
-    }
-
-    public function get_min() {
-        $hasil = $this->db->select_min('item_harga1')->get($this->_table)->result();
-        return $hasil;
+        parent::__construct();
     }
 }

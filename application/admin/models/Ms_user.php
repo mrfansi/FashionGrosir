@@ -7,17 +7,13 @@
  */
 
 class Ms_user extends MY_Model {
-    public $_table = 'ms_User';
-    public $primary_key = 'rowid';
-
-    public function login_auth($username)
+    public $table = 'Ms_User'; // you MUST mention the table name
+    public $primary_key = 'rowid'; // you MUST mention the primary key
+    public $fillable = array(); // If you want, you can set an array with the fields that can be filled by insert/update
+    public $protected = array('rowid'); // ...Or you can set an array with the fields that cannot be filled by insert/update
+    public function __construct()
     {
-        return $this->get_by('User_Name', $username);
-    }
-
-    public function get_password($username)
-    {
-        return $this->get_by('User_Name', $username)->User_Pass;
+        parent::__construct();
     }
 
 }
