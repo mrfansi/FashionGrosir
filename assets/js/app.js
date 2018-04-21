@@ -358,6 +358,15 @@ app.controller('CrudKategoriController', function (Page, Key, $scope, $http) {
         };
 
         $scope.init();
+
+        // $scope.entt = $scope.kategories[Kat_ID];
+        // $scope.u_kat_nama = $scope.entt.Kat_Nama;
+        // $scope.u_kat_parent_i = $scope.entt.Kat_Parent_ID;
+
+    };
+
+    $scope.updateKategori = function () {
+
     };
 
     $scope.buatKategori = function (valid) {

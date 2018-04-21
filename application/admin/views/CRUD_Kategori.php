@@ -30,7 +30,7 @@
                         </thead>
 
                         <tbody>
-                        <tr ng-repeat="kategori in kategories track by $index">
+                        <tr ng-repeat="kategori in kategories track by kategori.Kat_ID">
                             <td class="text-uppercase">{{kategori.Kat_Nama | limitTo:limitChar}}</td>
                             <!--                                <td>{{kategori.Kat_Parent_ID}}</td>-->
                             <td>
@@ -61,12 +61,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" ng-submit="ubahKategori()">
+                    <form class="container" ng-submit="updateKategori()">
 
                         <div class="form-group">
                             <label for="u_kat_nama">Nama</label>
                             <input type="text" class="form-control" id="u_kat_nama"
-                                   ng-model="u_kat_nama" required autofocus>
+                                   ng-model="u_kat_nama"
+                                   ng-minlength="5"
+                                   ng-maxlength="20"
+                                   required autofocus>
                         </div>
                         <div class="form-group">
                             <label for="u_kat_parent_id">Kategori</label>
@@ -82,7 +85,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" ng-click="ubahKategori()">Simpan</button>
+                    <button type="button" class="btn btn-primary" ng-click="updateKategori()">Simpan</button>
                 </div>
             </div>
         </div>
@@ -103,8 +106,11 @@
                         <div class="form-group"
                              ng-class="{'is-invalid' : buatKategoriForm.b_kat_nama.$invalid && !buatKategoriForm.b_kat_nama.$pristine}">
                             <label for="b_kat_nama">Nama</label>
-                            <input type="text" class="form-control" id="b_kat_nama" ng-model="b_kat_nama" required
-                                   autofocus>
+                            <input type="text" class="form-control" id="b_kat_nama"
+                                   ng-model="b_kat_nama"
+                                   ng-minlength="5"
+                                   ng-maxlength="20"
+                                   required autofocus>
                         </div>
                         <div class="form-group"
                              ng-class="{'is-invalid' : buatKategoriForm.b_kat_parent_id.$invalid && !buatKategoriForm.b_kat_parent_id.$pristine}">
