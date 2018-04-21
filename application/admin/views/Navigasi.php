@@ -70,9 +70,9 @@
                         </li>
                     </ul>
                 </li>
-<!--                <li><a href="#!/statistik"> <i class="fa fa-bar-chart"></i>STATISTIK-->
-<!--                        <div class="badge badge-info">Coming soon</div>-->
-<!--                    </a></li>-->
+                <!--                <li><a href="#!/statistik"> <i class="fa fa-bar-chart"></i>STATISTIK-->
+                <!--                        <div class="badge badge-info">Coming soon</div>-->
+                <!--                    </a></li>-->
                 <li><a href="#!/customers"> <i class="fa fa-users"></i>CUSTOMERS </a></li>
             </ul>
         </div>

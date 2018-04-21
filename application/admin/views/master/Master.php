@@ -3,64 +3,71 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login - Administrator</title>
+    <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
+    <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/font-awesome/css/font-awesome.min.css'); ?>">
+    <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
+    <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <!-- jQuery Circle-->
     <link rel="stylesheet" href="<?= base_url('assets/css/grasp_mobile_progress_circle-1.0.0.min.css'); ?>">
+    <!-- Custom Scrollbar-->
     <link rel="stylesheet"
           href="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
+    <!-- theme stylesheet-->
     <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css" id="theme-stylesheet'); ?>">
+    <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/rzslider/rzslider.min.css'); ?>">
+    <!-- Favicon-->
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <script>
         var base_url = '<?= base_url(); ?>';
         var hashing = '<?= $this->security->get_csrf_hash(); ?>';
     </script>
-    <script src="<?= base_url('assets/js/login.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/rzslider/rzslider.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/app.js'); ?>"></script>
 </head>
 <body>
-<div class="page login-page">
-    <div class="container">
-        <div class="form-outer text-center align-items-center">
-            <div class="form-inner">
-                <div class="logo text-uppercase"><strong class="text-primary">Login</strong>
+<?php include_once('Menu.php'); ?>
+<div class="page">
+    <!-- navbar-->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-center justify-content-between">
+                    <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i
+                                    class="icon-bars"> </i></a><a href="<?= base_url('adm.php/dashboard') ?>"
+                                                                  class="navbar-brand">
+                            <div class="brand-text d-none d-md-inline-block"><strong
+                                        class="text-primary">FASHION GROSIR</strong></div>
+                        </a></div>
+                    <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                        <li class="nav-item"><a href="<?= base_url('adm.php/auth/logout') ?>" class="nav-link logout">Logout<i
+                                        class="fa fa-sign-out"></i></a></li>
+                    </ul>
                 </div>
-                <p>Administrator</p>
-                <form id="loginForm" name="loginForm" method="post">
-                    <div class="form-group-material">
-                        <input id="login-username" type="text" name="loginUsername" class="input-material"
-                               required="required">
-                        <label for="login-username" class="label-material">Username</label>
-                        <div class="text-left invalid-feedback">
-                            Username tidak valid.
-                        </div>
-                    </div>
-                    <div class="form-group-material">
-                        <input id="login-password" type="password" name="loginPassword" class="input-material"
-                               autocomplete="no">
-                        <label for="login-password" class="label-material">Password</label>
-                        <div class="text-left invalid-feedback">
-                            Password tidak valid.
-                        </div>
-
-                    </div>
-                    <button id="login" class="btn btn-block btn-primary">Login</button>
-                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
-                </form>
             </div>
-            <div class="copyrights text-center">
-                <p><a href="https://fashiongrosir-ind.com" class="external">Fashion Grosir</a></p>
-                <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+        </nav>
+    </header>
+
+
+    <footer class="main-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>Fashion Grosir &copy; 2018</p>
+                </div>
+
             </div>
         </div>
-    </div>
+    </footer>
 </div>
 <!-- Javascript files-->
 <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
@@ -71,6 +78,8 @@
 <script src="<?= base_url('assets/vendor/chart.js/Chart.min.js'); ?>"></script>
 <script src="<?= base_url('assets/vendor/jquery-validation/jquery.validate.min.js'); ?>"></script>
 <script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
 <!-- Main File-->
 <script src="<?= base_url('assets/js/front.js'); ?>"></script>
 </body>

@@ -28,7 +28,6 @@ class Auth extends CI_Controller
     public function login()
     {
         $data = new stdClass();
-        $data->status_code = '';
 
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $username = $this->input->post('loginUsername');
@@ -37,23 +36,9 @@ class Auth extends CI_Controller
             $user = $this->user->login_auth($username);
 
             if ($user != null && $user->User_Pass == $password) {
-                $data_array = array(
-                    'User_Code' => $user->User_Code,
-                    'User_Name' => $user->User_Name,
-                    'loggedin' => 'true'
-                );
 
-                $this->session->set_userdata($data_array);
-
-                echo json_encode(array(
-                    'status_code' => '200',
-                    'status_msg' => 'Login berhasil.'
-                ));
             } else {
-                echo json_encode(array(
-                    'status_code' => '401',
-                    'status_msg' => 'Mohon maaf password anda salah.'
-                ));
+
             }
         } else if ($this->input->server('REQUEST_METHOD') == 'GET') {
             redirect(base_url('adm.php/auth'));
