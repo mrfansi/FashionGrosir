@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller
     protected $meta_author;
     protected $meta_content;
     protected $meta_title;
+    protected $menu_kategori;
 
     public function __construct()
     {
@@ -24,6 +25,9 @@ class MY_Controller extends CI_Controller
         $this->meta_title = $this->config->item('webname');
         $this->meta_content = $this->config->item('webdeskripsi');
         $this->meta_keywords = $this->config->item('webkeywords');
+
+        // load menu
+        $this->menu_kategori = $this->menu();
 
 
         // check if user already login
@@ -49,6 +53,12 @@ class MY_Controller extends CI_Controller
     {
         $this->layout->add_title($title . ' - ' . $this->meta_title);
         $this->layout->show($page, $data);
+    }
+
+    private function menu()
+    {
+        $this->load->model('Ms_item_kategori','kategori');
+        return $this->kategori->get_all();
     }
 }
 

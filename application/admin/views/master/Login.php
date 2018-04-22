@@ -23,7 +23,6 @@
         var base_url = '<?= base_url(); ?>';
         var hashing = '<?= $this->security->get_csrf_hash(); ?>';
     </script>
-    <script src="<?= base_url('assets/js/login.js'); ?>"></script>
 </head>
 <body>
 <div class="page login-page">
@@ -33,10 +32,10 @@
                 <div class="logo text-uppercase"><strong class="text-primary">Login</strong>
                 </div>
                 <p>Administrator</p>
-                <form id="loginForm" name="loginForm" method="post">
+                <form id="loginForm" name="loginForm" method="post" action="auth/login">
                     <div class="form-group-material">
                         <input id="login-username" type="text" name="loginUsername" class="input-material"
-                               required="required">
+                               required>
                         <label for="login-username" class="label-material">Username</label>
                         <div class="text-left invalid-feedback">
                             Username tidak valid.
@@ -44,7 +43,7 @@
                     </div>
                     <div class="form-group-material">
                         <input id="login-password" type="password" name="loginPassword" class="input-material"
-                               autocomplete="no">
+                               required>
                         <label for="login-password" class="label-material">Password</label>
                         <div class="text-left invalid-feedback">
                             Password tidak valid.
@@ -52,12 +51,10 @@
 
                     </div>
                     <button id="login" class="btn btn-block btn-primary">Login</button>
-                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                 </form>
             </div>
             <div class="copyrights text-center">
                 <p><a href="https://fashiongrosir-ind.com" class="external">Fashion Grosir</a></p>
-                <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
             </div>
         </div>
     </div>
