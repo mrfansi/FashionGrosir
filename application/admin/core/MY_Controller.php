@@ -29,11 +29,14 @@ class MY_Controller extends CI_Controller
         // load menu
         $this->menu_kategori = $this->menu();
 
+        // load model
+        $this->load->model('Key');
+
 
         // check if user already login
-//        if (!$this->session->loggedin) {
-//            redirect(base_url('adm.php/auth'));
-//        }
+        if (!$this->session->isonline) {
+            redirect(base_url('adm.php/auth'));
+        }
 //        $this->output->cache(1);
 //        $allow = array(
 //            '192.168.66.1',
@@ -57,8 +60,8 @@ class MY_Controller extends CI_Controller
 
     private function menu()
     {
-        $this->load->model('Ms_item_kategori','kategori');
-        return $this->kategori->get_all();
+//        $this->load->model('Ms_item_kategori','kategori');
+//        return $this->kategori->get_all();
     }
 }
 

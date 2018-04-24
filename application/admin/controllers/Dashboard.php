@@ -16,20 +16,49 @@ class Dashboard extends MY_Controller
 
     public function index()
     {
-        echo 'Request tidak diperbolehkan';
+        // null object
+        $data = new stdClass();
+        // set title
+        $data->title = 'Fashion Grosir | Dashboard';
+
+        // set total
+        $data->totalitem = $this->set_totalitem();
+        $data->totalcustomer = $this->set_totalcustomer();
+        $data->totalorder = $this->set_totalorder();
+        $data->totalinv = $this->set_totalinv();
+
+        $this->load->view('Dashboard', $data);
     }
 
-    public function dashboard_totalitem()
+    private function set_totalitem()
     {
-        if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            $this->index();
-        } else {
-            echo $this->item->count_all();
-        }
+        // load model
+
+        $total = 0;
+        return $total;
     }
 
-    public function dashboard_totalcust()
+    private function set_totalcustomer()
     {
+        // load model
 
+        $total = 0;
+        return $total;
+    }
+
+    private function set_totalorder()
+    {
+        // load model
+
+        $total = 0;
+        return $total;
+    }
+
+    private function set_totalinv()
+    {
+        // load model
+
+        $total = 0;
+        return $total;
     }
 }

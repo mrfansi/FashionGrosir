@@ -35,7 +35,7 @@
                 <p>Administrator</p>
                 <form id="loginForm" name="loginForm" method="post">
                     <div class="form-group-material">
-                        <input id="login-username" type="text" name="loginUsername" class="input-material"
+                        <input id="login-username" type="text" name="username" class="input-material"
                                required="required">
                         <label for="login-username" class="label-material">Username</label>
                         <div class="text-left invalid-feedback">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="form-group-material">
-                        <input id="login-password" type="password" name="loginPassword" class="input-material"
+                        <input id="login-password" type="password" name="password" class="input-material"
                                autocomplete="no">
                         <label for="login-password" class="label-material">Password</label>
                         <div class="text-left invalid-feedback">

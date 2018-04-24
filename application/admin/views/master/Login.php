@@ -32,9 +32,10 @@
                 <div class="logo text-uppercase"><strong class="text-primary">Login</strong>
                 </div>
                 <p>Administrator</p>
-                <form id="loginForm" name="loginForm" method="post" action="auth/login">
+                <form id="loginForm" name="loginForm" method="post" action="<?= site_url('auth/login'); ?>">
+                    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="form-group-material">
-                        <input id="login-username" type="text" name="loginUsername" class="input-material"
+                        <input id="login-username" type="text" name="username" class="input-material"
                                required>
                         <label for="login-username" class="label-material">Username</label>
                         <div class="text-left invalid-feedback">
@@ -42,7 +43,7 @@
                         </div>
                     </div>
                     <div class="form-group-material">
-                        <input id="login-password" type="password" name="loginPassword" class="input-material"
+                        <input id="login-password" type="password" name="password" class="input-material"
                                required>
                         <label for="login-password" class="label-material">Password</label>
                         <div class="text-left invalid-feedback">

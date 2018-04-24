@@ -6,18 +6,18 @@
  * Time: 23.23
  */
 
-class Customer extends MY_Controller
+class User extends MY_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Ms_customer', 'customer');
+        $this->load->model('Ms_users', 'users');
     }
 
     public function index()
     {
         $data = new stdClass();
-        $data->customers = $this->customer->get_all();
+        $data->users = $this->users->get_all();
         $this->load->view('vdashboard', $data);
     }
 

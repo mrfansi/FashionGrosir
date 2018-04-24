@@ -5,16 +5,13 @@
         <div class="main-menu">
             <h5 class="sidenav-heading">Main</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li><a href="#"> <i class="icon-home"></i>DASHBOARD </a></li>
+                <li><a href="<?= site_url('dashboard'); ?>"> <i class="icon-home"></i>DASHBOARD </a></li>
                 <li><a> <i class="icon-interface-windows"></i>KATEGORI </a>
                     <ul>
                         <li><a href="#"> <i class="fa fa-plus"></i> BUAT
                                 KATEGORI</a></li>
                         <li><a href="#">ALL</a></li>
                         <li><a href="#">HOT <div class="badge badge-danger">New</div></a></li>
-                        <li>
-                            <a href="#" class="text-uppercase"></a>
-                        </li>
                     </ul>
                 </li>
                 <li><a> <i class="icon-interface-windows"></i>ITEMS </a></li>

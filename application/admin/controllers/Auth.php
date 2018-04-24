@@ -13,8 +13,7 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
-
-
+        $this->load->helper('form');
     }
 
     public function index()
@@ -24,11 +23,68 @@ class Auth extends CI_Controller
 
     public function login()
     {
+        // null object
+        $data = new stdClass();
+
         // model
-        $this->load->model('Ms_user', 'user');
+        $this->load->model('Ms_users', 'users');
 
+        // load library
+        $this->load->library('form_validation');
 
-        $this->load->view('master/Login');
+        // buat validation
+        $validation = array(
+            array(
+                'field' => 'username',
+                'label' => 'Username',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s tidak boleh kosong'
+                )
+            ),
+            array(
+                'field' => 'password',
+                'label' => 'Password',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s tidak boleh kosong'
+                )
+            )
+        );
+
+        // set validation
+        $this->form_validation->set_rules($validation);
+
+        if ($this->form_validation->run() === FALSE)
+        {
+            $this->load->view('master/Login');
+        } else {
+            // get post
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+
+            // get database
+            $user = $this->users->where(array(
+                'users_username'  => $username,
+                'users_password'  => $password
+            ))->get();
+
+            if ($user)
+            {
+                $sessiondata = array(
+                  'id'          => $user->users_id,
+                  'username'    => $user->users_username,
+                  'isonline'    => true
+                );
+                $this->session->set_userdata($sessiondata);
+
+                redirect('dashboard');
+            } else {
+                $data->log = 'Username atau Password salah.';
+                $this->load->view('master/Login', $data);
+            }
+        }
+
     }
 
     public function logout()
