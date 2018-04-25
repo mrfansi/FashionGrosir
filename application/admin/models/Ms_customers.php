@@ -6,7 +6,8 @@
  * Time: 18.01
  */
 
-class Ms_customers extends MY_Model {
+class Ms_customers extends MY_Model
+{
 
     public $table = 'ms_customers'; // you MUST mention the table name
     public $primary_key = 'customers_id'; // you MUST mention the primary key
@@ -17,4 +18,24 @@ class Ms_customers extends MY_Model {
     {
         parent::__construct();
     }
+
+    public $rules = array(
+        'insert'    => array(
+            'username'  => array(
+                'field'     => 'username',
+                'label'     => 'Username',
+                'rules'     => 'required|is_unique[ms_customers.customers_username]|trim'
+            ),
+            'password'  => array(
+                'field'     => 'password',
+                'label'     => 'Password',
+                'rules'     => 'required|trim'
+            ),
+            'email'     => array(
+                'field'     => 'email',
+                'label'     => 'Email',
+                'rules'     => 'required|is_unique[ms_customers.customers_email]|valid_email|trim'
+            )
+        )
+    );
 }

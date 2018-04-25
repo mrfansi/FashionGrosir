@@ -30,7 +30,7 @@ class MY_Controller extends CI_Controller
         $this->menu_kategori = $this->menu();
 
         // load model
-        $this->load->model('Key');
+        $this->load->model('Key','key');
 
 
         // check if user already login

@@ -62,43 +62,44 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <h2>Customers</h2>
-                        </div>
-                        <div class="col-sm-2">
-                            <a href="<?= site_url('customers/tambah'); ?>" class="btn btn-sm btn-primary btn-block">Add</a>
-                        </div>
-                    </div>
+                    <h2>Customers</h2>
 
                 </div>
                 <div class="card-body">
-                    <table class="table table-sm table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">Username</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">IP Address</th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($customers as $customer): ?>
-                        <tr>
-                            <td><?= $customer->customers_username; ?></td>
-                            <td><?= $customer->customers_email; ?></td>
-                            <td><?= $customer->customers_ipaddr; ?></td>
-                            <td>
-                                <a href="<?= site_url('customers/detil/') . $customer->customers_id; ?>" class="btn btn-sm btn-primary"></i> Detil</a>
-                                <a href="<?= site_url('customers/ubah/') . $customer->customers_id; ?>" class="btn btn-sm btn-warning"></i> Ubah</a>
-                                <a href="<?= site_url('customers/hapus') . $customer->customers_id; ?>" class="btn btn-sm btn-danger"></i> Hapus</a>
-                                <a href="<?= site_url('customers/ubah_password/') . $customer->customers_id; ?>" class="btn btn-sm btn-warning"></i> Ganti Password</a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                    <form action="<?= site_url('customers/tambah'); ?>" method="post">
+                        <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" name="username" placeholder="Input Username" required>
+                            <div class="text-left invalid-feedback">
+                                <?= form_error('username'); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="Input Password" required>
+                            <div class="text-left invalid-feedback">
+                                <?= form_error('password'); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" class="form-control" name="email" placeholder="Input E-mail" required>
+                            <div class="text-left invalid-feedback">
+                                <?= form_error('email'); ?>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+                            <a href="<?= site_url('customers'); ?>" class="btn btn-danger">Kembali</a>
+                        </div>
+                        <?php if (isset($berhasil)): ?>
+                            <p><?= $berhasil;?></p>
+                        <?php endif; ?>
+                        <?php if (isset($gagal)): ?>
+                            <p><?= $gagal;?></p>
+                        <?php endif; ?>
+                    </form>
                 </div>
             </div>
 
