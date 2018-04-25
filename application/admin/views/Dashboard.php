@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="<?= base_url('assets/vendor/font-awesome/css/font-awesome.min.css'); ?>">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
     <!-- Google fonts - Roboto -->
@@ -61,7 +61,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- Count item widget-->
-                <div class="col-xl-2 col-md-4 col-6">
+                <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-user"></i></div>
                         <div class="name"><strong class="text-uppercase">Customers</strong><span>Last 7 days</span>
@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <!-- Count item widget-->
-                <div class="col-xl-2 col-md-4 col-6">
+                <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-padnote"></i></div>
                         <div class="name"><strong class="text-uppercase">Items</strong><span>Last 5 days</span>
@@ -80,7 +80,7 @@
                 </div>
 
                 <!-- Count item widget-->
-                <div class="col-xl-2 col-md-4 col-6">
+                <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-bill"></i></div>
                         <div class="name"><strong class="text-uppercase">Order</strong><span>Last 2 days</span>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <!-- Count item widget-->
-                <div class="col-xl-2 col-md-4 col-6">
+                <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-list"></i></div>
                         <div class="name"><strong class="text-uppercase">Invoices</strong><span>Last 3 months</span>
