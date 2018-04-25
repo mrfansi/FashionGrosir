@@ -25,7 +25,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#"> <i class="fa fa-users"></i>CUSTOMERS </a></li>
+                <li><a href="<?= site_url('customers'); ?>"> <i class="fa fa-users"></i>CUSTOMERS </a></li>
             </ul>
         </div>
         <div class="admin-menu">
