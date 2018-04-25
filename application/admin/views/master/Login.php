@@ -39,7 +39,7 @@
                                required>
                         <label for="login-username" class="label-material">Username</label>
                         <div class="text-left invalid-feedback">
-                            Username tidak valid.
+                            <?= form_error('username'); ?>
                         </div>
                     </div>
                     <div class="form-group-material">
@@ -47,12 +47,15 @@
                                required>
                         <label for="login-password" class="label-material">Password</label>
                         <div class="text-left invalid-feedback">
-                            Password tidak valid.
+                            <?= form_error('password'); ?>
                         </div>
 
                     </div>
                     <button id="login" class="btn btn-block btn-primary">Login</button>
                 </form>
+                <?php if (isset($log) && $log != ""): ?>
+                <p class="text-danger"><?= $log; ?></p>
+                <?php endif; ?>
             </div>
             <div class="copyrights text-center">
                 <p><a href="https://fashiongrosir-ind.com" class="external">Fashion Grosir</a></p>
