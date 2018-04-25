@@ -8,30 +8,30 @@
 
 class Ms_customers extends MY_Model
 {
-
-    public $table = 'ms_customers'; // you MUST mention the table name
-    public $primary_key = 'customers_id'; // you MUST mention the primary key
-    public $fillable = array(); // If you want, you can set an array with the fields that can be filled by insert/update
-    public $protected = array(); // ...Or you can set an array with the fields that cannot be filled by insert/update
+    public $table = 'ms_customers';
+    public $primary_key = 'customers_id';
+    public $fillable = array('customers_id','customers_username','customers_password','customers_email','created_by','update_by');
+    public $protected = array();
 
     public function __construct()
     {
+        $this->timestamps = TRUE;
         parent::__construct();
     }
 
     public $rules = array(
         'insert'    => array(
-            'username'  => array(
+            'customers_username'  => array(
                 'field'     => 'username',
                 'label'     => 'Username',
                 'rules'     => 'required|is_unique[ms_customers.customers_username]|trim'
             ),
-            'password'  => array(
+            'customers_password'  => array(
                 'field'     => 'password',
                 'label'     => 'Password',
                 'rules'     => 'required|trim'
             ),
-            'email'     => array(
+            'customers_email'     => array(
                 'field'     => 'email',
                 'label'     => 'Email',
                 'rules'     => 'required|is_unique[ms_customers.customers_email]|valid_email|trim'

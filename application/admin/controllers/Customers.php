@@ -28,20 +28,39 @@ class Customers extends MY_Controller
         $data->title = 'Fashion Grosir | Customers > Tambah';
         $data->submit = 'Simpan';
 
-        if ($this->input->server('REQUEST_METHOD') == 'GET')
+        $config = array(
+            array(
+                'field'     => 'username',
+                'label'     => 'Username',
+                'rules'     => 'required|is_unique[ms_customers.customers_username]|trim'
+            ),
+            array(
+                'field'     => 'password',
+                'label'     => 'Password',
+                'rules'     => 'required|trim'
+            ),
+            array(
+                'field'     => 'email',
+                'label'     => 'Email',
+                'rules'     => 'required|is_unique[ms_customers.customers_email]|valid_email|trim'
+            )
+        );
+
+        $this->form_validation->set_rules($config);
+
+        if ($this->form_validation->run() === false)
         {
             $this->load->view('CRUD_Customers', $data);
         }
         else
         {
-            $customer = $this->customers->from_form(NULL, array(
+            $customer = $this->customers->insert(array(
                 'customers_id'          => $this->key->set_customers(),
-                'customers_ipaddr'      => $_SERVER['REMOTE_ADDR'],
-                'customers_created_by'  => $_SESSION['username'],
-                'customers_created_at'  => date('Y-m-d H:i:s'),
-                'customers_update_by'   => $_SESSION['username'],
-                'customers_update_at'   => date('Y-m-d H:i:s')
-            ))->insert();
+                'customers_username'    => $this->input->post('username'),
+                'customers_password'    => $this->input->post('password'),
+                'customers_email'       => $this->input->post('email'),
+                'created_by'            => $_SESSION['username']
+            ));
             if ($customer)
             {
                 $data->berhasil = 'Data Customer berhasil ditambahkan.';
