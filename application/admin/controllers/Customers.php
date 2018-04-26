@@ -18,6 +18,7 @@ class Customers extends MY_Controller
     {
         $data = new stdClass();
         $data->title = 'Fashion Grosir | Customers';
+        $data->total_customers = $this->customers->count_rows();
         $data->customers = $this->customers->get_all();
         $this->load->view('Customers', $data);
     }
@@ -59,7 +60,7 @@ class Customers extends MY_Controller
                 'customers_username'    => $this->input->post('username'),
                 'customers_password'    => $this->input->post('password'),
                 'customers_email'       => $this->input->post('email'),
-                'created_by'            => $_SESSION['username']
+                'created_by'            => $_SESSION['username'],
             ));
             if ($customer)
             {
@@ -123,6 +124,53 @@ class Customers extends MY_Controller
         else
         {
 
+        }
+    }
+
+    public function change_password()
+    {
+        $data = new stdClass();
+        $config = array(
+            array(
+                'field'     => 'password',
+                'label'     => 'Password',
+                'rules'     => 'required|trim'
+            ),
+            array(
+                'field'     => 'kopassword',
+                'label'     => 'Konfirmasi Password',
+                'rules'     => 'required|matches[password]|trim'
+            )
+        );
+
+        $this->form_validation->set_rules($config);
+
+        if ($this->form_validation->run() === false)
+        {
+//            $this->session->set_flashdata('validation', validation_errors());
+//            redirect('customers');
+
+            echo validation_errors();
+        }
+        else
+        {
+            $id = $this->input->post('id');
+            $password = $this->input->post('kopassword');
+            $customer = $this->customers->where('customers_id', $id)->update(array('customers_password' => $password));
+
+            if ($customer)
+            {
+                $data->berhasil = 'Password berhasil diupdate';
+                $this->session->set_flashdata('berhasil', $data->berhasil);
+
+                redirect('customers');
+            }
+            else
+            {
+                $data->gagal = 'Password gagal diupdate.';
+                $this->session->set_flashdata('berhasil', $data->gagal);
+                redirect('customers');
+            }
         }
     }
 }

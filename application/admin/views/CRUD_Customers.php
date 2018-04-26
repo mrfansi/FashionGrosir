@@ -71,33 +71,33 @@
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" name="username" placeholder="Input Username" required>
-                            <div class="text-left invalid-feedback">
+                            <p>
                                 <?= form_error('username'); ?>
-                            </div>
+                            </p>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Input Password" required>
-                            <div class="text-left invalid-feedback">
+                            <p>
                                 <?= form_error('password'); ?>
-                            </div>
+                            </p>
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail</label>
                             <input type="email" class="form-control" name="email" placeholder="Input E-mail" required>
-                            <div class="text-left invalid-feedback">
+                            <p>
                                 <?= form_error('email'); ?>
-                            </div>
+                            </p>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
                             <a href="<?= site_url('customers'); ?>" class="btn btn-danger">Kembali</a>
                         </div>
                         <?php if (isset($berhasil)): ?>
-                            <p><?= $berhasil;?></p>
+                            <p class="text-success"><?= $berhasil;?></p>
                         <?php endif; ?>
                         <?php if (isset($gagal)): ?>
-                            <p><?= $gagal;?></p>
+                            <p class="text-danger"><?= $gagal;?></p>
                         <?php endif; ?>
                     </form>
                 </div>

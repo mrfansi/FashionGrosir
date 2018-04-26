@@ -9,6 +9,7 @@
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <!-- Fontastic Custom icon font-->
@@ -25,6 +26,7 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/rzslider/rzslider.min.css'); ?>">
+
     <!-- Favicon-->
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
     <script>
@@ -32,7 +34,6 @@
         var hashing = '<?= $this->security->get_csrf_hash(); ?>';
     </script>
     <script src="<?= base_url('assets/vendor/rzslider/rzslider.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/js/app.js'); ?>"></script>
 </head>
 <body>
 <?php include_once('master/Menu.php'); ?>
@@ -59,10 +60,19 @@
 
     <br>
     <section>
+        <?php if (isset($_SESSION['validation']) && $_SESSION['validation'] != ""): ?>
+            <div class="col">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?php echo $_SESSION['validation']; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
         <div class="col">
             <div class="card">
                 <div class="card-header">
-
                     <div class="row">
                         <div class="col-sm-10">
                             <h2>Customers</h2>
@@ -74,35 +84,43 @@
 
                 </div>
                 <div class="card-body">
-                    <table class="table table-sm table-hover">
-                        <thead>
-                        <tr>
-                            <th scope="col">Username</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">IP Address</th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($customers as $customer): ?>
-                        <tr>
-                            <td><?= $customer->customers_username; ?></td>
-                            <td><?= $customer->customers_email; ?></td>
-                            <td><?= $customer->customers_ipaddr; ?></td>
-                            <td>
-                                <a href="<?= site_url('customers/detil/') . $customer->customers_id; ?>" class="btn btn-sm btn-primary"></i> Detil</a>
-                                <a href="<?= site_url('customers/ubah/') . $customer->customers_id; ?>" class="btn btn-sm btn-warning"></i> Ubah</a>
-                                <a href="<?= site_url('customers/hapus') . $customer->customers_id; ?>" class="btn btn-sm btn-danger"></i> Hapus</a>
-                                <a href="<?= site_url('customers/ubah_password/') . $customer->customers_id; ?>" class="btn btn-sm btn-warning"></i> Ganti Password</a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table id="tables" class="table table-sm">
+                            <thead>
+                            <tr>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Tipe</th>
+                                <th scope="col">IP Address</th>
+                                <th scope="col">Login terakhir</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($customers as $customer): ?>
+                                <tr>
+                                    <td><?= $customer->customers_username; ?></td>
+                                    <td><?= $customer->customers_email; ?></td>
+                                    <td><?= $customer->customers_tipe; ?></td>
+                                    <td><?= $customer->customers_ipaddr; ?></td>
+                                    <td><?= $customer->customers_lastlogin; ?></td>
+                                    <td>
+                                        <a href="<?= site_url('customers/detil/') . $customer->customers_id; ?>" class="btn btn-sm btn-primary"></i> Detil</a>
+                                        <a href="<?= site_url('customers/ubah/') . $customer->customers_id; ?>" class="btn btn-sm btn-warning"></i> Ubah</a>
+                                        <a href="<?= site_url('customers/hapus') . $customer->customers_id; ?>" class="btn btn-sm btn-danger"></i> Hapus</a>
+                                        <button onclick="changepass($(this))" type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#changepassword" data-id="<?= $customer->customers_id; ?>"></i> Ganti Password</button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
 
         </div>
+
     </section>
     <footer class="main-footer">
         <div class="container-fluid">
@@ -115,9 +133,39 @@
         </div>
     </footer>
 </div>
+
+<div class="modal fade" id="changepassword" tabindex="-1" role="dialog" aria-labelledby="changepassword" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form id="changepassword" action="<?= site_url('customers/change_password'); ?>" class="modal-content" method="post">
+            <div class="modal-header">
+                <h2 class="modal-title" id="changepassword">Ganti Password</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                <input type="hidden" name="id" id="id">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="kopassword">Konfirmasi Password</label>
+                    <input type="password" class="form-control" name="kopassword" placeholder="Password">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Ubah</button>
+            </div>
+        </form>
+    </div>
+</div>
 <!-- Javascript files-->
 <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
 <script src="<?= base_url('assets/vendor/popper.js/umd/popper.min.js'); ?>"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/grasp_mobile_progress_circle-1.0.0.min.js'); ?>"></script>
 <script src="<?= base_url('assets/vendor/jquery.cookie/jquery.cookie.js'); ?>"></script>
@@ -128,5 +176,23 @@
 <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
 <!-- Main File-->
 <script src="<?= base_url('assets/js/front.js'); ?>"></script>
+<script>
+    // ------------------------------------------------------ //
+    // Modal change password
+    // ------------------------------------------------------ //
+
+    function changepass(data) {
+        var d = data;
+        var id = d.attr('data-id');
+        var $modalpass = $('form#changepassword');
+        $modalpass.find('input').val('');
+        $modalpass.find('input#id').val(id);
+    }
+
+    // ------------------------------------------------------ //
+    // Data table customers
+    // ------------------------------------------------------ //
+    $('#tables').DataTable();
+</script>
 </body>
 </html>
