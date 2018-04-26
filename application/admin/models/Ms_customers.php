@@ -9,9 +9,9 @@
 class Ms_customers extends MY_Model
 {
     public $table = 'ms_customers';
-    public $primary_key = 'customers_id';
+    public $primary_key = 'id';
 //    public $fillable = array('customers_id','customers_username','customers_password','customers_email','customers_ipaddr','created_by','update_by','created_at','update_at');
-    public $protected = array('created_at','update_at');
+    public $protected = array('id','created_at','update_at');
 
     public function __construct()
     {

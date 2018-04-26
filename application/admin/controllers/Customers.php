@@ -33,17 +33,17 @@ class Customers extends MY_Controller
             array(
                 'field'     => 'username',
                 'label'     => 'Username',
-                'rules'     => 'required|is_unique[ms_customers.customers_username]|trim'
+                'rules'     => 'required|is_unique[ms_users.users_username]|min_length[5]|max_length[20]|trim'
             ),
             array(
                 'field'     => 'password',
                 'label'     => 'Password',
-                'rules'     => 'required|trim'
+                'rules'     => 'required|min_length[8]|max_length[20]|trim'
             ),
             array(
                 'field'     => 'email',
                 'label'     => 'Email',
-                'rules'     => 'required|is_unique[ms_customers.customers_email]|valid_email|trim'
+                'rules'     => 'required|is_unique[ms_users.users_email]|valid_email|min_length[3]|max_length[20]|trim'
             )
         );
 
@@ -60,6 +60,7 @@ class Customers extends MY_Controller
                 'customers_username'    => $this->input->post('username'),
                 'customers_password'    => $this->input->post('password'),
                 'customers_email'       => $this->input->post('email'),
+                'customers_ipaddr'      => 'NULL',
                 'created_by'            => $_SESSION['username'],
             ));
             if ($customer)
@@ -67,14 +68,16 @@ class Customers extends MY_Controller
                 $data->berhasil = 'Data Customer berhasil ditambahkan.';
                 $this->session->set_flashdata('berhasil', $data->berhasil);
 
-                $this->load->view('CRUD_Customers', $data);
+                redirect('customers');
+//                $this->load->view('CRUD_Customers', $data);
             }
             else
             {
                 $data->gagal = 'Data Customer gagal ditambahkan.';
                 $this->session->set_flashdata('gagal', $data->gagal);
 
-                $this->load->view('CRUD_Customers', $data);
+                redirect('customers');
+//                $this->load->view('CRUD_Customers', $data);
             }
         }
     }
@@ -147,10 +150,9 @@ class Customers extends MY_Controller
 
         if ($this->form_validation->run() === false)
         {
-//            $this->session->set_flashdata('validation', validation_errors());
-//            redirect('customers');
+            $this->session->set_flashdata('validation', validation_errors());
+            redirect('customers');
 
-            echo validation_errors();
         }
         else
         {

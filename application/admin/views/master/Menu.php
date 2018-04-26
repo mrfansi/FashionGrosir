@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-users"></i>USERS
+                    <a href="<?= site_url('users'); ?>"><i class="fa fa-users"></i>USERS
                     </a>
                 </li>
                 <li><a href="#"><i class="fa fa-cogs"></i>OPSI </a></li>

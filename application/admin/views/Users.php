@@ -80,25 +80,15 @@
                 </div>
             </div>
         <?php endif; ?>
-        <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
-            <div class="col">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?php echo $_SESSION['berhasil']; ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            </div>
-        <?php endif; ?>
         <div class="col">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h2>Customers</h2>
+                            <h2>Users</h2>
                         </div>
                         <div class="col-sm-2">
-                            <a href="<?= site_url('customers/tambah'); ?>" class="btn btn-sm btn-primary btn-block">Add</a>
+                            <a href="<?= site_url('users/tambah'); ?>" class="btn btn-sm btn-primary btn-block">Add</a>
                         </div>
                     </div>
 
@@ -110,25 +100,23 @@
                             <tr>
                                 <th scope="col">Username</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Tipe</th>
                                 <th scope="col">IP Address</th>
                                 <th scope="col">Login terakhir</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($customers as $customer): ?>
+                            <?php foreach ($users as $user): ?>
                                 <tr>
-                                    <td><?= $customer->customers_username; ?></td>
-                                    <td><?= $customer->customers_email; ?></td>
-                                    <td><?= $customer->customers_tipe; ?></td>
-                                    <td><?= $customer->customers_ipaddr; ?></td>
-                                    <td><?= $customer->customers_lastlogin; ?></td>
+                                    <td><?= $user->users_username; ?></td>
+                                    <td><?= $user->users_email; ?></td>
+                                    <td><?= $user->users_ipaddr; ?></td>
+                                    <td><?= $user->users_lastlogin; ?></td>
                                     <td>
-                                        <a href="<?= site_url('customers/detil/') . $customer->customers_id; ?>" class="btn btn-sm btn-primary"></i> Detil</a>
-                                        <a href="<?= site_url('customers/ubah/') . $customer->customers_id; ?>" class="btn btn-sm btn-warning"></i> Ubah</a>
-                                        <a href="<?= site_url('customers/hapus') . $customer->customers_id; ?>" class="btn btn-sm btn-danger"></i> Hapus</a>
-                                        <button onclick="changepass($(this))" type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#changepassword" data-id="<?= $customer->customers_id; ?>"></i> Ganti Password</button>
+                                        <a href="<?= site_url('users/detil/') . $user->users_id; ?>" class="btn btn-sm btn-primary"></i> Detil</a>
+                                        <a href="<?= site_url('users/ubah/') . $user->users_id; ?>" class="btn btn-sm btn-warning"></i> Ubah</a>
+                                        <a href="<?= site_url('users/hapus') . $user->users_id; ?>" class="btn btn-sm btn-danger"></i> Hapus</a>
+                                        <button onclick="changepass($(this))" type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#changepassword" data-id="<?= $user->users_id; ?>"></i> Ganti Password</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -156,7 +144,7 @@
 
 <div class="modal fade" id="changepassword" tabindex="-1" role="dialog" aria-labelledby="changepassword" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form id="changepassword" action="<?= site_url('customers/change_password'); ?>" class="modal-content" method="post">
+        <form id="changepassword" action="<?= site_url('users/change_password'); ?>" class="modal-content" method="post">
             <div class="modal-header">
                 <h2 class="modal-title" id="changepassword">Ganti Password</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -210,7 +198,7 @@
     }
 
     // ------------------------------------------------------ //
-    // Data table customers
+    // Data table users
     // ------------------------------------------------------ //
     $('#tables').DataTable();
 </script>

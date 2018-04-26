@@ -33,32 +33,32 @@ class Dashboard extends MY_Controller
     private function set_totalitem()
     {
         // load model
-
-        $total = 0;
+        $this->load->model('Ms_customers','customer');
+        $total = $this->customer->count_rows();
         return $total;
     }
 
     private function set_totalcustomer()
     {
         // load model
-
-        $total = 0;
+        $this->load->model('Ms_customers','customer');
+        $total = $this->customer->count_rows();
         return $total;
     }
 
     private function set_totalorder()
     {
         // load model
-
-        $total = 0;
+        $this->load->model('Ms_customers','customer');
+        $total = $this->customer->count_rows();
         return $total;
     }
 
     private function set_totalinv()
     {
         // load model
-
-        $total = 0;
+        $this->load->model('Ms_customers','customer');
+        $total = $this->customer->count_rows();
         return $total;
     }
 }
