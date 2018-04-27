@@ -114,18 +114,24 @@ class Users extends MY_Controller
         }
     }
 
-    public function hapus($id)
+    public  function hapus($id)
     {
         $data = new stdClass();
-        $data->title = 'Fashion Grosir | users';
-        $data->users = $this->users->where('users_id', $id)->get();
-        if ($this->input->server('REQUEST_METHOD') == 'GET')
+
+        $customer = $this->customers->where('users_id', $id)->delete();
+        if ($customer)
         {
-            $this->load->view('CRUD_Users', $data);
+            $data->berhasil = 'Data User berhasil dihapus';
+            $this->session->set_flashdata('berhasil', $data->berhasil);
+
+            redirect('users');
         }
         else
         {
+            $data->gagal = 'Data User gagal dihapus';
+            $this->session->set_flashdata('berhasil', $data->gagal);
 
+            redirect('users');
         }
     }
 

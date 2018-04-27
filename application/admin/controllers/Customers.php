@@ -118,15 +118,21 @@ class Customers extends MY_Controller
     public  function hapus($id)
     {
         $data = new stdClass();
-        $data->title = 'Fashion Grosir | Customers';
-        $data->customers = $this->customers->where('customers_id', $id)->get();
-        if ($this->input->server('REQUEST_METHOD') == 'GET')
+
+        $customer = $this->customers->where('customers_id', $id)->delete();
+        if ($customer)
         {
-            $this->load->view('CRUD_Customers', $data);
+            $data->berhasil = 'Data Customer berhasil dihapus';
+            $this->session->set_flashdata('berhasil', $data->berhasil);
+
+            redirect('customers');
         }
         else
         {
+            $data->gagal = 'Data Customer gagal dihapus';
+            $this->session->set_flashdata('berhasil', $data->gagal);
 
+            redirect('customers');
         }
     }
 
@@ -137,12 +143,10 @@ class Customers extends MY_Controller
             array(
                 'field'     => 'password',
                 'label'     => 'Password',
-                'rules'     => 'required|trim'
-            ),
-            array(
-                'field'     => 'kopassword',
-                'label'     => 'Konfirmasi Password',
-                'rules'     => 'required|matches[password]|trim'
+                'rules'     => 'required|trim',
+                'errors'    => array(
+                    'required'      => '%s tidak boleh kosong.'
+                )
             )
         );
 
@@ -152,12 +156,11 @@ class Customers extends MY_Controller
         {
             $this->session->set_flashdata('validation', validation_errors());
             redirect('customers');
-
         }
         else
         {
             $id = $this->input->post('id');
-            $password = $this->input->post('kopassword');
+            $password = $this->input->post('password');
             $customer = $this->customers->where('customers_id', $id)->update(array('customers_password' => $password));
 
             if ($customer)

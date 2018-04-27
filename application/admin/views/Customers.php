@@ -113,7 +113,10 @@
                                 <th scope="col">Tipe</th>
                                 <th scope="col">IP Address</th>
                                 <th scope="col">Login terakhir</th>
-                                <th scope="col"></th>
+                                <th scope="col" class="text-center">Detil</th>
+                                <th scope="col" class="text-center">Ubah</th>
+                                <th scope="col" class="text-center">Hapus</th>
+                                <th scope="col" class="text-center">Ganti Pswd</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -124,11 +127,17 @@
                                     <td><?= $customer->customers_tipe; ?></td>
                                     <td><?= $customer->customers_ipaddr; ?></td>
                                     <td><?= $customer->customers_lastlogin; ?></td>
-                                    <td>
-                                        <a href="<?= site_url('customers/detil/') . $customer->customers_id; ?>" class="btn btn-sm btn-primary"></i> Detil</a>
-                                        <a href="<?= site_url('customers/ubah/') . $customer->customers_id; ?>" class="btn btn-sm btn-warning"></i> Ubah</a>
-                                        <a href="<?= site_url('customers/hapus') . $customer->customers_id; ?>" class="btn btn-sm btn-danger"></i> Hapus</a>
-                                        <button onclick="changepass($(this))" type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#changepassword" data-id="<?= $customer->customers_id; ?>"></i> Ganti Password</button>
+                                    <td class="text-center">
+                                        <a href="<?= site_url('customers/detil/') . $customer->customers_id; ?>"><i class="far fa-user"></i></a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="<?= site_url('customers/ubah/') . $customer->customers_id; ?>"><i class="far fa-edit"></i></a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="#" onclick="hapus($(this))" data-toggle="modal" data-target="#hapus" data-id="<?= $customer->customers_id; ?>"><i class="far fa-trash-alt"></i></a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="#" onclick="changepass($(this))" data-toggle="modal" data-target="#changepassword" data-id="<?= $customer->customers_id; ?>"><i class="fas fa-key"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -164,21 +173,35 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                <input type="hidden" name="token_fg" id="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                 <input type="hidden" name="id" id="id">
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password" placeholder="Password" autofocus>
-                </div>
-                <div class="form-group">
-                    <label for="kopassword">Konfirmasi Password</label>
-                    <input type="password" class="form-control" name="kopassword" placeholder="Password">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Ubah</button>
             </div>
         </form>
+    </div>
+</div>
+<div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="hapus">Customers</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah anda yakin ingin menghapus data ini?</p>
+            </div>
+            <div class="modal-footer">
+                <a id="hapus" href="<?= site_url('customers/hapus/'); ?>" class="btn btn-primary btn-danger">Hapus</a>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Javascript files-->
@@ -205,8 +228,21 @@
         var d = data;
         var id = d.attr('data-id');
         var $modalpass = $('form#changepassword');
-        $modalpass.find('input').val('');
+
+        $modalpass.find('input[type=password]').val('');
         $modalpass.find('input#id').val(id);
+    }
+
+    // ------------------------------------------------------ //
+    // Modal change password
+    // ------------------------------------------------------ //
+
+    function hapus(data) {
+        var d = data;
+        var id = d.attr('data-id');
+        var $button = $('a#hapus');
+        var action = $button.attr('href');
+        $button.attr('href', action + id);
     }
 
     // ------------------------------------------------------ //
