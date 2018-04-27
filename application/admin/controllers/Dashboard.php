@@ -61,4 +61,10 @@ class Dashboard extends MY_Controller
         $total = $this->customer->count_rows();
         return $total;
     }
+
+    private function set_totalpernjualan()
+    {
+        $total = 0;
+        return total;
+    }
 }
