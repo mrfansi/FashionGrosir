@@ -80,6 +80,16 @@
                 </div>
             </div>
         <?php endif; ?>
+        <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
+            <div class="col">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?php echo $_SESSION['berhasil']; ?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
         <div class="col">
             <div class="card">
                 <div class="card-header">
@@ -116,16 +126,16 @@
                                     <td><?= $user->users_ipaddr; ?></td>
                                     <td><?= $user->users_lastlogin; ?></td>
                                     <td class="text-center">
-                                        <a href="<?= site_url('users/detil/') . $customer->customers_id; ?>"><i class="far fa-user"></i></a>
+                                        <a href="<?= site_url('users/detil/') . $user->users_id; ?>"><i class="far fa-user"></i></a>
                                     </td>
                                     <td class="text-center">
-                                        <a href="<?= site_url('users/ubah/') . $customer->customers_id; ?>"><i class="far fa-edit"></i></a>
+                                        <a href="<?= site_url('users/ubah/') . $user->users_id; ?>"><i class="far fa-edit"></i></a>
                                     </td>
                                     <td class="text-center">
-                                        <a href="#" onclick="hapus($(this))" data-toggle="modal" data-target="#hapus" data-id="<?= $customer->customers_id; ?>"><i class="far fa-trash-alt"></i></a>
+                                        <a href="#" onclick="hapus($(this))" data-toggle="modal" data-target="#hapus" data-id="<?= $user->users_id; ?>"><i class="far fa-trash-alt"></i></a>
                                     </td>
                                     <td class="text-center">
-                                        <a href="#" onclick="changepass($(this))" data-toggle="modal" data-target="#changepassword" data-id="<?= $customer->customers_id; ?>"><i class="fas fa-key"></i></a>
+                                        <a href="#" onclick="changepass($(this))" data-toggle="modal" data-target="#changepassword" data-id="<?= $user->users_id; ?>"><i class="fas fa-key"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -178,7 +188,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="hapus">Customers</h2>
+                <h2 class="modal-title" id="hapus">users</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -187,7 +197,7 @@
                 <p>Apakah anda yakin ingin menghapus data ini?</p>
             </div>
             <div class="modal-footer">
-                <a id="hapus" href="<?= site_url('customers/hapus/'); ?>" class="btn btn-primary btn-danger">Hapus</a>
+                <a id="hapus" href="<?= site_url('users/hapus/'); ?>" class="btn btn-primary btn-danger">Hapus</a>
             </div>
         </div>
     </div>

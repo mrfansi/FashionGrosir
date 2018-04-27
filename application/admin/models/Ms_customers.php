@@ -8,14 +8,14 @@
 
 class Ms_customers extends MY_Model
 {
-    public $table = 'ms_customers';
-    public $primary_key = 'id';
-//    public $fillable = array('customers_id','customers_username','customers_password','customers_email','customers_ipaddr','created_by','update_by','created_at','update_at');
-    public $protected = array('id','created_at','update_at');
 
     public function __construct()
     {
+        $this->table = 'ms_customers';
+        $this->primary_key = 'id';
+        $this->protected = array('id','created_at','update_at');
         $this->timestamps = TRUE;
+        $this->has_one['details'] = array('local_key'=>'id', 'foreign_key'=>'user_id', 'foreign_model'=>'User_details_model');
         parent::__construct();
     }
 
