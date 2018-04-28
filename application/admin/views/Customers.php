@@ -108,36 +108,30 @@
                         <table id="tables" class="table table-sm">
                             <thead>
                             <tr>
+                                <th scope="col">Nama</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Tipe</th>
                                 <th scope="col">IP Address</th>
                                 <th scope="col">Login terakhir</th>
-                                <th scope="col" class="text-center">Detil</th>
-                                <th scope="col" class="text-center">Ubah</th>
-                                <th scope="col" class="text-center">Hapus</th>
-                                <th scope="col" class="text-center">Ganti Pswd</th>
+                                <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php foreach ($customers as $customer): ?>
                                 <tr>
+                                    <td><?= $customer->customers_realname; ?></td>
                                     <td><?= $customer->customers_username; ?></td>
                                     <td><?= $customer->customers_email; ?></td>
                                     <td><?= $customer->customers_tipe; ?></td>
                                     <td><?= $customer->customers_ipaddr; ?></td>
                                     <td><?= $customer->customers_lastlogin; ?></td>
                                     <td class="text-center">
-                                        <a href="<?= site_url('customers/detil/') . $customer->customers_id; ?>"><i class="far fa-user"></i></a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="<?= site_url('customers/ubah/') . $customer->customers_id; ?>"><i class="far fa-edit"></i></a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" onclick="hapus($(this))" data-toggle="modal" data-target="#hapus" data-id="<?= $customer->customers_id; ?>"><i class="far fa-trash-alt"></i></a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a href="#" onclick="changepass($(this))" data-toggle="modal" data-target="#changepassword" data-id="<?= $customer->customers_id; ?>"><i class="fas fa-key"></i></a>
+                                        <a data-toggle="tooltip" title="Detil Customer" href="<?= site_url('customers/detil/') . $customer->customers_id; ?>"><i class="far fa-user"></i></a> |
+                                        <a data-toggle="tooltip" title="Ubah Customer" href="<?= site_url('customers/ubah/') . $customer->customers_id; ?>"><i class="far fa-edit"></i></a> |
+                                        <a data-toggle="tooltip" title="Hapus Customer" href="#" onclick="hapus($(this))" data-toggle="modal" data-target="#hapus" data-id="<?= $customer->customers_id; ?>"><i class="far fa-trash-alt"></i></a> |
+                                        <a data-toggle="tooltip" title="Ganti Password Customer" href="#" onclick="changepass($(this))" data-toggle="modal" data-target="#changepassword" data-id="<?= $customer->customers_id; ?>"><i class="fas fa-key"></i></a> |
+                                        <a data-toggle="tooltip" title="Tambah Alamat Customer" href="<?= site_url('customers/alamat/') . $customer->customers_id; ?>"><i class="fas fa-location-arrow"></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -249,6 +243,11 @@
     // Data table customers
     // ------------------------------------------------------ //
     $('#tables').DataTable();
+
+
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
 </body>
 </html>

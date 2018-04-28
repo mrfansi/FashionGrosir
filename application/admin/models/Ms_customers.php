@@ -15,7 +15,7 @@ class Ms_customers extends MY_Model
         $this->primary_key = 'id';
         $this->protected = array('id','created_at','update_at');
         $this->timestamps = TRUE;
-        $this->has_one['details'] = array('local_key'=>'id', 'foreign_key'=>'user_id', 'foreign_model'=>'User_details_model');
+//        $this->has_one['details'] = array('local_key'=>'customers_id', 'foreign_key'=>'customers_id', 'foreign_model'=>'Ms_customers_detail');
         parent::__construct();
     }
 

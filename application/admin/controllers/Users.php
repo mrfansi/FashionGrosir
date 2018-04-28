@@ -33,17 +33,23 @@ class Users extends MY_Controller
             array(
                 'field'     => 'username',
                 'label'     => 'Username',
-                'rules'     => 'required|is_unique[ms_users.users_username]|min_length[5]|max_length[20]|trim'
+                'rules'     => 'required|is_unique[ms_users.users_username]|min_length[5]|max_length[50]|trim|xss_clean',
+                'errors'    => array(
+                    'xss_clean'     => 'Karakter tidak diperbolehkan.'
+                )
             ),
             array(
                 'field'     => 'password',
                 'label'     => 'Password',
-                'rules'     => 'required|min_length[8]|max_length[20]|trim'
+                'rules'     => 'required|min_length[8]|max_length[20]|trim|xss_clean',
+                'errors'    => array(
+                    'xss_clean'     => 'Karakter tidak diperbolehkan.'
+                )
             ),
             array(
                 'field'     => 'email',
                 'label'     => 'Email',
-                'rules'     => 'required|is_unique[ms_users.users_email]|valid_email|min_length[3]|max_length[20]|trim'
+                'rules'     => 'required|is_unique[ms_users.users_email]|valid_email|min_length[3]|max_length[50]|trim'
             )
         );
 
@@ -142,12 +148,10 @@ class Users extends MY_Controller
             array(
                 'field'     => 'password',
                 'label'     => 'Password',
-                'rules'     => 'required|trim'
-            ),
-            array(
-                'field'     => 'kopassword',
-                'label'     => 'Konfirmasi Password',
-                'rules'     => 'required|matches[password]|trim'
+                'rules'     => 'required|trim',
+                'errors'    => array(
+                    'required'      => '%s tidak boleh kosong.'
+                )
             )
         );
 
@@ -155,15 +159,14 @@ class Users extends MY_Controller
 
         if ($this->form_validation->run() === false)
         {
-//            $this->session->set_flashdata('validation', validation_errors());
-//            redirect('users');
+            $this->session->set_flashdata('validation', validation_errors());
+            redirect('users');
 
-            echo validation_errors();
         }
         else
         {
             $id = $this->input->post('id');
-            $password = $this->input->post('kopassword');
+            $password = $this->input->post('password');
             $user = $this->users->where('users_id', $id)->update(array('users_password' => $password));
 
             if ($user)

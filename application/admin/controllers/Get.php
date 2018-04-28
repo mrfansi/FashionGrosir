@@ -59,4 +59,10 @@ class Get extends MY_Controller
         header('Content-Type: application/json');
         echo json_encode($hasil);
     }
+
+
+    public function provinsi()
+    {
+
+    }
 }

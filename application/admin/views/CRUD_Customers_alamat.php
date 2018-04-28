@@ -62,43 +62,89 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h2>Customers</h2>
+                    <h2>Alamat</h2>
 
                 </div>
                 <div class="card-body">
-                    <form action="<?= site_url('customers/tambah'); ?>" method="post">
+                    <form action="<?= site_url('customers/alamat/' . $id . '/tambah'); ?>" method="post">
                         <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                         <div class="form-group">
-                            <label for="realname">Nama</label>
-                            <input type="text" class="form-control" name="realname" placeholder="Input Relname" required>
+                            <label for="judul">Judul</label>
+                            <input type="text" class="form-control" name="judul" placeholder="Input Judul" required>
                             <p>
-                                <?= form_error('realname'); ?>
+                                <?= form_error('judul'); ?>
                             </p>
                         </div>
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" name="username" placeholder="Input Username" required>
+                            <label for="provinsi">Provinsi</label>
+                            <select name="provinsi" id="provinsi" class="form-control">
+                                <option value="">Pilih Provinsi</option>
+                            </select>
                             <p>
-                                <?= form_error('username'); ?>
+                                <?= form_error('provinsi'); ?>
                             </p>
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="Input Password" required>
+                            <label for="kabupaten">Kabupaten</label>
+                            <select name="kabupaten" id="kabupaten" class="form-control">
+                                <option value="">Pilih Kabupaten</option>
+                            </select>
                             <p>
-                                <?= form_error('password'); ?>
+                                <?= form_error('kabupaten'); ?>
                             </p>
                         </div>
                         <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" class="form-control" name="email" placeholder="Input E-mail" required>
+                            <label for="kecamatan">Kecamatan</label>
+                            <select name="kecamatan" id="kecamatan" class="form-control">
+                                <option value="">Pilih Kecamatan</option>
+                            </select>
                             <p>
-                                <?= form_error('email'); ?>
+                                <?= form_error('kecamatan'); ?>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="desa">Desa</label>
+                            <select name="desa" id="desa" class="form-control">
+                                <option value="">Pilih Desa</option>
+                            </select>
+                            <p>
+                                <?= form_error('desa'); ?>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="kodepos">Kodepos</label>
+                            <input type="text" class="form-control" name="kodepos" id="kodepos" placeholder="Input Kodepos" required>
+                            <p>
+                                <?= form_error('kodepos'); ?>
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="alamat_lengkap">Alamat Lengkap</label>
+                            <textarea name="alamat_lengkap" id="alamat_lengkap" class="form-control" cols="30" rows="10"></textarea>
+                            <p>
+                                <?= form_error('alamat_lengkap'); ?>
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="penerima_nama">Nama Penerima</label>
+                            <input type="text" class="form-control" name="penerima_nama" placeholder="Input Nama Penerima" required>
+                            <p>
+                                <?= form_error('judul'); ?>
+                            </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="penerima_nomor">Nomor Kontak</label>
+                            <input type="text" class="form-control" name="penerima_nomor" placeholder="Input Nomor Kontak" required>
+                            <p>
+                                <?= form_error('judul'); ?>
                             </p>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
-                            <a href="<?= site_url('customers'); ?>" class="btn btn-danger">Kembali</a>
+                            <a href="<?= site_url('customers/alamat/' . $id); ?>" class="btn btn-danger">Kembali</a>
                         </div>
                         <?php if (isset($berhasil)): ?>
                             <p class="text-success"><?= $berhasil;?></p>
