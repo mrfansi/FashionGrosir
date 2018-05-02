@@ -1,159 +1,135 @@
-<script>
-    var base_url = '<?= base_url(); ?>';
-    var hashing = '<?= $this->security->get_csrf_hash(); ?>';
-</script>
-<br>
-<section ng-controller="CrudKategoriController">
-    <div class="col">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <div class="col-sm-10">
-                    <h2>KATEGORI</h2>
-                </div>
-                <div class="col-sm-2">
-                    <button class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#buatKategori"
-                            ng-click="showCRUD()">Buat
-                    </button>
-                </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title><?= $title; ?></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <!-- jQuery Circle-->
+    <link rel="stylesheet" href="<?= base_url('assets/css/grasp_mobile_progress_circle-1.0.0.min.css'); ?>">
+    <!-- Custom Scrollbar-->
+    <link rel="stylesheet"
+          href="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css" id="theme-stylesheet'); ?>">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/rzslider/rzslider.min.css'); ?>">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
+    <script>
+        var base_url = '<?= base_url(); ?>';
+        var hashing = '<?= $this->security->get_csrf_hash(); ?>';
+    </script>
+    <script src="<?= base_url('assets/vendor/rzslider/rzslider.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/angularjs/angular.min.js'); ?>"></script>
 
+    <script src="<?= base_url('assets/js/app.js'); ?>"></script>
+</head>
+<body>
+<?php include_once('master/Menu.php'); ?>
+<div class="page">
+    <!-- navbar-->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-center justify-content-between">
+                    <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i
+                                    class="icon-bars"> </i></a><a href="<?= base_url('adm.php/dashboard') ?>"
+                                                                  class="navbar-brand">
+                            <div class="brand-text d-none d-md-inline-block"><strong
+                                        class="text-primary">FASHION GROSIR</strong></div>
+                        </a></div>
+                    <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                        <li class="nav-item"><a href="<?= base_url('adm.php/auth/logout') ?>" class="nav-link logout">Logout<i
+                                        class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="card-body">
+        </nav>
+    </header>
 
-                <div class="table-responsive">
-                    <table class="table table-sm">
-                        <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <!--                                <th>Parent</th>-->
-                            <th>Aksi</th>
-                        </tr>
-                        </thead>
+    <br>
+    <section>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Customers</h2>
 
-                        <tbody>
-                        <tr ng-repeat="kategori in kategories track by kategori.Kat_ID">
-                            <td class="text-uppercase">{{kategori.Kat_Nama | limitTo:limitChar}}</td>
-                            <!--                                <td>{{kategori.Kat_Parent_ID}}</td>-->
-                            <td>
-                                <button class="btn btn-primary btn-sm" data-toggle="modal"
-                                        data-target="#ubahKategori" ng-click="ubahKategori(kategori.Kat_ID)">Ubah
-                                </button>
-                                <button class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#hapusKategori" ng-click="konfirmasihapus(kategori.Kat_ID)">Hapus
-                                </button>
-                            </td>
-                        </tr>
-
-                        </tbody>
-                    </table>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="ubahKategori" tabindex="-1" role="dialog" aria-labelledby="ubahKategori"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Ubah Kategori</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="container" ng-submit="updateKategori()">
-
+                <div class="card-body">
+                    <form action="<?= site_url('kategori/tambah'); ?>" method="post">
+                        <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                         <div class="form-group">
-                            <label for="u_kat_nama">Nama</label>
-                            <input type="text" class="form-control" id="u_kat_nama"
-                                   ng-model="u_kat_nama"
-                                   ng-minlength="5"
-                                   ng-maxlength="20"
-                                   required autofocus>
+                            <label for="kategori_name">Nama Kategori</label>
+                            <input type="text" class="form-control" name="kategori_name" placeholder="Input Nama Kategori" required>
+                            <p>
+                                <?= form_error('kategori_name'); ?>
+                            </p>
                         </div>
-                        <div class="form-group">
-                            <label for="u_kat_parent_id">Kategori</label>
-                            <select class="form-control" id="u_kat_parent_id" name="u_kat_parent_id"
-                                    ng-model="u_kat_parent_id" required>
-                                <option value="">Pilih kategori</option>
-                                <option value="0" selected>Root</option>
-                                <option ng-repeat="kategori in kategories" value="{{kategori.Kat_ID}}">
-                                    {{kategori.Kat_Nama}}
-                                </option>
+                        <div class="form-group" ng-app="admFashionGrosir", ng-controller="CtrlKategori">
+                            <script>
+                                var kategori = '<?= site_url('get/kategori'); ?>''
+                            </script>
+                            <label for="kategori_parentid">Parent Kategori</label>
+                            <select class="form-control" ng-repeat="kategories in kat track by $index">
+                                <option value="">Pilih Kategori</option>
+                                <option value="0">ROOT</option>
+                                <option value="{{kat.kategori_id}}">{{kat.kategori_nama}}</option>
                             </select>
+                            <p>
+                                <?= form_error('email'); ?>
+                            </p>
                         </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+                            <a href="<?= site_url('kategori'); ?>" class="btn btn-danger">Kembali</a>
+                        </div>
+                        <?php if (isset($berhasil)): ?>
+                            <p class="text-success"><?= $berhasil;?></p>
+                        <?php endif; ?>
+                        <?php if (isset($gagal)): ?>
+                            <p class="text-danger"><?= $gagal;?></p>
+                        <?php endif; ?>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" ng-click="updateKategori()">Simpan</button>
+            </div>
+
+        </div>
+    </section>
+    <footer class="main-footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>Fashion Grosir &copy; 2018</p>
                 </div>
+
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="buatKategori" tabindex="-1" role="dialog" aria-labelledby="buatKategori"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Buat Kategori</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form name="buatKategoriForm" id="buatKategoriForm" class="container"
-                          ng-submit="buatKategori(buatKategoriForm.$valid)">
-                        <div class="form-group"
-                             ng-class="{'is-invalid' : buatKategoriForm.b_kat_nama.$invalid && !buatKategoriForm.b_kat_nama.$pristine}">
-                            <label for="b_kat_nama">Nama</label>
-                            <input type="text" class="form-control" id="b_kat_nama"
-                                   ng-model="b_kat_nama"
-                                   ng-minlength="5"
-                                   ng-maxlength="20"
-                                   required autofocus>
-                        </div>
-                        <div class="form-group"
-                             ng-class="{'is-invalid' : buatKategoriForm.b_kat_parent_id.$invalid && !buatKategoriForm.b_kat_parent_id.$pristine}">
-                            <label for="b_kat_parent_id">Kategori</label>
-                            <select class="form-control" id="b_kat_parent_id" ng-model="b_kat_parent_id" required>
-                                <option value="">Pilih kategori</option>
-                                <option value="0" selected>Root</option>
-                                <option ng-repeat="kategori in kategories track by $index" value="{{kategori.Kat_ID}}">
-                                    {{kategori.Kat_Nama}}
-                                </option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-primary"
-                           data-dismiss="modal"
-                           aria-label="Buat"
-                           ng-disabled="buatKategoriForm.$invalid"
-                           ng-click="buatKategori(buatKategoriForm.$valid)" value="Simpan">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="hapusKategori" tabindex="-1" role="dialog" aria-labelledby="hapusKategori"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Hapus Kategori</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Apakah anda yakin ingin menghapus kategori ini ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Hapus"
-                            ng-click="hapusKategori()">Hapus
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </footer>
+</div>
+<!-- Javascript files-->
+<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/popper.js/umd/popper.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
+<script src="<?= base_url('assets/js/grasp_mobile_progress_circle-1.0.0.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/jquery.cookie/jquery.cookie.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/chart.js/Chart.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/jquery-validation/jquery.validate.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
+<!-- Main File-->
+<script src="<?= base_url('assets/js/front.js'); ?>"></script>
+</body>
+</html>

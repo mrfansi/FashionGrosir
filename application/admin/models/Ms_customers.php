@@ -13,7 +13,7 @@ class Ms_customers extends MY_Model
     {
         $this->table = 'ms_customers';
         $this->primary_key = 'id';
-        $this->protected = array('id','created_at','update_at');
+        $this->protected = array('id','created_at','updated_at');
         $this->timestamps = TRUE;
 //        $this->has_one['details'] = array('local_key'=>'customers_id', 'foreign_key'=>'customers_id', 'foreign_model'=>'Ms_customers_detail');
         parent::__construct();

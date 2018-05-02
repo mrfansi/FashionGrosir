@@ -444,4 +444,22 @@ app.controller('CrudKategoriController', function (Page, Key, $scope, $http) {
         $scope.init();
     });
 });
+
+app.controller('CtrlKategori', function ($scope, $http) {
+    $scope.url = kategori;
+
+    $scope.init = function () {
+        $http({
+            method: "GET",
+            url: $scope.url
+        }).then(function (res) {
+            $scope.kategories = res.data;
+        }, function (res) {
+            console.log(res.data);
+        });
+    };
+
+    $scope.init();
+
+});
 // END CONTROLLER

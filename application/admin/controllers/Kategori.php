@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: irfandihati
  * Date: 12/03/2018
- * Time: 23.11
+ * Time: 23.23
  */
 
 class Kategori extends MY_Controller
@@ -14,59 +14,83 @@ class Kategori extends MY_Controller
         $this->load->model('Ms_kategori', 'kategori');
     }
 
-    public function all()
-    {
-        if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            $this->index();
-        } else {
-            echo json_encode($this->kategori->as_array()->get_all());
-        }
-    }
-
     public function index()
     {
-        echo 'Request tidak diperbolehkan.';
+        $data = new stdClass();
+        $data->title = 'Fashion Grosir | Kategori';
+        $data->total_kategori = $this->kategori->count_rows();
+        $data->kategori = $this->kategori->get_all();
+        $this->load->view('Kategori', $data);
     }
 
-    public function get_key() {
-        echo 'KAT-' . date('Ymd') . '-' . date('His');
-    }
-
-    public function get($id)
+    public function tambah()
     {
-        if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            echo json_encode($this->kategori->as_array()->get($id));
+        $data = new stdClass();
+        $data->title = 'Fashion Grosir | Kategori > Tambah';
+        $data->submit = 'Simpan';
+
+        $kategori = $this->kategori->insert(array(
+            'kategori_name' => $this->input->post('kategori_name'),
+            'kategori_parentid' => $this->input->post('kategori_parentid'),
+            'created_by' => $_SESSION['username']
+        ));
+
+        if ($kategori) {
+            $data->berhasil = 'Data Kategori berhasil ditambahkan.';
+            $this->session->set_flashdata('berhasil', $data->berhasil);
+
+            redirect('kategori');
+//                $this->load->view('CRUD_Customers', $data);
+        } else {
+            $data->gagal = 'Data Kategori gagal ditambahkan.';
+            $this->session->set_flashdata('gagal', $data->gagal);
+
+            redirect('kategori');
+//                $this->load->view('CRUD_Customers', $data);
         }
     }
 
-    public function baru()
+    public function detil($id)
     {
-        if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            $this->load->view('CRUD_Kategori');
-        } else if ($this->input->server('REQUEST_METHOD') == 'POST') {
-            $data = array(
-                'Kat_ID'        => $this->input->post('id'),
-                'Kat_Nama'      => $this->input->post('nama'),
-                'Kat_Parent_ID' => $this->input->post('parent')
-            );
+        $data = new stdClass();
+        $data->title = 'Fashion Grosir | Kategori > Detil';
+        $data->kategori = $this->kategori->where('kategori_id', $id)->get();
 
-            $this->kategori->insert($data);
-        }
-    }
-
-    public function hapus($id)
-    {
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            return $this->kategori->delete($id);
+            $this->load->view('CRUD_Kategori', $data);
+        } else {
+            redirect('kategori');
         }
     }
 
     public function ubah($id)
     {
+        $data = new stdClass();
+        $data->title = 'Fashion Grosir | Kategori > Ubah';
+        $data->submit = 'Ubah';
+        $data->kategori = $this->kategori->where('kategori_id', $id)->get();
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            redirect(base_url('adm.php/navigasi/CRUD_Kategori'));
-        } else if ($this->input->server('REQUEST_METHOD') == 'POST') {
-            return 0;
+            $this->load->view('CRUD_Kategori', $data);
+        } else {
+
+        }
+    }
+
+    public function hapus($id)
+    {
+        $data = new stdClass();
+
+        $kategori = $this->kategori->where('kategori_id', $id)->delete();
+        if ($kategori) {
+            $data->berhasil = 'Data Kategori  berhasil dihapus';
+            $this->session->set_flashdata('berhasil', $data->berhasil);
+
+            redirect('kategori');
+        } else {
+            $data->gagal = 'Data Kategori  gagal dihapus';
+            $this->session->set_flashdata('berhasil', $data->gagal);
+
+            redirect('kategori');
         }
     }
 }

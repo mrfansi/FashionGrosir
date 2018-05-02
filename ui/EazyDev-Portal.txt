@@ -1,0 +1,19 @@
+Irfan: INFO : Akses ke https://dev.eazy-dev.xyz/fashiongrosir
+
+
+Username : eazy
+
+Password : eazy9090
+
+
+Untuk upload hasil kerjaan pake SFTP
+
+Host : dev.eazy-dev.xyz
+
+Username : fashiongrosir
+
+Password : fashiongrosir@321
+
+Login
+caesar.why@gmail.com
+admineazy123

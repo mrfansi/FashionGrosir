@@ -11,58 +11,68 @@ class Get extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Ms_item', 'item');
-        $this->load->model('Ms_customer', 'cust');
-        $this->load->model('Ms_kategori', 'kategori');
     }
 
-    public function index()
+    public function provinsi($where = '')
     {
-        redirect(base_url('adm.php/dashboard'));
-    }
+        // load model
+        $this->load->model('Ms_provinsi','provinsi');
 
-
-    public function total_items()
-    {
-        echo $this->item->count_all();
-    }
-
-    public function total_customers()
-    {
-        echo $this->cust->count_all();
-    }
-
-
-    public function inv_count()
-    {
-
-    }
-
-    public function total_penjualan()
-    {
-        return 0;
-    }
-
-    public function kategori($kategori = '')
-    {
-        if ($kategori == 'all' OR $kategori == '') {
-            $hasil = $this->item->as_array()->get_all();
+        if ($where != ''){
+            $json = $this->provinsi->where('provinsi_id', $where)->get();
+            echo json_encode($json);
         } else {
-            $hasil = $this->item->as_array()->get_many_by('kat_kode', $kategori);
+            $json = $this->provinsi->get_all();
+            echo json_encode($json);
         }
-        echo json_encode($hasil);
+
     }
 
-    public function list_kategori()
+    public function kabupaten($where = '')
     {
-        $hasil = $this->kategori->as_array()->get_all();
-        header('Content-Type: application/json');
-        echo json_encode($hasil);
+        // load model
+        $this->load->model('Ms_kabupaten','kabupaten');
+
+        if ($where != ''){
+            $json = $this->kabupaten->where('provinsi_id', $where)->get();
+            echo json_encode($json);
+        } else {
+            $json = $this->kabupaten->get_all();
+            echo json_encode($json);
+        }
     }
 
-
-    public function provinsi()
+    public function kecamatan($where = '')
     {
+        // load model
+        $this->load->model('Ms_kecamatan','kecamatan');
+        if ($where != ''){
+            $json = $this->kecamatan->where('kabupaten_id', $where)->get();
+            echo json_encode($json);
+        } else {
+            $json = $this->kecamatan->get_all();
+            echo json_encode($json);
+        }
+    }
 
+    public function desa($where = '')
+    {
+        // load model
+        $this->load->model('Ms_desa','desa');
+        if ($where != ''){
+            $json = $this->desa->where('kecamatan_id', $where)->get();
+            echo json_encode($json);
+        } else {
+            $json = $this->desa->get_all();
+            echo json_encode($json);
+        }
+    }
+
+    public function kategori()
+    {
+        //load model
+        $this->load->model('Ms_kategori', 'kategori');
+        $json = $this->kategori->get_all();
+        return $json;
     }
 }
