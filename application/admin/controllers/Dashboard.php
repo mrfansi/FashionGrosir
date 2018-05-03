@@ -33,7 +33,7 @@ class Dashboard extends MY_Controller
     private function set_totalitem()
     {
         // load model
-        $this->load->model('Ms_customers','customer');
+        $this->load->model('Pengguna','customer');
         $total = $this->customer->count_rows();
         return $total;
     }
@@ -41,15 +41,15 @@ class Dashboard extends MY_Controller
     private function set_totalcustomer()
     {
         // load model
-        $this->load->model('Ms_customers','customer');
-        $total = $this->customer->count_rows();
+        $this->load->model('Pengguna','customer');
+        $total = $this->customer->where('p_tipe',array('1','2'))->count_rows();
         return $total;
     }
 
     private function set_totalorder()
     {
         // load model
-        $this->load->model('Ms_customers','customer');
+        $this->load->model('Pengguna','customer');
         $total = $this->customer->count_rows();
         return $total;
     }
@@ -57,7 +57,7 @@ class Dashboard extends MY_Controller
     private function set_totalinv()
     {
         // load model
-        $this->load->model('Ms_customers','customer');
+        $this->load->model('Pengguna','customer');
         $total = $this->customer->count_rows();
         return $total;
     }

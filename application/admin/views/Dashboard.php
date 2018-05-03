@@ -64,7 +64,7 @@
                 <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-user"></i></div>
-                        <div class="name"><strong class="text-uppercase">Customers</strong><span>Last 7 days</span>
+                        <div class="name"><strong class="text-uppercase">Pelanggan</strong><span>Last 7 days</span>
                             <div class="count-number"><?= $totalcustomer ?></div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                 <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-padnote"></i></div>
-                        <div class="name"><strong class="text-uppercase">Items</strong><span>Last 5 days</span>
+                        <div class="name"><strong class="text-uppercase">Item</strong><span>Last 5 days</span>
                             <div class="count-number"><?= $totalitem ?></div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                 <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-list"></i></div>
-                        <div class="name"><strong class="text-uppercase">Invoices</strong><span>Last 3 months</span>
+                        <div class="name"><strong class="text-uppercase">Invoice</strong><span>Last 3 months</span>
                             <div class="count-number"><?= $totalinv ?></div>
                         </div>
                     </div>

@@ -26,7 +26,7 @@ class Auth extends CI_Controller
         $data = new stdClass();
 
         // model
-        $this->load->model('Ms_users', 'users');
+        $this->load->model('Pengguna', 'users');
 
         // load library
         $this->load->library('form_validation');
@@ -64,15 +64,24 @@ class Auth extends CI_Controller
 
             // get database
             $user = $this->users->where(array(
-                'users_username'  => $username,
-                'users_password'  => $password
+                'p_username'  => $username,
+                'p_password'  => $password
             ))->get();
 
             if ($user)
             {
+                // Update IP Address
+                $this->users->where(array(
+                    'p_username'  => $username,
+                ))->update(array(
+                    'p_ipaddr' => $_SERVER['REMOTE_ADDR'],
+                    'p_login_terakhir' => date('Y-m-d H:i:s')
+                ));
+
                 $sessiondata = array(
-                  'id'          => $user->users_id,
-                  'username'    => $user->users_username,
+                  'id'          => $user->p_kode,
+                  'nama'          => $user->p_nama,
+                  'username'    => $user->p_username,
                   'isonline'    => true
                 );
                 $this->session->set_userdata($sessiondata);

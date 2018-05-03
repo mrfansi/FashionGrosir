@@ -7,33 +7,21 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
-    <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-    <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
-    <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <!-- jQuery Circle-->
     <link rel="stylesheet" href="<?= base_url('assets/css/grasp_mobile_progress_circle-1.0.0.min.css'); ?>">
-    <!-- Custom Scrollbar-->
     <link rel="stylesheet"
           href="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
-    <!-- theme stylesheet-->
     <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css" id="theme-stylesheet'); ?>">
-    <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/vendor/rzslider/rzslider.min.css'); ?>">
-
-    <!-- Favicon-->
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
     <script>
         var base_url = '<?= base_url(); ?>';
         var hashing = '<?= $this->security->get_csrf_hash(); ?>';
     </script>
-    <script src="<?= base_url('assets/vendor/rzslider/rzslider.min.js'); ?>"></script>
 </head>
 <body>
 <?php include_once('master/Menu.php'); ?>
@@ -95,10 +83,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h2>Customers</h2>
+                            <h2><i class="fa fa-users"></i> <?= $title_page; ?></h2>
                         </div>
                         <div class="col-sm-2">
-                            <a href="<?= site_url('customers/tambah'); ?>" class="btn btn-sm btn-primary btn-block">Add</a>
+                            <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#" onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i class="fas fa-user-plus"></i></a>
                         </div>
                     </div>
 
@@ -108,33 +96,38 @@
                         <table id="tables" class="table table-sm">
                             <thead>
                             <tr>
+                                <th scope="col">Tipe</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Tipe</th>
                                 <th scope="col">IP Address</th>
                                 <th scope="col">Login terakhir</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($customers as $customer): ?>
-                                <tr>
-                                    <td><?= $customer->customers_realname; ?></td>
-                                    <td><?= $customer->customers_username; ?></td>
-                                    <td><?= $customer->customers_email; ?></td>
-                                    <td><?= $customer->customers_tipe; ?></td>
-                                    <td><?= $customer->customers_ipaddr; ?></td>
-                                    <td><?= $customer->customers_lastlogin; ?></td>
-                                    <td class="text-center">
-                                        <a data-toggle="tooltip" title="Detil Customer" href="<?= site_url('customers/detil/') . $customer->customers_id; ?>"><i class="far fa-user"></i></a> |
-                                        <a data-toggle="tooltip" title="Ubah Customer" href="<?= site_url('customers/ubah/') . $customer->customers_id; ?>"><i class="far fa-edit"></i></a> |
-                                        <a data-toggle="tooltip" title="Hapus Customer" href="#" onclick="hapus($(this))" data-toggle="modal" data-target="#hapus" data-id="<?= $customer->customers_id; ?>"><i class="far fa-trash-alt"></i></a> |
-                                        <a data-toggle="tooltip" title="Ganti Password Customer" href="#" onclick="changepass($(this))" data-toggle="modal" data-target="#changepassword" data-id="<?= $customer->customers_id; ?>"><i class="fas fa-key"></i></a> |
-                                        <a data-toggle="tooltip" title="Tambah Alamat Customer" href="<?= site_url('customers/alamat/') . $customer->customers_id; ?>"><i class="fas fa-location-arrow"></i></a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
+                            <?php if ($customers != NULL): ?>
+                                <?php foreach ($customers as $customer): ?>
+                                    <tr>
+                                        <td>
+                                            <?php if ($customer->p_tipe == 1): ?>
+                                            VIP
+                                            <?php elseif ($customer->p_tipe == 2): ?>
+                                            Reseller
+                                            <?php endif; ?>
+                                        </td>
+                                        <td><?= $customer->p_nama; ?></td>
+                                        <td><?= $customer->p_username; ?></td>
+                                        <td><?= $customer->p_email; ?></td>
+                                        <td><?= $customer->p_ipaddr; ?></td>
+                                        <td><?= $customer->p_login_terakhir; ?></td>
+                                        <td class="text-center">
+                                            <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#" onclick="edit($(this))" data-target="#crud" data-id="<?= $customer->p_kode; ?>"><i class="far fa-edit"></i></a> |
+                                            <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#" onclick="hapus($(this))" data-target="#hapus" data-id="<?= $customer->p_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
@@ -156,35 +149,26 @@
         </div>
     </footer>
 </div>
-
-<div class="modal fade" id="changepassword" tabindex="-1" role="dialog" aria-labelledby="changepassword" aria-hidden="true">
+<div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <form id="changepassword" action="<?= site_url('customers/change_password'); ?>" class="modal-content" method="post">
+        <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="changepassword">Ganti Password</h2>
+                <h2 class="modal-title" id="crud"><i class="fa fa-users"></i> <?= $title_page; ?></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <input type="hidden" name="token_fg" id="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
-                <input type="hidden" name="id" id="id">
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password" autofocus>
-                </div>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Ubah</button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
+
 <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="hapus">Customers</h2>
+                <h2 class="modal-title" id="hapus"><i class="fa fa-users"></i> <?= $title_page; ?></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -193,7 +177,7 @@
                 <p>Apakah anda yakin ingin menghapus data ini?</p>
             </div>
             <div class="modal-footer">
-                <a id="hapus" href="<?= site_url('customers/hapus/'); ?>" class="btn btn-primary btn-danger">Hapus</a>
+                <a id="hapus" href="#" class="btn btn-primary btn-danger">Hapus</a>
             </div>
         </div>
     </div>
@@ -215,38 +199,58 @@
 <script src="<?= base_url('assets/js/front.js'); ?>"></script>
 <script>
     // ------------------------------------------------------ //
-    // Modal change password
+    // Modal CRUD
     // ------------------------------------------------------ //
 
-    function changepass(data) {
-        var d = data;
-        var id = d.attr('data-id');
-        var $modalpass = $('form#changepassword');
+    function tambah() {
+        modal = $('#crud');
+        bodymodal = modal.find('div.modal-body');
 
-        $modalpass.find('input[type=password]').val('');
-        $modalpass.find('input#id').val(id);
+        bodymodal.load("<?= site_url('customers/tambah'); ?>");
+    }
+    function edit(data) {
+        d = data;
+        id = d.attr('data-id');
+        modal = $('#crud');
+        bodymodal = modal.find('div.modal-body');
+
+        bodymodal.load("<?= site_url('customers/ubah/'); ?>" + id);
     }
 
-    // ------------------------------------------------------ //
-    // Modal change password
-    // ------------------------------------------------------ //
+    function detil(data) {
+        d = data;
+        id = d.attr('data-id');
+        modal = $('#crud');
+        bodymodal = modal.find('div.modal-body');
+
+        bodymodal.load("<?= site_url('customers/detil/'); ?>" + id);
+    }
 
     function hapus(data) {
-        var d = data;
-        var id = d.attr('data-id');
-        var $button = $('a#hapus');
-        var action = $button.attr('href');
-        $button.attr('href', action + id);
+        d = data;
+        id = d.attr('data-id');
+        $('a#hapus').attr('href', "<?= site_url('customers/hapus/'); ?>" + id);
     }
 
     // ------------------------------------------------------ //
-    // Data table customers
+    // Data table users
     // ------------------------------------------------------ //
     $('#tables').DataTable();
 
-
     $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip();
+        $('[tooltip]').tooltip();
+    });
+
+    // ------------------------------------------------------ //
+    // Remove after 5 second
+    // ------------------------------------------------------ //
+
+    $(document).ready(function () {
+        setTimeout(function () {
+            if ($('[role="alert"]').length > 0) {
+                $('[role="alert"]').remove();
+            }
+        }, 5000);
     });
 </script>
 </body>

@@ -71,7 +71,7 @@ class Get extends MY_Controller
     public function kategori()
     {
         //load model
-        $this->load->model('Ms_kategori', 'kategori');
+        $this->load->model('Ms_kategori', 'KategoriM');
         $json = $this->kategori->get_all();
         return $json;
     }
