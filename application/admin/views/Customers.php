@@ -9,7 +9,8 @@
     <meta name="robots" content="all,follow">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" href="<?= base_url('assets/css/grasp_mobile_progress_circle-1.0.0.min.css'); ?>">
@@ -22,9 +23,24 @@
         var base_url = '<?= base_url(); ?>';
         var hashing = '<?= $this->security->get_csrf_hash(); ?>';
     </script>
+    <!-- Javascript files-->
+    <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/popper.js/umd/popper.min.js'); ?>"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/grasp_mobile_progress_circle-1.0.0.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/jquery.cookie/jquery.cookie.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/chart.js/Chart.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/jquery-validation/jquery.validate.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
+    <!-- Main File-->
+    <script src="<?= base_url('assets/js/front.js'); ?>"></script>
 </head>
 <body>
-<?php include_once('master/Menu.php'); ?>
+<?php include 'master/Menu.php'; ?>
 <div class="page">
     <!-- navbar-->
     <header class="header">
@@ -86,7 +102,9 @@
                             <h2><i class="fa fa-users"></i> <?= $title_page; ?></h2>
                         </div>
                         <div class="col-sm-2">
-                            <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#" onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i class="fas fa-user-plus"></i></a>
+                            <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
+                               onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i
+                                        class="fas fa-user-plus"></i></a>
                         </div>
                     </div>
 
@@ -111,9 +129,9 @@
                                     <tr>
                                         <td>
                                             <?php if ($customer->p_tipe == 1): ?>
-                                            VIP
+                                                VIP
                                             <?php elseif ($customer->p_tipe == 2): ?>
-                                            Reseller
+                                                Reseller
                                             <?php endif; ?>
                                         </td>
                                         <td><?= $customer->p_nama; ?></td>
@@ -122,8 +140,12 @@
                                         <td><?= $customer->p_ipaddr; ?></td>
                                         <td><?= $customer->p_login_terakhir; ?></td>
                                         <td class="text-center">
-                                            <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#" onclick="edit($(this))" data-target="#crud" data-id="<?= $customer->p_kode; ?>"><i class="far fa-edit"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#" onclick="hapus($(this))" data-target="#hapus" data-id="<?= $customer->p_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                            <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
+                                               onclick="edit($(this))" data-target="#crud"
+                                               data-id="<?= $customer->p_kode; ?>"><i class="far fa-edit"></i></a> |
+                                            <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
+                                               onclick="hapus($(this))" data-target="#hapus"
+                                               data-id="<?= $customer->p_kode; ?>"><i class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -136,6 +158,63 @@
             </div>
 
         </div>
+        <script>
+            // ------------------------------------------------------ //
+            // Modal CRUD
+            // ------------------------------------------------------ //
+
+            function tambah() {
+                modal = $('#crud');
+                bodymodal = modal.find('div.modal-body');
+
+                bodymodal.load("<?= site_url('customers/tambah'); ?>");
+            }
+
+            function edit(data) {
+                d = data;
+                id = d.attr('data-id');
+                modal = $('#crud');
+                bodymodal = modal.find('div.modal-body');
+
+                bodymodal.load("<?= site_url('customers/ubah/'); ?>" + id);
+            }
+
+            function detil(data) {
+                d = data;
+                id = d.attr('data-id');
+                modal = $('#crud');
+                bodymodal = modal.find('div.modal-body');
+
+                bodymodal.load("<?= site_url('customers/detil/'); ?>" + id);
+            }
+
+            function hapus(data) {
+                d = data;
+                id = d.attr('data-id');
+                $('a#hapus').attr('href', "<?= site_url('customers/hapus/'); ?>" + id);
+            }
+
+            // ------------------------------------------------------ //
+            // Data table users
+            // ------------------------------------------------------ //
+            $('#tables').DataTable();
+
+            $(document).ready(function () {
+                $('[tooltip]').tooltip();
+            });
+
+            // ------------------------------------------------------ //
+            // Remove after 5 second
+            // ------------------------------------------------------ //
+
+            $(document).ready(function () {
+                setTimeout(function () {
+                    if ($('[role="alert"]').length > 0) {
+                        $('[role="alert"]').remove();
+                    }
+                }, 5000);
+            });
+        </script>
 
     </section>
     <footer class="main-footer">
@@ -182,76 +261,7 @@
         </div>
     </div>
 </div>
-<!-- Javascript files-->
-<script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/popper.js/umd/popper.min.js'); ?>"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
-<script src="<?= base_url('assets/js/grasp_mobile_progress_circle-1.0.0.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/jquery.cookie/jquery.cookie.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/chart.js/Chart.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/jquery-validation/jquery.validate.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
-<!-- Main File-->
-<script src="<?= base_url('assets/js/front.js'); ?>"></script>
-<script>
-    // ------------------------------------------------------ //
-    // Modal CRUD
-    // ------------------------------------------------------ //
 
-    function tambah() {
-        modal = $('#crud');
-        bodymodal = modal.find('div.modal-body');
 
-        bodymodal.load("<?= site_url('customers/tambah'); ?>");
-    }
-    function edit(data) {
-        d = data;
-        id = d.attr('data-id');
-        modal = $('#crud');
-        bodymodal = modal.find('div.modal-body');
-
-        bodymodal.load("<?= site_url('customers/ubah/'); ?>" + id);
-    }
-
-    function detil(data) {
-        d = data;
-        id = d.attr('data-id');
-        modal = $('#crud');
-        bodymodal = modal.find('div.modal-body');
-
-        bodymodal.load("<?= site_url('customers/detil/'); ?>" + id);
-    }
-
-    function hapus(data) {
-        d = data;
-        id = d.attr('data-id');
-        $('a#hapus').attr('href', "<?= site_url('customers/hapus/'); ?>" + id);
-    }
-
-    // ------------------------------------------------------ //
-    // Data table users
-    // ------------------------------------------------------ //
-    $('#tables').DataTable();
-
-    $(document).ready(function(){
-        $('[tooltip]').tooltip();
-    });
-
-    // ------------------------------------------------------ //
-    // Remove after 5 second
-    // ------------------------------------------------------ //
-
-    $(document).ready(function () {
-        setTimeout(function () {
-            if ($('[role="alert"]').length > 0) {
-                $('[role="alert"]').remove();
-            }
-        }, 5000);
-    });
-</script>
 </body>
 </html>

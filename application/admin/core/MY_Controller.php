@@ -58,10 +58,10 @@ class MY_Controller extends CI_Controller
         $this->layout->show($page, $data);
     }
 
-    private function menu()
+    public function menu()
     {
-//        $this->load->model('Ms_item_kategori','kategori');
-//        return $this->kategori->get_all();
+        $this->load->model('Kategori_m','kategori');
+        return $this->kategori->get_all();
     }
 }
 

@@ -15,37 +15,43 @@
         <div class="main-menu">
             <h5 class="sidenav-heading">Main</h5>
             <ul id="side-main-menu" class="side-menu list-unstyled">
-                <li><a href="<?= site_url('dashboard'); ?>"> <i class="icon-home"></i>DASHBOARD </a></li>
+                <li><a href="<?= site_url('dashboard'); ?>"> <i class="icon-home"></i>Dashboard </a></li>
                 <li>
-                    <a><i class="fas fa-filter"></i> KATEGORI & UKURAN</a>
-                    <ul>
-                        <li><a href="<?= site_url('kategori'); ?>""> <i class="fas fa-angle-right"></i>KATEGORI </a></li>
-                    </ul>
-                    <ul>
-                        <li><a href="<?= site_url('ukuran'); ?>""> <i class="fas fa-angle-right"></i>UKURAN </a></li>
-                    </ul>
-                </li>
-                <li><a><i class="fas fa-shopping-cart"></i>ITEM</a></li>
-                <li><a><i class="fas fa-exchange-alt"></i>TRANSAKSI</a>
-                    <ul>
-                        <li>
-                            <a href="#"><i class="fas fa-file-alt"></i>ORDER</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-file-alt"></i>KONFIRMASI PEMBAYARAN</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fas fa-file-alt"></i>INVOICE</a>
-                        </li>
+                    <a href="#misc" aria-expanded="false" data-toggle="collapse"><i class="fas fa-filter"></i>Misc</a>
+                    <ul id="misc" class="collapse list-unstyled ">
+                        <li><a href="<?= site_url('kategori'); ?>"><i class="fas fa-angle-right"></i>Kategori </a></li>
+                        <li><a href="<?= site_url('ukuran'); ?>"><i class="fas fa-angle-right"></i>Ukuran </a></li>
+                        <li><a href="<?= site_url('seri'); ?>"><i class="fas fa-angle-right"></i>Seri </a></li>
                     </ul>
                 </li>
-                <li><a href="<?= site_url('customers'); ?>"> <i class="fa fa-users"></i>PELANGGAN </a>
-                    <ul>
+                <li><a href="#item" aria-expanded="false" data-toggle="collapse"><i class="fas fa-shopping-cart"></i>Item</a>
+                    <ul id="item" class="collapse list-unstyled">
+                        <li><a href="<?= site_url('item'); ?>"><i class="fas fa-angle-right"></i>Semua</a></li>
+                    <?php foreach ($this->kategori->get_all() as $kat): ?>
+                        <li><a href="<?= site_url('item/by/' . $kat->k_kode); ?>"><i class="fas fa-angle-right"></i><?= $kat->k_nama ;?></a></li>
+                    <?php endforeach; ?>
+                    </ul>
+                </li>
+                <li><a href="#transaksi" aria-expanded="false" data-toggle="collapse"><i class="fas fa-exchange-alt"></i>Transaksi</a>
+                    <ul id="transaksi" class="collapse list-unstyled">
+                        <li>
+                            <a href="#"><i class="fas fa-file-alt"></i>Order</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-file-alt"></i>Konfirmasi Pembayaran</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-file-alt"></i>Invoice</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#pelanggan" aria-expanded="false" data-toggle="collapse"><i class="fa fa-users"></i>Pelanggan </a>
+                    <ul id="pelanggan" class="collapse list-unstyled">
                         <li>
                             <a href="<?= site_url('customers/by_vip'); ?>"><i class="fas fa-user"></i>VIP</a>
                         </li>
                         <li>
-                            <a href="<?= site_url('customers/by_reseller'); ?>"><i class="fas fa-user"></i>RESELLER</a>
+                            <a href="<?= site_url('customers/by_reseller'); ?>"><i class="fas fa-user"></i>Reseller</a>
                         </li>
                     </ul>
                 </li>
@@ -57,10 +63,10 @@
             </h5>
             <ul id="side-admin-menu" class="side-menu list-unstyled">
                 <li>
-                    <a href="<?= site_url('users'); ?>"><i class="fa fa-users"></i>PENGGUNA ADMIN
+                    <a href="<?= site_url('users'); ?>"><i class="fa fa-users"></i>Pengguna Admin
                     </a>
                 </li>
-                <li><a href="#"><i class="fa fa-cogs"></i>OPSI </a></li>
+                <li><a href="#"><i class="fa fa-cogs"></i>Opsi </a></li>
             </ul>
         </div>
     </div>

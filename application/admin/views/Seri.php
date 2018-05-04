@@ -64,6 +64,7 @@
 
     <br>
     <section>
+
         <?php if (isset($_SESSION['validation']) && $_SESSION['validation'] != ""): ?>
             <div class="col">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -99,12 +100,12 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h2><i class="fa fa-users"></i> Pengguna Admin</h2>
+                            <h2><i class="fas fa-filter"></i> No Seri</h2>
                         </div>
                         <div class="col-sm-2">
-                            <a tooltip data-toggle="modal" title="Tambah Admin" href="#" onclick="tambah()"
-                               data-target="#crud" class="btn btn-sm btn-primary btn-block"><i
-                                        class="fas fa-user-plus"></i></a>
+                            <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
+                               onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i
+                                        class="fas fa-plus"></i></a>
                         </div>
                     </div>
 
@@ -115,29 +116,21 @@
                             <thead>
                             <tr>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">IP Address</th>
-                                <th scope="col">Login terakhir</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if ($users != NULL): ?>
-                                <?php foreach ($users as $user): ?>
+                            <?php if ($seris != NULL): ?>
+                                <?php foreach ($seris as $seri): ?>
                                     <tr>
-                                        <td><?= $user->p_nama; ?></td>
-                                        <td><?= $user->p_username; ?></td>
-                                        <td><?= $user->p_email; ?></td>
-                                        <td><?= $user->p_ipaddr; ?></td>
-                                        <td><?= $user->p_login_terakhir; ?></td>
+                                        <td><?= $seri->s_nama; ?></td>
                                         <td class="text-center">
-                                            <a tooltip data-toggle="modal" title="Ubah User" href="#"
+                                            <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
                                                onclick="edit($(this))" data-target="#crud"
-                                               data-id="<?= $user->p_kode; ?>"><i class="far fa-edit"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Hapus User" href="#"
+                                               data-id="<?= $seri->s_kode; ?>"><i class="far fa-edit"></i></a> |
+                                            <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $user->p_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                               data-id="<?= $seri->s_kode; ?>"><i class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -145,7 +138,6 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
 
@@ -159,7 +151,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('users/tambah'); ?>");
+                bodymodal.load("<?= site_url('seri/tambah'); ?>");
             }
 
             function edit(data) {
@@ -168,7 +160,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('users/ubah/'); ?>" + id);
+                bodymodal.load("<?= site_url('seri/ubah/'); ?>" + id);
             }
 
             function detil(data) {
@@ -177,13 +169,13 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('users/detil/'); ?>" + id);
+                bodymodal.load("<?= site_url('seri/detil/'); ?>" + id);
             }
 
             function hapus(data) {
                 d = data;
                 id = d.attr('data-id');
-                $('a#hapus').attr('href', "<?= site_url('users/hapus/'); ?>" + id);
+                $('a#hapus').attr('href', "<?= site_url('seri/hapus/'); ?>" + id);
             }
 
             // ------------------------------------------------------ //
@@ -223,7 +215,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="crud"><i class="fa fa-users"></i> Pengguna Admin</h2>
+                <h2 class="modal-title" id="crud"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -238,7 +230,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="hapus"><i class="fa fa-users"></i> Pengguna Admin</h2>
+                <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

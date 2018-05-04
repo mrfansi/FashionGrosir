@@ -101,4 +101,25 @@ class Kategori extends MY_Controller
             }
         }
     }
+
+    public  function hapus($id)
+    {
+        $data = new stdClass();
+
+        $kategori = $this->kategori->where('k_kode', $id)->delete();
+        if ($kategori)
+        {
+            $data->berhasil = 'Data Kategori berhasil dihapus';
+            $this->session->set_flashdata('berhasil', $data->berhasil);
+
+            redirect('kategori');
+        }
+        else
+        {
+            $data->gagal = 'Data Kategori gagal dihapus';
+            $this->session->set_flashdata('berhasil', $data->gagal);
+
+            redirect('kategori');
+        }
+    }
 }
