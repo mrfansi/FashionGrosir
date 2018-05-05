@@ -137,7 +137,10 @@
                                                data-id="<?= $item->i_kode; ?>"><i class="far fa-edit"></i></a> |
                                             <a tooltip data-toggle="modal" title="Tambah QTY <?= $title_page; ?>" href="#"
                                                onclick="tambah_qty($(this))" data-target="#crud"
-                                               data-id="<?= $item->i_kode; ?>"><i class="far fa-plus-square"></i></a> |
+                                               data-id="<?= $item->i_kode; ?>"><i class="fas fa-cart-plus"></i></a> |
+                                            <a tooltip data-toggle="modal" title="Tambah Foto <?= $title_page; ?>" href="#"
+                                               onclick="tambah_foto($(this))" data-target="#crudfoto"
+                                               data-id="<?= $item->i_kode; ?>"><i class="fas fa-images"></i></a> |
                                             <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
                                                data-id="<?= $item->i_kode; ?>"><i class="far fa-trash-alt"></i></a>
@@ -163,6 +166,13 @@
                 bodymodal = modal.find('div.modal-body');
 
                 bodymodal.load("<?= site_url('item/tambah'); ?>");
+            }
+
+            function tambah_foto() {
+                modal = $('#crudfoto');
+                bodymodal = modal.find('div.modal-body');
+
+                bodymodal.load("<?= site_url('item_img'); ?>");
             }
 
             function edit(data) {
@@ -237,6 +247,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="crud"><i class="fas fa-shopping-cart"></i> <?= $title_page; ?></h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="crudfoto" tabindex="-1" role="dialog" aria-labelledby="crudfoto" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="crud"><i class="far fa-image"></i> Foto</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

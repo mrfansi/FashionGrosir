@@ -8,7 +8,7 @@ $url = site_url('item/tambah_qty/' . $kode);
     <input type="hidden" name="id" value="<?= $kode; ?>">
     <div class="form-group">
         <label for="qty">QTY</label>
-        <input type="text" class="form-control" name="qty" placeholder="Input Nama" required>
+        <input type="text" class="form-control" name="qty" placeholder="Input Jmlh QTY" required>
         <p>
             <?= form_error('nama'); ?>
         </p>
