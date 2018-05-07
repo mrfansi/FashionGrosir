@@ -40,15 +40,6 @@
     <script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/plugins/piexif.min.js"
-            type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/plugins/sortable.min.js"
-            type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/plugins/purify.min.js"
-            type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/themes/fa/theme.min.js"></script>
     <!-- Main File-->
     <script src="<?= base_url('assets/js/front.js'); ?>"></script>
     <script src="<?= base_url('assets/js/menu.js'); ?>"></script>
@@ -78,6 +69,7 @@
 
     <br>
     <section>
+
         <?php if (isset($_SESSION['validation']) && $_SESSION['validation'] != ""): ?>
             <div class="col">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -113,12 +105,12 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h2><i class="fa fa-users"></i> <?= $title_page; ?></h2>
+                            <h2><i class="fas fa-filter"></i> Warna</h2>
                         </div>
                         <div class="col-sm-2">
                             <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
                                onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i
-                                        class="fas fa-user-plus"></i></a>
+                                        class="fas fa-plus"></i></a>
                         </div>
                     </div>
 
@@ -128,38 +120,22 @@
                         <table id="tables" class="table table-sm">
                             <thead>
                             <tr>
-                                <th scope="col">Tipe</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">IP Address</th>
-                                <th scope="col">Login terakhir</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if ($customers != NULL): ?>
-                                <?php foreach ($customers as $customer): ?>
+                            <?php if ($warnas != NULL): ?>
+                                <?php foreach ($warnas as $warna): ?>
                                     <tr>
-                                        <td>
-                                            <?php if ($customer->p_tipe == 1): ?>
-                                                VIP
-                                            <?php elseif ($customer->p_tipe == 2): ?>
-                                                Reseller
-                                            <?php endif; ?>
-                                        </td>
-                                        <td><?= $customer->p_nama; ?></td>
-                                        <td><?= $customer->p_username; ?></td>
-                                        <td><?= $customer->p_email; ?></td>
-                                        <td><?= $customer->p_ipaddr; ?></td>
-                                        <td><?= $customer->p_login_terakhir; ?></td>
+                                        <td><?= $warna->w_nama; ?></td>
                                         <td class="text-center">
                                             <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
                                                onclick="edit($(this))" data-target="#crud"
-                                               data-id="<?= $customer->p_kode; ?>"><i class="far fa-edit"></i></a> |
+                                               data-id="<?= $warna->w_kode; ?>"><i class="far fa-edit"></i></a> |
                                             <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $customer->p_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                               data-id="<?= $warna->w_kode; ?>"><i class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -167,7 +143,6 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
 
@@ -181,7 +156,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('customers/tambah'); ?>");
+                bodymodal.load("<?= site_url('warna/tambah'); ?>");
             }
 
             function edit(data) {
@@ -190,7 +165,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('customers/ubah/'); ?>" + id);
+                bodymodal.load("<?= site_url('warna/ubah/'); ?>" + id);
             }
 
             function detil(data) {
@@ -199,13 +174,13 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('customers/detil/'); ?>" + id);
+                bodymodal.load("<?= site_url('warna/detil/'); ?>" + id);
             }
 
             function hapus(data) {
                 d = data;
                 id = d.attr('data-id');
-                $('a#hapus').attr('href', "<?= site_url('customers/hapus/'); ?>" + id);
+                $('a#hapus').attr('href', "<?= site_url('warna/hapus/'); ?>" + id);
             }
 
             // ------------------------------------------------------ //
@@ -229,7 +204,6 @@
                 }, 5000);
             });
         </script>
-
     </section>
     <footer class="main-footer">
         <div class="container-fluid">
@@ -246,7 +220,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="crud"><i class="fa fa-users"></i> <?= $title_page; ?></h2>
+                <h2 class="modal-title" id="crud"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -261,7 +235,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="hapus"><i class="fa fa-users"></i> <?= $title_page; ?></h2>
+                <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

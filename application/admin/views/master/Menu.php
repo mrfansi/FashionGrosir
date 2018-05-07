@@ -22,6 +22,7 @@
                         <li><a href="<?= site_url('kategori'); ?>"><i class="fas fa-angle-right"></i>Kategori </a></li>
                         <li><a href="<?= site_url('ukuran'); ?>"><i class="fas fa-angle-right"></i>Ukuran </a></li>
                         <li><a href="<?= site_url('seri'); ?>"><i class="fas fa-angle-right"></i>Seri </a></li>
+                        <li><a href="<?= site_url('warna'); ?>"><i class="fas fa-angle-right"></i>Warna </a></li>
                     </ul>
                 </li>
                 <li><a href="#item" aria-expanded="false" data-toggle="collapse"><i class="fas fa-shopping-cart"></i>Item</a>
@@ -35,18 +36,21 @@
                 <li><a href="#transaksi" aria-expanded="false" data-toggle="collapse"><i class="fas fa-exchange-alt"></i>Transaksi</a>
                     <ul id="transaksi" class="collapse list-unstyled">
                         <li>
-                            <a href="#"><i class="fas fa-file-alt"></i>Order</a>
+                            <a href="<?= site_url('order'); ?>"><i class="fas fa-file-alt"></i>Order</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-file-alt"></i>Konfirmasi Pembayaran</a>
+                            <a href="<?= site_url('order/konfirmasi'); ?>"><i class="fas fa-file-alt"></i>Konfirmasi Pembayaran</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-file-alt"></i>Invoice</a>
+                            <a href="<?= site_url('order/invoice'); ?>"><i class="fas fa-file-alt"></i>Invoice</a>
                         </li>
                     </ul>
                 </li>
                 <li><a href="#pelanggan" aria-expanded="false" data-toggle="collapse"><i class="fa fa-users"></i>Pelanggan </a>
                     <ul id="pelanggan" class="collapse list-unstyled">
+                        <li>
+                            <a href="<?= site_url('customers'); ?>"><i class="fas fa-user"></i>Semua</a>
+                        </li>
                         <li>
                             <a href="<?= site_url('customers/by_vip'); ?>"><i class="fas fa-user"></i>VIP</a>
                         </li>

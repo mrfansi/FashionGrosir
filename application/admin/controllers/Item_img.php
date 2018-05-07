@@ -24,7 +24,6 @@ class Item_img extends MY_Controller
         $this->load->view('Foto', $data);
     }
 
-
     public function simpan()
     {
         // create object
@@ -86,13 +85,34 @@ class Item_img extends MY_Controller
         }
     }
 
-    public function tambah()
+    public function set_default($item_kode, $id)
     {
         $data = new stdClass();
-        $data->title = 'Fashion Grosir | Foto > Tambah Foto';
-        $data->submit = 'Simpan';
-        $data->kode = $this->item_img->guid();
-        $this->load->view('CRUD_Foto', $data);
+        $this->item_img->where_i_kode($item_kode)->update(array(
+            'ii_default'     => 0
+        ));
+
+        $foto = $this->item_img->where_ii_kode($id)->update(array(
+           'ii_default'     => 1
+        ));
+
+        if ($foto)
+        {
+            $data->berhasil = 'Data Foto berhasil diperbaharui';
+            $this->session->set_flashdata('berhasil', $data->berhasil);
+
+            redirect('item');
+        }
+    }
+
+    public function tambah($item_kode)
+    {
+        $data = new stdClass();
+        $data->title = 'Fashion Grosir | Foto';
+        $data->title_page = 'Foto';
+        $data->item_imgs = $this->item_img->where('i_kode', $item_kode)->get_all();
+        $data->item_kode = $item_kode;
+        $this->load->view('Foto', $data);
     }
 
     public function detil($id)
@@ -118,17 +138,17 @@ class Item_img extends MY_Controller
     {
         $data = new stdClass();
 
-        $item_img = $this->item_img->where('p_kode', $id)->delete();
+        $item_img = $this->item_img->where('ii_kode', $id)->delete();
         if ($item_img) {
             $data->berhasil = 'Data Foto berhasil dihapus';
             $this->session->set_flashdata('berhasil', $data->berhasil);
 
-            redirect('item_img');
+            redirect('item');
         } else {
             $data->gagal = 'Data Foto gagal dihapus';
             $this->session->set_flashdata('berhasil', $data->gagal);
 
-            redirect('item_img');
+            redirect('item');
         }
     }
 

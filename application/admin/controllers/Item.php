@@ -17,6 +17,7 @@ class Item extends MY_Controller
         $this->load->model('Item_kategori_m', 'item_kategori');
         $this->load->model('Seri_m', 'seri');
         $this->load->model('Ukuran_m', 'ukuran');
+        $this->load->model('Warna_m', 'warna');
 
 
     }

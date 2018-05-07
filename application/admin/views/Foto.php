@@ -1,3 +1,4 @@
+
 <?php if (isset($_SESSION['validation']) && $_SESSION['validation'] != ""): ?>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <?php echo $_SESSION['validation']; ?>
@@ -23,17 +24,16 @@
         </button>
     </div>
 <?php endif; ?>
-<div class="table-responsive">
-    <label>Upload Image</label>
-    <div class="input-group">
-            <span class="input-group-btn">
-                <span class="btn btn-default btn-file">
-                    Browse… <input type="file" id="imgInp">
-                </span>
-            </span>
-        <input type="text" class="form-control" readonly>
+<?= form_open_multipart('upload/do_upload'); ?>
+    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+    <input type="hidden" name="item_kode" value="<?= $item_kode ?>">
+    <div class="form-group">
+        <label>Upload</label>
+        <input id="images" name="images[]" type="file" class="file" data-preview-file-type="text" multiple>
     </div>
-    <img id='img-upload'/>
+</form>
+<br>
+<div class="table-responsive">
     <table id="tables" class="table table-sm">
         <thead>
         <tr>
@@ -48,11 +48,11 @@
             <?php foreach ($item_imgs as $img): ?>
                 <tr>
                     <td><?= $img->ii_nama; ?></td>
-                    <td><?= $img->ii_url; ?></td>
-                    <td><?= $img->ii_default; ?></td>
+                    <td><img src="<?= base_url('upload/' . $img->ii_url); ?>" alt="<?= $img->ii_nama; ?>" height="100" width="100"></td>
+                    <td><?= $img->ii_default == 0 ? '<i class="fas fa-times"></i>' : '<i class="fas fa-check"></i>'; ?></td>
                     <td class="text-center">
-                        <a tooltip href="#" onclick="utama($(this))" data-id="<?= $img->ii_kode; ?>"><i
-                                    class="fas fa-wrench"></i></a>
+                        <a tooltip href="<?= site_url('item_img/set_default/' . $img->i_kode . '/' . $img->ii_kode); ?>" title="Set default" onclick="utama($(this))" data-id="<?= $img->ii_kode; ?>"><i
+                                    class="fas fa-wrench"></i></a> |
                         <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                            onclick="hapus($(this))" data-target="#hapus"
                            data-id="<?= $img->ii_kode; ?>"><i class="far fa-trash-alt"></i></a>
@@ -63,8 +63,6 @@
         </tbody>
     </table>
 </div>
-
-
 <script>
     // ------------------------------------------------------ //
     // Modal CRUD
@@ -107,7 +105,7 @@
     function hapus(data) {
         d = data;
         id = d.attr('data-id');
-        $('a#hapus').attr('href', "<?= site_url('item/hapus/'); ?>" + id);
+        $('a#hapus').attr('href', "<?= site_url('item_img/hapus/'); ?>" + id);
     }
 
     // ------------------------------------------------------ //
@@ -130,4 +128,17 @@
             }
         }, 5000);
     });
+
+    // ------------------------------------------------------ //
+    // Fileinput
+    // ------------------------------------------------------ //
+    // initialize with defaults
+    $("#images").fileinput({
+        uploadAsync: false,
+        maxFileCount: 5,
+        showUpload: true,
+        showRemove: true,
+    });
 </script>
+</body>
+</html>

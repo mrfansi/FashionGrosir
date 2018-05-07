@@ -25,7 +25,7 @@ if ($submit == 'Ubah')
     <input type="hidden" name="id" value="<?= $id; ?>">
     <div class="form-group">
         <label for="tipe">Tipe</label>
-        <select name="tipe" id="tipe" class="form-control">
+        <select name="tipe" id="tipe" class="form-control" required>
             <option value="" <?= $tipe == '' ? 'selected' : ''; ?>>Pilih Tipe</option>
             <option value="1" <?= $tipe == 1 ? 'selected' : ''; ?>>VIP</option>
             <option value="2" <?= $tipe == 2 ? 'selected' : ''; ?>>Reseller</option>

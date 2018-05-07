@@ -12,6 +12,10 @@
     <!-- Font Awesome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
           integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all"
+          rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all"
+          rel="stylesheet" type="text/css">
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
     <!-- Google fonts - Roboto -->
@@ -44,6 +48,7 @@
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
     <!-- Main File-->
     <script src="<?= base_url('assets/js/front.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/menu.js'); ?>"></script>
 </head>
 <body>
 <?php include 'master/Menu.php'; ?>

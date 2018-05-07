@@ -9,6 +9,10 @@
     <meta name="robots" content="all,follow">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/css/fileinput.min.css" media="all"
+          rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all"
+          rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
           integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
@@ -36,8 +40,18 @@
     <script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/plugins/piexif.min.js"
+            type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/plugins/sortable.min.js"
+            type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/plugins/purify.min.js"
+            type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/themes/fa/theme.min.js"></script>
     <!-- Main File-->
     <script src="<?= base_url('assets/js/front.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/menu.js'); ?>"></script>
 </head>
 <body>
 <?php include 'master/Menu.php'; ?>
@@ -103,8 +117,7 @@
                         </div>
                         <div class="col-sm-2">
                             <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
-                               onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i
-                                        class="fas fa-user-plus"></i></a>
+                               onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i class="fas fa-plus"></i></a>
                         </div>
                     </div>
 
@@ -135,10 +148,12 @@
                                             <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
                                                onclick="edit($(this))" data-target="#crud"
                                                data-id="<?= $item->i_kode; ?>"><i class="far fa-edit"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Tambah QTY <?= $title_page; ?>" href="#"
+                                            <a tooltip data-toggle="modal" title="Tambah QTY <?= $title_page; ?>"
+                                               href="#"
                                                onclick="tambah_qty($(this))" data-target="#crud"
                                                data-id="<?= $item->i_kode; ?>"><i class="fas fa-cart-plus"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Tambah Foto <?= $title_page; ?>" href="#"
+                                            <a tooltip data-toggle="modal" title="Tambah Foto <?= $title_page; ?>"
+                                               href="#"
                                                onclick="tambah_foto($(this))" data-target="#crudfoto"
                                                data-id="<?= $item->i_kode; ?>"><i class="fas fa-images"></i></a> |
                                             <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
@@ -168,11 +183,14 @@
                 bodymodal.load("<?= site_url('item/tambah'); ?>");
             }
 
-            function tambah_foto() {
+            function tambah_foto(data) {
+                d = data;
+                id = d.attr('data-id');
+
                 modal = $('#crudfoto');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('item_img'); ?>");
+                bodymodal.load("<?= site_url('item_img/tambah/'); ?>" + id);
             }
 
             function edit(data) {
@@ -243,7 +261,7 @@
     </footer>
 </div>
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="crud"><i class="fas fa-shopping-cart"></i> <?= $title_page; ?></h2>
@@ -257,7 +275,7 @@
     </div>
 </div>
 <div class="modal fade" id="crudfoto" tabindex="-1" role="dialog" aria-labelledby="crudfoto" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="crud"><i class="far fa-image"></i> Foto</h2>

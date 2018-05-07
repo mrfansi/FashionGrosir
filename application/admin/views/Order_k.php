@@ -40,15 +40,6 @@
     <script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/plugins/piexif.min.js"
-            type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/plugins/sortable.min.js"
-            type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/plugins/purify.min.js"
-            type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/themes/fa/theme.min.js"></script>
     <!-- Main File-->
     <script src="<?= base_url('assets/js/front.js'); ?>"></script>
     <script src="<?= base_url('assets/js/menu.js'); ?>"></script>
@@ -113,12 +104,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h2><i class="fa fa-users"></i> <?= $title_page; ?></h2>
-                        </div>
-                        <div class="col-sm-2">
-                            <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
-                               onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i
-                                        class="fas fa-user-plus"></i></a>
+                            <h2><i class="fas fa-file-alt"></i> Konfirmasi Pembayaran</h2>
                         </div>
                     </div>
 
@@ -128,38 +114,45 @@
                         <table id="tables" class="table table-sm">
                             <thead>
                             <tr>
-                                <th scope="col">Tipe</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">IP Address</th>
-                                <th scope="col">Login terakhir</th>
-                                <th scope="col" class="text-center">Aksi</th>
+                                <th scope="col">No. Order</th>
+                                <th scope="col">Nama Rek</th>
+                                <th scope="col">No Rek</th>
+                                <th scope="col">Bank</th>
+                                <th scope="col">Nominal</th>
+                                <th scope="col">Bukti</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" class="text-center">Konfirmasi</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if ($customers != NULL): ?>
-                                <?php foreach ($customers as $customer): ?>
+                            <?php if ($orders != NULL): ?>
+                                <?php foreach ($orders as $order): ?>
                                     <tr>
+                                        <td><?= $order->a_kode; ?></td>
+                                        <td><?= $order->ob_nama_rek; ?></td>
+                                        <td><?= $order->ob_no_rek; ?></td>
+                                        <td><?= $order->ob_bank_nama; ?></td>
+                                        <td><?= $order->ob_nominal; ?></td>
+                                        <td><?= $order->ob_foto; ?></td>
                                         <td>
-                                            <?php if ($customer->p_tipe == 1): ?>
-                                                VIP
-                                            <?php elseif ($customer->p_tipe == 2): ?>
-                                                Reseller
+                                            <?php if ($order->o_status == 1): ?>
+                                                <div class="text-warning">MENUNGGU KONFIRMASI ADMIN</div>
+                                            <?php elseif ($order->o_status == 2): ?>
+                                                <div class="text-success">SUDAH DIBAYAR</div>
+                                            <?php elseif ($order->o_status == 3): ?>
+                                                <div class="text-success">DIKIRIM</div>
+                                            <?php elseif ($order->o_status == 4): ?>
+                                                <div class="text-success">SUKSES</div>
+                                            <?php elseif ($order->o_status == 5): ?>
+                                                <div class="text-danger">BATAL</div>
+                                            <?php else: ?>
+                                                <div class="text-danger">BELUM DIBAYAR</div>
                                             <?php endif; ?>
                                         </td>
-                                        <td><?= $customer->p_nama; ?></td>
-                                        <td><?= $customer->p_username; ?></td>
-                                        <td><?= $customer->p_email; ?></td>
-                                        <td><?= $customer->p_ipaddr; ?></td>
-                                        <td><?= $customer->p_login_terakhir; ?></td>
                                         <td class="text-center">
-                                            <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
-                                               onclick="edit($(this))" data-target="#crud"
-                                               data-id="<?= $customer->p_kode; ?>"><i class="far fa-edit"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
-                                               onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $customer->p_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                            <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
+                                               onclick="proses($(this))" data-target="#proses"
+                                               data-id="<?= $order->ob_kode; ?>"><i class="fas fa-check"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -167,7 +160,6 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
 
@@ -177,35 +169,10 @@
             // Modal CRUD
             // ------------------------------------------------------ //
 
-            function tambah() {
-                modal = $('#crud');
-                bodymodal = modal.find('div.modal-body');
-
-                bodymodal.load("<?= site_url('customers/tambah'); ?>");
-            }
-
-            function edit(data) {
+            function proses(data) {
                 d = data;
                 id = d.attr('data-id');
-                modal = $('#crud');
-                bodymodal = modal.find('div.modal-body');
-
-                bodymodal.load("<?= site_url('customers/ubah/'); ?>" + id);
-            }
-
-            function detil(data) {
-                d = data;
-                id = d.attr('data-id');
-                modal = $('#crud');
-                bodymodal = modal.find('div.modal-body');
-
-                bodymodal.load("<?= site_url('customers/detil/'); ?>" + id);
-            }
-
-            function hapus(data) {
-                d = data;
-                id = d.attr('data-id');
-                $('a#hapus').attr('href', "<?= site_url('customers/hapus/'); ?>" + id);
+                $('a#proses').attr('href', "<?= site_url('order/konfirmasi/'); ?>" + id + "/proses");
             }
 
             // ------------------------------------------------------ //
@@ -229,7 +196,6 @@
                 }, 5000);
             });
         </script>
-
     </section>
     <footer class="main-footer">
         <div class="container-fluid">
@@ -246,7 +212,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="crud"><i class="fa fa-users"></i> <?= $title_page; ?></h2>
+                <h2 class="modal-title" id="crud"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -257,20 +223,20 @@
     </div>
 </div>
 
-<div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
+<div class="modal fade" id="proses" tabindex="-1" role="dialog" aria-labelledby="proses" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="hapus"><i class="fa fa-users"></i> <?= $title_page; ?></h2>
+                <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Apakah anda yakin ingin menghapus data ini?</p>
+                <p>Apakah anda yakin?</p>
             </div>
             <div class="modal-footer">
-                <a id="hapus" href="#" class="btn btn-primary btn-danger">Hapus</a>
+                <a id="proses" href="#" class="btn btn-primary btn-primary">Proses</a>
             </div>
         </div>
     </div>
