@@ -13,8 +13,11 @@ class Item extends MY_Controller
         parent::__construct();
         $this->load->model('Item_m', 'item');
         $this->load->model('Item_qty_m', 'item_qty');
-        $this->load->model('Kategori_m', 'kategori');
         $this->load->model('Item_kategori_m', 'item_kategori');
+        $this->load->model('Item_warna_m', 'item_warna');
+        $this->load->model('Item_seri_m', 'item_seri');
+        $this->load->model('Item_ukuran_m', 'item_ukuran');
+        $this->load->model('Kategori_m', 'kategori');
         $this->load->model('Seri_m', 'seri');
         $this->load->model('Ukuran_m', 'ukuran');
         $this->load->model('Warna_m', 'warna');
@@ -32,6 +35,16 @@ class Item extends MY_Controller
         $this->load->view('Item', $data);
     }
 
+    public function by($kategori_kode)
+    {
+        $data = new stdClass();
+        $data->title = 'Fashion Grosir | Item';
+        $data->title_page = 'Item';
+        $data->total_item = $this->item->count_rows();
+        $data->items = $this->item->select_sum_qty_where($kategori_kode);
+        $this->load->view('Item', $data);
+    }
+
 
     public function simpan()
     {
@@ -42,13 +55,13 @@ class Item extends MY_Controller
         $id = $this->input->post('id');
 
         // get user from database where guid
-        $item = $this->item->where_p_kode($id)->get();
+        $item = $this->item->where_i_kode($id)->get();
 
         if ($item) {
             $item = $this->item->where_i_kode($id)->update(array(
                 'i_nama' => $this->input->post('nama'),
-                'i_hrg_vip' => $this->input->post('harga_vip'),
-                'i_hrg_reseller' => $this->input->post('harga_reseller'),
+                'i_hrg_vip' => $this->input->post('hrg_vip'),
+                'i_hrg_reseller' => $this->input->post('hrg_reseller'),
                 'i_deskripsi' => $this->input->post('deskripsi'),
                 'updated_by' => $_SESSION['username'],
             ));
@@ -71,19 +84,37 @@ class Item extends MY_Controller
             $item = $this->item->insert(array(
                 'i_kode' => $this->input->post('id'),
                 'i_nama' => $this->input->post('nama'),
-                'i_hrg_vip' => $this->input->post('harga_vip'),
-                'i_hrg_reseller' => $this->input->post('harga_reseller'),
+                'i_hrg_vip' => $this->input->post('hrg_vip'),
+                'i_hrg_reseller' => $this->input->post('hrg_reseller'),
                 'i_deskripsi' => $this->input->post('deskripsi'),
 //                'created_by'      => $_SESSION['username'],
             ));
 
             $item_kategori = $this->item_kategori->insert(array(
-                'item_kategori_kode' => $this->item_kategori->guid(),
+                'ik_kode' => $this->item_kategori->guid(),
                 'i_kode' => $this->input->post('id'),
                 'k_kode' => $this->input->post('kategori'),
             ));
 
-            if ($item && $item_kategori) {
+            $item_seri = $this->item_seri->insert(array(
+                'is_kode' => $this->item_seri->guid(),
+                'i_kode' => $this->input->post('id'),
+                's_kode' => $this->input->post('seri'),
+            ));
+
+            $item_warna = $this->item_warna->insert(array(
+                'iw_kode' => $this->item_warna->guid(),
+                'i_kode' => $this->input->post('id'),
+                'w_kode' => $this->input->post('warna'),
+            ));
+
+            $item_ukuran = $this->item_ukuran->insert(array(
+                'iu_kode' => $this->item_ukuran->guid(),
+                'i_kode' => $this->input->post('id'),
+                'u_kode' => $this->input->post('ukuran'),
+            ));
+
+            if ($item && $item_kategori && $item_seri && $item_warna && $item_ukuran) {
                 $data->berhasil = 'Data Item berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $data->berhasil);
 
@@ -159,7 +190,7 @@ class Item extends MY_Controller
     {
         $data = new stdClass();
 
-        $item = $this->item->where('p_kode', $id)->delete();
+        $item = $this->item->where('i_kode', $id)->delete();
         if ($item) {
             $data->berhasil = 'Data Item berhasil dihapus';
             $this->session->set_flashdata('berhasil', $data->berhasil);

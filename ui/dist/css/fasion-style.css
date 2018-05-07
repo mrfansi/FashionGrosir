@@ -1,3 +1,6 @@
+/* Good Design is Good Business */
+/* EazyDev.Team */
+
 body {
 	background-color: #fefefe;
 }
@@ -21,8 +24,8 @@ body {
 }
 
 .f-padding-header {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .f-color {
@@ -54,6 +57,10 @@ body {
 	color: #f9f9f9;
 }
 
+.f-new-footer ul li a{
+	color: red;
+}
+
 .f-logo {
 	margin-left: 10px;
 }
@@ -70,7 +77,49 @@ body {
 .f-nav-margin:hover {
 	background-color: ;
 	opacity: 0.6;
+}
 
+.f-footer-new {
+	font-size: 15px;
+	padding: 3px;
+}
+
+.f-logo-footer {
+	/*margin-left: 20%;*/
+}
+
+/*C*/
+
+.f-footer-bg {
+	margin-top: 20px;
+	padding-top: 20px;
+	/*padding-bottom: 20px;*/
+	background-color: #F8F9FA;
+	
+}
+
+.f-margin-nav {
+	padding-bottom: 20px;
+}
+
+.f-font-footer {
+	color: #F06292;
+}
+
+/*.f-hr-footer {
+	width: 100%;
+}*/
+
+.f-sosmed {
+	font-size: 30px;
+	margin: 10px;
+	/*border: 2px solid red;*/
+	border-radius: 50%;
+	color: #F06292;
+}
+
+.f-sosmed:hover {
+	color: #F4427D;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -78,7 +127,7 @@ body {
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
-	color: black;
+	color: #444;
 }
 
 .f-button-color {
@@ -177,6 +226,10 @@ input .form-control {
 	color: #F06292;
 }
 
+.f-hot-font {
+	font-size: 1.1rem;
+}
+
 .f-bg-clear {
 	background-color: red;
 }
@@ -199,6 +252,9 @@ input .form-control {
 	margin-top: 0px
 }*/
 
+.f-title-margin {
+	margin-bottom: 10px;
+}
 
 .f-no-background {
   background-color: transparent;
@@ -274,6 +330,15 @@ p.f-font-detail {
 	color: #777777;
 }
 
+.f-font-detail a {
+	text-decoration: none;
+	color: #F06292;
+}
+
+.f-font-detail a:hover {
+	color: #555;
+}
+
 .f-detail {
 	color: #444444;
 }
@@ -284,6 +349,14 @@ p.f-font-detail {
 
 .f-margin-detail {
 	margin-top: 15px;
+}
+
+.f-width-variasi {
+	width: 40%;
+}
+
+.f-width-variasi-2 {
+	width: 25%;
 }
 
 .f-sidebar-menu {
@@ -321,7 +394,7 @@ p.f-font-detail {
 }
 
 img.mr-3 {
-	width: 130px;
+	/*width: 130px;*/
 	height: 100px;
 
 }
@@ -345,6 +418,8 @@ img.mr-3 {
 .f-border-padding p {
 	margin-bottom: 0px;
 }
+
+/*S*/
 
 .f-icon-center {
 	margin-top: 5px;
@@ -433,6 +508,8 @@ label:hover {
 	margin-top: 30px;
 }
 
+/*R*/
+
 img.f-img-sidebar {
 	width: 80px;
 	height: 70px;
@@ -513,7 +590,7 @@ img.f-img-sidebar {
 	color: black;
 }
 
-.r-upload-btn-wrapper {
+.r-upload-f-button-font-wrapper {
   position: relative;
   overflow: hidden;
   display: inline-block;
@@ -687,3 +764,303 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 .dropdown:hover .dropbtn {
     /*background-color: #3e8e41;*/
 }
+
+
+/* CSS Style - Halaman profil - Profil saya */
+
+.r-layout-row {
+	margin-top: 3%;
+}
+.r-layout-vertical-navbar {
+	width: 100%;
+	height: 100%;
+}
+
+.r-ul-style-profile {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.r-li-style-profile {
+	text-decoration: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+
+
+
+}
+
+
+.r-li-style-profile a {
+	text-decoration: none;
+	color: #F06292;
+	display: block;
+	padding: 8px 16px;
+	border-radius: 4px;
+	
+}
+
+.r-li-style-profile-active a {
+	background-color: #F06292;
+	color: white;
+	
+}
+
+.r-li-style-profile a:hover {
+	background-color: #F06292;
+	color: white;
+}
+
+.r-layout-konten-profile {
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.r-font-konten-profile {
+	color: #F06292;
+
+}
+
+.r-style-title-konten-profile {
+	color: #F06292;
+	text-align: center;
+	margin-top: 2%;
+	margin-bottom: 2%;
+
+}
+
+.r-btn-konten-profile {
+	background-color: #F06292;
+	color: white;
+
+}
+
+.r-btn-konten-profile:hover {
+	background-color: white;
+	color: #F06292;
+	border: 1px solid #F06292;
+	border-radius: 4px;
+}
+
+.r-btn-konten-profile {
+	background-color: #F06292;
+	color: white;
+	font-size: 10px;
+
+}
+
+
+/* Style Kontak CSS **/
+
+
+.r-layout-konten-kontak {
+	margin-left:15%;
+	margin-right: 15%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.r-ulist-kontak {
+	list-style: none;
+	font-size: 25px;
+
+}
+
+.r-link-kontak {
+	padding-top: 2%;
+}
+.r-link-kontak a {
+	text-decoration: none;
+	font-size: 18px;
+	color: #F06292; 
+
+}
+
+.r-ikon-kontak i{
+	font-size: 50px;
+	color: #F06292;
+}
+
+.r-layoutlist-kontak {
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.r-vl-kontak {
+	border-right: 1px solid #F06292;
+	padding-left: 10%;
+}
+
+
+.r-layout-kontakkanan {
+	margin-left: 5%;
+	margin-bottom: 3%;
+	margin-top: 3%;
+	margin-right: 3%;
+
+	
+}
+
+.r-layout-kontakkanan-font {
+	color: #F06292;
+}
+
+.btn-kontak-submit {
+	background-color: #F06292;
+	color: white;
+}
+
+.r-title-kontak {
+	color: #F06292;
+	text-align: center;
+	margin-top: 3%;
+}
+
+.r-title-kontak-bawah {
+	color: #F06292;
+	text-align: center;
+	margin-top: 3%;
+	font-size: 20px
+}
+
+.r-padding-ikon-social {
+	margin-right: 39%;
+	margin-left: 39%;
+
+}
+
+.r-padding-ikon-social li {
+	display: inline-block;
+	font-size: 30px;
+	padding-left: 2%;
+	padding-right: 2%;
+	
+}
+
+.r-padding-ikon-social li a i {
+	color: #F06292;
+}
+
+
+@media only screen and (max-width: 1024px) {
+.r-padding-ikon-social {
+	margin-right:35%;
+	margin-left: 35%;
+}
+
+
+}
+@media only screen and (max-width: 768px) {
+	
+	.r-link-kontak a {
+	text-decoration: none;
+	font-size: 13px;
+	color: #F06292; 
+}
+
+	.r-ikon-kontak i{
+	font-size: 30px;
+	color: #F06292;
+}
+
+.r-layoutlist-kontak {
+	margin-top: 20%;
+	margin-bottom: 20%;
+}
+.r-padding-ikon-social {
+	margin-right: 30%;
+	margin-left: 30%;
+}
+
+
+}
+
+@media only screen and (max-width: 321px) {
+	.r-ikon-kontak {
+	text-align: center;
+}
+
+.r-link-kontak {
+	text-align: center;
+}
+.r-vl-kontak {
+	border-right: none;
+}
+.r-kontak-mobile {
+	margin-top: 15%;
+
+}
+
+.r-padding-ikon-social {
+	margin-right: 0%;
+	margin-left: 0%;
+}
+
+}
+
+/* style Alamat Pengiriman **/
+
+
+.r-judul-shipping {
+	color: #F06292;
+	text-align: center;
+	margin-bottom: 3%;
+	margin-top: 1%;
+
+}
+
+.r-pilihan-alamat {
+	margin-right: 32%;
+	margin-left: 32%;
+
+}
+.r-pilihan-alamat li {
+	margin-left: 1%;
+}
+
+.r-pilihan-alamat-font {
+	color: #F06292;
+}
+
+.r-pilihan-alamat-font:hover {
+	background-color: #F06292;
+	color : white;
+}
+
+.r-border-pengiriman {
+	border: 2px solid #F06292;
+	border-radius: 10px;
+	padding: 3%;
+}
+
+.r-layout-pengiriman-dropship {
+	margin-top: 5%;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: #F06292;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination-layout {
+	text-align: right;
+	margin-top: 2%;
+}
+

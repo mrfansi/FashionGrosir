@@ -1,6 +1,6 @@
 
 <?php
-$url = site_url('kategori/simpan');
+$url = site_url('item/simpan');
 if ($submit == 'Ubah')
 {
     $id = $items->i_kode;

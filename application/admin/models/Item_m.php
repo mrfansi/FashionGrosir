@@ -45,11 +45,37 @@ class Item_m extends MY_Model
 
     public function select_sum_qty()
     {
-        $query = $this->db->query("SELECT item.* ,SUM(item_qty.is_qty) qty
-                        FROM item
-                        LEFT JOIN item_qty
-                        ON (item.i_kode = item_qty.i_kode)
-                        GROUP BY item_qty.i_kode;");
+        $query = $this->db->query("SELECT i.*, k.k_nama, s.s_nama, w.w_nama, u.u_nama, SUM(iq.is_qty) qty
+                                    FROM item i
+                                    INNER JOIN item_kategori ik ON i.i_kode = ik.i_kode
+                                    INNER JOIN kategori k ON ik.k_kode = k.k_kode
+                                    INNER JOIN item_seri ise ON i.i_kode = ise.i_kode
+                                    INNER JOIN seri s ON ise.s_kode = s.s_kode
+                                    INNER JOIN item_warna iw ON i.i_kode = iw.i_kode
+                                    INNER JOIN warna w ON iw.w_kode = w.w_kode
+                                    INNER JOIN item_ukuran iu ON i.i_kode = iu.i_kode
+                                    INNER JOIN ukuran u ON iu.u_kode = u.u_kode
+                                    LEFT JOIN item_qty iq ON i.i_kode = iq.i_kode
+                                    GROUP BY iq.i_kode;");
+
+        return $query->result();
+    }
+
+    public function select_sum_qty_where($id)
+    {
+        $query = $this->db->query("SELECT i.*, k.k_nama, s.s_nama, w.w_nama, u.u_nama, SUM(iq.is_qty) qty
+                                    FROM item i
+                                    INNER JOIN item_kategori ik ON i.i_kode = ik.i_kode
+                                    INNER JOIN kategori k ON ik.k_kode = k.k_kode
+                                    INNER JOIN item_seri ise ON i.i_kode = ise.i_kode
+                                    INNER JOIN seri s ON ise.s_kode = s.s_kode
+                                    INNER JOIN item_warna iw ON i.i_kode = iw.i_kode
+                                    INNER JOIN warna w ON iw.w_kode = w.w_kode
+                                    INNER JOIN item_ukuran iu ON i.i_kode = iu.i_kode
+                                    INNER JOIN ukuran u ON iu.u_kode = u.u_kode
+                                    LEFT JOIN item_qty iq ON i.i_kode = iq.i_kode
+                                    WHERE k.k_kode = '$id'
+                                    GROUP BY iq.i_kode;");
 
         return $query->result();
     }

@@ -115,6 +115,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">No. Order</th>
+                                <th scope="col">Tgl. Order</th>
                                 <th scope="col">Nama Pelanggan</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Status Order</th>
@@ -127,6 +128,7 @@
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
                                         <td><?= $order->a_kode; ?></td>
+                                        <td><?= $order->created_at; ?></td>
                                         <td><?= $order->p_nama; ?></td>
                                         <td><?= $order->total; ?></td>
                                         <td>
@@ -148,15 +150,15 @@
                                             <a href="#">Lihat</a>
                                         </td>
                                         <td>
-                                            <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
+                                            <button class="btn btn-sm btn-primary" <?= $order->o_status == 1 ? '' : 'disabled'; ?> tooltip data-toggle="modal" title="Konfirmasi Pembayaran" href="#"
                                                onclick="konfirmasi($(this))" data-target="#konfirmasi"
-                                               data-id="<?= $order->o_kode; ?>" <?= $order->o_status == 1 ? '' : 'disabled'; ?>><i class="fas fa-check"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
+                                               data-id="<?= $order->o_kode; ?>"><i class="fas fa-check"></i></button> |
+                                            <button class="btn btn-sm btn-primary" <?= $order->o_status == 2 ? '' : 'disabled'; ?> tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
                                                onclick="proses($(this))" data-target="#crud"
-                                               data-id="<?= $order->o_kode; ?>" <?= $order->o_status == 2 ? '' : 'disabled'; ?>><i class="fas fa-exchange-alt"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Konfirmasi Pengiriman" href="#"
+                                               data-id="<?= $order->o_kode; ?>"><i class="fas fa-exchange-alt"></i></button> |
+                                            <button class="btn btn-sm btn-primary" tooltip data-toggle="modal" title="Konfirmasi Pengiriman" href="#"
                                                onclick="pengiriman($(this))" data-target="#crud"
-                                               data-id="<?= $order->o_kode; ?>" <?= $order->o_status == 3 ? '' : 'disabled'; ?>><i class="fas fa-truck-moving"></i></a>
+                                               data-id="<?= $order->o_kode; ?>" <?= $order->o_status == 3 ? '' : 'disabled'; ?>><i class="fas fa-truck-moving"></i></button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

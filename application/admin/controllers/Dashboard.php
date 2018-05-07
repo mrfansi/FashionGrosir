@@ -33,8 +33,8 @@ class Dashboard extends MY_Controller
     private function set_totalitem()
     {
         // load model
-        $this->load->model('Pengguna','customer');
-        $total = $this->customer->count_rows();
+        $this->load->model('Item_m','item');
+        $total = $this->item->count_rows();
         return $total;
     }
 
@@ -49,16 +49,16 @@ class Dashboard extends MY_Controller
     private function set_totalorder()
     {
         // load model
-        $this->load->model('Pengguna','customer');
-        $total = $this->customer->count_rows();
+        $this->load->model('Order_m','order');
+        $total = $this->order->count_rows();
         return $total;
     }
 
     private function set_totalinv()
     {
         // load model
-        $this->load->model('Pengguna','customer');
-        $total = $this->customer->count_rows();
+        $this->load->model('Order_m','order');
+        $total = $this->order->where_o_status(4)->count_rows();
         return $total;
     }
 

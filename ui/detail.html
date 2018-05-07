@@ -24,11 +24,11 @@
     <!-- End Alert Promo -->
 
     <!-- Header -->
-      <div class="container-fluid f-color">
+      <div class="container f-color">
         <div class="row f-padding-header">
 
         <!-- Brand -->
-          <div class="col-md-3">
+          <div class="col-lg-3 col-md-4">
             <a href="index.html" class="navbar-brand f-logo">
               <img src="assets/brand/citrus-logo.png" alt="">
             </a>
@@ -36,8 +36,8 @@
         <!-- End Brand -->
 
         <!-- Search -->
-         <div class="col-md-6">
-            <form class="form" >
+          <div class="col-lg-6 col-md-8">
+             <form class="form" >
               <div class="input-group">
                   <input class="form-control r-style-search f-input-shadow" type="text" placeholder="Cari Produk" aria-label="Search" id="search">
                   <div class="input-group-addon r-search-box">
@@ -49,17 +49,31 @@
           <!-- End Search -->
 
           <!-- User -->
-          <div class="col-md-3">
+          <div class="col-lg-3 col-md-12">
             <div class="r-header-user">
-            <!-- <a  class="r-link-konfirm" href=""> Konfirmasi Pesanan </a> -->
-            <a href="#" class="fa fa-shopping-cart"></a>
-            <a href="#" class="fa fa-user"></a>
+              <button type="button" class="btn f-color">
+                <a  class="" href="">Order </a><span class="badge badge-light">9</span>
+                <span class="sr-only">unread messages</span>
+              </button>
+              <!-- <a  class="r-link-konfirm" href=""> Konfirmasi Pesanan </a> -->
+              <a href="#" class="fa fa-shopping-cart"></a>
+              <div class="dropdown">
+                <button class="dropbtn"><a href="login.html" class="fa fa-user"></a></button>
+                <div class="dropdown-content">
+                  <a href="#">Login</a>
+                  <a href="#">Registrasi</a>
+                  <hr style="margin: 0px;">
+                  <a href="#">Logout</a>
+                </div>
+              </div>
             </div>
           </div>
-           <!-- End User -->
+          <!-- End User -->
         </div>
+      </div>
         
       <!-- Navigasi Bar -->
+      <div class="container-fluid f-color">
         <hr class="f-hr">
         <div class="row">
           <nav class="navbar navbar-expand-lg navbar-light f-nav f-color">
@@ -126,8 +140,8 @@
           <div class="col-lg-4 col-md-6 col-sm-12 col-12">
             <img src="assets/img/kaos.jpg" alt="..." class="img-thumbnail f-img-detail">
           </div>
-          <div class="col">
-            <h1 class="f-title-detail">SUPREME Undercover Public Enemy</h1>
+          <div class="col-lg-8">
+            <h1 class="f-title-detail">Anzel Peplum (ZP01-ZP04)</h1>
             <hr>
             <p class="f-font-detail">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iste adipisci modi deleniti iusto illo vero, cupiditate quod iure consectetur, cum porro, blanditiis veritatis accusantium error voluptates placeat eius autem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro non ducimus, sunt consequuntur rem enim saepe quaerat sed quidem, exercitationem, voluptatum vel dolores pariatur culpa minus officia cum nam. Maiores.</p>
             <div class="f-detail">
@@ -140,10 +154,36 @@
               <h1 class="f-harga">IDR 125.000,-</h1>
               <hr>
             </div>
+            <div class="col">
+              <div class="form-group f-width-variasi">
+                <p>Variasi Warna</p>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>-- Pilih Warna --</option>
+                      <option>Hitam</option>
+                      <option>Putih</option>
+                      <option>Biru</option>
+                      <option>Merah</option>
+                    </select>
+                  </div>
+            </div>
+            <div class="col">
+              <form method="post" action="">
+                <div>
+                    <p>Jumlah</p>
+                    <input type="text" name="french-hens" id="french-hens" value="3">
+                </div>
+              </form>
+            </div>
+            <div class="col f-width-variasi-2">
+              <a href="troli.html" class="btn btn-primary btn-lg btn-block f-button-font f-button-detail">Tambah</a>
+            </div>
+            <br>  
+            <p class="f-font-detail">Kategori : <a href="#">Blazer</a>, <a href="#">Jumsuit</a>, <a href="#">Kemeja</a></p>
           </div>
+          
         </div>
           
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-12 col-12 f-ukuran-center f-margin-detail">
             <h5 class="f-detail">Pilih Ukuran</h5>
             <div class="row">
@@ -197,9 +237,9 @@
               <a href=""><span class="border bg-danger f-color-detail"></span></a>
               <a href=""><span class="border bg-warning f-color-detail"></span></a>
           </div>
-        </div>
+        </div> -->
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6 col-8 f-ukuran-center f-margin-detail">
               <div class="row">
                 <div class="col">
@@ -214,45 +254,190 @@
                     </select>
                   </div>
                 </div>
-                <div class="col">
-                  <a href="troli.html" class="btn btn-primary btn-lg btn-block f-button-font f-button-detail">Tambah</a>
-                </div>
               </div>
             </div>
             <div class="col-lg-4 col-md-8 col-sm-6 col-4 f-margin-detail">
              
             </div>
-          </div>
+          </div> -->
         </div>
     <!-- End Content -->
+      <br>
 
-    <!-- Nav Footer -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light f-footer">
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item f-nav-margin">
-              <a class="nav-link" href="#">Tentang Kami</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-              <a class="nav-link" href="#">Hubungi Kami</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-              <a class="nav-link" href="#">Menjadi Mitra</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-              <a class="nav-link" href="faq.html">FAQ</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-              <a class="nav-link" href="#">Bantuan</a>
-            </li>
-          </ul>
+        <div class="container">
+          <hr>
+          <h5 class="f-title-color f-title-margin">Hot Item <i class="fa fa-angle-right fa-lg f-icon-margin f-font-detail"></i></h5>
+          
+          <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+              <div class="card f-bottom">
+                <a href="detail.html"><img class="card-img-top" src="assets/img/kaos.jpg" alt="Card image cap"></a>
+                <div class="card-body">
+                  <h5 class="card-title f-hot-font">Nama Produk</h5>
+                  <p class="card-text f-title-harga">Rp. 50.000,-</p>
+                  <!-- <a href="#" class="btn btn-primary f-button-font">Tambah Ke Keranjang</a> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+              <div class="card f-bottom">
+                <a href="detail.html"><img class="card-img-top" src="assets/img/kaos.jpg" alt="Card image cap"></a>
+                <div class="card-body">
+                  <h5 class="card-title f-hot-font">Nama Produk</h5>
+                  <p class="card-text f-title-harga">Rp. 50.000,-</p>
+                  <!-- <a href="#" class="btn btn-primary f-button-font">Tambah Ke Keranjang</a> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+              <div class="card f-bottom">
+                <a href="detail.html"><img class="card-img-top" src="assets/img/kaos.jpg" alt="Card image cap"></a>
+                <div class="card-body">
+                  <h5 class="card-title f-hot-font">Nama Produk</h5>
+                  <p class="card-text f-title-harga">Rp. 50.000,-</p>
+                  <!-- <a href="#" class="btn btn-primary f-button-font">Tambah Ke Keranjang</a> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+              <div class="card f-bottom">
+                <a href="detail.html"><img class="card-img-top" src="assets/img/kaos.jpg" alt="Card image cap"></a>
+                <div class="card-body">
+                  <h5 class="card-title f-hot-font">Nama Produk</h5>
+                  <p class="card-text f-title-harga">Rp. 50.000,-</p>
+                  <!-- <a href="#" class="btn btn-primary f-button-font">Tambah Ke Keranjang</a> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+              <div class="card f-bottom">
+                <a href="detail.html"><img class="card-img-top" src="assets/img/kaos.jpg" alt="Card image cap"></a>
+                <div class="card-body">
+                  <h5 class="card-title f-hot-font">Nama Produk</h5>
+                  <p class="card-text f-title-harga">Rp. 50.000,-</p>
+                  <!-- <a href="#" class="btn btn-primary f-button-font">Tambah Ke Keranjang</a> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+              <div class="card f-bottom">
+                <a href="detail.html"><img class="card-img-top" src="assets/img/kaos.jpg" alt="Card image cap"></a>
+                <div class="card-body">
+                  <h5 class="card-title f-hot-font">Nama Produk</h5>
+                  <p class="card-text f-title-harga">Rp. 50.000,-</p>
+                  <!-- <a href="#" class="btn btn-primary f-button-font">Tambah Ke Keranjang</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </nav>
-    <!-- End Nav Footer -->
 
     <!-- Footer -->
+      <div class="container-fluid navbar-light f-footer-bg" role="alert">
+        <div class="row">
+          <div class="col-xl-4 col-lg-3 col-md-4 col-sm-5 col-12">
+            <div class="text-center f-bottom">
+              <a href="index.html" class="navbar-brand f-logo-footer">
+                <img src="assets/brand/citrus-logo.png" alt="">
+              </a>
+            </div> 
+          </div>
+          <div class="col-xl-8 col-lg-9 col-md-8 col-sm-7 col-12">
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 f-margin-nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Tentang Kami</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Hubungi Kami</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Menjadi Reseler</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">FAQ</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Bantuan</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 f-margin-nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Blazer/Jaket</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Legging</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Hijaber</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="faq.html">Dress</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Leg Jumsuit</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Setelan</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Piama</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 f-margin-nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Fasion Promo</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Fasion Sale</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Hot Produk</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Produk Baru</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 f-margin-nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Syarat & Ketentuan</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Konfirmasi Pembayaran</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Status Order</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container f-margin-nav">
+          <hr class="f-hr-footer">
+          <div class="text-center">
+            <h6 class="f-font-footer">Ikuti Kami</h6>
+            <a href=""><i class="fa fa-facebook fa-lg f-sosmed"></i></a>
+            <a href=""><i class="fa fa-twitter fa-lg f-sosmed"></i></a>
+            <a href=""><i class="fa fa-instagram fa-lg f-sosmed"></i></a>
+            <a href=""><i class="fa fa-thumbs-o-up fa-lg f-sosmed"></i></a>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid text-center clear-footer" role="alert">
-        &copy; Copyright Fashion Grosir 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
+        &copy; Copyright Fasion Grosir 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
+        <!-- <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-love"></i></a> -->
       </div>
     <!-- End Footer -->
 

@@ -25,11 +25,11 @@
     <!-- End Alert Promo -->
 
     <!-- Header -->
-      <div class="container-fluid f-color">
+      <div class="container f-color">
         <div class="row f-padding-header">
 
         <!-- Brand -->
-          <div class="col-md-3">
+          <div class="col-lg-3 col-md-4">
             <a href="index.html" class="navbar-brand f-logo">
               <img src="assets/brand/citrus-logo.png" alt="">
             </a>
@@ -37,7 +37,7 @@
         <!-- End Brand -->
 
         <!-- Search -->
-         <div class="col-md-6">
+          <div class="col-lg-6 col-md-8">
              <form class="form" >
               <div class="input-group">
                   <input class="form-control r-style-search f-input-shadow" type="text" placeholder="Cari Produk" aria-label="Search" id="search">
@@ -50,18 +50,32 @@
           <!-- End Search -->
 
           <!-- User -->
-          <div class="col-md-3">
+          <div class="col-lg-3 col-md-12">
             <div class="r-header-user">
-            <!-- <a  class="r-link-konfirm" href=""> Konfirmasi Pesanan </a> -->
-            <a href="#" class="fa fa-shopping-cart"></a>
-            <a href="#" class="fa fa-user"></a>
+              <button type="button" class="btn f-color">
+                <a  class="" href="">Order </a><span class="badge badge-light">9</span>
+                <span class="sr-only">unread messages</span>
+              </button>
+              <!-- <a  class="r-link-konfirm" href=""> Konfirmasi Pesanan </a> -->
+              <a href="#" class="fa fa-shopping-cart"></a>
+              <div class="dropdown">
+                <button class="dropbtn"><a href="login.html" class="fa fa-user"></a></button>
+                <div class="dropdown-content">
+                  <a href="#">Login</a>
+                  <a href="#">Registrasi</a>
+                  <hr style="margin: 0px;">
+                  <a href="#">Logout</a>
+                </div>
+              </div>
             </div>
           </div>
-           <!-- End User -->
+          <!-- End User -->
         </div>
+      </div>
         
       <!-- Navigasi Bar -->
-          <hr class="f-hr">
+      <div class="container-fluid f-color">
+        <hr class="f-hr">
         <div class="row">
           <nav class="navbar navbar-expand-lg navbar-light f-nav f-color">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -195,99 +209,287 @@
       <div class="container-fluid">
         <h5>Pengiriman Saya</h5>
       
-        <div class="row">
+          <div class="row">
           <div class="col-lg-8 col-md-12">
 
             <div class="border f-border-padding">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="media border f-border-padding">
-                    <i class="fa fa-check fa-lg f-icon-margin f-icon-center"></i>
-                    <div class="media-body">
-                      <h5 class="mt-0">Nur Hidayat</h5>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, magni, veniam. In ab aliquam assumenda, esse vel dolorem, eius. Consectetur repellendus enim error qui nihil sunt esse veritatis illum beatae.</p>
+              <h5 class="r-judul-shipping">Alamat Pengirim / Billing Address</h5>
+
+              <!-- Pilihan Billing -->
+              <ul class="nav nav-pills mb-3 r-pilihan-alamat" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active r-pilihan-alamat-font" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Kirim Atas Nama Saya</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link  r-pilihan-alamat-font" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Dropship</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active r-border-pengiriman " id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="media border f-border-padding">
+                        <i class="fa fa-check fa-lg f-icon-margin f-icon-center"></i>
+                        <div class="media-body">
+                          <h5 class="mt-0">Nur Hidayat</h5>
+                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, magni, veniam. In ab aliquam assumenda, esse vel dolorem, eius. Consectetur repellendus enim error qui nihil sunt esse veritatis illum beatae.</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="col-lg-12">
-                  <form>
-
-                    <div class="form-group">
-                      <label for="exampleFormControlInput1">Nama Email</label>
-                      <input type="email" class="form-control f-border-form" id="exampleFormControlInput1" placeholder="nurhidayat@gmail.com">
-                    </div>
-
-                    <br>
-                    <h6 class="f-text-alamat">Alamat Pengiriman</h6>
-                    <div class="form-group">
-                      <label class="f-test" for="exampleFormControlInput1">Alamat Jalan</label>
-                      <input type="email" class="form-control f-border-form" id="exampleFormControlInput1">
-                    </div>
-
-                  <div class="row form-group">
-                    <div class="col">
-                      <label for="exampleFormControlInput1">Nama Depan</label>
-                      <input type="text" class="form-control f-border-form" placeholder="">
-                    </div>
-                    <div class="col">
-                      <label for="exampleFormControlInput1">Nama Belakang</label>
-                      <input type="text" class="form-control f-border-form" placeholder="">
-                    </div>
-                  </div>
-
-                  <div class="row form-group">
-                    <div class="col">
-                      <label for="inputState">Provinsi</label>
-                      <select id="inputState" class="form-control f-border-form">
-                        <option selected></option>
-                        <option>...</option>
-                      </select>
-                    </div>
-                    <div class="col">
-                      <label for="inputState">Kota</label>
-                      <select id="inputState" class="form-control f-border-form">
-                        <option selected></option>
-                        <option>...</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="row form-group">
-                    <div class="col">
-                      <label for="inputState">Kecamatan</label>
-                      <select id="inputState" class="form-control f-border-form">
-                        <option selected></option>
-                        <option>...</option>
-                      </select>
-                    </div>
-                    <div class="col">
-                      <label for="exampleFormControlInput1">Kode Pos</label>
-                      <input type="text" class="form-control f-border-form" placeholder="">
-                    </div>
-                  </div>
-
-                  <div class="row form-group">
-                    <div class="col-6">
-                      <label for="exampleFormControlInput1">No Telpon / HP</label>
-                      <input type="text" class="form-control f-border-form f-f" placeholder="">
-                    </div>
-                  </div>
-
-                  <div class="row form-group">
-                    <div class="col-6">
-                      <label for="exampleFormControlTextarea1">Keterangan Tambahan</label>
-                      <textarea class="form-control f-border-form" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                  </div>
+                <div class="tab-pane fade r-border-pengiriman " id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                   
-                  <button type="button" class="btn btn-primary btn-sm f-button-font">Simpan</button>
-                </form>
+                  <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <a class="nav-item nav-link active r-pilihan-alamat-font" id="nav-home-tab" data-toggle="tab" href="#alamatlainpengirimtersimpan" role="tab" aria-controls="nav-home" aria-selected="true">Alamat Lain Tersimpan</a>
+                          <a class="nav-item nav-link r-pilihan-alamat-font" id="nav-profile-tab" data-toggle="tab" href="#alamatlainpengirimtambah" role="tab" aria-controls="nav-profile" aria-selected="false">Tambah Alamat Lain</a>
+                        </div>
+                      </nav>
+                      <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active  r-layout-pengiriman-dropship" id="alamatlainpengirimtersimpan" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                          <div class="form-group container">
+                            <label for="sel1">Pilih Alamat :</label>
+                            <select class="form-control" id="sel1">
+                              <option>Ricky Ariansyah - Cengkareng Garis Keras</option>
+                              <option>Caesario - Cilandak Pinggir Kali</option>
+                              <option>Muhammad Irfan - Emperan Toko </option>
+                            </select>
+                          </div>
+
+                        </div>
+                        <div class="tab-pane fade r-layout-pengiriman-dropship" id="alamatlainpengirimtambah" role="tabpanel" aria-labelledby="nav-profile-tab">
+                          
+                          <!-- Tambah Alamat pengirim dropship -->
+                          <div class="row container">
+                                <div class="col-lg-12">
+                                  <form>
+
+                                    <h6 class="f-text-alamat">Alamat Pengiriman</h6>
+
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput1">Nama Email</label>
+                                      <input type="email" class="form-control f-border-form" id="exampleFormControlInput1" placeholder="">
+                                    </div>
+
+                                   
+
+                                  <div class="row form-group">
+                                    <div class="col">
+                                      <label for="exampleFormControlInput1">Nama Depan</label>
+                                      <input type="text" class="form-control f-border-form" placeholder="">
+                                    </div>
+                                    <div class="col">
+                                      <label for="exampleFormControlInput1">Nama Belakang</label>
+                                      <input type="text" class="form-control f-border-form" placeholder="">
+                                    </div>
+                                  </div>
+
+
+                                    <div class="form-group">
+                                      <label class="f-test" for="exampleFormControlInput1">Alamat Jalan</label>
+                                      <input type="email" class="form-control f-border-form" id="exampleFormControlInput1">
+                                    </div>
+
+                                  <div class="row form-group">
+                                    <div class="col">
+                                      <label for="inputState">Provinsi</label>
+                                      <select id="inputState" class="form-control f-border-form">
+                                        <option selected></option>
+                                        <option>...</option>
+                                      </select>
+                                    </div>
+                                    <div class="col">
+                                      <label for="inputState">Kota</label>
+                                      <select id="inputState" class="form-control f-border-form">
+                                        <option selected></option>
+                                        <option>...</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="row form-group">
+                                    <div class="col">
+                                      <label for="inputState">Kecamatan</label>
+                                      <select id="inputState" class="form-control f-border-form">
+                                        <option selected></option>
+                                        <option>...</option>
+                                      </select>
+                                    </div>
+                                    <div class="col">
+                                      <label for="exampleFormControlInput1">Kode Pos</label>
+                                      <input type="text" class="form-control f-border-form" placeholder="">
+                                    </div>
+                                  </div>
+
+                                  <div class="row form-group">
+                                    <div class="col-6">
+                                      <label for="exampleFormControlInput1">No Telpon / HP</label>
+                                      <input type="text" class="form-control f-border-form f-f" placeholder="">
+                                    </div>
+                                  </div>
+
+                                  <div class="row form-group">
+                                    <div class="col-6">
+                                      <label for="exampleFormControlTextarea1">Keterangan Tambahan</label>
+                                      <textarea class="form-control f-border-form" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                  </div>
+                                  
+                                  <button type="button" class="btn btn-primary btn-sm f-button-font">Simpan</button>
+                                </form>
+                                </div>
+                              </div>
+                        </div>
+                        
+                      </div>
+
+
+                </div>
+              </div>
+
+
+              
+              <br>
+               <hr>
+              <br>
+               
+               <h5 class="r-judul-shipping">Alamat Penerima / Shipping Address</h5>
+                <ul class="nav nav-pills mb-3 r-pilihan-alamat" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active r-pilihan-alamat-font" id="pills-home-tab" data-toggle="pill" href="#penerimaalamatsaya" role="tab" aria-controls="pills-home" aria-selected="true">Kirim Ke Alamat Saya</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link r-pilihan-alamat-font" id="pills-profile-tab" data-toggle="pill" href="#penerimadropship" role="tab" aria-controls="pills-profile" aria-selected="false">Dropship</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active r-border-pengiriman" id="penerimaalamatsaya" role="tabpanel" aria-labelledby="pills-home-tab">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="media border f-border-padding">
+                        <i class="fa fa-check fa-lg f-icon-margin f-icon-center"></i>
+                        <div class="media-body">
+                          <h5 class="mt-0">Nur Hidayat</h5>
+                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, magni, veniam. In ab aliquam assumenda, esse vel dolorem, eius. Consectetur repellendus enim error qui nihil sunt esse veritatis illum beatae.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade r-border-pengiriman " id="penerimadropship" role="tabpanel" aria-labelledby="pills-profile-tab">
+                     <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                          <a class="nav-item nav-link active r-pilihan-alamat-font" id="nav-home-tab" data-toggle="tab" href="#alamatlaintersimpan" role="tab" aria-controls="nav-home" aria-selected="true">Alamat Lain Tersimpan</a>
+                          <a class="nav-item nav-link r-pilihan-alamat-font" id="nav-profile-tab" data-toggle="tab" href="#alamatlaintambah" role="tab" aria-controls="nav-profile" aria-selected="false">Tambah Alamat Lain</a>
+                        </div>
+                      </nav>
+                      <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active  r-layout-pengiriman-dropship" id="alamatlaintersimpan" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                          <div class="form-group container">
+                            <label for="sel1">Pilih Alamat :</label>
+                            <select class="form-control" id="sel1">
+                              <option>Ricky Ariansyah - Cengkareng Garis Keras</option>
+                              <option>Caesario - Cilandak Pinggir Kali</option>
+                              <option>Muhammad Irfan - Emperan Toko </option>
+                            </select>
+                          </div>
+
+                        </div>
+                        <div class="tab-pane fade r-layout-pengiriman-dropship" id="alamatlaintambah" role="tabpanel" aria-labelledby="nav-profile-tab">
+                          
+                          <!-- Tambah Alamat penerima dropship -->
+                          <div class="row container">
+                                <div class="col-lg-12">
+                                  <form>
+
+                                    <h6 class="f-text-alamat">Alamat Pengiriman</h6>
+
+                                    <div class="form-group">
+                                      <label for="exampleFormControlInput1">Nama Email</label>
+                                      <input type="email" class="form-control f-border-form" id="exampleFormControlInput1" placeholder="">
+                                    </div>
+
+                                   
+
+                                  <div class="row form-group">
+                                    <div class="col">
+                                      <label for="exampleFormControlInput1">Nama Depan</label>
+                                      <input type="text" class="form-control f-border-form" placeholder="">
+                                    </div>
+                                    <div class="col">
+                                      <label for="exampleFormControlInput1">Nama Belakang</label>
+                                      <input type="text" class="form-control f-border-form" placeholder="">
+                                    </div>
+                                  </div>
+
+
+                                    <div class="form-group">
+                                      <label class="f-test" for="exampleFormControlInput1">Alamat Jalan</label>
+                                      <input type="email" class="form-control f-border-form" id="exampleFormControlInput1">
+                                    </div>
+
+                                  <div class="row form-group">
+                                    <div class="col">
+                                      <label for="inputState">Provinsi</label>
+                                      <select id="inputState" class="form-control f-border-form">
+                                        <option selected></option>
+                                        <option>...</option>
+                                      </select>
+                                    </div>
+                                    <div class="col">
+                                      <label for="inputState">Kota</label>
+                                      <select id="inputState" class="form-control f-border-form">
+                                        <option selected></option>
+                                        <option>...</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="row form-group">
+                                    <div class="col">
+                                      <label for="inputState">Kecamatan</label>
+                                      <select id="inputState" class="form-control f-border-form">
+                                        <option selected></option>
+                                        <option>...</option>
+                                      </select>
+                                    </div>
+                                    <div class="col">
+                                      <label for="exampleFormControlInput1">Kode Pos</label>
+                                      <input type="text" class="form-control f-border-form" placeholder="">
+                                    </div>
+                                  </div>
+
+                                  <div class="row form-group">
+                                    <div class="col-6">
+                                      <label for="exampleFormControlInput1">No Telpon / HP</label>
+                                      <input type="text" class="form-control f-border-form f-f" placeholder="">
+                                    </div>
+                                  </div>
+
+                                  <div class="row form-group">
+                                    <div class="col-6">
+                                      <label for="exampleFormControlTextarea1">Keterangan Tambahan</label>
+                                      <textarea class="form-control f-border-form" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </div>
+                                  </div>
+                                  
+                                  <button type="button" class="btn btn-primary btn-sm f-button-font">Simpan</button>
+                                </form>
+                                </div>
+                              </div>
+                        </div>
+                        
+                      </div>
                 </div>
               </div>
             </div>
+
+
+
+
           </div>
 
           <div class="col-lg-4 col-md-7 f-font-troli">
@@ -297,7 +499,7 @@
                 <div class="media">
                     <img class="mr-3 f-img-sidebar" src="assets/img/kaos.jpg" alt="Generic placeholder image">
                     <div class="media-body">
-                      <h6 class="mt-0">SUPREME Undercover Public Enemy</h6>
+                      <h6 class="mt-0">Anzel Peplum (ZP01-ZP04)</h6>
                     </div>
                   </div>
               </div>
@@ -315,7 +517,7 @@
                 <div class="media">
                     <img class="mr-3 f-img-sidebar" src="assets/img/kaos.jpg" alt="Generic placeholder image">
                     <div class="media-body">
-                      <h6 class="mt-0">SUPREME Undercover Public Enemy</h6>
+                      <h6 class="mt-0">Anzel Peplum (ZP01-ZP04)</h6>
                     </div>
                   </div>
               </div>
@@ -379,38 +581,118 @@
               <a href="pengiriman.html" class="btn btn-primary btn-lg btn-block f-button-font">Lanjut Metode Pembayaran</a>
           </div>
         </div>
+
+       
+       
       </div>
     <!-- End Content -->
 
 
-    <!-- Nav Footer -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light f-footer">
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item f-nav-margin">
-              <a class="nav-link" href="#">Tentang Kami</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-              <a class="nav-link" href="#">Hubungi Kami</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-              <a class="nav-link" href="#">Menjadi Mitra</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-              <a class="nav-link" href="faq.html">FAQ</a>
-            </li>
-            <li class="nav-item f-nav-margin">
-              <a class="nav-link" href="#">Bantuan</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    <!-- End Nav Footer -->
-
-
     <!-- Footer -->
+      <div class="container-fluid navbar-light f-footer-bg" role="alert">
+        <div class="row">
+          <div class="col-xl-4 col-lg-3 col-md-4 col-sm-5 col-12">
+            <div class="text-cente f-bottom">
+              <a href="index.html" class="navbar-brand f-logo-footer">
+                <img src="assets/brand/citrus-logo.png" alt="">
+              </a>
+            </div> 
+          </div>
+          <div class="col-xl-8 col-lg-9 col-md-8 col-sm-7 col-12">
+            <div class="row">
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 f-margin-nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Tentang Kami</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Hubungi Kami</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Menjadi Reseler</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">FAQ</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Bantuan</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 f-margin-nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Blazer/Jaket</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Legging</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Hijaber</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="faq.html">Dress</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Leg Jumsuit</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Setelan</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Piama</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 f-margin-nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Fasion Promo</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Fasion Sale</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Hot Produk</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Produk Baru</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 f-margin-nav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Syarat & Ketentuan</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Konfirmasi Pembayaran</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link f-footer-new" href="#">Status Order</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container f-margin-nav">
+          <hr class="f-hr-footer">
+          <div class="text-center">
+            <h6 class="f-font-footer">Ikuti Kami</h6>
+            <a href=""><i class="fa fa-facebook fa-lg f-sosmed"></i></a>
+            <a href=""><i class="fa fa-twitter fa-lg f-sosmed"></i></a>
+            <a href=""><i class="fa fa-instagram fa-lg f-sosmed"></i></a>
+            <a href=""><i class="fa fa-thumbs-o-up fa-lg f-sosmed"></i></a>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid text-center clear-footer" role="alert">
-        &copy; Copyright Fashion Grosir 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
+        &copy; Copyright Fasion Grosir 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
         <!-- <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-love"></i></a> -->
       </div>
     <!-- End Footer -->

@@ -127,11 +127,15 @@
                         <table id="tables" class="table table-sm">
                             <thead>
                             <tr>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Hrg VIP</th>
-                                <th scope="col">Hrg Reseller</th>
-                                <th scope="col">Deskripsi</th>
-                                <th scope="col">QTY</th>
+                                <th scope="col" class="text-center">Nama</th>
+                                <th scope="col" class="text-center">Kategori</th>
+                                <th scope="col" class="text-center">Warna</th>
+                                <th scope="col" class="text-center">Ukuran</th>
+                                <th scope="col" class="text-center">Seri</th>
+                                <th scope="col" class="text-center">Hrg VIP</th>
+                                <th scope="col" class="text-center">Hrg Reseller</th>
+                                <th scope="col" class="text-center">Deskripsi</th>
+                                <th scope="col" class="text-center">QTY</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             </thead>
@@ -139,11 +143,15 @@
                             <?php if ($items != NULL): ?>
                                 <?php foreach ($items as $item): ?>
                                     <tr>
-                                        <td><?= $item->i_nama; ?></td>
-                                        <td><?= $item->i_hrg_vip; ?></td>
-                                        <td><?= $item->i_hrg_reseller; ?></td>
-                                        <td><?= $item->i_deskripsi; ?></td>
-                                        <td><?= $item->qty; ?></td>
+                                        <td class="text-center text-danger"><?= $item->i_nama; ?></td>
+                                        <td class="text-center"><?= $item->k_nama; ?></td>
+                                        <td class="text-center"><?= $item->w_nama; ?></td>
+                                        <td class="text-center"><?= $item->u_nama; ?></td>
+                                        <td class="text-center"><?= $item->s_nama; ?></td>
+                                        <td class="text-center"><?= $item->i_hrg_vip; ?></td>
+                                        <td class="text-center"><?= $item->i_hrg_reseller; ?></td>
+                                        <td class="text-center"><?= $item->i_deskripsi; ?></td>
+                                        <td class="text-center"><?= $item->qty; ?></td>
                                         <td class="text-center">
                                             <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
                                                onclick="edit($(this))" data-target="#crud"
