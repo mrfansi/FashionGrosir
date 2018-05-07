@@ -12,6 +12,15 @@ class Kategori extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Kategori_m', 'kategori');
+
+        $cek = $this->kategori->where_k_kode('0')->get();
+        if ($cek == null)
+        {
+            $this->kategori->insert(array(
+                'k_kode'     => 0,
+                'k_nama'     => 'Non Kategori'
+            ));
+        }
     }
 
     public function index()

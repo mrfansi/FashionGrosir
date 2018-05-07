@@ -56,7 +56,7 @@ class Item_m extends MY_Model
                                     INNER JOIN item_ukuran iu ON i.i_kode = iu.i_kode
                                     INNER JOIN ukuran u ON iu.u_kode = u.u_kode
                                     LEFT JOIN item_qty iq ON i.i_kode = iq.i_kode
-                                    GROUP BY iq.i_kode;");
+                                    GROUP BY i.i_kode;");
 
         return $query->result();
     }

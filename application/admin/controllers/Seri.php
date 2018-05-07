@@ -12,6 +12,15 @@ class Seri extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Seri_m', 'seri');
+
+        $cek = $this->seri->where_s_kode('0')->get();
+        if ($cek == null)
+        {
+            $this->seri->insert(array(
+               's_kode'     => 0,
+               's_nama'     => 'Non Seri'
+            ));
+        }
     }
 
     public function index()
