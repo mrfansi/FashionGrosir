@@ -5,11 +5,13 @@
         <div class="sidenav-header d-flex align-items-center justify-content-center">
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
+                <img src="img/avatar-1.jpg" alt="person"
+                     class="img-fluid rounded-circle">
                 <h2 class="h5"><?= $_SESSION['nama']; ?></h2><span>Admin</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
             <div class="sidenav-header-logo"><a href="<?= site_url('dashboard'); ?>"" class="brand-small text-center">
-                    <strong>F</strong><strong class="text-primary">G</strong></a></div>
+                <strong>F</strong><strong class="text-primary">G</strong></a></div>
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
@@ -28,25 +30,29 @@
                 <li><a href="#item" aria-expanded="false" data-toggle="collapse"><i class="fas fa-shopping-cart"></i>Item</a>
                     <ul id="item" class="collapse list-unstyled">
                         <li><a href="<?= site_url('item'); ?>"><i class="fas fa-angle-right"></i>Semua</a></li>
-                    <?php foreach ($this->kategori->get_all() as $kat): ?>
-                        <li><a href="<?= site_url('item/by/' . $kat->k_kode); ?>"><i class="fas fa-angle-right"></i><?= $kat->k_nama ;?></a></li>
-                    <?php endforeach; ?>
+                        <?php foreach ($this->kategori->get_all() as $kat): ?>
+                            <li><a href="<?= site_url('item/by/' . $kat->k_kode); ?>"><i
+                                            class="fas fa-angle-right"></i><?= $kat->k_nama; ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
-                <li><a href="#transaksi" aria-expanded="false" data-toggle="collapse"><i class="fas fa-exchange-alt"></i>Transaksi</a>
+                <li><a href="#transaksi" aria-expanded="false" data-toggle="collapse"><i
+                                class="fas fa-exchange-alt"></i>Transaksi</a>
                     <ul id="transaksi" class="collapse list-unstyled">
                         <li>
                             <a href="<?= site_url('order'); ?>"><i class="fas fa-file-alt"></i>Order</a>
                         </li>
                         <li>
-                            <a href="<?= site_url('order/konfirmasi'); ?>"><i class="fas fa-file-alt"></i>Konfirmasi Pembayaran</a>
+                            <a href="<?= site_url('order/konfirmasi'); ?>"><i class="fas fa-file-alt"></i>Konfirmasi
+                                Pembayaran</a>
                         </li>
                         <li>
                             <a href="<?= site_url('order/invoice'); ?>"><i class="fas fa-file-alt"></i>Invoice</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="#pelanggan" aria-expanded="false" data-toggle="collapse"><i class="fa fa-users"></i>Pelanggan </a>
+                <li><a href="#pelanggan" aria-expanded="false" data-toggle="collapse"><i class="fa fa-users"></i>Pelanggan
+                    </a>
                     <ul id="pelanggan" class="collapse list-unstyled">
                         <li>
                             <a href="<?= site_url('customers'); ?>"><i class="fas fa-user"></i>Semua</a>

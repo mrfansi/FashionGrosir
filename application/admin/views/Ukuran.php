@@ -71,7 +71,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tables" class="table table-sm">
+                        <table id="tables" class="table table-borderless">
                             <thead>
                             <tr>
                                 <th scope="col">Nama</th>

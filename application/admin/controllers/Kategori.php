@@ -67,7 +67,7 @@ class Kategori extends MY_Controller
         if ($kategori)
         {
             $kategori = $this->kategori->where_k_kode($id)->update(array(
-                'k_parent_kode'    => $this->input->post('tipe'),
+                'k_parent_kode'    => $this->input->post('parent'),
                 'k_nama'    => $this->input->post('nama'),
                 'updated_by'        => $_SESSION['username'],
             ));
@@ -90,7 +90,7 @@ class Kategori extends MY_Controller
         {
             $kategori = $this->kategori->insert(array(
                 'k_kode'          => $this->input->post('id'),
-                'k_parent_kode'          => $this->input->post('tipe'),
+                'k_parent_kode'          => $this->input->post('parent'),
                 'k_nama'          => $this->input->post('nama'),
 //                'created_by'      => $_SESSION['username'],
             ));

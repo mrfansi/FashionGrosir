@@ -63,7 +63,7 @@ if ($submit == 'Ubah')
         </p>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+        <button type="submit" class="btn btn-primary btn-block"><?= $submit; ?></button>
     </div>
     <?php if (isset($berhasil)): ?>
         <p class="text-success"><?= $berhasil;?></p>

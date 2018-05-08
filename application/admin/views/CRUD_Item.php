@@ -32,7 +32,7 @@ if ($submit == 'Ubah')
         <div class="col">
             <div class="form-group">
                 <label for="hrg_vip">Harga VIP</label>
-                <input type="text" class="form-control" name="hrg_vip" placeholder="Input Hrg VIP" value="<?= $hrg_vip; ?>" required>
+                <input type="number" class="form-control" name="hrg_vip" placeholder="Input Hrg VIP" value="<?= $hrg_vip; ?>" required>
                 <p>
                     <?= form_error('hrg_vip'); ?>
                 </p>
@@ -41,7 +41,7 @@ if ($submit == 'Ubah')
         <div class="col">
             <div class="form-group">
                 <label for="hrg_reseller">Harga Reseller</label>
-                <input type="text" class="form-control" name="hrg_reseller" placeholder="Input Hrg Reseller" value="<?= $hrg_reseller; ?>" required>
+                <input type="number" class="form-control" name="hrg_reseller" placeholder="Input Hrg Reseller" value="<?= $hrg_reseller; ?>" required>
                 <p>
                     <?= form_error('hrg_reseller'); ?>
                 </p>
@@ -119,7 +119,7 @@ if ($submit == 'Ubah')
         </p>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+        <button type="submit" class="btn btn-primary btn-block"><?= $submit; ?></button>
     </div>
     <?php if (isset($berhasil)): ?>
         <p class="text-success"><?= $berhasil;?></p>

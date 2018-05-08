@@ -71,12 +71,13 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tables" class="table table-sm">
+                        <table id="tables" class="table table-borderless">
                             <thead>
                             <tr>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">IP Address</th>
                                 <th scope="col">Login terakhir</th>
                                 <th scope="col" class="text-center">Aksi</th>
@@ -89,6 +90,7 @@
                                         <td><?= $user->p_nama; ?></td>
                                         <td><?= $user->p_username; ?></td>
                                         <td><?= $user->p_email; ?></td>
+                                        <td><?= $user->p_status == 0 ? 'Aktif' : 'Blocked'; ?></td>
                                         <td><?= $user->p_ipaddr; ?></td>
                                         <td><?= $user->p_login_terakhir; ?></td>
                                         <td class="text-center">

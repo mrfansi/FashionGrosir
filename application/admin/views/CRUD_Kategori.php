@@ -18,8 +18,8 @@ if ($submit == 'Ubah')
     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" name="id" value="<?= $id; ?>">
     <div class="form-group">
-        <label for="tipe">Tipe</label>
-        <select name="tipe" id="tipe" class="form-control">
+        <label for="parent">Parent Kategori</label>
+        <select name="parent" id="parent" class="form-control">
             <option value="0">Root</option>
         </select>
         <p>
@@ -27,14 +27,14 @@ if ($submit == 'Ubah')
         </p>
     </div>
     <div class="form-group">
-        <label for="tipe">Nama</label>
-        <input type="text" class="form-control" name="nama" placeholder="Input Nama" value="<?= $nama; ?>" required>
+        <label for="tipe">Nama Kategori</label>
+        <input type="text" class="form-control" name="nama" placeholder="Input Nama Kategori" value="<?= $nama; ?>" required>
         <p>
             <?= form_error('nama'); ?>
         </p>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+        <button type="submit" class="btn btn-primary btn-block"><?= $submit; ?></button>
     </div>
     <?php if (isset($berhasil)): ?>
         <p class="text-success"><?= $berhasil;?></p>
