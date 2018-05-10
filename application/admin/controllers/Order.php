@@ -28,7 +28,7 @@ class Order extends MY_Controller
     {
         $data = new stdClass();
         $data->title = 'Fashion Grosir | Kofirmasi Order';
-        $data->title_page = 'Konfirmasi Pembayaran';
+        $data->title_page = 'Pembayaran';
         $data->total_order = $this->order->count_rows();
         $data->orders = $this->order->select_orders_bukti(1);
         $this->load->view('Order_k', $data);

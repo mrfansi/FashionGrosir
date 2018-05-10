@@ -6,13 +6,13 @@
  * Time: 18.01
  */
 
-class Item_m extends MY_Model
+class Ukuran_m extends MY_Model
 {
     public function __construct()
     {
-        $this->table = 'item';
-        $this->primary_key = 'i_id';
-        $this->protected = array('i_id', 'created_at', 'update_at');
+        $this->table = 'ukuran';
+        $this->primary_key = 'u_id';
+        $this->protected = array('u_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
 
         $this->has_many['detil'] = 'Item_detil_m';

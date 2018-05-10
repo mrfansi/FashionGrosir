@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/select/css/multi-select.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/fotorama/fotorama.css'); ?>">
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
     <script>
         var base_url = '<?= base_url(); ?>';
@@ -53,6 +54,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/themes/fa/theme.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
     <script src="<?= base_url('assets/vendor/select/js/jquery.multi-select.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/fotorama/fotorama.js'); ?>"></script>
     <!-- Main File-->
     <script src="<?= base_url('assets/js/front.js'); ?>"></script>
     <script src="<?= base_url('assets/js/menu.js'); ?>"></script>

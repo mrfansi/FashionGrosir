@@ -59,7 +59,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h2><i class="fas fa-file-alt"></i> Konfirmasi Pembayaran</h2>
+                            <h2><i class="fas fa-file-alt"></i> Pembayaran</h2>
                         </div>
                     </div>
 
@@ -70,11 +70,6 @@
                             <thead>
                             <tr>
                                 <th scope="col">No. Order</th>
-                                <th scope="col">Nama Rek</th>
-                                <th scope="col">No Rek</th>
-                                <th scope="col">Bank</th>
-                                <th scope="col">Bukti</th>
-                                <th scope="col">Status</th>
                                 <th scope="col">Nominal</th>
                                 <th scope="col" class="text-center">Konfirmasi</th>
                             </tr>
@@ -83,12 +78,44 @@
                             <?php if ($orders != NULL): ?>
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td><?= $order->a_kode; ?></td>
-                                        <td><?= $order->ob_nama_rek; ?></td>
-                                        <td><?= $order->ob_no_rek; ?></td>
-                                        <td><?= $order->ob_bank_nama; ?></td>
-                                        <td><?= $order->ob_foto; ?></td>
-                                        <td>
+                                        <td class="text-danger"><?= $order->a_kode; ?></td>
+                                        <td id="rupiah"><?= $order->ob_nominal; ?></td>
+                                        <td class="text-center">
+                                            <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
+                                               onclick="proses($(this))" data-target="#proses"
+                                               data-id="<?= $order->ob_kode; ?>"><i class="fas fa-check"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><b>No Pemilik Rekening : </b><br>
+                                            <?= $order->ob_no_rek; ?>
+                                        </td>
+                                        <td rowspan="2"><b>Bukti : </b>
+                                            <div class="fotorama"
+                                                 data-nav="false"
+                                                 data-arrows="false"
+                                                 data-click="true"
+                                                 data-swipe="true"
+                                                 data-allowfullscreen="true"
+                                                 data-width="220"
+                                                 data-height="150">
+                                                <img src="http://s.fotorama.io/1.jpg" width="220" height="150">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><b>Nama Pemilik Rekening : </b><br>
+                                            <?= $order->ob_nama_rek; ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><b>Bank : </b><br>
+                                            <?= $order->ob_bank_nama; ?>
+                                        </td>
+                                        <td><b>Status : </b><br>
                                             <?php if ($order->o_status == 1): ?>
                                                 <div class="text-warning">MENUNGGU KONFIRMASI ADMIN</div>
                                             <?php elseif ($order->o_status == 2): ?>
@@ -102,12 +129,6 @@
                                             <?php else: ?>
                                                 <div class="text-danger">BELUM DIBAYAR</div>
                                             <?php endif; ?>
-                                        </td>
-                                        <td id="rupiah"><?= $order->ob_nominal; ?></td>
-                                        <td class="text-center">
-                                            <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
-                                               onclick="proses($(this))" data-target="#proses"
-                                               data-id="<?= $order->ob_kode; ?>"><i class="fas fa-check"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -133,7 +154,7 @@
             // ------------------------------------------------------ //
             // Data table users
             // ------------------------------------------------------ //
-            $('#tables').DataTable();
+            // $('#tables').DataTable();
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();

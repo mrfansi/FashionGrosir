@@ -38,8 +38,7 @@
                             <a href="<?= site_url('order'); ?>"><i class="fas fa-file-alt"></i>Order</a>
                         </li>
                         <li>
-                            <a href="<?= site_url('order/konfirmasi'); ?>"><i class="fas fa-file-alt"></i>Konfirmasi
-                                Pembayaran</a>
+                            <a href="<?= site_url('order/konfirmasi'); ?>"><i class="fas fa-file-alt"></i>Pembayaran</a>
                         </li>
                         <li>
                             <a href="<?= site_url('order/invoice'); ?>"><i class="fas fa-file-alt"></i>Invoice</a>

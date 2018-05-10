@@ -6,13 +6,13 @@
  * Time: 18.01
  */
 
-class Item_m extends MY_Model
+class Seri_m extends MY_Model
 {
     public function __construct()
     {
-        $this->table = 'item';
-        $this->primary_key = 'i_id';
-        $this->protected = array('i_id', 'created_at', 'update_at');
+        $this->table = 'seri';
+        $this->primary_key = 's_id';
+        $this->protected = array('s_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
 
         $this->has_many['detil'] = 'Item_detil_m';

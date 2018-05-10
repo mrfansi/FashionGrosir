@@ -6,13 +6,15 @@
  * Time: 18.01
  */
 
-class Kategori_m extends MY_Model {
+class Orders_m extends MY_Model
+{
     public function __construct()
     {
-        $this->table = 'kategori';
-        $this->primary_key = 'k_id';
-        $this->protected = array('k_id','created_at','update_at');
+        $this->table = 'orders';
+        $this->primary_key = 'o_id';
+        $this->protected = array('o_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
+
         parent::__construct();
     }
 }
