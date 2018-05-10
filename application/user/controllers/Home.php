@@ -10,7 +10,14 @@ class Home extends MY_Controller
 
     public function index()
     {
-        $this->_show_content('Jual Beli Barang harga Grosir', 'Home');
+        // load model
+        $this->load->model('Item_m', 'item');
+
+        $data = new stdClass();
+        $data->title = 'Fashion Grosir | Item';
+        $data->title_page = 'Item';
+        $data->items = $this->item->get_all();
+        $this->load->view('Home', $data);
     }
 }
 

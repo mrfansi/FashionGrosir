@@ -5,8 +5,11 @@
         <div class="sidenav-header d-flex align-items-center justify-content-center">
             <!-- User Info-->
             <div class="sidenav-header-inner text-center">
-                <img src="img/avatar-1.jpg" alt="person"
-                     class="img-fluid rounded-circle">
+                <?php if (isset($_SESSION['profile']) && $_SESSION['profile'] != ""): ?>
+                <img src="<?= base_url('upload/' . $_SESSION['profile']); ?>" alt="person" class="img-fluid rounded-circle">
+                <?php else: ?>
+                <img src="<?= base_url('assets/img/profile.png'); ?>" alt="person" class="img-fluid rounded-circle">
+                <?php endif; ?>
                 <h2 class="h5"><?= $_SESSION['nama']; ?></h2><span>Admin</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
@@ -27,15 +30,7 @@
                         <li><a href="<?= site_url('warna'); ?>"><i class="fas fa-angle-right"></i>Warna </a></li>
                     </ul>
                 </li>
-                <li><a href="#item" aria-expanded="false" data-toggle="collapse"><i class="fas fa-shopping-cart"></i>Item</a>
-                    <ul id="item" class="collapse list-unstyled">
-                        <li><a href="<?= site_url('item'); ?>"><i class="fas fa-angle-right"></i>Semua</a></li>
-                        <?php foreach ($this->kategori->get_all() as $kat): ?>
-                            <li><a href="<?= site_url('item/by/' . $kat->k_kode); ?>"><i
-                                            class="fas fa-angle-right"></i><?= $kat->k_nama; ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </li>
+                <li><a href="<?= site_url('item'); ?>"><i class="fas fa-shopping-cart"></i>Item</a></li>
                 <li><a href="#transaksi" aria-expanded="false" data-toggle="collapse"><i
                                 class="fas fa-exchange-alt"></i>Transaksi</a>
                     <ul id="transaksi" class="collapse list-unstyled">

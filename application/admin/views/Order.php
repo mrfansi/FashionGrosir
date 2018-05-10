@@ -70,11 +70,8 @@
                             <thead>
                             <tr>
                                 <th scope="col">No. Order</th>
-                                <th scope="col">Tgl. Order</th>
                                 <th scope="col">Nama Pelanggan</th>
                                 <th scope="col">Total</th>
-                                <th scope="col">Status Order</th>
-                                <th scope="col">Detil</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -82,17 +79,52 @@
                             <?php if ($orders != NULL): ?>
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td><?= $order->a_kode; ?></td>
-                                        <td><?= $order->created_at; ?></td>
+                                        <td class="text-danger"><?= $order->a_kode; ?></td>
                                         <td><?= $order->p_nama; ?></td>
-                                        <td><?= $order->total; ?></td>
+                                        <td id="rupiah"><?= $order->total; ?></td>
                                         <td>
+                                            <?php if ($order->o_status == 1): ?>
+                                                <a tooltip data-toggle="modal" title="Konfirmasi Pembayaran" href="#"
+                                                   onclick="konfirmasi($(this))" data-target="#konfirmasi"
+                                                   data-id="<?= $order->o_kode; ?>"><i class="fas fa-check"></i>
+                                                </a>
+                                            <?php endif; ?>
+
+                                            <?php if ($order->o_status == 2): ?>
+                                                <a <?= $order->o_status == 2 ? '' : 'disabled'; ?>
+                                                        tooltip data-toggle="modal" title="Proses <?= $title_page; ?>"
+                                                        href="#"
+                                                        onclick="proses($(this))" data-target="#crud"
+                                                        data-id="<?= $order->o_kode; ?>"><i
+                                                            class="fas fa-exchange-alt"></i>
+                                                </a>
+                                            <?php endif; ?>
+
+                                            <?php if ($order->o_status == 3): ?>
+                                                <a tooltip data-toggle="modal"
+                                                   title="Konfirmasi Pengiriman" href="#"
+                                                   onclick="pengiriman($(this))" data-target="#crud"
+                                                   data-id="<?= $order->o_kode; ?>">
+                                                    <i class="fas fa-truck-moving"></i>
+                                                </a>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td colspan="3"><b>Tanggal Order : </b><br>
+                                            <?= $order->created_at; ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td colspan="3"><b>Status Order : </b>
                                             <?php if ($order->o_status == 1): ?>
                                                 <div class="text-warning">MENUNGGU KONFIRMASI ADMIN</div>
                                             <?php elseif ($order->o_status == 2): ?>
                                                 <div class="text-success">SUDAH DIBAYAR</div>
                                             <?php elseif ($order->o_status == 3): ?>
-                                                <div class="text-success">DIKIRIM</div>
+                                                <div class="text-success">SEDANG DIPROSES</div>
                                             <?php elseif ($order->o_status == 4): ?>
                                                 <div class="text-success">SUKSES</div>
                                             <?php elseif ($order->o_status == 5): ?>
@@ -101,21 +133,8 @@
                                                 <div class="text-danger">BELUM DIBAYAR</div>
                                             <?php endif; ?>
                                         </td>
-                                        <td>
-                                            <a href="#">Lihat</a>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-sm btn-primary" <?= $order->o_status == 1 ? '' : 'disabled'; ?> tooltip data-toggle="modal" title="Konfirmasi Pembayaran" href="#"
-                                               onclick="konfirmasi($(this))" data-target="#konfirmasi"
-                                               data-id="<?= $order->o_kode; ?>"><i class="fas fa-check"></i></button> |
-                                            <button class="btn btn-sm btn-primary" <?= $order->o_status == 2 ? '' : 'disabled'; ?> tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
-                                               onclick="proses($(this))" data-target="#crud"
-                                               data-id="<?= $order->o_kode; ?>"><i class="fas fa-exchange-alt"></i></button> |
-                                            <button class="btn btn-sm btn-primary" tooltip data-toggle="modal" title="Konfirmasi Pengiriman" href="#"
-                                               onclick="pengiriman($(this))" data-target="#crud"
-                                               data-id="<?= $order->o_kode; ?>" <?= $order->o_status == 3 ? '' : 'disabled'; ?>><i class="fas fa-truck-moving"></i></button>
-                                        </td>
                                     </tr>
+
                                 <?php endforeach; ?>
                             <?php endif; ?>
                             </tbody>
@@ -170,7 +189,7 @@
             // ------------------------------------------------------ //
             // Data table users
             // ------------------------------------------------------ //
-            $('#tables').DataTable();
+            // $('#tables').DataTable();
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();
@@ -187,6 +206,27 @@
                     }
                 }, 5000);
             });
+
+            // ------------------------------------------------------ //
+            // Format Rupiah
+            // ------------------------------------------------------ //
+            var moneyFormat = wNumb({
+                mark: ',',
+                decimals: 2,
+                thousand: '.',
+                prefix: 'Rp. ',
+                suffix: ''
+            });
+
+            $(document).ready(function () {
+                $('td[id="rupiah"]').each(function (index) {
+                    var value = parseInt($(this).html()),
+                        hasil = moneyFormat.to(value);
+
+                    $(this).html(hasil);
+                })
+            });
+
         </script>
     </section>
     <footer class="main-footer">
@@ -201,7 +241,7 @@
     </footer>
 </div>
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="crud"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
@@ -216,7 +256,7 @@
 </div>
 
 <div class="modal fade" id="konfirmasi" tabindex="-1" role="dialog" aria-labelledby="konfirmasi" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
@@ -235,7 +275,7 @@
 </div>
 
 <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>

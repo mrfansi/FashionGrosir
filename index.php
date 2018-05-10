@@ -129,7 +129,7 @@ $application_folder = 'application/user';
  *
  * NO TRAILING SLASH!
  */
-	$view_folder = 'ui';
+	$view_folder = '';
 
 
 /*

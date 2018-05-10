@@ -85,14 +85,12 @@
                                     <tr>
                                         <td><?= $seri->s_nama; ?></td>
                                         <td class="text-center">
-                                            <?php if ($seri->s_kode != '0'): ?>
                                             <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
                                                onclick="edit($(this))" data-target="#crud"
                                                data-id="<?= $seri->s_kode; ?>"><i class="far fa-edit"></i></a> |
                                             <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
                                                data-id="<?= $seri->s_kode; ?>"><i class="far fa-trash-alt"></i></a>
-                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -174,7 +172,7 @@
     </footer>
 </div>
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="crud"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
@@ -189,7 +187,7 @@
 </div>
 
 <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>

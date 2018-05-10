@@ -45,38 +45,40 @@ class Item_m extends MY_Model
 
     public function select_sum_qty()
     {
-        $query = $this->db->query("SELECT i.*, k.k_nama, s.s_nama, w.w_nama, u.u_nama, SUM(iq.is_qty) qty
-                                    FROM item i
-                                    INNER JOIN item_kategori ik ON i.i_kode = ik.i_kode
-                                    INNER JOIN kategori k ON ik.k_kode = k.k_kode
-                                    INNER JOIN item_seri ise ON i.i_kode = ise.i_kode
-                                    INNER JOIN seri s ON ise.s_kode = s.s_kode
-                                    INNER JOIN item_warna iw ON i.i_kode = iw.i_kode
-                                    INNER JOIN warna w ON iw.w_kode = w.w_kode
-                                    INNER JOIN item_ukuran iu ON i.i_kode = iu.i_kode
-                                    INNER JOIN ukuran u ON iu.u_kode = u.u_kode
-                                    LEFT JOIN item_qty iq ON i.i_kode = iq.i_kode
-                                    GROUP BY i.i_kode;");
+        $query = $this->db->query("SELECT i.i_kode, i.i_nama, i.i_hrg_reseller, i.i_hrg_vip, i.i_deskripsi, id.* , w.w_nama, u.u_nama, s.s_nama, SUM(iq.iq_qty) qty
+                                    FROM item_detil id
+                                    INNER JOIN item i ON id.i_kode = i.i_kode
+                                    INNER JOIN warna w ON id.w_kode = w.w_kode
+                                    INNER JOIN ukuran u ON id.u_kode = u.u_kode
+                                    LEFT JOIN seri s ON id.s_kode = s.s_kode
+                                    LEFT JOIN item_qty iq ON id.id_kode = iq.id_kode
+                                    GROUP BY id.id_kode;");
 
         return $query->result();
     }
 
     public function select_sum_qty_where($id)
     {
-        $query = $this->db->query("SELECT i.*, k.k_nama, s.s_nama, w.w_nama, u.u_nama, SUM(iq.is_qty) qty
-                                    FROM item i
-                                    INNER JOIN item_kategori ik ON i.i_kode = ik.i_kode
-                                    INNER JOIN kategori k ON ik.k_kode = k.k_kode
-                                    INNER JOIN item_seri ise ON i.i_kode = ise.i_kode
-                                    INNER JOIN seri s ON ise.s_kode = s.s_kode
-                                    INNER JOIN item_warna iw ON i.i_kode = iw.i_kode
-                                    INNER JOIN warna w ON iw.w_kode = w.w_kode
-                                    INNER JOIN item_ukuran iu ON i.i_kode = iu.i_kode
-                                    INNER JOIN ukuran u ON iu.u_kode = u.u_kode
-                                    LEFT JOIN item_qty iq ON i.i_kode = iq.i_kode
-                                    WHERE k.k_kode = '$id'
-                                    GROUP BY iq.i_kode;");
+        $query = $this->db->query("SELECT i.i_kode, i.i_nama, i.i_hrg_reseller, i.i_hrg_vip, id.* , w.w_nama, u.u_nama, s.s_nama, SUM(iq.iq_qty) qty
+                                    FROM item_detil id
+                                    INNER JOIN item i ON id.i_kode = i.i_kode
+                                    INNER JOIN warna w ON id.w_kode = w.w_kode
+                                    INNER JOIN ukuran u ON id.u_kode = u.u_kode
+                                    LEFT JOIN seri s ON id.s_kode = s.s_kode
+                                    LEFT JOIN item_qty iq ON id.id_kode = iq.id_kode
+                                    WHERE id.id_kode = '$id'
+                                    GROUP BY id.id_kode;");
 
+        return $query->result();
+    }
+
+    public function select_item_kategori_where($id)
+    {
+        $query = $this->db->query("SELECT k.k_kode, k.k_nama
+                    FROM item_kategori ik
+                    INNER JOIN item i ON ik.i_kode = i.i_kode
+                    INNER JOIN kategori k ON ik.k_kode = k.k_kode
+                    WHERE ik.i_kode = '$id';");
         return $query->result();
     }
 }

@@ -29,28 +29,28 @@ $(document).ready(function () {
     // END MISC
 
     // ITEM
-    var c_item = $.cookie('item_menu');
-    var $menu_item = $('#side-main-menu > li:nth-child(3) > a');
-    var $ul_item = $('#item');
-
-    if (c_item == 'expanded') {
-        $menu_item.removeClass('collapsed').attr('aria-expanded', 'true');
-        $ul_item.addClass('show');
-    }
-
-    if (c_item == 'collapsed') {
-        $menu_item.addClass('collapsed').attr('aria-expanded', 'false');
-        $ul_item.removeClass('show');
-    }
-
-    $menu_item.click(function () {
-        if ($menu_item.hasClass('collapsed')) {
-            $.cookie('item_menu', 'expanded', {path: '/', expires: 100});
-        } else
-        {
-            $.cookie('item_menu', 'collapsed', {path: '/', expires: 100});
-        }
-    });
+    // var c_item = $.cookie('item_menu');
+    // var $menu_item = $('#side-main-menu > li:nth-child(3) > a');
+    // var $ul_item = $('#item');
+    //
+    // if (c_item == 'expanded') {
+    //     $menu_item.removeClass('collapsed').attr('aria-expanded', 'true');
+    //     $ul_item.addClass('show');
+    // }
+    //
+    // if (c_item == 'collapsed') {
+    //     $menu_item.addClass('collapsed').attr('aria-expanded', 'false');
+    //     $ul_item.removeClass('show');
+    // }
+    //
+    // $menu_item.click(function () {
+    //     if ($menu_item.hasClass('collapsed')) {
+    //         $.cookie('item_menu', 'expanded', {path: '/', expires: 100});
+    //     } else
+    //     {
+    //         $.cookie('item_menu', 'collapsed', {path: '/', expires: 100});
+    //     }
+    // });
     // END ITEM
 
     // MENU TRANSAKSI

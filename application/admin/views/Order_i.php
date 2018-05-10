@@ -71,8 +71,8 @@
                             <tr>
                                 <th scope="col">No. Order</th>
                                 <th scope="col">Nama Pelanggan</th>
-                                <th scope="col">Total</th>
                                 <th scope="col">Status Order</th>
+                                <th scope="col">Total</th>
                                 <th scope="col">Detil</th>
                             </tr>
                             </thead>
@@ -82,14 +82,14 @@
                                     <tr>
                                         <td><?= $order->a_kode; ?></td>
                                         <td><?= $order->p_nama; ?></td>
-                                        <td><?= $order->total; ?></td>
+
                                         <td>
                                             <?php if ($order->o_status == 1): ?>
                                                 <div class="text-warning">MENUNGGU KONFIRMASI ADMIN</div>
                                             <?php elseif ($order->o_status == 2): ?>
                                                 <div class="text-success">SUDAH DIBAYAR</div>
                                             <?php elseif ($order->o_status == 3): ?>
-                                                <div class="text-success">DIKIRIM</div>
+                                                <div class="text-success">SEDANG DIPROSES</div>
                                             <?php elseif ($order->o_status == 4): ?>
                                                 <div class="text-success">SUKSES</div>
                                             <?php elseif ($order->o_status == 5): ?>
@@ -98,6 +98,7 @@
                                                 <div class="text-danger">BELUM DIBAYAR</div>
                                             <?php endif; ?>
                                         </td>
+                                        <td id="rupiah"><?= $order->total; ?></td>
                                         <td>
                                             <a href="#">Detil</a>
                                         </td>
@@ -167,6 +168,26 @@
                     }
                 }, 5000);
             });
+
+            // ------------------------------------------------------ //
+            // Format Rupiah
+            // ------------------------------------------------------ //
+            var moneyFormat = wNumb({
+                mark: ',',
+                decimals: 2,
+                thousand: '.',
+                prefix: 'Rp. ',
+                suffix: ''
+            });
+
+            $(document).ready(function () {
+                $('td[id="rupiah"]').each(function (index) {
+                    var value = parseInt($(this).html()),
+                        hasil = moneyFormat.to(value);
+
+                    $(this).html(hasil);
+                })
+            });
         </script>
     </section>
     <footer class="main-footer">
@@ -181,7 +202,7 @@
     </footer>
 </div>
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="crud"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
@@ -196,7 +217,7 @@
 </div>
 
 <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>

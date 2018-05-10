@@ -172,7 +172,7 @@
     </footer>
 </div>
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="crud"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
@@ -187,7 +187,7 @@
 </div>
 
 <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>

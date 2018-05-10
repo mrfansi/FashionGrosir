@@ -120,4 +120,11 @@ class Ukuran extends MY_Controller
             redirect('ukuran');
         }
     }
+
+    public function get($item)
+    {
+        $data = new stdClass();
+        $data->members = $this->ukuran->many_to_many_where($item);
+        $this->load->view('Tabel_detil', $data);
+    }
 }

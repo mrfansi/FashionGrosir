@@ -26,4 +26,13 @@ class Kategori_m extends MY_Model {
         $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
+
+    public function many_to_many_where($item) {
+        $query = $this->db->query("SELECT k.k_nama nama
+                                    FROM item_kategori ik
+                                    INNER JOIN item i ON ik.i_kode = i.i_kode
+                                    INNER JOIN kategori k ON ik.k_kode = k.k_kode
+                                    WHERE i.i_kode = '$item';");
+        return $query->result();
+    }
 }

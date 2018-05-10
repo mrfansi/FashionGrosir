@@ -13,14 +13,14 @@ class Kategori extends MY_Controller
         parent::__construct();
         $this->load->model('Kategori_m', 'kategori');
 
-        $cek = $this->kategori->where_k_kode('0')->get();
-        if ($cek == null)
-        {
-            $this->kategori->insert(array(
-                'k_kode'     => 0,
-                'k_nama'     => 'Non Kategori'
-            ));
-        }
+//        $cek = $this->kategori->where_k_kode('0')->get();
+//        if ($cek == null)
+//        {
+//            $this->kategori->insert(array(
+//                'k_kode'     => 0,
+//                'k_nama'     => 'Non Kategori'
+//            ));
+//        }
     }
 
     public function index()
@@ -130,5 +130,12 @@ class Kategori extends MY_Controller
 
             redirect('kategori');
         }
+    }
+
+    public function get($item)
+    {
+        $data = new stdClass();
+        $data->members = $this->kategori->many_to_many_where($item);
+        $this->load->view('Tabel_detil', $data);
     }
 }

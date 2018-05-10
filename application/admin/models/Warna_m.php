@@ -26,4 +26,15 @@ class Warna_m extends MY_Model {
         $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
+
+    public function many_to_many_where($item)
+    {
+        $query = $this->db->query("SELECT w.w_nama nama
+                                FROM item_warna iw
+                                INNER JOIN item i ON iw.i_kode = i.i_kode
+                                INNER JOIN warna w ON iw.w_kode = w.w_kode
+                                WHERE i.i_kode = '$item';");
+
+        return $query->result();
+    }
 }

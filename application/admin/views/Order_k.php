@@ -73,9 +73,9 @@
                                 <th scope="col">Nama Rek</th>
                                 <th scope="col">No Rek</th>
                                 <th scope="col">Bank</th>
-                                <th scope="col">Nominal</th>
                                 <th scope="col">Bukti</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Nominal</th>
                                 <th scope="col" class="text-center">Konfirmasi</th>
                             </tr>
                             </thead>
@@ -87,7 +87,6 @@
                                         <td><?= $order->ob_nama_rek; ?></td>
                                         <td><?= $order->ob_no_rek; ?></td>
                                         <td><?= $order->ob_bank_nama; ?></td>
-                                        <td><?= $order->ob_nominal; ?></td>
                                         <td><?= $order->ob_foto; ?></td>
                                         <td>
                                             <?php if ($order->o_status == 1): ?>
@@ -104,6 +103,7 @@
                                                 <div class="text-danger">BELUM DIBAYAR</div>
                                             <?php endif; ?>
                                         </td>
+                                        <td id="rupiah"><?= $order->ob_nominal; ?></td>
                                         <td class="text-center">
                                             <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
                                                onclick="proses($(this))" data-target="#proses"
@@ -150,6 +150,26 @@
                     }
                 }, 5000);
             });
+
+            // ------------------------------------------------------ //
+            // Format Rupiah
+            // ------------------------------------------------------ //
+            var moneyFormat = wNumb({
+                mark: ',',
+                decimals: 2,
+                thousand: '.',
+                prefix: 'Rp. ',
+                suffix: ''
+            });
+
+            $(document).ready(function () {
+                $('td[id="rupiah"]').each(function (index) {
+                    var value = parseInt($(this).html()),
+                        hasil = moneyFormat.to(value);
+
+                    $(this).html(hasil);
+                })
+            });
         </script>
     </section>
     <footer class="main-footer">
@@ -164,7 +184,7 @@
     </footer>
 </div>
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="crud"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
@@ -179,7 +199,7 @@
 </div>
 
 <div class="modal fade" id="proses" tabindex="-1" role="dialog" aria-labelledby="proses" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>

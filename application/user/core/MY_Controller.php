@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller
     protected $meta_author;
     protected $meta_content;
     protected $meta_title;
+    public $menu_kategori;
 
     public function __construct()
     {
@@ -21,9 +22,13 @@ class MY_Controller extends CI_Controller
         // load web config
         $this->load->config('weboptions');
 
+        // load model
+        $this->load->model('Kategori_m','kategori');
+
         $this->meta_title = $this->config->item('webname');
         $this->meta_content = $this->config->item('webdeskripsi');
         $this->meta_keywords = $this->config->item('webkeywords');
+        $this->menu_kategori = $this->kategori->get_all();
         //$this->output->cache(1);
     }
 

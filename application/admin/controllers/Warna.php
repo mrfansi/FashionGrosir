@@ -119,4 +119,11 @@ class Warna extends MY_Controller
             redirect('warna');
         }
     }
+
+    public function get($item)
+    {
+        $data = new stdClass();
+        $data->members = $this->warna->many_to_many_where($item);
+        $this->load->view('Tabel_detil', $data);
+    }
 }

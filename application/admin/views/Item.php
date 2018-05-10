@@ -63,7 +63,8 @@
                         </div>
                         <div class="col-sm-2">
                             <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
-                               onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i class="fas fa-plus"></i></a>
+                               onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i
+                                        class="fas fa-plus"></i></a>
                         </div>
                     </div>
 
@@ -73,50 +74,69 @@
                         <table id="tables" class="table table-sm table-borderless">
                             <thead>
                             <tr>
-                                <th scope="col" class="text-center">Nama</th>
-                                <th scope="col" class="text-center">Kategori</th>
-                                <th scope="col" class="text-center">Warna</th>
-                                <th scope="col" class="text-center">Ukuran</th>
-                                <th scope="col" class="text-center">Seri</th>
-                                <th scope="col" class="text-center">Hrg VIP</th>
-                                <th scope="col" class="text-center">Hrg Reseller</th>
-                                <th scope="col" class="text-center">Deskripsi</th>
-                                <th scope="col" class="text-center">QTY</th>
-                                <th scope="col" class="text-center">Aksi</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Warna</th>
+                                <th scope="col">Ukuran</th>
+                                <th scope="col">Hrg VIP</th>
+                                <th scope="col">Hrg Reseller</th>
+                                <th scope="col">QTY</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php if ($items != NULL): ?>
                                 <?php foreach ($items as $item): ?>
                                     <tr>
-                                        <td class="text-center text-danger"><?= $item->i_nama; ?></td>
-                                        <td class="text-center"><?= $item->k_nama; ?></td>
-                                        <td class="text-center"><?= $item->w_nama; ?></td>
-                                        <td class="text-center"><?= $item->u_nama; ?></td>
-                                        <td class="text-center"><?= $item->s_nama; ?></td>
-                                        <td class="text-center"><?= $item->i_hrg_vip; ?></td>
-                                        <td class="text-center"><?= $item->i_hrg_reseller; ?></td>
-                                        <td class="text-center">
-                                            <a data-toggle="modal" href="#"
-                                               onclick="deskripsi($(this))" data-target="#deskripsi"
-                                               data-msg="<?= $item->i_deskripsi; ?>">Lihat</a>
-                                        </td>
-                                        <td class="text-center"><?= $item->qty != null ? $item->qty : '0' ; ?></td>
-                                        <td class="text-center">
+                                        <td scope="row" class="text-danger"><?= $item->i_nama; ?></td>
+                                        <td><?= $item->w_nama; ?></td>
+                                        <td><?= $item->u_nama; ?></td>
+                                        <td id="rupiah"><?= $item->i_hrg_vip; ?></td>
+                                        <td id="rupiah"><?= $item->i_hrg_reseller; ?></td>
+                                        <td><?= $item->qty != null ? $item->qty : '0'; ?></td>
+
+                                        <td>
                                             <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
                                                onclick="edit($(this))" data-target="#crud"
-                                               data-id="<?= $item->i_kode; ?>"><i class="far fa-edit"></i></a> |
+                                               data-id="<?= $item->i_kode; ?>"><i class="far fa-edit fa-lg"></i></a> |
                                             <a tooltip data-toggle="modal" title="Tambah Stok <?= $title_page; ?>"
                                                href="#"
                                                onclick="tambah_qty($(this))" data-target="#crud"
-                                               data-id="<?= $item->i_kode; ?>"><i class="fas fa-cart-plus"></i></a> |
+                                               data-id="<?= $item->id_kode; ?>"><i
+                                                        class="fas fa-cart-plus fa-lg"></i></a> |
                                             <a tooltip data-toggle="modal" title="Tambah Foto <?= $title_page; ?>"
                                                href="#"
                                                onclick="tambah_foto($(this))" data-target="#crudfoto"
-                                               data-id="<?= $item->i_kode; ?>"><i class="fas fa-images"></i></a> |
+                                               data-id="<?= $item->i_kode; ?>"><i class="fas fa-images fa-lg"></i></a> |
                                             <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $item->i_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                               data-id="<?= $item->id_kode; ?>"><i
+                                                        class="far fa-trash-alt fa-lg"></i></a>
+                                        </td>
+                                    </tr>
+
+                                    <tr id="child"">
+                                        <td></td>
+                                        <td colspan="6"> <b>Kategori :</b> <br>
+                                            <?php foreach ($this->item->select_item_kategori_where($item->i_kode) as $kat): ?>
+                                                <?= '[' . $kat->k_nama . '] ' ?>
+                                            <?php endforeach; ?>
+                                        </td>
+                                    </tr>
+                                    <tr id="child">
+                                        <td></td>
+                                        <td colspan="2"><b>No Seri :</b><br>
+                                            <?php if ($item->s_nama == ''): ?>
+                                            <i>(Kosong)</i>
+                                            <?php else: ?>
+                                            <?= $item->s_nama; ?>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td colspan="4"><b>Deskripsi :</b><br>
+                                            <?php if ($item->i_deskripsi == ''): ?>
+                                                <i>(Kosong)</i>
+                                            <?php else: ?>
+                                                <?= $item->i_deskripsi; ?>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -139,6 +159,16 @@
                 bodymodal = modal.find('div.modal-body');
 
                 bodymodal.load("<?= site_url('item/tambah'); ?>");
+            }
+
+            function detil_item(data) {
+                d = data;
+                url = d.attr('data-url');
+
+                modal = $('#detil_item');
+                bodymodal = modal.find('div.modal-body');
+
+                bodymodal.load(url);
             }
 
             function deskripsi(data) {
@@ -192,10 +222,16 @@
             }
 
             // ------------------------------------------------------ //
-            // Data table users
+            // Data table Pagination
             // ------------------------------------------------------ //
-            $('#tables').DataTable();
+            // $('#tables').DataTable();
+            // $('#click').click(function () {
+            //     $(this).closest('tr').nextUntil("tr:has(#child)").show();
+            // });
 
+            // ------------------------------------------------------ //
+            // Tooltip
+            // ------------------------------------------------------ //
             $(document).ready(function () {
                 $('[tooltip]').tooltip();
             });
@@ -210,6 +246,26 @@
                         $('[role="alert"]').remove();
                     }
                 }, 5000);
+            });
+
+            // ------------------------------------------------------ //
+            // Format Rupiah
+            // ------------------------------------------------------ //
+            var moneyFormat = wNumb({
+                mark: ',',
+                decimals: 2,
+                thousand: '.',
+                prefix: 'Rp. ',
+                suffix: ''
+            });
+
+            $(document).ready(function () {
+                $('td[id="rupiah"]').each(function (index) {
+                    var value = parseInt($(this).html()),
+                        hasil = moneyFormat.to(value);
+
+                    $(this).html(hasil);
+                })
             });
         </script>
 
@@ -226,7 +282,7 @@
     </footer>
 </div>
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="crud"><i class="fas fa-shopping-cart"></i> <?= $title_page; ?></h2>
@@ -239,8 +295,17 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="detil_item" tabindex="-1" role="dialog" aria-labelledby="detil_item" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" id="crudfoto" tabindex="-1" role="dialog" aria-labelledby="crudfoto" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="crud"><i class="far fa-image"></i> Foto</h2>
@@ -254,24 +319,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="deskripsi" tabindex="-1" role="dialog" aria-labelledby="deskripsi" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="crud"><i class="fas fa-file-alt"></i> Deskripsi</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="hapus"><i class="fas fa-shopping-cart"></i> <?= $title_page; ?></h2>

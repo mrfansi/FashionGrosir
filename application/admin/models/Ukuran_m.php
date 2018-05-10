@@ -26,4 +26,13 @@ class Ukuran_m extends MY_Model {
         $data[8] = chr(ord($data[8]) & 0x3f | 0x80);
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
+
+    public function many_to_many_where($item) {
+        $query = $this->db->query("SELECT u.u_nama nama
+                                    FROM item_ukuran iu
+                                    INNER JOIN item i ON iu.i_kode = i.i_kode
+                                    INNER JOIN ukuran u ON iu.u_kode = u.u_kode
+                                    WHERE i.i_kode = '$item';");
+        return $query->result();
+    }
 }
