@@ -12,7 +12,11 @@ class Item_img_m extends MY_Model {
         $this->table = 'item_img';
         $this->primary_key = 'ii_id';
         $this->protected = array('ii_id','created_at','update_at');
-        $this->has_one['item'] = 'Item_m';
+        $this->has_one['item_detil'] = array(
+            'foreign_model'=>'Item_detil_m',
+            'foreign_table'=>'item_detil',
+            'foreign_key'=>'id_kode',
+            'local_key'=>'id_kode');
         $this->timestamps = TRUE;
         parent::__construct();
     }

@@ -24,12 +24,14 @@
         </button>
     </div>
 <?php endif; ?>
-<?= form_open_multipart('upload/do_upload'); ?>
-    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
-    <input type="hidden" name="item_kode" value="<?= $item_kode ?>">
+<?php echo form_open_multipart('upload/do_upload');?>
+<input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+    <input type="hidden" name="id_kode" value="<?= $id_kode ?>">
     <div class="form-group">
-        <label>Upload</label>
-        <input id="images" name="images[]" type="file" class="file" data-preview-file-type="text" multiple>
+        <input class="form-control-file" name="images[]" type="file" multiple required>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Upload</button>
     </div>
 </form>
 <br>
@@ -37,25 +39,26 @@
     <table id="tables" class="table table-sm table-borderless">
         <thead>
         <tr>
-            <th scope="col">Nama</th>
             <th scope="col">Foto</th>
             <th scope="col">Default</th>
-            <th scope="col" class="text-center">Aksi</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         <?php if ($item_imgs != NULL): ?>
             <?php foreach ($item_imgs as $img): ?>
                 <tr>
-                    <td><?= $img->ii_nama; ?></td>
                     <td><img src="<?= base_url('upload/' . $img->ii_url); ?>" alt="<?= $img->ii_nama; ?>" height="100" width="100"></td>
-                    <td><?= $img->ii_default == 0 ? '<i class="fas fa-times"></i>' : '<i class="fas fa-check"></i>'; ?></td>
-                    <td class="text-center">
-                        <a tooltip href="<?= site_url('item_img/set_default/' . $img->i_kode . '/' . $img->ii_kode); ?>" title="Set default" onclick="utama($(this))" data-id="<?= $img->ii_kode; ?>"><i
-                                    class="fas fa-wrench"></i></a> |
-                        <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
+                    <td class="align-middle"><?= $img->ii_default == 0 ? '<i class="fas fa-times"></i>' : '<i class="fas fa-check"></i>'; ?></td>
+                    <td class="align-middle">
+                        <a href="<?= site_url('item_img/set_default/' . $img->id_kode . '/' . $img->ii_kode); ?>" onclick="utama($(this))" data-id="<?= $img->ii_kode; ?>">
+                            Set utama
+                        </a> |
+                        <a data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                            onclick="hapus($(this))" data-target="#hapus"
-                           data-id="<?= $img->ii_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                           data-id="<?= $img->ii_kode; ?>">
+                            Hapus
+                        </a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -122,17 +125,6 @@
                 $('[role="alert"]').remove();
             }
         }, 5000);
-    });
-
-    // ------------------------------------------------------ //
-    // Fileinput
-    // ------------------------------------------------------ //
-    // initialize with defaults
-    $("#images").fileinput({
-        uploadAsync: false,
-        maxFileCount: 5,
-        showUpload: true,
-        showRemove: true,
     });
 </script>
 </body>

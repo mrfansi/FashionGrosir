@@ -30,11 +30,28 @@ class Item extends MY_Controller
         $data->title_page = 'Item';
 
         $data->total_item = $this->item->count_rows();
-        $data->item_detils = $this->item_detil->with_item()->get_all();
-        $data->kategoris = $this->kategori->with_item_kategori()->get_all();
-        $data->warnas = $this->warna->with_item_detil()->get_all();
-        $data->ukurans = $this->ukuran->with_item_detil()->get_all();
-        $data->qtys = $this->item_qty->with_item_detil()->get_all();
+        $data->items = $this->item->with_item_detil()->with_item_kategori()->get_all();
+        $data->warna = function ($id_kode, $w_kode) {
+            return $this->warna->fields('w_nama')->with_item_detil('where:id_kode = \'' . $id_kode . '\'')->where_w_kode($w_kode)->get();
+        };
+
+        $data->ukuran = function ($id_kode, $u_kode) {
+            return $this->ukuran->fields('u_nama')->with_item_detil('where:id_kode = \'' . $id_kode . '\'')->where_u_kode($u_kode)->get();
+        };
+
+        $data->seri = function ($id_kode, $s_kode) {
+            return $this->seri->fields('s_nama')->with_item_detil('where:id_kode = \'' . $id_kode . '\'')->where_s_kode($s_kode)->get();
+        };
+
+        $data->qty = function ($id_kode) {
+            $hasil = 0;
+            $stoks = $this->item_qty->fields('iq_qty')->with_item_detil('where:id_kode = \'' . $id_kode . '\'')->get_all();
+            foreach ($stoks as $stok) {
+                $hasil += $stok->iq_qty;
+            }
+
+            return $hasil;
+        };
 
         $this->load->view('Item', $data);
     }
@@ -112,10 +129,10 @@ class Item extends MY_Controller
                     'u_kode' => $_POST['ukuran'][$i],
                 ));
 
-                $item_qty =  $this->item_qty->insert(array(
+                $item_qty = $this->item_qty->insert(array(
                     'iq_kode' => $this->item_qty->guid(),
                     'id_kode' => $id_detil,
-                    'iq_qty'  => $_POST['qty'][$i]
+                    'iq_qty' => $_POST['qty'][$i]
                 ));
             }
 

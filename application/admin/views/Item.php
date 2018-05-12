@@ -70,9 +70,114 @@
 
                 </div>
                 <div class="card-body">
-                    <pre>
-                        <?= print_r($items); ?>
-                    </pre>
+                    <div class="table-responsive">
+                        <table id="tables" class="table table-sm table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Hrg VIP</th>
+                                <th scope="col">Hrg Reseller</th>
+                                <th scope="col">Warna</th>
+                                <th scope="col">Ukuran</th>
+                                <th scope="col">Seri</th>
+                                <th scope="col">QTY</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if ($items != NULL): ?>
+                                <?php foreach ($items
+
+                                               as $item): ?>
+                                    <?php $counter = isset($item->item_detil) ? count((array)$item->item_detil) + 1 : 1 ?>
+                                    <tr>
+                                        <td rowspan="<?= $counter; ?>"
+                                            scope="row"
+                                            class="align-middle"><?= $item->i_nama; ?></td>
+                                        <td rowspan="<?= $counter; ?>"
+                                            class="align-middle"
+                                            id="rupiah"><?= $item->i_hrg_vip; ?></td>
+                                        <td rowspan="<?= $counter; ?>"
+                                            class="align-middle"
+                                            id="rupiah"><?= $item->i_hrg_reseller; ?></td>
+                                        <?php if (!isset($item->item_detil)): ?>
+                                            <td><i>(Kosong)</i></td>
+                                            <td><i>(Kosong)</i></td>
+                                            <td><i>(Kosong)</i></td>
+                                            <td><i>(Kosong)</i></td>
+                                            <td>
+                                                <a href="#" onclick="edit($(this))" data-target="#crud"
+                                                   data-id="<?= $item->i_kode; ?>">
+                                                    Tambah Detil
+                                                </a> |
+                                                <a href="#" onclick="edit($(this))" data-target="#crud"
+                                                   data-id="<?= $item->i_kode; ?>">
+                                                    Hapus
+                                                </a>
+                                            </td>
+                                        <?php endif; ?>
+                                    </tr>
+                                    <?php if (isset($item->item_detil)): ?>
+                                        <?php foreach ($item->item_detil as $detil): ?>
+                                            <tr>
+                                                <td>
+                                                    <?php if (isset($warna($detil->id_kode, $detil->w_kode)->w_nama)): ?>
+                                                        <?= $warna($detil->id_kode, $detil->w_kode)->w_nama; ?>
+                                                    <?php else: ?>
+                                                        <i>(Kosong)</i>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php if (isset($ukuran($detil->id_kode, $detil->u_kode)->u_nama)): ?>
+                                                        <?= $ukuran($detil->id_kode, $detil->u_kode)->u_nama; ?>
+                                                    <?php else: ?>
+                                                        <i>(Kosong)</i>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?php if (isset($seri($detil->id_kode, $detil->s_kode)->s_nama)): ?>
+                                                        <?= $seri($detil->id_kode, $detil->s_kode)->s_nama; ?>
+                                                    <?php else: ?>
+                                                        <i>(Kosong)</i>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <?= $qty($detil->id_kode); ?>
+                                                </td>
+
+                                                <td>
+                                                    <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
+                                                       href="#"
+                                                       onclick="edit($(this))" data-target="#crud"
+                                                       data-id="<?= $detil->i_kode; ?>"><i
+                                                                class="far fa-edit fa-lg"></i></a>
+                                                    |
+                                                    <a tooltip data-toggle="modal"
+                                                       title="Tambah Stok <?= $title_page; ?>"
+                                                       href="#"
+                                                       onclick="tambah_qty($(this))" data-target="#crud"
+                                                       data-id="<?= $detil->id_kode; ?>"><i
+                                                                class="fas fa-cart-plus fa-lg"></i></a> |
+                                                    <a tooltip data-toggle="modal"
+                                                       title="Tambah Foto <?= $title_page; ?>"
+                                                       href="#"
+                                                       onclick="tambah_foto($(this))" data-target="#crudfoto"
+                                                       data-id="<?= $detil->id_kode; ?>"><i
+                                                                class="fas fa-images fa-lg"></i></a> |
+                                                    <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
+                                                       href="#"
+                                                       onclick="hapus($(this))" data-target="#hapus"
+                                                       data-id="<?= $detil->id_kode; ?>"><i
+                                                                class="far fa-trash-alt fa-lg"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div>
             </div>

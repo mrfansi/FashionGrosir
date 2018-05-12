@@ -20,7 +20,7 @@ class Item_img extends MY_Controller
         $data->title = 'Fashion Grosir | Foto';
         $data->title_page = 'Foto';
         $data->total_item_img = $this->item_img->count_rows();
-        $data->item_imgs = $this->item_img->get_all();
+        $data->item_imgs = $this->item_img->with_item_detil->get_all();
         $this->load->view('Foto', $data);
     }
 
@@ -85,10 +85,10 @@ class Item_img extends MY_Controller
         }
     }
 
-    public function set_default($item_kode, $id)
+    public function set_default($id_kode, $id)
     {
         $data = new stdClass();
-        $this->item_img->where_i_kode($item_kode)->update(array(
+        $this->item_img->where_id_kode($id_kode)->update(array(
             'ii_default'     => 0
         ));
 
@@ -105,13 +105,13 @@ class Item_img extends MY_Controller
         }
     }
 
-    public function tambah($item_kode)
+    public function tambah($id_kode)
     {
         $data = new stdClass();
         $data->title = 'Fashion Grosir | Foto';
         $data->title_page = 'Foto';
-        $data->item_imgs = $this->item_img->where('i_kode', $item_kode)->get_all();
-        $data->item_kode = $item_kode;
+        $data->item_imgs = $this->item_img->where('id_kode', $id_kode)->get_all();
+        $data->id_kode = $id_kode;
         $this->load->view('Foto', $data);
     }
 

@@ -19,6 +19,8 @@ class Upload extends CI_Controller
 
     public function do_upload()
     {
+        $data = new stdClass();
+
         $files = array();
         $counter = count($_FILES['images']['name']);
         for($i=0; $i < $counter ; $i++)
@@ -34,7 +36,7 @@ class Upload extends CI_Controller
             $config['upload_path'] = './upload';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']      = '0';
-            $config['overwrite']     = FALSE;
+            $config['overwrite']     = TRUE;
 
             $this->load->library('upload', $config);
             $this->upload->do_upload('image');
@@ -44,7 +46,7 @@ class Upload extends CI_Controller
                 'ii_kode'       => $this->item_img->guid(),
                 'ii_nama'       => $files[$i]['file_name'],
                 'ii_url'       => $files[$i]['file_name'],
-                'i_kode'        => $this->input->post('item_kode')
+                'id_kode'        => $this->input->post('id_kode')
             );
             $this->item_img->insert($data);
         }

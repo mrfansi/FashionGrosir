@@ -13,11 +13,13 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('form');
+        $this->load->library('user_agent');
     }
 
     public function index()
     {
         redirect('auth/login');
+
     }
 
     public function login()
@@ -86,7 +88,8 @@ class Auth extends CI_Controller
                 );
                 $this->session->set_userdata($sessiondata);
 
-                redirect('dashboard');
+
+                redirect($this->session->userdata('redirect'));
             } else {
                 $data->log = 'Username atau Password salah.';
                 $this->load->view('master/Login', $data);
@@ -97,7 +100,10 @@ class Auth extends CI_Controller
 
     public function logout()
     {
-        session_destroy();
+        $this->session->unset_userdata('id');
+        $this->session->unset_userdata('nama');
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('isonline');
         redirect(base_url('adm.php/auth'));
     }
 }

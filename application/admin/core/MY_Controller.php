@@ -18,6 +18,7 @@ class MY_Controller extends CI_Controller
         // Library
         $this->load->library('session');
         $this->load->library('Layout');
+        $this->load->library('user_agent');
 
         // load web config
         $this->load->config('weboptions');
@@ -36,6 +37,8 @@ class MY_Controller extends CI_Controller
         // check if user already login
         if (!$this->session->isonline) {
             redirect(base_url('adm.php/auth'));
+        } else {
+            $this->session->set_userdata('redirect', current_url());
         }
 //        $this->output->cache(1);
 //        $allow = array(
