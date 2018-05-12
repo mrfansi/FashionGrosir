@@ -13,6 +13,16 @@ class Item_detil_m extends MY_Model
         $this->table = 'item_detil';
         $this->primary_key = 'id_id';
         $this->protected = array('id_id', 'created_at', 'update_at');
+        $this->has_one['item'] = array(
+            'foreign_model'=>'Item_m',
+            'foreign_table'=>'item',
+            'foreign_key'=>'i_kode',
+            'local_key'=>'i_kode');
+        $this->has_many['item_qty'] = array(
+            'foreign_model'=>'Item_qty_m',
+            'foreign_table'=>'item_qty',
+            'foreign_key'=>'id_kode',
+            'local_key'=>'id_kode');
         $this->timestamps = TRUE;
         parent::__construct();
     }

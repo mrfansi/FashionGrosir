@@ -74,12 +74,12 @@
                         <table id="tables" class="table table-sm table-borderless">
                             <thead>
                             <tr>
-                                <th scope="col" class="text-center">Nama</th>
-                                <th scope="col"></th>
-                                <th scope="col" class="text-center">Deskripsi</th>
-                                <th scope="col" class="text-center">QTY</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Warna</th>
+                                <th scope="col">Ukuran</th>
                                 <th scope="col">Hrg VIP</th>
                                 <th scope="col">Hrg Reseller</th>
+                                <th scope="col">QTY</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -87,44 +87,55 @@
                             <?php if ($items != NULL): ?>
                                 <?php foreach ($items as $item): ?>
                                     <tr>
-                                        <td class="text-danger text-center"><?= $item->i_nama; ?></td>
-                                        <td>
-                                            <a class="badge badge-primary" onclick="detil_item($(this))" href="#" data-toggle="modal"
-                                               data-target="#detil_item"
-                                               data-url="<?= site_url('kategori/get/' . $item->i_kode); ?>">Kategori</a>
-                                            <a class="badge badge-primary" onclick="detil_item($(this))" href="#" data-toggle="modal"
-                                               data-target="#detil_item"
-                                               data-url="<?= site_url('warna/get/' . $item->i_kode); ?>">Warna</a>
-                                            <a class="badge badge-primary" onclick="detil_item($(this))" href="#" data-toggle="modal"
-                                               data-target="#detil_item"
-                                               data-url="<?= site_url('ukuran/get/' . $item->i_kode); ?>">Ukuran</a>
-                                            <a class="badge badge-primary" onclick="detil_item($(this))" href="#" data-toggle="modal"
-                                               data-target="#detil_item"
-                                               data-url="<?= site_url('seri/get/' . $item->i_kode); ?>">Seri</a>
-                                        </td>
-                                        <td class="text-center">
-                                            <a data-toggle="modal" href="#"
-                                               onclick="deskripsi($(this))" data-target="#deskripsi"
-                                               data-msg="<?= $item->i_deskripsi; ?>">Lihat</a>
-                                        </td>
-                                        <td class="text-center"><?= $item->qty != null ? $item->qty : '0'; ?></td>
+                                        <td scope="row" class="text-danger"><?= $item->i_nama; ?></td>
+                                        <td><?= $item->w_nama; ?></td>
+                                        <td><?= $item->u_nama; ?></td>
                                         <td id="rupiah"><?= $item->i_hrg_vip; ?></td>
                                         <td id="rupiah"><?= $item->i_hrg_reseller; ?></td>
-                                        <td class="text-center">
+                                        <td><?= $item->qty != null ? $item->qty : '0'; ?></td>
+
+                                        <td>
                                             <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
                                                onclick="edit($(this))" data-target="#crud"
-                                               data-id="<?= $item->i_kode; ?>"><i class="far fa-edit"></i></a> |
+                                               data-id="<?= $item->i_kode; ?>"><i class="far fa-edit fa-lg"></i></a> |
                                             <a tooltip data-toggle="modal" title="Tambah Stok <?= $title_page; ?>"
                                                href="#"
                                                onclick="tambah_qty($(this))" data-target="#crud"
-                                               data-id="<?= $item->i_kode; ?>"><i class="fas fa-cart-plus"></i></a> |
+                                               data-id="<?= $item->id_kode; ?>"><i
+                                                        class="fas fa-cart-plus fa-lg"></i></a> |
                                             <a tooltip data-toggle="modal" title="Tambah Foto <?= $title_page; ?>"
                                                href="#"
                                                onclick="tambah_foto($(this))" data-target="#crudfoto"
-                                               data-id="<?= $item->i_kode; ?>"><i class="fas fa-images"></i></a> |
+                                               data-id="<?= $item->i_kode; ?>"><i class="fas fa-images fa-lg"></i></a> |
                                             <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $item->i_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                               data-id="<?= $item->id_kode; ?>"><i
+                                                        class="far fa-trash-alt fa-lg"></i></a>
+                                        </td>
+                                    </tr>
+
+                                    <tr id="child"">
+                                    <td></td>
+                                    <td colspan="6"><b>Kategori :</b> <br>
+                                        <?php $kat = $this->item->select_item_kategori_where_array($item->i_kode); ?>
+                                        <?= implode(', ', $kat) ?>
+                                    </td>
+                                    </tr>
+                                    <tr id="child">
+                                        <td></td>
+                                        <td colspan="2"><b>No Seri :</b><br>
+                                            <?php if ($item->s_nama == ''): ?>
+                                                <i>(Kosong)</i>
+                                            <?php else: ?>
+                                                <?= $item->s_nama; ?>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td colspan="4"><b>Deskripsi :</b><br>
+                                            <?php if ($item->i_deskripsi == ''): ?>
+                                                <i>(Kosong)</i>
+                                            <?php else: ?>
+                                                <?= $item->i_deskripsi; ?>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -210,10 +221,16 @@
             }
 
             // ------------------------------------------------------ //
-            // Data table users
+            // Data table Pagination
             // ------------------------------------------------------ //
-            $('#tables').DataTable();
+            // $('#tables').DataTable();
+            // $('#click').click(function () {
+            //     $(this).closest('tr').nextUntil("tr:has(#child)").show();
+            // });
 
+            // ------------------------------------------------------ //
+            // Tooltip
+            // ------------------------------------------------------ //
             $(document).ready(function () {
                 $('[tooltip]').tooltip();
             });
@@ -296,22 +313,6 @@
                 </button>
             </div>
             <div class="modal-body">
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="deskripsi" tabindex="-1" role="dialog" aria-labelledby="deskripsi" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="crud"><i class="fas fa-file-alt"></i> Deskripsi</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
             </div>
         </div>
     </div>

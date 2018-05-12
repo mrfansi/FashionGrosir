@@ -13,6 +13,11 @@ class Warna_m extends MY_Model {
         $this->primary_key = 'w_id';
         $this->protected = array('w_id','created_at','update_at');
         $this->timestamps = TRUE;
+        $this->has_many['item_detil'] = array(
+            'foreign_model'=>'Item_detil_m',
+            'foreign_table'=>'item_detil',
+            'foreign_key'=>'w_kode',
+            'local_key'=>'w_kode');
         parent::__construct();
     }
 

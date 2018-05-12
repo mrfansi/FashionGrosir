@@ -15,7 +15,15 @@ include "layout/Menu.php";
 
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                <img src="assets/img/kaos.jpg" alt="..." class="img-thumbnail f-img-detail">
+                <div class="fotorama"
+                     data-nav="thumbs"
+                     data-arrows="true"
+                     data-click="false"
+                     data-swipe="true">
+                    <img src="http://s.fotorama.io/1.jpg" class="img-thumbnail f-img-detail">
+                    <img src="http://s.fotorama.io/2.jpg" class="img-thumbnail f-img-detail">
+                </div>
+
             </div>
             <div class="col-lg-8">
                 <h1 class="f-title-detail">Anzel Peplum (ZP01-ZP04)</h1>

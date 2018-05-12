@@ -11,22 +11,18 @@ class Item_kategori_m extends MY_Model {
     {
         $this->table = 'item_kategori';
         $this->primary_key = 'item_kategori_id';
-//        $this->has_many_pivot['ukuran'] = array(
-//            'foreign_model'=>'Ukuran_m',
-//            'pivot_table'=>'item_ukuran',
-//            'local_key'=>'i_kode',
-//            'pivot_local_key'=>'i_kode',
-//            'pivot_foreign_key'=>'u_kode',
-//            'foreign_key'=>'u_kode');
-//        $this->has_many_pivot['kategori'] = array(
-//            'foreign_model'=>'Kategori_m',
-//            'pivot_table'=>'items_kategoris',
-//            'local_key'=>'i_kode',
-//            'pivot_local_key'=>'i_kode',
-//            'pivot_foreign_key'=>'k_kode',
-//            'foreign_key'=>'k_kode');
         $this->protected = array('item_kategori_id','created_at','update_at');
         $this->timestamps = TRUE;
+        $this->has_one['item'] = array(
+            'foreign_model'=>'Item_m',
+            'foreign_table'=>'item',
+            'foreign_key'=>'i_kode',
+            'local_key'=>'i_kode');
+        $this->has_one['kategori'] = array(
+            'foreign_model'=>'Kategori_m',
+            'foreign_table'=>'kategori',
+            'foreign_key'=>'k_kode',
+            'local_key'=>'k_kode');
         parent::__construct();
     }
 

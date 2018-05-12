@@ -29,7 +29,11 @@ class Item extends MY_Controller
         $data->title = 'Fashion Grosir | Item';
         $data->title_page = 'Item';
         $data->total_item = $this->item->count_rows();
-        $data->items = $this->item->select_sum_qty();
+        $data->items = $this->item_detil->with_item()->get_all();
+        $data->kategoris = $this->kategori->with_item_kategori()->get_all();
+        $data->warnas = $this->warna->with_item_detil()->get_all();
+        $data->ukurans = $this->ukuran->with_item_detil()->get_all();
+        $data->qtys = $this->item_qty->with_item_detil()->get_all();
         $this->load->view('Item', $data);
     }
 

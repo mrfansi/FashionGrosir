@@ -12,11 +12,12 @@ class Home extends MY_Controller
     {
         // load model
         $this->load->model('Item_m', 'item');
+        $this->load->model('Item_img_m', 'item_img');
 
         $data = new stdClass();
         $data->title = 'Fashion Grosir | Item';
         $data->title_page = 'Item';
-        $data->items = $this->item->get_all();
+        $data->items = $this->item->select_sum_qty();
         $this->load->view('Home', $data);
     }
 }

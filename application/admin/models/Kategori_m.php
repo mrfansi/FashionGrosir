@@ -13,6 +13,11 @@ class Kategori_m extends MY_Model {
         $this->primary_key = 'k_id';
         $this->protected = array('k_id','created_at','update_at');
         $this->timestamps = TRUE;
+        $this->has_many['item_kategori'] = array(
+            'foreign_model'=>'Item_kategori_m',
+            'foreign_table'=>'item_kategori',
+            'foreign_key'=>'k_kode',
+            'local_key'=>'k_kode');
         parent::__construct();
     }
 

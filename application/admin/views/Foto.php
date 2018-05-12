@@ -108,11 +108,6 @@
         $('a#hapus').attr('href', "<?= site_url('item_img/hapus/'); ?>" + id);
     }
 
-    // ------------------------------------------------------ //
-    // Data table users
-    // ------------------------------------------------------ //
-    $('#tables').DataTable();
-
     $(document).ready(function () {
         $('[tooltip]').tooltip();
     });

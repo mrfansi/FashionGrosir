@@ -12,7 +12,11 @@ class Item_qty_m extends MY_Model {
         $this->table = 'item_qty';
         $this->primary_key = 'is_id';
         $this->protected = array('is_id','created_at','update_at');
-        $this->has_one['item'] = 'Item_m';
+        $this->has_one['item_detil'] = array(
+            'foreign_model'=>'Item_detil_m',
+            'foreign_table'=>'item_detil',
+            'foreign_key'=>'id_kode',
+            'local_key'=>'id_kode');
         $this->timestamps = TRUE;
         parent::__construct();
     }

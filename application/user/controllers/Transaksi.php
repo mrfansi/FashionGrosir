@@ -19,6 +19,11 @@ class Transaksi extends MY_Controller
         $data->items = $this->item->get_all();
         $this->load->view('Home', $data);
     }
+
+    public function item()
+    {
+
+    }
 }
 
 /* End of file Home.php */
