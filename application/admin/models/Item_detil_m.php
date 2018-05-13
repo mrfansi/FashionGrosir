@@ -21,8 +21,8 @@ class Item_detil_m extends MY_Model
         $this->has_many['item_qty'] = array(
             'foreign_model'=>'Item_qty_m',
             'foreign_table'=>'item_qty',
-            'foreign_key'=>'id_kode',
-            'local_key'=>'id_kode');
+            'foreign_key'=>'ide_kode',
+            'local_key'=>'ide_kode');
         $this->timestamps = TRUE;
         parent::__construct();
     }

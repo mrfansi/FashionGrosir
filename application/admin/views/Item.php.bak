@@ -96,7 +96,7 @@
                                         <?php if ($item->item_detil != NULL): ?>
                                             <?php foreach ($item->item_detil as $detil): ?>
                                                 <td>
-                                                    <?= $warna($detil->id_kode); ?>
+                                                    <?= $warna($detil->ide_kode); ?>
                                                 </td>
                                             <?php endforeach; ?>
                                         <?php else: ?>
@@ -106,7 +106,7 @@
                                         <?php if ($item->item_detil != NULL): ?>
                                             <?php foreach ($item->item_detil as $detil): ?>
                                                 <td>
-                                                    <?= $ukuran($detil->id_kode); ?>
+                                                    <?= $ukuran($detil->ide_kode); ?>
                                                 </td>
                                             <?php endforeach; ?>
                                         <?php else: ?>
@@ -129,7 +129,7 @@
                                                        title="Tambah Stok <?= $title_page; ?>"
                                                        href="#"
                                                        onclick="tambah_qty($(this))" data-target="#crud"
-                                                       data-id="<?= $item->id_kode; ?>"><i
+                                                       data-id="<?= $item->ide_kode; ?>"><i
                                                                 class="fas fa-cart-plus fa-lg"></i></a> |
                                                     <a tooltip data-toggle="modal"
                                                        title="Tambah Foto <?= $title_page; ?>"
@@ -140,7 +140,7 @@
                                                     <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
                                                        href="#"
                                                        onclick="hapus($(this))" data-target="#hapus"
-                                                       data-id="<?= $item->id_kode; ?>"><i
+                                                       data-id="<?= $item->ide_kode; ?>"><i
                                                                 class="far fa-trash-alt fa-lg"></i></a>
                                                 </td>
                                             <?php endforeach; ?>

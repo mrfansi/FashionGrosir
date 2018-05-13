@@ -85,10 +85,10 @@ class Item_img extends MY_Controller
         }
     }
 
-    public function set_default($id_kode, $id)
+    public function set_default($ide_kode, $id)
     {
         $data = new stdClass();
-        $this->item_img->where_id_kode($id_kode)->update(array(
+        $this->item_img->where_ide_kode($ide_kode)->update(array(
             'ii_default'     => 0
         ));
 
@@ -105,13 +105,13 @@ class Item_img extends MY_Controller
         }
     }
 
-    public function tambah($id_kode)
+    public function tambah($ide_kode)
     {
         $data = new stdClass();
         $data->title = 'Fashion Grosir | Foto';
         $data->title_page = 'Foto';
-        $data->item_imgs = $this->item_img->where('id_kode', $id_kode)->get_all();
-        $data->id_kode = $id_kode;
+        $data->item_imgs = $this->item_img->where('ide_kode', $ide_kode)->get_all();
+        $data->ide_kode = $ide_kode;
         $this->load->view('Foto', $data);
     }
 

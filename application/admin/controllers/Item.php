@@ -31,21 +31,21 @@ class Item extends MY_Controller
 
         $data->total_item = $this->item->count_rows();
         $data->items = $this->item->with_item_detil()->with_item_kategori()->get_all();
-        $data->warna = function ($id_kode, $w_kode) {
-            return $this->warna->fields('w_nama')->with_item_detil('where:id_kode = \'' . $id_kode . '\'')->where_w_kode($w_kode)->get();
+        $data->warna = function ($ide_kode, $w_kode) {
+            return $this->warna->fields('w_nama')->with_item_detil('where:ide_kode = \'' . $ide_kode . '\'')->where_w_kode($w_kode)->get();
         };
 
-        $data->ukuran = function ($id_kode, $u_kode) {
-            return $this->ukuran->fields('u_nama')->with_item_detil('where:id_kode = \'' . $id_kode . '\'')->where_u_kode($u_kode)->get();
+        $data->ukuran = function ($ide_kode, $u_kode) {
+            return $this->ukuran->fields('u_nama')->with_item_detil('where:ide_kode = \'' . $ide_kode . '\'')->where_u_kode($u_kode)->get();
         };
 
-        $data->seri = function ($id_kode, $s_kode) {
-            return $this->seri->fields('s_nama')->with_item_detil('where:id_kode = \'' . $id_kode . '\'')->where_s_kode($s_kode)->get();
+        $data->seri = function ($ide_kode, $s_kode) {
+            return $this->seri->fields('s_nama')->with_item_detil('where:ide_kode = \'' . $ide_kode . '\'')->where_s_kode($s_kode)->get();
         };
 
-        $data->qty = function ($id_kode) {
+        $data->qty = function ($ide_kode) {
             $hasil = 0;
-            $stoks = $this->item_qty->fields('iq_qty')->with_item_detil('where:id_kode = \'' . $id_kode . '\'')->get_all();
+            $stoks = $this->item_qty->fields('iq_qty')->with_item_detil('where:ide_kode = \'' . $ide_kode . '\'')->get_all();
             foreach ($stoks as $stok) {
                 $hasil += $stok->iq_qty;
             }
@@ -122,7 +122,7 @@ class Item extends MY_Controller
             for ($i = 0; $i < $counter; $i++) {
                 $id_detil = $this->item_detil->guid();
                 $item_detil = $this->item_detil->insert(array(
-                    'id_kode' => $id_detil,
+                    'ide_kode' => $id_detil,
                     'i_kode' => $this->input->post('id'),
                     'w_kode' => $_POST['warna'][$i],
                     's_kode' => $_POST['seri'][$i],
@@ -131,7 +131,7 @@ class Item extends MY_Controller
 
                 $item_qty = $this->item_qty->insert(array(
                     'iq_kode' => $this->item_qty->guid(),
-                    'id_kode' => $id_detil,
+                    'ide_kode' => $id_detil,
                     'iq_qty' => $_POST['qty'][$i]
                 ));
             }
@@ -172,7 +172,7 @@ class Item extends MY_Controller
             $qty = $this->item_qty->insert(array(
                 'iq_kode' => $this->item_qty->guid(),
                 'iq_qty' => $this->input->post('qty'),
-                'id_kode' => $this->input->post('id')
+                'ide_kode' => $this->input->post('id')
             ));
 
             if ($qty) {
@@ -213,7 +213,7 @@ class Item extends MY_Controller
     {
         $data = new stdClass();
 
-        $item_detil = $this->item_detil->where('id_kode', $id)->delete();
+        $item_detil = $this->item_detil->where('ide_kode', $id)->delete();
         if ($item_detil) {
             $data->berhasil = 'Data Item berhasil dihapus';
             $this->session->set_flashdata('berhasil', $data->berhasil);

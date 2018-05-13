@@ -53,9 +53,9 @@ class Item_m extends MY_Model
                                     INNER JOIN warna w ON id.w_kode = w.w_kode
                                     INNER JOIN ukuran u ON id.u_kode = u.u_kode
                                     LEFT JOIN seri s ON id.s_kode = s.s_kode
-                                    LEFT JOIN item_qty iq ON id.id_kode = iq.id_kode
-                                    WHERE id.id_kode = '$id'
-                                    GROUP BY id.id_kode;");
+                                    LEFT JOIN item_qty iq ON id.ide_kode = iq.ide_kode
+                                    WHERE id.ide_kode = '$id'
+                                    GROUP BY id.ide_kode;");
 
         return $query->result();
     }

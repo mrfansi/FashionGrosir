@@ -46,7 +46,7 @@ class Upload extends CI_Controller
                 'ii_kode'       => $this->item_img->guid(),
                 'ii_nama'       => $files[$i]['file_name'],
                 'ii_url'       => $files[$i]['file_name'],
-                'id_kode'        => $this->input->post('id_kode')
+                'ide_kode'        => $this->input->post('ide_kode')
             );
             $this->item_img->insert($data);
         }
