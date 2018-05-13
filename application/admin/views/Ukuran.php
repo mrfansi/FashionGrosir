@@ -59,7 +59,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h2><i class="fas fa-filter"></i> Ukuran</h2>
+                            <h2>Ukuran</h2>
                         </div>
                         <div class="col-sm-2">
                             <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"

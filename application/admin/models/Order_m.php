@@ -30,34 +30,34 @@ class Order_m extends MY_Model
 
     public function select_orders()
     {
-        $query = $this->db->query("SELECT orders.o_kode, orders.created_at, orders.a_kode, orders.o_status, pengguna.p_nama, SUM(orders_detil.od_tharga) total
+        $query = $this->db->query("SELECT orders.o_kode, orders.created_at, orders.o_noorder, orders.o_status, pengguna.p_nama, SUM(orders_detil.od_tharga) total
                                     FROM orders
                                     INNER JOIN pengguna
                                     ON orders.p_kode = pengguna.p_kode
                                     LEFT JOIN orders_detil
                                     ON orders.o_kode = orders_detil.o_kode
-                                    GROUP BY orders.a_kode;");
+                                    GROUP BY orders.o_noorder;");
 
         return $query->result();
     }
 
     public function select_orders_where($status)
     {
-        $query = $this->db->query("SELECT orders.o_kode, orders.a_kode, orders.o_status, pengguna.p_nama, SUM(orders_detil.od_tharga) total
+        $query = $this->db->query("SELECT orders.o_kode, orders.o_noorder, orders.o_status, pengguna.p_nama, SUM(orders_detil.od_tharga) total
                                     FROM orders
                                     INNER JOIN pengguna
                                     ON orders.p_kode = pengguna.p_kode
                                     LEFT JOIN orders_detil
                                     ON orders.o_kode = orders_detil.o_kode
                                     WHERE orders.o_status = $status
-                                    GROUP BY orders.a_kode;");
+                                    GROUP BY orders.o_noorder;");
 
         return $query->result();
     }
 
     public function select_orders_bukti($status)
     {
-        $query = $this->db->query("SELECT orders_bukti.*, orders.a_kode, orders.o_status
+        $query = $this->db->query("SELECT orders_bukti.*, orders.o_noorder, orders.o_status
                                     FROM orders_bukti
                                     LEFT JOIN orders
                                     ON orders_bukti.o_kode = orders.o_kode
@@ -68,14 +68,14 @@ class Order_m extends MY_Model
 
     public function select_invoice($status)
     {
-        $query = $this->db->query("SELECT orders.a_kode, orders.o_status, pengguna.p_nama, SUM(orders_detil.od_tharga) total
+        $query = $this->db->query("SELECT orders.o_noorder, orders.o_status, pengguna.p_nama, SUM(orders_detil.od_tharga) total
                                     FROM orders
                                     INNER JOIN pengguna
                                     ON orders.p_kode = pengguna.p_kode
                                     LEFT JOIN orders_detil
                                     ON orders.o_kode = orders_detil.o_kode
                                     WHERE orders.o_status = $status
-                                    GROUP BY orders.a_kode;");
+                                    GROUP BY orders.o_noorder;");
 
         return $query->result();
     }

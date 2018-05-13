@@ -78,7 +78,7 @@
                             <?php if ($orders != NULL): ?>
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td class="text-danger"><?= $order->a_kode; ?></td>
+                                        <td class="text-danger"><?= $order->o_noorder; ?></td>
                                         <td id="rupiah"><?= $order->ob_nominal; ?></td>
                                         <td class="text-center">
                                             <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"

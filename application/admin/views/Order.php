@@ -79,7 +79,7 @@
                             <?php if ($orders != NULL): ?>
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td class="text-danger"><?= $order->a_kode; ?></td>
+                                        <td class="text-danger"><?= $order->o_noorder; ?></td>
                                         <td><?= $order->p_nama; ?></td>
                                         <td id="rupiah"><?= $order->total; ?></td>
                                         <td>

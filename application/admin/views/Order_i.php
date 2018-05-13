@@ -80,7 +80,7 @@
                             <?php if ($orders != NULL): ?>
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td><?= $order->a_kode; ?></td>
+                                        <td><?= $order->o_noorder; ?></td>
                                         <td><?= $order->p_nama; ?></td>
 
                                         <td>

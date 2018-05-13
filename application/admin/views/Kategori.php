@@ -60,7 +60,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h2><i class="fas fa-filter"></i> Kategori</h2>
+                            <h2>Kategori</h2>
                         </div>
                         <div class="col-sm-2">
                             <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
@@ -75,26 +75,44 @@
                         <table id="tables" class="table table-sm table-borderless">
                             <thead>
                             <tr>
-                                <th scope="col">Nama Kategori</th>
+                                <th scope="col">Parent</th>
+                                <th scope="col">Child</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php if ($kategoris != NULL): ?>
                                 <?php foreach ($kategoris as $kategori): ?>
-                                    <tr>
-                                        <td><?= $kategori->k_nama; ?></td>
-                                        <td class="text-center">
-                                            <?php if ($kategori->k_kode != '0'): ?>
-                                            <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
-                                               onclick="edit($(this))" data-target="#crud"
-                                               data-id="<?= $kategori->k_kode; ?>"><i class="far fa-edit"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
-                                               onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $kategori->k_kode; ?>"><i class="far fa-trash-alt"></i></a>
-                                            <?php endif; ?>
-                                        </td>
-                                    </tr>
+                                    <?php if ($kategori->k_parent_kode == 0): ?>
+                                        <tr>
+                                            <td><?= $kategori->k_nama; ?></td>
+                                            <td>
+                                                <?php
+                                                $child = array();
+                                                foreach ($kategoris as $subkat) {
+                                                    if ($subkat->k_parent_kode == $kategori->k_kode) {
+                                                        array_push($child, $subkat->k_nama);
+                                                    }
+                                                }
+                                                echo implode(',', $child);
+                                                ?>
+                                            </td>
+                                            <td class="text-center">
+                                                <?php if ($kategori->k_kode != '0'): ?>
+                                                    <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
+                                                       href="#"
+                                                       onclick="edit($(this))" data-target="#crud"
+                                                       data-id="<?= $kategori->k_kode; ?>"><i
+                                                                class="far fa-edit"></i></a> |
+                                                    <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
+                                                       href="#"
+                                                       onclick="hapus($(this))" data-target="#hapus"
+                                                       data-id="<?= $kategori->k_kode; ?>"><i
+                                                                class="far fa-trash-alt"></i></a>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                             </tbody>

@@ -3,14 +3,14 @@
 $url = site_url('kategori/simpan');
 if ($submit == 'Ubah')
 {
-    $id = $kategoris->k_kode;
-    $tipe = $kategoris->k_parent_kode;
-    $nama = $kategoris->k_nama;
+    $id = $kategori->k_kode;
+    $nama = $kategori->k_nama;
+    $parent = $kategori->k_parent_kode;
 } else if ($submit == 'Simpan')
 {
     $id = $kode;
-    $tipe = '';
     $nama = '';
+    $parent = 0;
 }
 ?>
 
@@ -21,13 +21,16 @@ if ($submit == 'Ubah')
         <label for="parent">Parent Kategori</label>
         <select name="parent" id="parent" class="form-control">
             <option value="0">Root</option>
+            <?php foreach ($kategoris as $kategori): ?>
+            <option value="<?= $kategori->k_kode; ?>" <?= $parent == $kategori->k_kode ? 'selected' : ''; ?>><?= $kategori->k_nama; ?></option>
+            <?php endforeach; ?>
         </select>
         <p>
-            <?= form_error('tipe'); ?>
+            <?= form_error('parent'); ?>
         </p>
     </div>
     <div class="form-group">
-        <label for="tipe">Nama Kategori</label>
+        <label for="nama">Nama Kategori</label>
         <input type="text" class="form-control" name="nama" placeholder="Input Nama Kategori" value="<?= $nama; ?>" required>
         <p>
             <?= form_error('nama'); ?>

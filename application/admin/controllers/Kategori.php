@@ -39,6 +39,7 @@ class Kategori extends MY_Controller
         $data->title = 'Fashion Grosir | Kategori > Tambah';
         $data->submit = 'Simpan';
         $data->kode = $this->kategori->guid();
+        $data->kategoris = $this->kategori->where_k_parent_kode(0)->get_all();
         $this->load->view('CRUD_Kategori', $data);
     }
 
@@ -48,8 +49,8 @@ class Kategori extends MY_Controller
         $data->title = 'Fashion Grosir | Pelanggan > Ubah';
         $data->submit = 'Ubah';
         $data->kode = $id;
-        $data->kategoris = $this->kategori->where('k_kode', $id)->get();
-
+        $data->kategori = $this->kategori->where('k_kode', $id)->get();
+        $data->kategoris = $this->kategori->where_k_parent_kode(0)->get_all();
         $this->load->view('CRUD_Kategori', $data);
     }
 
@@ -64,45 +65,34 @@ class Kategori extends MY_Controller
         // get user from database where guid
         $kategori = $this->kategori->where_k_kode($id)->get();
 
-        if ($kategori)
-        {
+        if ($kategori) {
             $kategori = $this->kategori->where_k_kode($id)->update(array(
-                'k_parent_kode'    => $this->input->post('parent'),
-                'k_nama'    => $this->input->post('nama'),
-                'updated_by'        => $_SESSION['username'],
+                'k_parent_kode' => $this->input->post('parent'),
+                'k_nama' => $this->input->post('nama'),
             ));
-            if ($kategori)
-            {
+            if ($kategori) {
                 $data->berhasil = 'Data Kategori berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $data->berhasil);
 
                 redirect('kategori');
-            }
-            else
-            {
+            } else {
                 $data->gagal = 'Data Kategori gagal diperbarui.';
                 $this->session->set_flashdata('gagal', $data->gagal);
 
                 redirect('kategori');
             }
-        }
-        else
-        {
+        } else {
             $kategori = $this->kategori->insert(array(
-                'k_kode'          => $this->input->post('id'),
-                'k_parent_kode'          => $this->input->post('parent'),
-                'k_nama'          => $this->input->post('nama'),
-//                'created_by'      => $_SESSION['username'],
+                'k_kode' => $this->input->post('id'),
+                'k_parent_kode' => $this->input->post('parent'),
+                'k_nama' => $this->input->post('nama'),
             ));
-            if ($kategori)
-            {
+            if ($kategori) {
                 $data->berhasil = 'Data Kategori berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $data->berhasil);
 
                 redirect('kategori');
-            }
-            else
-            {
+            } else {
                 $data->gagal = 'Data Kategori gagal dibuat.';
                 $this->session->set_flashdata('gagal', $data->gagal);
 
@@ -111,20 +101,17 @@ class Kategori extends MY_Controller
         }
     }
 
-    public  function hapus($id)
+    public function hapus($id)
     {
         $data = new stdClass();
 
         $kategori = $this->kategori->where('k_kode', $id)->delete();
-        if ($kategori)
-        {
+        if ($kategori) {
             $data->berhasil = 'Data Kategori berhasil dihapus';
             $this->session->set_flashdata('berhasil', $data->berhasil);
 
             redirect('kategori');
-        }
-        else
-        {
+        } else {
             $data->gagal = 'Data Kategori gagal dihapus';
             $this->session->set_flashdata('berhasil', $data->gagal);
 

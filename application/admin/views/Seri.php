@@ -60,7 +60,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h2><i class="fas fa-filter"></i> No Seri</h2>
+                            <h2>Nomor Seri</h2>
                         </div>
                         <div class="col-sm-2">
                             <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
@@ -75,7 +75,7 @@
                         <table id="tables" class="table table-sm table-borderless">
                             <thead>
                             <tr>
-                                <th scope="col">Nama</th>
+                                <th scope="col">Nomor Seri</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             </thead>
