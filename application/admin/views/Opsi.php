@@ -78,7 +78,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <textarea class="form-control" name="alamat" cols="30" rows="10" placeholder="Alamat Lengkap"></textarea>
+                                <textarea class="form-control" name="alamat" placeholder="Alamat Lengkap"></textarea>
                             </div>
                         </div>
                     </div>
