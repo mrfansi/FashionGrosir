@@ -58,46 +58,25 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <h2>Nomor Seri</h2>
-                        </div>
-                        <div class="col-sm-2">
-                            <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
-                               onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i
-                                        class="fas fa-plus"></i></a>
-                        </div>
-                    </div>
-
+                    <h1>Nomor Seri</h1>
+                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud">Buat baru</a>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="tables" class="table table-sm table-borderless">
-                            <thead>
-                            <tr>
-                                <th scope="col">Nomor Seri</th>
-                                <th scope="col" class="text-center">Aksi</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php if ($seris != NULL): ?>
-                                <?php foreach ($seris as $seri): ?>
-                                    <tr>
-                                        <td><?= $seri->s_nama; ?></td>
-                                        <td class="text-center">
-                                            <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
-                                               onclick="edit($(this))" data-target="#crud"
-                                               data-id="<?= $seri->s_kode; ?>"><i class="far fa-edit"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
-                                               onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $seri->s_kode; ?>"><i class="far fa-trash-alt"></i></a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                            </tbody>
-                        </table>
-                    </div>
+                    <?php if ($seris != NULL): ?>
+                        <?php foreach ($seris as $seri): ?>
+                            <div class="btn-group mb-2" role="group" aria-label="Basic example">
+                                <button type="button" class="btn">Seri : <?= $seri->s_nama; ?></button>
+                                <a class="btn btn-primary" tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
+                                   href="#"
+                                   onclick="edit($(this))" data-target="#crud"
+                                   data-id="<?= $seri->s_kode; ?>"><i class="far fa-edit"></i></a>
+                                <a class="btn btn-danger" tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
+                                   href="#"
+                                   onclick="hapus($(this))" data-target="#hapus"
+                                   data-id="<?= $seri->s_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -174,12 +153,6 @@
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="crud"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="modal-body">
             </div>
         </div>
@@ -190,7 +163,7 @@
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
+                <h1 class="modal-title" id="hapus"><?= $title_page; ?></h1>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -199,7 +172,7 @@
                 <p>Apakah anda yakin ingin menghapus data ini?</p>
             </div>
             <div class="modal-footer">
-                <a id="hapus" href="#" class="btn btn-primary btn-danger">Hapus</a>
+                <a id="hapus" href="#" class="btn btn-sm btn-danger">Hapus</a>
             </div>
         </div>
     </div>

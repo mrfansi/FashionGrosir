@@ -17,8 +17,8 @@ class Seri extends MY_Controller
     public function index()
     {
         $data = new stdClass();
-        $data->title = 'Fashion Grosir | No Seri';
-        $data->title_page = 'No Seri';
+        $data->title = 'Fashion Grosir | Nomor Seri';
+        $data->title_page = 'Nomor Seri';
         $data->total_seri = $this->seri->count_rows();
         $data->seris = $this->seri->get_all();
         $this->load->view('Seri', $data);
@@ -27,7 +27,7 @@ class Seri extends MY_Controller
     public function tambah()
     {
         $data = new stdClass();
-        $data->title = 'Fashion Grosir | No Seri > Tambah';
+        $data->title = 'Fashion Grosir | Nomor Seri > Tambah';
         $data->submit = 'Simpan';
         $data->kode = $this->seri->guid();
         $this->load->view('CRUD_Seri', $data);
@@ -36,7 +36,7 @@ class Seri extends MY_Controller
     public function ubah($id)
     {
         $data = new stdClass();
-        $data->title = 'Fashion Grosir | No Seri > Ubah';
+        $data->title = 'Fashion Grosir | Nomor Seri > Ubah';
         $data->submit = 'Ubah';
         $data->kode = $id;
         $data->seris = $this->seri->where('s_kode', $id)->get();
@@ -63,14 +63,14 @@ class Seri extends MY_Controller
             ));
             if ($seri)
             {
-                $data->berhasil = 'Data No. Seri berhasil diperbarui.';
+                $data->berhasil = 'Nomor Seri berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $data->berhasil);
 
                 redirect('seri');
             }
             else
             {
-                $data->gagal = 'Data No. Seri gagal diperbarui.';
+                $data->gagal = 'Nomor Seri gagal diperbarui.';
                 $this->session->set_flashdata('gagal', $data->gagal);
 
                 redirect('seri');
@@ -85,14 +85,14 @@ class Seri extends MY_Controller
             ));
             if ($seri)
             {
-                $data->berhasil = 'Data No. Seri berhasil dibuat.';
+                $data->berhasil = 'Nomor Seri berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $data->berhasil);
 
                 redirect('seri');
             }
             else
             {
-                $data->gagal = 'Data No. Seri gagal dibuat.';
+                $data->gagal = 'Nomor Seri gagal dibuat.';
                 $this->session->set_flashdata('gagal', $data->gagal);
 
                 redirect('seri');
@@ -107,14 +107,14 @@ class Seri extends MY_Controller
         $seri = $this->seri->where('s_kode', $id)->delete();
         if ($seri)
         {
-            $data->berhasil = 'Data No. Seri berhasil dihapus';
+            $data->berhasil = 'Nomor Seri berhasil dihapus';
             $this->session->set_flashdata('berhasil', $data->berhasil);
 
             redirect('seri');
         }
         else
         {
-            $data->gagal = 'Data No. Seri gagal dihapus';
+            $data->gagal = 'Nomor Seri gagal dihapus';
             $this->session->set_flashdata('berhasil', $data->gagal);
 
             redirect('seri');

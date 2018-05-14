@@ -39,7 +39,7 @@ class Warna extends MY_Controller
         $data->title = 'Fashion Grosir | Warna > Ubah';
         $data->submit = 'Ubah';
         $data->kode = $id;
-        $data->warnas = $this->warna->where('k_kode', $id)->get();
+        $data->warnas = $this->warna->where('w_kode', $id)->get();
 
         $this->load->view('CRUD_Warna', $data);
     }

@@ -114,6 +114,8 @@ if ($submit == 'Ubah') {
         <button type="submit" class="btn btn-primary btn-block"><?= $submit; ?></button>
     </div>
 </form>
+<link rel="stylesheet" href="<?= base_url('assets/vendor/select/css/multi-select.css'); ?>">
+<script src="<?= base_url('assets/vendor/select/js/jquery.multi-select.js'); ?>"></script>
 <script>
     $(document).ready(function () {
         $('select#kategori').multiSelect();

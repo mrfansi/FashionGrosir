@@ -1,4 +1,3 @@
-
 <?php if (isset($_SESSION['validation']) && $_SESSION['validation'] != ""): ?>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <?php echo $_SESSION['validation']; ?>
@@ -24,15 +23,23 @@
         </button>
     </div>
 <?php endif; ?>
-<?php echo form_open_multipart('upload/do_upload');?>
-<input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+<form action="<?= site_url('upload/do_upload'); ?>" enctype="multipart/form-data" method="post">
+    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" name="ide_kode" value="<?= $ide_kode ?>">
     <div class="form-group">
-        <input class="form-control-file" name="images[]" type="file" multiple required>
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file" name="images[]" class="custom-file-input" required>
+                <label class="custom-file-label" for="inputGroupFile04">Pilih file</label>
+            </div>
+        </div>
     </div>
+
+
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Upload</button>
+        <button type="submit" class="btn btn-sm btn-primary">Unggah</button>
     </div>
+
 </form>
 <br>
 <div class="table-responsive">
@@ -48,11 +55,13 @@
         <?php if ($item_imgs != NULL): ?>
             <?php foreach ($item_imgs as $img): ?>
                 <tr>
-                    <td><img src="<?= base_url('upload/' . $img->ii_url); ?>" alt="<?= $img->ii_nama; ?>" height="100" width="100"></td>
+                    <td><img src="<?= base_url('upload/' . $img->ii_url); ?>" alt="<?= $img->ii_nama; ?>" height="100"
+                             width="100"></td>
                     <td class="align-middle"><?= $img->ii_default == 0 ? '<i class="fas fa-times"></i>' : '<i class="fas fa-check"></i>'; ?></td>
                     <td class="align-middle">
-                        <a href="<?= site_url('item_img/set_default/' . $img->ide_kode . '/' . $img->ii_kode); ?>" onclick="utama($(this))" data-id="<?= $img->ii_kode; ?>">
-                            Set utama
+                        <a href="<?= site_url('item_img/set_default/' . $img->ide_kode . '/' . $img->ii_kode); ?>"
+                           onclick="utama($(this))" data-id="<?= $img->ii_kode; ?>">
+                            Jadikan utama
                         </a> |
                         <a data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                            onclick="hapus($(this))" data-target="#hapus"

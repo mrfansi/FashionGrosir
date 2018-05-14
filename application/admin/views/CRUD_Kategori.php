@@ -22,7 +22,7 @@ if ($submit == 'Ubah')
         <select name="parent" id="parent" class="form-control">
             <option value="0">Root</option>
             <?php foreach ($kategoris as $kategori): ?>
-            <option value="<?= $kategori->k_kode; ?>" <?= $parent == $kategori->k_kode ? 'selected' : ''; ?>><?= $kategori->k_nama; ?></option>
+            <option value="<?= $kategori->k_kode; ?>"><?= $kategori->k_nama; ?></option>
             <?php endforeach; ?>
         </select>
         <p>

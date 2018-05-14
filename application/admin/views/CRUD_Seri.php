@@ -16,8 +16,8 @@ if ($submit == 'Ubah')
     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" name="id" value="<?= $id; ?>">
     <div class="form-group">
-        <label for="tipe">No. Seri</label>
-        <input type="text" class="form-control" name="nama" placeholder="Input No Seri" value="<?= $nama; ?>" required>
+        <label for="nama">Nomor Seri</label>
+        <input type="text" class="form-control" name="nama" placeholder="Input Nomor Seri" value="<?= $nama; ?>" required>
         <p>
             <?= form_error('nama'); ?>
         </p>

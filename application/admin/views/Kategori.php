@@ -58,16 +58,8 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <h2>Kategori</h2>
-                        </div>
-                        <div class="col-sm-2">
-                            <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
-                               onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i
-                                        class="fas fa-plus"></i></a>
-                        </div>
-                    </div>
+                    <h1>Kategori</h1>
+                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud">Buat baru</a>
 
                 </div>
                 <div class="card-body">
@@ -77,7 +69,7 @@
                             <tr>
                                 <th scope="col">Parent</th>
                                 <th scope="col">Child</th>
-                                <th scope="col" class="text-center">Aksi</th>
+                                <th scope="col" class="text-center"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -158,10 +150,6 @@
                 $('a#hapus').attr('href', "<?= site_url('kategori/hapus/'); ?>" + id);
             }
 
-            // ------------------------------------------------------ //
-            // Data table users
-            // ------------------------------------------------------ //
-            $('#tables').DataTable();
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();
@@ -194,12 +182,7 @@
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="crud"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+
             <div class="modal-body">
             </div>
         </div>
@@ -209,17 +192,12 @@
 <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="hapus"><i class="fas fa-filter"></i> <?= $title_page; ?></h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+
             <div class="modal-body">
                 <p>Apakah anda yakin ingin menghapus data ini?</p>
             </div>
             <div class="modal-footer">
-                <a id="hapus" href="#" class="btn btn-primary btn-danger">Hapus</a>
+                <a id="hapus" href="#" class="btn btn-sm btn-danger">Hapus</a>
             </div>
         </div>
     </div>

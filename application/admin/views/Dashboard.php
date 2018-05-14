@@ -29,7 +29,7 @@
                 <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-user"></i></div>
-                        <div class="name"><strong class="text-uppercase">Pelanggan</strong><span>Last 7 days</span>
+                        <div class="name"><strong class="text-uppercase">Pelanggan</strong>
                             <div class="count-number"><?= $totalcustomer ?></div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                 <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-padnote"></i></div>
-                        <div class="name"><strong class="text-uppercase">Item</strong><span>Last 5 days</span>
+                        <div class="name"><strong class="text-uppercase">Item</strong>
                             <div class="count-number"><?= $totalitem ?></div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                 <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-bill"></i></div>
-                        <div class="name"><strong class="text-uppercase">Order</strong><span>Last 2 days</span>
+                        <div class="name"><strong class="text-uppercase">Order</strong>
                             <div class="count-number"><?= $totalorder ?></div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                 <div class="col-xl-3 col-md-4 col-6">
                     <div class="wrapper count-title d-flex">
                         <div class="icon"><i class="icon-list"></i></div>
-                        <div class="name"><strong class="text-uppercase">Invoice</strong><span>Last 3 months</span>
+                        <div class="name"><strong class="text-uppercase">Invoice</strong>
                             <div class="count-number"><?= $totalinv ?></div>
                         </div>
                     </div>

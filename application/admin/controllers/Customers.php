@@ -28,7 +28,7 @@ class Customers extends MY_Controller
     {
         $data = new stdClass();
         $data->title = 'Fashion Grosir | Pelanggan VIP';
-        $data->title_page = 'Pelanggan VIP';
+        $data->title_page = 'VIP';
         $data->total_customers = $this->customers->count_rows();
         $data->customers = $this->customers->where('p_tipe', '1')->get_all();
         $this->load->view('Customers', $data);
@@ -37,7 +37,7 @@ class Customers extends MY_Controller
     {
         $data = new stdClass();
         $data->title = 'Fashion Grosir | Pelanggan Reseller';
-        $data->title_page = 'Pelanggan Reseller';
+        $data->title_page = 'Reseller';
         $data->total_customers = $this->customers->count_rows();
         $data->customers = $this->customers->where('p_tipe', '2')->get_all();
         $this->load->view('Customers', $data);

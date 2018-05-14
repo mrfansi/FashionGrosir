@@ -16,8 +16,8 @@ if ($submit == 'Ubah')
     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" name="id" value="<?= $id; ?>">
     <div class="form-group">
-        <label for="tipe">Nama</label>
-        <input type="text" class="form-control" name="nama" placeholder="Input Nama" value="<?= $nama; ?>" required>
+        <label for="nama">Warna</label>
+        <input type="text" class="form-control" name="nama" placeholder="Input Warna" value="<?= $nama; ?>" required>
         <p>
             <?= form_error('nama'); ?>
         </p>
