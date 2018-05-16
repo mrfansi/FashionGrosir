@@ -18,6 +18,7 @@ class Warna_m extends MY_Model {
             'foreign_table'=>'item_detil',
             'foreign_key'=>'w_kode',
             'local_key'=>'w_kode');
+        $this->soft_deletes = TRUE;
         parent::__construct();
     }
 

@@ -24,6 +24,7 @@ class Item_detil_m extends MY_Model
             'foreign_key'=>'ide_kode',
             'local_key'=>'ide_kode');
         $this->timestamps = TRUE;
+        $this->soft_deletes = TRUE;
         parent::__construct();
     }
 

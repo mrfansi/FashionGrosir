@@ -26,6 +26,7 @@ class Item_m extends MY_Model
         );
         $this->protected = array('i_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
+        $this->soft_deletes = TRUE;
         parent::__construct();
     }
 

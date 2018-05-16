@@ -18,6 +18,7 @@ class Ukuran_m extends MY_Model {
             'foreign_table'=>'item_detil',
             'foreign_key'=>'u_kode',
             'local_key'=>'u_kode');
+        $this->soft_deletes = TRUE;
         parent::__construct();
     }
 

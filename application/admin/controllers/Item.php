@@ -204,7 +204,7 @@ class Item extends MY_Controller
         $data->title = 'Fashion Grosir | Item > Ubah';
         $data->submit = 'Ubah';
         $data->kode = $id;
-        $data->item = $this->item->where('p_kode', $id)->get();
+        $data->item = $this->item->where('i_kode', $id)->get();
 
         $this->load->view('CRUD_Item', $data);
     }

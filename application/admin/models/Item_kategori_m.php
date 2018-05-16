@@ -23,6 +23,7 @@ class Item_kategori_m extends MY_Model {
             'foreign_table'=>'kategori',
             'foreign_key'=>'k_kode',
             'local_key'=>'k_kode');
+        $this->soft_deletes = TRUE;
         parent::__construct();
     }
 

@@ -18,25 +18,27 @@ include "layout/Slide.php";
             <?php foreach ($items as $item): ?>
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                     <div class="card f-bottom">
-                        <?php if ($item->ii_nama != NULL): ?>
-                            <img class="card-img-top" src="<?= base_url('upload/' . $item->ii_nama); ?>"
+                        <?php if (isset($item->item_img) && $item->item_img->ii_nama != NULL): ?>
+                            <img class="card-img-top" src="<?= base_url('upload/' . $item->item_img->ii_nama); ?>"
                                  alt="Card image cap">
                         <?php else: ?>
                             <img class="card-img-top" src="<?= base_url('assets/img/noimg.png'); ?>"
                                  alt="Card image cap">
                         <?php endif; ?>
                         <div class="card-body">
-                            <h5 class="card-title"><?= $item->i_nama; ?></h5>
+                            <h5 class="card-title"><?= $item->item->i_nama; ?></h5>
                             <?php if (isset($_SESSION['vip']) && $_SESSION['vip'] == '1'): ?>
-                                <p id="rupiah" class="card-text f-title-harga"><?= $item->i_hrg_vip; ?></p>
+                                <p id="rupiah" class="card-subtitle mb-2 text-muted"><?= $item->item->i_hrg_vip; ?></p>
                             <?php else: ?>
-                                <p id="rupiah" class="card-text f-title-harga"><?= $item->i_hrg_reseller; ?></p>
+                                <p id="rupiah" class="card-subtitle mb-2 text-muted"><?= $item->item->i_hrg_reseller; ?></p>
                             <?php endif; ?>
+                            <p class="card-text">Warna : <?= $item->warna->w_nama; ?> | Ukuran : <?= $item->ukuran->u_nama; ?></p>
                             <a href="#" class="btn btn-primary f-button-font">Tambah Ke Keranjang</a>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
+
             <br>
         </div>
     </div>
