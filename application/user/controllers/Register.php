@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends MY_Controller
+class Register extends MY_Controller
 {
     public function __construct()
     {
@@ -10,7 +10,7 @@ class Login extends MY_Controller
 
     public function index()
     {
-        $this->load->view('Login');
+        $this->load->view('Auth');
     }
 }
 

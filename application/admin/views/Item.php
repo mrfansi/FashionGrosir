@@ -175,11 +175,13 @@
                                                         Opsi
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="opsi">
-                                                        <a class="dropdown-item small" href="#" onclick="edit($(this))" data-target="#crud"
+                                                        <a class="dropdown-item small" data-toggle="modal" href="#"
+                                                           onclick="edit_item($(this))" data-target="#crud"
                                                            data-id="<?= $item->i_kode; ?>">
                                                             Tambah Detil
                                                         </a>
-                                                        <a class="dropdown-item small" href="#" onclick="edit($(this))" data-target="#crud"
+                                                        <a class="dropdown-item small" data-toggle="modal" href="#"
+                                                           onclick="hapus_item($(this))" data-target="#hapus"
                                                            data-id="<?= $item->i_kode; ?>">
                                                             Hapus
                                                         </a>
@@ -331,6 +333,12 @@
                 d = data;
                 id = d.attr('data-id');
                 $('a#hapus').attr('href', "<?= site_url('item/hapus/'); ?>" + id);
+            }
+
+            function hapus_item(data) {
+                d = data;
+                id = d.attr('data-id');
+                $('a#hapus').attr('href', "<?= site_url('item/hapus_item/'); ?>" + id);
             }
 
             // ------------------------------------------------------ //

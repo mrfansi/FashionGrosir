@@ -449,8 +449,8 @@ label:hover {
     font-family: 'Poppins', sans-serif;
     color: #F06292;
     text-align: center;
-    margin-top: 2%;
-    margin-bottom: 4%;
+    /*margin-top: 2%;*/
+    margin-bottom: 20px;
 
 }
 
@@ -531,8 +531,17 @@ img.f-img-sidebar {
 	}
 }
 
+@media screen and (max-width: 768px) {
+	.f-margin-media {
+		margin-left: 110px;
+	}
+}
+
 .f-font-harga {
 	font-size: 1.20rem;
+}
+.f-jumlah {
+	width: 70px;
 }
 
 .f-input-shadow:focus {
@@ -540,8 +549,9 @@ img.f-img-sidebar {
 	border-color: #fff;
 }
 
-.f-delete-troli {
+.f-delete-troli{
 	text-align: right;
+	color: #333;
 }
 
 @media screen and (max-width: 767px) {
@@ -550,10 +560,15 @@ img.f-img-sidebar {
   }
 }
 
+.f-detail-jumlah {
+	width: 150px;
+	border-radius: 5px;
+	padding-left: 10px;
+}
 /* =============== Ricky ================= */
 
 .r-posisi-kartu {
-	margin-top: 2%;
+	/*margin-top: 2%;*/
 }
 
 .r-judul-kotak4 {
@@ -948,6 +963,10 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 	color: #F06292;
 }
 
+.f-radius {
+	border-radius: 4px;
+}
+
 
 @media only screen and (max-width: 1024px) {
 .r-padding-ikon-social {
@@ -1011,8 +1030,7 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 .r-judul-shipping {
 	color: #F06292;
 	text-align: center;
-	margin-bottom: 3%;
-	margin-top: 1%;
+	margin-bottom: 20px;
 
 }
 
@@ -1027,6 +1045,7 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 
 .r-pilihan-alamat-font {
 	color: #F06292;
+	border: 1px solid #F06292;
 }
 
 .r-pilihan-alamat-font:hover {

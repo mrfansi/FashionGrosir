@@ -1,3 +1,29 @@
+<!-- Modal -->
+<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="cart"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col text-center">
+                    <p class="text-center r-pink"><i class="fa fa-check-circle fa-5x"></i> <br>Berhasil menambahkan kedalam keranjang..</p>
+                </div>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <div class="col">
+                    <button type="button" class="btn btn-sm btn-primary r-btn-pink btn-block" data-dismiss="modal">Lanjutkan belanja</button>
+                </div>
+                <div class="col">
+                    <a href="<?= site_url('cart'); ?>" class="btn btn-sm btn-primary r-btn-pink btn-block">Check Out</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Footer -->
 <div class="container-fluid navbar-light f-footer-bg" role="alert">
     <div class="row">
@@ -32,9 +58,10 @@
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 f-margin-nav">
                     <ul class="navbar-nav">
                         <?php foreach ($this->menu_kategori as $menukat): ?>
-                        <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="<?= site_url('kategori/' . $menukat->k_kode); ?>"><?= $menukat->k_nama; ?></a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link f-footer-new"
+                                   href="<?= site_url('kategori/' . $menukat->k_kode); ?>"><?= $menukat->k_nama; ?></a>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -90,7 +117,6 @@
     <!-- <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-love"></i></a> -->
 </div>
 <!-- End Footer -->
-
 
 
 <script>

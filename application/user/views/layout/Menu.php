@@ -12,9 +12,6 @@
                     <li class="nav-item f-nav-margin">
                         <a class="nav-link" href="<?= site_url(); ?>">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="shop.html">Produk Terbaru</a>
-                    </li>
                     <?php foreach ($this->menu_kategori as $menukat): ?>
                     <li class="nav-item f-nav-margin">
                         <a class="nav-link" href="<?= site_url('kategori/' . $menukat->k_kode); ?>"><?= $menukat->k_nama; ?></a>

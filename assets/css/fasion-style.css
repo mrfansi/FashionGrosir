@@ -5,20 +5,11 @@ body {
     background-color: #fefefe;
 }
 
-.btn:focus {
-    box-shadow: none;
-}
-
-.btn-ez {
-    background-color: #F06292;
-    color: white;
-}
-
-.btn-ez:hover {
-    background-color: #fefefe;
+/*color*/
+.r-pink {
     color: #F06292;
-    border: 1px solid #F06292;
 }
+
 
 .clear-header {
     height: 40px;
@@ -47,7 +38,7 @@ body {
     background-color: #fefefe;
 }
 
-.f-bg-color {
+.f-bg-color{
     background-color: #F06292;
 }
 
@@ -72,7 +63,7 @@ body {
     color: #f9f9f9;
 }
 
-.f-new-footer ul li a {
+.f-new-footer ul li a{
     color: red;
 }
 
@@ -151,7 +142,7 @@ body {
     border-color: #F06292;
 }
 
-.f-button-color:hover {
+.f-button-color:hover{
     color: #fefefe;
     background-color: #F06292;
 }
@@ -168,7 +159,7 @@ body {
     padding: 0.8em;
 }
 
-.form-inline .form-control {
+.form-inline .form-control{
     min-width: 750px;
     margin-left: 15px;
 }
@@ -283,7 +274,6 @@ input .form-control {
 .f-no-background a:hover {
     color: #F06292;
 }
-
 .f-no-background-shop {
     background-color: transparent;
     margin-top: 10px;
@@ -319,7 +309,6 @@ input .form-control {
     color: #767573;
     font-weight: normal;
 }
-
 .f-harga {
     font-size: 30px;
     color: #F06292;
@@ -461,12 +450,14 @@ label:hover {
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
     color: #F06292;
-    text-align: left;
+    text-align: center;
+    /*margin-top: 2%;*/
+    margin-bottom: 20px;
 
 }
 
 .form-group input {
-    outline-color: red !important;
+    outline-color: red!important;
 }
 
 @media screen and (max-width: 767px) {
@@ -504,7 +495,6 @@ label:hover {
     .fa.f-troli-text {
         font-size: 55px;
     }
-
     .f-font-ricky {
         font-size: 13px;
         padding: 0px;
@@ -542,8 +532,17 @@ img.f-img-sidebar {
     }
 }
 
+@media screen and (max-width: 768px) {
+    .f-margin-media {
+        margin-left: 110px;
+    }
+}
+
 .f-font-harga {
     font-size: 1.20rem;
+}
+.f-jumlah {
+    width: 70px;
 }
 
 .f-input-shadow:focus {
@@ -551,8 +550,9 @@ img.f-img-sidebar {
     border-color: #fff;
 }
 
-.f-delete-troli {
+.f-delete-troli{
     text-align: right;
+    color: #333;
 }
 
 @media screen and (max-width: 767px) {
@@ -561,10 +561,15 @@ img.f-img-sidebar {
     }
 }
 
+.f-detail-jumlah {
+    width: 150px;
+    border-radius: 5px;
+    padding-left: 10px;
+}
 /* =============== Ricky ================= */
 
 .r-posisi-kartu {
-    margin-top: 2%;
+    /*margin-top: 2%;*/
 }
 
 .r-judul-kotak4 {
@@ -609,6 +614,7 @@ img.f-img-sidebar {
     display: inline-block;
 }
 
+
 .r-btn {
     border: 2px solid #F06292;
     color: #F06292;
@@ -619,7 +625,9 @@ img.f-img-sidebar {
     font-weight: bold;
 }
 
-.r-upload-btn-wrapper input[type=file] {
+
+
+.r-upload-f-button-font-wrapper input[type=file] {
     font-size: 100px;
     position: absolute;
     left: 0;
@@ -659,6 +667,7 @@ img.f-img-sidebar {
     margin-bottom: 15px;
 }
 
+
 /** Style header */
 
 .r-style-search {
@@ -674,6 +683,16 @@ img.f-img-sidebar {
     background-color: transparent;
     border: none;
     margin-top: 3%;
+}
+
+.r-btn-pink {
+    border-color: #F06292;
+    background-color: #F06292;
+}
+.r-btn-pink:hover {
+    background-color: #fefefe;
+    color: #F06292;
+    border: 1px solid #F06292;
 }
 
 .f-btn-search {
@@ -712,16 +731,16 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     visibility: hidden;
 }
 
-.r-link-konfirm:hover {
+.r-link-konfirm:hover{
     border-bottom: 1px solid #F06292;
 }
+
 
 @media screen and (max-width: 360px) {
     body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(1) {
         margin-left: 15%;
     }
 }
-
 @media screen and (max-width: 360px) {
     body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3) > div {
         text-align: center;
@@ -732,6 +751,8 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     background-color: #F06292;
     color: white;
 }
+
+
 
 /* test */
 
@@ -756,7 +777,7 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     font-size: 17px;
     background-color: #f9f9f9;
     min-width: 130px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 
@@ -765,9 +786,7 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     display: block;
 }
 
-.dropdown-content a:hover {
-    background-color: #f1f1f1
-}
+.dropdown-content a:hover {background-color: #f1f1f1}
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -777,12 +796,12 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     /*background-color: #3e8e41;*/
 }
 
+
 /* CSS Style - Halaman profil - Profil saya */
 
 .r-layout-row {
     margin-top: 3%;
 }
-
 .r-layout-vertical-navbar {
     width: 100%;
     height: 100%;
@@ -800,7 +819,10 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     margin: 0;
     text-align: center;
 
+
+
 }
+
 
 .r-li-style-profile a {
     text-decoration: none;
@@ -860,10 +882,12 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 
 }
 
+
 /* Style Kontak CSS **/
 
+
 .r-layout-konten-kontak {
-    margin-left: 15%;
+    margin-left:15%;
     margin-right: 15%;
     margin-top: 5%;
     margin-bottom: 5%;
@@ -878,7 +902,6 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 .r-link-kontak {
     padding-top: 2%;
 }
-
 .r-link-kontak a {
     text-decoration: none;
     font-size: 18px;
@@ -886,7 +909,7 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 
 }
 
-.r-ikon-kontak i {
+.r-ikon-kontak i{
     font-size: 50px;
     color: #F06292;
 }
@@ -901,11 +924,13 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     padding-left: 10%;
 }
 
+
 .r-layout-kontakkanan {
     margin-left: 5%;
     margin-bottom: 3%;
     margin-top: 3%;
     margin-right: 3%;
+
 
 }
 
@@ -949,14 +974,19 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     color: #F06292;
 }
 
+.f-radius {
+    border-radius: 4px;
+}
+
+
 @media only screen and (max-width: 1024px) {
     .r-padding-ikon-social {
-        margin-right: 35%;
+        margin-right:35%;
         margin-left: 35%;
     }
 
-}
 
+}
 @media only screen and (max-width: 768px) {
 
     .r-link-kontak a {
@@ -965,7 +995,7 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
         color: #F06292;
     }
 
-    .r-ikon-kontak i {
+    .r-ikon-kontak i{
         font-size: 30px;
         color: #F06292;
     }
@@ -974,11 +1004,11 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
         margin-top: 20%;
         margin-bottom: 20%;
     }
-
     .r-padding-ikon-social {
         margin-right: 30%;
         margin-left: 30%;
     }
+
 
 }
 
@@ -990,11 +1020,9 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     .r-link-kontak {
         text-align: center;
     }
-
     .r-vl-kontak {
         border-right: none;
     }
-
     .r-kontak-mobile {
         margin-top: 15%;
 
@@ -1009,11 +1037,11 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 
 /* style Alamat Pengiriman **/
 
+
 .r-judul-shipping {
     color: #F06292;
     text-align: center;
-    margin-bottom: 3%;
-    margin-top: 1%;
+    margin-bottom: 20px;
 
 }
 
@@ -1022,23 +1050,22 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     margin-left: 32%;
 
 }
-
 .r-pilihan-alamat li {
     margin-left: 1%;
 }
 
 .r-pilihan-alamat-font {
     color: #F06292;
+    border: 1px solid #F06292;
 }
 
 .r-pilihan-alamat-font:hover {
     background-color: #F06292;
-    color: white;
+    color : white;
 }
 
 .r-border-pengiriman {
-    border: 2px solid #F06292;
-    border-radius: 10px;
+    border: 1px solid #F06292;
     padding: 3%;
 }
 
@@ -1064,12 +1091,166 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     border-radius: 5px;
 }
 
-.pagination a:hover:not(.active) {
-    background-color: #ddd;
-}
+.pagination a:hover:not(.active) {background-color: #ddd;}
 
 .pagination-layout {
     text-align: right;
     margin-top: 2%;
 }
 
+
+.text-center td {
+    font-size: 14px;
+
+}
+
+.table thead th {
+    font-size: 15px;
+}
+
+.r-garis {
+    margin-top: 10%;
+    margin-bottom: 5%;
+    border: 1px solid #F06292;
+}
+
+.modal-content button {
+    margin-right: 2%;
+}
+
+.r-icon-modal-header {
+    color: #F06292;
+    font-size: 30px;
+    margin: auto;
+    text-align: center;
+}
+
+.r-p-modal-header {
+    color: #F06292;
+    font-size: 12px;
+    margin: auto;
+    text-align: center;
+}
+
+.r-modal-footer {
+    width: 100%;
+}
+
+.r-modal-footer {
+    text-align: center;
+    padding: 3%;
+}
+
+.text-center button {
+    font-size: 11px;
+    background-color: #F06292;
+    color: white;
+}
+
+.r-font-modal-namabarang {
+    font-size: 15px;
+}
+
+.r-font-modal-detail {
+    font-size: 12px;
+}
+
+.modal-header {
+    border : none;
+}
+.modal-body {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 2%;
+
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+/* List Style Resi **/
+.r-judul-resi {
+    width: 80%;
+    margin: auto;
+    margin-top: 3%;
+    border-radius: 5px
+}
+
+.r-judul-resi-detail {
+    width: 80%;
+    margin: auto;
+    margin-top: 3%;
+    border-radius: 5px
+}
+
+.r-judul-resi-detail h5 {
+    width: 40%;
+    margin: auto;
+    color: #F06292;
+    padding: 2%;
+    font-size: 17px;
+    text-align: center;
+    border-bottom: 1.5px solid #F06292;
+}
+.r-judul-resi h5 {
+    width: 30%;
+    margin: auto;
+    color: #F06292;
+    padding: 2%;
+    font-size: 23px;
+    text-align: center;
+    border-bottom: 1.5px solid #F06292;
+
+}
+
+.r-judul-resi ul li a {
+    text-decoration: none;
+    color: #F06292;
+    font-size: 15px;
+}
+.r-judul-resi ul li small {
+    font-size: 12px;
+    color: #9E9E9E;
+}
+
+.r-judul-resi ul li {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.r-judul-resi ul {
+    margin-top: 3%;
+}
+
+.pagination-layout-resi {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.r-detail-resi{
+    padding: 1%;
+    font-size: 15px;
+    margin-top: 3%;
+}
+
+
+.r-layout-troli {
+    padding: 2%;
+}
+
+
+
+.r-active-step {
+    background-color: #F06292;
+    color:white;
+}
+
+.r-active-step span {
+    border: 2px solid white;
+}
+.r-active-step .f-troli-text {
+    color: white;
+}

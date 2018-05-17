@@ -3,7 +3,18 @@
 <!-- Alert Promo -->
 <div class="container-fluid text-center clear-header" role="alert">
     Selamat datang di <b>Fashion Grosir</b> &nbsp;|&nbsp; Info Promo <a href="" class="alert-link f-link">(Klik)</a>
-    <!-- <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-love"></i></a> -->
+    <?php if (isset($_SESSION['isonline']) && $_SESSION['isonline'] == true): ?>
+        | <a href="<?= site_url('profil'); ?>" class="alert-link f-link">
+            <i class="fa fa-user"></i> <?= $_SESSION['nama']; ?>
+        </a>
+        | <a class="alert-link f-link" href="<?= site_url('logout'); ?>">
+            Log Out
+        </a>
+    <?php else: ?>
+        | <a class="alert-link f-link" href="<?= site_url('login'); ?>">
+            <i class="fa fa-user"></i> Login
+        </a>
+    <?php endif; ?>
 </div>
 <!-- End Alert Promo -->
 <br>
@@ -35,27 +46,20 @@
 
         <!-- User -->
         <div class="col-lg-3 col-md-12">
-            <a class="btn btn-ez" href="#">
+            <a class="btn btn-primary r-btn-pink" href="#">
                 <i class="fa fa-file"></i> Cek Resi
             </a>
-            <a class="btn btn-ez" href="#">
+            <a class="btn btn-primary r-btn-pink" href="<?= site_url('cart'); ?>">
                 <span class="fa fa-shopping-cart"></span>
-                <span class="badge badge-light">9</span>
+                <?php if (isset($_SESSION['id'])): ?>
+                <?php $cart = $this->cart->where_p_kode($_SESSION['id'])->count_rows(); ?>
+                <?php if (isset($cart) && $cart != NULL): ?>
+                <span class="badge badge-light"><?= $cart; ?></span>
+                <?php endif; ?>
+                <?php endif; ?>
             </a>
 
-            <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true): ?>
-            <div class="dropdown">
-                <a class="btn btn-ez" href="#" role="button" id="profil" data-toggle="dropdown">
-                    <i class="fa fa-user"></i> <?= $_SESSION['nama']; ?>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="profil">
-                    <a class="dropdown-item" href="<?= site_url('profil'); ?>">Profil</a>
-                    <a class="dropdown-item" href="<?= site_url('logout'); ?>">Logout</a>
-                </div>
-            </div>
-            <?php else: ?>
-            <a class="btn btn-ez" href="<?= site_url('login'); ?>"><i class="fa fa-user"></i> Login</a>
-            <?php endif; ?>
+
         </div>
         <!-- End User -->
     </div>

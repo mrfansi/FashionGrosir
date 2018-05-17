@@ -6,23 +6,18 @@
  * Time: 18.01
  */
 
-class Item_kategori_m extends MY_Model {
+class Cart_m extends MY_Model {
     public function __construct()
     {
-        $this->table = 'item_kategori';
-        $this->primary_key = 'ik_id';
-        $this->protected = array('ik_id','created_at','update_at');
+        $this->table = 'cart';
+        $this->primary_key = 'ca_id';
+        $this->protected = array('ca_id','created_at','update_at');
         $this->timestamps = TRUE;
-        $this->has_one['item'] = array(
-            'foreign_model'=>'Item_m',
-            'foreign_table'=>'item',
-            'foreign_key'=>'i_kode',
-            'local_key'=>'i_kode');
-        $this->has_one['kategori'] = array(
-            'foreign_model'=>'Kategori_m',
-            'foreign_table'=>'kategori',
-            'foreign_key'=>'k_kode',
-            'local_key'=>'k_kode');
+        $this->has_one['item_detil'] = array(
+            'foreign_model'=>'Item_detil_m',
+            'foreign_table'=>'item_detil',
+            'foreign_key'=>'ide_kode',
+            'local_key'=>'ide_kode');
         $this->soft_deletes = TRUE;
         parent::__construct();
     }

@@ -227,5 +227,22 @@ class Item extends MY_Controller
         }
     }
 
+    public function hapus_item($id)
+    {
+        $data = new stdClass();
+
+        $item = $this->item->where('i_kode', $id)->delete();
+        if ($item) {
+            $data->berhasil = 'Data Item berhasil dihapus';
+            $this->session->set_flashdata('berhasil', $data->berhasil);
+
+            redirect('item');
+        } else {
+            $data->gagal = 'Data Item gagal dihapus';
+            $this->session->set_flashdata('berhasil', $data->gagal);
+
+            redirect('item');
+        }
+    }
 
 }

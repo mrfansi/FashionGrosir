@@ -11,8 +11,8 @@ class Item_detil_m extends MY_Model
     public function __construct()
     {
         $this->table = 'item_detil';
-        $this->primary_key = 'id_id';
-        $this->protected = array('id_id', 'created_at', 'update_at');
+        $this->primary_key = 'ide_id';
+        $this->protected = array('ide_id', 'created_at', 'update_at');
         $this->has_one['item'] = array(
             'foreign_model'=>'Item_m',
             'foreign_table'=>'item',

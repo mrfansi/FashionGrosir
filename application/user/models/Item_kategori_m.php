@@ -10,8 +10,8 @@ class Item_kategori_m extends MY_Model {
     public function __construct()
     {
         $this->table = 'item_kategori';
-        $this->primary_key = 'item_kategori_id';
-        $this->protected = array('item_kategori_id','created_at','update_at');
+        $this->primary_key = 'ik_id';
+        $this->protected = array('ik_id','created_at','update_at');
         $this->timestamps = TRUE;
         $this->has_one['item'] = array(
             'foreign_model'=>'Item_m',
