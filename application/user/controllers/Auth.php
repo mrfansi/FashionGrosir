@@ -85,7 +85,7 @@ class Auth extends CI_Controller
                 redirect('/');
             } else {
                 $data->log = 'Username atau Password salah.';
-                $this->load->view('Auth', $data);
+                $this->load->view('Login', $data);
             }
         }
 

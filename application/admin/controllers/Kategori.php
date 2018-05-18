@@ -11,6 +11,14 @@ class Kategori extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $config = array(
+            'field' => 'k_nama',
+            'title' => 'title',
+            'table' => 'kategori',
+            'id' => 'k_id',
+        );
+        $this->load->library('slug', $config);
+
         $this->load->model('Kategori_m', 'kategori');
 
 //        $cek = $this->kategori->where_k_kode('0')->get();
@@ -69,6 +77,7 @@ class Kategori extends MY_Controller
             $kategori = $this->kategori->where_k_kode($id)->update(array(
                 'k_parent_kode' => $this->input->post('parent'),
                 'k_nama' => $this->input->post('nama'),
+                'k_url'  => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));
             if ($kategori) {
                 $data->berhasil = 'Data Kategori berhasil diperbarui.';
@@ -86,6 +95,7 @@ class Kategori extends MY_Controller
                 'k_kode' => $this->input->post('id'),
                 'k_parent_kode' => $this->input->post('parent'),
                 'k_nama' => $this->input->post('nama'),
+                'k_url'  => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));
             if ($kategori) {
                 $data->berhasil = 'Data Kategori berhasil dibuat.';

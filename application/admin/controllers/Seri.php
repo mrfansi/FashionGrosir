@@ -11,6 +11,14 @@ class Seri extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $config = array(
+            'field' => 's_nama',
+            'title' => 'title',
+            'table' => 'seri',
+            'id' => 's_id',
+        );
+        $this->load->library('slug', $config);
+
         $this->load->model('Seri_m', 'seri');
     }
 

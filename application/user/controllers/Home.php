@@ -23,6 +23,15 @@ class Home extends CI_Controller
         $data->title = 'Produk Terbaru | Fashion Grosir';
         $data->title_page = 'Item';
         $data->items = $this->item_detil->with_item()->with_warna()->with_ukuran()->with_seri()->with_item_img()->get_all();
+        $data->qty = function ($ide_kode) {
+            $hasil = 0;
+            $stoks = $this->item_qty->fields('iq_qty')->with_item_detil('where:ide_kode = \'' . $ide_kode . '\'')->get_all();
+            foreach ($stoks as $stok) {
+                $hasil += $stok->iq_qty;
+            }
+
+            return $hasil;
+        };
         $this->load->view('Home', $data);
     }
 

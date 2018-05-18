@@ -67,8 +67,7 @@ include "layout/Menu.php";
                             <input type="number" name="qty" min="1" class="form-control" id="qty" value="1">
                         </div>
                         <div class="col-6">
-                            <a href="add_to_cart"
-                               class="btn btn-primary btn-lg btn-block f-button-font f-button-detail">Tambah</a>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block f-button-font f-button-detail">Tambah</button>
                         </div>
                     </div>
                 </form>

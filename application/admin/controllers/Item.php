@@ -11,6 +11,14 @@ class Item extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $config = array(
+            'field' => 'i_nama',
+            'title' => 'title',
+            'table' => 'item',
+            'id' => 'i_id',
+        );
+        $this->load->library('slug', $config);
+
         $this->load->model('Item_m', 'item');
         $this->load->model('Item_qty_m', 'item_qty');
         $this->load->model('Item_detil_m', 'item_detil');

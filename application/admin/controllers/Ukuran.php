@@ -11,6 +11,13 @@ class Ukuran extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $config = array(
+            'field' => 'u_nama',
+            'title' => 'title',
+            'table' => 'ukuran',
+            'id' => 'u_id',
+        );
+        $this->load->library('slug', $config);
         $this->load->model('Ukuran_m', 'ukuran');
     }
 

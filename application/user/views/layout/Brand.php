@@ -46,22 +46,23 @@
 
         <!-- User -->
         <div class="col-lg-3 col-md-12">
-            <a class="btn btn-primary r-btn-pink" href="#">
-                <i class="fa fa-file"></i> Cek Resi
+            <a tooltip class="btn btn-primary r-btn-pink" href="<?= site_url('resi'); ?>" title="Resi">
+                <i class="fa fa-file"></i>
             </a>
-            <a class="btn btn-primary r-btn-pink" href="<?= site_url('cart'); ?>">
-                <span class="fa fa-shopping-cart"></span>
+            <a tooltip class="btn btn-primary r-btn-pink" href="<?= site_url('cart'); ?>" title="Cart">
+                <span class="fa fa-shopping-cart fa-lg"></span>
                 <?php if (isset($_SESSION['id'])): ?>
                 <?php $cart = $this->cart->where_p_kode($_SESSION['id'])->count_rows(); ?>
                 <?php if (isset($cart) && $cart != NULL): ?>
-                <span class="badge badge-light"><?= $cart; ?></span>
+                <span><?= $cart; ?></span>
                 <?php endif; ?>
                 <?php endif; ?>
             </a>
-
-
         </div>
         <!-- End User -->
     </div>
 </div>
 <br>
+<script>
+    $('[tooltip]').tooltip();
+</script>

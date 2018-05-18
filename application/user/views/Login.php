@@ -2,7 +2,7 @@
 include "layout/Header.php";
 ?>
 <?php if (isset($log) && $log != ""): ?>
-    <p class="text-danger"><?= $log; ?></p>
+    <p class="text-danger text-center"><?= $log; ?></p>
 <?php endif; ?>
     <!-- Login -->
     <form method="post" action="<?= site_url('login'); ?>" class="form-signin">
