@@ -105,7 +105,7 @@ class Item_img extends MY_Controller
         }
     }
 
-    public function tambah($i_kode)
+    public function foto($i_kode)
     {
         $data = new stdClass();
         $data->title = 'Fashion Grosir | Foto';
@@ -114,6 +114,16 @@ class Item_img extends MY_Controller
         $data->i_kode = $i_kode;
         $this->load->view('Foto', $data);
     }
+
+    public function unggah($i_kode)
+    {
+        $data = new stdClass();
+        $data->title = 'Fashion Grosir | Foto';
+        $data->title_page = 'Foto';
+        $data->i_kode = $i_kode;
+        $this->load->view('CRUD_Foto', $data);
+    }
+
 
     public function detil($id)
     {

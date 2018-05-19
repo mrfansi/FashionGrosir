@@ -6,74 +6,60 @@ include "layout/Menu.php";
     <br>
     <!-- Content -->
     <!-- SHOP -->
-    <div class="container-fluid">
-
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="<?= site_url('/'); ?>">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-2">
-                <div class="card card-borderbottom">
-                    <div class="titlecard">
-                        Ukuran
-                    </div>
-                    <div class="card-content container">
-                        <?php foreach ($this->ukuran->get_all() as $ukuran): ?>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value=""><?= $ukuran->u_nama; ?>
-                            </label>
-                        </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="card card-borderbottom">
-                    <div class="titlecard">
-                        Warna
-                    </div>
-                    <div class="card-content container">
-
-                        <?php foreach ($this->warna->get_all() as $warna): ?>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value=""><?= $warna->w_nama; ?>
-                            </label>
-                        </div>
-                        <?php endforeach;; ?>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-10" >
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="<?= site_url('/'); ?>">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
-                        </li>
-                    </ol>
-                </nav>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                            <div class="card f-bottom">
-                                <a href="detail.html"><img class="card-img-top" src="assets/img/kaos.jpg" alt="Card image cap"></a>
-                                <div class="card-body">
-                                    <h5 class="card-title">Nama Produk</h5>
-                                    <p class="card-text f-title-harga">Rp. 50.000,-</p>
-                                    <a href="#" class="btn btn-primary f-button-font" data-toggle="modal" data-target="#tambahkekeranjang">Tambah Ke Keranjang</a>
+            <?php if (isset($kats) && $kats != NULL): ?>
+                <?php foreach ($kats as $kat): ?>
+                    <?php if (isset($kat->item) && isset($kat->kategori) && $kat->item != NULL): ?>
+                        <?php $stok = $qty($kat->item->i_kode); ?>
+                        <?php if ($stok > 1): ?>
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                                <div class="card f-bottom">
+                                    <a href="<?= site_url('kategori/' . $kat->kategori->k_url . '/item/' . $kat->item->i_url . '/detil'); ?>">
+                                        <?php if ($item_img($kat->item->i_kode) != NULL): ?>
+                                            <img class="card-img-top"
+                                                 src="<?= base_url('upload/' . $item_img($kat->item->i_kode)->ii_nama); ?>"
+                                                 alt="Card image cap">
+                                        <?php else: ?>
+                                            <img class="card-img-top"
+                                                 src="<?= base_url('assets/img/noimg.png'); ?>"
+                                                 alt="Card image cap">
+                                        <?php endif; ?>
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $kat->item->i_nama; ?></h5>
+                                        <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
+                                            <p id="rupiah"
+                                               class="card-subtitle mb-2 text-muted"><?= $kat->item->i_hrg_vip; ?></p>
+                                        <?php else: ?>
+                                            <p id="rupiah"
+                                               class="card-subtitle mb-2 text-muted"><?= $kat->item->i_hrg_reseller; ?></p>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>Tidak ada item yang ditampilkan</p>
+            <?php endif; ?>
 
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    <!-- END SHOP -->
+
 <?php
 include "layout/Footer.php";
 ?>

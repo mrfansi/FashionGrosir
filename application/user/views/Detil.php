@@ -14,7 +14,7 @@ include "layout/Menu.php";
                 <li class="breadcrumb-item">
                     <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
                 </li>
-                <li class="breadcrumb-item active">
+                <li class="breadcrumb-item active" aria-current="page">
                     <a href="<?= $breadcumburl1; ?>"><?= $breadcumb1; ?></a>
                 </li>
             </ol>
@@ -24,13 +24,11 @@ include "layout/Menu.php";
                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                     <div class="fotorama"
                          data-nav="thumbs"
-                         data-arrows="true"
-                         data-click="false"
-                         data-swipe="true">
-                        <?php if ($item_img($item->i_kode) != NULL): ?>
-                            <?php foreach ($item_img($item->i_kode) as $img): ?>
-                                <img src="<?= base_url('upload/' . $img->ii_nama); ?>"
-                                     class="img-thumbnail f-img-detail">
+                         data-width="350"
+                         data-height="350">
+                        <?php if ($item_img_all($item->i_kode) != NULL): ?>
+                            <?php foreach ($item_img_all($item->i_kode) as $img): ?>
+                                <img src="<?= base_url('upload/' . $img->ii_nama); ?>">
                             <?php endforeach; ?>
                         <?php else: ?>
                             <img src="<?= base_url('assets/img/noimg.png'); ?>" class="img-thumbnail f-img-detail">
@@ -91,11 +89,12 @@ include "layout/Menu.php";
 
                 </div>
             <?php endif; ?>
-        </div>
 
-        <!-- End Content -->
-        <br>
+        </div>
     </div>
+
+    <!-- End Content -->
+    <br>
 
     <div class="container">
         <hr>
@@ -108,9 +107,11 @@ include "layout/Menu.php";
                     <div class="card f-bottom">
                         <a href="<?= site_url('hot-item/' . $hot->i_url . '/detil'); ?>">
                             <?php if (isset($hot->item_img) && $hot->item_img != NULL): ?>
+                                <?php foreach ($hot->item_img as $img): ?>
                                 <img class="card-img-top"
-                                     src="<?= base_url('upload/' . $hot->item_img->ii_nama); ?>"
+                                     src="<?= base_url('upload/' . $img->ii_nama); ?>"
                                      alt="Card image cap">
+                                <?php endforeach; ?>
                             <?php else: ?>
                                 <img class="card-img-top" src="<?= base_url('assets/img/noimg.png'); ?>"
                                      alt="Card image cap">

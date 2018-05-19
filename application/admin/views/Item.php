@@ -70,10 +70,12 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tables" class="table table-sm table-bordered">
+                        <table id="tables" class="table table-sm">
                             <thead>
                             <tr>
+                                <th scope="col">Foto</th>
                                 <th scope="col">Nama</th>
+                                <th scope="col">Deskripsi</th>
                                 <th scope="col">Hrg VIP</th>
                                 <th scope="col">Hrg Reseller</th>
                                 <th scope="col">Warna</th>
@@ -91,14 +93,32 @@
                                     <?php $counter = isset($item->item_detil) ? count((array)$item->item_detil) : 0 ?>
                                     <tr>
                                         <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
+                                                class="align-middle">
+                                            <a data-toggle="modal"
+                                               href="#"
+                                               onclick="foto($(this))" data-target="#crudfoto"
+                                               data-id="<?= $item->i_kode; ?>">Lihat</a> |
+                                            <a data-toggle="modal"
+                                               href="#"
+                                               onclick="unggah($(this))" data-target="#crudfoto"
+                                               data-id="<?= $item->i_kode; ?>">Unggah</a>
+                                        </td>
+                                        <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
                                                 scope="row"
-                                                class="align-middle"><?= $item->i_nama; ?></td>
+                                                class="align-middle"><?= $item->i_nama; ?>
+                                        </td>
+                                        <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
+                                                scope="row"
+                                                class="align-middle">
+                                            <a href="#">Lihat</a>
+                                        </td>
                                         <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
                                                 class="align-middle"
                                                 id="rupiah"><?= $item->i_hrg_vip; ?></td>
                                         <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
                                                 class="align-middle"
-                                                id="rupiah"><?= $item->i_hrg_reseller; ?></td>
+                                                id="rupiah"><?= $item->i_hrg_reseller; ?>
+                                        </td>
                                         <?php if (isset($item->item_detil) && count((array)$item->item_detil) == 1): ?>
                                             <?php foreach ($item->item_detil as $detil): ?>
                                                 <td class="align-middle">
@@ -145,11 +165,6 @@
                                                                onclick="tambah_qty($(this))" data-target="#crud"
                                                                data-id="<?= $detil->ide_kode; ?>"><i
                                                                         class="fas fa-cart-plus fa-lg"></i> Tambaht QTY</a>
-                                                            <a class="dropdown-item small" data-toggle="modal"
-                                                               href="#"
-                                                               onclick="tambah_foto($(this))" data-target="#crudfoto"
-                                                               data-id="<?= $detil->ide_kode; ?>"><i
-                                                                        class="fas fa-images fa-lg"></i> Foto</a>
                                                             <div class="dropdown-divider"></div>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
@@ -237,11 +252,6 @@
                                                                onclick="tambah_qty($(this))" data-target="#crud"
                                                                data-id="<?= $detil->ide_kode; ?>"><i
                                                                         class="fas fa-cart-plus fa-lg"></i> Tambaht QTY</a>
-                                                            <a class="dropdown-item small" data-toggle="modal"
-                                                               href="#"
-                                                               onclick="tambah_foto($(this))" data-target="#crudfoto"
-                                                               data-id="<?= $detil->ide_kode; ?>"><i
-                                                                        class="fas fa-images fa-lg"></i> Foto</a>
                                                             <div class="dropdown-divider"></div>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
@@ -292,14 +302,24 @@
                 $('textarea#deskripsi').val(msg);
             }
 
-            function tambah_foto(data) {
+            function foto(data) {
                 d = data;
                 id = d.attr('data-id');
 
                 modal = $('#crudfoto');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('item_img/tambah/'); ?>" + id);
+                bodymodal.load("<?= site_url('item_img/foto/'); ?>" + id);
+            }
+
+            function unggah(data) {
+                d = data;
+                id = d.attr('data-id');
+
+                modal = $('#crudfoto');
+                bodymodal = modal.find('div.modal-body');
+
+                bodymodal.load("<?= site_url('item_img/unggah/'); ?>" + id);
             }
 
             function edit(data) {

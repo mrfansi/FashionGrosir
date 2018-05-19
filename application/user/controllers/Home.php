@@ -90,6 +90,10 @@ class Home extends CI_Controller
                 ->get_all();
         };
 
+        $data->item_img_all = function ($i_kode) {
+            return $this->item_img->where(array('i_kode' => $i_kode))->get_all();
+        };
+
         $data->breadcumburl = site_url('produk-tebaru');
         $data->breadcumburl1 = site_url('produk-tebaru/item/' . $i_url . '/detil');
         $data->breadcumb = 'Produk Terbaru';
