@@ -7,7 +7,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Upload extends CI_Controller
+class Upload extends MY_Controller
 {
     public function __construct()
     {
@@ -46,7 +46,7 @@ class Upload extends CI_Controller
                 'ii_kode'       => $this->item_img->guid(),
                 'ii_nama'       => $files[$i]['file_name'],
                 'ii_url'       => $files[$i]['file_name'],
-                'ide_kode'        => $this->input->post('ide_kode')
+                'i_kode'        => $this->input->post('ide_kode')
             );
             $this->item_img->insert($data);
         }

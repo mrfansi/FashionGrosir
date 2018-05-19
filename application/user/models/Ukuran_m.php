@@ -13,12 +13,12 @@ class Ukuran_m extends MY_Model {
         $this->primary_key = 'u_id';
         $this->protected = array('u_id','created_at','update_at');
         $this->timestamps = TRUE;
+        $this->soft_deletes = TRUE;
         $this->has_many['item_detil'] = array(
             'foreign_model'=>'Item_detil_m',
             'foreign_table'=>'item_detil',
             'foreign_key'=>'u_kode',
             'local_key'=>'u_kode');
-        $this->soft_deletes = TRUE;
         parent::__construct();
     }
 

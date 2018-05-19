@@ -12,6 +12,9 @@ class Item_m extends MY_Model
     {
         $this->table = 'item';
         $this->primary_key = 'i_id';
+        $this->protected = array('i_id', 'created_at', 'update_at');
+        $this->timestamps = TRUE;
+        $this->soft_deletes = TRUE;
         $this->has_many['item_detil'] = array(
             'foreign_model'=>'Item_detil_m',
             'foreign_table'=>'item_detil',
@@ -24,9 +27,11 @@ class Item_m extends MY_Model
             'foreign_key'=>'i_kode',
             'local_key'=>'i_kode'
         );
-        $this->protected = array('i_id', 'created_at', 'update_at');
-        $this->timestamps = TRUE;
-        $this->soft_deletes = TRUE;
+        $this->has_many['item_img'] = array(
+            'foreign_model'=>'Item_img_m',
+            'foreign_table'=>'item_img',
+            'foreign_key'=>'i_kode',
+            'local_key'=>'i_kode');
         parent::__construct();
     }
 

@@ -11,6 +11,13 @@ class Warna extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        $config = array(
+            'field' => 'w_nama',
+            'title' => 'title',
+            'table' => 'warna',
+            'id' => 'w_id',
+        );
+        $this->load->library('slug', $config);
         $this->load->model('Warna_m', 'warna');
     }
 
@@ -55,42 +62,34 @@ class Warna extends MY_Controller
         // get user from database where guid
         $warna = $this->warna->where_w_kode($id)->get();
 
-        if ($warna)
-        {
+        if ($warna) {
             $warna = $this->warna->where_w_kode($id)->update(array(
-                'w_nama'    => $this->input->post('nama'),
+                'w_nama' => $this->input->post('nama'),
+                'w_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ));
-            if ($warna)
-            {
+            if ($warna) {
                 $data->berhasil = 'Data Warna berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $data->berhasil);
 
                 redirect('warna');
-            }
-            else
-            {
+            } else {
                 $data->gagal = 'Data Warna gagal diperbarui.';
                 $this->session->set_flashdata('gagal', $data->gagal);
 
                 redirect('warna');
             }
-        }
-        else
-        {
+        } else {
             $warna = $this->warna->insert(array(
-                'w_kode'          => $this->input->post('id'),
-                'w_nama'          => $this->input->post('nama'),
-//                'created_by'      => $_SESSION['username'],
+                'w_kode' => $this->input->post('id'),
+                'w_nama' => $this->input->post('nama'),
+                'w_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ));
-            if ($warna)
-            {
+            if ($warna) {
                 $data->berhasil = 'Data Warna berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $data->berhasil);
 
                 redirect('warna');
-            }
-            else
-            {
+            } else {
                 $data->gagal = 'Data Warna gagal dibuat.';
                 $this->session->set_flashdata('gagal', $data->gagal);
 
@@ -99,20 +98,17 @@ class Warna extends MY_Controller
         }
     }
 
-    public  function hapus($id)
+    public function hapus($id)
     {
         $data = new stdClass();
 
         $warna = $this->warna->where('w_kode', $id)->delete();
-        if ($warna)
-        {
+        if ($warna) {
             $data->berhasil = 'Data Warna berhasil dihapus';
             $this->session->set_flashdata('berhasil', $data->berhasil);
 
             redirect('warna');
-        }
-        else
-        {
+        } else {
             $data->gagal = 'Data Warna gagal dihapus';
             $this->session->set_flashdata('berhasil', $data->gagal);
 

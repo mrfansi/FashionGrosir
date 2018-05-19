@@ -65,8 +65,8 @@ class Ukuran extends MY_Controller
         if ($ukuran)
         {
             $ukuran = $this->ukuran->where_u_kode($id)->update(array(
-                'u_nama'    => $this->input->post('nama'),
-                'updated_by'        => $_SESSION['username'],
+                'u_nama'            => $this->input->post('nama'),
+                'u_url'            => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ));
             if ($ukuran)
             {
@@ -88,7 +88,7 @@ class Ukuran extends MY_Controller
             $ukuran = $this->ukuran->insert(array(
                 'u_kode'          => $this->input->post('id'),
                 'u_nama'          => $this->input->post('nama'),
-//                'created_by'      => $_SESSION['username'],
+                'u_url'            => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ));
             if ($ukuran)
             {

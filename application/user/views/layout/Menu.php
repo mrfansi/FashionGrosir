@@ -14,7 +14,7 @@
                     </li>
                     <?php foreach ($this->menu_kategori as $menukat): ?>
                     <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="<?= site_url('kategori/' . $menukat->k_kode); ?>"><?= $menukat->k_nama; ?></a>
+                        <a class="nav-link" href="<?= site_url($menukat->k_url . '/kategori'); ?>"><?= $menukat->k_nama; ?></a>
                     </li>
                     <?php endforeach; ?>
 <!--                    <li class="nav-item dropdown">-->

@@ -25,11 +25,11 @@
 <?php endif; ?>
 <form action="<?= site_url('upload/do_upload'); ?>" enctype="multipart/form-data" method="post">
     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
-    <input type="hidden" name="ide_kode" value="<?= $ide_kode ?>">
+    <input type="hidden" name="i_kode" value="<?= $i_kode ?>">
     <div class="form-group">
         <div class="input-group">
             <div class="custom-file">
-                <input type="file" name="images[]" class="custom-file-input" required>
+                <input type="file" name="images[]" class="custom-file-input" multiple required>
                 <label class="custom-file-label" for="inputGroupFile04">Pilih file</label>
             </div>
         </div>
@@ -59,7 +59,7 @@
                              width="100"></td>
                     <td class="align-middle"><?= $img->ii_default == 0 ? '<i class="fas fa-times"></i>' : '<i class="fas fa-check"></i>'; ?></td>
                     <td class="align-middle">
-                        <a href="<?= site_url('item_img/set_default/' . $img->ide_kode . '/' . $img->ii_kode); ?>"
+                        <a href="<?= site_url('item_img/set_default/' . $img->i_kode . '/' . $img->ii_kode); ?>"
                            onclick="utama($(this))" data-id="<?= $img->ii_kode; ?>">
                             Jadikan utama
                         </a> |

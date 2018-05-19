@@ -63,43 +63,35 @@ class Seri extends MY_Controller
         // get user from database where guid
         $seri = $this->seri->where_s_kode($id)->get();
 
-        if ($seri)
-        {
+        if ($seri) {
             $seri = $this->seri->where_s_kode($id)->update(array(
-                's_nama'    => $this->input->post('nama'),
-                'updated_by'        => $_SESSION['username'],
+                's_nama' => $this->input->post('nama'),
+                's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ));
-            if ($seri)
-            {
+            if ($seri) {
                 $data->berhasil = 'Nomor Seri berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $data->berhasil);
 
                 redirect('seri');
-            }
-            else
-            {
+            } else {
                 $data->gagal = 'Nomor Seri gagal diperbarui.';
                 $this->session->set_flashdata('gagal', $data->gagal);
 
                 redirect('seri');
             }
-        }
-        else
-        {
+        } else {
             $seri = $this->seri->insert(array(
-                's_kode'          => $this->input->post('id'),
-                's_nama'          => $this->input->post('nama'),
-//                'created_by'      => $_SESSION['username'],
+                's_kode' => $this->input->post('id'),
+                's_nama' => $this->input->post('nama'),
+                's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
+
             ));
-            if ($seri)
-            {
+            if ($seri) {
                 $data->berhasil = 'Nomor Seri berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $data->berhasil);
 
                 redirect('seri');
-            }
-            else
-            {
+            } else {
                 $data->gagal = 'Nomor Seri gagal dibuat.';
                 $this->session->set_flashdata('gagal', $data->gagal);
 
@@ -108,20 +100,17 @@ class Seri extends MY_Controller
         }
     }
 
-    public  function hapus($id)
+    public function hapus($id)
     {
         $data = new stdClass();
 
         $seri = $this->seri->where('s_kode', $id)->delete();
-        if ($seri)
-        {
+        if ($seri) {
             $data->berhasil = 'Nomor Seri berhasil dihapus';
             $this->session->set_flashdata('berhasil', $data->berhasil);
 
             redirect('seri');
-        }
-        else
-        {
+        } else {
             $data->gagal = 'Nomor Seri gagal dihapus';
             $this->session->set_flashdata('berhasil', $data->gagal);
 

@@ -93,6 +93,7 @@ class Item extends MY_Controller
                 'i_hrg_vip' => $this->input->post('hrg_vip'),
                 'i_hrg_reseller' => $this->input->post('hrg_reseller'),
                 'i_deskripsi' => $this->input->post('deskripsi'),
+                'i_url'     => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));
 
             $item_kategori = $this->item_kategori->where_i_kode($id)->update(array(
@@ -116,6 +117,7 @@ class Item extends MY_Controller
                 'i_hrg_vip' => $this->input->post('hrg_vip'),
                 'i_hrg_reseller' => $this->input->post('hrg_reseller'),
                 'i_deskripsi' => $this->input->post('deskripsi'),
+                'i_url'     => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));
 
 
