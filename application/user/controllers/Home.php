@@ -90,6 +90,11 @@ class Home extends CI_Controller
                 ->get_all();
         };
 
+        $data->breadcumburl = site_url('produk-tebaru');
+        $data->breadcumburl1 = site_url('produk-tebaru/item/' . $i_url . '/detil');
+        $data->breadcumb = 'Produk Terbaru';
+        $data->breadcumb1 = $this->item->where_i_url($i_url)->get()->i_nama;
+
         $this->load->view('Detil', $data);
     }
 }

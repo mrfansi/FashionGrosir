@@ -21,7 +21,7 @@ include "layout/Slide.php";
                     <?php if ($stok > 1): ?>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                         <div class="card f-bottom">
-                            <a href="<?= site_url('item/' . $item->i_url . '/detil'); ?>">
+                            <a href="<?= site_url('produk-terbaru/' . $item->i_url . '/detil'); ?>">
                                 <?php if ($item_img($item->i_kode) != NULL): ?>
                                     <img class="card-img-top"
                                          src="<?= base_url('upload/' . $item_img($item->i_kode)->ii_nama); ?>"

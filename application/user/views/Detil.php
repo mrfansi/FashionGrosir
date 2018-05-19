@@ -6,7 +6,19 @@ include "layout/Menu.php";
     <!-- Content -->
     <div class="container">
         <br>
-        <br>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="<?= site_url('/'); ?>">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a href="<?= $breadcumburl1; ?>"><?= $breadcumb1; ?></a>
+                </li>
+            </ol>
+        </nav>
         <div class="row">
             <?php if (isset($item) && $item != NULL): ?>
                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
@@ -17,7 +29,8 @@ include "layout/Menu.php";
                          data-swipe="true">
                         <?php if ($item_img($item->i_kode) != NULL): ?>
                             <?php foreach ($item_img($item->i_kode) as $img): ?>
-                                <img src="<?= base_url('upload/' . $img->ii_nama); ?>" class="img-thumbnail f-img-detail">
+                                <img src="<?= base_url('upload/' . $img->ii_nama); ?>"
+                                     class="img-thumbnail f-img-detail">
                             <?php endforeach; ?>
                         <?php else: ?>
                             <img src="<?= base_url('assets/img/noimg.png'); ?>" class="img-thumbnail f-img-detail">
@@ -53,7 +66,9 @@ include "layout/Menu.php";
                             <label for="wu">Warna [Ukuran]</label>
                             <select name="wu" id="wu" class="form-control" required>
                                 <?php foreach ($item_detil($item->i_kode) as $id): ?>
-                                    <option value="<?= $id->ide_kode; ?>"><?= $id->warna->w_nama; ?> [<?= $id->ukuran->u_nama; ?>]</option>
+                                    <option value="<?= $id->ide_kode; ?>"><?= $id->warna->w_nama; ?>
+                                        [<?= $id->ukuran->u_nama; ?>]
+                                    </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -64,15 +79,17 @@ include "layout/Menu.php";
                     </div>
                     <div class="row">
                         <div class="col-5">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block f-button-font f-button-detail">Tambah</button>
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg btn-block f-button-font f-button-detail">Tambah
+                            </button>
                         </div>
                     </div>
                 </form>
             <?php else: ?>
-            <div class="col">
-                <h2 class="text-center text-muted">Item tidak ditemukan</h2>
+                <div class="col">
+                    <h2 class="text-center text-muted">Item tidak ditemukan</h2>
 
-            </div>
+                </div>
             <?php endif; ?>
         </div>
 
@@ -89,7 +106,7 @@ include "layout/Menu.php";
             <?php foreach ($this->item->with_item_img('where:ii_default =1')->limit(5)->get_all() as $hot): ?>
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
                     <div class="card f-bottom">
-                        <a href="<?= site_url('item/' . $hot->i_url . '/detil'); ?>">
+                        <a href="<?= site_url('hot-item/' . $hot->i_url . '/detil'); ?>">
                             <?php if (isset($hot->item_img) && $hot->item_img != NULL): ?>
                                 <img class="card-img-top"
                                      src="<?= base_url('upload/' . $hot->item_img->ii_nama); ?>"

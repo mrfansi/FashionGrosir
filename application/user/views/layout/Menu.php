@@ -14,20 +14,9 @@
                     </li>
                     <?php foreach ($this->menu_kategori as $menukat): ?>
                     <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="<?= site_url($menukat->k_url . '/kategori'); ?>"><?= $menukat->k_nama; ?></a>
+                        <a class="nav-link" href="<?= site_url('kategori/' . $menukat->k_url); ?>"><?= $menukat->k_nama; ?></a>
                     </li>
                     <?php endforeach; ?>
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"-->
-<!--                           aria-haspopup="true" aria-expanded="false">-->
-<!--                            Lain-lain-->
-<!--                        </a>-->
-<!--                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">-->
-<!--                            <a class="dropdown-item" href="#">Action</a>-->
-<!--                            <a class="dropdown-item" href="#">Another action</a>-->
-<!--                            <a class="dropdown-item" href="#">Something else here</a>-->
-<!--                        </div>-->
-<!--                    </li>-->
                 </ul>
             </div>
         </nav>

@@ -31,11 +31,11 @@ class MY_Controller extends CI_Controller
         $this->menu_kategori = $this->kategori->get_all();
 
         // check if user already login
-        if (!$this->session->isonline) {
-            redirect('login');
-        } else {
-            $this->session->set_userdata('redirect', current_url());
-        }
+//        if (!$this->session->isonline) {
+//            redirect('login');
+//        } else {
+//            $this->session->set_userdata('redirect', current_url());
+//        }
         //$this->output->cache(1);
     }
 
