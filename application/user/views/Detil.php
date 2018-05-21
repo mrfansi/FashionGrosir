@@ -22,21 +22,22 @@ include "layout/Menu.php";
         <div class="row">
             <?php if (isset($item) && $item != NULL): ?>
                 <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="fotorama"
+                    <div class="fotorama card"
+                         data-transition="dissolve"
                          data-nav="thumbs"
                          data-width="350"
                          data-height="350">
                         <?php if ($item_img_all($item->i_kode) != NULL): ?>
                             <?php foreach ($item_img_all($item->i_kode) as $img): ?>
-                                <img src="<?= base_url('upload/' . $img->ii_nama); ?>">
+                                <img src="<?= base_url('upload/' . $img->ii_nama); ?>" class="card-img-top">
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <img src="<?= base_url('assets/img/noimg.png'); ?>" class="img-thumbnail f-img-detail">
+                            <img src="<?= base_url('assets/img/noimg.png'); ?>" class="card-img-top">
                         <?php endif; ?>
                     </div>
 
                 </div>
-                <form action="<?= site_url('item/' . $item->i_url . '/add_to_cart'); ?>" method="post" class="col-lg-8">
+                <form action="add_to_cart" method="post" class="col-lg-8">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <h1 class="f-title-detail"><?= $item->i_nama; ?></h1>
                     <hr>
@@ -50,6 +51,7 @@ include "layout/Menu.php";
                     </div>
                     <div class="row">
                         <div class="col">
+                            <input type="hidden" name="harga" value="<?= isset($_SESSION['tipe']) && $_SESSION['tipe'] == 1 ? $item->i_hrg_vip : $item->i_hrg_reseller; ?>">
                             <h1 id="rupiah"
                                 class="f-harga"><?= isset($_SESSION['tipe']) && $_SESSION['tipe'] == 1 ? $item->i_hrg_vip : $item->i_hrg_reseller; ?></h1>
                         </div>
@@ -98,9 +100,7 @@ include "layout/Menu.php";
 
     <div class="container">
         <hr>
-        <h5 class="f-title-color f-title-margin">Hot Item <i
-                    class="fa fa-angle-right fa-lg f-icon-margin f-font-detail"></i></h5>
-
+        <h5>Hot Item</h5>
         <div class="row">
             <?php foreach ($this->item->with_item_img('where:ii_default =1')->limit(5)->get_all() as $hot): ?>
                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
@@ -118,7 +118,7 @@ include "layout/Menu.php";
                             <?php endif; ?>
                         </a>
                         <div class="card-body">
-                            <h5 class="card-title f-hot-font"><?= $hot->i_nama; ?></h5>
+                            <h5 class="card-title f-hot-font"><a title="<?= $hot->i_nama; ?>" id="title" href="<?= site_url('hot-item/' . $hot->i_url . '/detil'); ?>"><?= $hot->i_nama; ?></a></h5>
                             <?php if (isset($_SESSION['vip']) && $_SESSION['vip'] == '1'): ?>
                                 <p id="rupiah" class="card-text f-title-harga"><?= $hot->i_hrg_vip; ?></p>
                             <?php else: ?>
@@ -131,7 +131,9 @@ include "layout/Menu.php";
             <?php endforeach; ?>
         </div>
     </div>
-
+    <script>
+        $('[id="title"]').ellipsis();
+    </script>
 <?php
 include "layout/Footer.php";
 ?>

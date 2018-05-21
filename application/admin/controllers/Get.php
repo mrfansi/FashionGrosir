@@ -6,7 +6,7 @@
  * Time: 02.03
  */
 
-class Get extends MY_Controller
+class Get extends MY_User
 {
     public function __construct()
     {

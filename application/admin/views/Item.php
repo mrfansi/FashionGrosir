@@ -75,6 +75,7 @@
                             <tr>
                                 <th scope="col">Foto</th>
                                 <th scope="col">Nama</th>
+                                <th scope="col">Kategori</th>
                                 <th scope="col">Deskripsi</th>
                                 <th scope="col">Hrg VIP</th>
                                 <th scope="col">Hrg Reseller</th>
@@ -106,6 +107,10 @@
                                         <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
                                                 scope="row"
                                                 class="align-middle"><?= $item->i_nama; ?>
+                                        </td>
+                                        <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
+                                                scope="row"
+                                                class="align-middle"><?= $kategori($item->i_kode); ?>
                                         </td>
                                         <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
                                                 scope="row"

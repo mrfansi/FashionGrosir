@@ -6,7 +6,7 @@
  * Time: 23.23
  */
 
-class Kategori extends MY_Controller
+class Kategori extends MY_User
 {
     public function __construct()
     {

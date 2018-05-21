@@ -2,15 +2,20 @@
 include "layout/Header.php";
 include "layout/Brand.php";
 include "layout/Menu.php";
-include "layout/Slide.php";
 ?>
     <br>
-    <!-- Title Content -->
     <div class="container">
-        <h5>Produk Terbaru</h5>
-        <hr>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="<?= site_url('/'); ?>">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
+                </li>
+            </ol>
+        </nav>
     </div>
-    <!-- Title Content -->
 
     <!-- Content -->
     <div class="container">
@@ -40,7 +45,6 @@ include "layout/Slide.php";
                                     <h6 id="rupiah"
                                        class="card-subtitle mb-2 text-muted"><?= $terbaru->i_hrg_reseller; ?></h6>
                                 <?php endif; ?>
-                                <div id="rating"></div>
                             </div>
                         </div>
                     </div>
@@ -55,12 +59,6 @@ include "layout/Slide.php";
     <!-- End Content -->
     <script>
         $('[id="title"]').ellipsis();
-    </script>
-    <script>
-        $('[id="rating"]').emojiRating()
-    </script>
-    <script>
-        $('input[type=hidden]')
     </script>
 <?php
 include "layout/Footer.php";

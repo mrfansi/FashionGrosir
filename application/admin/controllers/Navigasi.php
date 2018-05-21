@@ -8,7 +8,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Navigasi extends MY_Controller
+class Navigasi extends MY_User
 {
     public function __construct()
     {

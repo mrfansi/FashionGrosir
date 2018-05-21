@@ -3,17 +3,10 @@ include "layout/Header.php";
 include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
+    <br>
     <!-- Content -->
-    <div class="container-fluid">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb f-no-background">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Troli Belanja</li>
-            </ol>
-        </nav>
-        <hr class="f-hr">
-
-        <div class="row container f-ukuran-center mb-4 f-ricky-bangsat">
+    <div class="container">
+        <div class="row">
             <div class="col-12 col-sm-12 col-md-3">
                 <div class="card f-padding-card r-active-step">
                     <div class="row f-margin-bangsat">
@@ -79,11 +72,11 @@ include "layout/Menu.php";
             </div>
         </div>
     </div>
-
+    <br>
     <div class="container">
-        <h5 class="mb-3">Troli Belanja Saya</h5>
+        <h5 class="mb-3"><i class="fa fa-shopping-cart"></i> Keranjang Saya</h5>
 
-        <div class="row container">
+        <div class="row">
 
             <div class="col-lg-12 col-md-12 container">
                 <div class="card mb-3 r-layout-troli">
@@ -111,12 +104,18 @@ include "layout/Menu.php";
                                     <div class="row">
                                         <div class="col-lg-7 col-md-7">
                                             <div class="media">
-                                                <img class="mr-3" src="assets/img/kaos.jpg"
-                                                     alt="Generic placeholder image">
+                                                <?php if ($item_detil($cart->ide_kode)->item->i_kode): ?>
+                                                <?php $item_kode = $item_detil($cart->ide_kode)->item->i_kode; ?>
+                                                <?php if ($item_img($item_kode)->ii_nama): ?>
+                                                <img class="mr-3" src="<?= base_url('upload/' . $item_img($item_kode)->ii_nama); ?>"
+                                                     alt="<?= $item_img($item_kode)->ii_nama; ?>">
+                                                <?php endif; ?>
+                                                <?php endif; ?>
                                                 <div class="media-body">
-                                                    <h5 class="mt-0"><?= $item($cart->ide_kode)->i_nama; ?></h5>
-                                                    <?= $item($cart->ide_kode)->i_deskripsi; ?>
-                                                    <p><i class="fa fa-check fa-lg f-icon-margin"></i>Stok Tersedia</p>
+                                                    <h5 class="mt-0"><?= $item_detil($cart->ide_kode)->item->i_nama; ?></h5>
+                                                    <?= $item_detil($cart->ide_kode)->item->i_deskripsi; ?>
+                                                    <p><i class="fa fa-check fa-lg f-icon-margin"></i>Warna : <?= $item_detil($cart->ide_kode)->warna->w_nama; ?></p>
+                                                    <p><i class="fa fa-check fa-lg f-icon-margin"></i>Ukuran : <?= $item_detil($cart->ide_kode)->ukuran->u_nama; ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -129,7 +128,7 @@ include "layout/Menu.php";
                                         </div>
                                         <div class="col-md-1 f-delete-troli">
                                             <!-- Optional | Check -->
-                                            <a href=""><i class="fa fa-times-circle fa-lg f-delete-troli"></i></a>
+                                            <a tooltip title="Hapus item" href="<?= site_url('cart/' . $cart->ca_kode . '/delete'); ?>"><i class="fa fa-times-circle fa-lg f-delete-troli"></i></a>
 
                                         </div>
                                     </div>
@@ -149,60 +148,8 @@ include "layout/Menu.php";
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-5 col-6">
                         <div class="row">
-                            <div class="col-lg-1 col-md-5 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
                             <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">1.000.000</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                        <h6>Biaya Pengiriman</h6>
-                    </div>
-                    <div class="col-lg-6 col-md col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-5 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">125.000</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                        <h6>Biaya Lain-lain</h6>
-                    </div>
-                    <div class="col-lg-6 col-md col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-5 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">-</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <hr>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                        <p><b>Total</b><br><i>*tidak termasuk PPN</i></p>
-                    </div>
-                    <div class="col-lg-6 col-md col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-5 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">1.125.000</h5>
+                                <h5 id="rupiah" class="card-title f-sub-total"><?= $cart_total(); ?></h5>
                             </div>
                         </div>
                     </div>

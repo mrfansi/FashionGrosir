@@ -6,7 +6,7 @@
  * Time: 02.54
  */
 
-class Item extends MY_Controller
+class Item extends MY_User
 {
     public function __construct()
     {
@@ -61,6 +61,15 @@ class Item extends MY_Controller
             return $hasil;
         };
 
+        $data->kategori = function ($i_kode) {
+            $kategori = [];
+            foreach ($this->item_kategori->with_kategori()->where_i_kode($i_kode)->get_all() as $kat) {
+                array_push($kategori, $kat->kategori->k_nama);
+            }
+
+            return implode('<br>', $kategori);
+        };
+
         $this->load->view('Item', $data);
     }
 
@@ -92,6 +101,7 @@ class Item extends MY_Controller
                 'i_nama' => $this->input->post('nama'),
                 'i_hrg_vip' => $this->input->post('hrg_vip'),
                 'i_hrg_reseller' => $this->input->post('hrg_reseller'),
+                'i_berat' => $this->input->post('berat'),
                 'i_deskripsi' => $this->input->post('deskripsi'),
                 'i_url'     => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));
@@ -116,6 +126,7 @@ class Item extends MY_Controller
                 'i_nama' => $this->input->post('nama'),
                 'i_hrg_vip' => $this->input->post('hrg_vip'),
                 'i_hrg_reseller' => $this->input->post('hrg_reseller'),
+                'i_berat' => $this->input->post('berat'),
                 'i_deskripsi' => $this->input->post('deskripsi'),
                 'i_url'     => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));

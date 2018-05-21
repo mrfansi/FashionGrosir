@@ -49,15 +49,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Home';
+$route['default_controller'] = 'home';
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout';
+$route['produk-terbaru'] = 'home/produkbaru';
 $route['produk-terbaru/item/(:any)/detil'] = 'home/item/$1';
-$route['produk-terbaru/item/(:any)/add_to_cart'] = 'cart/add/$1';
+$route['produk-terbaru/item/(:any)/add_to_cart'] = 'cart/add';
 $route['hot-item/(:any)/detil'] = 'home/item/$1';
 $route['hot-item/(:any)/add_to_cart'] = 'cart/add/$1';
 $route['item/(:any)'] = 'home/item/$1';
 $route['kategori/(:any)'] = 'kategori/get_item/$1';
 $route['kategori/(:any)/item/(:any)/detil'] = 'kategori/get_item_detil/$1/$2';
+$route['kategori/(:any)/item/(:any)/add_to_cart'] = 'cart/add';
+$route['cart/(:any)/delete'] = 'cart/delete/$1';
+$route['checkout/(:number)/alamat_pengiriman'] = 'checkout_alamat/add/$1';
+$route['checkout/(:number)/jasa_pengiriman'] = 'checkout_pengiriman/add/$1';
+$route['checkout/(:number)/metode_pembayaran'] = 'checkout_pembayaran/metode/$1';
+$route['checkout/(:number)/konfirmasi_pembayaran'] = 'checkout_pembayaran/konfirmasi/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

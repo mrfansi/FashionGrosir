@@ -20,8 +20,8 @@ include "layout/Menu.php";
     </div>
     <div class="container">
         <div class="row">
-            <?php if (isset($kats) && $kats != NULL): ?>
-                <?php foreach ($kats as $kat): ?>
+            <?php if (isset($kategori_s) && $kategori_s != NULL): ?>
+                <?php foreach ($kategori_s as $kat): ?>
                     <?php if (isset($kat->item) && isset($kat->kategori) && $kat->item != NULL): ?>
                         <?php $stok = $qty($kat->item->i_kode); ?>
                         <?php if ($stok > 1): ?>
@@ -39,13 +39,15 @@ include "layout/Menu.php";
                                         <?php endif; ?>
                                     </a>
                                     <div class="card-body">
-                                        <h5 class="card-title"><?= $kat->item->i_nama; ?></h5>
+                                        <h5 class="card-title"><a tooltip title="<?= $kat->item->i_nama; ?>" id="title"
+                                                                  href="<?= site_url('kategori/' . $kat->kategori->k_url . '/item/' . $kat->item->i_url . '/detil'); ?>"><?= $kat->item->i_nama; ?></a>
+                                        </h5>
                                         <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
-                                            <p id="rupiah"
-                                               class="card-subtitle mb-2 text-muted"><?= $kat->item->i_hrg_vip; ?></p>
+                                            <h6 id="rupiah"
+                                               class="card-subtitle mb-2 text-muted"><?= $kat->item->i_hrg_vip; ?></h6>
                                         <?php else: ?>
-                                            <p id="rupiah"
-                                               class="card-subtitle mb-2 text-muted"><?= $kat->item->i_hrg_reseller; ?></p>
+                                            <h6 id="rupiah"
+                                               class="card-subtitle mb-2 text-muted"><?= $kat->item->i_hrg_reseller; ?></h6>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -59,7 +61,9 @@ include "layout/Menu.php";
 
         </div>
     </div>
-
+    <script>
+        $('[id="title"]').ellipsis();
+    </script>
 <?php
 include "layout/Footer.php";
 ?>

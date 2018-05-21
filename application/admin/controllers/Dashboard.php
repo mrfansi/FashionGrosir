@@ -6,7 +6,7 @@
  * Time: 22.54
  */
 
-class Dashboard extends MY_Controller
+class Dashboard extends MY_User
 {
     public function __construct()
     {

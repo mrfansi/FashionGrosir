@@ -6,7 +6,7 @@
  * Time: 23.23
  */
 
-class Opsi extends MY_Controller
+class Opsi extends MY_User
 {
     public function __construct()
     {

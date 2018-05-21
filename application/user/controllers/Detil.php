@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Detil extends MY_Controller
+class Detil extends MY_User
 {
     public function __construct()
     {

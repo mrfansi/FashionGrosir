@@ -5,10 +5,38 @@ body {
     background-color: #fefefe;
 }
 
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #F06292;
+    border-color: #F06292;
+}
+
 /*color*/
 .r-pink {
     color: #F06292;
 }
+h5 {
+    color: #F06292;
+}
+
+.breadcrumb {
+    background-color: white;
+    color: #F06292;
+    padding: 0;
+}
+
+.breadcrumb a {
+    color: #F06292;
+}
+
+.card-title a {
+    color: #F06292;
+}
+
+.card-subtitle {
+    color: #F06292;
+}
+
 
 
 .clear-header {
@@ -292,7 +320,7 @@ input .form-control {
 }
 
 .f-title-detail {
-    color: #444444;
+    color: #F06292;
     font-size: 22px;
     margin: 0;
     display: inline;

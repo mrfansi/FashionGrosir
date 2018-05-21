@@ -6,7 +6,7 @@
  * Time: 23.23
  */
 
-class Warna extends MY_Controller
+class Warna extends MY_User
 {
     public function __construct()
     {

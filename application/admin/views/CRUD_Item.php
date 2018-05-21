@@ -49,12 +49,19 @@ if ($submit == 'Ubah') {
                                value="<?= $hrg_reseller; ?>" required>
                     </div>
                 </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="berat">Berat / Kg</label>
+                        <input type="number" class="form-control" name="berat" placeholder="Berat"
+                               value="<?= $hrg_reseller; ?>" required>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="form-group">
-        <label for="deskripsi">Deskripsi</label>
-        <textarea class="form-control" name="deskripsi" id="deskripsi"><?= $deskripsi; ?></textarea>
+        <label for="deskripsi">Deskripsi (minimal: 100 Karakter)</label>
+        <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Item" minlength="100" required><?= $deskripsi; ?></textarea>
     </div>
     <div class="form-group">
         <table class="table table-sm" id="tabel">

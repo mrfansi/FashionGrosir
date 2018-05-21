@@ -5,34 +5,28 @@ class Cart extends MY_Controller
 {
     public function __construct()
     {
-
         parent::__construct();
-        // load model
-        $this->load->model('Item_detil_m', 'item_detil');
-        $this->load->model('Cart_m', 'cart');
-        $this->load->model('Order_m', 'order');
-        $this->load->model('Order_detil_m', 'order_detil');
+        $this->data->carts = $this->cart->get_all();
+        $this->data->cart_total = function () {
+            $hasil = 0;
+            foreach ($this->cart->where_p_kode($_SESSION['id'])->get_all() as $cart_total) {
+                $hasil += (int) $cart_total->ca_tharga;
+            }
+
+            return $hasil;
+        };
     }
 
     public function index()
     {
-        $data = new stdClass();
-        $data->item = function ($ide_kode) {
-            $item = $this->item_detil->with_item()->where_ide_kode($ide_kode)->get();
-            return $item->item;
-        };
-        $data->carts = $this->cart->get_all();
-
-
-        $this->load->view('Cart', $data);
+        $this->load->view('Cart', $this->data);
 
     }
 
-    public function add($ide_kode)
+    public function add()
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Cart';
-        $data->item = $this->item_detil->with_item()->where_ide_kode($ide_kode)->get();
+        $ide_kode = $this->input->post('wu');
+        $this->data->item = $this->item_detil->with_item()->where_ide_kode($ide_kode)->get();
 
         $cart = $this->cart->where_ide_kode($ide_kode)->get();
         if ($cart) {
@@ -43,8 +37,8 @@ class Cart extends MY_Controller
             ));
 
             if ($cart) {
-                $data->berhasil = 'Berhasil menambah item ke keranjanng';
-                $this->session->set_userdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Berhasil menambah item ke keranjanng';
+                $this->session->set_userdata('berhasil', $this->data->berhasil);
                 redirect('cart');
             }
         } else {
@@ -57,8 +51,8 @@ class Cart extends MY_Controller
             ));
 
             if ($cart) {
-                $data->berhasil = 'Berhasil menambah item ke keranjanng';
-                $this->session->set_userdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Berhasil menambah item ke keranjanng';
+                $this->session->set_userdata('berhasil', $this->data->berhasil);
                 redirect('cart');
             }
         }
@@ -90,7 +84,23 @@ class Cart extends MY_Controller
 
         $this->cart->where_p_kode($p_kode)->delete();
 
-        redirect('cart/' . $o_noorder . '/alamat_pengiriman');
+        redirect('checkout/' . $o_noorder . '/alamat_pengiriman');
+    }
+
+
+    public function delete($ca_kode)
+    {
+        $cart = $this->cart->where_ca_kode($ca_kode)->get();
+
+        if ($cart)
+        {
+            $cart = $this->cart->where_ca_kode($ca_kode)->delete();
+            if ($cart)
+            {
+                redirect('cart');
+            }
+        }
+
     }
 
 }

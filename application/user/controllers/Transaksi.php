@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Transaksi extends MY_Controller
+class Transaksi extends MY_User
 {
     public function __construct()
     {
@@ -17,7 +17,7 @@ class Transaksi extends MY_Controller
         $data->title = 'Fashion Grosir | Item';
         $data->title_page = 'Item';
         $data->items = $this->item->get_all();
-        $this->load->view('Home', $data);
+        $this->load->view('Public', $data);
     }
 
     public function item()

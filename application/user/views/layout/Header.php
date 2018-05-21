@@ -21,6 +21,8 @@
     <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
 
     <script src="<?= base_url('assets/vendor/fotorama/fotorama.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/jquery-ellipsis/jquery.ellipsis.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/jquery-emoji-rating/jquery.emojiRatings.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/wnumb/wNumb.js'); ?>"></script>
     <title>Fashion Grosir</title>
 </head>

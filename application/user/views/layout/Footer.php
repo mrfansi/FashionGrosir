@@ -57,10 +57,10 @@
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 f-margin-nav">
                     <ul class="navbar-nav">
-                        <?php foreach ($this->menu_kategori as $menukat): ?>
+                        <?php foreach ($menu_kategori as $menukat): ?>
                             <li class="nav-item">
                                 <a class="nav-link f-footer-new"
-                                   href="<?= site_url('kategori/' . $menukat->k_kode); ?>"><?= $menukat->k_nama; ?></a>
+                                   href="<?= site_url('kategori/' . $menukat->kategori->k_url); ?>"><?= $menukat->kategori->k_nama; ?></a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -139,6 +139,9 @@
             $(this).html(hasil);
         })
     });
+</script>
+<script>
+    $('[tooltip]').tooltip();
 </script>
 </body>
 </html>
