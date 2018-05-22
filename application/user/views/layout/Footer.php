@@ -5,7 +5,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col text-center">
-                    <p class="text-center r-pink"><i class="fa fa-check-circle fa-5x"></i> <br>Berhasil menambahkan kedalam keranjang..</p>
+                    <p class="text-center r-pink"><i class="fa fa-check-circle fa-5x"></i> <br>Berhasil menambahkan
+                        kedalam keranjang..</p>
                 </div>
             </div>
             <div class="modal-body">
@@ -13,7 +14,9 @@
             </div>
             <div class="modal-footer">
                 <div class="col">
-                    <button type="button" class="btn btn-sm btn-primary r-btn-pink btn-block" data-dismiss="modal">Lanjutkan belanja</button>
+                    <button type="button" class="btn btn-sm btn-primary r-btn-pink btn-block" data-dismiss="modal">
+                        Lanjutkan belanja
+                    </button>
                 </div>
                 <div class="col">
                     <a href="<?= site_url('cart'); ?>" class="btn btn-sm btn-primary r-btn-pink btn-block">Check Out</a>
@@ -116,6 +119,47 @@
     &copy; Copyright Fashion Grosir 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
     <!-- <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-love"></i></a> -->
 </div>
+
+<div id="pop_cart" style="display: none">
+    <?php
+    $p_kode = isset($_SESSION['id']) ? $_SESSION['id'] : '';
+    $pop_carts = $this->cart->where_p_kode($p_kode)->get_all();
+    if ($pop_carts): ?>
+        <table class="table table-sm table-borderless">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Item</th>
+                <th scope="col">QTY</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <?php foreach ($pop_carts as $pop_cart): ?>
+                <tr>
+                    <td><img src="<?= base_url('upload/' . $item_img($item_detil($pop_cart->ide_kode)->item->i_kode)->ii_nama); ?>" alt="" width="50" height="50"></td>
+                    <td id="title"><?= $item_detil($pop_cart->ide_kode)->item->i_nama; ?></td>
+                    <td>x <?= $pop_cart->ca_qty; ?></td>
+                    <td id="rupiah"><?= $pop_cart->ca_tharga; ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="3">
+                    Total
+                </th>
+                <th id="rupiah"><?= $cart_total($p_kode); ?></th>
+            </tr>
+            </tfoot>
+        </table>
+        <a class="btn btn-primary btn-sm r-btn-pink btn-block" href="<?= site_url('cart'); ?>">Check Out</a>
+    <?php else: ?>
+        <p>Tidak ada item di keranjang.</p>
+    <?php endif; ?>
+</div>
+
 <!-- End Footer -->
 
 
@@ -142,6 +186,19 @@
 </script>
 <script>
     $('[tooltip]').tooltip();
+</script>
+<script>
+    $(function () {
+        $('[data-toggle="popover"]').popover({
+            container: 'body',
+            trigger: 'focus',
+            content: $('#pop_cart').html(),
+            html: true
+        })
+    })
+</script>
+<script>
+    $('[id="title"]').ellipsis();
 </script>
 </body>
 </html>

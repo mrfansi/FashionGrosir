@@ -6,15 +6,9 @@ class Cart extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->data->carts = $this->cart->get_all();
-        $this->data->cart_total = function () {
-            $hasil = 0;
-            foreach ($this->cart->where_p_kode($_SESSION['id'])->get_all() as $cart_total) {
-                $hasil += (int) $cart_total->ca_tharga;
-            }
-
-            return $hasil;
-        };
+        if (!$this->session->isonline) {
+            redirect('login');
+        }
     }
 
     public function index()
@@ -72,19 +66,16 @@ class Cart extends MY_Controller
 
         foreach ($carts as $cart) {
             $this->order_detil->insert(array(
-                'od_kode'        => $this->order_detil->guid(),
-                'od_qty'        => (int)$cart->ca_qty,
-                'od_tharga'     => (int)$cart->ca_tharga,
-                'o_kode'     => $o_kode,
-                'ide_kode'      => $cart->ide_kode
+                'od_kode' => $this->order_detil->guid(),
+                'od_qty' => (int)$cart->ca_qty,
+                'od_tharga' => (int)$cart->ca_tharga,
+                'o_kode' => $o_kode,
+                'ide_kode' => $cart->ide_kode
             ));
 
 
         }
-
-        $this->cart->where_p_kode($p_kode)->delete();
-
-        redirect('checkout/' . $o_noorder . '/alamat_pengiriman');
+        redirect('checkout/alamat_pengiriman');
     }
 
 
@@ -92,11 +83,9 @@ class Cart extends MY_Controller
     {
         $cart = $this->cart->where_ca_kode($ca_kode)->get();
 
-        if ($cart)
-        {
+        if ($cart) {
             $cart = $this->cart->where_ca_kode($ca_kode)->delete();
-            if ($cart)
-            {
+            if ($cart) {
                 redirect('cart');
             }
         }

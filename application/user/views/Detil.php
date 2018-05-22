@@ -39,13 +39,13 @@ include "layout/Menu.php";
                 </div>
                 <form action="add_to_cart" method="post" class="col-lg-8">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
-                    <h1 class="f-title-detail"><?= $item->i_nama; ?></h1>
+                    <h2><?= $item->i_nama; ?></h2>
                     <hr>
                     <p class="f-font-detail"><?= $item->i_deskripsi; ?></p>
                     <div class="row">
                         <div class="col-6">
                             <p><i class="fa fa-check fa-lg f-icon-margin f-font-detail"></i>Kondisi : Baru</p>
-                            <p><i class="fa fa-cube fa-lg f-icon-margin f-font-detail"></i>Berat : 1kg</p>
+                            <p><i class="fa fa-cube fa-lg f-icon-margin f-font-detail"></i>Berat : 1gr</p>
                             <p><i class="fa fa-dropbox fa-lg f-icon-margin f-font-detail"></i>Min. Pesanan : 1pcs</p>
                         </div>
                     </div>
@@ -57,17 +57,12 @@ include "layout/Menu.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
-                            <h5>Total Stok : <?= $qty($item->i_kode); ?> pcs</h5>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-3">
-                            <label for="wu">Warna [Ukuran]</label>
+                            <label for="wu">Warna [Ukuran] (QTY)</label>
                             <select name="wu" id="wu" class="form-control" required>
-                                <?php foreach ($item_detil($item->i_kode) as $id): ?>
+                                <?php foreach ($item_detil_with_item_all($item->i_kode) as $id): ?>
                                     <option value="<?= $id->ide_kode; ?>"><?= $id->warna->w_nama; ?>
-                                        [<?= $id->ukuran->u_nama; ?>]
+                                        [<?= $id->ukuran->u_nama; ?>] (<?= $qty_detil($id->ide_kode); ?>)
                                     </option>
                                 <?php endforeach; ?>
                             </select>

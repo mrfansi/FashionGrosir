@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Controller extends CI_Controller
 {
     public $data;
+
     public function __construct()
     {
         parent::__construct();
@@ -21,39 +22,53 @@ class MY_Controller extends CI_Controller
         $this->load->config('weboptions');
 
         // load model
-        $this->load->model('Alamat_m','alamat');
-        $this->load->model('Cart_m','cart');
-        $this->load->model('Item_detil_m','item_detil');
-        $this->load->model('Item_img_m','item_img');
-        $this->load->model('Item_kategori_m','item_kategori');
-        $this->load->model('Item_qty_m','item_qty');
-        $this->load->model('Item_seri_m','item_seri');
-        $this->load->model('Item_ukuran_m','item_ukuran');
-        $this->load->model('Item_warna_m','item_warna');
-        $this->load->model('Item_m','item');
-        $this->load->model('Kategori_m','kategori');
-        $this->load->model('Order_detil_m','order_detil');
-        $this->load->model('Order_m','order');
-        $this->load->model('Order_pengiriman_m','order_pengiriman');
-        $this->load->model('Seri_m','seri');
-        $this->load->model('Toko_m','toko');
-        $this->load->model('Ukuran_m','ukuran');
-        $this->load->model('Warna_m','warna');
+        $this->load->model('Alamat_m', 'alamat');
+        $this->load->model('Cart_m', 'cart');
+        $this->load->model('Item_detil_m', 'item_detil');
+        $this->load->model('Item_img_m', 'item_img');
+        $this->load->model('Item_kategori_m', 'item_kategori');
+        $this->load->model('Item_qty_m', 'item_qty');
+        $this->load->model('Item_seri_m', 'item_seri');
+        $this->load->model('Item_ukuran_m', 'item_ukuran');
+        $this->load->model('Item_warna_m', 'item_warna');
+        $this->load->model('Item_m', 'item');
+        $this->load->model('Kategori_m', 'kategori');
+        $this->load->model('Order_detil_m', 'order_detil');
+        $this->load->model('Order_m', 'order');
+        $this->load->model('Order_pengiriman_m', 'order_pengiriman');
+        $this->load->model('Seri_m', 'seri');
+        $this->load->model('Toko_m', 'toko');
+        $this->load->model('Ukuran_m', 'ukuran');
+        $this->load->model('Warna_m', 'warna');
 
         $this->data->meta_title = $this->config->item('webname');
         $this->data->meta_content = $this->config->item('webdeskripsi');
         $this->data->meta_keywords = $this->config->item('webkeywords');
         $this->data->menu_kategori = $this->item_kategori->with_kategori()->group_by('k_kode')->get_all();
         $this->data->menu_cart = function ($session_id) {
-            $this->cart->with_item_detil()->where_p_kode($session_id)->get_all();
+            return $this->cart->with_item_detil()->where_p_kode($session_id)->get_all();
         };
 
         $this->callback();
     }
 
 
-    private function callback() {
-        $this->data->item_detil = function ($i_kode) {
+    private function callback()
+    {
+        $this->data->item = function ($i_kode) {
+            return $this->item
+                ->with_item_detil()
+                ->where_i_kode($i_kode)
+                ->get();
+        };
+
+        $this->data->item_all = function ($i_kode) {
+            return $this->item
+                ->with_item_detil()
+                ->where_i_kode($i_kode)
+                ->get_all();
+        };
+        $this->data->item_detil_with_item = function ($i_kode) {
             return $this->item_detil
                 ->with_item()
                 ->with_warna('order_by:w_nama')
@@ -61,6 +76,40 @@ class MY_Controller extends CI_Controller
                 ->with_seri()
                 ->with_item_img()
                 ->where_i_kode($i_kode)
+                ->get();
+        };
+
+        $this->data->item_detil_with_item_all = function ($i_kode) {
+            return $this->item_detil
+                ->with_item()
+                ->with_warna('order_by:w_nama')
+                ->with_ukuran('order_by:u_nama')
+                ->with_seri()
+                ->with_item_img()
+                ->where_i_kode($i_kode)
+                ->get_all();
+        };
+
+
+        $this->data->item_detil = function ($ide_kode) {
+            return $this->item_detil
+                ->with_item()
+                ->with_warna('order_by:w_nama')
+                ->with_ukuran('order_by:u_nama')
+                ->with_seri()
+                ->with_item_img()
+                ->where_ide_kode($ide_kode)
+                ->get();
+        };
+
+        $this->data->item_detil_all = function ($ide_kode) {
+            return $this->item_detil
+                ->with_item()
+                ->with_warna('order_by:w_nama')
+                ->with_ukuran('order_by:u_nama')
+                ->with_seri()
+                ->with_item_img()
+                ->where_ide_kode($ide_kode)
                 ->get_all();
         };
 
@@ -86,6 +135,16 @@ class MY_Controller extends CI_Controller
             return $hasil;
         };
 
+        $this->data->qty_detil = function ($ide_kode) {
+            $hasil = 0;
+            $stoks = $this->item_qty->fields('iq_qty')->where_ide_kode($ide_kode)->get_all();
+            foreach ($stoks as $stok) {
+                $hasil += $stok->iq_qty;
+            }
+
+            return $hasil;
+        };
+
         $this->data->item_img = function ($i_kode) {
             return $this->item_img
                 ->where(array('i_kode' => $i_kode, 'ii_default' => 1))
@@ -94,6 +153,19 @@ class MY_Controller extends CI_Controller
 
         $this->data->item_img_all = function ($i_kode) {
             return $this->item_img->where(array('i_kode' => $i_kode))->get_all();
+        };
+
+        $this->data->cart_s = function ($p_kode) {
+            return $this->cart->where_p_kode($p_kode)->get_all();
+        };
+
+        $this->data->cart_total = function ($p_kode) {
+            $hasil = 0;
+            foreach ($this->cart->where_p_kode($p_kode)->get_all() as $cart_total) {
+                $hasil += (int) $cart_total->ca_tharga;
+            }
+
+            return $hasil;
         };
     }
 }

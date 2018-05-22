@@ -54,13 +54,7 @@ include "layout/Slide.php";
     </div>
     <!-- End Content -->
     <script>
-        $('[id="title"]').ellipsis();
-    </script>
-    <script>
         $('[id="rating"]').emojiRating()
-    </script>
-    <script>
-        $('input[type=hidden]')
     </script>
 <?php
 include "layout/Footer.php";

@@ -11,11 +11,29 @@ body {
     border-color: #F06292;
 }
 
+a {
+    color: #F06292;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: none;
+}
+
+.popover {
+    max-width: none;
+    width: 500px;
+}
+
 /*color*/
 .r-pink {
     color: #F06292;
 }
-h5 {
+
+h1, h2, h3, h4, h5 {
     color: #F06292;
 }
 

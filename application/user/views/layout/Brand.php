@@ -22,7 +22,7 @@
 <div class="container-fluid f-color">
     <div class="row f-padding-header">
         <!-- Brand -->
-        <div class="col-lg-3 col-md-4">
+        <div class="col-lg-3 col-md-2">
             <a href="index.html" class="navbar-brand f-logo">
                 <img src="assets/brand/citrus-logo.png" alt="">
             </a>
@@ -31,53 +31,40 @@
 
         <!-- Search -->
         <div class="col-lg-6 col-md-8">
-            <form class="form">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Cari Produk"
-                           aria-label="Search" id="search">
-                    <div class="input-group-addon">
-                        <button class="btn btn-search-color f-btn-search" type="submit" style="" id="search-btn"><i
-                                    class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!-- End Search -->
-
-        <!-- User -->
-        <div class="col-lg-3 col-md-12">
-            <a tooltip class="btn btn-primary r-btn-pink" href="<?= site_url('resi'); ?>" title="Resi">
-                <i class="fa fa-file"></i>
-            </a>
-            <!-- Small button groups (default and split) -->
-            <div class="btn-group">
-                <button class="btn btn-primary r-btn-pink dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="fa fa-shopping-cart fa-lg"></span>
-                    <?php if (isset($_SESSION['id'])): ?>
-                        <?php $cart = $this->cart->where_p_kode($_SESSION['id'])->count_rows(); ?>
-                        <?php if (isset($cart) && $cart != NULL): ?>
-                            <span><?= $cart; ?></span>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </button>
-                <div class="dropdown-menu">
-                    <?php if (isset($_SESSION['id'])): ?>
-                    <table class="table table-borderless">
-                        <?php foreach ($menu_cart($_SESSION['id']) as $mencart): ?>
-                        <tr>
-                            <td><?= $mencart->item_detil->i_nama; ?></td>
-                            <td><?= $mencart->ca_qty; ?></td>
-                            <td><?= $mencart->ca_tharga; ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                    <?php else: ?>
-                    <p>Tidak ada item di keranjang</p>
-                    <?php endif; ?>
+            <div class="row">
+                <div class="col">
+                    <form class="form">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Cari Produk"
+                                   aria-label="Search" id="search">
+                            <div class="input-group-addon">
+                                <button class="btn btn-search-color f-btn-search" type="submit" style=""
+                                        id="search-btn"><i
+                                            class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <a class="small" href="#">Cek Resi</a>
+                    |
+                    <a class="small" href="#">Status Order</a>
+                </div>
+            </div>
+
         </div>
-        <!-- End User -->
+        <!-- End Search -->
+        <div class="col-lg-3 col-md-2">
+            <a tabindex="0" class="btn btn-primary r-btn-pink"
+               title="Cart"
+               data-toggle="popover"
+               data-placement="bottom"
+               data-content="">
+                <i class="fa fa-shopping-cart fa-lg"></i>
+                <i class="badge"><?= $counter_cart = isset($_SESSION['id']) ? $this->cart->where_p_kode($_SESSION['id'])->count_rows() : ''; ?></i>
+            </a>
+        </div>
     </div>
 </div>
-<br>
