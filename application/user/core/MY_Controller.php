@@ -40,6 +40,7 @@ class MY_Controller extends CI_Controller
         $this->load->model('Toko_m', 'toko');
         $this->load->model('Ukuran_m', 'ukuran');
         $this->load->model('Warna_m', 'warna');
+        $this->load->model('Provinsi_m', 'provinsi');
 
         $this->data->meta_title = $this->config->item('webname');
         $this->data->meta_content = $this->config->item('webdeskripsi');

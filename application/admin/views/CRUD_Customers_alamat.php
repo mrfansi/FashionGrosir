@@ -99,7 +99,7 @@
                                 <option value="">Pilih Kecamatan</option>
                             </select>
                             <p>
-                                <?= form_error('kecamatan'); ?>
+                                <?= form_error('KecamatanM'); ?>
                             </p>
                         </div>
                         <div class="form-group">
