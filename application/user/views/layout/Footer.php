@@ -3,24 +3,7 @@
      aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <div class="col text-center">
-                    <p class="text-center r-pink"><i class="fa fa-check-circle fa-5x"></i> <br>Berhasil menambahkan
-                        kedalam keranjang..</p>
-                </div>
-            </div>
             <div class="modal-body">
-
-            </div>
-            <div class="modal-footer">
-                <div class="col">
-                    <button type="button" class="btn btn-sm btn-primary r-btn-pink btn-block" data-dismiss="modal">
-                        Lanjutkan belanja
-                    </button>
-                </div>
-                <div class="col">
-                    <a href="<?= site_url('cart'); ?>" class="btn btn-sm btn-primary r-btn-pink btn-block">Check Out</a>
-                </div>
 
             </div>
         </div>
@@ -138,7 +121,9 @@
             <tbody>
             <?php foreach ($pop_carts as $pop_cart): ?>
                 <tr>
-                    <td><img src="<?= base_url('upload/' . $item_img($item_detil($pop_cart->ide_kode)->item->i_kode)->ii_nama); ?>" alt="" width="50" height="50"></td>
+                    <td>
+                        <img src="<?= base_url('upload/' . $item_img($item_detil($pop_cart->ide_kode)->item->i_kode)->ii_nama); ?>"
+                             alt="" width="50" height="50"></td>
                     <td id="title"><?= $item_detil($pop_cart->ide_kode)->item->i_nama; ?></td>
                     <td>x <?= $pop_cart->ca_qty; ?></td>
                     <td id="rupiah"><?= $pop_cart->ca_tharga; ?></td>
@@ -147,10 +132,12 @@
             </tbody>
             <tfoot>
             <tr>
-                <th colspan="3">
-                    Total
+                <th colspan="2">
                 </th>
-                <th id="rupiah"><?= $cart_total($p_kode); ?></th>
+                <th>Total :</th>
+                <th>
+                    <div id="rupiah"><?= $cart_total($p_kode); ?></div>
+                </th>
             </tr>
             </tfoot>
         </table>
@@ -175,13 +162,11 @@
         suffix: ''
     });
 
-    $(document).ready(function () {
-        $('[id="rupiah"]').each(function (index) {
-            var value = parseInt($(this).html()),
-                hasil = moneyFormat.to(value);
+    $('[id="rupiah"]').each(function (index) {
+        var value = parseInt($(this).html()),
+            hasil = moneyFormat.to(value);
 
-            $(this).html(hasil);
-        })
+        $(this).html(hasil);
     });
 </script>
 <script>
@@ -200,5 +185,15 @@
 <script>
     $('[id="title"]').ellipsis();
 </script>
+<?php if (isset($_SESSION['modal'])): ?>
+    <script>
+        $('#cart').modal({
+            backdrop: 'static',
+            keyboard: false,
+            show: true
+        });
+        $('#cart > div > div > div.modal-body').load('<?= site_url('cart/modal_cart'); ?>');
+    </script>
+<?php endif; ?>
 </body>
 </html>

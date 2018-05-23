@@ -106,7 +106,7 @@ include "layout/Menu.php";
                         <li class="nav-item">
                             <a class="nav-link  r-pilihan-alamat-font" id="pills-profile-tab" data-toggle="pill"
                                href="#pills-profile" role="tab" aria-controls="pills-profile"
-                               aria-selected="false">Dropship</a>
+                               aria-selected="false">Drop Ship</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="pills-tabContent">

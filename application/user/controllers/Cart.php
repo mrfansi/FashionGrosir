@@ -17,6 +17,11 @@ class Cart extends MY_Controller
 
     }
 
+    public function modal_cart()
+    {
+        $this->load->view('Modal_Cart', $this->data);
+    }
+
     public function add()
     {
         $ide_kode = $this->input->post('wu');
@@ -32,8 +37,9 @@ class Cart extends MY_Controller
 
             if ($cart) {
                 $this->data->berhasil = 'Berhasil menambah item ke keranjanng';
-                $this->session->set_userdata('berhasil', $this->data->berhasil);
-                redirect('cart');
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+                $this->session->set_flashdata('modal', '1');
+                redirect('/');
             }
         } else {
             $cart = $this->cart->insert(array(
@@ -46,8 +52,9 @@ class Cart extends MY_Controller
 
             if ($cart) {
                 $this->data->berhasil = 'Berhasil menambah item ke keranjanng';
-                $this->session->set_userdata('berhasil', $this->data->berhasil);
-                redirect('cart');
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+                $this->session->set_flashdata('modal', '1');
+                redirect('/');
             }
         }
     }

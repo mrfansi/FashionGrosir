@@ -28,6 +28,12 @@ a {
     width: 500px;
 }
 
+.form-control:focus {
+    box-shadow: none;
+    border-color: #F06292;
+}
+
+
 /*color*/
 .r-pink {
     color: #F06292;

@@ -57,12 +57,14 @@ include "layout/Menu.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-3">
-                            <label for="wu">Warna [Ukuran] (QTY)</label>
+                        <div class="col-4">
+                            <label for="wu">Warna - Ukuran - QTY</label>
                             <select name="wu" id="wu" class="form-control" required>
                                 <?php foreach ($item_detil_with_item_all($item->i_kode) as $id): ?>
-                                    <option value="<?= $id->ide_kode; ?>"><?= $id->warna->w_nama; ?>
-                                        [<?= $id->ukuran->u_nama; ?>] (<?= $qty_detil($id->ide_kode); ?>)
+                                    <option value="<?= $id->ide_kode; ?>">
+                                        <?= $id->warna->w_nama; ?> -
+                                        <?= $id->ukuran->u_nama; ?> -
+                                        <?= $qty_detil($id->ide_kode); ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
@@ -73,9 +75,9 @@ include "layout/Menu.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-5">
+                        <div class="col-6">
                             <button type="submit"
-                                    class="btn btn-primary btn-lg btn-block f-button-font f-button-detail">Tambah
+                                    class="btn btn-primary btn-lg btn-block f-button-font f-button-detail">Tambah ke Keranjang
                             </button>
                         </div>
                     </div>

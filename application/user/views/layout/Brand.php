@@ -49,7 +49,6 @@
             <div class="row">
                 <div class="col">
                     <a class="small" href="#">Cek Resi</a>
-                    |
                     <a class="small" href="#">Status Order</a>
                 </div>
             </div>
@@ -63,7 +62,7 @@
                data-placement="bottom"
                data-content="">
                 <i class="fa fa-shopping-cart fa-lg"></i>
-                <i class="badge"><?= $counter_cart = isset($_SESSION['id']) ? $this->cart->where_p_kode($_SESSION['id'])->count_rows() : ''; ?></i>
+                <span class="badge"><?= $counter_cart = isset($_SESSION['id']) ? $this->cart->where_p_kode($_SESSION['id'])->count_rows() : ''; ?></span>
             </a>
         </div>
     </div>
