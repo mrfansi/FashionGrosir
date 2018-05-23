@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout';
+$route['cari'] = 'pencarian';
 $route['produk-terbaru'] = 'home/produkbaru';
 $route['produk-terbaru/item/(:any)/detil'] = 'home/item/$1';
 $route['produk-terbaru/item/(:any)/add_to_cart'] = 'cart/add';

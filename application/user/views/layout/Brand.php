@@ -33,10 +33,10 @@
         <div class="col-lg-6 col-md-8">
             <div class="row">
                 <div class="col">
-                    <form class="form">
+                    <form class="form" action="<?= site_url('cari'); ?>"method="get">
                         <div class="input-group">
                             <input class="form-control" type="text" placeholder="Cari Produk"
-                                   aria-label="Search" id="search">
+                                   aria-label="Search" id="cari" name="cari">
                             <div class="input-group-addon">
                                 <button class="btn btn-search-color f-btn-search" type="submit" style=""
                                         id="search-btn"><i
