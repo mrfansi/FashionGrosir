@@ -6,7 +6,7 @@
  * Time: 23.23
  */
 
-class Ukuran extends MY_User
+class Ukuran extends MY_Controller
 {
     public function __construct()
     {

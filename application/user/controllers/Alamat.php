@@ -16,4 +16,15 @@ class Alamat extends MY_Controller
         $this->load->view('Alamat', $this->data);
 
     }
+
+    public function get($order)
+    {
+        $this->data->nomor_order = $order;
+        $this->load->view('Alamat', $this->data);
+    }
+
+    public function simpan()
+    {
+
+    }
 }

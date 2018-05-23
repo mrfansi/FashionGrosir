@@ -6,7 +6,7 @@
  * Time: 23.23
  */
 
-class Seri extends MY_User
+class Seri extends MY_Controller
 {
     public function __construct()
     {

@@ -7,7 +7,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Upload extends MY_User
+class Upload extends MY_Controller
 {
     public function __construct()
     {

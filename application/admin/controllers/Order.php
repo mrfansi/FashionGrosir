@@ -6,7 +6,7 @@
  * Time: 23.23
  */
 
-class Order extends MY_User
+class Order extends MY_Controller
 {
     public function __construct()
     {

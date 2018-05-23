@@ -82,7 +82,7 @@ class Cart extends MY_Controller
 
 
         }
-        redirect('checkout/alamat_pengiriman');
+        redirect('checkout/' . $o_noorder .'/alamat_pengiriman');
     }
 
 

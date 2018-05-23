@@ -6,7 +6,7 @@
  * Time: 23.23
  */
 
-class Users extends MY_User
+class Users extends MY_Controller
 {
     public function __construct()
     {
