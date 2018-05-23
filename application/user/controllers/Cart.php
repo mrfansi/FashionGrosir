@@ -8,6 +8,11 @@ class Cart extends MY_Controller
         parent::__construct();
         if (!$this->session->isonline) {
             redirect('login');
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET')
+            {
+                $this->session->set_userdata('redirect', current_url());
+            }
         }
     }
 
@@ -39,7 +44,7 @@ class Cart extends MY_Controller
                 $this->data->berhasil = 'Berhasil menambah item ke keranjanng';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
                 $this->session->set_flashdata('modal', '1');
-                redirect('/');
+                redirect($this->session->redirect);
             }
         } else {
             $cart = $this->cart->insert(array(
@@ -54,7 +59,7 @@ class Cart extends MY_Controller
                 $this->data->berhasil = 'Berhasil menambah item ke keranjanng';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
                 $this->session->set_flashdata('modal', '1');
-                redirect('/');
+                redirect($this->session->redirect);
             }
         }
     }

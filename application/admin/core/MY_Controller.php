@@ -38,7 +38,10 @@ class MY_Controller extends CI_Controller
         if (!$this->session->isonline) {
             redirect(base_url('adm.php/auth'));
         } else {
-            $this->session->set_userdata('redirect', current_url());
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $this->session->set_userdata('redirect', current_url());
+            }
+
         }
 //        $this->output->cache(1);
 //        $allow = array(
