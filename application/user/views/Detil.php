@@ -21,12 +21,14 @@ include "layout/Menu.php";
         </nav>
         <div class="row">
             <?php if (isset($item) && $item != NULL): ?>
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                    <div class="fotorama card"
+                <div class="col-lg-5 col-md-6 col-sm-12 col-12">
+                    <div class="fotorama"
+                         data-fit="cover"
+                         data-navposition="bottom"
                          data-transition="dissolve"
                          data-nav="thumbs"
-                         data-width="350"
-                         data-height="350">
+                         data-width="700"
+                         data-height="500">
                         <?php if ($item_img_all($item->i_kode) != NULL): ?>
                             <?php foreach ($item_img_all($item->i_kode) as $img): ?>
                                 <img src="<?= base_url('upload/' . $img->ii_nama); ?>" class="card-img-top">
@@ -37,7 +39,7 @@ include "layout/Menu.php";
                     </div>
 
                 </div>
-                <form action="add_to_cart" method="post" class="col-lg-8">
+                <form action="add_to_cart" method="post" class="col-lg-7">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <h2><?= $item->i_nama; ?></h2>
                     <hr>

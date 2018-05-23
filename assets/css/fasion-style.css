@@ -1285,7 +1285,6 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 .r-detail-resi{
     padding: 1%;
     font-size: 15px;
-    margin-top: 3%;
 }
 
 
@@ -1305,4 +1304,12 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 }
 .r-active-step .f-troli-text {
     color: white;
+}
+
+
+.f-font-resi {
+    font-size: 1.1rem;
+}
+f-font-resi2 {
+    font-size: 1.0rem;
 }

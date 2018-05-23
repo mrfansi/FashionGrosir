@@ -46,13 +46,19 @@
                     </form>
                 </div>
             </div>
+            <?php if (isset($_SESSION['id'])): ?>
             <div class="row">
                 <div class="col">
-                    <a class="small" href="#">Cek Resi</a>
+                    <a class="small" href="<?= site_url('resi'); ?>">Cek Resi</a>
+                    |
                     <a class="small" href="#">Status Order</a>
+                    |
+                    <a class="small" href="#">Konfirmasi Pembayaran</a>
+                    |
+                    <a class="small" href="#">Histori Belanja</a>
                 </div>
             </div>
-
+            <?php endif; ?>
         </div>
         <!-- End Search -->
         <div class="col-lg-3 col-md-2">

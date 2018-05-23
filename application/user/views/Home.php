@@ -40,7 +40,6 @@ include "layout/Slide.php";
                                     <h6 id="rupiah"
                                        class="card-subtitle mb-2 text-muted"><?= $terbaru->i_hrg_reseller; ?></h6>
                                 <?php endif; ?>
-                                <div id="rating"></div>
                             </div>
                         </div>
                     </div>
