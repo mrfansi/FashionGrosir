@@ -49,7 +49,7 @@
             <?php if (isset($_SESSION['id'])): ?>
             <div class="row">
                 <div class="col">
-                    <a class="small" href="#">Cek Resi</a>
+                    <a class="small" href="<?= site_url('resi'); ?>">Cek Resi</a>
                     |
                     <a class="small" href="#">Status Order</a>
                     |
