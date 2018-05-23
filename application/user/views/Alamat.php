@@ -214,6 +214,32 @@ include "layout/Menu.php";
     </form>
     <script>
         $(document).ready(function () {
+            function matchCustom(params, data) {
+                // If there are no search terms, return all of the data
+                if ($.trim(params.term) === '') {
+                    return data;
+                }
+
+                // Do not display the item if there is no 'text' property
+                if (typeof data.text === 'undefined') {
+                    return null;
+                }
+
+                // `params.term` should be the term that is used for searching
+                // `data.text` is the text that is displayed for the data object
+                if (data.text.indexOf(params.term) > -1) {
+                    var modifiedData = $.extend({}, data, true);
+                    modifiedData.text += ' (matched)';
+
+                    // You can return modified objects from here
+                    // This includes matching the `children` how you want in nested data sets
+                    return modifiedData;
+                }
+
+                // Return `null` if the term should not be displayed
+                return null;
+            }
+
             $('#provinsi').select2({
                 theme: 'bootstrap4',
                 placeholder: 'Pilih provinsi',
@@ -221,19 +247,51 @@ include "layout/Menu.php";
                     url: '<?= site_url('API/get_provinsi'); ?>',
                     dataType: 'json'
                     // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-                }
+                },
+                matcher: matchCustom
             });
             $('#kabupaten').select2({
                 theme: 'bootstrap4',
-                placeholder: 'Pilih kabupaten'
+                placeholder: 'Pilih kabupaten',
+                ajax: {
+                    url: '<?= site_url('API/get_kabupaten'); ?>',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term, // search term
+                            page: params.page
+                        };
+                    }
+                }
             });
             $('#kecamatan').select2({
                 theme: 'bootstrap4',
-                placeholder: 'Pilih kecamatan'
+                placeholder: 'Pilih kecamatan',
+                ajax: {
+                    url: '<?= site_url('API/get_kecamatan'); ?>',
+                    dataType: 'json',
+                    data: function (params) {
+                        return {
+                            q: params.term, // search term
+                            page: params.page
+                        };
+                    }
+                }
             });
             $('#kota').select2({
                 theme: 'bootstrap4',
-                placeholder: 'Pilih kota'
+                placeholder: 'Pilih kota',
+                ajax: {
+                    url: '<?= site_url('API/get_kota'); ?>',
+                    dataType: 'json',
+                    data: function (params) {
+                        return {
+                            q: params.term, // search term
+                            page: params.page
+                        };
+                    }
+                }
             });
         });
     </script>
