@@ -99,8 +99,7 @@ include "layout/Menu.php";
                     <ul class="nav nav-pills mb-3 r-pilihan-alamat" id="pills-tab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active r-pilihan-alamat-font" id="pills-home-tab" data-toggle="pill"
-                               href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Kirim Atas
-                                Nama
+                               href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Alamat
                                 Saya</a>
                         </li>
                         <li class="nav-item">
@@ -223,94 +222,50 @@ include "layout/Menu.php";
             </div>
 
             <div class="col-lg-6 col-md-12 f-font-troli border f-border-padding f-radius ml-3">
-                <h5>Perhitungan Harga</h5>
+                <h5>Nomor Order : <?= $orders->o_noorder; ?></h5>
                 <hr>
-                <div class="row">
-                    <div class="col-lg-7 col-md-7 col-sm-8 col-7">
-                        <div class="media">
-                            <img class="mr-3 f-img-sidebar" src="assets/img/kaos.jpg" alt="Generic placeholder image">
-                            <div class="media-body">
-                                <h6 class="mt-0">Anzel Peplum (ZP01-ZP04)</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-md-2 col-sm-1 col-1 f-sub-total">
-                        <h5>3</h5>
-                    </div>
-                    <div class="col-lg-4 col-md-3 col-sm col f-sub-total">
-                        <h5 class="card-title">10.000.000</h5>
-                    </div>
-                </div>
-                <br>
+                <?php foreach ($orders->order_detil as $order): ?>
+                    <div class="row">
 
-                <div class="row">
-                    <div class="col-lg-7 col-md-7 col-sm-8 col-7">
-                        <div class="media">
-                            <img class="mr-3 f-img-sidebar" src="assets/img/kaos.jpg" alt="Generic placeholder image">
-                            <div class="media-body">
-                                <h6 class="mt-0">Anzel Peplum (ZP01-ZP04)</h6>
+                        <div class="col-lg-7 col-md-7 col-sm-8 col-7">
+                            <div class="media">
+                                <?php if ($item_img($item_detil($order->ide_kode)->item->i_kode) != NULL): ?>
+                                <img class="mr-3 f-img-sidebar" src="<?= base_url('upload/') . $item_img($item_detil($order->ide_kode)->item->i_kode)->ii_nama; ?>"
+                                     alt="<?= $item_img($item_detil($order->ide_kode)->item->i_kode)->ii_nama; ?>">
+                                <?php endif; ?>
+                                <div class="media-body">
+                                    <h6 class="mt-0"><?= $item_detil($order->ide_kode)->item->i_nama; ?></h6>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-1 col-md-2 col-sm-1 col-1 f-sub-total">
+                            <h5>x<?= $order->od_qty; ?></h5>
+                        </div>
+                        <div class="col-lg-4 col-md-3 col-sm col f-sub-total">
+                            <h5 class="card-title" id="rupiah"><?= $order->od_tharga; ?></h5>
+                        </div>
                     </div>
-                    <div class="col-lg-1 col-md-2 col-sm-1 col-1 f-sub-total">
-                        <h5>1</h5>
-                    </div>
-                    <div class="col-lg-4 col-md-3 col-sm col f-sub-total">
-                        <h5 class="card-title">10.000.000</h5>
-                    </div>
-                </div>
+                    <br>
+                <?php endforeach; ?>
                 <hr>
 
                 <div class="row">
                     <div class="col-lg-6 col-md-8 col-sm-7 col-6">
-                        <h6>Subtotal</h6>
+                        <h6>Sub Total</h6>
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-5 col-6">
                         <div class="row">
-                            <div class="col-lg-1 col-md-6 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">1.000.000</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-7 col-6">
-                        <h6>Biaya Pengiriman</h6>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-6 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">125.000</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-7 col-6">
-                        <h6>Biaya Pengiriman</h6>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-6 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">-</h5>
+                            <div class="col">
+                                <h5 class="card-title f-sub-total" id="rupiah"><?= $orders_total(); ?></h5>
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr>
                 <button type="submit" class="btn btn-primary btn-lg btn-block f-button-font">Lanjut Metode
-                    Pembayaran</button>
+                    Pembayaran
+                </button>
             </div>
         </div>
     </form>

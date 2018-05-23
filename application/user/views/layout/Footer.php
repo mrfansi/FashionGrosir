@@ -111,8 +111,7 @@
         <table class="table table-sm table-borderless">
             <thead>
             <tr>
-                <th scope="col"></th>
-                <th scope="col">Item</th>
+                <th scope="col" colspan="2">Item</th>
                 <th scope="col">QTY</th>
                 <th scope="col"></th>
             </tr>
@@ -123,7 +122,8 @@
                 <tr>
                     <td>
                         <img src="<?= base_url('upload/' . $item_img($item_detil($pop_cart->ide_kode)->item->i_kode)->ii_nama); ?>"
-                             alt="" width="50" height="50"></td>
+                             alt="" width="50" height="50">
+                    </td>
                     <td id="title"><?= $item_detil($pop_cart->ide_kode)->item->i_nama; ?></td>
                     <td>x <?= $pop_cart->ca_qty; ?></td>
                     <td id="rupiah"><?= $pop_cart->ca_tharga; ?></td>
