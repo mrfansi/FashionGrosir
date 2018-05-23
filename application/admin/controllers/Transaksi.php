@@ -6,7 +6,7 @@
  * Time: 20.07
  */
 
-class Transaksi extends MY_User
+class Transaksi extends MY_Controller
 {
 
     public function __construct()

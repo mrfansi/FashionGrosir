@@ -6,7 +6,7 @@
  * Time: 02.54
  */
 
-class Item_img extends MY_User
+class Item_img extends MY_Controller
 {
     public function __construct()
     {
