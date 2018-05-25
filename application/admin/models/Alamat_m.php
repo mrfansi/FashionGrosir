@@ -20,9 +20,9 @@ class Alamat_m extends MY_Model
             'foreign_table'=>'orders_pengiriman',
             'foreign_key'=>'a_kode',
             'local_key'=>'a_kode');
-        $this->has_many['pengguna_alamat'] = array(
+        $this->has_many['Pengguna_alamat'] = array(
             'foreign_model'=>'Pengguna_alamat_m',
-            'foreign_table'=>'pengguna_alamat',
+            'foreign_table'=> 'Pengguna_alamat',
             'foreign_key'=>'a_kode',
             'local_key'=>'a_kode');
         parent::__construct();

@@ -15,7 +15,7 @@ class Auth extends CI_Controller
         $this->load->helper('form');
         $this->load->library('user_agent');
 
-        $this->load->model('Pengguna','pengguna');
+        $this->load->model('PenggunaM', 'PenggunaM');
         $check = $this->pengguna->where_p_kode(0)->get();
         if (!$check)
         {
@@ -42,7 +42,7 @@ class Auth extends CI_Controller
         $data = new stdClass();
 
         // model
-        $this->load->model('Pengguna', 'users');
+        $this->load->model('PenggunaM', 'users');
 
         // load library
         $this->load->library('form_validation');

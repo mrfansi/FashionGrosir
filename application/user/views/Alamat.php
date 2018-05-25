@@ -108,7 +108,7 @@ include "layout/Menu.php";
 
                     <div class="row form-group" id="form_nama_alamat">
                         <div class="col" id="nama_alamat">
-                            <label for="nama_alamat">Judul Alamat</label>
+                            <label for="nama_alamat">Judul / Pilih yang sudah ada</label>
                             <input type="text" name="nama_alamat" class="form-control" placeholder="Judul Alamat">
                         </div>
                     </div>
@@ -150,7 +150,7 @@ include "layout/Menu.php";
 
                         <div class="col">
                             <label for="kodepos">Kode Pos</label>
-                            <input name="kodepos" id="kodepos" type="number" onfocus="get_kodepos($(this))"
+                            <input name="kodepos" id="kodepos" type="number"
                                    class="form-control" placeholder="Kode Pos" required>
                         </div>
                     </div>
@@ -171,7 +171,7 @@ include "layout/Menu.php";
                 <form action="alamat_pengiriman/simpan/form_dropship" method="post" id="form_dropship" style="display: none;">
                     <div class="row form-group" id="form_nama_alamat">
                         <div class="col" id="d_nama_alamat">
-                            <label for="d_nama_alamat">Judul Alamat</label>
+                            <label for="d_nama_alamat">Judul / Pilih yang sudah ada</label>
                             <input type="text" name="d_nama_alamat" class="form-control" placeholder="Judul Alamat">
                         </div>
                     </div>
@@ -222,7 +222,7 @@ include "layout/Menu.php";
 
                         <div class="col">
                             <label for="d_kodepos">Kode Pos</label>
-                            <input name="d_kodepos" id="d_kodepos" type="number" onfocus="get_kodepos($(this))"
+                            <input name="d_kodepos" id="d_kodepos" type="number"
                                    class="form-control" placeholder="Kode Pos" required>
                         </div>
                     </div>
@@ -368,6 +368,37 @@ include "layout/Menu.php";
                     }
                 }
             });
+        });
+    </script>
+    <script>
+        $('#nama_alamat').autoComplete({
+           source: function (req, res) {
+               $.ajax({
+                   url: '<?= site_url('API/get_alamat'); ?>',
+                   dataType: "jsonp",
+                   data: {
+                       q: req.term
+                   },
+                   success: function (data) {
+                       res(data);
+                   }
+               })
+           }
+        });
+
+        $('#d_nama_alamat').autoComplete({
+            source: function (req, res) {
+                $.ajax({
+                    url: '<?= site_url('API/get_alamat'); ?>',
+                    dataType: "jsonp",
+                    data: {
+                        q: req.term
+                    },
+                    success: function (data) {
+                        res(data);
+                    }
+                })
+            }
         });
     </script>
     <script>

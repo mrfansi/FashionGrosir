@@ -11,7 +11,7 @@ class Users extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Pengguna', 'users');
+        $this->load->model('PenggunaM', 'users');
     }
 
     public function index()

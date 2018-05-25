@@ -98,4 +98,19 @@ class API extends MY_Controller
     {
         return $this->desa->get($desa_id)->kodepos;
     }
+
+    public function get_alamat()
+    {
+        $data = [];
+        $p_kode = $_SESSION['id'];
+        $alamat = $this->pengguna_alamat->with_pengguna()->with_alamat()->where_p_kode($p_kode)->get_all();
+        foreach ($alamat as $g){
+            array_push($data, array(
+
+            ));
+        }
+
+        echo json_encode($data);
+    }
+
 }
