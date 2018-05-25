@@ -15,7 +15,7 @@ class Auth extends CI_Controller
         $this->load->helper('form');
         $this->load->library('user_agent');
 
-        $this->load->model('PenggunaM', 'PenggunaM');
+        $this->load->model('Pengguna_m', 'pengguna');
         $check = $this->pengguna->where_p_kode(0)->get();
         if (!$check)
         {
@@ -40,9 +40,6 @@ class Auth extends CI_Controller
     {
         // null object
         $data = new stdClass();
-
-        // model
-        $this->load->model('PenggunaM', 'users');
 
         // load library
         $this->load->library('form_validation');
@@ -79,7 +76,7 @@ class Auth extends CI_Controller
             $password = $this->input->post('password');
 
             // get database
-            $user = $this->users->where(array(
+            $user = $this->pengguna->where(array(
                 'p_username'  => $username,
                 'p_password'  => $password
             ))->get();
@@ -87,7 +84,7 @@ class Auth extends CI_Controller
             if ($user)
             {
                 // Update IP Address
-                $this->users->where(array(
+                $this->pengguna->where(array(
                     'p_username'  => $username,
                 ))->update(array(
                     'p_ipaddr' => $_SERVER['REMOTE_ADDR'],
@@ -118,6 +115,6 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('nama');
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('isonline');
-        redirect(base_url('adm.php/auth'));
+        redirect('auth');
     }
 }

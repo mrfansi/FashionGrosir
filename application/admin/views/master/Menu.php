@@ -67,7 +67,7 @@
             </h5>
             <ul id="side-admin-menu" class="side-menu list-unstyled">
                 <li>
-                    <a href="<?= site_url('users'); ?>"><i class="fa fa-users"></i>Pengguna Admin
+                    <a href="<?= site_url('pengguna'); ?>"><i class="fa fa-users"></i>Pengguna Admin
                     </a>
                 </li>
                 <li><a href="<?= site_url('opsi'); ?>"><i class="fa fa-cogs"></i>Opsi </a></li>

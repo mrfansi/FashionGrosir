@@ -14,9 +14,9 @@ class Pengguna_alamat_m extends MY_Model {
         $this->protected = array('pa_id','created_at','update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = TRUE;
-        $this->has_one['pengguna'] = array(
+        $this->has_one['Pengguna'] = array(
             'foreign_model'=>'Pengguna_m',
-            'foreign_table'=> 'Pengguna',
+            'foreign_table'=> 'pengguna',
             'foreign_key'=>'p_kode',
             'local_key'=>'p_kode');
         $this->has_one['alamat'] = array(

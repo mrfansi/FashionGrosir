@@ -116,7 +116,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('users/tambah'); ?>");
+                bodymodal.load("<?= site_url('pengguna/tambah'); ?>");
             }
 
             function edit(data) {
@@ -125,7 +125,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('users/ubah/'); ?>" + id);
+                bodymodal.load("<?= site_url('pengguna/ubah/'); ?>" + id);
             }
 
             function detil(data) {
@@ -134,7 +134,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('users/detil/'); ?>" + id);
+                bodymodal.load("<?= site_url('pengguna/detil/'); ?>" + id);
             }
 
             function hapus(data) {

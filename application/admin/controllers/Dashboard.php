@@ -41,7 +41,7 @@ class Dashboard extends MY_Controller
     private function set_totalcustomer()
     {
         // load model
-        $this->load->model('PenggunaM','customer');
+        $this->load->model('Pengguna_m','customer');
         $total = $this->customer->where('p_tipe',array('1','2'))->count_rows();
         return $total;
     }

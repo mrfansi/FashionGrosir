@@ -11,7 +11,7 @@ class Customers extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('PenggunaM', 'customers');
+        $this->load->model('Pengguna_m', 'customers');
     }
 
     public function index()
