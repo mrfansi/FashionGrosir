@@ -59,7 +59,7 @@
             <div class="card">
                 <div class="card-header">
                     <h1>Kategori</h1>
-                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud">Buat baru</a>
+                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
 
                 </div>
                 <div class="card-body">
@@ -93,7 +93,7 @@
                                                 <?php if ($kategori->k_kode != '0'): ?>
                                                     <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
                                                        href="#"
-                                                       onclick="edit($(this))" data-target="#crud"
+                                                       onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                        data-id="<?= $kategori->k_kode; ?>"><i
                                                                 class="far fa-edit"></i></a> |
                                                     <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"

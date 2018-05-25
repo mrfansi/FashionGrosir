@@ -10,7 +10,8 @@
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
+          integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
     <!-- Google fonts - Roboto -->
@@ -113,7 +114,8 @@
                         </div>
                         <div class="form-group">
                             <label for="kodepos">Kodepos</label>
-                            <input type="text" class="form-control" name="kodepos" id="kodepos" placeholder="Input Kodepos" required>
+                            <input type="text" class="form-control" name="kodepos" id="kodepos"
+                                   placeholder="Input Kodepos" required>
                             <p>
                                 <?= form_error('kodepos'); ?>
                             </p>
@@ -121,7 +123,8 @@
 
                         <div class="form-group">
                             <label for="alamat_lengkap">Alamat Lengkap</label>
-                            <textarea name="alamat_lengkap" id="alamat_lengkap" class="form-control" cols="30" rows="10"></textarea>
+                            <textarea name="alamat_lengkap" id="alamat_lengkap" class="form-control" cols="30"
+                                      rows="10"></textarea>
                             <p>
                                 <?= form_error('alamat_lengkap'); ?>
                             </p>
@@ -129,7 +132,8 @@
 
                         <div class="form-group">
                             <label for="penerima_nama">Nama Penerima</label>
-                            <input type="text" class="form-control" name="penerima_nama" placeholder="Input Nama Penerima" required>
+                            <input type="text" class="form-control" name="penerima_nama"
+                                   placeholder="Input Nama Penerima" required>
                             <p>
                                 <?= form_error('judul'); ?>
                             </p>
@@ -137,20 +141,23 @@
 
                         <div class="form-group">
                             <label for="penerima_nomor">Nomor Kontak</label>
-                            <input type="text" class="form-control" name="penerima_nomor" placeholder="Input Nomor Kontak" required>
+                            <input type="text" class="form-control" name="penerima_nomor"
+                                   placeholder="Input Nomor Kontak" required>
                             <p>
                                 <?= form_error('judul'); ?>
                             </p>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+                            <button type="button" onclick="window.location.reload()" class="btn btn-danger">Tutup
+                            </button>
                             <a href="<?= site_url('customers/alamat/' . $id); ?>" class="btn btn-danger">Kembali</a>
                         </div>
                         <?php if (isset($berhasil)): ?>
-                            <p class="text-success"><?= $berhasil;?></p>
+                            <p class="text-success"><?= $berhasil; ?></p>
                         <?php endif; ?>
                         <?php if (isset($gagal)): ?>
-                            <p class="text-danger"><?= $gagal;?></p>
+                            <p class="text-danger"><?= $gagal; ?></p>
                         <?php endif; ?>
                     </form>
                 </div>

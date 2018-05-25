@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-sm-10">
                             <h1>Ukuran</h1>
-                            <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud">Buat baru</a>
+                            <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
                         </div>
                         <div class="col-sm-2">
 
@@ -75,7 +75,7 @@
                                 <button type="button" class="btn">Ukuran : <?= $ukuran->u_nama; ?></button>
                                 <a class="btn btn-primary" tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
                                    href="#"
-                                   onclick="edit($(this))" data-target="#crud"
+                                   onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                    data-id="<?= $ukuran->u_kode; ?>"><i class="far fa-edit"></i></a>
                                 <a class="btn btn-danger" tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
                                    href="#"

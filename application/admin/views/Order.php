@@ -94,7 +94,7 @@
                                                 <a <?= $order->o_status == 2 ? '' : 'disabled'; ?>
                                                         tooltip data-toggle="modal" title="Proses <?= $title_page; ?>"
                                                         href="#"
-                                                        onclick="proses($(this))" data-target="#crud"
+                                                        onclick="proses($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                         data-id="<?= $order->o_kode; ?>"><i
                                                             class="fas fa-exchange-alt"></i>
                                                 </a>
@@ -103,7 +103,7 @@
                                             <?php if ($order->o_status == 3): ?>
                                                 <a tooltip data-toggle="modal"
                                                    title="Konfirmasi Pengiriman" href="#"
-                                                   onclick="pengiriman($(this))" data-target="#crud"
+                                                   onclick="pengiriman($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                    data-id="<?= $order->o_kode; ?>">
                                                     <i class="fas fa-truck-moving"></i>
                                                 </a>

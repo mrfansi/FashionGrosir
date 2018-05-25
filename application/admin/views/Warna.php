@@ -59,7 +59,7 @@
             <div class="card">
                 <div class="card-header">
                     <h1>Warna</h1>
-                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud">Buat baru</a>
+                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
                 </div>
                 <div class="card-body">
                     <?php if ($warnas != NULL): ?>
@@ -68,7 +68,7 @@
                                 <button type="button" class="btn">Warna : <?= $warna->w_nama; ?></button>
                                 <a class="btn btn-primary" tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
                                    href="#"
-                                   onclick="edit($(this))" data-target="#crud"
+                                   onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                    data-id="<?= $warna->w_kode; ?>"><i class="far fa-edit"></i></a>
                                 <a class="btn btn-danger" tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
                                    href="#"
