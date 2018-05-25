@@ -93,25 +93,67 @@ include "layout/Menu.php";
 
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <div class="row form-group">
-                    <div class="col">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="true" id="check_dropship">
-                            <label class="form-check-label" for="check_dropship">
-                                Dropship
-                            </label>
+                <form action="alamat_pengiriman/simpan" method="post">
+                    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                    <input type="hidden" name="o_kode" value="<?= $this->uri->segment(2); ?>">
+                    <input type="hidden" name="a_kode" value="<?= $a_kode; ?>">
+
+                    <div class="row form-group">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="simpan" value="true" id="simpan">
+                                <label class="form-check-label" for="simpan">
+                                    Pilih dari alamat yang sudah ada
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <form action="alamat_pengiriman/simpan/form_self" method="post" id="form_self">
-
-                    <div class="row form-group" id="form_nama_alamat">
-                        <div class="col" id="nama_alamat">
-                            <label for="nama_alamat">Judul / Pilih yang sudah ada</label>
-                            <input type="text" name="nama_alamat" class="form-control" placeholder="Judul Alamat">
+                    <div class="row form-group">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="true" id="check_dropship">
+                                <label class="form-check-label" for="check_dropship">
+                                    Dropship
+                                </label>
+                            </div>
                         </div>
                     </div>
+                    <div class="row form-group" id="row_nama_alamat" style="display: none;">
+                        <div class="col">
+                            <select name="pilih_alamat" id="pilih_alamat" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="row form-group" id="row_simpan_alamat">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="true" name="check_simpan" id="check_simpan">
+                                <label class="form-check-label" for="check_simpan">
+                                    Simpan alamat ini
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group" id="row_judul_alamat" style="display: none;">
+                        <div class="col">
+                            <label for="nama_alamat">Judul</label>
+                            <input type="text" name="nama_alamat" id="nama_alamat" class="form-control" placeholder="Judul Alamat">
+                        </div>
+                    </div>
+                    <div id="pengirim" style="display: none;">
+                        <div class="row form-group">
+                            <div class="col">
+                                <label for="nama_pengirim">Nama Pengirim</label>
+                                <input type="text" name="nama_pengirim" class="form-control" placeholder="Nama Pengirim">
+                            </div>
+                            <div class="col">
+                                <label for="kontak_pengirim">Nomor Telp. Pengirim</label>
+                                <input type="text" name="kontak_pengirim" class="form-control"
+                                       placeholder="Kontak Pengirim">
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+
                     <div class="row form-group">
                         <div class="col">
                             <label for="nama_penerima">Nama Penerima</label>
@@ -122,6 +164,7 @@ include "layout/Menu.php";
                             <input type="text" name="kontak_penerima" class="form-control"
                                    placeholder="Kontak Penerima">
                         </div>
+
                     </div>
                     <div class="row form-group">
                         <div class="col">
@@ -157,79 +200,7 @@ include "layout/Menu.php";
                     <div class="row form-group">
                         <div class="col">
                             <label class="f-test" for="alamat">Alamat Lengkap</label>
-                            <textarea name="alamat" class="form-control" placeholder="Nama Gedung, Jalan, dan lainnya""
-                                      required></textarea>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary r-btn-pink">Lanjutkan Metode Pembayaran
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                <form action="alamat_pengiriman/simpan/form_dropship" method="post" id="form_dropship" style="display: none;">
-                    <div class="row form-group" id="form_nama_alamat">
-                        <div class="col" id="d_nama_alamat">
-                            <label for="d_nama_alamat">Judul / Pilih yang sudah ada</label>
-                            <input type="text" name="d_nama_alamat" class="form-control" placeholder="Judul Alamat">
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col">
-                            <label for="d_nama_penerima">Nama Penerima</label>
-                            <input type="text" name="d_nama_penerima" class="form-control" placeholder="Nama Penerima">
-                        </div>
-                        <div class="col">
-                            <label for="d_kontak_penerima">Nomor Telp. Penerima</label>
-                            <input type="text" name="d_kontak_penerima" class="form-control"
-                                   placeholder="Kontak Penerima">
-                        </div>
-                        <div class="col" id="pengirim">
-                            <label for="d_nama_pengirim">Nama Pengirim</label>
-                            <input type="text" name="d_nama_pengirim" class="form-control" placeholder="Nama Pengirim">
-                        </div>
-                        <div class="col" id="pengirim">
-                            <label for="d_kontak_pengirim">Nomor Telp. Pengirim</label>
-                            <input type="text" name="d_kontak_pengirim" class="form-control"
-                                   placeholder="Kontak Pengirim">
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col">
-                            <label for="d_provinsi">Provinsi</label>
-                            <select name="d_provinsi" id="d_provinsi" class="d_provinsi form-control" required>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="d_kabupaten">Kabupaten / Kota</label>
-                            <select name="d_kabupaten" id="d_kabupaten" class="d_kabupaten form-control" required>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row form-group">
-                        <div class="col">
-                            <label for="d_kecamatan">Kecamatan</label>
-                            <select name="d_kecamatan" id="d_kecamatan" class="d_kecamatan form-control" required>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <label for="d_kelurahan">Kelurahan / Desa</label>
-                            <select name="d_kelurahan" id="d_kelurahan" class="d_kelurahan form-control" required>
-                            </select>
-                        </div>
-
-                        <div class="col">
-                            <label for="d_kodepos">Kode Pos</label>
-                            <input name="d_kodepos" id="d_kodepos" type="number"
-                                   class="form-control" placeholder="Kode Pos" required>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col">
-                            <label for="d_alamat">Alamat Lengkap</label>
-                            <textarea name="d_alamat" class="form-control" placeholder="Nama Gedung, Jalan, dan lainnya"
+                            <textarea name="alamat" class="form-control" placeholder="Nama Gedung, Jalan, dan lainnya"
                                       required></textarea>
                         </div>
                     </div>
@@ -292,9 +263,9 @@ include "layout/Menu.php";
             });
             $('#kelurahan').select2({
                 theme: 'bootstrap4',
-                placeholder: 'Pilih kota',
+                placeholder: 'Pilih kelurahan / desa',
                 ajax: {
-                    url: '<?= site_url('API/get_kota'); ?>',
+                    url: '<?= site_url('API/get_kelurahan'); ?>',
                     dataType: 'json',
                     delay: 250,
                     data: function (params) {
@@ -305,15 +276,12 @@ include "layout/Menu.php";
                     }
                 }
             });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#d_provinsi').select2({
+
+            $('#pilih_alamat').select2({
                 theme: 'bootstrap4',
-                placeholder: 'Pilih provinsi',
+                placeholder: 'Pilih alamat',
                 ajax: {
-                    url: '<?= site_url('API/get_provinsi'); ?>',
+                    url: '<?= site_url('API/get_alamat'); ?>',
                     dataType: 'json',
                     delay: 250,
                     data: function (params) {
@@ -323,99 +291,39 @@ include "layout/Menu.php";
                     }
                 }
             });
-            $('#d_kabupaten').select2({
-                theme: 'bootstrap4',
-                placeholder: 'Pilih kabupaten',
-                ajax: {
-                    url: '<?= site_url('API/get_kabupaten'); ?>',
-                    dataType: 'json',
-                    delay: 250,
-                    data: function (params) {
-                        return {
-                            q: params.term,
-                            provinsi: $('#provinsi').val()
-                        };
-                    }
-                }
-            });
-            $('#d_kecamatan').select2({
-                theme: 'bootstrap4',
-                placeholder: 'Pilih kecamatan',
-                ajax: {
-                    url: '<?= site_url('API/get_kecamatan'); ?>',
-                    dataType: 'json',
-                    delay: 250,
-                    data: function (params) {
-                        return {
-                            q: params.term, // search term
-                            kabupaten: $('#kabupaten').val()
-                        };
-                    }
-                }
-            });
-            $('#d_kelurahan').select2({
-                theme: 'bootstrap4',
-                placeholder: 'Pilih kota',
-                ajax: {
-                    url: '<?= site_url('API/get_kota'); ?>',
-                    dataType: 'json',
-                    delay: 250,
-                    data: function (params) {
-                        return {
-                            q: params.term,
-                            kecamatan: $('#kecamatan').val()
-                        };
-                    }
-                }
-            });
-        });
-    </script>
-    <script>
-        $('#nama_alamat').autoComplete({
-           source: function (req, res) {
-               $.ajax({
-                   url: '<?= site_url('API/get_alamat'); ?>',
-                   dataType: "jsonp",
-                   data: {
-                       q: req.term
-                   },
-                   success: function (data) {
-                       res(data);
-                   }
-               })
-           }
-        });
 
-        $('#d_nama_alamat').autoComplete({
-            source: function (req, res) {
-                $.ajax({
-                    url: '<?= site_url('API/get_alamat'); ?>',
-                    dataType: "jsonp",
-                    data: {
-                        q: req.term
-                    },
-                    success: function (data) {
-                        res(data);
-                    }
+            $('#kodepos').focus(function () {
+                var id = $('#kelurahan').val();
+                $.get('<?= site_url('API/get_kodepos/'); ?>' + id, function (res) {
+                    $('#kodepos').val(res);
                 })
-            }
+            })
         });
-    </script>
-    <script>
-        function get_kodepos(data) {
-            $.get("<?= site_url('API/get_kodepos/'); ?>" + $('#kota').val(), function (res, status) {
-                $(this).val(res);
-            });
-        }
     </script>
     <script>
         $('#check_dropship').change(function () {
             if (this.checked) {
-                $('#form_dropship').show();
-                $('#form_self').hide();
+                $('[id=pengirim]').show();
             } else {
-                $('#form_dropship').hide();
-                $('#form_self').show();
+                $('[id=pengirim]').hide();
+            }
+        });
+
+        $('#simpan').change(function () {
+            if (this.checked) {
+                $('#row_nama_alamat').show();
+                $('#row_simpan_alamat').hide();
+            } else {
+                $('#row_nama_alamat').hide();
+                $('#row_simpan_alamat').show();
+            }
+        });
+
+        $('#check_simpan').change(function () {
+            if (this.checked) {
+                $('#row_judul_alamat').show();
+            } else {
+                $('#row_judul_alamat').hide();
             }
         });
 

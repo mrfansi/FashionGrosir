@@ -65,6 +65,7 @@ $route['kategori/(:any)/item/(:any)/detil'] = 'kategori/get_item_detil/$1/$2';
 $route['kategori/(:any)/item/(:any)/add_to_cart'] = 'cart/add';
 $route['cart/(:any)/delete'] = 'cart/delete/$1';
 $route['checkout/(:any)/alamat_pengiriman'] = 'alamat/get/$1';
+$route['checkout/(:any)/alamat_pengiriman/simpan'] = 'alamat/simpan';
 $route['checkout/kirim_bayar'] = 'ongkir_transfer/index';
 $route['checkout/metode_pembayaran'] = 'checkout_pembayaran/metode/$1';
 $route['checkout/konfirmasi_pembayaran'] = 'checkout_pembayaran/konfirmasi/$1';

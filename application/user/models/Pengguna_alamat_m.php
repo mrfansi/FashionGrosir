@@ -9,7 +9,7 @@
 class Pengguna_alamat_m extends MY_Model {
     public function __construct()
     {
-        $this->table = 'pa_id';
+        $this->table = 'pengguna_alamat';
         $this->primary_key = 'pa_id';
         $this->protected = array('pa_id','created_at','update_at');
         $this->timestamps = TRUE;

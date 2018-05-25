@@ -19,7 +19,7 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/vendor/jquery-ui/jquery-ui.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/jquery-bootstrap-4-typeahead/bootstrap3-typeahead.min.js'); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="<?= base_url('assets/vendor/popper.js/umd/popper.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>

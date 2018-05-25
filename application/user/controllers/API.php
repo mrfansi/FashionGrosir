@@ -72,7 +72,7 @@ class API extends MY_Controller
         echo json_encode($data);
     }
 
-    public function get_kota()
+    public function get_kelurahan()
     {
         $data['results'] = [];
         $kecamatan = $this->input->get('kecamatan');
@@ -80,13 +80,22 @@ class API extends MY_Controller
         if (isset($q)) {
             $hasil = $this->desa->where('kecamatan_id', $kecamatan)->where('desa_nama LIKE', '%' . $q . '%')->get_all();
             foreach ($hasil as $g) {
-                array_push($data['results'], array('id' => $g->desa_id, 'text' => $g->desa_nama));
+                array_push($data['results'], array(
+                    'id' => (int)$g->desa_id,
+                    'text' => (string)$g->desa_nama,
+                    'kodepos' => (int)$g->kodepos
+                ));
 
             }
         } else {
             $hasil = $this->desa->where('kecamatan_id', $kecamatan)->get_all();
             foreach ($hasil as $g) {
-                array_push($data['results'], array('id' => $g->desa_id, 'text' => $g->desa_nama));
+                array_push($data['results'], array(
+                    'id' => (int)$g->desa_id,
+                    'text' => (string)$g->desa_nama,
+                    'kodepos' => (int)$g->kodepos
+                ));
+
             }
         }
 
@@ -96,19 +105,34 @@ class API extends MY_Controller
 
     public function get_kodepos($desa_id)
     {
-        return $this->desa->get($desa_id)->kodepos;
+        $hasil = $this->desa->get($desa_id);
+        echo $hasil->kodepos;
     }
 
     public function get_alamat()
     {
-        $data = [];
+        $q = $this->input->get('q');
+        $data['results'] = [];
         $p_kode = $_SESSION['id'];
-        $alamat = $this->pengguna_alamat->with_pengguna()->with_alamat()->where_p_kode($p_kode)->get_all();
-        foreach ($alamat as $g){
-            array_push($data, array(
 
-            ));
+        if (isset($q)) {
+            $alamat = $this->pengguna_alamat->with_pengguna()->with_alamat()->where('p_kode', $p_kode)->get_all();
+            foreach ($alamat as $g){
+                array_push($data['results'], array(
+                    'id'    => $g->alamat->a_kode,
+                    'text'  => $g->alamat->a_nama
+                ));
+            }
+        } else {
+            $alamat = $this->pengguna_alamat->with_pengguna()->with_alamat()->where('p_kode', $p_kode)->get_all();
+            foreach ($alamat as $g){
+                array_push($data['results'], array(
+                    'id'    => $g->alamat->a_kode,
+                    'text'  => $g->alamat->a_nama
+                ));
+            }
         }
+
 
         echo json_encode($data);
     }
