@@ -26,7 +26,7 @@ include "layout/Menu.php";
             <!-- Side bar menu -->
             <div class="col-12 col-sm-12 col-md-2">
                 <div class="list-group">
-                    <a class="list-group-item list-group-item-action active" href="<?= site_url('profil'); ?>">Profil Saya</a>
+                    <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('profil'); ?>">Profil Saya</a>
                     <a class="list-group-item list-group-item-action" href="<?= site_url('profil_alamat'); ?>">Alamat
                         Saya</a>
                     <a class="list-group-item list-group-item-action" href="<?= site_url('profil_password'); ?>">Ubah

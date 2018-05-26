@@ -29,7 +29,7 @@ include "layout/Menu.php";
                     <a class="list-group-item list-group-item-action" href="<?= site_url('profil'); ?>">Profil Saya</a>
                     <a class="list-group-item list-group-item-action" href="<?= site_url('profil_alamat'); ?>">Alamat
                         Saya</a>
-                    <a class="list-group-item list-group-item-action active" href="<?= site_url('profil_password'); ?>">Ubah
+                    <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('profil_password'); ?>">Ubah
                         Password</a>
                     <a class="list-group-item list-group-item-action" href="<?= site_url('riwayat'); ?>">Riwayat
                         Pesanan</a>

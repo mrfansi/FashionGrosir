@@ -33,7 +33,7 @@ include "layout/Menu.php";
                         Password</a>
                     <a class="list-group-item list-group-item-action" href="<?= site_url('riwayat'); ?>">Riwayat
                         Pesanan</a>
-                    <a class="list-group-item list-group-item-action active" href="<?= site_url('pending'); ?>">Transaksi
+                    <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('pending'); ?>">Transaksi
                         Pending</a>
                 </div>
             </div>
