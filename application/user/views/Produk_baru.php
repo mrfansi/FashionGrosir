@@ -6,7 +6,7 @@ include "layout/Menu.php";
     <br>
     <div class="container">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
                     <a href="<?= site_url('/'); ?>">Home</a>
                 </li>
