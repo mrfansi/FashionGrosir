@@ -7,18 +7,16 @@ include "layout/Menu.php";
     <!-- Konten -->
     <div class="container">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
                     <a href="<?= site_url('/'); ?>">Home</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
-                </li>
+                <li class="breadcrumb-item active" aria-current="page">Resi</li>
             </ol>
         </nav>
     </div>
 
-    <div class="container f-font-resi">
+    <div class="container f-font-resi f-hover">
 
             <h5>List Resi Pengiriman</h5>
 

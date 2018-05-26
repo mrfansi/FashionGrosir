@@ -45,7 +45,7 @@ class Get extends MY_Controller
     public function kecamatan($where = '')
     {
         // load model
-        $this->load->model('Ms_kecamatan','kecamatan');
+        $this->load->model('Ms_kecamatan', 'KecamatanM');
         if ($where != ''){
             $json = $this->kecamatan->where('kabupaten_id', $where)->get();
             echo json_encode($json);

@@ -12,8 +12,7 @@
         <table class="table table-sm table-borderless">
             <thead>
             <tr>
-                <th scope="col"></th>
-                <th scope="col">Item</th>
+                <th scope="col" colspan="2">Item</th>
                 <th scope="col">QTY</th>
                 <th scope="col"></th>
             </tr>

@@ -15,6 +15,12 @@ class Order_m extends MY_Model
         $this->protected = array('o_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = TRUE;
+        $this->has_many['order_detil'] = array(
+            'foreign_model'=>'order_detil_m',
+            'foreign_table'=>'order_detil',
+            'foreign_key'=>'o_kode',
+            'local_key'=>'o_kode'
+        );
         parent::__construct();
     }
 

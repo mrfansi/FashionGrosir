@@ -7,7 +7,7 @@ include "layout/Menu.php";
     <div class="container">
         <br>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
                     <a href="<?= site_url('/'); ?>">Home</a>
                 </li>
@@ -153,14 +153,15 @@ include "layout/Menu.php";
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-12 f-font-troli border f-border-padding f-radius ml-3">
+            <div class="col-lg-6 col-md-12 f-font-troli">
+                <div class="border f-border-padding f-radius">
                 <h5>Perhitungan Harga</h5>
                 <hr>
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-7 col-6">
                         <h6>Total</h6>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-5 col-6">
+                    <div class="col-md-6 col-md-6 col-sm-5 col-6">
                         <div class="row">
                             <div class="col-lg col-md-6 col-sm-7 col">
                                 <h5 id="rupiah" class="card-title f-sub-total"><?= $cart_total($_SESSION['id']); ?></h5>
@@ -168,10 +169,16 @@ include "layout/Menu.php";
                         </div>
                     </div>
                 </div>
-                <a href="<?= site_url('cart/checkout'); ?>" class="btn btn-primary btn-lg btn-block f-button-font">Check
-                    Out</a>
+                </div>
+                <div class="col-lg-4 p-0">
+                    <a href="<?= site_url('cart/checkout'); ?>" class="btn btn-primary btn-lg btn-block f-button-font">Check
+                        Out</a>
+                </div>
+
 
             </div>
+
+
         </div>
     </div>
     <!-- End Content -->

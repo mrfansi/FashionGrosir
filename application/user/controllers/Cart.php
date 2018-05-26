@@ -44,7 +44,7 @@ class Cart extends MY_Controller
                 $this->data->berhasil = 'Berhasil menambah item ke keranjanng';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
                 $this->session->set_flashdata('modal', '1');
-                redirect($this->session->redirect);
+                redirect('/');
             }
         } else {
             $cart = $this->cart->insert(array(
@@ -59,7 +59,7 @@ class Cart extends MY_Controller
                 $this->data->berhasil = 'Berhasil menambah item ke keranjanng';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
                 $this->session->set_flashdata('modal', '1');
-                redirect($this->session->redirect);
+                redirect('/');
             }
         }
     }
@@ -87,6 +87,7 @@ class Cart extends MY_Controller
 
 
         }
+        $this->cart->where_p_kode($p_kode)->delete();
         redirect('checkout/' . $o_noorder .'/alamat_pengiriman');
     }
 

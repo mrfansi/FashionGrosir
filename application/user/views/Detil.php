@@ -27,8 +27,9 @@ include "layout/Menu.php";
                          data-navposition="bottom"
                          data-transition="dissolve"
                          data-nav="thumbs"
-                         data-width="700"
-                         data-height="500">
+                         data-allowfullscreen="native"
+                         data-width="600"
+                         data-height="400">
                         <?php if ($item_img_all($item->i_kode) != NULL): ?>
                             <?php foreach ($item_img_all($item->i_kode) as $img): ?>
                                 <img src="<?= base_url('upload/' . $img->ii_nama); ?>" class="card-img-top">

@@ -7,13 +7,16 @@ include "layout/Menu.php";
     <!-- Konten -->
     <div class="container">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
                     <a href="<?= site_url('/'); ?>">Home</a>
                 </li>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                     <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <a href="<?= $breadcumburl2; ?>"><?= $breadcumb2; ?></a>
                 </li>
             </ol>
         </nav>

@@ -7,7 +7,7 @@ include "layout/Menu.php";
     <div class="container">
         <br>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
                     <a href="<?= site_url('/'); ?>">Home</a>
                 </li>
@@ -88,232 +88,412 @@ include "layout/Menu.php";
 
     </div>
     <br>
-    <form class="container">
-        <h5 class="mb-3">Alamat Pengiriman</h5>
+    <div class="container">
+        <h5>Alamat Pengiriman</h5>
 
         <div class="row">
             <div class="col-lg-12 col-md-12">
-
-                <div class="border f-border-padding">
-                    <!-- Pilihan Billing -->
-                    <ul class="nav nav-pills mb-3 r-pilihan-alamat" id="pills-tab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active r-pilihan-alamat-font" id="pills-home-tab" data-toggle="pill"
-                               href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Kirim Atas
-                                Nama
-                                Saya</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link  r-pilihan-alamat-font" id="pills-profile-tab" data-toggle="pill"
-                               href="#pills-profile" role="tab" aria-controls="pills-profile"
-                               aria-selected="false">Drop Ship</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active r-border-pengiriman " id="pills-home" role="tabpanel"
-                             aria-labelledby="pills-home-tab">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="media border f-border-padding">
-                                        <i class="fa fa-check fa-lg f-icon-margin f-icon-center"></i>
-                                        <div class="media-body">
-                                            <h5 class="mt-0">Nur Hidayat</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, magni,
-                                                veniam. In ab aliquam assumenda, esse vel dolorem, eius. Consectetur
-                                                repellendus enim error qui nihil sunt esse veritatis illum beatae.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="row form-group">
+                    <div class="col">
+                        <label for="dropship">Apakah ingin menggunakan alamat yang ada?</label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="check_alamat" id="check_alamat"
+                                   value="false"
+                                   checked>
+                            <label class="form-check-label" for="check_alamat">Tidak</label>
                         </div>
-                        <div class="tab-pane fade r-border-pengiriman " id="pills-profile" role="tabpanel"
-                             aria-labelledby="pills-profile-tab">
-
-                            <div class="row container">
-                                <div class="col-lg-12">
-
-                                    <form>
-
-                                        <h6 class="f-text-alamat">Alamat Pengirim</h6>
-
-                                        <div class="form-group">
-                                            <label for="exampleFormControlInput1">Nama Email</label>
-                                            <input type="email" class="form-control f-border-form"
-                                                   id="exampleFormControlInput1" placeholder="fashion@grosir.com">
-                                        </div>
-
-
-                                        <div class="row form-group">
-                                            <div class="col">
-                                                <label for="exampleFormControlInput1">Nama Depan</label>
-                                                <input type="text" class="form-control f-border-form"
-                                                       placeholder="Fashion Shop">
-                                            </div>
-                                            <div class="col">
-                                                <label for="exampleFormControlInput1">Nama Belakang</label>
-                                                <input type="text" class="form-control f-border-form"
-                                                       placeholder="Grosir">
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="f-test" for="exampleFormControlInput1">Alamat Jalan</label>
-                                            <input type="email" class="form-control f-border-form"
-                                                   id="exampleFormControlInput1" placeholder="Jl. Jakarta Raya No.1">
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <div class="col">
-                                                <label for="inputState">Provinsi</label>
-                                                <select id="inputState" class="form-control f-border-form">
-                                                    <option selected></option>
-                                                    <option>...</option>
-                                                </select>
-                                            </div>
-                                            <div class="col">
-                                                <label for="inputState">Kota</label>
-                                                <select id="inputState" class="form-control f-border-form">
-                                                    <option selected></option>
-                                                    <option>...</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <div class="col">
-                                                <label for="inputState">Kecamatan</label>
-                                                <select id="inputState" class="form-control f-border-form">
-                                                    <option selected></option>
-                                                    <option>...</option>
-                                                </select>
-                                            </div>
-                                            <div class="col">
-                                                <label for="exampleFormControlInput1">Kode Pos</label>
-                                                <input type="text" class="form-control f-border-form"
-                                                       placeholder="125XX">
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <div class="col-6">
-                                                <label for="exampleFormControlInput1">No Telpon / HP</label>
-                                                <input type="text" class="form-control f-border-form f-f"
-                                                       placeholder="0812XXXXXX">
-                                            </div>
-                                        </div>
-
-                                        <div class="row form-group">
-                                            <div class="col-6">
-                                                <label for="exampleFormControlTextarea1">Keterangan Tambahan</label>
-                                                <textarea class="form-control f-border-form"
-                                                          id="exampleFormControlTextarea1" rows="3"></textarea>
-                                            </div>
-                                        </div>
-
-
-                                    </form>
-
-
-                                </div>
-                            </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="check_alamat" id="check_alamat"
+                                   value="true">
+                            <label class="form-check-label" for="check_alamat">Iya</label>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-lg-6 col-md-12 f-font-troli border f-border-padding f-radius ml-3">
-                <h5>Perhitungan Harga</h5>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-7 col-md-7 col-sm-8 col-7">
-                        <div class="media">
-                            <img class="mr-3 f-img-sidebar" src="assets/img/kaos.jpg" alt="Generic placeholder image">
-                            <div class="media-body">
-                                <h6 class="mt-0">Anzel Peplum (ZP01-ZP04)</h6>
-                            </div>
+                <div class="row form-group" id="check_dropship">
+                    <div class="col">
+                        <label for="dropship">Apakah pengiriman dropship?</label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="check_dropship" id="check_dropship"
+                                   value="false" checked>
+                            <label class="form-check-label" for="check_dropship">Tidak</label>
                         </div>
-                    </div>
-                    <div class="col-lg-1 col-md-2 col-sm-1 col-1 f-sub-total">
-                        <h5>3</h5>
-                    </div>
-                    <div class="col-lg-4 col-md-3 col-sm col f-sub-total">
-                        <h5 class="card-title">10.000.000</h5>
-                    </div>
-                </div>
-                <br>
-
-                <div class="row">
-                    <div class="col-lg-7 col-md-7 col-sm-8 col-7">
-                        <div class="media">
-                            <img class="mr-3 f-img-sidebar" src="assets/img/kaos.jpg" alt="Generic placeholder image">
-                            <div class="media-body">
-                                <h6 class="mt-0">Anzel Peplum (ZP01-ZP04)</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-md-2 col-sm-1 col-1 f-sub-total">
-                        <h5>1</h5>
-                    </div>
-                    <div class="col-lg-4 col-md-3 col-sm col f-sub-total">
-                        <h5 class="card-title">10.000.000</h5>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-7 col-6">
-                        <h6>Subtotal</h6>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-6 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">1.000.000</h5>
-                            </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="check_dropship" id="check_dropship"
+                                   value="true">
+                            <label class="form-check-label" for="check_dropship">Iya</label>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-7 col-6">
-                        <h6>Biaya Pengiriman</h6>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-6 col-sm-5 col-4">
-                                <h5>IDR</h5>
+                <form action="alamat_pengiriman/simpan/form_self" method="post" id="form_self">
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="dropship">Apakah ingin menyimpan alamat ini?</label>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="simpan" id="simpan" value="false">
+                                <label class="form-check-label" for="simpan">Tidak</label>
                             </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">125.000</h5>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="simpan" id="simpan" value="true"
+                                       checked>
+                                <label class="form-check-label" for="simpan">Iya</label>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row form-group" id="form_nama_alamat">
+                        <div class="col" id="nama_alamat">
+                            <label for="nama_alamat">Judul Alamat</label>
+                            <input type="text" name="nama_alamat" class="form-control" placeholder="Judul Alamat">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="nama_penerima">Nama Penerima</label>
+                            <input type="text" name="nama_penerima" class="form-control" placeholder="Nama Penerima">
+                        </div>
+                        <div class="col">
+                            <label for="kontak_penerima">Nomor Telp. Penerima</label>
+                            <input type="text" name="kontak_penerima" class="form-control"
+                                   placeholder="Kontak Penerima">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="provinsi">Provinsi</label>
+                            <select name="provinsi" id="provinsi" class="provinsi form-control" required>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="kabupaten">Kabupaten</label>
+                            <select name="kabupaten" id="kabupaten" class="kabupaten form-control" required>
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-7 col-6">
-                        <h6>Biaya Pengiriman</h6>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="kecamatan">Kecamatan</label>
+                            <select name="kecamatan" id="kecamatan" class="kecamatan form-control" required>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="kota">Kota</label>
+                            <select name="kota" id="kota" class="kota form-control" required>
+                            </select>
+                        </div>
+
+                        <div class="col">
+                            <label for="kodepos">Kode Pos</label>
+                            <input name="kodepos" id="kodepos" type="number" onfocus="get_kodepos($(this))"
+                                   class="form-control" placeholder="Kode Pos" required>
+                        </div>
                     </div>
-                    <div class="col-lg-6 col-md-4 col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-6 col-sm-5 col-4">
-                                <h5>IDR</h5>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label class="f-test" for="alamat">Alamat Lengkap</label>
+                            <textarea name="alamat" class="form-control" placeholder="Alamat Lengkap"
+                                      required></textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary r-btn-pink">Lanjutkan Metode Pembayaran
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <form action="alamat_pengiriman/simpan/form_dropship" method="post" id="form_dropship" style="display: none;">
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="dropship">Apakah ingin menyimpan alamat ini?</label>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="d_simpan" id="d_simpan"
+                                       value="false">
+                                <label class="form-check-label" for="d_simpan">Tidak</label>
                             </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">-</h5>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="d_simpan" id="d_simpan" value="true"
+                                       checked>
+                                <label class="form-check-label" for="d_simpan">Iya</label>
                             </div>
                         </div>
                     </div>
-                </div>
-                <hr>
-                <button type="submit" class="btn btn-primary btn-lg btn-block f-button-font">Lanjut Metode
-                    Pembayaran</button>
+                    <div class="row form-group" id="form_nama_alamat">
+                        <div class="col" id="d_nama_alamat">
+                            <label for="d_nama_alamat">Judul Alamat</label>
+                            <input type="text" name="d_nama_alamat" class="form-control" placeholder="Judul Alamat">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="d_nama_penerima">Nama Penerima</label>
+                            <input type="text" name="d_nama_penerima" class="form-control" placeholder="Nama Penerima">
+                        </div>
+                        <div class="col">
+                            <label for="d_kontak_penerima">Nomor Telp. Penerima</label>
+                            <input type="text" name="d_kontak_penerima" class="form-control"
+                                   placeholder="Kontak Penerima">
+                        </div>
+                        <div class="col" id="pengirim">
+                            <label for="d_nama_pengirim">Nama Pengirim</label>
+                            <input type="text" name="d_nama_pengirim" class="form-control" placeholder="Nama Pengirim">
+                        </div>
+                        <div class="col" id="pengirim">
+                            <label for="d_kontak_pengirim">Nomor Telp. Pengirim</label>
+                            <input type="text" name="d_kontak_pengirim" class="form-control"
+                                   placeholder="Kontak Pengirim">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="d_provinsi">Provinsi</label>
+                            <select name="d_provinsi" id="d_provinsi" class="d_provinsi form-control" required>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="d_kabupaten">Kabupaten</label>
+                            <select name="d_kabupaten" id="d_kabupaten" class="d_kabupaten form-control" required>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="d_kecamatan">Kecamatan</label>
+                            <select name="d_kecamatan" id="d_kecamatan" class="d_kecamatan form-control" required>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="d_kota">Kota</label>
+                            <select name="d_kota" id="d_kota" class="d_kota form-control" required>
+                            </select>
+                        </div>
+
+                        <div class="col">
+                            <label for="d_kodepos">Kode Pos</label>
+                            <input name="d_kodepos" id="d_kodepos" type="number" onfocus="get_kodepos($(this))"
+                                   class="form-control" placeholder="Kode Pos" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label class="f-test" for="d_alamat">Alamat Lengkap</label>
+                            <textarea name="d_alamat" class="form-control" placeholder="Alamat Lengkap"
+                                      required></textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary r-btn-pink">Lanjutkan Metode Pembayaran
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <form action="alamat_pengiriman/simpan/form_view" method="post" id="form_view" style="display: none">
+                    <div class="row form-group">
+                        <div class="col">
+                            <textarea class="form-control" name="view" id="view" disabled></textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary r-btn-pink">Lanjutkan Metode Pembayaran
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-    </form>
+        <hr>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#provinsi').select2({
+                theme: 'bootstrap4',
+                placeholder: 'Pilih provinsi',
+                ajax: {
+                    url: '<?= site_url('API/get_provinsi'); ?>',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term
+                        };
+                    }
+                }
+            });
+            $('#kabupaten').select2({
+                theme: 'bootstrap4',
+                placeholder: 'Pilih kabupaten',
+                ajax: {
+                    url: '<?= site_url('API/get_kabupaten'); ?>',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term,
+                            provinsi: $('#provinsi').val()
+                        };
+                    }
+                }
+            });
+            $('#kecamatan').select2({
+                theme: 'bootstrap4',
+                placeholder: 'Pilih kecamatan',
+                ajax: {
+                    url: '<?= site_url('API/get_kecamatan'); ?>',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term, // search term
+                            kabupaten: $('#kabupaten').val()
+                        };
+                    }
+                }
+            });
+            $('#kota').select2({
+                theme: 'bootstrap4',
+                placeholder: 'Pilih kota',
+                ajax: {
+                    url: '<?= site_url('API/get_kota'); ?>',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term,
+                            kecamatan: $('#kecamatan').val()
+                        };
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#d_provinsi').select2({
+                theme: 'bootstrap4',
+                placeholder: 'Pilih provinsi',
+                ajax: {
+                    url: '<?= site_url('API/get_provinsi'); ?>',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term
+                        };
+                    }
+                }
+            });
+            $('#d_kabupaten').select2({
+                theme: 'bootstrap4',
+                placeholder: 'Pilih kabupaten',
+                ajax: {
+                    url: '<?= site_url('API/get_kabupaten'); ?>',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term,
+                            provinsi: $('#provinsi').val()
+                        };
+                    }
+                }
+            });
+            $('#d_kecamatan').select2({
+                theme: 'bootstrap4',
+                placeholder: 'Pilih kecamatan',
+                ajax: {
+                    url: '<?= site_url('API/get_kecamatan'); ?>',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term, // search term
+                            kabupaten: $('#kabupaten').val()
+                        };
+                    }
+                }
+            });
+            $('#d_kota').select2({
+                theme: 'bootstrap4',
+                placeholder: 'Pilih kota',
+                ajax: {
+                    url: '<?= site_url('API/get_kota'); ?>',
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term,
+                            kecamatan: $('#kecamatan').val()
+                        };
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        function get_kodepos(data) {
+            $.get("<?= site_url('API/get_kodepos/'); ?>" + $('#kota').val(), function (res, status) {
+                $(this).val(res);
+            });
+        }
+    </script>
+    <script>
+        $('input:radio[id=check_alamat]').change(function () {
+            var check_alamat = $(this).val();
+            if (check_alamat === "true") {
+                $('[id=check_dropship]').hide();
+                $('#form_dropship').hide();
+                $('#form_self').hide();
+                $('#form_view').show();
+            } else {
+                $('[id=check_dropship]').show();
+                $('input:radio[id=check_dropship]').each(function () {
+                    var $checked = $(this);
+                    if ($checked.val() === "false") {
+                        $checked.prop("checked", true);
+                    }
+                });
+                $('#form_dropship').hide();
+                $('#form_self').show();
+                $('#form_view').hide();
+            }
+        });
+
+        $('input:radio[id=check_dropship]').change(function () {
+            var dropship = $(this).val();
+            if (dropship === "true") {
+                $('#form_dropship').show();
+                $('#form_self').hide();
+            } else {
+                $('#form_dropship').hide();
+                $('#form_self').show();
+            }
+        });
+
+        $('input:radio[id=simpan]').change(function () {
+            var simpan = $(this).val();
+            if (simpan === "true") {
+                $('#nama_alamat').show();
+            } else {
+                $('#nama_alamat').hide();
+            }
+        });
+        $('input:radio[id=d_simpan]').change(function () {
+            var d_simpan = $(this).val();
+            if (d_simpan === "true") {
+                $('#d_nama_alamat').show();
+            } else {
+                $('#d_nama_alamat').hide();
+            }
+        })
+
+    </script>
     <!-- End Content -->
 <?php
 include "layout/Footer.php";

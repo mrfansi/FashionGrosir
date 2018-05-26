@@ -33,10 +33,10 @@
         <div class="col-lg-6 col-md-8">
             <div class="row">
                 <div class="col">
-                    <form class="form">
+                    <form class="form" action="<?= site_url('cari'); ?>"method="get">
                         <div class="input-group">
                             <input class="form-control" type="text" placeholder="Cari Produk"
-                                   aria-label="Search" id="search">
+                                   aria-label="Search" id="cari" name="cari" autocomplete="off">
                             <div class="input-group-addon">
                                 <button class="btn btn-search-color f-btn-search" type="submit" style=""
                                         id="search-btn"><i
@@ -48,14 +48,14 @@
             </div>
             <?php if (isset($_SESSION['id'])): ?>
             <div class="row">
-                <div class="col">
+                <div class="col f-hover">
                     <a class="small" href="<?= site_url('resi'); ?>">Cek Resi</a>
-                    |
+                    <span class="f-span">|</span>
                     <a class="small" href="#">Status Order</a>
-                    |
+                    <span class="f-span">|</span>
                     <a class="small" href="#">Konfirmasi Pembayaran</a>
-                    |
-                    <a class="small" href="#">Histori Belanja</a>
+                    <span class="f-span">|</span>
+                    <a class="small" href="<?= site_url('riwayat'); ?>">Histori Belanja</a>
                 </div>
             </div>
             <?php endif; ?>

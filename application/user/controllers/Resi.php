@@ -17,8 +17,10 @@ class Resi extends MY_Controller
 
     public function detail()
     {
-        $this->data->breadcumb = 'Detail Resi';
-        $this->data->breadcumburl = site_url('resi/detail');
+        $this->data->breadcumb = 'Resi';
+        $this->data->breadcumb2 = 'Detail aResi';
+        $this->data->breadcumburl = site_url('resi');
+        $this->data->breadcumburl2 = site_url('resi/detail');
         $this->load->view('Resi_detail', $this->data);
 
     }
