@@ -61,7 +61,8 @@ if ($submit == 'Ubah') {
     </div>
     <div class="form-group">
         <label for="deskripsi">Deskripsi (minimal: 100 Karakter)</label>
-        <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Item" minlength="100" required><?= $deskripsi; ?></textarea>
+        <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Item" minlength="100"
+                  required><?= $deskripsi; ?></textarea>
     </div>
     <div class="form-group">
         <table class="table table-sm" id="tabel">
@@ -118,7 +119,8 @@ if ($submit == 'Ubah') {
 
     <div class="form-group">
         <input type="hidden" id="counter" name="counter" value="1">
-        <button type="submit" class="btn btn-primary btn-block"><?= $submit; ?></button>
+        <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+        <button type="button" onclick="window.location.reload()" class="btn btn-danger">Tutup</button>
     </div>
 </form>
 <link rel="stylesheet" href="<?= base_url('assets/vendor/select/css/multi-select.css'); ?>">

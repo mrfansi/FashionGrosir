@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col-sm-10">
                             <h1><i class="fas fa-shopping-cart"></i> <?= $title_page; ?></h1>
-                            <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud">Buat baru</a>
+                            <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
                         </div>
                         <div class="col-sm-2">
 
@@ -162,12 +162,12 @@
                                                         <div class="dropdown-menu" aria-labelledby="opsi">
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
-                                                               onclick="edit($(this))" data-target="#crud"
+                                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                                data-id="<?= $detil->i_kode; ?>"><i
                                                                         class="far fa-edit fa-lg"></i> Ubah</a>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
-                                                               onclick="tambah_qty($(this))" data-target="#crud"
+                                                               onclick="tambah_qty($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                                data-id="<?= $detil->ide_kode; ?>"><i
                                                                         class="fas fa-cart-plus fa-lg"></i> Tambaht QTY</a>
                                                             <div class="dropdown-divider"></div>
@@ -196,7 +196,7 @@
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="opsi">
                                                         <a class="dropdown-item small" data-toggle="modal" href="#"
-                                                           onclick="edit_item($(this))" data-target="#crud"
+                                                           onclick="edit_item($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                            data-id="<?= $item->i_kode; ?>">
                                                             Tambah Detil
                                                         </a>
@@ -249,12 +249,12 @@
                                                         <div class="dropdown-menu" aria-labelledby="opsi">
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
-                                                               onclick="edit($(this))" data-target="#crud"
+                                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                                data-id="<?= $detil->i_kode; ?>"><i
                                                                         class="far fa-edit fa-lg"></i> Ubah</a>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
-                                                               onclick="tambah_qty($(this))" data-target="#crud"
+                                                               onclick="tambah_qty($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                                data-id="<?= $detil->ide_kode; ?>"><i
                                                                         class="fas fa-cart-plus fa-lg"></i> Tambaht QTY</a>
                                                             <div class="dropdown-divider"></div>

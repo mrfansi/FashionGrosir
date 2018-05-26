@@ -22,7 +22,7 @@ class Auth extends CI_Controller
         $data = new stdClass();
 
         // model
-        $this->load->model('Pengguna', 'users');
+        $this->load->model('Pengguna_m', 'pengguna');
 
         // load library
         $this->load->library('form_validation');
@@ -58,14 +58,14 @@ class Auth extends CI_Controller
             $password = $this->input->post('password');
 
             // get database
-            $user = $this->users->where(array(
+            $user = $this->pengguna->where(array(
                 'p_email' => $email,
                 'p_password' => $password
             ))->get();
 
             if ($user) {
                 // Update IP Address
-                $this->users->where(array(
+                $this->pengguna->where(array(
                     'p_email' => $email,
                 ))->update(array(
                     'p_ipaddr' => $_SERVER['REMOTE_ADDR'],

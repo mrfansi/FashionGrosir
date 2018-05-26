@@ -1,4 +1,3 @@
-
 <?php
 $url = site_url('item/tambah_qty/' . $kode);
 ?>
@@ -15,11 +14,12 @@ $url = site_url('item/tambah_qty/' . $kode);
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+        <button type="button" onclick="window.location.reload()" class="btn btn-danger">Tutup</button>
     </div>
     <?php if (isset($berhasil)): ?>
-        <p class="text-success"><?= $berhasil;?></p>
+        <p class="text-success"><?= $berhasil; ?></p>
     <?php endif; ?>
     <?php if (isset($gagal)): ?>
-        <p class="text-danger"><?= $gagal;?></p>
+        <p class="text-danger"><?= $gagal; ?></p>
     <?php endif; ?>
 </form>

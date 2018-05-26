@@ -58,7 +58,8 @@
             <div class="card">
                 <div class="card-header">
                     <h1><i class="fa fa-users"></i> <?= $title_page; ?></h1>
-                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud">Buat baru</a>
+                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static"
+                       data-keyboard="false">Buat baru</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -94,7 +95,8 @@
                                         <td><?= $customer->p_login_terakhir; ?></td>
                                         <td class="text-center">
                                             <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
-                                               onclick="edit($(this))" data-target="#crud"
+                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static"
+                                               data-keyboard="false"
                                                data-id="<?= $customer->p_kode; ?>"><i class="far fa-edit"></i></a> |
                                             <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                                                onclick="hapus($(this))" data-target="#hapus"

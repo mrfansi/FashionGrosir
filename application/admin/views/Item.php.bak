@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-sm-2">
                             <a tooltip data-toggle="modal" title="Tambah <?= $title_page; ?>" href="#"
-                               onclick="tambah()" data-target="#crud" class="btn btn-sm btn-primary btn-block"><i
+                               onclick="tambah()" data-target="#crud" data-backdrop="static" data-keyboard="false" class="btn btn-sm btn-primary btn-block"><i
                                         class="fas fa-plus"></i></a>
                         </div>
                     </div>
@@ -122,13 +122,13 @@
                                                 <td>
                                                     <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
                                                        href="#"
-                                                       onclick="edit($(this))" data-target="#crud"
+                                                       onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                        data-id="<?= $item->i_kode; ?>"><i class="far fa-edit fa-lg"></i></a>
                                                     |
                                                     <a tooltip data-toggle="modal"
                                                        title="Tambah Stok <?= $title_page; ?>"
                                                        href="#"
-                                                       onclick="tambah_qty($(this))" data-target="#crud"
+                                                       onclick="tambah_qty($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                        data-id="<?= $item->ide_kode; ?>"><i
                                                                 class="fas fa-cart-plus fa-lg"></i></a> |
                                                     <a tooltip data-toggle="modal"

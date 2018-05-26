@@ -6,14 +6,24 @@
  * Time: 18.01
  */
 
-class Pengguna extends MY_Model {
+class Pengguna_alamat_m extends MY_Model {
     public function __construct()
     {
-        $this->table = 'pengguna';
-        $this->primary_key = 'pengguna_id';
-        $this->protected = array('pengguna_id','created_at','update_at');
+        $this->table = 'pa_id';
+        $this->primary_key = 'pa_id';
+        $this->protected = array('pa_id','created_at','update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = TRUE;
+        $this->has_one['Pengguna'] = array(
+            'foreign_model'=>'Pengguna_m',
+            'foreign_table'=> 'pengguna',
+            'foreign_key'=>'p_kode',
+            'local_key'=>'p_kode');
+        $this->has_one['alamat'] = array(
+            'foreign_model'=>'Alamat_m',
+            'foreign_table'=>'alamat',
+            'foreign_key'=>'a_kode',
+            'local_key'=>'a_kode');
         parent::__construct();
     }
 

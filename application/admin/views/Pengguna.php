@@ -59,7 +59,7 @@
                 <div class="card-header">
                     <h1><i class="fa fa-users"></i> Admin</h1>
                     <a data-toggle="modal" title="Tambah Admin" href="#" onclick="tambah()"
-                       data-target="#crud">Buat baru</a>
+                       data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
 
                 </div>
                 <div class="card-body">
@@ -89,7 +89,7 @@
                                             <td><?= $user->p_login_terakhir; ?></td>
                                             <td class="text-center">
                                                 <a tooltip data-toggle="modal" title="Ubah User" href="#"
-                                                   onclick="edit($(this))" data-target="#crud"
+                                                   onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                    data-id="<?= $user->p_kode; ?>"><i class="far fa-edit"></i></a> |
                                                 <a tooltip data-toggle="modal" title="Hapus User" href="#"
                                                    onclick="hapus($(this))" data-target="#hapus"
@@ -116,7 +116,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('users/tambah'); ?>");
+                bodymodal.load("<?= site_url('pengguna/tambah'); ?>");
             }
 
             function edit(data) {
@@ -125,7 +125,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('users/ubah/'); ?>" + id);
+                bodymodal.load("<?= site_url('pengguna/ubah/'); ?>" + id);
             }
 
             function detil(data) {
@@ -134,7 +134,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('users/detil/'); ?>" + id);
+                bodymodal.load("<?= site_url('pengguna/detil/'); ?>" + id);
             }
 
             function hapus(data) {

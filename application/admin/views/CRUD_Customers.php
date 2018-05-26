@@ -1,16 +1,13 @@
-
 <?php
 $url = site_url('customers/simpan');
-if ($submit == 'Ubah')
-{
+if ($submit == 'Ubah') {
     $id = $customers->p_kode;
     $tipe = $customers->p_tipe;
     $nama = $customers->p_nama;
     $username = $customers->p_username;
     $password = $customers->p_password;
     $email = $customers->p_email;
-} else if ($submit == 'Simpan')
-{
+} else if ($submit == 'Simpan') {
     $id = $kode;
     $tipe = '';
     $nama = '';
@@ -43,32 +40,36 @@ if ($submit == 'Ubah')
     </div>
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" placeholder="Input Username" value="<?= $username; ?>" required>
+        <input type="text" class="form-control" name="username" placeholder="Input Username" value="<?= $username; ?>"
+               required>
         <p>
             <?= form_error('username'); ?>
         </p>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" name="password" placeholder="Input Password" value="<?= $password; ?>" required>
+        <input type="password" class="form-control" name="password" placeholder="Input Password"
+               value="<?= $password; ?>" required>
         <p>
             <?= form_error('password'); ?>
         </p>
     </div>
     <div class="form-group">
         <label for="email">E-mail</label>
-        <input type="email" class="form-control" name="email" placeholder="Input E-mail" value="<?= $email; ?>" required>
+        <input type="email" class="form-control" name="email" placeholder="Input E-mail" value="<?= $email; ?>"
+               required>
         <p>
             <?= form_error('email'); ?>
         </p>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"><?= $submit; ?></button>
+        <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+        <button type="button" onclick="window.location.reload()" class="btn btn-danger">Tutup</button>
     </div>
     <?php if (isset($berhasil)): ?>
-        <p class="text-success"><?= $berhasil;?></p>
+        <p class="text-success"><?= $berhasil; ?></p>
     <?php endif; ?>
     <?php if (isset($gagal)): ?>
-        <p class="text-danger"><?= $gagal;?></p>
+        <p class="text-danger"><?= $gagal; ?></p>
     <?php endif; ?>
 </form>

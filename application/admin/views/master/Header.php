@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css" id="theme-stylesheet'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
+    <style>
+        .form-control:focus {
+            background-color: #fff;
+            border-color: #258141;
+            box-shadow: none;
+        }
+    </style>
     <link rel="stylesheet" href="<?= base_url('assets/vendor/datatable/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
 
