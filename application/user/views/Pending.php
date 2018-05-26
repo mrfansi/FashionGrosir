@@ -25,27 +25,23 @@ include "layout/Menu.php";
 
             <!-- Side bar menu -->
             <div class="col-12 col-sm-12 col-md-2">
-                <div class="card">
-
-                    <ul class="r-ul-style-profile">
-                        <li class="r-li-style-profile ">
-                            <a href="<?= site_url('profil'); ?>">Profil Saya</a>
-                        </li>
-                        <li class="r-li-style-profile">
-                            <a href="<?= site_url('profil_alamat'); ?>">Alamat Saya</a>
-                        </li>
-                        <li class="r-li-style-profile ">
-                            <a href="<?= site_url('profil_password'); ?>" >Ubah Password</a>
-                        </li>
-                        <li class="r-li-style-profile">
-                            <a href="<?= site_url('riwayat'); ?>">Riwayat Pesanan</a>
-                        </li>
-                        <li class="r-li-style-profile r-li-style-profile-active">
-                            <a href="<?= site_url('pending'); ?>">Transaksi Pending</a>
-                        </li>
-                    </ul>
-
-                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="<?= site_url('profil'); ?>">Profil Saya</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="<?= site_url('profil_alamat'); ?>">Alamat Saya</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="<?= site_url('profil_password'); ?>" >Ubah Password</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="<?= site_url('riwayat'); ?>">Riwayat Pesanan</a>
+                    </li>
+                    <li class="list-group-item active">
+                        <a href="<?= site_url('pending'); ?>">Transaksi Pending</a>
+                    </li>
+                </ul>
             </div>
 
             <!-- END  -->
