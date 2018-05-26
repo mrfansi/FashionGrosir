@@ -25,25 +25,17 @@ include "layout/Menu.php";
 
             <!-- Side bar menu -->
             <div class="col-12 col-sm-12 col-md-2">
-
-                    <ul class="list-group">
-                        <li class="list-group-item active">
-                            <a href="<?= site_url('profil'); ?>">Profil Saya</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="<?= site_url('profil_alamat'); ?>">Alamat Saya</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="<?= site_url('profil_password'); ?>" >Ubah Password</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="<?= site_url('riwayat'); ?>">Riwayat Pesanan</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="<?= site_url('pending'); ?>">Transaksi Pending</a>
-                        </li>
-                    </ul>
-
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action active" href="<?= site_url('profil'); ?>">Profil Saya</a>
+                    <a class="list-group-item list-group-item-action" href="<?= site_url('profil_alamat'); ?>">Alamat
+                        Saya</a>
+                    <a class="list-group-item list-group-item-action" href="<?= site_url('profil_password'); ?>">Ubah
+                        Password</a>
+                    <a class="list-group-item list-group-item-action" href="<?= site_url('riwayat'); ?>">Riwayat
+                        Pesanan</a>
+                    <a class="list-group-item list-group-item-action" href="<?= site_url('pending'); ?>">Transaksi
+                        Pending</a>
+                </div>
             </div>
 
             <!-- END  -->
@@ -73,7 +65,8 @@ include "layout/Menu.php";
 
                                 <div class="form-group">
                                     <label class="r-font-konten-profile">Alamat Email : </label>
-                                    <input type="email" class="form-control" disabled="" placeholder="lucintaluna@bukanlaki.com">
+                                    <input type="email" class="form-control" disabled=""
+                                           placeholder="lucintaluna@bukanlaki.com">
                                 </div>
 
                                 <div class="form-group">
@@ -84,12 +77,12 @@ include "layout/Menu.php";
 
                                 <div class="form-group">
                                     <label class="r-font-konten-profile">Nomor Telepon : </label>
-                                    <input type="password" class="form-control" disabled="" placeholder="0823 1056 9056">
+                                    <input type="password" class="form-control" disabled=""
+                                           placeholder="0823 1056 9056">
 
                                 </div>
 
                                 <br>
-
 
 
                             </form>
@@ -111,9 +104,14 @@ include "layout/Menu.php";
 
                         </div>
                         <div class="col-12 col-sm-12 col-md-8 text-center">
-                            <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-pencil"></i> Ubah</button>
-                            <button type="submit" class="btn r-btn-konten-profile " disabled=""><i class="fa fa-times"></i> Batal</button>
-                            <button type="submit" class="btn r-btn-konten-profile " disabled=""><i class="fa fa-save"></i> Simpan</button>
+                            <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-pencil"></i> Ubah
+                            </button>
+                            <button type="submit" class="btn r-btn-konten-profile " disabled=""><i
+                                        class="fa fa-times"></i> Batal
+                            </button>
+                            <button type="submit" class="btn r-btn-konten-profile " disabled=""><i
+                                        class="fa fa-save"></i> Simpan
+                            </button>
                         </div>
 
                         <div class="col-12 col-sm-12 col-md-2">
