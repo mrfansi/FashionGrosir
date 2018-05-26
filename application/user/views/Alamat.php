@@ -95,7 +95,7 @@ include "layout/Menu.php";
             <div class="col-lg-12 col-md-12">
                 <form action="alamat_pengiriman/simpan" method="post">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
-                    <input type="hidden" name="o_kode" value="<?= $this->uri->segment(2); ?>">
+                    <input type="hidden" name="nomor_order" value="<?= $this->uri->segment(2); ?>">
                     <input type="hidden" name="a_kode" value="<?= $a_kode; ?>">
 
                     <div class="row form-group">

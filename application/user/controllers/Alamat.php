@@ -38,9 +38,10 @@ class Alamat extends MY_Controller
         $check_simpan = $this->input->post('check_simpan');
         $check_dropship = $this->input->post('check_dropship');
         $simpan = $this->input->post('simpan');
+        $no_order = $this->input->post('nomor_order');
 
         $a_kode = $this->input->post('a_kode');
-        $o_kode = $this->input->post('o_kode');
+        $o_kode = $this->get_o_kode($no_order);
 
         $nama_pengirim = $this->input->post('nama_pengirim');
         $kontak_pengirim = $this->input->post('kontak_pengirim');
@@ -158,6 +159,11 @@ class Alamat extends MY_Controller
 
 
 
-        print_r($_POST);
+        redirect('checkout/' . $no_order . '/ongkir_transfer');
+    }
+
+    private function get_o_kode($no_order) {
+        $hasil = $this->order->where_o_noorder($no_order)->get();
+        return $hasil->o_kode;
     }
 }
