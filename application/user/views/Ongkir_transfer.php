@@ -4,10 +4,10 @@ include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
     <!-- Content -->
-    <div class="container-fluid">
+    <div class="container">
         <br>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
                     <a href="<?= site_url('/'); ?>">Home</a>
                 </li>
@@ -90,7 +90,7 @@ include "layout/Menu.php";
         </div>
     </div>
     <br>
-    <div class="container-fluid">
+    <div class="container">
         <h5 class="mb-3">Metode Pengiriman & Pembayaran</h5>
         <!-- Konten -->
         <div class="row">
@@ -125,7 +125,7 @@ include "layout/Menu.php";
                             <input type="radio" name="optradio"> BANK TRANSFER - BNI an Lorem Ipsum 23829839289
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Lanjutkan</button>
+                    <button type="submit" class="btn f-button-color">Lanjutkan</button>
                 </form>
             </div>
         </div>
