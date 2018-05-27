@@ -4,7 +4,7 @@ include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
     <!-- Content -->
-    <div class="container-fluid">
+    <div class="container">
         <br>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
@@ -21,7 +21,7 @@ include "layout/Menu.php";
         </nav>
         <div class="row">
             <?php if (isset($item) && $item != NULL): ?>
-                <div class="col-lg-5 col-md-6 col-sm-12 col-12">
+                <div class="col-lg-5 col-md-6 col-sm-12 col-12 mb-4">
                     <div class="fotorama"
                          data-fit="cover"
                          data-navposition="bottom"
@@ -46,22 +46,22 @@ include "layout/Menu.php";
                     <hr>
                     <p class="f-font-detail"><?= $item->i_deskripsi; ?></p>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-lg-12">
                             <p><i class="fa fa-check fa-lg f-icon-margin f-font-detail"></i>Kondisi : Baru</p>
                             <p><i class="fa fa-cube fa-lg f-icon-margin f-font-detail"></i>Berat : 1gr</p>
                             <p><i class="fa fa-dropbox fa-lg f-icon-margin f-font-detail"></i>Min. Pesanan : 1pcs</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12">
                             <input type="hidden" name="harga" value="<?= isset($_SESSION['tipe']) && $_SESSION['tipe'] == 1 ? $item->i_hrg_vip : $item->i_hrg_reseller; ?>">
                             <h1 id="rupiah"
                                 class="f-harga"><?= isset($_SESSION['tipe']) && $_SESSION['tipe'] == 1 ? $item->i_hrg_vip : $item->i_hrg_reseller; ?></h1>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-4">
-                            <label for="wu">Warna - Ukuran - QTY</label>
+                        <div class="col-lg-5 col-md-5 col-sm-5 mb-sm-2">
+                            <label for="wu"><i class="fa fa-tag fa-lg f-icon-margin f-font-detail"></i>Warna - Ukuran - QTY</label>
                             <select name="wu" id="wu" class="form-control" required>
                                 <?php foreach ($item_detil_with_item_all($item->i_kode) as $id): ?>
                                     <option value="<?= $id->ide_kode; ?>">
@@ -72,13 +72,13 @@ include "layout/Menu.php";
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col-2">
-                            <label for="qty">Jumlah</label>
+                        <div class="col-lg-3 col-md-3 col-sm-5">
+                            <label for="qty"><i class="fa fa-tags fa-lg f-icon-margin f-font-detail"></i>Jumlah</label>
                             <input type="number" name="qty" min="1" class="form-control" id="qty" value="1">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-md-6 col-sm-6 col-12">
                             <button type="submit"
                                     class="btn btn-primary btn-lg btn-block f-button-font f-button-detail">Tambah ke Keranjang
                             </button>
