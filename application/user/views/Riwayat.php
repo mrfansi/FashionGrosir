@@ -44,18 +44,18 @@ include "layout/Menu.php";
             <!-- Konten  -->
             <div class="col-12 col-sm-12 col-md-9">
 
-                <div class="card container-fluid">
+                <div class="card container-fluid p-4">
 
-                    <div class="row container">
-                        <div class="col">
-                            <h3 class="r-style-title-konten-profile">
-                                Riwayat Pesanan
-                            </h3>
-                            <hr style="width: 30%;">
-                        </div>
-                    </div>
+<!--                    <div class="row container">-->
+<!--                        <div class="col">-->
+<!--                            <h3 class="r-style-title-konten-profile">-->
+<!--                                Riwayat Pesanan-->
+<!--                            </h3>-->
+<!--                            <hr style="width: 30%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="table-responsive">
+                    <div class="table-responsive mt-2">
                         <table class="table">
                             <thead>
                             <tr class="text-center">

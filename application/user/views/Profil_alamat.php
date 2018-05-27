@@ -44,18 +44,18 @@ include "layout/Menu.php";
             <!-- Konten  -->
             <div class="col-12 col-sm-12 col-md-9">
 
-                <div class="card">
+                <div class="card p-4 m-auto">
 
-                    <div class="row container">
-                        <div class="col">
-                            <h3 class="r-style-title-konten-profile">
-                                Alamat Saya
-                            </h3>
-                            <hr style="width: 30%;">
-                        </div>
-                    </div>
+<!--                    <div class="row container">-->
+<!--                        <div class="col">-->
+<!--                            <h3 class="r-style-title-konten-profile">-->
+<!--                                Alamat Saya-->
+<!--                            </h3>-->
+<!--                            <hr style="width: 30%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
 
-                    <div class="row container r-layout-konten-profile">
+                    <div class="row">
 
                         <div class="col-12 col-sm-12 col-md-6">
                             <form>
@@ -132,7 +132,7 @@ include "layout/Menu.php";
 
                     </div>
 
-                    <div class="row container">
+                    <div class="row m-auto">
                         <div class="col-12 col-sm-12">
                             <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-pencil"></i> Ubah</button>
                             <button type="submit" class="btn r-btn-konten-profile " disabled=""><i class="fa fa-times"></i> Batal</button>

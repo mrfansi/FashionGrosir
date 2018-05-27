@@ -6,9 +6,9 @@ include "layout/Menu.php";
     <br>
     <!-- Content -->
     <!-- SHOP -->
-    <div class="container-fluid">
+    <div class="container-fluid f-padding">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
                     <a href="<?= site_url('/'); ?>">Home</a>
                 </li>
@@ -18,7 +18,7 @@ include "layout/Menu.php";
             </ol>
         </nav>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid f-padding">
         <div class="row">
             <?php if (isset($cari_s) && $cari_s != NULL): ?>
                 <?php foreach ($cari_s as $cari): ?>

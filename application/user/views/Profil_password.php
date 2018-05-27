@@ -44,23 +44,20 @@ include "layout/Menu.php";
             <!-- Konten  -->
             <div class="col-12 col-sm-12 col-md-9">
 
-                <div class="card container-fluid">
+                <div class="card container-fluid p-4">
 
-                    <div class="row container">
-                        <div class="col">
-                            <h3 class="r-style-title-konten-profile">
-                                Ubah Password
-                            </h3>
-                            <hr style="width: 30%;">
-                        </div>
-                    </div>
+<!--                    <div class="row container">-->
+<!--                        <div class="col">-->
+<!--                            <h3 class="r-style-title-konten-profile">-->
+<!--                                Ubah Password-->
+<!--                            </h3>-->
+<!--                            <hr style="width: 30%;">-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div class="row container r-layout-konten-profile">
 
-                        <div class="col-12 col-sm-12 col-md-2">
-
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-8">
+                        <div class="col-12 col-sm-12 col-md-8 m-auto">
                             <form>
 
                                 <div class="form-group">
@@ -90,9 +87,6 @@ include "layout/Menu.php";
                         </div>
 
 
-                        <div class="col-12 col-sm-12 col-md-2">
-
-                        </div>
 
 
                     </div>

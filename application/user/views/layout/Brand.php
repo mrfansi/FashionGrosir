@@ -53,7 +53,7 @@
                     <span class="f-span">|</span>
                     <a class="small" href="#">Status Order</a>
                     <span class="f-span">|</span>
-                    <a class="small" href="#">Konfirmasi Pembayaran</a>
+                    <a class="small" href="<?= site_url('pending'); ?>">Konfirmasi Pembayaran</a>
                     <span class="f-span">|</span>
                     <a class="small" href="<?= site_url('riwayat'); ?>">Histori Belanja</a>
                 </div>
@@ -61,8 +61,8 @@
             <?php endif; ?>
         </div>
         <!-- End Search -->
-        <div class="col-lg-3 col-md-2">
-            <a tabindex="0" class="btn btn-primary r-btn-pink"
+        <div class="col-lg-3 col-md-2 mb-2">
+            <a tabindex="0" class="btn btn-primary r-btn-pink f-media-right"
                title="Cart"
                data-toggle="popover"
                data-placement="bottom"
