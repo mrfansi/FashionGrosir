@@ -99,7 +99,7 @@ include "layout/Menu.php";
                 <h6>
                     Pilih Metode Pengiriman
                 </h6>
-                <form>
+                <form action="ongkir_transfer/simpan" method="post">
                     <div class="radio">
                         <label><input type="radio" name="optradio"> JNE - REGULER (2 - 3 Hari) (IDR 9.000)</label>
                     </div>
@@ -112,11 +112,9 @@ include "layout/Menu.php";
                     <div class="radio disabled">
                       <label><input type="radio" name="optradio" > J&T (2 - 3 Hari) (IDR 9.000)</label>
                     </div> -->
-                </form>
-                <h6>
-                    Pilih Metode Pembayaran
-                </h6>
-                <form>
+                    <h6>
+                        Pilih Metode Pembayaran
+                    </h6>
                     <div class="radio">
                         <label>
                             <input type="radio" name="optradio"> BANK TRANSFER - BCA an Lorem Ipsum 23829839289
@@ -127,7 +125,7 @@ include "layout/Menu.php";
                             <input type="radio" name="optradio"> BANK TRANSFER - BNI an Lorem Ipsum 23829839289
                         </label>
                     </div>
-
+                    <button type="submit" class="btn btn-primary">Lanjutkan</button>
                 </form>
             </div>
         </div>
