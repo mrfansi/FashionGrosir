@@ -170,6 +170,7 @@ class API extends MY_Controller
                 'pa_r_kontak'   => $alamat->pa_r_kontak,
                 'pa_s_nama'   => $alamat->pa_s_nama,
                 'pa_s_kontak'   => $alamat->pa_s_kontak,
+                'a_kode' => $alamat->alamat->a_kode,
                 'a_nama'   => $alamat->alamat->a_nama,
                 'a_provinsi'   => $alamat->alamat->a_provinsi,
                 'a_kabupaten'   => $alamat->alamat->a_kabupaten,

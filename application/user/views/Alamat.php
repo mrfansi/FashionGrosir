@@ -96,7 +96,7 @@ include "layout/Menu.php";
                 <form action="alamat_pengiriman/simpan" method="post">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <input type="hidden" name="nomor_order" value="<?= $this->uri->segment(2); ?>">
-                    <input type="hidden" name="a_kode" value="<?= $a_kode; ?>">
+                    <input type="hidden" name="a_kode" id="a_kode" value="<?= $a_kode; ?>">
 
                     <div class="row form-group">
                         <div class="col">
@@ -160,7 +160,8 @@ include "layout/Menu.php";
                     <div class="row form-group">
                         <div class="col">
                             <label for="nama_penerima">Nama Penerima</label>
-                            <input type="text" name="nama_penerima" id="nama_penerima" class="form-control" placeholder="Nama Penerima">
+                            <input type="text" name="nama_penerima" id="nama_penerima" class="form-control"
+                                   placeholder="Nama Penerima">
                         </div>
                         <div class="col">
                             <label for="kontak_penerima">Nomor Telp. Penerima</label>
@@ -203,7 +204,8 @@ include "layout/Menu.php";
                     <div class="row form-group">
                         <div class="col">
                             <label class="f-test" for="alamat">Alamat Lengkap</label>
-                            <textarea name="alamat" id="alamat" class="form-control" placeholder="Nama Gedung, Jalan, dan lainnya"
+                            <textarea name="alamat" id="alamat" class="form-control"
+                                      placeholder="Nama Gedung, Jalan, dan lainnya"
                                       required></textarea>
                         </div>
                     </div>
@@ -301,6 +303,7 @@ include "layout/Menu.php";
                 }
             }).on('select2:select', function () {
                 var id = $(this).val();
+                var a_kode = $('#a_kode');
                 var nama_penerima = $('#nama_penerima');
                 var kontak_penerima = $('#kontak_penerima');
                 var nama_pengirim = $('#nama_pengirim');
@@ -364,8 +367,8 @@ include "layout/Menu.php";
                         kontak_penerima.val(data.pa_r_kontak),
                         nama_pengirim.val(data.pa_s_nama),
                         kontak_pengirim.val(data.pa_s_kontak),
-                        alamat.val(data.a_deskripsi)
-
+                        alamat.val(data.a_deskripsi),
+                        a_kode.val(data.a_kode)
                     );
 
                 });
