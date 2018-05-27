@@ -11,12 +11,12 @@ include "layout/Header.php";
         <div class="form-group">
             <label for="email" class="sr-only">Email</label>
             <input type="email" id="email" name="email" class="form-control f-input-shadow" placeholder="Email address" required
-                   autofocus>
+                   autofocus autocomplete="off">
         </div>
         <div class="form-group">
             <label for="password" class="sr-only">Password</label>
             <input type="password" id="password" name="password" class="form-control f-input-shadow" placeholder="Password"
-                   required>
+                   required autocomplete="off">
         </div>
 
         <button class="btn btn-lg btn-primary btn-block f-button-font" type="submit">Sign in</button>

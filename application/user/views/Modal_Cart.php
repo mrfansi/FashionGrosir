@@ -1,10 +1,10 @@
 <div class="row small">
     <div class="col text-center">
-        <p class="text-center r-pink"><i class="fa fa-check-circle fa-5x"></i> <br> Berhasil menambah item kedalam keranjang</p>
+        <p class="text-center r-pink f-size"><i class="fa fa-check-circle fa-5x"></i> <br> Berhasil menambah item kedalam keranjang</p>
     </div>
 </div>
 <hr style="padding: 0; margin: 0">
-<div class="row small">
+<div class="row small f-size">
     <?php
     $p_kode = isset($_SESSION['id']) ? $_SESSION['id'] : '';
     $pop_carts = $this->cart->where_p_kode($p_kode)->get_all();
