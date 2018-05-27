@@ -4,7 +4,7 @@ include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
     <!-- Content -->
-    <div class="container">
+    <div class="container-fluid">
         <br>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -98,7 +98,7 @@ include "layout/Menu.php";
     <!-- End Content -->
     <br>
 
-    <div class="container">
+    <div class="container-fluid">
         <hr>
         <h5>Hot Item</h5>
         <div class="row">

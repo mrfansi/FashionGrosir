@@ -5,7 +5,7 @@ include "layout/Menu.php";
 ?>
     <br>
     <!-- Konten -->
-    <div class="container">
+    <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
@@ -22,7 +22,7 @@ include "layout/Menu.php";
         </nav>
     </div>
 
-        <div class="container">
+        <div class="container-fluid">
                 <h5>Detail List Resi - Transaksi 08 Maret 2018</h5>
 
                 <div class="r-detail-resi">
