@@ -112,33 +112,7 @@ include "layout/Menu.php";
 
                                 </td>
                             </tr>
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>ASD21345</td>
-                                <td>12-Mar-2018</td>
-                                <td>100.000</td>
-                                <td>Caesar</td>
-                                <td>Jln Cengkareng...</td>
-                                <td>Sukses</td>
-                                <td>
-                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-info"></i> Lihat</button>
 
-
-                                </td>
-                            </tr>
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>ASD21345</td>
-                                <td>12-Mar-2018</td>
-                                <td>100.000</td>
-                                <td>Caesar</td>
-                                <td>Jln Cengkareng...</td>
-                                <td>Sukses</td>
-                                <td>
-                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-info"></i> Lihat</button>
-
-                                </td>
-                            </tr>
 
 
 

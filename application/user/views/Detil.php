@@ -53,14 +53,14 @@ include "layout/Menu.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 mb-4">
                             <input type="hidden" name="harga" value="<?= isset($_SESSION['tipe']) && $_SESSION['tipe'] == 1 ? $item->i_hrg_vip : $item->i_hrg_reseller; ?>">
                             <h1 id="rupiah"
                                 class="f-harga"><?= isset($_SESSION['tipe']) && $_SESSION['tipe'] == 1 ? $item->i_hrg_vip : $item->i_hrg_reseller; ?></h1>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5 mb-sm-2 mb-2">
+                        <div class="col-lg-5 col-md-5 col-sm-5 mb-sm-2 mb-3">
                             <label for="wu"><i class="fa fa-tag fa-lg f-icon-margin f-font-detail"></i>Warna - Ukuran - QTY</label>
                             <select name="wu" id="wu" class="form-control" required>
                                 <?php foreach ($item_detil_with_item_all($item->i_kode) as $id): ?>
@@ -98,7 +98,7 @@ include "layout/Menu.php";
     <!-- End Content -->
     <br>
 
-    <div class="container-fluid">
+    <div class="container-fluid f-padding">
         <hr>
         <h5>Hot Item</h5>
         <div class="row">

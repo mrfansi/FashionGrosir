@@ -93,6 +93,10 @@ h1, h2, h3, h4, h5 {
     padding: 0 50px;
 }
 
+.f-size {
+    font-size: 16px;
+}
+
 @media screen and (max-width: 450px) {
     .f-padding {
         padding: 0 15px;
@@ -105,11 +109,6 @@ h1, h2, h3, h4, h5 {
     }
 
 }
-
-.f-size {
-    font-size: 16px;
-}
-
 
 .f-color {
     background-color: #fefefe;
