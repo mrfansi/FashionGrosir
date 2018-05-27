@@ -163,8 +163,28 @@ class API extends MY_Controller
 
     public function get_full_alamat($id)
     {
-        $alamat = $this->alamat->where('a_kode', $id)->get();
-        echo json_encode($alamat);
+        $g = $this->pengguna_alamat->with_alamat('where:a_kode = \''. $id . '\'')->get_all();
+        foreach ($g as $alamat) {
+            $hasil = array(
+                'pa_r_nama'     => $alamat->pa_r_nama,
+                'pa_r_kontak'   => $alamat->pa_r_kontak,
+                'pa_s_nama'   => $alamat->pa_s_nama,
+                'pa_s_kontak'   => $alamat->pa_s_kontak,
+                'a_nama'   => $alamat->alamat->a_nama,
+                'a_provinsi'   => $alamat->alamat->a_provinsi,
+                'a_kabupaten'   => $alamat->alamat->a_kabupaten,
+                'a_kecamatan'   => $alamat->alamat->a_kecamatan,
+                'a_desa'   => $alamat->alamat->a_desa,
+                'a_kodepos'   => $alamat->alamat->a_kodepos,
+                'a_deskripsi'   => $alamat->alamat->a_deskripsi,
+            );
+        }
+
+        echo json_encode($hasil);
+//
+//        echo '<pre>';
+//        echo print_r($alamat);
+//        echo '</pre>';
     }
 
 }

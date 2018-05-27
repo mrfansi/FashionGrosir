@@ -145,12 +145,12 @@ include "layout/Menu.php";
                         <div class="row form-group">
                             <div class="col">
                                 <label for="nama_pengirim">Nama Pengirim</label>
-                                <input type="text" name="nama_pengirim" class="form-control"
+                                <input type="text" name="nama_pengirim" id="nama_pengirim" class="form-control"
                                        placeholder="Nama Pengirim">
                             </div>
                             <div class="col">
                                 <label for="kontak_pengirim">Nomor Telp. Pengirim</label>
-                                <input type="text" name="kontak_pengirim" class="form-control"
+                                <input type="text" name="kontak_pengirim" id="kontak_pengirim" class="form-control"
                                        placeholder="Kontak Pengirim">
                             </div>
                         </div>
@@ -160,11 +160,11 @@ include "layout/Menu.php";
                     <div class="row form-group">
                         <div class="col">
                             <label for="nama_penerima">Nama Penerima</label>
-                            <input type="text" name="nama_penerima" class="form-control" placeholder="Nama Penerima">
+                            <input type="text" name="nama_penerima" id="nama_penerima" class="form-control" placeholder="Nama Penerima">
                         </div>
                         <div class="col">
                             <label for="kontak_penerima">Nomor Telp. Penerima</label>
-                            <input type="text" name="kontak_penerima" class="form-control"
+                            <input type="text" name="kontak_penerima" id="kontak_penerima" class="form-control"
                                    placeholder="Kontak Penerima">
                         </div>
 
@@ -203,7 +203,7 @@ include "layout/Menu.php";
                     <div class="row form-group">
                         <div class="col">
                             <label class="f-test" for="alamat">Alamat Lengkap</label>
-                            <textarea name="alamat" class="form-control" placeholder="Nama Gedung, Jalan, dan lainnya"
+                            <textarea name="alamat" id="alamat" class="form-control" placeholder="Nama Gedung, Jalan, dan lainnya"
                                       required></textarea>
                         </div>
                     </div>
@@ -300,6 +300,11 @@ include "layout/Menu.php";
                 }
             }).on('select2:select', function () {
                 var id = $(this).val();
+                var nama_penerima = $('#nama_penerima');
+                var kontak_penerima = $('#kontak_penerima');
+                var nama_pengirim = $('#nama_pengirim');
+                var kontak_pengirim = $('#kontak_pengirim');
+                var alamat = $('#alamat');
                 var provinsi = $('#provinsi');
                 var kabupaten = $('#kabupaten');
                 var kecamatan = $('#kecamatan');
@@ -308,6 +313,7 @@ include "layout/Menu.php";
                     dataType: 'json',
                     url: '<?= site_url('API/get_full_alamat/'); ?>' + id
                 }).then(function (data) {
+                    console.log(data);
                     $.when(
                         $.getJSON('<?= site_url('API/get_provinsi/'); ?>' + data.a_provinsi, function (res) {
                             provinsi.append(new Option(
@@ -353,6 +359,11 @@ include "layout/Menu.php";
                                 }
                             })
                         }),
+                        nama_penerima.val(data.pa_r_nama),
+                        kontak_penerima.val(data.pa_r_kontak),
+                        nama_pengirim.val(data.pa_s_nama),
+                        kontak_pengirim.val(data.pa_s_kontak),
+                        alamat.val(data.a_deskripsi)
 
                     );
 
