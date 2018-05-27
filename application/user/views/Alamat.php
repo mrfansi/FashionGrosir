@@ -218,6 +218,7 @@ include "layout/Menu.php";
         </div>
         <hr>
     </div>
+    <!-- Script File -->
     <script>
         $(document).ready(function () {
             $('#provinsi').select2({
