@@ -96,7 +96,7 @@ include "layout/Menu.php";
                 <form action="alamat_pengiriman/simpan" method="post">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <input type="hidden" name="nomor_order" value="<?= $this->uri->segment(2); ?>">
-                    <input type="hidden" name="a_kode" value="<?= $a_kode; ?>">
+                    <input type="hidden" name="a_kode" id="a_kode" value="<?= $a_kode; ?>">
 
                     <div class="row form-group">
                         <div class="col">
@@ -126,7 +126,8 @@ include "layout/Menu.php";
                     <div class="row form-group" id="row_simpan_alamat">
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" name="check_simpan" id="check_simpan">
+                                <input class="form-check-input" type="checkbox" value="true" name="check_simpan"
+                                       id="check_simpan">
                                 <label class="form-check-label" for="check_simpan">
                                     Simpan alamat ini
                                 </label>
@@ -136,18 +137,20 @@ include "layout/Menu.php";
                     <div class="row form-group" id="row_judul_alamat" style="display: none;">
                         <div class="col">
                             <label for="nama_alamat">Judul</label>
-                            <input type="text" name="nama_alamat" id="nama_alamat" class="form-control" placeholder="Judul Alamat">
+                            <input type="text" name="nama_alamat" id="nama_alamat" class="form-control"
+                                   placeholder="Judul Alamat">
                         </div>
                     </div>
                     <div id="pengirim" style="display: none;">
                         <div class="row form-group">
                             <div class="col">
                                 <label for="nama_pengirim">Nama Pengirim</label>
-                                <input type="text" name="nama_pengirim" class="form-control" placeholder="Nama Pengirim">
+                                <input type="text" name="nama_pengirim" id="nama_pengirim" class="form-control"
+                                       placeholder="Nama Pengirim">
                             </div>
                             <div class="col">
                                 <label for="kontak_pengirim">Nomor Telp. Pengirim</label>
-                                <input type="text" name="kontak_pengirim" class="form-control"
+                                <input type="text" name="kontak_pengirim" id="kontak_pengirim" class="form-control"
                                        placeholder="Kontak Pengirim">
                             </div>
                         </div>
@@ -157,11 +160,12 @@ include "layout/Menu.php";
                     <div class="row form-group">
                         <div class="col">
                             <label for="nama_penerima">Nama Penerima</label>
-                            <input type="text" name="nama_penerima" class="form-control" placeholder="Nama Penerima">
+                            <input type="text" name="nama_penerima" id="nama_penerima" class="form-control"
+                                   placeholder="Nama Penerima">
                         </div>
                         <div class="col">
                             <label for="kontak_penerima">Nomor Telp. Penerima</label>
-                            <input type="text" name="kontak_penerima" class="form-control"
+                            <input type="text" name="kontak_penerima" id="kontak_penerima" class="form-control"
                                    placeholder="Kontak Penerima">
                         </div>
 
@@ -200,7 +204,8 @@ include "layout/Menu.php";
                     <div class="row form-group">
                         <div class="col">
                             <label class="f-test" for="alamat">Alamat Lengkap</label>
-                            <textarea name="alamat" class="form-control" placeholder="Nama Gedung, Jalan, dan lainnya"
+                            <textarea name="alamat" id="alamat" class="form-control"
+                                      placeholder="Nama Gedung, Jalan, dan lainnya"
                                       required></textarea>
                         </div>
                     </div>
@@ -215,6 +220,7 @@ include "layout/Menu.php";
         </div>
         <hr>
     </div>
+    <!-- Script File -->
     <script>
         $(document).ready(function () {
             $('#provinsi').select2({
@@ -275,6 +281,11 @@ include "layout/Menu.php";
                         };
                     }
                 }
+            }).on('select2:select', function () {
+                var id = $(this).val();
+                $.get('<?= site_url('API/get_kodepos/'); ?>' + id, function (res) {
+                    $('#kodepos').val(res);
+                })
             });
 
             $('#pilih_alamat').select2({
@@ -290,13 +301,77 @@ include "layout/Menu.php";
                         };
                     }
                 }
-            });
+            }).on('select2:select', function () {
+                var id = $(this).val();
+                var a_kode = $('#a_kode');
+                var nama_penerima = $('#nama_penerima');
+                var kontak_penerima = $('#kontak_penerima');
+                var nama_pengirim = $('#nama_pengirim');
+                var kontak_pengirim = $('#kontak_pengirim');
+                var alamat = $('#alamat');
+                var provinsi = $('#provinsi');
+                var kabupaten = $('#kabupaten');
+                var kecamatan = $('#kecamatan');
+                var kelurahan = $('#kelurahan');
+                $.ajax({
+                    dataType: 'json',
+                    url: '<?= site_url('API/get_full_alamat/'); ?>' + id
+                }).then(function (data) {
+                    console.log(data);
+                    $.when(
+                        $.getJSON('<?= site_url('API/get_provinsi/'); ?>' + data.a_provinsi, function (res) {
+                            provinsi.append(new Option(
+                                res.results[0].text, res.results[0].id, true, true
+                            )).trigger('change');
+                            provinsi.trigger({
+                                type: 'select2:select',
+                                params: {
+                                    data: res
+                                }
+                            })
+                        }),
+                        $.getJSON('<?= site_url('API/get_kabupaten/'); ?>' + data.a_kabupaten, function (res) {
+                            kabupaten.append(new Option(
+                                res.results[0].text, res.results[0].id, true, true
+                            )).trigger('change');
+                            kabupaten.trigger({
+                                type: 'select2:select',
+                                params: {
+                                    data: res
+                                }
+                            })
+                        }),
+                        $.getJSON('<?= site_url('API/get_kecamatan/'); ?>' + data.a_kecamatan, function (res) {
+                            kecamatan.append(new Option(
+                                res.results[0].text, res.results[0].id, true, true
+                            )).trigger('change');
+                            kecamatan.trigger({
+                                type: 'select2:select',
+                                params: {
+                                    data: res
+                                }
+                            })
+                        }),
+                        $.getJSON('<?= site_url('API/get_kelurahan/'); ?>' + data.a_desa, function (res) {
+                            kelurahan.append(new Option(
+                                res.results[0].text, res.results[0].id, true, true
+                            )).trigger('change');
+                            kelurahan.trigger({
+                                type: 'select2:select',
+                                params: {
+                                    data: res
+                                }
+                            })
+                        }),
+                        nama_penerima.val(data.pa_r_nama),
+                        kontak_penerima.val(data.pa_r_kontak),
+                        nama_pengirim.val(data.pa_s_nama),
+                        kontak_pengirim.val(data.pa_s_kontak),
+                        alamat.val(data.a_deskripsi),
+                        a_kode.val(data.a_kode)
+                    );
 
-            $('#kodepos').focus(function () {
-                var id = $('#kelurahan').val();
-                $.get('<?= site_url('API/get_kodepos/'); ?>' + id, function (res) {
-                    $('#kodepos').val(res);
-                })
+                });
             })
         });
     </script>
