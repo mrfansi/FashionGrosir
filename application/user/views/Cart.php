@@ -124,9 +124,9 @@ include "layout/Menu.php";
                                             <div class="media-body">
                                                 <h5 class="mt-0"><?= $item_detil($cart->ide_kode)->item->i_nama; ?></h5>
                                                 <?= $item_detil($cart->ide_kode)->item->i_deskripsi; ?>
-                                                <p><i class="fa fa-thumb-tack fa-lg f-icon-margin"></i>Warna
+                                                <p><i class="fa fa-tag fa-lg f-icon-margin"></i>Warna
                                                     : <?= $item_detil($cart->ide_kode)->warna->w_nama; ?></p>
-                                                <p><i class="fa fa-tag fa-lg f-icon-margin"></i>Ukuran
+                                                <p><i class="fa fa-thumb-tack fa-lg f-icon-margin"></i>Ukuran
                                                     : <?= $item_detil($cart->ide_kode)->ukuran->u_nama; ?></p>
                                             </div>
                                         </div>
