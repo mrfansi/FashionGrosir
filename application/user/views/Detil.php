@@ -60,7 +60,7 @@ include "layout/Menu.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5 mb-sm-2">
+                        <div class="col-lg-5 col-md-5 col-sm-5 mb-sm-2 mb-2">
                             <label for="wu"><i class="fa fa-tag fa-lg f-icon-margin f-font-detail"></i>Warna - Ukuran - QTY</label>
                             <select name="wu" id="wu" class="form-control" required>
                                 <?php foreach ($item_detil_with_item_all($item->i_kode) as $id): ?>
