@@ -4,7 +4,7 @@ include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
     <br>
-    <div class="container">
+    <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
@@ -18,7 +18,7 @@ include "layout/Menu.php";
     </div>
 
     <!-- Content -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <?php if ($terbaru_items() != NULL): ?>
                 <?php foreach ($terbaru_items() as $terbaru): ?>

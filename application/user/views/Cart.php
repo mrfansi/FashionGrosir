@@ -4,7 +4,7 @@ include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
     <!-- Content -->
-    <div class="container">
+    <div class="container-fluid">
         <br>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
@@ -83,7 +83,7 @@ include "layout/Menu.php";
         </div>
     </div>
     <br>
-    <div class="container" id="#content">
+    <div class="container-fluid" id="#content">
         <h5 class="mb-3"><i class="fa fa-shopping-cart  "></i> Keranjang Saya</h5>
 
         <div class="row">

@@ -4,7 +4,7 @@ include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
     <!-- Content -->
-    <div class="container">
+    <div class="container-fluid">
         <br>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -90,7 +90,7 @@ include "layout/Menu.php";
         </div>
     </div>
     <br>
-    <div class="container">
+    <div class="container-fluid">
         <h5 class="mb-3">Metode Pengiriman & Pembayaran</h5>
         <!-- Konten -->
         <div class="row">

@@ -6,14 +6,14 @@ include "layout/Slide.php";
 ?>
     <br>
     <!-- Title Content -->
-    <div class="container">
+    <div class="container-fluid">
         <h5>Produk Terbaru</h5>
         <hr>
     </div>
     <!-- Title Content -->
 
     <!-- Content -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <?php if ($terbaru_items() != NULL): ?>
                 <?php foreach ($terbaru_items() as $terbaru): ?>

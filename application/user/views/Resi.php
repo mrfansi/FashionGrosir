@@ -5,7 +5,7 @@ include "layout/Menu.php";
 ?>
     <br>
     <!-- Konten -->
-    <div class="container">
+    <div class="container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">

@@ -4,7 +4,7 @@ include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
     <!-- Content -->
-    <div class="container">
+    <div class="container-fluid">
         <br>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
@@ -88,7 +88,7 @@ include "layout/Menu.php";
 
     </div>
     <br>
-    <div class="container">
+    <div class="container-fluid">
         <h5>Alamat Pengiriman</h5>
 
         <div class="row">
