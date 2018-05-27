@@ -126,7 +126,8 @@ include "layout/Menu.php";
                     <div class="row form-group" id="row_simpan_alamat">
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" name="check_simpan" id="check_simpan">
+                                <input class="form-check-input" type="checkbox" value="true" name="check_simpan"
+                                       id="check_simpan">
                                 <label class="form-check-label" for="check_simpan">
                                     Simpan alamat ini
                                 </label>
@@ -136,14 +137,16 @@ include "layout/Menu.php";
                     <div class="row form-group" id="row_judul_alamat" style="display: none;">
                         <div class="col">
                             <label for="nama_alamat">Judul</label>
-                            <input type="text" name="nama_alamat" id="nama_alamat" class="form-control" placeholder="Judul Alamat">
+                            <input type="text" name="nama_alamat" id="nama_alamat" class="form-control"
+                                   placeholder="Judul Alamat">
                         </div>
                     </div>
                     <div id="pengirim" style="display: none;">
                         <div class="row form-group">
                             <div class="col">
                                 <label for="nama_pengirim">Nama Pengirim</label>
-                                <input type="text" name="nama_pengirim" class="form-control" placeholder="Nama Pengirim">
+                                <input type="text" name="nama_pengirim" class="form-control"
+                                       placeholder="Nama Pengirim">
                             </div>
                             <div class="col">
                                 <label for="kontak_pengirim">Nomor Telp. Pengirim</label>
@@ -275,6 +278,11 @@ include "layout/Menu.php";
                         };
                     }
                 }
+            }).on('select2:select', function () {
+                var id = $(this).val();
+                $.get('<?= site_url('API/get_kodepos/'); ?>' + id, function (res) {
+                    $('#kodepos').val(res);
+                })
             });
 
             $('#pilih_alamat').select2({
@@ -290,13 +298,65 @@ include "layout/Menu.php";
                         };
                     }
                 }
-            });
+            }).on('select2:select', function () {
+                var id = $(this).val();
+                var provinsi = $('#provinsi');
+                var kabupaten = $('#kabupaten');
+                var kecamatan = $('#kecamatan');
+                var kelurahan = $('#kelurahan');
+                $.ajax({
+                    dataType: 'json',
+                    url: '<?= site_url('API/get_full_alamat/'); ?>' + id
+                }).then(function (data) {
+                    $.when(
+                        $.getJSON('<?= site_url('API/get_provinsi/'); ?>' + data.a_provinsi, function (res) {
+                            provinsi.append(new Option(
+                                res.results[0].text, res.results[0].id, true, true
+                            )).trigger('change');
+                            provinsi.trigger({
+                                type: 'select2:select',
+                                params: {
+                                    data: res
+                                }
+                            })
+                        }),
+                        $.getJSON('<?= site_url('API/get_kabupaten/'); ?>' + data.a_kabupaten, function (res) {
+                            kabupaten.append(new Option(
+                                res.results[0].text, res.results[0].id, true, true
+                            )).trigger('change');
+                            kabupaten.trigger({
+                                type: 'select2:select',
+                                params: {
+                                    data: res
+                                }
+                            })
+                        }),
+                        $.getJSON('<?= site_url('API/get_kecamatan/'); ?>' + data.a_kecamatan, function (res) {
+                            kecamatan.append(new Option(
+                                res.results[0].text, res.results[0].id, true, true
+                            )).trigger('change');
+                            kecamatan.trigger({
+                                type: 'select2:select',
+                                params: {
+                                    data: res
+                                }
+                            })
+                        }),
+                        $.getJSON('<?= site_url('API/get_kelurahan/'); ?>' + data.a_desa, function (res) {
+                            kelurahan.append(new Option(
+                                res.results[0].text, res.results[0].id, true, true
+                            )).trigger('change');
+                            kelurahan.trigger({
+                                type: 'select2:select',
+                                params: {
+                                    data: res
+                                }
+                            })
+                        }),
 
-            $('#kodepos').focus(function () {
-                var id = $('#kelurahan').val();
-                $.get('<?= site_url('API/get_kodepos/'); ?>' + id, function (res) {
-                    $('#kodepos').val(res);
-                })
+                    );
+
+                });
             })
         });
     </script>
