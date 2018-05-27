@@ -96,143 +96,44 @@ include "layout/Menu.php";
         <div class="row">
             <!-- KOTAK KIRI -->
             <div class="col-lg-12 col-md-12">
-                <div class="card r-posisi-kartu mb-3 container-fluid">
-                    <h5 class="r-judul-kotak3">
-                        Metode Pengiriman
-                    </h5>
-                    <form>
-                        <div class="radio">
-                            <label><input type="radio" name="optradio"> JNE - REGULER (2 - 3 Hari) (IDR 9.000)</label>
-                        </div>
-                        <div class="radio">
-                            <label><input type="radio" name="optradio"> JNE - YES (1 - 2 Hari) (IDR 18.000)</label>
-                        </div>
-                        <!-- <div class="radio disabled">
-                          <label><input type="radio" name="optradio" > J&T (2 - 3 Hari) (IDR 9.000)</label>
-                        </div>
-                        <div class="radio disabled">
-                          <label><input type="radio" name="optradio" > J&T (2 - 3 Hari) (IDR 9.000)</label>
-                        </div> -->
-                    </form>
-                    <h5 class="r-judul-kotak3">
-                        Metode Pembayaran
-                    </h5>
-                    <form>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optradio"> BANK TRANSFER - BCA an Lorem Ipsum 23829839289
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optradio"> BANK TRANSFER - BNI an Lorem Ipsum 23829839289
-                            </label>
-                        </div>
-
-                    </form>
-                </div>
+                <h6>
+                    Pilih Metode Pengiriman
+                </h6>
+                <form action="ongkir_transfer/simpan" method="post">
+                    <div class="radio">
+                        <label><input type="radio" name="optradio"> JNE - REGULER (2 - 3 Hari) (IDR 9.000)</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="optradio"> JNE - YES (1 - 2 Hari) (IDR 18.000)</label>
+                    </div>
+                    <!-- <div class="radio disabled">
+                      <label><input type="radio" name="optradio" > J&T (2 - 3 Hari) (IDR 9.000)</label>
+                    </div>
+                    <div class="radio disabled">
+                      <label><input type="radio" name="optradio" > J&T (2 - 3 Hari) (IDR 9.000)</label>
+                    </div> -->
+                    <h6>
+                        Pilih Metode Pembayaran
+                    </h6>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optradio"> BANK TRANSFER - BCA an Lorem Ipsum 23829839289
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optradio"> BANK TRANSFER - BNI an Lorem Ipsum 23829839289
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Lanjutkan</button>
+                </form>
             </div>
-
-            <!-- END KOTAK KIRI -->
-
-            <!-- KOTAK KANAN -->
-            <div class="col-lg-6 col-md-12 f-font-troli border f-border-padding f-radius ml-3">
-                <h5>Perhitungan Harga</h5>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-7 col-md-7 col-sm-8 col-7">
-                        <div class="media">
-                            <img class="mr-3 f-img-sidebar" src="assets/img/kaos.jpg" alt="Generic placeholder image">
-                            <div class="media-body">
-                                <h6 class="mt-0">Anzel Peplum (ZP01-ZP04)</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-md-2 col-sm-1 col-1 f-sub-total">
-                        <h5>3</h5>
-                    </div>
-                    <div class="col-lg-4 col-md-3 col-sm col f-sub-total">
-                        <h5 class="card-title">10.000.000</h5>
-                    </div>
-                </div>
-                <br>
-
-                <div class="row">
-                    <div class="col-lg-7 col-md-7 col-sm-8 col-7">
-                        <div class="media">
-                            <img class="mr-3 f-img-sidebar" src="assets/img/kaos.jpg" alt="Generic placeholder image">
-                            <div class="media-body">
-                                <h6 class="mt-0">Anzel Peplum (ZP01-ZP04)</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-1 col-md-2 col-sm-1 col-1 f-sub-total">
-                        <h5>1</h5>
-                    </div>
-                    <div class="col-lg-4 col-md-3 col-sm col f-sub-total">
-                        <h5 class="card-title">10.000.000</h5>
-                    </div>
-                </div>
-                <hr>
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-7 col-6">
-                        <h6>Subtotal</h6>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-6 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">1.000.000</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-7 col-6">
-                        <h6>Biaya Pengiriman</h6>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-6 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">125.000</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-8 col-sm-7 col-6">
-                        <h6>Biaya Pengiriman</h6>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-5 col-6">
-                        <div class="row">
-                            <div class="col-lg-1 col-md-6 col-sm-5 col-4">
-                                <h5>IDR</h5>
-                            </div>
-                            <div class="col-lg col-md-6 col-sm-7 col">
-                                <h5 class="card-title f-sub-total">-</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <a href="pembayaran.html" class="btn btn-primary btn-lg btn-block f-button-font">Lanjut Metode
-                    Pembayaran</a>
-            </div>
-            <!-- KOTAK KANAN -->
-
         </div>
-        <!-- END KONTEN -->
 
+        <!-- END KOTAK KIRI -->
     </div>
-    <!-- End Content -->
+    <!-- END KONTEN -->
+
 <?php
 include "layout/Footer.php";
 ?>
