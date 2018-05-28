@@ -59,7 +59,8 @@
                 <div class="card-header">
                     <h1><i class="fa fa-cogs"></i> Opsi</h1>
                 </div>
-                <div class="card-body">
+                <form action="simpan" method="post" class="card-body">
+                    <input type="hidden" name="t_kode" value="<?= $id; ?>">
                     <div class="row form-group">
                         <div class="col">
                             <label for="nama">Nama Toko</label>
@@ -70,6 +71,13 @@
                             <label for="singkatan">Kode Toko</label>
                             <input type="text" class="form-control" name="singkatan" placeholder="Kode (max 2 karakter)"
                                    required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="url">URL</label>
+                            <input type="text" class="form-control" name="url"
+                                   placeholder="URL Toko" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -131,7 +139,7 @@
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                     </div>
-                </div>
+                </form>
             </div>
 
         </div>
