@@ -15,7 +15,7 @@ include "layout/Menu.php";
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb f-no-background f-hover">
                         <li class="breadcrumb-item"><a href="<?= site_url('/'); ?>">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Transaksi Pending</li>
+                        <li class="breadcrumb-item active" aria-current="page">Konfirmasi Pembayaran</li>
                     </ol>
                 </nav>
             </div>
@@ -33,7 +33,7 @@ include "layout/Menu.php";
                         Password</a>
                     <a class="list-group-item list-group-item-action" href="<?= site_url('riwayat'); ?>">Riwayat
                         Pesanan</a>
-                    <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('pending'); ?>">Transaksi
+                    <a class="list-group-item list-group-item-action" href="<?= site_url('pending'); ?>">Transaksi
                         Pending</a>
                 </div>
             </div>
@@ -49,7 +49,7 @@ include "layout/Menu.php";
 <!--                    <div class="row container">-->
 <!--                        <div class="col">-->
 <!--                            <h3 class="r-style-title-konten-profile">-->
-<!--                                Transaksi Pending-->
+<!--                                Riwayat Pesanan-->
 <!--                            </h3>-->
 <!--                            <hr style="width: 30%;">-->
 <!--                        </div>-->
@@ -61,44 +61,39 @@ include "layout/Menu.php";
                             <tr class="text-center">
                                 <th>No</th>
                                 <th>ID Pesanan</th>
-                                <th>Tanggal Transaksi</th>
+<!--                                <th>Tanggal Transaksi</th>-->
                                 <th>Total Harga</th>
                                 <th>Nama Penerima</th>
                                 <th>Alamat</th>
                                 <th>Status</th>
-<!--                                <th>Aksi</th>-->
+                                <th>   </th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr class="text-center">
                                 <td>1</td>
                                 <td>ASD21345</td>
-                                <td>12-Mar-2018</td>
+<!--                                <td>12-Mar-2018</td>-->
                                 <td>100.000</td>
                                 <td>Caesar</td>
                                 <td>Jln Cengkareng...</td>
-                                <td>Pending</td>
-<!--                                <td>-->
-<!--                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-money"></i> Konfirmasi Pembayaran</button>-->
-<!--                                </td>-->
+                                <td>Menunggu Konfirmasi</td>
+                                <td>
+                                    <a href="<?= site_url('konfirmasi'); ?>" class="btn btn-primary btn-sm btn-block f-button-font">Konfirmasi</a>
+                                </td>
                             </tr>
                             <tr class="text-center">
                                 <td>1</td>
                                 <td>ASD21345</td>
-                                <td>12-Mar-2018</td>
+<!--                                <td>12-Mar-2018</td>-->
                                 <td>100.000</td>
                                 <td>Caesar</td>
                                 <td>Jln Cengkareng...</td>
-                                <td>Transaksi Gagal</td>
-<!--                                <td>-->
-<!--                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-money"></i> Konfirmasi Pembayaran</button>-->
-<!--                                </td>-->
+                                <td>Menunggu Konfirmasi</td>
+                                <td>
+                                    <a href="<?= site_url('konfirmasi'); ?>" class="btn btn-primary btn-sm btn-block f-button-font">Konfirmasi</a>
+                                </td>
                             </tr>
-
-                            </tr>
-
-
-
                             </tbody>
                         </table>
 

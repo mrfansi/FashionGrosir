@@ -89,7 +89,7 @@ include "layout/Menu.php";
     </div>
     <br>
     <div class="container">
-        <h5>Alamat Pengiriman</h5>
+        <h5><i class="fa fa-car"></i> Alamat Pengiriman</h5>
 
         <div class="row">
             <div class="col-lg-12 col-md-12">

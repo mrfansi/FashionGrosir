@@ -84,7 +84,7 @@ include "layout/Menu.php";
     </div>
     <br>
     <div class="container" id="#content">
-        <h5 class="mb-3"><i class="fa fa-shopping-cart  "></i> Keranjang Saya</h5>
+        <h5 class="mb-3"><i class="fa fa-shopping-cart"></i> Keranjang Saya</h5>
 
         <div class="row">
 
