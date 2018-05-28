@@ -5,11 +5,11 @@ $(document).ready(function () {
 
     var brandPrimary = 'rgba(51, 179, 90, 1)';
 
-    var LINECHARTEXMPLE   = $('#lineChartExample'),
-        PIECHARTEXMPLE    = $('#pieChartExample'),
-        BARCHARTEXMPLE    = $('#barChartExample'),
-        RADARCHARTEXMPLE  = $('#radarChartExample'),
-        POLARCHARTEXMPLE  = $('#polarChartExample');
+    var LINECHARTEXMPLE = $('#lineChartExample'),
+        PIECHARTEXMPLE = $('#pieChartExample'),
+        BARCHARTEXMPLE = $('#barChartExample'),
+        RADARCHARTEXMPLE = $('#radarChartExample'),
+        POLARCHARTEXMPLE = $('#polarChartExample');
 
 
     var lineChartExample = new Chart(LINECHARTEXMPLE, {
@@ -90,7 +90,7 @@ $(document).ready(function () {
                         "#FFCE56"
                     ]
                 }]
-            }
+        }
     });
 
     var pieChartExample = {
@@ -151,7 +151,6 @@ $(document).ready(function () {
             ]
         }
     });
-
 
 
     var polarChartExample = new Chart(POLARCHARTEXMPLE, {
@@ -216,7 +215,6 @@ $(document).ready(function () {
     var radarChartExample = {
         responsive: true
     };
-
 
 
 });

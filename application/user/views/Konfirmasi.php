@@ -110,7 +110,11 @@ include "layout/Menu.php";
                         <div class="row">
                             <div class="col-12 r-posisi-kotak4-1">
                                 <h6 class="r-judul-kotak4-1">
+                                    <<<<<<< .merge_file_a55120
                                     <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
+                                    =======
+                                    <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
+                                    >>>>>>> .merge_file_a55132
                                 </h6>
                             </div>
                             <div class="col-12">
@@ -175,16 +179,26 @@ include "layout/Menu.php";
                                     <div class="form-group">
                                         <label for="id_order">Payment From Bank / Pembayaran Dari Bank : *</label>
                                         <div class="r-container-konten">
+                                            <<<<<<< .merge_file_a55120
                                             <input type="text" class="form-control r-style-input f-border-form"
                                                    id="id_order">
+                                            =======
+                                            <input type="text" class="form-control r-style-input f-border-form"
+                                                   id="id_order">
+                                            >>>>>>> .merge_file_a55132
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="id_order">Payment From Account Name / Rekening Atas Nama : *</label>
                                         <div class="r-container-konten">
+                                            <<<<<<< .merge_file_a55120
                                             <input type="text" class="form-control r-style-input f-border-form"
                                                    id="id_order">
+                                            =======
+                                            <input type="text" class="form-control r-style-input f-border-form"
+                                                   id="id_order">
+                                            >>>>>>> .merge_file_a55132
                                         </div>
                                     </div>
 
@@ -196,8 +210,13 @@ include "layout/Menu.php";
                                 <div class="form-group">
                                     <label for="id_order">Payment Amount / Total Pembayan : *</label>
                                     <div class="r-container-konten">
+                                        <<<<<<< .merge_file_a55120
                                         <input type="text" class="form-control r-style-input f-border-form"
                                                id="id_order">
+                                        =======
+                                        <input type="text" class="form-control r-style-input f-border-form"
+                                               id="id_order">
+                                        >>>>>>> .merge_file_a55132
                                     </div>
                                 </div>
 
@@ -205,9 +224,15 @@ include "layout/Menu.php";
                                     <label for="id_order">Upload Bukti Pembayaran : *</label>
                                     <br>
                                     <div class="r-upload-f-button-font-wrapper">
+                                        <<<<<<< .merge_file_a55120
                                         <button class="r-btn"><i class="fa fa-upload" style="font-size: 18px;"></i>Unggah
                                             File
                                         </button>
+                                        =======
+                                        <button class="r-btn"><i class="fa fa-upload" style="font-size: 18px;"></i>Unggah
+                                            File
+                                        </button>
+                                        >>>>>>> .merge_file_a55132
                                         <input type="file" name="myfile">
                                         <small id="fileHelp" class="form-text text-muted">Isi dengan isi isian</small>
                                     </div>
@@ -215,8 +240,13 @@ include "layout/Menu.php";
                             </div>
                             <!-- konten pembayaran sisi kanan -->
                         </div>
+                        <<<<<<< .merge_file_a55120
                         <a href="form_pengiriman.html"
                            class="btn btn-primary btn-lg mb-3 btn-block col-2 f-button-font">Konfirmasi</a>
+                        =======
+                        <a href="form_pengiriman.html"
+                           class="btn btn-primary btn-lg mb-3 btn-block col-2 f-button-font">Konfirmasi</a>
+                        >>>>>>> .merge_file_a55132
 
                         <!--  END KONTEN BAWAH -->
                     </div>
@@ -236,8 +266,13 @@ include "layout/Menu.php";
                         <div class="col-md-6 col-md-6 col-sm-5 col-6">
                             <div class="row">
                                 <div class="col-lg col-md-6 col-sm-7 col">
+                                    <<<<<<< .merge_file_a55120
                                     <h5 id="rupiah"
                                         class="card-title f-sub-total"><?= $cart_total($_SESSION['id']); ?></h5>
+                                    =======
+                                    <h5 id="rupiah"
+                                        class="card-title f-sub-total"><?= $cart_total($_SESSION['id']); ?></h5>
+                                    >>>>>>> .merge_file_a55132
                                 </div>
                             </div>
                         </div>
