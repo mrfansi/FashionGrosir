@@ -6,24 +6,25 @@
  * Time: 18.01
  */
 
-class Pengguna_alamat_m extends MY_Model {
+class Order_payment_m extends MY_Model
+{
     public function __construct()
     {
-        $this->table = 'pengguna_alamat';
-        $this->primary_key = 'pa_id';
-        $this->protected = array('pa_id','created_at','update_at');
+        $this->table = 'orders_pengiriman';
+        $this->primary_key = 'op_id';
+        $this->protected = array('op_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = TRUE;
-        $this->has_one['pengguna'] = array(
-            'foreign_model'=>'Pengguna_m',
-            'foreign_table'=> 'pengguna',
-            'foreign_key'=>'p_kode',
-            'local_key'=>'p_kode');
-        $this->has_one['alamat'] = array(
-            'foreign_model'=>'Alamat_m',
-            'foreign_table'=>'alamat',
-            'foreign_key'=>'a_kode',
-            'local_key'=>'a_kode');
+        $this->has_one['order'] = array(
+            'foreign_model' => 'Order_m',
+            'foreign_table' => 'orders',
+            'foreign_key' => 'o_kode',
+            'local_key' => 'o_kode');
+        $this->has_one['bank'] = array(
+            'foreign_model' => 'Bank_m',
+            'foreign_table' => 'bank',
+            'foreign_key' => 'b_kode',
+            'local_key' => 'b_kode');
         parent::__construct();
     }
 

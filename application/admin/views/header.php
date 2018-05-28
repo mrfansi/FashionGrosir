@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="<?= site_url('assets/vendor/select2/select2-bootstrap4.min.css'); ?>"/>
 
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon.ico">
