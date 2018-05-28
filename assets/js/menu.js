@@ -21,8 +21,7 @@ $(document).ready(function () {
     $menu_misc.click(function () {
         if ($menu_misc.hasClass('collapsed')) {
             $.cookie('misc_menu', 'expanded', {path: '/', expires: 100});
-        } else
-        {
+        } else {
             $.cookie('misc_menu', 'collapsed', {path: '/', expires: 100});
         }
     });
@@ -71,8 +70,7 @@ $(document).ready(function () {
     $menu_transaksi.click(function () {
         if ($menu_transaksi.hasClass('collapsed')) {
             $.cookie('transaksi_menu', 'expanded', {path: '/', expires: 100});
-        } else
-        {
+        } else {
             $.cookie('transaksi_menu', 'collapsed', {path: '/', expires: 100});
         }
     });
@@ -95,8 +93,7 @@ $(document).ready(function () {
     $menu_pelanggan.click(function () {
         if ($menu_pelanggan.hasClass('collapsed')) {
             $.cookie('pelanggan_menu', 'expanded', {path: '/', expires: 100});
-        } else
-        {
+        } else {
             $.cookie('pelanggan_menu', 'collapsed', {path: '/', expires: 100});
         }
     });
