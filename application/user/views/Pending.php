@@ -66,7 +66,7 @@ include "layout/Menu.php";
                                 <th>Nama Penerima</th>
                                 <th>Alamat</th>
                                 <th>Status</th>
-                                <th>Aksi</th>
+                                <!--                                <th>Aksi</th>-->
                             </tr>
                             </thead>
                             <tbody>
@@ -78,12 +78,9 @@ include "layout/Menu.php";
                                 <td>Caesar</td>
                                 <td>Jln Cengkareng...</td>
                                 <td>Pending</td>
-                                <td>
-                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-money"></i> Konfirmasi Pembayaran</button>
-
-
-
-                                </td>
+                                <!--                                <td>-->
+                                <!--                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-money"></i> Konfirmasi Pembayaran</button>-->
+                                <!--                                </td>-->
                             </tr>
                             <tr class="text-center">
                                 <td>1</td>
@@ -92,13 +89,10 @@ include "layout/Menu.php";
                                 <td>100.000</td>
                                 <td>Caesar</td>
                                 <td>Jln Cengkareng...</td>
-                                <td>Pending</td>
-                                <td>
-                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-money"></i> Konfirmasi Pembayaran</button>
-
-
-
-                                </td>
+                                <td>Transaksi Gagal</td>
+                                <!--                                <td>-->
+                                <!--                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-money"></i> Konfirmasi Pembayaran</button>-->
+                                <!--                                </td>-->
                             </tr>
 
                             </tr>
