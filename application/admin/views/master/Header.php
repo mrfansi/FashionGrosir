@@ -8,14 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/select2/select2-bootstrap4.css'); ?>"/>
     <link rel="stylesheet" href="<?= base_url('assets/vendor/font-awesome/css/all.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/font-awesome/css/font-awesome.min.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" href="<?= base_url('assets/css/grasp_mobile_progress_circle-1.0.0.min.css'); ?>">
+
     <link rel="stylesheet" href="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css" id="theme-stylesheet'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
+
     <style>
         .form-control:focus {
             background-color: #fff;
@@ -28,6 +32,7 @@
 
     <!-- Javascript files-->
     <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="<?= base_url('assets/vendor/popper.js/umd/popper.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/datatable/js/jquery.dataTables.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/datatable/js/dataTables.bootstrap4.min.js'); ?>"></script>

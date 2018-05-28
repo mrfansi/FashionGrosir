@@ -60,52 +60,72 @@
                     <h1><i class="fa fa-cogs"></i> Opsi</h1>
                 </div>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col">
-                            <div class="form-group">
-                                <label for="nama">Nama Toko</label>
-                                <input type="text" class="form-control" name="nama" placeholder="Nama Toko (max 50 karakter)" required>
-                            </div>
+                            <label for="nama">Nama Toko</label>
+                            <input type="text" class="form-control" name="nama"
+                                   placeholder="Nama Toko (max 50 karakter)" required>
                         </div>
                         <div class="col">
-                            <div class="form-group">
-                                <label for="singkatan">Kode Toko</label>
-                                <input type="text" class="form-control" name="singkatan" placeholder="Kode (max 2 karakter)" required>
-                            </div>
+                            <label for="singkatan">Kode Toko</label>
+                            <input type="text" class="form-control" name="singkatan" placeholder="Kode (max 2 karakter)"
+                                   required>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col">
-                            <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <textarea class="form-control" name="alamat" placeholder="Alamat Lengkap"></textarea>
-                            </div>
+                            <label for="provinsi">Provinsi</label>
+                            <select name="provinsi" id="provinsi" class="provinsi form-control" required>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="kabupaten">Kabupaten / Kota</label>
+                            <select name="kabupaten" id="kabupaten" class="kabupaten form-control" required>
+                            </select>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col">
-                            <div class="form-group">
-                                <label for="email">E-mail</label>
-                                <input type="email" class="form-control" name="email" placeholder="E-mail" required>
-                            </div>
+                            <label for="kecamatan">Kecamatan</label>
+                            <select name="kecamatan" id="kecamatan" class="kecamatan form-control" required>
+                            </select>
                         </div>
                         <div class="col">
-                            <div class="form-group">
-                                <label for="instagram">Instagram</label>
-                                <input type="text" class="form-control" name="instagram" placeholder="Instagram">
-                            </div>
+                            <label for="kelurahan">Kelurahan / Desa</label>
+                            <select name="kelurahan" id="kelurahan" class="kelurahan form-control" required>
+                            </select>
+                        </div>
+
+                        <div class="col">
+                            <label for="kodepos">Kode Pos</label>
+                            <input name="kodepos" id="kodepos" type="number"
+                                   class="form-control" placeholder="Kode Pos" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label class="f-test" for="alamat">Alamat Lengkap</label>
+                            <textarea name="alamat" id="alamat" class="form-control"
+                                      placeholder="Nama Gedung, Jalan, dan lainnya"
+                                      required></textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="email">E-mail</label>
+                            <input type="email" class="form-control" name="email" placeholder="E-mail" required>
                         </div>
                         <div class="col">
-                            <div class="form-group">
-                                <label for="whatsapp">Whatsapp</label>
-                                <input type="text" class="form-control" name="whatsapp" placeholder="Whatsapp">
-                            </div>
+                            <label for="instagram">Instagram</label>
+                            <input type="text" class="form-control" name="instagram" placeholder="Instagram">
                         </div>
                         <div class="col">
-                            <div class="form-group">
-                                <label for="facebook">Facebook</label>
-                                <input type="text" class="form-control" name="facebook" placeholder="Facebook">
-                            </div>
+                            <label for="whatsapp">Whatsapp</label>
+                            <input type="text" class="form-control" name="whatsapp" placeholder="Whatsapp">
+                        </div>
+                        <div class="col">
+                            <label for="facebook">Facebook</label>
+                            <input type="text" class="form-control" name="facebook" placeholder="Facebook">
                         </div>
                     </div>
                     <div class="form-group">
@@ -170,6 +190,74 @@
                         $('[role="alert"]').remove();
                     }
                 }, 5000);
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('#provinsi').select2({
+                    theme: 'bootstrap4',
+                    placeholder: 'Pilih provinsi',
+                    ajax: {
+                        url: '<?= site_url('API/get_provinsi'); ?>',
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term
+                            };
+                        }
+                    }
+                });
+                $('#kabupaten').select2({
+                    theme: 'bootstrap4',
+                    placeholder: 'Pilih kabupaten',
+                    ajax: {
+                        url: '<?= site_url('API/get_kabupaten'); ?>',
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term,
+                                provinsi: $('#provinsi').val()
+                            };
+                        }
+                    }
+                });
+                $('#kecamatan').select2({
+                    theme: 'bootstrap4',
+                    placeholder: 'Pilih kecamatan',
+                    ajax: {
+                        url: '<?= site_url('API/get_kecamatan'); ?>',
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term, // search term
+                                kabupaten: $('#kabupaten').val()
+                            };
+                        }
+                    }
+                });
+                $('#kelurahan').select2({
+                    theme: 'bootstrap4',
+                    placeholder: 'Pilih kelurahan / desa',
+                    ajax: {
+                        url: '<?= site_url('API/get_kelurahan'); ?>',
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term,
+                                kecamatan: $('#kecamatan').val()
+                            };
+                        }
+                    }
+                }).on('select2:select', function () {
+                    var id = $(this).val();
+                    $.get('<?= site_url('API/get_kodepos/'); ?>' + id, function (res) {
+                        $('#kodepos').val(res);
+                    })
+                });
             });
         </script>
     </section>

@@ -79,6 +79,7 @@
                                 <th scope="col">Deskripsi</th>
                                 <th scope="col">Hrg VIP</th>
                                 <th scope="col">Hrg Reseller</th>
+                                <th scope="col">Berat (Gr)</th>
                                 <th scope="col">Warna</th>
                                 <th scope="col">Ukuran</th>
                                 <th scope="col">Seri</th>
@@ -123,6 +124,9 @@
                                         <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
                                                 class="align-middle"
                                                 id="rupiah"><?= $item->i_hrg_reseller; ?>
+                                        </td>
+                                        <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
+                                                class="align-middle"><?= $item->i_berat; ?> Gr
                                         </td>
                                         <?php if (isset($item->item_detil) && count((array)$item->item_detil) == 1): ?>
                                             <?php foreach ($item->item_detil as $detil): ?>
