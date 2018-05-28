@@ -216,7 +216,7 @@ include "layout/Menu.php";
                             <!-- konten pembayaran sisi kanan -->
                         </div>
                         <a href="form_pengiriman.html"
-                           class="btn btn-primary btn-lg mb-3 btn-block col-2 f-button-font">Konfirmasi</a>
+                           class="btn btn-primary btn-lg mb-3 btn-block col-md-2 col-6 f-button-font">Konfirmasi</a>
 
                         <!--  END KONTEN BAWAH -->
                     </div>
