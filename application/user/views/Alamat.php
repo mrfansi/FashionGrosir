@@ -138,7 +138,7 @@ include "layout/Menu.php";
                         <div class="col">
                             <label for="nama_alamat">Judul</label>
                             <input type="text" name="nama_alamat" id="nama_alamat" class="form-control"
-                                   placeholder="Judul Alamat">
+                                   placeholder="Judul Alamat" required>
                         </div>
                     </div>
                     <div id="pengirim" style="display: none;">
@@ -304,6 +304,7 @@ include "layout/Menu.php";
             }).on('select2:select', function () {
                 var id = $(this).val();
                 var a_kode = $('#a_kode');
+                var nama_alamat = $('#nama_alamat');
                 var nama_penerima = $('#nama_penerima');
                 var kontak_penerima = $('#kontak_penerima');
                 var nama_pengirim = $('#nama_pengirim');
@@ -363,6 +364,7 @@ include "layout/Menu.php";
                                 }
                             })
                         }),
+                        nama_alamat.val(data.a_nama),
                         nama_penerima.val(data.pa_r_nama),
                         kontak_penerima.val(data.pa_r_kontak),
                         nama_pengirim.val(data.pa_s_nama),
