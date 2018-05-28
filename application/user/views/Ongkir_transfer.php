@@ -91,7 +91,7 @@ include "layout/Menu.php";
     </div>
     <br>
     <div class="container">
-        <h5 class="mb-3">Metode Pengiriman & Pembayaran</h5>
+        <h5 class="mb-3"><i class="fa fa-handshake"></i> Metode Pengiriman & Pembayaran</h5>
         <!-- Konten -->
         <div class="row">
             <!-- KOTAK KIRI -->
