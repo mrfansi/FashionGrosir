@@ -112,23 +112,16 @@ include "layout/Menu.php";
                     <div class="radio disabled">
                       <label><input type="radio" name="optradio" > J&T (2 - 3 Hari) (IDR 9.000)</label>
                     </div> -->
-                    <h6>
-                        Pilih Metode Pembayaran
-                    </h6>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optradio"> BANK TRANSFER - BCA an Lorem Ipsum 23829839289
-                        </label>
+                    <h6>BANK TRNASFER</h6>
+                    <div class="alert alert-danger" role="alert">
+                        BCA a/n FashionGrosir - 41751082
                     </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optradio"> BANK TRANSFER - BNI an Lorem Ipsum 23829839289
-                        </label>
-                    </div>
-                    <button type="submit" class="btn f-button-color">Lanjutkan</button>
+              <button type="submit" class="btn f-button-color">Lanjutkan</button>
                 </form>
             </div>
         </div>
+
+
 
         <!-- END KOTAK KIRI -->
     </div>
