@@ -231,13 +231,38 @@ include "layout/Menu.php";
                     <hr>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                            <h6>Total</h6>
+                            <h6>Sub Total</h6>
                         </div>
                         <div class="col-md-6 col-md-6 col-sm-5 col-6">
                             <div class="row">
                                 <div class="col-lg col-md-6 col-sm-7 col">
                                     <h5 id="rupiah"
                                         class="card-title f-sub-total"><?= $cart_total($_SESSION['id']); ?></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
+                            <h6>Biaya Pengiriman</h6>
+                        </div>
+                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
+                            <div class="row">
+                                <div class="col-lg col-md-6 col-sm-7 col">
+                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $cart_total($_SESSION['id']); ?></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
+                            <h6>Total</h6>
+                        </div>
+                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
+                            <div class="row">
+                                <div class="col-lg col-md-6 col-sm-7 col">
+                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $cart_total($_SESSION['id']); ?></h5>
                                 </div>
                             </div>
                         </div>
