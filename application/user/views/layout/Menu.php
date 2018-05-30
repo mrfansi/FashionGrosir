@@ -17,11 +17,13 @@
                             Produk Terbaru
                         </a>
                     </li>
-                    <?php foreach ($menu_kategori as $menukat): ?>
-                    <li class="nav-item f-nav-margin">
-                        <a class="nav-link" href="<?= site_url('kategori/' . $menukat->kategori->k_url); ?>"><?= $menukat->kategori->k_nama; ?></a>
-                    </li>
-                    <?php endforeach; ?>
+                    <?php if ($menu_kategori != NULL): ?>
+                        <?php foreach ($menu_kategori as $menukat): ?>
+                            <li class="nav-item f-nav-margin">
+                                <a class="nav-link" href="<?= site_url('kategori/' . $menukat->kategori->k_url); ?>"><?= $menukat->kategori->k_nama; ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>

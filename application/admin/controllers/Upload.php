@@ -26,7 +26,8 @@ class Upload extends MY_Controller
     public function do_upload()
     {
         $files = array();
-        $counter = count($_FILES['images']['name']);
+        $counter = count($_FILES['images']['size']);
+        echo $counter;
         for($i=0; $i < $counter ; $i++)
         {
             $_FILES['image']['name']= $_FILES['images']['name'][$i];
@@ -54,7 +55,6 @@ class Upload extends MY_Controller
             );
             $this->item_img->insert($data);
         }
-
         $this->data->berhasil = 'Foto Item berhasil diperbarui.';
         $this->session->set_flashdata('berhasil', $this->data->berhasil);
 

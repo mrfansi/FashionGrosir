@@ -26,6 +26,10 @@ class Item extends MY_Controller
             'id' => 'i_id',
         );
         $this->load->library('slug', $config);
+
+        $this->data->warna_all = $this->warna->get_all();
+        $this->data->ukuran_all = $this->ukuran->get_all();
+        $this->data->kategori_all = $this->kategori->get_all();
     }
 
     public function index()
@@ -171,6 +175,7 @@ class Item extends MY_Controller
         $this->data->title = 'Fashion Grosir | Item > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->item->guid();
+
         $this->load->view('CRUD_Item', $this->data);
     }
 

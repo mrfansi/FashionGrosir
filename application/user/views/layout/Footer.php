@@ -43,12 +43,14 @@
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 f-margin-nav">
                     <ul class="navbar-nav">
-                        <?php foreach ($menu_kategori as $menukat): ?>
-                            <li class="nav-item">
-                                <a class="nav-link f-footer-new"
-                                   href="<?= site_url('kategori/' . $menukat->kategori->k_url); ?>"><?= $menukat->kategori->k_nama; ?></a>
-                            </li>
-                        <?php endforeach; ?>
+                        <?php if ($menu_kategori != NULL): ?>
+                            <?php foreach ($menu_kategori as $menukat): ?>
+                                <li class="nav-item">
+                                    <a class="nav-link f-footer-new"
+                                       href="<?= site_url('kategori/' . $menukat->kategori->k_url); ?>"><?= $menukat->kategori->k_nama; ?></a>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </ul>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 f-margin-nav">
