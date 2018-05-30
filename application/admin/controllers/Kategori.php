@@ -11,6 +11,14 @@ class Kategori extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->isonline) {
+            redirect('login');
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $this->session->set_userdata('redirect', current_url());
+            }
+        }
+
         $config = array(
             'field' => 'k_nama',
             'title' => 'title',
@@ -18,55 +26,38 @@ class Kategori extends MY_Controller
             'id' => 'k_id',
         );
         $this->load->library('slug', $config);
-
-        $this->load->model('Kategori_m', 'kategori');
-
-//        $cek = $this->kategori->where_k_kode('0')->get();
-//        if ($cek == null)
-//        {
-//            $this->kategori->insert(array(
-//                'k_kode'     => 0,
-//                'k_nama'     => 'Non Kategori'
-//            ));
-//        }
     }
 
     public function index()
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Kategori';
-        $data->title_page = 'Kategori';
-        $data->total_kategori = $this->kategori->count_rows();
-        $data->kategoris = $this->kategori->get_all();
-        $this->load->view('Kategori', $data);
+        $this->data->title = 'Fashion Grosir | Kategori';
+        $this->data->title_page = 'Kategori';
+        $this->data->total_kategori = $this->kategori->count_rows();
+        $this->data->kategoris = $this->kategori->get_all();
+        $this->load->view('Kategori', $this->data);
     }
 
     public function tambah()
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Kategori > Tambah';
-        $data->submit = 'Simpan';
-        $data->kode = $this->kategori->guid();
-        $data->kategoris = $this->kategori->where_k_parent_kode(0)->get_all();
-        $this->load->view('CRUD_Kategori', $data);
+        $this->data->title = 'Fashion Grosir | Kategori > Tambah';
+        $this->data->submit = 'Simpan';
+        $this->data->kode = $this->kategori->guid();
+        $this->data->kategoris = $this->kategori->where_k_parent_kode(0)->get_all();
+        $this->load->view('CRUD_Kategori', $this->data);
     }
 
     public function ubah($id)
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Pelanggan > Ubah';
-        $data->submit = 'Ubah';
-        $data->kode = $id;
-        $data->kategori = $this->kategori->where('k_kode', $id)->get();
-        $data->kategoris = $this->kategori->where_k_parent_kode(0)->get_all();
-        $this->load->view('CRUD_Kategori', $data);
+        $this->data->title = 'Fashion Grosir | Pelanggan > Ubah';
+        $this->data->submit = 'Ubah';
+        $this->data->kode = $id;
+        $this->data->kategori = $this->kategori->where('k_kode', $id)->get();
+        $this->data->kategoris = $this->kategori->where_k_parent_kode(0)->get_all();
+        $this->load->view('CRUD_Kategori', $this->data);
     }
 
     public function simpan()
     {
-        // create object
-        $data = new stdClass();
-
         // get guid form post
         $id = $this->input->post('id');
 
@@ -80,13 +71,13 @@ class Kategori extends MY_Controller
                 'k_url'  => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));
             if ($kategori) {
-                $data->berhasil = 'Data Kategori berhasil diperbarui.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Data Kategori berhasil diperbarui.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('kategori');
             } else {
-                $data->gagal = 'Data Kategori gagal diperbarui.';
-                $this->session->set_flashdata('gagal', $data->gagal);
+                $this->data->gagal = 'Data Kategori gagal diperbarui.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('kategori');
             }
@@ -98,13 +89,13 @@ class Kategori extends MY_Controller
                 'k_url'  => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));
             if ($kategori) {
-                $data->berhasil = 'Data Kategori berhasil dibuat.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Data Kategori berhasil dibuat.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('kategori');
             } else {
-                $data->gagal = 'Data Kategori gagal dibuat.';
-                $this->session->set_flashdata('gagal', $data->gagal);
+                $this->data->gagal = 'Data Kategori gagal dibuat.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('kategori');
             }
@@ -113,17 +104,16 @@ class Kategori extends MY_Controller
 
     public function hapus($id)
     {
-        $data = new stdClass();
 
         $kategori = $this->kategori->where('k_kode', $id)->delete();
         if ($kategori) {
-            $data->berhasil = 'Data Kategori berhasil dihapus';
-            $this->session->set_flashdata('berhasil', $data->berhasil);
+            $this->data->berhasil = 'Data Kategori berhasil dihapus';
+            $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
             redirect('kategori');
         } else {
-            $data->gagal = 'Data Kategori gagal dihapus';
-            $this->session->set_flashdata('berhasil', $data->gagal);
+            $this->data->gagal = 'Data Kategori gagal dihapus';
+            $this->session->set_flashdata('berhasil', $this->data->gagal);
 
             redirect('kategori');
         }
@@ -131,8 +121,7 @@ class Kategori extends MY_Controller
 
     public function get($item)
     {
-        $data = new stdClass();
-        $data->members = $this->kategori->many_to_many_where($item);
-        $this->load->view('Tabel_detil', $data);
+        $this->data->members = $this->kategori->many_to_many_where($item);
+        $this->load->view('Tabel_detil', $this->data);
     }
 }

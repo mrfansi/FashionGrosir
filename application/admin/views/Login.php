@@ -56,7 +56,7 @@
                 </form>
             </div>
             <div class="copyrights text-center">
-                <p><a href="https://fashiongrosir-ind.com" class="external">Fashion Grosir</a></p>
+                <p><a href="https://fashiongrosir-ind.com" class="external"><?= $brandname; ?></a></p>
                 <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
             </div>
         </div>

@@ -11,6 +11,13 @@ class Seri extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->isonline) {
+            redirect('login');
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $this->session->set_userdata('redirect', current_url());
+            }
+        }
         $config = array(
             'field' => 's_nama',
             'title' => 'title',
@@ -18,44 +25,38 @@ class Seri extends MY_Controller
             'id' => 's_id',
         );
         $this->load->library('slug', $config);
-
-        $this->load->model('Seri_m', 'seri');
     }
 
     public function index()
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Nomor Seri';
-        $data->title_page = 'Nomor Seri';
-        $data->total_seri = $this->seri->count_rows();
-        $data->seris = $this->seri->get_all();
-        $this->load->view('Seri', $data);
+        $this->data->title = 'Fashion Grosir | Nomor Seri';
+        $this->data->title_page = 'Nomor Seri';
+        $this->data->total_seri = $this->seri->count_rows();
+        $this->data->seris = $this->seri->get_all();
+        $this->load->view('Seri', $this->data);
     }
 
     public function tambah()
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Nomor Seri > Tambah';
-        $data->submit = 'Simpan';
-        $data->kode = $this->seri->guid();
-        $this->load->view('CRUD_Seri', $data);
+        $this->data->title = 'Fashion Grosir | Nomor Seri > Tambah';
+        $this->data->submit = 'Simpan';
+        $this->data->kode = $this->seri->guid();
+        $this->load->view('CRUD_Seri', $this->data);
     }
 
     public function ubah($id)
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Nomor Seri > Ubah';
-        $data->submit = 'Ubah';
-        $data->kode = $id;
-        $data->seris = $this->seri->where('s_kode', $id)->get();
+        $this->data->title = 'Fashion Grosir | Nomor Seri > Ubah';
+        $this->data->submit = 'Ubah';
+        $this->data->kode = $id;
+        $this->data->seris = $this->seri->where('s_kode', $id)->get();
 
-        $this->load->view('CRUD_Seri', $data);
+        $this->load->view('CRUD_Seri', $this->data);
     }
 
     public function simpan()
     {
         // create object
-        $data = new stdClass();
 
         // get guid form post
         $id = $this->input->post('id');
@@ -69,13 +70,13 @@ class Seri extends MY_Controller
                 's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ));
             if ($seri) {
-                $data->berhasil = 'Nomor Seri berhasil diperbarui.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Nomor Seri berhasil diperbarui.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('seri');
             } else {
-                $data->gagal = 'Nomor Seri gagal diperbarui.';
-                $this->session->set_flashdata('gagal', $data->gagal);
+                $this->data->gagal = 'Nomor Seri gagal diperbarui.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('seri');
             }
@@ -87,13 +88,13 @@ class Seri extends MY_Controller
 
             ));
             if ($seri) {
-                $data->berhasil = 'Nomor Seri berhasil dibuat.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Nomor Seri berhasil dibuat.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('seri');
             } else {
-                $data->gagal = 'Nomor Seri gagal dibuat.';
-                $this->session->set_flashdata('gagal', $data->gagal);
+                $this->data->gagal = 'Nomor Seri gagal dibuat.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('seri');
             }
@@ -102,17 +103,16 @@ class Seri extends MY_Controller
 
     public function hapus($id)
     {
-        $data = new stdClass();
 
         $seri = $this->seri->where('s_kode', $id)->delete();
         if ($seri) {
-            $data->berhasil = 'Nomor Seri berhasil dihapus';
-            $this->session->set_flashdata('berhasil', $data->berhasil);
+            $this->data->berhasil = 'Nomor Seri berhasil dihapus';
+            $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
             redirect('seri');
         } else {
-            $data->gagal = 'Nomor Seri gagal dihapus';
-            $this->session->set_flashdata('berhasil', $data->gagal);
+            $this->data->gagal = 'Nomor Seri gagal dihapus';
+            $this->session->set_flashdata('berhasil', $this->data->gagal);
 
             redirect('seri');
         }
@@ -120,8 +120,7 @@ class Seri extends MY_Controller
 
     public function get($item)
     {
-        $data = new stdClass();
-        $data->members = $this->seri->many_to_many_where($item);
-        $this->load->view('Tabel_detil', $data);
+        $this->data->members = $this->seri->many_to_many_where($item);
+        $this->load->view('Tabel_detil', $this->data);
     }
 }

@@ -12,15 +12,19 @@ class Upload extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Item_img_m', 'item_img');
+        if (!$this->session->isonline) {
+            redirect('login');
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $this->session->set_userdata('redirect', current_url());
+            }
+        }
         $this->load->helper(array('form', 'url'));
 
     }
 
     public function do_upload()
     {
-        $data = new stdClass();
-
         $files = array();
         $counter = count($_FILES['images']['name']);
         for($i=0; $i < $counter ; $i++)
@@ -51,8 +55,8 @@ class Upload extends MY_Controller
             $this->item_img->insert($data);
         }
 
-        $data->berhasil = 'Foto Item berhasil diperbarui.';
-        $this->session->set_flashdata('berhasil', $data->berhasil);
+        $this->data->berhasil = 'Foto Item berhasil diperbarui.';
+        $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
         redirect('item');
     }

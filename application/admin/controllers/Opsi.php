@@ -11,24 +11,27 @@ class Opsi extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Toko_m', 'toko');
+
+        if (!$this->session->isonline) {
+            redirect('login');
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $this->session->set_userdata('redirect', current_url());
+            }
+        }
     }
 
     public function index() {
-        // null object
-        $data = new stdClass();
         // set title
-        $data->title = 'Fashion Grosir | Opsi';
-        $data->id = $this->toko->guid();
-        $data->toko = $this->toko->get();
-        $this->load->view('Opsi', $data);
+        $this->data->title = 'Fashion Grosir | Opsi';
+        $this->data->id = $this->toko->guid();
+        $this->data->toko = $this->toko->get();
+        $this->load->view('Opsi', $this->data);
     }
 
     public function simpan()
     {
-        $data = new stdClass();
         $id = $this->input->post('t_kode');
-
         $toko = $this->toko->where('t_kode', $id)->get();
 
         if ($toko) {
@@ -49,13 +52,13 @@ class Opsi extends MY_Controller
             ));
 
             if ($toko) {
-                $data->berhasil = 'Informasi Toko berhasil diupdate.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Informasi Toko berhasil diupdate.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('opsi');
             } else {
-                $data->berhasil = 'Informasi Toko gagal diupdate.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Informasi Toko gagal diupdate.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('opsi');
             }
@@ -78,13 +81,13 @@ class Opsi extends MY_Controller
             ));
 
             if ($toko) {
-                $data->berhasil = 'Informasi Toko berhasil diupdate.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Informasi Toko berhasil diupdate.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('opsi');
             } else {
-                $data->berhasil = 'Informasi Toko gagal diupdate.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Informasi Toko gagal diupdate.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('opsi');
             }

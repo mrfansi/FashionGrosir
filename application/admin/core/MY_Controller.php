@@ -6,32 +6,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class MY_Controller extends CI_Controller
 {
-    protected $meta_keywords;
-    protected $meta_author;
-    protected $meta_content;
-    protected $meta_title;
-    protected $menu_kategori;
+    public $data;
 
     public function __construct()
     {
         parent::__construct();
+
+        $this->data = new stdClass();
+
         // Library
         $this->load->library('session');
         $this->load->library('Layout');
-        $this->load->library('user_agent');
 
         // load web config
         $this->load->config('weboptions');
 
-        $this->meta_title = $this->config->item('webname');
-        $this->meta_content = $this->config->item('webdeskripsi');
-        $this->meta_keywords = $this->config->item('webkeywords');
-
-        // load menu
-        $this->menu_kategori = $this->menu();
-
-        // load model
-        $this->load->model('Key','key');
         // load model
         $this->load->model('Alamat_m', 'alamat');
         $this->load->model('Cart_m', 'cart');
@@ -58,43 +47,146 @@ class MY_Controller extends CI_Controller
         $this->load->model('Pengguna_m', 'pengguna');
         $this->load->model('Pengguna_alamat_m', 'pengguna_alamat');
 
+        $this->data->meta_title = $this->config->item('webname');
+        $this->data->meta_content = $this->config->item('webdeskripsi');
+        $this->data->meta_keywords = $this->config->item('webkeywords');
+        $this->data->menu_kategori = $this->item_kategori->with_kategori()->group_by('k_kode')->get_all();
+        $this->data->menu_cart = function ($session_id) {
+            return $this->cart->with_item_detil()->where_p_kode($session_id)->get_all();
+        };
 
-        // check if user already login
-        if (!$this->session->isonline) {
-            redirect(base_url('adm.php/auth'));
-        } else {
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $this->session->set_userdata('redirect', current_url());
+        $this->callback();
+        $this->load_pref();
+    }
+
+
+    private function callback()
+    {
+        $this->data->item = function ($i_kode) {
+            return $this->item
+                ->with_item_detil()
+                ->where_i_kode($i_kode)
+                ->get();
+        };
+
+        $this->data->item_all = function ($i_kode) {
+            return $this->item
+                ->with_item_detil()
+                ->where_i_kode($i_kode)
+                ->get_all();
+        };
+        $this->data->item_detil_with_item = function ($i_kode) {
+            return $this->item_detil
+                ->with_item()
+                ->with_warna('order_by:w_nama')
+                ->with_ukuran('order_by:u_nama')
+                ->with_seri()
+                ->with_item_img()
+                ->where_i_kode($i_kode)
+                ->get();
+        };
+
+        $this->data->item_detil_with_item_all = function ($i_kode) {
+            return $this->item_detil
+                ->with_item()
+                ->with_warna('order_by:w_nama')
+                ->with_ukuran('order_by:u_nama')
+                ->with_seri()
+                ->with_item_img()
+                ->where_i_kode($i_kode)
+                ->get_all();
+        };
+
+
+        $this->data->item_detil = function ($ide_kode) {
+            return $this->item_detil
+                ->with_item()
+                ->with_warna('order_by:w_nama')
+                ->with_ukuran('order_by:u_nama')
+                ->with_seri()
+                ->with_item_img()
+                ->where_ide_kode($ide_kode)
+                ->get();
+        };
+
+        $this->data->item_detil_all = function ($ide_kode) {
+            return $this->item_detil
+                ->with_item()
+                ->with_warna('order_by:w_nama')
+                ->with_ukuran('order_by:u_nama')
+                ->with_seri()
+                ->with_item_img()
+                ->where_ide_kode($ide_kode)
+                ->get_all();
+        };
+
+        $this->data->warna = function ($i_kode) {
+            return $this->warna
+                ->with_item_detil('where:i_kode = \'' . $i_kode . '\'')
+                ->get_all();
+        };
+
+        $this->data->ukuran = function ($i_kode) {
+            return $this->ukuran
+                ->with_item_detil('where:i_kode = \'' . $i_kode . '\'')
+                ->get_all();
+        };
+
+        $this->data->qty = function ($i_kode) {
+            $hasil = 0;
+            $stoks = $this->item_qty->fields('iq_qty')->with_item_detil('where:i_kode = \'' . $i_kode . '\'')->get_all();
+            foreach ($stoks as $stok) {
+                $hasil += $stok->iq_qty;
             }
 
+            return $hasil;
+        };
+
+        $this->data->qty_detil = function ($ide_kode) {
+            $hasil = 0;
+            $stoks = $this->item_qty->fields('iq_qty')->where_ide_kode($ide_kode)->get_all();
+            foreach ($stoks as $stok) {
+                $hasil += $stok->iq_qty;
+            }
+
+            return $hasil;
+        };
+
+        $this->data->item_img = function ($i_kode) {
+            return $this->item_img
+                ->where(array('i_kode' => $i_kode, 'ii_default' => 1))
+                ->get();
+        };
+
+        $this->data->item_img_all = function ($i_kode) {
+            return $this->item_img->where(array('i_kode' => $i_kode))->get_all();
+        };
+
+        $this->data->cart_s = function ($p_kode) {
+            return $this->cart->where_p_kode($p_kode)->get_all();
+        };
+
+        $this->data->cart_total = function ($p_kode) {
+            $hasil = 0;
+            foreach ($this->cart->where_p_kode($p_kode)->get_all() as $cart_total) {
+                $hasil += (int)$cart_total->ca_tharga;
+            }
+
+            return $hasil;
+        };
+
+
+    }
+
+    private function load_pref()
+    {
+        $toko = $this->toko->get();
+        if ($toko) {
+            $this->data->brandname = $toko->t_nama;
+        } else {
+            $this->data->brandname = '';
         }
-//        $this->output->cache(1);
-//        $allow = array(
-//            '192.168.66.1',
-//            '122.144.3.2',
-//            'localhost',
-//            '127.0.0.1',
-//            'dev.eazy-dev.xyz'
-//        );
-//        if (!in_array($_SERVER['REMOTE_ADDR'], $allow))
-//        {
-//            echo 'Akses tidak diperbolehkan';
-//            exit();
-//        }
-    }
 
-    public function _show_content($title, $page, $data = null)
-    {
-        $this->layout->add_title($title . ' - ' . $this->meta_title);
-        $this->layout->show($page, $data);
-    }
-
-    public function menu()
-    {
-        $this->load->model('Kategori_m','kategori');
-        return $this->kategori->get_all();
     }
 }
 
-/* End of file MY_Controller.php */
-/* Location: ./application/core/MY_Controller.php */

@@ -11,6 +11,13 @@ class Get extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->isonline) {
+            redirect('login');
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $this->session->set_userdata('redirect', current_url());
+            }
+        }
     }
 
     public function provinsi($where = '')

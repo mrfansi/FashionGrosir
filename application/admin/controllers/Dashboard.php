@@ -11,23 +11,28 @@ class Dashboard extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->isonline) {
+            redirect('login');
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $this->session->set_userdata('redirect', current_url());
+            }
+        }
     }
 
 
     public function index()
     {
-        // null object
-        $data = new stdClass();
         // set title
-        $data->title = 'Fashion Grosir | Dashboard';
+        $this->data->title = 'Fashion Grosir | Dashboard';
 
         // set total
-        $data->totalitem = $this->set_totalitem();
-        $data->totalcustomer = $this->set_totalcustomer();
-        $data->totalorder = $this->set_totalorder();
-        $data->totalinv = $this->set_totalinv();
+        $this->data->totalitem = $this->set_totalitem();
+        $this->data->totalcustomer = $this->set_totalcustomer();
+        $this->data->totalorder = $this->set_totalorder();
+        $this->data->totalinv = $this->set_totalinv();
 
-        $this->load->view('Dashboard', $data);
+        $this->load->view('Dashboard', $this->data);
     }
 
     private function set_totalitem()
