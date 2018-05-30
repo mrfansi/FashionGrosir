@@ -1242,3 +1242,73 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 .r-active-step .f-troli-text {
 	color: white;
 }
+
+.r-detailstatuspesanan-judul {
+	margin: 0px;
+	color: #F06292;
+	display: inline-block;
+}
+
+.r-font-date {
+	color: #888;
+
+}
+.r-hr-juduldetail {
+	margin: 1%;
+}
+
+.r-font-orderid {
+	color: #888;
+	display: inline-block;
+	margin-left: 1%;
+	margin-top: 0;
+	margin-bottom: 0;	
+
+}
+
+.r-small-detail-pesanan {
+display: block;
+
+}
+
+.r-detailstatuspesanan-judulkanan {
+	color: #F06292;
+	font-size: 17px;
+	margin: 0;
+	display: inline-block;
+}
+
+.r-detailstatuspesanan-judulhargakanan {
+	font-size: 17px;
+	color: #888;
+	display: inline-block;
+	margin:0;
+
+
+}
+
+.r-style-detailbarangpesanan {
+	color: #F06292;
+	margin-bottom: 3%;
+	font-weight: bold;
+}
+
+.r-p-detailproduk {
+	margin: 0;
+	
+}
+
+.r-image-detailpesanan {
+	width: 80px;
+	height: 80px;
+	margin-left: 30%;
+}
+
+.r-image-detailpesanan-layout {
+}
+
+.r-badge {
+	color: #F06292;
+	font-weight: none;
+	margin: 0;
+}
