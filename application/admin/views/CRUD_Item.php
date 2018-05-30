@@ -51,7 +51,7 @@ if ($submit == 'Ubah') {
                 </div>
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="berat">Berat / Kg</label>
+                        <label for="berat">Berat / Gr</label>
                         <input type="number" class="form-control" name="berat" placeholder="Berat"
                                value="<?= $hrg_reseller; ?>" required>
                     </div>
