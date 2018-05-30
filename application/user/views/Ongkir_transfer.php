@@ -100,12 +100,24 @@ include "layout/Menu.php";
                     Pilih Metode Pengiriman
                 </h6>
                 <form action="ongkir_transfer/simpan" method="post">
-                    <div class="radio">
-                        <label><input type="radio" name="optradio"> JNE - REGULER (2 - 3 Hari) (IDR 9.000)</label>
-                    </div>
-                    <div class="radio">
-                        <label><input type="radio" name="optradio"> JNE - YES (1 - 2 Hari) (IDR 18.000)</label>
-                    </div>
+                    <?php foreach ($pengiriman as $k1): ?>
+                        <?php $nama = $k1->name; ?>
+                        <?php foreach ($k1->costs as $k2): ?>
+                            <?php $deskripsi = $k2->description; ?>
+                            <?php foreach ($k2->cost as $k3): ?>
+                                <?php $biaya = $k3->value; ?>
+                                <?php $estimasi = $k3->etd; ?>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="pengiriman" id="pengiriman"
+                                           value="1">
+                                    <label class="form-check-label" for="pengiriman">
+                                        <?= $nama . ' - ' . $deskripsi . ' (' . $estimasi . ' hari) ('; ?> <span
+                                                id="rupiah"><?= $biaya; ?></span>)
+                                    </label>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    <?php endforeach; ?>
                     <!-- <div class="radio disabled">
                       <label><input type="radio" name="optradio" > J&T (2 - 3 Hari) (IDR 9.000)</label>
                     </div>
@@ -116,11 +128,10 @@ include "layout/Menu.php";
                     <div class="alert alert-danger" role="alert">
                         BCA a/n FashionGrosir - 41751082
                     </div>
-              <button type="submit" class="btn f-button-color">Lanjutkan</button>
+                    <button type="submit" class="btn f-button-color">Lanjutkan</button>
                 </form>
             </div>
         </div>
-
 
 
         <!-- END KOTAK KIRI -->
