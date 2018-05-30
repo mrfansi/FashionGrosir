@@ -23,7 +23,7 @@ include "layout/Menu.php";
             <?php if ($terbaru_items() != NULL): ?>
                 <?php foreach ($terbaru_items() as $terbaru): ?>
                     <?php $stok = $qty($terbaru->i_kode); ?>
-                    <?php if ($stok > 1): ?>
+                    <?php if ($stok >= 1): ?>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                         <div class="card f-bottom">
                             <a href="<?= site_url('produk-terbaru/item/' . $terbaru->i_url . '/detil'); ?>">
