@@ -3,6 +3,7 @@ include "layout/Header.php";
 include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
+<?php $nomor_order = $this->uri->segment(2); ?>
     <!-- Content -->
     <div class="container">
         <br>
@@ -143,14 +144,16 @@ include "layout/Menu.php";
                         <h5 class="r-judul-kotak4-bawah">
                             Konfirmasi Pembayaran
                         </h5>
-                        <div class="row">
-                            <div class="col">
-                                <form>
+                        <form action="konfirmasi_pembayaran/simpan" method="post">
+                            <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+
+                            <div class="row">
+                                <div class="col">
                                     <div class="form-group">
-                                        <label for="id_order">Payment From Bank / Pembayaran Dari Bank : *</label>
+                                        <label for="bank">Pembayaran Dari Bank : *</label>
                                         <div class="r-container-konten">
-                                            <select class="form-control r-style-input f-border-form" id="id_order"
-                                                    name="bank">
+                                            <select class="form-control r-style-input f-border-form" id="bank"
+                                                    name="bank" required>
                                                 <option value="BCA">BCA</option>
                                                 <option value="BNI">BNI</option>
                                                 <option value="MANDIRI">MANDIRI</option>
@@ -161,42 +164,55 @@ include "layout/Menu.php";
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="id_order">Payment From Account Name / Rekening Atas Nama : *</label>
+                                        <label for="rek_atasnama">Rekening Atas Nama : *</label>
                                         <div class="r-container-konten">
                                             <input type="text" class="form-control r-style-input f-border-form"
-                                                   id="id_order">
+                                                   name="rek_atasnama" placeholder="Input Nama Pemilik Rekening"
+                                                   required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nomor_rekening">Nomor Rekening : *</label>
+                                        <div class="r-container-konten">
+                                            <input type="number" class="form-control r-style-input f-border-form"
+                                                   name="nomor_rekening" placeholder="Input Nomor Rekening" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- konten pembayaran sisi kanan -->
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="total_pembayaran">Total Pembayan : *</label>
+                                        <div class="r-container-konten">
+                                            <input type="number" class="form-control r-style-input f-border-form"
+                                                   name="total_pembayaran" placeholder="Input Total Pembayaran"
+                                                   required>
                                         </div>
                                     </div>
 
-                            </div>
-
-                            <!-- konten pembayaran sisi kanan -->
-
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="id_order">Payment Amount / Total Pembayan : *</label>
-                                    <div class="r-container-konten">
-                                        <input type="number" class="form-control r-style-input f-border-form"
-                                               id="id_order">
+                                    <div class="form-group">
+                                        <label for="bukti_pembayaran">Upload Bukti Pembayaran : *</label>
+                                        <br>
+                                        <div class="r-upload-f-button-font-wrapper">
+                                            <button class="r-btn"><i class="fa fa-upload" style="font-size: 18px;"></i>Unggah
+                                                Bukti
+                                            </button>
+                                            <input type="file" name="bukti_pembayaran">
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="id_order">Upload Bukti Pembayaran : *</label>
-                                    <br>
-                                    <div class="r-upload-f-button-font-wrapper">
-                                        <button class="r-btn"><i class="fa fa-upload" style="font-size: 18px;"></i>Unggah
-                                            File
-                                        </button>
-                                        <input type="file" name="myfile">
-                                    </div>
+                                <!-- konten pembayaran sisi kanan -->
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary btn-block">Konfirmasi Pembayaran
+                                    </button>
                                 </div>
                             </div>
-                            <!-- konten pembayaran sisi kanan -->
-                        </div>
-                        <a href="form_pengiriman.html"
-                           class="btn btn-primary btn-lg mb-3 btn-block col-md-2 col-6 f-button-font">Konfirmasi</a>
-
+                        </form>
+                        <br>
                         <!--  END KONTEN BAWAH -->
                     </div>
                 </div>  <!-- Saya pusing mas ini untuk apa tidak tahu -->
@@ -204,6 +220,10 @@ include "layout/Menu.php";
             <!-- END KOTAK KIRI -->
 
             <!-- KOTAK KANAN -->
+            <?php $biaya_subtotal = $biaya_subtotal();
+            $biaya_pengiriman = $biaya_pengiriman();
+            $total = $biaya_subtotal + $biaya_pengiriman;
+            ?>
             <div class="col-lg-6 col-md-12 f-font-troli">
                 <div class="border f-border-padding f-radius">
                     <h5>Perhitungan Harga</h5>
@@ -216,7 +236,7 @@ include "layout/Menu.php";
                             <div class="row">
                                 <div class="col-lg col-md-6 col-sm-7 col">
                                     <h5 id="rupiah"
-                                        class="card-title f-sub-total"><?= $cart_total($_SESSION['id']); ?></h5>
+                                        class="card-title f-sub-total"><?= $biaya_subtotal; ?></h5>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +248,7 @@ include "layout/Menu.php";
                         <div class="col-md-6 col-md-6 col-sm-5 col-6">
                             <div class="row">
                                 <div class="col-lg col-md-6 col-sm-7 col">
-                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $cart_total($_SESSION['id']); ?></h5>
+                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $biaya_pengiriman; ?></h5>
                                 </div>
                             </div>
                         </div>
@@ -241,7 +261,7 @@ include "layout/Menu.php";
                         <div class="col-md-6 col-md-6 col-sm-5 col-6">
                             <div class="row">
                                 <div class="col-lg col-md-6 col-sm-7 col">
-                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $cart_total($_SESSION['id']); ?></h5>
+                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $total; ?></h5>
                                 </div>
                             </div>
                         </div>

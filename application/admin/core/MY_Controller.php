@@ -36,11 +36,14 @@ class MY_Controller extends CI_Controller
         $this->load->model('Order_detil_m', 'order_detil');
         $this->load->model('Order_m', 'order');
         $this->load->model('Order_pengiriman_m', 'order_pengiriman');
-        $this->load->model('Bank_m', 'bank');
+        $this->load->model('Order_ongkir_m', 'order_ongkir');
+        $this->load->model('Order_payment_m', 'order_payment');
+        $this->load->model('Order_bukti_m', 'order_bukti');
         $this->load->model('Seri_m', 'seri');
         $this->load->model('Toko_m', 'toko');
         $this->load->model('Ukuran_m', 'ukuran');
         $this->load->model('Warna_m', 'warna');
+        $this->load->model('Bank_m', 'bank');
         $this->load->model('Provinsi_m', 'provinsi');
         $this->load->model('Kabupaten_m', 'kabupaten');
         $this->load->model('Kecamatan_m', 'kecamatan');
@@ -57,7 +60,6 @@ class MY_Controller extends CI_Controller
         };
 
         $this->callback();
-        $this->load_pref();
     }
 
 
@@ -179,20 +181,6 @@ class MY_Controller extends CI_Controller
         $this->data->bank_s = function () {
             return $this->bank->get_all();
         };
-
-
-    }
-
-    private function load_pref()
-    {
-        $toko = $this->toko->get();
-        if ($toko) {
-            $this->data->brandname = $toko->t_nama;
-        } else {
-            $this->data->brandname = '';
-        }
-
     }
 }
-
 

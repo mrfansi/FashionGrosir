@@ -89,7 +89,7 @@ class Ongkir_transfer extends MY_Controller
         $order_payment = $this->order_payment->where('o_kode', $o_kode)->get();
 
         if ($order_ongkir && $order_payment) {
-            $order_ongkir = $this->order_ongkir->where('o_kode', $o_kode)->update(array(
+            $this->order_ongkir->where('o_kode', $o_kode)->update(array(
                 'oo_kode' => $this->order_ongkir->guid(),
                 'oo_nama' => $this->input->post('nama'),
                 'oo_deskripsi' => $this->input->post('deskripsi'),
@@ -97,22 +97,13 @@ class Ongkir_transfer extends MY_Controller
                 'oo_biaya' => $this->input->post('biaya')
             ));
 
-            $order_payment = $this->order_payment->where('o_kode', $o_kode)->update(array(
+            $this->order_payment->where('o_kode', $o_kode)->update(array(
                 'b_kode' => $this->input->post('bank_id')
             ));
 
-            if ($order_payment && $order_ongkir) {
-                $this->data->berhasil = 'Data Kategori berhasil dibuat.';
-                $this->session->set_flashdata('berhasil', $this->data->berhasil);
-
-                echo 'Berhasil Update';
-            } else {
-                $this->data->gagal = 'Data Kategori gagal dibuat.';
-                $this->session->set_flashdata('gagal', $this->data->gagal);
-                echo 'Gagal Update';
-            }
+            $this->order->where('o_kode', $o_kode)->update(array('o_status' => 2));
         } else {
-            $order_ongkir = $this->order_ongkir->insert(array(
+            $this->order_ongkir->insert(array(
                 'oo_kode' => $this->order_ongkir->guid(),
                 'oo_nama' => $this->input->post('nama'),
                 'oo_deskripsi' => $this->input->post('deskripsi'),
@@ -121,22 +112,12 @@ class Ongkir_transfer extends MY_Controller
                 'o_kode' => $o_kode
             ));
 
-            $order_payment = $this->order_payment->insert(array(
+            $this->order_payment->insert(array(
                 'o_kode' => $o_kode,
                 'b_kode' => $this->input->post('bank_id')
 
             ));
-
-            if ($order_payment && $order_ongkir) {
-                $this->data->berhasil = 'Data Kategori berhasil dibuat.';
-                $this->session->set_flashdata('berhasil', $this->data->berhasil);
-
-                echo 'Berhasil Created';
-            } else {
-                $this->data->gagal = 'Data Kategori gagal dibuat.';
-                $this->session->set_flashdata('gagal', $this->data->gagal);
-                echo 'Gagal Created';
-            }
+            $this->order->where('o_kode', $o_kode)->update(array('o_status' => 2));
         }
 
         redirect('checkout/' . $nomor_order . '/konfirmasi_pembayaran');

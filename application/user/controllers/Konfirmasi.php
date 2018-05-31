@@ -67,7 +67,81 @@ class Konfirmasi extends MY_Controller
 
             return $pembayaran->b_penerbit . ' - (A/N: ' . $pembayaran->b_nama . ') (Nomor Rek: ' . $pembayaran->b_rek . ')';
         };
+
+        $this->data->biaya_subtotal = function () {
+            $hasil = 0;
+            $o_kode = $this->order
+                ->where('o_noorder', $this->data->nomor_order)
+                ->get()->o_kode;
+            foreach ($this->order_detil->where('o_kode', $o_kode)->get_all() as $od) {
+                $hasil += (int)$od->od_tharga;
+            }
+
+            return $hasil;
+        };
+
+        $this->data->biaya_pengiriman = function () {
+            $o_kode = $this->order
+                ->where('o_noorder', $this->data->nomor_order)
+                ->get()->o_kode;
+            $ongkir = $this->order_ongkir->where('o_kode', $o_kode)->get();
+            return (int)$ongkir->oo_biaya;
+        };
         $this->load->view('Konfirmasi', $this->data);
+    }
+
+
+    public function simpan()
+    {
+        $o_kode = $this->order
+            ->where('o_noorder', $this->data->nomor_order)
+            ->get()->o_kode;
+
+        $order_bukti = $this->order_bukti->where('o_kode', $o_kode)->get();
+
+        if ($order_bukti) {
+            //upload an image options
+            $config = array();
+            $config['upload_path'] = './upload';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '0';
+            $config['overwrite'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('bukti_pembayaran');
+            $files = $this->upload->data();
+
+            $this->order_bukti->where('o_kode', $o_kode)->update(array(
+                'ob_nama_rek' => $this->input->post('rek_atasnama'),
+                'ob_no_rek' => $this->input->post('nomor_rekening'),
+                'ob_bank_nama' => $this->input->post('bank'),
+                'ob_nominal' => $this->input->post('total_pembayaran'),
+                'ob_foto' => $files['file_name']
+            ));
+        } else {
+            //upload an image options
+            $config = array();
+            $config['upload_path'] = './upload';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '0';
+            $config['overwrite'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('bukti_pembayaran');
+            $files = $this->upload->data();
+
+            $this->order_bukti->insert(array(
+                'ob_kode' => $this->order_bukti->guid(),
+                'ob_nama_rek' => $this->input->post('rek_atasnama'),
+                'ob_no_rek' => $this->input->post('nomor_rekening'),
+                'ob_bank_nama' => $this->input->post('bank'),
+                'ob_nominal' => $this->input->post('total_pembayaran'),
+                'ob_foto' => $files['file_name'],
+                'o_kode' => $o_kode
+            ));
+        }
+
+        redirect('checkout/' . $this->uri->segment(2) . '/konfirmasi_pembayaran');
     }
 }
 

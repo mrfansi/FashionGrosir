@@ -38,6 +38,7 @@ class MY_Controller extends CI_Controller
         $this->load->model('Order_pengiriman_m', 'order_pengiriman');
         $this->load->model('Order_ongkir_m', 'order_ongkir');
         $this->load->model('Order_payment_m', 'order_payment');
+        $this->load->model('Order_bukti_m', 'order_bukti');
         $this->load->model('Seri_m', 'seri');
         $this->load->model('Toko_m', 'toko');
         $this->load->model('Ukuran_m', 'ukuran');
