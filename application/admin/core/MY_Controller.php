@@ -60,6 +60,7 @@ class MY_Controller extends CI_Controller
         };
 
         $this->callback();
+        $this->load_pref();
     }
 
 
@@ -182,5 +183,18 @@ class MY_Controller extends CI_Controller
             return $this->bank->get_all();
         };
     }
+
+    private function load_pref()
+    {
+        $toko = $this->toko->get();
+        if ($toko) {
+            $this->data->brandname = $toko->t_nama;
+        } else {
+            $this->data->brandname = '';
+        }
+
+
+    }
+
 }
 
