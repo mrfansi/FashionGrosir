@@ -96,34 +96,28 @@ include "layout/Menu.php";
         <div class="row">
             <!-- KOTAK KIRI -->
             <div class="col-lg-12 col-md-12">
-                <h6>
-                    Pilih Metode Pengiriman
-                </h6>
-                <form action="ongkir_transfer/simpan" method="post">
-                    <?php foreach ($pengiriman as $k1): ?>
-                        <?php $nama = $k1->name; ?>
-                        <?php foreach ($k1->costs as $k2): ?>
-                            <?php $deskripsi = $k2->description; ?>
-                            <?php foreach ($k2->cost as $k3): ?>
-                                <?php $biaya = $k3->value; ?>
-                                <?php $estimasi = $k3->etd; ?>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pengiriman" id="pengiriman"
-                                           value="1">
-                                    <label class="form-check-label" for="pengiriman">
-                                        <?= $nama . ' - ' . $deskripsi . ' (' . $estimasi . ' hari) ('; ?> <span
-                                                id="rupiah"><?= $biaya; ?></span>)
-                                    </label>
-                                </div>
-                            <?php endforeach; ?>
+                <h6>Pilih Metode Pengiriman</h6>
+                <?php foreach ($pengiriman as $k1): ?>
+                    <?php $nama = $k1->name; ?>
+                    <?php foreach ($k1->costs as $k2): ?>
+                        <?php $deskripsi = $k2->description; ?>
+                        <?php foreach ($k2->cost as $k3): ?>
+                            <?php $biaya = $k3->value; ?>
+                            <?php $estimasi = $k3->etd; ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="pengiriman" id="pengiriman"
+                                       value="1">
+                                <label class="form-check-label" for="pengiriman">
+                                    <?= $nama . ' - ' . $deskripsi . ' (' . $estimasi . ' hari) ('; ?> <span
+                                            id="rupiah"><?= $biaya; ?></span>)
+                                </label>
+                            </div>
                         <?php endforeach; ?>
                     <?php endforeach; ?>
-                    <!-- <div class="radio disabled">
-                      <label><input type="radio" name="optradio" > J&T (2 - 3 Hari) (IDR 9.000)</label>
-                    </div>
-                    <div class="radio disabled">
-                      <label><input type="radio" name="optradio" > J&T (2 - 3 Hari) (IDR 9.000)</label>
-                    </div> -->
+                <?php endforeach; ?>
+                <br>
+                <form action="ongkir_transfer/simpan" method="post">
+
                     <h6>BANK TRNASFER</h6>
                     <div class="alert alert-danger" role="alert">
                         BCA a/n FashionGrosir - 41751082

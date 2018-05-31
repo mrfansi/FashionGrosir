@@ -51,7 +51,7 @@ include "layout/Menu.php";
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>Tidak ada item yang ditampilkan</p>
+                <p class="col">Tidak ada item yang ditampilkan</p>
             <?php endif; ?>
             <br>
         </div>

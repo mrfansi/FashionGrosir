@@ -80,7 +80,7 @@ class Ongkir_transfer extends MY_Controller
         }
 
         $cost = $this->ongkir->cost($hasil->origin_id, $hasil->dst_id, $this->get_berat($nomor_order), "jne");
-
+        echo '<script>console.log(' . $cost . ')</script>';
         return json_decode($cost);
     }
 
