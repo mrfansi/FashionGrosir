@@ -36,6 +36,7 @@ class MY_Controller extends CI_Controller
         $this->load->model('Order_detil_m', 'order_detil');
         $this->load->model('Order_m', 'order');
         $this->load->model('Order_pengiriman_m', 'order_pengiriman');
+        $this->load->model('Bank_m', 'bank');
         $this->load->model('Seri_m', 'seri');
         $this->load->model('Toko_m', 'toko');
         $this->load->model('Ukuran_m', 'ukuran');
@@ -173,6 +174,10 @@ class MY_Controller extends CI_Controller
             }
 
             return $hasil;
+        };
+
+        $this->data->bank_s = function () {
+            return $this->bank->get_all();
         };
 
 

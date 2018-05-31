@@ -40,6 +40,7 @@ class MY_Controller extends CI_Controller
         $this->load->model('Toko_m', 'toko');
         $this->load->model('Ukuran_m', 'ukuran');
         $this->load->model('Warna_m', 'warna');
+        $this->load->model('Bank_m', 'bank');
         $this->load->model('Provinsi_m', 'provinsi');
         $this->load->model('Kabupaten_m', 'kabupaten');
         $this->load->model('Kecamatan_m', 'kecamatan');
@@ -172,6 +173,10 @@ class MY_Controller extends CI_Controller
             }
 
             return $hasil;
+        };
+
+        $this->data->bank_s = function () {
+            return $this->bank->get_all();
         };
     }
 }

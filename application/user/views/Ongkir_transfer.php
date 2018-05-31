@@ -95,7 +95,8 @@ include "layout/Menu.php";
         <!-- Konten -->
         <div class="row">
             <!-- KOTAK KIRI -->
-            <div class="col-lg-12 col-md-12">
+            <form class="col-lg-12 col-md-12" action="ongkir_transfer/simpan" method="post">
+                <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                 <h6>Pilih Metode Pengiriman</h6>
                 <?php foreach ($pengiriman as $k1): ?>
                     <?php $nama = $k1->name; ?>
@@ -106,7 +107,11 @@ include "layout/Menu.php";
                             <?php $estimasi = $k3->etd; ?>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="pengiriman" id="pengiriman"
-                                       value="1">
+                                       data-deskripsi="<?= $deskripsi; ?>"
+                                       data-biaya="<?= $biaya; ?>"
+                                       data-estimasi="<?= $estimasi; ?>"
+                                       data-nama="<?= $nama; ?>"
+                                       value="1" required>
                                 <label class="form-check-label" for="pengiriman">
                                     <?= $nama . ' - ' . $deskripsi . ' (' . $estimasi . ' hari) ('; ?> <span
                                             id="rupiah"><?= $biaya; ?></span>)
@@ -116,17 +121,55 @@ include "layout/Menu.php";
                     <?php endforeach; ?>
                 <?php endforeach; ?>
                 <br>
-                <form action="ongkir_transfer/simpan" method="post">
 
-                    <h6>BANK TRNASFER</h6>
-                    <div class="alert alert-danger" role="alert">
-                        BCA a/n FashionGrosir - 41751082
+
+                <h6>Pilih Metode Pembayaran</h6>
+                <?php foreach ($bank_s() as $bank): ?>
+                    <?php $name = $bank->b_penerbit . ' (A/N: ' . $bank->b_nama . ') (Nomor Rek: ' . $bank->b_rek . ')'; ?>
+                    <div class="form-check">
+
+                        <input class="form-check-input" type="radio"
+                               data-id="<?= $bank->b_kode; ?>"
+                               name="bank" id="bank"
+                               value="1" required>
+                        <label class="form-check-label" for="bank"><?= $name; ?></label>
+
                     </div>
-                    <button type="submit" class="btn f-button-color">Lanjutkan</button>
-                </form>
-            </div>
-        </div>
+                <?php endforeach; ?>
 
+                <br>
+                <input type="hidden" name="bank_id" id="bank_id">
+                <input type="hidden" name="nama" id="nama">
+                <input type="hidden" name="deskripsi" id="deskripsi">
+                <input type="hidden" name="biaya" id="biaya">
+                <input type="hidden" name="estimasi" id="estimasi">
+                <button type="submit" class="btn f-button-color">Lanjutkan</button>
+            </form>
+        </div>
+        <script>
+            $('[id="pengiriman"]').change(function () {
+                var data = $(this);
+                var deskripsi = data.attr('data-deskripsi');
+                var biaya = data.attr('data-biaya');
+                var estimasi = data.attr('data-estimasi');
+                var nama = data.attr('data-nama');
+
+                $.when(
+                    $('#nama').val(nama),
+                    $('#deskripsi').val(deskripsi),
+                    $('#biaya').val(biaya),
+                    $('#estimasi').val(estimasi)
+                )
+            });
+
+            $('[id="bank"]').change(function () {
+                var data = $(this);
+                var id = data.attr('data-id');
+                $.when(
+                    $('#bank_id').val(id)
+                );
+            });
+        </script>
 
         <!-- END KOTAK KIRI -->
     </div>

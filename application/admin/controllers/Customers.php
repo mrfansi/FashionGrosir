@@ -59,10 +59,9 @@ class Customers extends MY_Controller
             $customer = $this->pengguna->where_p_kode($id)->update(array(
                 'p_tipe'    => $this->input->post('tipe'),
                 'p_nama'    => $this->input->post('nama'),
-                'p_username'    => $this->input->post('username'),
+                'p_username' => $this->input->post('email'),
                 'p_password'    => $this->input->post('password'),
                 'p_email'       => $this->input->post('email'),
-                'updated_by'        => $_SESSION['username'],
             ));
             if ($customer)
             {
@@ -83,12 +82,11 @@ class Customers extends MY_Controller
         {
             $customer = $this->pengguna->insert(array(
                 'p_kode'          => $this->input->post('id'),
-                'p_tipe'          => $this->input->post('tipe'),
-                'p_nama'          => $this->input->post('nama'),
-                'p_username'      => $this->input->post('username'),
-                'p_password'      => $this->input->post('password'),
-                'p_email'         => $this->input->post('email'),
-//                'created_by'      => $_SESSION['username'],
+                'p_tipe' => $this->input->post('tipe'),
+                'p_nama' => $this->input->post('nama'),
+                'p_username' => $this->input->post('email'),
+                'p_password' => $this->input->post('password'),
+                'p_email' => $this->input->post('email'),
             ));
             if ($customer)
             {

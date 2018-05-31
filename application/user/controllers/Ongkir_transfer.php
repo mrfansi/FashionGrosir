@@ -37,6 +37,7 @@ class Ongkir_transfer extends MY_Controller
 
     public function simpan()
     {
+        $ongkir_id = $this->order_pengiriman->guid();
 
     }
 
