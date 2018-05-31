@@ -26,7 +26,8 @@ include "layout/Menu.php";
             <!-- Side bar menu -->
             <div class="col-12 col-sm-12 col-md-2">
                 <div class="list-group">
-                    <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('profil'); ?>">Profil Saya</a>
+                    <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('profil'); ?>">Profil
+                        Saya</a>
                     <a class="list-group-item list-group-item-action" href="<?= site_url('profil_alamat'); ?>">Alamat
                         Saya</a>
                     <a class="list-group-item list-group-item-action" href="<?= site_url('profil_password'); ?>">Ubah
@@ -44,89 +45,57 @@ include "layout/Menu.php";
             <!-- Konten  -->
             <div class="col-12 col-sm-12 col-md-9">
 
-                <div class="card container-fluid p-4">
-
-<!--                    <div class="row container">-->
-<!--                        <div class="col">-->
-<!--                            <h3 class="r-style-title-konten-profile">-->
-<!--                                PROFIL SAYA-->
-<!--                            </h3>-->
-<!--                            <hr style="width: 30%;">-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-                    <div class="row container r-layout-konten-profile">
-
-<!--                        <div class="col-12 col-sm-12 col-md-2">-->
-<!---->
-<!--                        </div>-->
-                        <div class="col-12 col-sm-12 col-md-8 m-auto">
-                            <form>
-
-                                <div class="form-group">
-                                    <label class="r-font-konten-profile">Alamat Email : </label>
-                                    <input type="email" class="form-control" disabled=""
-                                           placeholder="lucintaluna@bukanlaki.com">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="r-font-konten-profile">Nama Lengkap : </label>
-                                    <input type="password" class="form-control" disabled="" placeholder="Ricky Meong">
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="r-font-konten-profile">Nomor Telepon : </label>
-                                    <input type="password" class="form-control" disabled=""
-                                           placeholder="0823 1056 9056">
-
-                                </div>
-
-                                <br>
-
-                            </form>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-8">
+                                <form action="profil/simpan" method="post">
+                                    <input type="hidden" name="id" value="<?= $_SESSION['id']; ?>">
+                                    <div class="form-group">
+                                        <label class="r-font-konten-profile">Tipe Pengguna : </label>
+                                        <input type="text" class="form-control"
+                                               value="<?= $profil->p_tipe == 1 ? 'VIP' : 'Reseller'; ?>"
+                                               placeholder="Tipe" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="r-font-konten-profile">Nama Lengkap : </label>
+                                        <input type="text" class="form-control"
+                                               value="<?= $profil->p_nama; ?>"
+                                               placeholder="Nama Lengkap">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="r-font-konten-profile">E-mail : </label>
+                                        <input type="email" class="form-control"
+                                               value="<?= $profil->p_email; ?>"
+                                               placeholder="E-mail">
+                                    </div>
 
 
+                                    <div class="form-group">
+                                        <label class="r-font-konten-profile">Nomor Telepon : </label>
+                                        <input type="password" class="form-control"
+                                               placeholder="Nomor Telepon">
+                                    </div>
+                                    <div class="forn-group">
+                                        <button type="submit" class="btn btn-primary r-btn-pink">Simpan
+                                        </button>
+                                    </div>
+                                    <br>
+                                </form>
+                            </div>
                         </div>
-
-
-<!--                        <div class="col-12 col-sm-12 col-md-2">-->
-<!---->
-<!--                        </div>-->
-
-
                     </div>
-
-
-                    <div class="row container">
-                        <div class="col-12 col-sm-12 col-md-2 ">
-
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-8 text-center">
-                            <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-pencil"></i> Ubah
-                            </button>
-                            <button type="submit" class="btn r-btn-konten-profile " disabled=""><i
-                                        class="fa fa-times"></i> Batal
-                            </button>
-                            <button type="submit" class="btn r-btn-konten-profile " disabled=""><i
-                                        class="fa fa-save"></i> Simpan
-                            </button>
-                        </div>
-
-                        <div class="col-12 col-sm-12 col-md-2">
-
-                        </div>
-
-                    </div>
-
-                    <br>
-
-
                 </div>
+
+
+                <br>
+
 
             </div>
 
         </div>
+
+    </div>
     </div>
 
     <!-- END Konten -->
