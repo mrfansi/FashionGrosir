@@ -1242,3 +1242,183 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 .r-active-step .f-troli-text {
 	color: white;
 }
+
+.r-detailstatuspesanan-judul {
+	margin: 0px;
+	color: #F06292;
+	display: inline-block;
+}
+
+.r-font-date {
+	color: #888;
+
+}
+.r-hr-juduldetail {
+	margin: 1%;
+}
+
+.r-font-orderid {
+	color: #888;
+	display: inline-block;
+	margin-left: 1%;
+	margin-top: 0;
+	margin-bottom: 0;	
+
+}
+
+.r-small-detail-pesanan {
+display: block;
+
+}
+
+.r-detailstatuspesanan-judulkanan {
+	color: #F06292;
+	font-size: 17px;
+	margin: 0;
+	display: inline-block;
+}
+
+.r-detailstatuspesanan-judulhargakanan {
+	font-size: 17px;
+	color: #888;
+	display: inline-block;
+	margin:0;
+
+
+}
+
+.r-style-detailbarangpesanan {
+	color: #F06292;
+	margin-bottom: 3%;
+	font-weight: bold;
+}
+
+.r-p-detailproduk {
+	margin: 0;
+	
+}
+
+.r-image-detailpesanan {
+	margin-left: 30%;
+}
+
+.r-image-detailpesanan-layout {
+}
+
+.r-badge {
+	color: #F06292;
+	font-weight: none;
+	margin: 0;
+}
+
+.r-judul-kotak4-detailpesanan {
+	color: #F06292;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.r-konten-kotak4-detailpesanan {
+	font-size: 14px;
+}
+
+
+@media screen and (max-width: 320px) {
+	.r-p-detailproduk {
+		font-size: 13px;
+		text-align: center;
+	}
+
+	.r-image-detailpesanan {
+		margin-left: 35%;
+	}
+
+	.r-style-detailbarangpesanan {
+		text-align: center;
+	}
+
+	.r-judul-kotak4-detailpesanan {
+		text-align: center;
+	}
+
+	.r-konten-kotak4-detailpesanan {
+	 font-size: 12px;
+	}
+
+}
+
+@media screen and (max-width: 375px) {
+	.r-p-detailproduk {
+		font-size: 13px;
+		text-align: center;
+	}
+
+	.r-image-detailpesanan {
+		margin-left: 35%;
+	}
+
+	.r-style-detailbarangpesanan {
+		text-align: center;
+	}
+
+	.r-judul-kotak4-detailpesanan {
+		text-align: center;
+	}
+
+	.r-konten-kotak4-detailpesanan {
+	 font-size: 12px;
+	}
+
+}
+
+@media screen and (max-width: 425px) {
+	.r-p-detailproduk {
+		font-size: 14px;
+		text-align: center;
+	}
+
+	.r-image-detailpesanan {
+		margin-left: 40%;
+	}
+
+	.r-style-detailbarangpesanan {
+		text-align: center;
+	}
+
+	.r-judul-kotak4-detailpesanan {
+		text-align: center;
+	}
+
+	.r-konten-kotak4-detailpesanan {
+	 font-size: 13px;
+	}
+
+}
+
+@media screen and (max-width: 768px) {
+	.r-p-detailproduk {
+		font-size: 13px;
+		text-align: center;
+	}
+
+	.r-image-detailpesanan {
+		margin-left: 20%;
+	}
+
+	.r-style-detailbarangpesanan {
+		
+	}
+
+	.r-judul-kotak4-detailpesanan {
+		
+	}
+
+	.r-konten-kotak4-detailpesanan {
+	 font-size: 12px;
+	}
+
+}
+
+.r-perhitungan-detailpesanan {
+	font-size: 15px;
+
+}
