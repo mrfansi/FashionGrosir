@@ -67,6 +67,7 @@ $route['cart/(:any)/delete'] = 'cart/delete/$1';
 $route['checkout/(:any)/alamat_pengiriman'] = 'alamat/get/$1';
 $route['checkout/(:any)/alamat_pengiriman/simpan'] = 'alamat/simpan';
 $route['checkout/(:any)/ongkir_transfer'] = 'ongkir_transfer/get/$1';
+$route['checkout/(:any)/ongkir_transfer/simpan'] = 'ongkir_transfer/simpan';
 $route['checkout/(:any)/konfirmasi_pembayaran'] = 'konfirmasi/get/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

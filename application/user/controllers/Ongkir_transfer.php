@@ -35,25 +35,6 @@ class Ongkir_transfer extends MY_Controller
         $this->load->view('Ongkir_transfer', $this->data);
     }
 
-    public function simpan()
-    {
-        $ongkir_id = $this->order_pengiriman->guid();
-
-    }
-
-    private function get_berat($nomor_order)
-    {
-        $orders = $this->order->with_order_detil()->where('o_noorder', $nomor_order)->get();
-        foreach ($orders->order_detil as $detil) {
-            $item_berat = (int)$this->item_detil->with_item()->where('ide_kode', $detil->ide_kode)->get()->item->i_berat;
-            $item_qty = (int)$detil->od_qty;
-
-            $hasil = $item_berat * $item_qty;
-        }
-
-        return $hasil;
-    }
-
     private function get_biaya($nomor_order)
     {
         $hasil = new stdClass();
@@ -83,6 +64,82 @@ class Ongkir_transfer extends MY_Controller
         $cost = $this->ongkir->cost($hasil->origin_id, $hasil->dst_id, $this->get_berat($nomor_order), "jne");
         echo '<script>console.log(' . $cost . ')</script>';
         return json_decode($cost);
+    }
+
+    private function get_berat($nomor_order)
+    {
+        $orders = $this->order->with_order_detil()->where('o_noorder', $nomor_order)->get();
+        foreach ($orders->order_detil as $detil) {
+            $item_berat = (int)$this->item_detil->with_item()->where('ide_kode', $detil->ide_kode)->get()->item->i_berat;
+            $item_qty = (int)$detil->od_qty;
+
+            $hasil = $item_berat * $item_qty;
+        }
+
+        return $hasil;
+    }
+
+    public function simpan()
+    {
+        $o_kode = $this->input->post('o_kode');
+
+        $nomor_order = $this->input->post('nomor_order');
+
+        $order_ongkir = $this->order_ongkir->where('o_kode', $o_kode)->get();
+        $order_payment = $this->order_payment->where('o_kode', $o_kode)->get();
+
+        if ($order_ongkir && $order_payment) {
+            $order_ongkir = $this->order_ongkir->where('o_kode', $o_kode)->update(array(
+                'oo_kode' => $this->order_ongkir->guid(),
+                'oo_nama' => $this->input->post('nama'),
+                'oo_deskripsi' => $this->input->post('deskripsi'),
+                'oo_estimasi' => $this->input->post('estimasi'),
+                'oo_biaya' => $this->input->post('biaya')
+            ));
+
+            $order_payment = $this->order_payment->where('o_kode', $o_kode)->update(array(
+                'b_kode' => $this->input->post('bank_id')
+            ));
+
+            if ($order_payment && $order_ongkir) {
+                $this->data->berhasil = 'Data Kategori berhasil dibuat.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+                echo 'Berhasil Update';
+            } else {
+                $this->data->gagal = 'Data Kategori gagal dibuat.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+                echo 'Gagal Update';
+            }
+        } else {
+            $order_ongkir = $this->order_ongkir->insert(array(
+                'oo_kode' => $this->order_ongkir->guid(),
+                'oo_nama' => $this->input->post('nama'),
+                'oo_deskripsi' => $this->input->post('deskripsi'),
+                'oo_estimasi' => $this->input->post('estimasi'),
+                'oo_biaya' => $this->input->post('biaya'),
+                'o_kode' => $o_kode
+            ));
+
+            $order_payment = $this->order_payment->insert(array(
+                'o_kode' => $o_kode,
+                'b_kode' => $this->input->post('bank_id')
+
+            ));
+
+            if ($order_payment && $order_ongkir) {
+                $this->data->berhasil = 'Data Kategori berhasil dibuat.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+                echo 'Berhasil Created';
+            } else {
+                $this->data->gagal = 'Data Kategori gagal dibuat.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+                echo 'Gagal Created';
+            }
+        }
+
+        redirect('checkout/' . $nomor_order . '/konfirmasi_pembayaran');
     }
 
 }
