@@ -73,7 +73,6 @@
                                 <th scope="col">Nama Pelanggan</th>
                                 <th scope="col">Status Order</th>
                                 <th scope="col">Total</th>
-                                <th scope="col">Detil</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -84,24 +83,26 @@
                                         <td><?= $order->p_nama; ?></td>
 
                                         <td>
-                                            <?php if ($order->o_status == 1): ?>
-                                                <div class="text-warning">MENUNGGU KONFIRMASI ADMIN</div>
+                                            <?php if ($order->o_status == 0): ?>
+                                                <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
+                                            <?php elseif ($order->o_status == 1): ?>
+                                                <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN
+                                                </div>
                                             <?php elseif ($order->o_status == 2): ?>
-                                                <div class="text-success">SUDAH DIBAYAR</div>
+                                                <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
                                             <?php elseif ($order->o_status == 3): ?>
-                                                <div class="text-success">SEDANG DIPROSES</div>
+                                                <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
                                             <?php elseif ($order->o_status == 4): ?>
-                                                <div class="text-success">SUKSES</div>
+                                                <div class="text-success">ADMIN BELUM MEMPROSES ORDER</div>
                                             <?php elseif ($order->o_status == 5): ?>
+                                                <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
+                                            <?php elseif ($order->o_status == 6): ?>
+                                                <div class="text-success">SUKSES</div>
+                                            <?php elseif ($order->o_status == 7): ?>
                                                 <div class="text-danger">BATAL</div>
-                                            <?php else: ?>
-                                                <div class="text-danger">BELUM DIBAYAR</div>
                                             <?php endif; ?>
                                         </td>
                                         <td id="rupiah"><?= $order->total; ?></td>
-                                        <td>
-                                            <a href="#">Detil</a>
-                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>

@@ -15,7 +15,7 @@ include "layout/Menu.php";
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb f-no-background f-hover">
                         <li class="breadcrumb-item"><a href="<?= site_url('/'); ?>">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Transaksi Pending</li>
+                        <li class="breadcrumb-item active" aria-current="page">Transaksi Tertunda</li>
                     </ol>
                 </nav>
             </div>
@@ -46,92 +46,98 @@ include "layout/Menu.php";
 
                 <div class="card container-fluid p-4">
 
-<!--                    <div class="row container">-->
-<!--                        <div class="col">-->
-<!--                            <h3 class="r-style-title-konten-profile">-->
-<!--                                Transaksi Pending-->
-<!--                            </h3>-->
-<!--                            <hr style="width: 30%;">-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <!--                    <div class="row container">-->
+                    <!--                        <div class="col">-->
+                    <!--                            <h3 class="r-style-title-konten-profile">-->
+                    <!--                                Transaksi Tertunda-->
+                    <!--                            </h3>-->
+                    <!--                            <hr style="width: 30%;">-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
 
                     <div class="table-responsive mt-2">
-                        <table class="table">
+                        <table class="table table-sm table-borderless">
                             <thead>
-                            <tr class="text-center">
-                                <th>No</th>
-                                <th>ID Pesanan</th>
-                                <th>Tanggal Transaksi</th>
-                                <th>Total Harga</th>
-                                <th>Nama Penerima</th>
-                                <th>Alamat</th>
-                                <th>Status</th>
-                                <!--                                <th>Aksi</th>-->
+                            <tr>
+                                <th scope="col">Nomor Order</th>
+                                <th scope="col">Tanggal Transaksi</th>
+                                <th scope="col">Total Harga</th>
+                                <th scope="col">Nama Penerima</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>ASD21345</td>
-                                <td>12-Mar-2018</td>
-                                <td>100.000</td>
-                                <td>Caesar</td>
-                                <td>Jln Cengkareng...</td>
-                                <td>Pending</td>
-                                <!--                                <td>-->
-                                <!--                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-money"></i> Konfirmasi Pembayaran</button>-->
-                                <!--                                </td>-->
-                            </tr>
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>ASD21345</td>
-                                <td>12-Mar-2018</td>
-                                <td>100.000</td>
-                                <td>Caesar</td>
-                                <td>Jln Cengkareng...</td>
-                                <td>Transaksi Gagal</td>
-                                <!--                                <td>-->
-                                <!--                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-money"></i> Konfirmasi Pembayaran</button>-->
-                                <!--                                </td>-->
-                            </tr>
-
-                            </tr>
-
-
-
+                            <?php foreach ($orders as $order): ?>
+                                <tr>
+                                    <td rowspan="1" class="text-danger"><?= $order->o_noorder; ?></td>
+                                    <td><?= $order->created_at; ?></td>
+                                    <td id="rupiah"><?= $order->total; ?></td>
+                                    <td><?= $order->p_nama; ?></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td colspan="2"><b>Status : </b>
+                                        <?php if ($order->o_status == 0): ?>
+                                            <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
+                                        <?php elseif ($order->o_status == 1): ?>
+                                            <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN</div>
+                                        <?php elseif ($order->o_status == 2): ?>
+                                            <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
+                                        <?php elseif ($order->o_status == 3): ?>
+                                            <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
+                                        <?php elseif ($order->o_status == 4): ?>
+                                            <div class="text-success">ADMIN BELUM MEMPROSES ORDER</div>
+                                        <?php elseif ($order->o_status == 5): ?>
+                                            <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
+                                        <?php elseif ($order->o_status == 6): ?>
+                                            <div class="text-success">SUKSES</div>
+                                        <?php elseif ($order->o_status == 7): ?>
+                                            <div class="text-danger">BATAL</div>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td><b>Aksi :</b><br>
+                                        <?php if ($order->o_status == 0): ?>
+                                            <a
+                                                    href="<?= site_url('checkout/' . $order->o_noorder . '/alamat_pengiriman'); ?>">
+                                                Konfirmasi
+                                            </a>
+                                        <?php elseif ($order->o_status == 1): ?>
+                                            <a
+                                                    href="<?= site_url('checkout/' . $order->o_noorder . '/ongkir_transfer'); ?>">
+                                                Konfirmasi
+                                            </a>
+                                        <?php elseif ($order->o_status == 2): ?>
+                                            <a
+                                                    href="<?= site_url('checkout/' . $order->o_noorder . '/konfirmasi_pembayaran'); ?>">
+                                                Konfirmasi
+                                            </a>
+                                        <?php else: ?>
+                                            <i>(NULL)</i>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                             </tbody>
                         </table>
-
-
-
                     </div>
-                    <div class="row pagination-layout">
-                        <div class="col ">
-                            <div class="pagination">
-                                <a href="#">&laquo;</a>
-                                <a href="#">1</a>
-                                <a href="#" class="active">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">&raquo;</a>
-                            </div>
-                        </div>
-                    </div>
+                    <!--                    <div class="row pagination-layout">-->
+                    <!--                        <div class="col ">-->
+                    <!--                            <div class="pagination">-->
+                    <!--                                <a href="#">&laquo;</a>-->
+                    <!--                                <a href="#">1</a>-->
+                    <!--                                <a href="#" class="active">2</a>-->
+                    <!--                                <a href="#">3</a>-->
+                    <!--                                <a href="#">4</a>-->
+                    <!--                                <a href="#">5</a>-->
+                    <!--                                <a href="#">6</a>-->
+                    <!--                                <a href="#">&raquo;</a>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
 
                 </div>
 
 
-
-
-
-
-
             </div>
-
-
-
 
 
         </div>

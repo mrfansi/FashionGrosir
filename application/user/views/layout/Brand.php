@@ -2,7 +2,7 @@
 
 <!-- Alert Promo -->
 <div class="container-fluid text-center clear-header" role="alert">
-    Selamat datang di <b>Fashion Grosir</b> &nbsp;|&nbsp; Info Promo <a href="" class="alert-link f-link">(Klik)</a>
+    Selamat datang di <b><?= $brandname; ?></b> &nbsp;|&nbsp; Info Promo <a href="" class="alert-link f-link">(Klik)</a>
     <?php if (isset($_SESSION['isonline']) && $_SESSION['isonline'] == true): ?>
         | <a href="<?= site_url('profil'); ?>" class="alert-link f-link">
             <i class="fa fa-user"></i> <?= $_SESSION['nama']; ?>

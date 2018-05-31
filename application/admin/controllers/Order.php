@@ -34,7 +34,7 @@ class Order extends MY_Controller
         $this->data->title = 'Fashion Grosir | Kofirmasi Order';
         $this->data->title_page = 'Pembayaran';
         $this->data->total_order = $this->order->count_rows();
-        $this->data->orders = $this->order->select_orders_bukti(1);
+        $this->data->orders = $this->order->select_orders_bukti(3);
         $this->load->view('Order_k', $this->data);
     }
 
@@ -42,7 +42,7 @@ class Order extends MY_Controller
     {
         $order = $this->order->where_o_kode($id)->update(
             array(
-                'o_status' => 2
+                'o_status' => 4
             )
         );
 
@@ -64,7 +64,7 @@ class Order extends MY_Controller
         $this->data->title = 'Fashion Grosir | Invoice';
         $this->data->title_page = 'Invoice';
         $this->data->total_order = $this->order->count_rows();
-        $this->data->orders = $this->order->select_invoice(3);
+        $this->data->orders = $this->order->select_invoice(6);
         $this->load->view('Order_i', $this->data);
     }
 

@@ -7,7 +7,7 @@ include "layout/Header.php";
     <!-- Login -->
     <form method="post" action="<?= site_url('login'); ?>" class="form-signin">
         <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
-        <h4 class="h4 mb-3 font-weight-normal text-center f-title-color">Fashion Grosir</h4>
+        <h4 class="h4 mb-3 font-weight-normal text-center f-title-color"><?= $brandname; ?></h4>
         <div class="form-group">
             <label for="email" class="sr-only">Email</label>
             <input type="email" id="email" name="email" class="form-control f-input-shadow" placeholder="Email address" required

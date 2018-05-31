@@ -78,10 +78,11 @@
                             <a class="nav-link f-footer-new" href="#">Syarat & Ketentuan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="#">Konfirmasi Pembayaran</a>
+                            <a class="nav-link f-footer-new" href="<?= site_url('konfirmasi'); ?>">Konfirmasi
+                                Pembayaran</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="#">Status Order</a>
+                            <a class="nav-link f-footer-new" href="<?= site_url('pending'); ?>">Status Order</a>
                         </li>
                     </ul>
                 </div>
@@ -93,15 +94,13 @@
         <hr class="f-hr-footer">
         <div class="text-center">
             <h6 class="f-font-footer">Ikuti Kami</h6>
-            <a href=""><i class="fa fa-facebook fa-lg f-sosmed"></i></a>
-            <a href=""><i class="fa fa-twitter fa-lg f-sosmed"></i></a>
-            <a href=""><i class="fa fa-instagram fa-lg f-sosmed"></i></a>
-            <a href=""><i class="fa fa-thumbs-o-up fa-lg f-sosmed"></i></a>
+            <a href="https://www.facebook.com/<?= $facebook; ?>"><i class="fa fa-facebook fa-lg f-sosmed"></i></a>
+            <a href="https://www.instagram.com/<?= $instagram; ?>"><i class="fa fa-instagram fa-lg f-sosmed"></i></a>
         </div>
     </div>
 </div>
 <div class="container-fluid text-center clear-footer" role="alert">
-    &copy; Copyright Fashion Grosir 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
+    &copy; Copyright <?= $brandname; ?> 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
     <!-- <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-love"></i></a> -->
 </div>
 

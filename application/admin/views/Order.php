@@ -83,15 +83,15 @@
                                         <td><?= $order->p_nama; ?></td>
                                         <td id="rupiah"><?= $order->total; ?></td>
                                         <td>
-                                            <?php if ($order->o_status == 1): ?>
+                                            <?php if ($order->o_status == 3): ?>
                                                 <a tooltip data-toggle="modal" title="Konfirmasi Pembayaran" href="#"
                                                    onclick="konfirmasi($(this))" data-target="#konfirmasi"
                                                    data-id="<?= $order->o_kode; ?>"><i class="fas fa-check"></i>
                                                 </a>
                                             <?php endif; ?>
 
-                                            <?php if ($order->o_status == 2): ?>
-                                                <a <?= $order->o_status == 2 ? '' : 'disabled'; ?>
+                                            <?php if ($order->o_status == 4): ?>
+                                                <a <?= $order->o_status == 4 ? '' : 'disabled'; ?>
                                                         tooltip data-toggle="modal" title="Proses <?= $title_page; ?>"
                                                         href="#"
                                                         onclick="proses($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
@@ -100,7 +100,7 @@
                                                 </a>
                                             <?php endif; ?>
 
-                                            <?php if ($order->o_status == 3): ?>
+                                            <?php if ($order->o_status == 5): ?>
                                                 <a tooltip data-toggle="modal"
                                                    title="Konfirmasi Pengiriman" href="#"
                                                    onclick="pengiriman($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
@@ -119,18 +119,23 @@
                                     <tr>
                                         <td></td>
                                         <td colspan="3"><b>Status Order : </b>
-                                            <?php if ($order->o_status == 1): ?>
-                                                <div class="text-warning">MENUNGGU KONFIRMASI ADMIN</div>
+                                            <?php if ($order->o_status == 0): ?>
+                                                <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
+                                            <?php elseif ($order->o_status == 1): ?>
+                                                <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN
+                                                </div>
                                             <?php elseif ($order->o_status == 2): ?>
-                                                <div class="text-success">SUDAH DIBAYAR</div>
+                                                <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
                                             <?php elseif ($order->o_status == 3): ?>
-                                                <div class="text-success">SEDANG DIPROSES</div>
+                                                <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
                                             <?php elseif ($order->o_status == 4): ?>
-                                                <div class="text-success">SUKSES</div>
+                                                <div class="text-success">ADMIN BELUM MEMPROSES ORDER</div>
                                             <?php elseif ($order->o_status == 5): ?>
+                                                <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
+                                            <?php elseif ($order->o_status == 6): ?>
+                                                <div class="text-success">SUKSES</div>
+                                            <?php elseif ($order->o_status == 7): ?>
                                                 <div class="text-danger">BATAL</div>
-                                            <?php else: ?>
-                                                <div class="text-danger">BELUM DIBAYAR</div>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
@@ -258,7 +263,8 @@
                 <p>Apakah anda yakin?</p>
             </div>
             <div class="modal-footer">
-                <a id="konfirmasi" href="#" class="btn btn-primary btn-primary">Proses</a>
+                <a id="konfirmasi" href="#" class="btn btn-primary btn-sm">Proses</a>
+                <a data-dismiss="modal" href="#" class="btn btn-danger btn-sm">Tutup</a>
             </div>
         </div>
     </div>
