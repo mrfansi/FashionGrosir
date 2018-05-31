@@ -51,7 +51,7 @@ class Bank extends MY_Controller
         $this->data->title = 'Fashion Grosir | Bank > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
-        $this->data->bank = $this->bank->where('k_kode', $id)->get();
+        $this->data->bank = $this->bank->where('b_kode', $id)->get();
         $this->data->banks = $this->bank->get_all();
         $this->load->view('CRUD_Bank', $this->data);
     }

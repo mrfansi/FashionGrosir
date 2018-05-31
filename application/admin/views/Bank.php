@@ -81,6 +81,19 @@
                                         <td><?= $bank->b_penerbit; ?></td>
                                         <td><?= $bank->b_nama; ?></td>
                                         <td><?= $bank->b_rek; ?></td>
+                                        <td class="text-center">
+                                            <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
+                                               href="#"
+                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static"
+                                               data-keyboard="false"
+                                               data-id="<?= $bank->b_kode; ?>"><i
+                                                        class="far fa-edit"></i></a> |
+                                            <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
+                                               href="#"
+                                               onclick="hapus($(this))" data-target="#hapus"
+                                               data-id="<?= $bank->b_kode; ?>"><i
+                                                        class="far fa-trash-alt"></i></a>
+                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>

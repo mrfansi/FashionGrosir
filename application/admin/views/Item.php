@@ -69,6 +69,10 @@
 
                 </div>
                 <div class="card-body">
+                    <p class="small">
+                        *Note: <br>
+                        <i>W : Warna, U : Ukuran, S : Seri</i>
+                    </p>
                     <div class="table-responsive">
                         <table id="tables" class="table table-sm">
                             <thead>
@@ -80,10 +84,10 @@
                                 <th scope="col">Hrg VIP</th>
                                 <th scope="col">Hrg Reseller</th>
                                 <th scope="col">Berat (Gr)</th>
-                                <th scope="col">Warna</th>
-                                <th scope="col">Ukuran</th>
-                                <th scope="col">Seri</th>
-                                <th scope="col">QTY</th>
+                                <th scope="col" class="text-center">W*</th>
+                                <th scope="col" class="text-center">U*</th>
+                                <th scope="col" class="text-center">S*</th>
+                                <th scope="col" class="text-center">QTY</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -136,28 +140,28 @@
                                         </td>
                                         <?php if (isset($item->item_detil) && count((array)$item->item_detil) == 1): ?>
                                             <?php foreach ($item->item_detil as $detil): ?>
-                                                <td class="align-middle">
+                                                <td class="align-middle text-center">
                                                     <?php if (isset($warna($detil->ide_kode, $detil->w_kode)->w_nama)): ?>
                                                         <?= $warna($detil->ide_kode, $detil->w_kode)->w_nama; ?>
                                                     <?php else: ?>
-                                                        <i>(Kosong)</i>
+                                                        <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td class="align-middle">
+                                                <td class="align-middle text-center">
                                                     <?php if (isset($ukuran($detil->ide_kode, $detil->u_kode)->u_nama)): ?>
                                                         <?= $ukuran($detil->ide_kode, $detil->u_kode)->u_nama; ?>
                                                     <?php else: ?>
-                                                        <i>(Kosong)</i>
+                                                        <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td class="align-middle">
+                                                <td class="align-middle text-center">
                                                     <?php if (isset($seri($detil->ide_kode, $detil->s_kode)->s_nama)): ?>
                                                         <?= $seri($detil->ide_kode, $detil->s_kode)->s_nama; ?>
                                                     <?php else: ?>
-                                                        <i>(Kosong)</i>
+                                                        <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td class="align-middle">
+                                                <td class="align-middle text-center">
                                                     <?= $qty($detil->ide_kode); ?>
                                                 </td>
 
@@ -172,8 +176,9 @@
                                                         <div class="dropdown-menu" aria-labelledby="opsi">
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
-                                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                                               data-id="<?= $detil->i_kode; ?>"><i
+                                                               onclick="edit_detil($(this))" data-target="#crud"
+                                                               data-backdrop="static" data-keyboard="false"
+                                                               data-id="<?= $detil->ide_kode; ?>"><i
                                                                         class="far fa-edit fa-lg"></i> Ubah</a>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
@@ -192,10 +197,10 @@
                                                 </td>
                                             <?php endforeach; ?>
                                         <?php elseif (!isset($item->item_detil)): ?>
-                                            <td class="align-middle"><i>(Kosong)</i></td>
-                                            <td class="align-middle"><i>(Kosong)</i></td>
-                                            <td class="align-middle"><i>(Kosong)</i></td>
-                                            <td class="align-middle"><i>(Kosong)</i></td>
+                                            <td class="align-middle"><i>(Null)</i></td>
+                                            <td class="align-middle"><i>(Null)</i></td>
+                                            <td class="align-middle"><i>(Null)</i></td>
+                                            <td class="align-middle"><i>(Null)</i></td>
                                             <td class="align-middle">
                                                 <div class="btn-group btn-group-sm" role="group">
                                                     <button id="opsi" type="button"
@@ -223,28 +228,28 @@
                                     <?php if (isset($item->item_detil) && count((array)$item->item_detil) > 1): ?>
                                         <?php foreach ($item->item_detil as $detil): ?>
                                             <tr>
-                                                <td class="align-middle">
+                                                <td class="align-middle text-center">
                                                     <?php if (isset($warna($detil->ide_kode, $detil->w_kode)->w_nama)): ?>
                                                         <?= $warna($detil->ide_kode, $detil->w_kode)->w_nama; ?>
                                                     <?php else: ?>
-                                                        <i>(Kosong)</i>
+                                                        <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td class="align-middle">
+                                                <td class="align-middle text-center">
                                                     <?php if (isset($ukuran($detil->ide_kode, $detil->u_kode)->u_nama)): ?>
                                                         <?= $ukuran($detil->ide_kode, $detil->u_kode)->u_nama; ?>
                                                     <?php else: ?>
-                                                        <i>(Kosong)</i>
+                                                        <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td class="align-middle">
+                                                <td class="align-middle text-center">
                                                     <?php if (isset($seri($detil->ide_kode, $detil->s_kode)->s_nama)): ?>
                                                         <?= $seri($detil->ide_kode, $detil->s_kode)->s_nama; ?>
                                                     <?php else: ?>
-                                                        <i>(Kosong)</i>
+                                                        <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
-                                                <td class="align-middle">
+                                                <td class="align-middle text-center">
                                                     <?= $qty($detil->ide_kode); ?>
                                                 </td>
 
@@ -259,8 +264,9 @@
                                                         <div class="dropdown-menu" aria-labelledby="opsi">
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
-                                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                                               data-id="<?= $detil->i_kode; ?>"><i
+                                                               onclick="edit_detil($(this))" data-target="#crud"
+                                                               data-backdrop="static" data-keyboard="false"
+                                                               data-id="<?= $detil->ide_kode; ?>"><i
                                                                         class="far fa-edit fa-lg"></i> Ubah</a>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
@@ -337,13 +343,13 @@
                 bodymodal.load("<?= site_url('item_img/unggah/'); ?>" + id);
             }
 
-            function edit(data) {
+            function edit_detil(data) {
                 d = data;
                 id = d.attr('data-id');
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('item/ubah/'); ?>" + id);
+                bodymodal.load("<?= site_url('item/ubah_detil/'); ?>" + id);
             }
 
             function tambah_qty(data) {

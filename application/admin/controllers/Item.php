@@ -215,14 +215,39 @@ class Item extends MY_Controller
         $this->load->view('CRUD_Item', $this->data);
     }
 
-    public function ubah($id)
+    public function ubah_detil($id)
     {
         $this->data->title = 'Fashion Grosir | Item > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
-        $this->data->item = $this->item->where('i_kode', $id)->get();
+        $this->data->item_detil = $this->item_detil->where('ide_kode', $id)->get();
 
-        $this->load->view('CRUD_Item', $this->data);
+        $this->load->view('CRUD_Item_detil', $this->data);
+    }
+
+    public function simpan_detil()
+    {
+        $id = $this->input->post('id');
+
+        $item_detil = $this->item_detil
+            ->where('ide_kode', $id)
+            ->update(array(
+                'w_kode' => $this->input->post('warna'),
+                'u_kode' => $this->input->post('ukuran'),
+                's_kode' => $this->input->post('seri')
+            ));
+
+        if ($item_detil) {
+            $this->data->berhasil = 'Detil item berhasil diubah.';
+            $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+            redirect('item');
+        } else {
+            $this->data->gagal = 'Detil item gagal diubah.';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+
+            redirect('item');
+        }
     }
 
     public function hapus($id)
