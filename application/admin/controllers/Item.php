@@ -11,6 +11,14 @@ class Item extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->isonline) {
+            redirect('login');
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $this->session->set_userdata('redirect', current_url());
+            }
+        }
+
         $config = array(
             'field' => 'i_nama',
             'title' => 'title',
@@ -19,39 +27,31 @@ class Item extends MY_Controller
         );
         $this->load->library('slug', $config);
 
-        $this->load->model('Item_m', 'item');
-        $this->load->model('Item_qty_m', 'item_qty');
-        $this->load->model('Item_detil_m', 'item_detil');
-        $this->load->model('Item_kategori_m', 'item_kategori');
-        $this->load->model('Kategori_m', 'kategori');
-        $this->load->model('Seri_m', 'seri');
-        $this->load->model('Ukuran_m', 'ukuran');
-        $this->load->model('Warna_m', 'warna');
-
-
+        $this->data->warna_all = $this->warna->get_all();
+        $this->data->ukuran_all = $this->ukuran->get_all();
+        $this->data->kategori_all = $this->kategori->get_all();
     }
 
     public function index()
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Item';
-        $data->title_page = 'Item';
+        $this->data->title = 'Fashion Grosir | Item';
+        $this->data->title_page = 'Item';
 
-        $data->total_item = $this->item->count_rows();
-        $data->items = $this->item->with_item_detil()->with_item_kategori()->get_all();
-        $data->warna = function ($ide_kode, $w_kode) {
+        $this->data->total_item = $this->item->count_rows();
+        $this->data->items = $this->item->with_item_detil()->with_item_kategori()->get_all();
+        $this->data->warna = function ($ide_kode, $w_kode) {
             return $this->warna->fields('w_nama')->with_item_detil('where:ide_kode = \'' . $ide_kode . '\'')->where_w_kode($w_kode)->get();
         };
 
-        $data->ukuran = function ($ide_kode, $u_kode) {
+        $this->data->ukuran = function ($ide_kode, $u_kode) {
             return $this->ukuran->fields('u_nama')->with_item_detil('where:ide_kode = \'' . $ide_kode . '\'')->where_u_kode($u_kode)->get();
         };
 
-        $data->seri = function ($ide_kode, $s_kode) {
+        $this->data->seri = function ($ide_kode, $s_kode) {
             return $this->seri->fields('s_nama')->with_item_detil('where:ide_kode = \'' . $ide_kode . '\'')->where_s_kode($s_kode)->get();
         };
 
-        $data->qty = function ($ide_kode) {
+        $this->data->qty = function ($ide_kode) {
             $hasil = 0;
             $stoks = $this->item_qty->fields('iq_qty')->with_item_detil('where:ide_kode = \'' . $ide_kode . '\'')->get_all();
             foreach ($stoks as $stok) {
@@ -61,7 +61,7 @@ class Item extends MY_Controller
             return $hasil;
         };
 
-        $data->kategori = function ($i_kode) {
+        $this->data->kategori = function ($i_kode) {
             $kategori = [];
             foreach ($this->item_kategori->with_kategori()->where_i_kode($i_kode)->get_all() as $kat) {
                 array_push($kategori, $kat->kategori->k_nama);
@@ -70,24 +70,22 @@ class Item extends MY_Controller
             return implode('<br>', $kategori);
         };
 
-        $this->load->view('Item', $data);
+        $this->load->view('Item', $this->data);
     }
 
     public function by($kategori_kode)
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Item';
-        $data->title_page = 'Item';
-        $data->total_item = $this->item->count_rows();
-        $data->items = $this->item->select_sum_qty_where($kategori_kode);
-        $this->load->view('Item', $data);
+        $this->data->title = 'Fashion Grosir | Item';
+        $this->data->title_page = 'Item';
+        $this->data->total_item = $this->item->count_rows();
+        $this->data->items = $this->item->select_sum_qty_where($kategori_kode);
+        $this->load->view('Item', $this->data);
     }
 
 
     public function simpan()
     {
         // create object
-        $data = new stdClass();
 
         // get guid form post
         $id = $this->input->post('id');
@@ -110,13 +108,13 @@ class Item extends MY_Controller
                 'k_kode' => $this->input->post('kategori'),
             ));
             if ($item && $item_kategori) {
-                $data->berhasil = 'Data Item berhasil diperbarui.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Data Item berhasil diperbarui.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('item');
             } else {
-                $data->gagal = 'Data Item gagal diperbarui.';
-                $this->session->set_flashdata('gagal', $data->gagal);
+                $this->data->gagal = 'Data Item gagal diperbarui.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('item');
             }
@@ -159,13 +157,13 @@ class Item extends MY_Controller
 
 
             if ($item && $item_kategori && $item_detil && $item_qty) {
-                $data->berhasil = 'Data Item berhasil dibuat.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Data Item berhasil dibuat.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('item');
             } else {
-                $data->gagal = 'Data Item gagal dibuat.';
-                $this->session->set_flashdata('gagal', $data->gagal);
+                $this->data->gagal = 'Data Item gagal dibuat.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('item');
             }
@@ -174,21 +172,20 @@ class Item extends MY_Controller
 
     public function tambah()
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Item > Tambah';
-        $data->submit = 'Simpan';
-        $data->kode = $this->item->guid();
-        $this->load->view('CRUD_Item', $data);
+        $this->data->title = 'Fashion Grosir | Item > Tambah';
+        $this->data->submit = 'Simpan';
+        $this->data->kode = $this->item->guid();
+
+        $this->load->view('CRUD_Item', $this->data);
     }
 
     public function tambah_qty($id)
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Item > Tambah QTY';
-        $data->submit = 'Tambah QTY';
-        $data->kode = $id;
+        $this->data->title = 'Fashion Grosir | Item > Tambah QTY';
+        $this->data->submit = 'Tambah QTY';
+        $this->data->kode = $id;
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $this->load->view('CRUD_Item_QTY', $data);
+            $this->load->view('CRUD_Item_QTY', $this->data);
         } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $qty = $this->item_qty->insert(array(
                 'iq_kode' => $this->item_qty->guid(),
@@ -197,13 +194,13 @@ class Item extends MY_Controller
             ));
 
             if ($qty) {
-                $data->berhasil = 'Stok telah berhasil ditambahkan.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+                $this->data->berhasil = 'Stok telah berhasil ditambahkan.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('item');
             } else {
-                $data->gagal = 'Stok telah gagal ditambahkan.';
-                $this->session->set_flashdata('berhasil', $data->gagal);
+                $this->data->gagal = 'Stok telah gagal ditambahkan.';
+                $this->session->set_flashdata('berhasil', $this->data->gagal);
 
                 redirect('item');
             }
@@ -213,36 +210,33 @@ class Item extends MY_Controller
 
     public function detil($id)
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Item > Detil';
-        $data->item = $this->item->where('p_kode', $id)->get();
-        $this->load->view('CRUD_Item', $data);
+        $this->data->title = 'Fashion Grosir | Item > Detil';
+        $this->data->item = $this->item->where('p_kode', $id)->get();
+        $this->load->view('CRUD_Item', $this->data);
     }
 
     public function ubah($id)
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Item > Ubah';
-        $data->submit = 'Ubah';
-        $data->kode = $id;
-        $data->item = $this->item->where('i_kode', $id)->get();
+        $this->data->title = 'Fashion Grosir | Item > Ubah';
+        $this->data->submit = 'Ubah';
+        $this->data->kode = $id;
+        $this->data->item = $this->item->where('i_kode', $id)->get();
 
-        $this->load->view('CRUD_Item', $data);
+        $this->load->view('CRUD_Item', $this->data);
     }
 
     public function hapus($id)
     {
-        $data = new stdClass();
 
         $item_detil = $this->item_detil->where('ide_kode', $id)->delete();
         if ($item_detil) {
-            $data->berhasil = 'Data Item berhasil dihapus';
-            $this->session->set_flashdata('berhasil', $data->berhasil);
+            $this->data->berhasil = 'Data Item berhasil dihapus';
+            $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
             redirect('item');
         } else {
-            $data->gagal = 'Data Item gagal dihapus';
-            $this->session->set_flashdata('berhasil', $data->gagal);
+            $this->data->gagal = 'Data Item gagal dihapus';
+            $this->session->set_flashdata('berhasil', $this->data->gagal);
 
             redirect('item');
         }
@@ -250,17 +244,16 @@ class Item extends MY_Controller
 
     public function hapus_item($id)
     {
-        $data = new stdClass();
 
         $item = $this->item->where('i_kode', $id)->delete();
         if ($item) {
-            $data->berhasil = 'Data Item berhasil dihapus';
-            $this->session->set_flashdata('berhasil', $data->berhasil);
+            $this->data->berhasil = 'Data Item berhasil dihapus';
+            $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
             redirect('item');
         } else {
-            $data->gagal = 'Data Item gagal dihapus';
-            $this->session->set_flashdata('berhasil', $data->gagal);
+            $this->data->gagal = 'Data Item gagal dihapus';
+            $this->session->set_flashdata('berhasil', $this->data->gagal);
 
             redirect('item');
         }

@@ -24,7 +24,7 @@ include "layout/Menu.php";
                 <?php foreach ($kategori_s as $kat): ?>
                     <?php if (isset($kat->item) && isset($kat->kategori) && $kat->item != NULL): ?>
                         <?php $stok = $qty($kat->item->i_kode); ?>
-                        <?php if ($stok > 1): ?>
+                        <?php if ($stok >= 1): ?>
                             <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                 <div class="card f-bottom">
                                     <a href="<?= site_url('kategori/' . $kat->kategori->k_url . '/item/' . $kat->item->i_url . '/detil'); ?>">

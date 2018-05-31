@@ -58,25 +58,35 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1>Warna</h1>
-                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
+                    <h1><i class="fa fa-bank"></i> Bank</h1>
+                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static"
+                       data-keyboard="false">Buat baru</a>
+
                 </div>
                 <div class="card-body">
-                    <?php if ($warnas != NULL): ?>
-                        <?php foreach ($warnas as $warna): ?>
-                            <div class="btn-group mb-2" role="group" aria-label="Basic example">
-                                <button type="button" class="btn">Warna : <?= $warna->w_nama; ?></button>
-                                <a class="btn btn-primary" tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
-                                   href="#"
-                                   onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                   data-id="<?= $warna->w_kode; ?>"><i class="far fa-edit"></i></a>
-                                <a class="btn btn-danger" tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
-                                   href="#"
-                                   onclick="hapus($(this))" data-target="#hapus"
-                                   data-id="<?= $warna->w_kode; ?>"><i class="far fa-trash-alt"></i></a>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                    <div class="table-responsive">
+                        <table id="tables" class="table table-sm table-borderless">
+                            <thead>
+                            <tr>
+                                <th scope="col">Bank</th>
+                                <th scope="col">Nama Pemilik Rek</th>
+                                <th scope="col">Nomor Rek</th>
+                                <th scope="col" class="text-center"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if ($banks != NULL): ?>
+                                <?php foreach ($banks as $bank): ?>
+                                    <tr>
+                                        <td><?= $bank->b_penerbit; ?></td>
+                                        <td><?= $bank->b_nama; ?></td>
+                                        <td><?= $bank->b_rek; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -90,7 +100,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('warna/tambah'); ?>");
+                bodymodal.load("<?= site_url('bank/tambah'); ?>");
             }
 
             function edit(data) {
@@ -99,7 +109,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('warna/ubah/'); ?>" + id);
+                bodymodal.load("<?= site_url('bank/ubah/'); ?>" + id);
             }
 
             function detil(data) {
@@ -108,14 +118,15 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('warna/detil/'); ?>" + id);
+                bodymodal.load("<?= site_url('bank/detil/'); ?>" + id);
             }
 
             function hapus(data) {
                 d = data;
                 id = d.attr('data-id');
-                $('a#hapus').attr('href', "<?= site_url('warna/hapus/'); ?>" + id);
+                $('a#hapus').attr('href', "<?= site_url('bank/hapus/'); ?>" + id);
             }
+
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();

@@ -11,6 +11,14 @@ class Ukuran extends MY_Controller
     public function __construct()
     {
         parent::__construct();
+        if (!$this->session->isonline) {
+            redirect('login');
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $this->session->set_userdata('redirect', current_url());
+            }
+        }
+
         $config = array(
             'field' => 'u_nama',
             'title' => 'title',
@@ -18,111 +26,91 @@ class Ukuran extends MY_Controller
             'id' => 'u_id',
         );
         $this->load->library('slug', $config);
-        $this->load->model('Ukuran_m', 'ukuran');
     }
 
     public function index()
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Ukuran';
-        $data->title_page = 'Ukuran';
-        $data->total_ukuran = $this->ukuran->count_rows();
-        $data->ukurans = $this->ukuran->get_all();
-        $this->load->view('Ukuran', $data);
+        $this->data->title = 'Fashion Grosir | Ukuran';
+        $this->data->title_page = 'Ukuran';
+        $this->data->total_ukuran = $this->ukuran->count_rows();
+        $this->data->ukurans = $this->ukuran->get_all();
+        $this->load->view('Ukuran', $this->data);
     }
 
     public function tambah()
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Ukuran > Tambah';
-        $data->submit = 'Simpan';
-        $data->kode = $this->ukuran->guid();
-        $this->load->view('CRUD_Ukuran', $data);
+        $this->data->title = 'Fashion Grosir | Ukuran > Tambah';
+        $this->data->submit = 'Simpan';
+        $this->data->kode = $this->ukuran->guid();
+        $this->load->view('CRUD_Ukuran', $this->data);
     }
 
     public function ubah($id)
     {
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Pelanggan > Ubah';
-        $data->submit = 'Ubah';
-        $data->kode = $id;
-        $data->ukurans = $this->ukuran->where('u_kode', $id)->get();
+        $this->data->title = 'Fashion Grosir | Pelanggan > Ubah';
+        $this->data->submit = 'Ubah';
+        $this->data->kode = $id;
+        $this->data->ukurans = $this->ukuran->where('u_kode', $id)->get();
 
-        $this->load->view('CRUD_Ukuran', $data);
+        $this->load->view('CRUD_Ukuran', $this->data);
     }
 
     public function simpan()
     {
         // create object
-        $data = new stdClass();
-
         // get guid form post
         $id = $this->input->post('id');
 
         // get user from database where guid
         $ukuran = $this->ukuran->where_u_kode($id)->get();
 
-        if ($ukuran)
-        {
+        if ($ukuran) {
             $ukuran = $this->ukuran->where_u_kode($id)->update(array(
-                'u_nama'            => $this->input->post('nama'),
-                'u_url'            => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
+                'u_nama' => $this->input->post('nama'),
+                'u_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ));
-            if ($ukuran)
-            {
-                $data->berhasil = 'Data Ukuran berhasil diperbarui.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+            if ($ukuran) {
+                $this->data->berhasil = 'Data Ukuran berhasil diperbarui.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+                redirect('ukuran');
+            } else {
+                $this->data->gagal = 'Data Ukuran gagal diperbarui.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('ukuran');
             }
-            else
-            {
-                $data->gagal = 'Data Ukuran gagal diperbarui.';
-                $this->session->set_flashdata('gagal', $data->gagal);
-
-                redirect('ukuran');
-            }
-        }
-        else
-        {
+        } else {
             $ukuran = $this->ukuran->insert(array(
-                'u_kode'          => $this->input->post('id'),
-                'u_nama'          => $this->input->post('nama'),
-                'u_url'            => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
+                'u_kode' => $this->input->post('id'),
+                'u_nama' => $this->input->post('nama'),
+                'u_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ));
-            if ($ukuran)
-            {
-                $data->berhasil = 'Data Ukuran berhasil dibuat.';
-                $this->session->set_flashdata('berhasil', $data->berhasil);
+            if ($ukuran) {
+                $this->data->berhasil = 'Data Ukuran berhasil dibuat.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('ukuran');
-            }
-            else
-            {
-                $data->gagal = 'Data Ukuran gagal dibuat.';
-                $this->session->set_flashdata('gagal', $data->gagal);
+            } else {
+                $this->data->gagal = 'Data Ukuran gagal dibuat.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('ukuran');
             }
         }
     }
 
-    public  function hapus($id)
+    public function hapus($id)
     {
-        $data = new stdClass();
-
         $ukuran = $this->ukuran->where('u_kode', $id)->delete();
-        if ($ukuran)
-        {
-            $data->berhasil = 'Data Ukuran berhasil dihapus';
-            $this->session->set_flashdata('berhasil', $data->berhasil);
+        if ($ukuran) {
+            $this->data->berhasil = 'Data Ukuran berhasil dihapus';
+            $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
             redirect('ukuran');
-        }
-        else
-        {
-            $data->gagal = 'Data Ukuran gagal dihapus';
-            $this->session->set_flashdata('berhasil', $data->gagal);
+        } else {
+            $this->data->gagal = 'Data Ukuran gagal dihapus';
+            $this->session->set_flashdata('berhasil', $this->data->gagal);
 
             redirect('ukuran');
         }
@@ -130,8 +118,7 @@ class Ukuran extends MY_Controller
 
     public function get($item)
     {
-        $data = new stdClass();
-        $data->members = $this->ukuran->many_to_many_where($item);
-        $this->load->view('Tabel_detil', $data);
+        $this->data->members = $this->ukuran->many_to_many_where($item);
+        $this->load->view('Tabel_detil', $this->data);
     }
 }

@@ -39,14 +39,6 @@ if ($submit == 'Ubah') {
         </p>
     </div>
     <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" name="username" placeholder="Input Username" value="<?= $username; ?>"
-               required>
-        <p>
-            <?= form_error('username'); ?>
-        </p>
-    </div>
-    <div class="form-group">
         <label for="password">Password</label>
         <input type="password" class="form-control" name="password" placeholder="Input Password"
                value="<?= $password; ?>" required>

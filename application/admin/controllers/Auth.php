@@ -7,7 +7,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller
+class Auth extends MY_Controller
 {
     public function __construct()
     {
@@ -15,7 +15,6 @@ class Auth extends CI_Controller
         $this->load->helper('form');
         $this->load->library('user_agent');
 
-        $this->load->model('Pengguna_m', 'pengguna');
         $check = $this->pengguna->where_p_kode(0)->get();
         if (!$check)
         {
@@ -38,8 +37,6 @@ class Auth extends CI_Controller
 
     public function login()
     {
-        // null object
-        $data = new stdClass();
 
         // load library
         $this->load->library('form_validation');
@@ -69,7 +66,7 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() === FALSE)
         {
-            $this->load->view('master/Login');
+            $this->load->view('master/Login', $this->data);
         } else {
             // get post
             $username = $this->input->post('username');
@@ -102,8 +99,8 @@ class Auth extends CI_Controller
 
                 redirect($this->session->userdata('redirect'));
             } else {
-                $data->log = 'Username atau Password salah.';
-                $this->load->view('master/Login', $data);
+                $this->data->log = 'Username atau Password salah.';
+                $this->load->view('master/Login', $this->data);
             }
         }
 

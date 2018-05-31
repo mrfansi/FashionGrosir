@@ -11,7 +11,7 @@
                                     class="icon-bars"> </i></a><a href="<?= base_url('adm.php/dashboard') ?>"
                                                                   class="navbar-brand">
                             <div class="brand-text d-none d-md-inline-block"><strong
-                                        class="text-primary">FASHION GROSIR</strong></div>
+                                        class="text-primary"><?= $brandname; ?></strong></div>
                         </a></div>
                     <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                         <li class="nav-item"><a href="<?= base_url('adm.php/auth/logout') ?>" class="nav-link logout">Logout<i
@@ -116,7 +116,13 @@
                                         <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
                                                 scope="row"
                                                 class="align-middle">
-                                            <a href="#">Lihat</a>
+                                            <a href="#"
+                                               data-toggle="modal"
+                                               onclick="deskripsi($(this))"
+                                               data-target="#deskripsi"
+                                               data-backdrop="static"
+                                               data-keyboard="false"
+                                               data-msg="<?= $item->i_deskripsi; ?>">Lihat</a>
                                         </td>
                                         <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
                                                 class="align-middle"
@@ -432,7 +438,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <p>Fashion Grosir &copy; 2018</p>
+                    <p><?= $brandname; ?> &copy; 2018</p>
                 </div>
 
             </div>
@@ -448,6 +454,22 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="deskripsi" tabindex="-1" role="dialog" aria-labelledby="deskripsi" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="window.location.reload()">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal fade" id="detil_item" tabindex="-1" role="dialog" aria-labelledby="detil_item" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">

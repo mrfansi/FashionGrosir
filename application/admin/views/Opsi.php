@@ -1,6 +1,42 @@
 <?php include "master/Header.php"; ?>
 <body>
 <?php include 'master/Menu.php'; ?>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+    if ($toko != NULL) {
+        $tokoid = $toko->t_kode;
+        $namatoko = $toko->t_nama;
+        $singkatan = $toko->t_singkatan;
+        $url = $toko->t_url;
+        $provinsi = $toko->t_provinsi;
+        $kabupaten = $toko->t_kabupaten;
+        $kecamatan = $toko->t_kecamatan;
+        $kelurahan = $toko->t_desa;
+        $kodepos = $toko->t_kodepos;
+        $alamat = $toko->t_alamat;
+        $email = $toko->t_email;
+        $instagram = $toko->t_insta;
+        $whatsapp = $toko->t_wa;
+        $facebook = $toko->t_fb;
+    } else {
+        $tokoid = $id;
+        $namatoko = '';
+        $singkatan = '';
+        $url = '';
+        $provinsi = '';
+        $kabupaten = '';
+        $kecamatan = '';
+        $kelurahan = '';
+        $kodepos = '';
+        $alamat = '';
+        $email = '';
+        $instagram = '';
+        $whatsapp = '';
+        $facebook = '';
+    }
+}
+?>
 <div class="page">
     <!-- navbar-->
     <header class="header">
@@ -11,7 +47,7 @@
                                     class="icon-bars"> </i></a><a href="<?= base_url('adm.php/dashboard') ?>"
                                                                   class="navbar-brand">
                             <div class="brand-text d-none d-md-inline-block"><strong
-                                        class="text-primary">FASHION GROSIR</strong></div>
+                                        class="text-primary"><?= $brandname; ?></strong></div>
                         </a></div>
                     <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                         <li class="nav-item"><a href="<?= base_url('adm.php/auth/logout') ?>" class="nav-link logout">Logout<i
@@ -59,47 +95,63 @@
                 <div class="card-header">
                     <h1><i class="fa fa-cogs"></i> Opsi</h1>
                 </div>
-                <div class="card-body">
+                <form action="<?= site_url('opsi/simpan'); ?>" method="post" class="card-body">
+                    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                    <input type="hidden" name="t_kode" value="<?= $tokoid; ?>">
                     <div class="row form-group">
                         <div class="col">
                             <label for="nama">Nama Toko</label>
                             <input type="text" class="form-control" name="nama"
-                                   placeholder="Nama Toko (max 50 karakter)" required>
+                                   placeholder="Nama Toko (max 50 karakter)" value="<?= $namatoko; ?>" required>
                         </div>
                         <div class="col">
                             <label for="singkatan">Kode Toko</label>
                             <input type="text" class="form-control" name="singkatan" placeholder="Kode (max 2 karakter)"
+                                   value="<?= $singkatan; ?>"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="url">URL</label>
+                            <input type="text" class="form-control" name="url"
+                                   placeholder="URL Toko"
+                                   value="<?= $url; ?>"
                                    required>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col">
                             <label for="provinsi">Provinsi</label>
-                            <select name="provinsi" id="provinsi" class="provinsi form-control" required>
+                            <select name="provinsi" id="provinsi" class="provinsi form-control"
+                                    value="<?= $provinsi; ?>" required>
                             </select>
                         </div>
                         <div class="col">
                             <label for="kabupaten">Kabupaten / Kota</label>
-                            <select name="kabupaten" id="kabupaten" class="kabupaten form-control" required>
+                            <select name="kabupaten" id="kabupaten" class="kabupaten form-control"
+                                    value="<?= $kabupaten; ?>" required>
                             </select>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col">
                             <label for="kecamatan">Kecamatan</label>
-                            <select name="kecamatan" id="kecamatan" class="kecamatan form-control" required>
+                            <select name="kecamatan" id="kecamatan" class="kecamatan form-control"
+                                    value="<?= $kecamatan; ?>" required>
                             </select>
                         </div>
                         <div class="col">
                             <label for="kelurahan">Kelurahan / Desa</label>
-                            <select name="kelurahan" id="kelurahan" class="kelurahan form-control" required>
+                            <select name="kelurahan" id="kelurahan" class="kelurahan form-control"
+                                    value="<?= $kelurahan; ?>" required>
                             </select>
                         </div>
 
                         <div class="col">
                             <label for="kodepos">Kode Pos</label>
                             <input name="kodepos" id="kodepos" type="number"
-                                   class="form-control" placeholder="Kode Pos" required>
+                                   class="form-control" placeholder="Kode Pos" value="<?= $kodepos; ?>" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -107,31 +159,36 @@
                             <label class="f-test" for="alamat">Alamat Lengkap</label>
                             <textarea name="alamat" id="alamat" class="form-control"
                                       placeholder="Nama Gedung, Jalan, dan lainnya"
-                                      required></textarea>
+
+                                      required><?= $alamat; ?></textarea>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col">
                             <label for="email">E-mail</label>
-                            <input type="email" class="form-control" name="email" placeholder="E-mail" required>
+                            <input type="email" class="form-control" name="email" placeholder="E-mail"
+                                   value="<?= $email; ?>" required>
                         </div>
                         <div class="col">
                             <label for="instagram">Instagram</label>
-                            <input type="text" class="form-control" name="instagram" placeholder="Instagram">
+                            <input type="text" class="form-control" name="instagram" value="<?= $instagram; ?>"
+                                   placeholder="Instagram">
                         </div>
                         <div class="col">
                             <label for="whatsapp">Whatsapp</label>
-                            <input type="text" class="form-control" name="whatsapp" placeholder="Whatsapp">
+                            <input type="text" class="form-control" name="whatsapp" value="<?= $whatsapp; ?>"
+                                   placeholder="Whatsapp">
                         </div>
                         <div class="col">
                             <label for="facebook">Facebook</label>
-                            <input type="text" class="form-control" name="facebook" placeholder="Facebook">
+                            <input type="text" class="form-control" name="facebook" value="<?= $facebook; ?>"
+                                   placeholder="Facebook">
                         </div>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                     </div>
-                </div>
+                </form>
             </div>
 
         </div>
@@ -260,12 +317,66 @@
                 });
             });
         </script>
+        <script>
+            var provinsi = $('#provinsi');
+            var kabupaten = $('#kabupaten');
+            var kecamatan = $('#kecamatan');
+            var kelurahan = $('#kelurahan');
+
+            $.when(
+                $.getJSON('<?= site_url('API/get_provinsi/'); ?>' + <?= $provinsi; ?>, function (res) {
+                    provinsi.append(new Option(
+                        res.results[0].text, res.results[0].id, true, true
+                    )).trigger('change');
+                    provinsi.trigger({
+                        type: 'select2:select',
+                        params: {
+                            data: res
+                        }
+                    })
+                }),
+                $.getJSON('<?= site_url('API/get_kabupaten/'); ?>' + <?= $kabupaten; ?>, function (res) {
+                    kabupaten.append(new Option(
+                        res.results[0].text, res.results[0].id, true, true
+                    )).trigger('change');
+                    kabupaten.trigger({
+                        type: 'select2:select',
+                        params: {
+                            data: res
+                        }
+                    })
+                }),
+                $.getJSON('<?= site_url('API/get_kecamatan/'); ?>' + <?= $kecamatan; ?>, function (res) {
+                    kecamatan.append(new Option(
+                        res.results[0].text, res.results[0].id, true, true
+                    )).trigger('change');
+                    kecamatan.trigger({
+                        type: 'select2:select',
+                        params: {
+                            data: res
+                        }
+                    })
+                }),
+                $.getJSON('<?= site_url('API/get_kelurahan/'); ?>' + <?= $kelurahan; ?>, function (res) {
+                    kelurahan.append(new Option(
+                        res.results[0].text, res.results[0].id, true, true
+                    )).trigger('change');
+                    kelurahan.trigger({
+                        type: 'select2:select',
+                        params: {
+                            data: res
+                        }
+                    })
+                })
+            );
+
+        </script>
     </section>
     <footer class="main-footer">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <p>Fashion Grosir &copy; 2018</p>
+                    <p><?= $brandname; ?> &copy; 2018</p>
                 </div>
 
             </div>

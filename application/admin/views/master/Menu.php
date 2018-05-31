@@ -71,6 +71,7 @@
                     </a>
                 </li>
                 <li><a href="<?= site_url('opsi'); ?>"><i class="fa fa-cogs"></i>Opsi </a></li>
+                <li><a href="<?= site_url('bank'); ?>"><i class="fa fa-bank"></i>Bank </a></li>
             </ul>
         </div>
     </div>

@@ -85,6 +85,11 @@ class Cart extends MY_Controller
                 'ide_kode' => $cart->ide_kode
             ));
 
+            $this->item_qty->insert(array(
+                'iq_kode' => $this->item_qty->guid(),
+                'iq_qty' => -(int)$cart->ca_qty,
+                'ide_kode' => $cart->ide_kode
+            ));
 
         }
         $this->cart->where_p_kode($p_kode)->delete();

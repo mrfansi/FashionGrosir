@@ -68,6 +68,8 @@ class Alamat extends MY_Controller
                     'op_r_nama' => $nama_penerima,
                     'op_r_kontak' => $kontak_penerima
                 ));
+
+                $this->order->where('o_kode', $o_kode)->update(array('o_status' => 1));
             } else {
                 $this->order_pengiriman->insert(array(
                     'op_kode' => $this->order_pengiriman->guid(),
@@ -76,6 +78,7 @@ class Alamat extends MY_Controller
                     'op_r_nama' => $nama_penerima,
                     'op_r_kontak' => $kontak_penerima
                 ));
+                $this->order->where('o_kode', $o_kode)->update(array('o_status' => 1));
             }
 
         } else {
@@ -112,6 +115,7 @@ class Alamat extends MY_Controller
                         'op_r_nama' => $nama_penerima,
                         'op_r_kontak' => $kontak_penerima
                     ));
+                    $this->order->where('o_kode', $o_kode)->update(array('o_status' => 1));
                 } else {
                     $this->order_pengiriman->insert(array(
                         'op_kode' => $this->order_pengiriman->guid(),
@@ -120,6 +124,7 @@ class Alamat extends MY_Controller
                         'op_r_nama' => $nama_penerima,
                         'op_r_kontak' => $kontak_penerima
                     ));
+                    $this->order->where('o_kode', $o_kode)->update(array('o_status' => 1));
                 }
             } else {
                 $this->alamat->insert(array(
@@ -144,6 +149,7 @@ class Alamat extends MY_Controller
                         'op_r_nama' => $nama_penerima,
                         'op_r_kontak' => $kontak_penerima
                     ));
+                    $this->order->where('o_kode', $o_kode)->update(array('o_status' => 1));
                 } else {
                     $this->order_pengiriman->insert(array(
                         'op_kode' => $this->order_pengiriman->guid(),
@@ -152,6 +158,7 @@ class Alamat extends MY_Controller
                         'op_r_nama' => $nama_penerima,
                         'op_r_kontak' => $kontak_penerima
                     ));
+                    $this->order->where('o_kode', $o_kode)->update(array('o_status' => 1));
                 }
             }
         }

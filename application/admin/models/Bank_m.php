@@ -6,25 +6,15 @@
  * Time: 18.01
  */
 
-class Order_payment_m extends MY_Model
+class Bank_m extends MY_Model
 {
     public function __construct()
     {
-        $this->table = 'orders_payment';
-        $this->primary_key = 'op_id';
-        $this->protected = array('op_id', 'created_at', 'update_at');
+        $this->table = 'bank';
+        $this->primary_key = 'b_id';
+        $this->protected = array('b_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = TRUE;
-        $this->has_one['order'] = array(
-            'foreign_model' => 'Order_m',
-            'foreign_table' => 'orders',
-            'foreign_key' => 'o_kode',
-            'local_key' => 'o_kode');
-        $this->has_one['bank'] = array(
-            'foreign_model' => 'Bank_m',
-            'foreign_table' => 'bank',
-            'foreign_key' => 'b_kode',
-            'local_key' => 'b_kode');
         parent::__construct();
     }
 

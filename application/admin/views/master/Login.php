@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Fashion Grosir | Login</title>
+    <title><?= $brandname; ?> | Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -58,7 +58,7 @@
                 <?php endif; ?>
             </div>
             <div class="copyrights text-center">
-                <p><a href="https://fashiongrosir-ind.com" class="external">Fashion Grosir</a></p>
+                <p><a href="https://fashiongrosir-ind.com" class="external"><?= $brandname; ?></a></p>
             </div>
         </div>
     </div>
