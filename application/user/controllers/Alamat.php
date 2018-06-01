@@ -60,7 +60,6 @@ class Alamat extends MY_Controller
             if (isset($check_dropship) && $check_dropship == true)
             {
                 $this->order_pengiriman->insert(array(
-                    'op_kode' => $this->order_pengiriman->guid(),
                     'o_kode' => $o_kode,
                     'a_kode' => $a_kode,
                     'op_s_nama' => $nama_pengirim,
@@ -72,7 +71,6 @@ class Alamat extends MY_Controller
                 $this->order->where('o_kode', $o_kode)->update(array('o_status' => 1));
             } else {
                 $this->order_pengiriman->insert(array(
-                    'op_kode' => $this->order_pengiriman->guid(),
                     'o_kode' => $o_kode,
                     'a_kode' => $a_kode,
                     'op_r_nama' => $nama_penerima,
@@ -107,7 +105,6 @@ class Alamat extends MY_Controller
                 if (isset($check_dropship) && $check_dropship == true)
                 {
                     $this->order_pengiriman->insert(array(
-                        'op_kode' => $this->order_pengiriman->guid(),
                         'o_kode' => $o_kode,
                         'a_kode' => $a_kode,
                         'op_s_nama' => $nama_pengirim,
@@ -118,7 +115,6 @@ class Alamat extends MY_Controller
                     $this->order->where('o_kode', $o_kode)->update(array('o_status' => 1));
                 } else {
                     $this->order_pengiriman->insert(array(
-                        'op_kode' => $this->order_pengiriman->guid(),
                         'o_kode' => $o_kode,
                         'a_kode' => $a_kode,
                         'op_r_nama' => $nama_penerima,
@@ -141,7 +137,6 @@ class Alamat extends MY_Controller
                 if (isset($check_dropship) && $check_dropship == true)
                 {
                     $this->order_pengiriman->insert(array(
-                        'op_kode' => $this->order_pengiriman->guid(),
                         'o_kode' => $o_kode,
                         'a_kode' => $a_kode,
                         'op_s_nama' => $nama_pengirim,
@@ -152,7 +147,6 @@ class Alamat extends MY_Controller
                     $this->order->where('o_kode', $o_kode)->update(array('o_status' => 1));
                 } else {
                     $this->order_pengiriman->insert(array(
-                        'op_kode' => $this->order_pengiriman->guid(),
                         'o_kode' => $o_kode,
                         'a_kode' => $a_kode,
                         'op_r_nama' => $nama_penerima,

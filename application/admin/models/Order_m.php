@@ -73,7 +73,7 @@ class Order_m extends MY_Model
         return $query->result();
     }
 
-    public function select_invoice($status)
+    public function select_invoice()
     {
         $query = $this->db->query("SELECT orders.o_noorder, orders.o_status, pengguna.p_nama, SUM(orders_detil.od_tharga) total
                                     FROM orders
@@ -81,7 +81,7 @@ class Order_m extends MY_Model
                                     ON orders.p_kode = pengguna.p_kode
                                     LEFT JOIN orders_detil
                                     ON orders.o_kode = orders_detil.o_kode
-                                    WHERE orders.o_status = $status
+                                    WHERE orders.o_status = '6'
                                     GROUP BY orders.o_noorder;");
 
         return $query->result();

@@ -70,5 +70,6 @@ $route['checkout/(:any)/ongkir_transfer'] = 'ongkir_transfer/get/$1';
 $route['checkout/(:any)/ongkir_transfer/simpan'] = 'ongkir_transfer/simpan';
 $route['checkout/(:any)/konfirmasi_pembayaran'] = 'konfirmasi/get/$1';
 $route['checkout/(:any)/konfirmasi_pembayaran/simpan'] = 'konfirmasi/simpan';
+$route['checkout/(:any)/sukses'] = 'konfirmasi/sukses';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

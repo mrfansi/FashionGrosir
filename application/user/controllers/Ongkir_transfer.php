@@ -90,7 +90,6 @@ class Ongkir_transfer extends MY_Controller
 
         if ($order_ongkir && $order_payment) {
             $this->order_ongkir->where('o_kode', $o_kode)->update(array(
-                'oo_kode' => $this->order_ongkir->guid(),
                 'oo_nama' => $this->input->post('nama'),
                 'oo_deskripsi' => $this->input->post('deskripsi'),
                 'oo_estimasi' => $this->input->post('estimasi'),
@@ -104,7 +103,6 @@ class Ongkir_transfer extends MY_Controller
             $this->order->where('o_kode', $o_kode)->update(array('o_status' => 2));
         } else {
             $this->order_ongkir->insert(array(
-                'oo_kode' => $this->order_ongkir->guid(),
                 'oo_nama' => $this->input->post('nama'),
                 'oo_deskripsi' => $this->input->post('deskripsi'),
                 'oo_estimasi' => $this->input->post('estimasi'),

@@ -10,14 +10,8 @@ class Detil extends MY_Controller
 
     public function index()
     {
-        // load model
-        $this->load->model('Item_m', 'item');
+        $order_id = $this->uri->segment(2);
 
-        $data = new stdClass();
-        $data->title = 'Fashion Grosir | Item';
-        $data->title_page = 'Item';
-        $data->items = $this->item->get_all();
-        $this->load->view('Detil', $data);
     }
 }
 

@@ -85,7 +85,7 @@
                                         <td class="text-center">
                                             <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
                                                onclick="proses($(this))" data-target="#proses"
-                                               data-id="<?= $order->ob_kode; ?>"><i class="fas fa-check"></i></a>
+                                               data-id="<?= $order->o_kode; ?>"><i class="fas fa-check"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -156,7 +156,7 @@
             function proses(data) {
                 d = data;
                 id = d.attr('data-id');
-                $('a#proses').attr('href', "<?= site_url('order/konfirmasi/'); ?>" + id + "/proses");
+                $('a#proses').attr('href', "<?= site_url('order/proses_konfirmasi/'); ?>" + id);
             }
 
             // ------------------------------------------------------ //

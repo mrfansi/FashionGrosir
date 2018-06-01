@@ -141,42 +141,37 @@ include "layout/Menu.php";
                         <!-- END KONTEN ATAS -->
 
                         <!--  START KONTEN BAWAH -->
-                        <h5 class="r-judul-kotak4-bawah">
-                            Konfirmasi Pembayaran
-                        </h5>
-                        <form action="konfirmasi_pembayaran/simpan" method="post">
+                        <h4 class="text-center">
+                            <b>Konfirmasi Pembayaran</b>
+                        </h4>
+                        <br>
+                        <form action="konfirmasi_pembayaran/simpan" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
 
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="bank">Pembayaran Dari Bank : *</label>
-                                        <div class="r-container-konten">
-                                            <select class="form-control r-style-input f-border-form" id="bank"
-                                                    name="bank" required>
-                                                <option value="BCA">BCA</option>
-                                                <option value="BNI">BNI</option>
-                                                <option value="MANDIRI">MANDIRI</option>
-                                                <option value="BRI">BRI</option>
-                                                <option value="PERMATA">PERMATA</option>
-                                            </select>
-                                        </div>
+                                        <select class="form-control" id="bank"
+                                                name="bank" required>
+                                            <option value="BCA">BCA</option>
+                                            <option value="BNI">BNI</option>
+                                            <option value="MANDIRI">MANDIRI</option>
+                                            <option value="BRI">BRI</option>
+                                            <option value="PERMATA">PERMATA</option>
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="rek_atasnama">Rekening Atas Nama : *</label>
-                                        <div class="r-container-konten">
-                                            <input type="text" class="form-control r-style-input f-border-form"
-                                                   name="rek_atasnama" placeholder="Input Nama Pemilik Rekening"
-                                                   required>
-                                        </div>
+                                        <input type="text" class="form-control"
+                                               name="rek_atasnama" placeholder="Input Nama Pemilik Rekening"
+                                               required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nomor_rekening">Nomor Rekening : *</label>
-                                        <div class="r-container-konten">
-                                            <input type="number" class="form-control r-style-input f-border-form"
-                                                   name="nomor_rekening" placeholder="Input Nomor Rekening" required>
-                                        </div>
+                                        <input type="number" class="form-control"
+                                               name="nomor_rekening" placeholder="Input Nomor Rekening" required>
                                     </div>
                                 </div>
 
@@ -185,11 +180,9 @@ include "layout/Menu.php";
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="total_pembayaran">Total Pembayan : *</label>
-                                        <div class="r-container-konten">
-                                            <input type="number" class="form-control r-style-input f-border-form"
-                                                   name="total_pembayaran" placeholder="Input Total Pembayaran"
-                                                   required>
-                                        </div>
+                                        <input type="number" class="form-control"
+                                               name="total_pembayaran" placeholder="Input Total Pembayaran"
+                                               required>
                                     </div>
 
                                     <div class="form-group">
@@ -199,7 +192,7 @@ include "layout/Menu.php";
                                             <button class="r-btn"><i class="fa fa-upload" style="font-size: 18px;"></i>Unggah
                                                 Bukti
                                             </button>
-                                            <input type="file" name="bukti_pembayaran">
+                                            <input type="file" name="bukti_pembayaran" required>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +200,8 @@ include "layout/Menu.php";
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button type="submit" class="btn btn-primary btn-block">Konfirmasi Pembayaran
+                                    <button type="submit" class="btn btn-primary btn-block r-btn-pink">
+                                        Konfirmasi
                                     </button>
                                 </div>
                             </div>
