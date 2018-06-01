@@ -22,7 +22,7 @@ class Pengguna extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Pengguna Admin';
+        $this->data->title = 'Fashion Grosir | Admin';
         $this->data->total_pengguna = $this->pengguna->count_rows();
         $this->data->users = $this->pengguna->where_p_tipe('0')->get_all();
         $this->load->view('Pengguna', $this->data);
@@ -46,12 +46,12 @@ class Pengguna extends MY_Controller
                 'updated_by' => $_SESSION['username'],
             ));
             if ($user) {
-                $this->data->berhasil = 'Data Pengguna Admin berhasil diperbarui.';
+                $this->data->berhasil = 'Data Admin berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('pengguna');
             } else {
-                $this->data->gagal = 'Data Pengguna Admin gagal diperbarui.';
+                $this->data->gagal = 'Data Admin gagal diperbarui.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('pengguna');
@@ -66,12 +66,12 @@ class Pengguna extends MY_Controller
 //                'created_by'      => $_SESSION['username'],
             ));
             if ($user) {
-                $this->data->berhasil = 'Data Pengguna Admin berhasil dibuat.';
+                $this->data->berhasil = 'Data Admin berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('pengguna');
             } else {
-                $this->data->gagal = 'Data Pengguna Admin gagal dibuat.';
+                $this->data->gagal = 'Data Admin gagal dibuat.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('pengguna');
@@ -81,7 +81,7 @@ class Pengguna extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Pengguna Admin > Tambah';
+        $this->data->title = 'Fashion Grosir | Admin > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->pengguna->guid();
         $this->load->view('CRUD_Pengguna', $this->data);
@@ -89,14 +89,14 @@ class Pengguna extends MY_Controller
 
     public function detil($id)
     {
-        $this->data->title = 'Fashion Grosir | Pengguna Admin > Detil';
+        $this->data->title = 'Fashion Grosir | Admin > Detil';
         $this->data->users = $this->pengguna->where('p_kode', $id)->get();
         $this->load->view('CRUD_Pengguna', $this->data);
     }
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Pengguna Admin > Ubah';
+        $this->data->title = 'Fashion Grosir | Admin > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->users = $this->pengguna->where('p_kode', $id)->get();
@@ -108,12 +108,12 @@ class Pengguna extends MY_Controller
     {
         $customer = $this->pengguna->where('p_kode', $id)->delete();
         if ($customer) {
-            $this->data->berhasil = 'Data Pengguna Admin berhasil dihapus';
+            $this->data->berhasil = 'Data Admin berhasil dihapus';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
             redirect('pengguna');
         } else {
-            $this->data->gagal = 'Data Pengguna Admin gagal dihapus';
+            $this->data->gagal = 'Data Admin gagal dihapus';
             $this->session->set_flashdata('berhasil', $this->data->gagal);
 
             redirect('pengguna');

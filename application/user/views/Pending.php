@@ -85,7 +85,7 @@ include "layout/Menu.php";
                                         <?php elseif ($order->o_status == 3): ?>
                                             <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
                                         <?php elseif ($order->o_status == 4): ?>
-                                            <div class="text-success">ADMIN BELUM MEMPROSES ORDER</div>
+                                            <div class="text-success">ADMIN SEDANG MEMPROSES ORDER</div>
                                         <?php elseif ($order->o_status == 5): ?>
                                             <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
                                         <?php elseif ($order->o_status == 6): ?>

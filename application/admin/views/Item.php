@@ -167,13 +167,13 @@
 
                                                 <td class="align-middle">
                                                     <div class="btn-group btn-group-sm" role="group">
-                                                        <button id="opsi" type="button"
+                                                        <button id="toko" type="button"
                                                                 class="btn btn-sm btn-primary dropdown-toggle"
                                                                 data-toggle="dropdown" aria-haspopup="true"
                                                                 aria-expanded="false">
-                                                            Opsi
+                                                            Toko
                                                         </button>
-                                                        <div class="dropdown-menu" aria-labelledby="opsi">
+                                                        <div class="dropdown-menu" aria-labelledby="toko">
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="edit_detil($(this))" data-target="#crud"
@@ -203,13 +203,13 @@
                                             <td class="align-middle"><i>(Null)</i></td>
                                             <td class="align-middle">
                                                 <div class="btn-group btn-group-sm" role="group">
-                                                    <button id="opsi" type="button"
+                                                    <button id="toko" type="button"
                                                             class="btn btn-sm btn-primary dropdown-toggle"
                                                             data-toggle="dropdown" aria-haspopup="true"
                                                             aria-expanded="false">
-                                                        Opsi
+                                                        Toko
                                                     </button>
-                                                    <div class="dropdown-menu" aria-labelledby="opsi">
+                                                    <div class="dropdown-menu" aria-labelledby="toko">
                                                         <a class="dropdown-item small" data-toggle="modal" href="#"
                                                            onclick="edit_item($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                            data-id="<?= $item->i_kode; ?>">
@@ -255,13 +255,13 @@
 
                                                 <td class="align-middle">
                                                     <div class="btn-group btn-group-sm" role="group">
-                                                        <button id="opsi" type="button"
+                                                        <button id="toko" type="button"
                                                                 class="btn btn-sm btn-primary dropdown-toggle"
                                                                 data-toggle="dropdown" aria-haspopup="true"
                                                                 aria-expanded="false">
-                                                            Opsi
+                                                            Toko
                                                         </button>
-                                                        <div class="dropdown-menu" aria-labelledby="opsi">
+                                                        <div class="dropdown-menu" aria-labelledby="toko">
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="edit_detil($(this))" data-target="#crud"

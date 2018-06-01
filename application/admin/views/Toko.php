@@ -93,9 +93,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1><i class="fa fa-cogs"></i> Opsi</h1>
+                    <h1><i class="fa fa-cogs"></i> Toko</h1>
                 </div>
-                <form action="<?= site_url('opsi/simpan'); ?>" method="post" class="card-body">
+                <form action="<?= site_url('toko/simpan'); ?>" method="post" class="card-body">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <input type="hidden" name="t_kode" value="<?= $tokoid; ?>">
                     <div class="row form-group">

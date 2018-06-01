@@ -78,10 +78,6 @@
                             <a class="nav-link f-footer-new" href="#">Syarat & Ketentuan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="<?= site_url('konfirmasi'); ?>">Konfirmasi
-                                Pembayaran</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link f-footer-new" href="<?= site_url('pending'); ?>">Status Order</a>
                         </li>
                     </ul>

@@ -67,10 +67,10 @@
             </h5>
             <ul id="side-admin-menu" class="side-menu list-unstyled">
                 <li>
-                    <a href="<?= site_url('pengguna'); ?>"><i class="fa fa-users"></i>Pengguna Admin
+                    <a href="<?= site_url('pengguna'); ?>"><i class="fa fa-users"></i>Admin
                     </a>
                 </li>
-                <li><a href="<?= site_url('opsi'); ?>"><i class="fa fa-cogs"></i>Opsi </a></li>
+                <li><a href="<?= site_url('toko'); ?>"><i class="fa fa-cogs"></i>Toko </a></li>
                 <li><a href="<?= site_url('bank'); ?>"><i class="fa fa-bank"></i>Bank </a></li>
             </ul>
         </div>

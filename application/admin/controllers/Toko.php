@@ -6,7 +6,7 @@
  * Time: 23.23
  */
 
-class Opsi extends MY_Controller
+class Toko extends MY_Controller
 {
     public function __construct()
     {
@@ -23,10 +23,10 @@ class Opsi extends MY_Controller
 
     public function index() {
         // set title
-        $this->data->title = 'Fashion Grosir | Opsi';
+        $this->data->title = 'Fashion Grosir | Toko';
         $this->data->id = $this->toko->guid();
         $this->data->toko = $this->toko->get();
-        $this->load->view('Opsi', $this->data);
+        $this->load->view('Toko', $this->data);
     }
 
     public function simpan()
@@ -55,12 +55,12 @@ class Opsi extends MY_Controller
                 $this->data->berhasil = 'Informasi Toko berhasil diupdate.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-                redirect('opsi');
+                redirect('toko');
             } else {
                 $this->data->berhasil = 'Informasi Toko gagal diupdate.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-                redirect('opsi');
+                redirect('toko');
             }
         } else {
             $toko = $this->toko->insert(array(
@@ -84,12 +84,12 @@ class Opsi extends MY_Controller
                 $this->data->berhasil = 'Informasi Toko berhasil diupdate.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-                redirect('opsi');
+                redirect('toko');
             } else {
                 $this->data->berhasil = 'Informasi Toko gagal diupdate.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-                redirect('opsi');
+                redirect('toko');
             }
         }
     }

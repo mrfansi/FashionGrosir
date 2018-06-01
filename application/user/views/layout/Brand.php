@@ -53,8 +53,6 @@
                     <span class="f-span">|</span>
                     <a class="small" href="<?= site_url('pending'); ?>">Status Order</a>
                     <span class="f-span">|</span>
-                    <a class="small" href="<?= site_url('konfirmasi_list'); ?>">Konfirmasi Pembayaran</a>
-                    <span class="f-span">|</span>
                     <a class="small" href="<?= site_url('riwayat'); ?>">Histori Belanja</a>
                 </div>
             </div>
