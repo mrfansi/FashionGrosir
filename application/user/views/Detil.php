@@ -48,7 +48,8 @@ include "layout/Menu.php";
                     <div class="row">
                         <div class="col-lg-12">
                             <p><i class="fa fa-check fa-lg f-icon-margin f-font-detail"></i>Kondisi : Baru</p>
-                            <p><i class="fa fa-cube fa-lg f-icon-margin f-font-detail"></i>Berat : 1gr</p>
+                            <p><i class="fa fa-cube fa-lg f-icon-margin f-font-detail"></i>Berat
+                                : <?= $item->i_berat; ?> Gr</p>
                             <p><i class="fa fa-dropbox fa-lg f-icon-margin f-font-detail"></i>Min. Pesanan : 1pcs</p>
                         </div>
                     </div>
@@ -60,27 +61,34 @@ include "layout/Menu.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-5 col-md-5 col-sm-5 mb-sm-2 mb-3">
-                            <label for="wu"><i class="fa fa-tag fa-lg f-icon-margin f-font-detail"></i>Warna - Ukuran - QTY</label>
+                        <div class="mb-2 col-12 col-sm-4 col-md-3 col-lg-4">
+                            <label for="wu"></i>Warna - Ukuran</label>
                             <select name="wu" id="wu" class="form-control" required>
+                                <option data-qty="0" value="">Pilih Warna & Ukuran</option>
                                 <?php foreach ($item_detil_with_item_all($item->i_kode) as $id): ?>
-                                    <option value="<?= $id->ide_kode; ?>">
+                                    <option data-qty="<?= $qty_detil($id->ide_kode); ?>" value="<?= $id->ide_kode; ?>">
                                         <?= $id->warna->w_nama; ?> -
-                                        <?= $id->ukuran->u_nama; ?> -
-                                        <?= $qty_detil($id->ide_kode); ?>
+                                        <?= $id->ukuran->u_nama; ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-5">
-                            <label for="qty"><i class="fa fa-tags fa-lg f-icon-margin f-font-detail"></i>Jumlah</label>
+                        <div class="mb-2 col-12 col-sm-2 col-md-2 col-lg-2">
+                            <label for="stok">Stok</label>
+                            <input type="number" class="form-control" id="stok" value="0" disabled>
+                        </div>
+                        <div class="mb-2 col-12 col-sm-2 col-md-2 col-lg-2">
+                            <label for="qty">Jumlah</label>
                             <input type="number" name="qty" min="1" class="form-control" id="qty" value="1">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-12">
+                        <div class="col-12 col-sm-8 col-md-7 col-lg-8">
+                            <label id="check"></label>
+                        </div>
+                        <div class="col-12 col-sm-8 col-md-7 col-lg-8">
                             <button type="submit"
-                                    class="btn btn-primary btn-lg btn-block f-button-font f-button-detail">Tambah ke Keranjang
+                                    class="btn btn-primary btn-lg btn-block f-button-font">Tambah ke Keranjang
                             </button>
                         </div>
                     </div>
@@ -103,28 +111,39 @@ include "layout/Menu.php";
         <h5>Hot Item</h5>
         <div class="row">
             <?php foreach ($this->item->with_item_img('where:ii_default =1')->limit(5)->get_all() as $hot): ?>
-                <div class="col-lg-2 col-md-4 col-sm-6 col-6">
-                    <div class="card f-bottom">
-                        <a href="<?= site_url('hot-item/' . $hot->i_url . '/detil'); ?>">
-                            <?php if (isset($hot->item_img) && $hot->item_img != NULL): ?>
-                                <?php foreach ($hot->item_img as $img): ?>
-                                <img class="card-img-top"
-                                     src="<?= base_url('upload/' . $img->ii_nama); ?>"
-                                     alt="Card image cap">
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <img class="card-img-top" src="<?= base_url('assets/img/noimg.png'); ?>"
-                                     alt="Card image cap">
-                            <?php endif; ?>
-                        </a>
-                        <div class="card-body">
-                            <h5 class="card-title f-hot-font"><a title="<?= $hot->i_nama; ?>" id="title" href="<?= site_url('hot-item/' . $hot->i_url . '/detil'); ?>"><?= $hot->i_nama; ?></a></h5>
-                            <?php if (isset($_SESSION['vip']) && $_SESSION['vip'] == '1'): ?>
-                                <p id="rupiah" class="card-text f-title-harga"><?= $hot->i_hrg_vip; ?></p>
-                            <?php else: ?>
-                                <p id="rupiah" class="card-text f-title-harga"><?= $hot->i_hrg_reseller; ?></p>
-                            <?php endif; ?>
-                            <!-- <a href="#" class="btn btn-primary f-button-font">Tambah Ke Keranjang</a> -->
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                    <div class="thumbnail">
+                        <?php if ($item_img($hot->i_kode) != NULL): ?>
+                            <img class="img-fluid" src="<?= base_url('upload/' . $item_img($hot->i_kode)->ii_nama); ?>"
+                                 alt="<?= $item_img($hot->i_kode)->ii_nama; ?>">
+                        <?php else: ?>
+                            <img class="img-fluid" src="<?= base_url('assets/img/noimg.png'); ?>" alt="No Image">
+                        <?php endif; ?>
+                        <h4 id="title"><?= $hot->i_nama; ?></h4>
+                        <div class="ratings">
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </div>
+                        <p tooltip title="<?= $hot->i_deskripsi; ?>" id="title"><?= $hot->i_deskripsi; ?></p>
+                        <hr class="line">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-7">
+                                <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
+                                    <p id="rupiah" class="mt-1 price"><?= $hot->i_hrg_vip; ?></p>
+                                <?php else: ?>
+                                    <p id="rupiah" class="mt-1 align-middle price"><?= $hot->i_hrg_reseller; ?></p>
+                                <?php endif; ?>
+                            </div>
+                            <div class="col-md-5 col-sm-5">
+                                <a class="btn btn-primary btn-sm r-btn-pink right"
+                                   href="<?= site_url('produk-terbaru/item/' . $hot->i_url . '/detil'); ?>">
+                                    <i class="fa fa-shopping-cart"></i> Beli
+                                </a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -133,6 +152,32 @@ include "layout/Menu.php";
     </div>
     <script>
         $('[id="title"]').ellipsis();
+    </script>
+    <script>
+        $('#wu').change(function () {
+            var qty = $(this).find(':selected').data('qty');
+            var value = $(this).val();
+            $.when(
+                $('#stok').val(qty),
+                $('#qty').attr('max', qty)
+            );
+            if (qty === 0 && value !== '') {
+                $('body > div.container > div > form > div:nth-child(8) > div:nth-child(2)').removeClass('mt-3');
+                $('#check').show()
+                    .removeClass('text-success')
+                    .addClass('text-danger')
+                    .html('Stok habis');
+            } else if (qty > 0 && value !== '') {
+                $('body > div.container > div > form > div:nth-child(8) > div:nth-child(2)').removeClass('mt-3');
+                $('#check').show()
+                    .removeClass('text-danger')
+                    .addClass('text-success')
+                    .html('Stok tersedia');
+            } else {
+                $('body > div.container > div > form > div:nth-child(8) > div:nth-child(2)').addClass('mt-3');
+                $('#check').hide();
+            }
+        })
     </script>
 <?php
 include "layout/Footer.php";

@@ -79,7 +79,7 @@ h1, h2, h3, h4, h5 {
 
 .clear-footer {
     height: 45px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     font-size: 0.8em;
     background-color: #F06292;
     line-height: 45px;
@@ -1351,4 +1351,8 @@ f-font-resi2 {
 
 .f-span {
     color: #999;
+}
+
+a {
+    text-decoration: none;
 }

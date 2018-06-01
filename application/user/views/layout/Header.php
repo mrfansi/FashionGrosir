@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?= site_url('assets/vendor/select2/select2-bootstrap4.min.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/css/fasion-style.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/login-style.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/pricing.css'); ?>">
 
     <!-- ======================================================================================= -->
 
