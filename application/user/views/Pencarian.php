@@ -24,33 +24,47 @@ include "layout/Menu.php";
                 <?php foreach ($cari_s as $cari): ?>
                     <?php $stok = $qty($cari->i_kode); ?>
                     <?php if ($stok > 1): ?>
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                            <div class="card f-bottom">
-                                <a href="<?= site_url('item/' . $cari->i_url . '/detil'); ?>">
-                                    <?php if ($item_img($cari->i_kode) != NULL): ?>
-                                        <img class="card-img-top"
-                                             src="<?= base_url('upload/' . $item_img($cari->i_kode)->ii_nama); ?>"
-                                             alt="Card image cap">
-                                    <?php else: ?>
-                                        <img class="card-img-top"
-                                             src="<?= base_url('assets/img/noimg.png'); ?>"
-                                             alt="Card image cap">
-                                    <?php endif; ?>
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a tooltip title="<?= $cari->i_nama; ?>" id="title"
-                                                              href="<?= site_url('item/' . $cari->i_url . '/detil'); ?>"><?= $cari->i_nama; ?></a>
-                                    </h5>
-                                    <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
-                                        <h6 id="rupiah"
-                                            class="card-subtitle mb-2 text-muted"><?= $cari->i_hrg_vip; ?></h6>
-                                    <?php else: ?>
-                                        <h6 id="rupiah"
-                                            class="card-subtitle mb-2 text-muted"><?= $cari->i_hrg_reseller; ?></h6>
-                                    <?php endif; ?>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                            <div class="thumbnail">
+                                <?php if ($item_img($cari->i_kode) != NULL): ?>
+                                    <img class="img-fluid"
+                                         src="<?= base_url('upload/' . $item_img($cari->i_kode)->ii_nama); ?>"
+                                         alt="<?= $item_img($cari->i_kode)->ii_nama; ?>">
+                                <?php else: ?>
+                                    <img class="img-fluid" src="<?= base_url('assets/img/noimg.png'); ?>"
+                                         alt="No Image">
+                                <?php endif; ?>
+                                <h4 id="title"><?= $cari->i_nama; ?></h4>
+                                <div class="ratings">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </div>
+                                <p tooltip title="<?= $cari->i_deskripsi; ?>"
+                                   id="title"><?= $cari->i_deskripsi; ?></p>
+                                <hr class="line">
+                                <div class="row">
+                                    <div class="col-md-7 col-sm-7">
+                                        <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
+                                            <p id="rupiah" class="mt-1 price"><?= $cari->i_hrg_vip; ?></p>
+                                        <?php else: ?>
+                                            <p id="rupiah"
+                                               class="mt-1 align-middle price"><?= $cari->i_hrg_reseller; ?></p>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="col-md-5 col-sm-5">
+                                        <a class="btn btn-primary btn-sm r-btn-pink right"
+                                           href="<?= site_url('produk-terbaru/item/' . $cari->i_url . '/detil'); ?>">
+                                            <i class="fa fa-shopping-cart"></i> Beli
+                                        </a>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
+
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>
