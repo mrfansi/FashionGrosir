@@ -713,7 +713,7 @@ img.f-img-sidebar {
     color: #F06292;
     background-color: white;
     padding: 8px 20px;
-    border-radius: 8px;
+    border-radius: 0;
     font-size: 15px;
     font-weight: bold;
 }
@@ -1060,7 +1060,7 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 }
 
 .f-radius {
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 @media only screen and (max-width: 1024px) {

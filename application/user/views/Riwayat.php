@@ -34,7 +34,7 @@ include "layout/Menu.php";
                     <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('riwayat'); ?>">Riwayat
                         Pesanan</a>
                     <a class="list-group-item list-group-item-action" href="<?= site_url('pending'); ?>">Transaksi
-                        Pending</a>
+                        Tertunda</a>
                 </div>
             </div>
 
