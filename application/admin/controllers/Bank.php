@@ -68,7 +68,8 @@ class Bank extends MY_Controller
             $bank = $this->bank->where_b_kode($id)->update(array(
                 'b_penerbit' => $this->input->post('penerbit'),
                 'b_nama' => $this->input->post('nama'),
-                'b_rek' => $this->input->post('rekening')
+                'b_rek' => $this->input->post('rekening'),
+                'b_isaktif' => $this->input->post('aktif')
             ));
             if ($bank) {
                 $this->data->berhasil = 'Data Bank berhasil diperbarui.';
@@ -86,7 +87,8 @@ class Bank extends MY_Controller
                 'b_kode' => $id,
                 'b_penerbit' => $this->input->post('penerbit'),
                 'b_nama' => $this->input->post('nama'),
-                'b_rek' => $this->input->post('rekening')
+                'b_rek' => $this->input->post('rekening'),
+                'b_isaktif' => $this->input->post('aktif')
             ));
             if ($bank) {
                 $this->data->berhasil = 'Data Bank berhasil dibuat.';

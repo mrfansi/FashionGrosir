@@ -1,8 +1,8 @@
 <body>
 
 <!-- Alert Promo -->
-<div class="container-fluid text-center clear-header" role="alert">
-    Selamat datang di <b><?= $brandname; ?></b> &nbsp;|&nbsp; Info Promo <a href="" class="alert-link f-link">(Klik)</a>
+<div class="container-fluid text-center clear-header">
+    Selamat datang di <b><?= $brandname; ?></b>
     <?php if (isset($_SESSION['isonline']) && $_SESSION['isonline'] == true): ?>
         | <a href="<?= site_url('profil'); ?>" class="alert-link f-link">
             <i class="fa fa-user"></i> <?= $_SESSION['nama']; ?>
@@ -22,7 +22,7 @@
 <div class="container-fluid f-color">
     <div class="row f-padding-header">
         <!-- Brand -->
-        <div class="col-lg-3 col-md-2">
+        <div class="col-12 col-lg-3 col-md-2">
             <a href="index.html" class="navbar-brand f-logo">
                 <img src="assets/brand/citrus-logo.png" alt="">
             </a>
@@ -30,7 +30,7 @@
         <!-- End Brand -->
 
         <!-- Search -->
-        <div class="col-lg-6 col-md-8">
+        <div class="col-10 col-lg-6 col-md-8">
             <div class="row">
                 <div class="col">
                     <form class="form" action="<?= site_url('cari'); ?>"method="get">
@@ -59,7 +59,7 @@
             <?php endif; ?>
         </div>
         <!-- End Search -->
-        <div class="col-lg-3 col-md-2 mb-2">
+        <div class="col-2 col-lg-3 col-md-2 mb-2">
             <a tabindex="0" class="btn btn-primary r-btn-pink f-media-right"
                title="Cart"
                data-toggle="popover"

@@ -42,7 +42,10 @@
     <script src="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/jquery-ellipsis/jquery.ellipsis.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/wnumb/wNumb.js'); ?>"></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=omulajpwx33earwq4t3xfgo7zbqaoey3a7cd3zipl90xlzbu"></script>
+
     <!-- Main File-->
     <script src="<?= base_url('assets/js/front.js'); ?>"></script>
 </head>

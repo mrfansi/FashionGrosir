@@ -59,6 +59,7 @@
                         </li>
                     </ul>
                 </li>
+                <li><a href="<?= site_url('artikel'); ?>"><i class="fas fa-newspaper"></i> Artikel</a></li>
             </ul>
         </div>
         <div class="admin-menu">

@@ -414,7 +414,7 @@
             // ------------------------------------------------------ //
             var moneyFormat = wNumb({
                 mark: ',',
-                decimals: 2,
+                decimals: 0,
                 thousand: '.',
                 prefix: 'Rp. ',
                 suffix: ''

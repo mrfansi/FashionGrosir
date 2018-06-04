@@ -58,7 +58,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1><i class="fa fa-bank"></i> Bank</h1>
+                    <h1>Artikel</h1>
                     <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static"
                        data-keyboard="false">Buat baru</a>
 
@@ -68,33 +68,33 @@
                         <table id="tables" class="table table-sm table-borderless">
                             <thead>
                             <tr>
-                                <th scope="col">Bank</th>
-                                <th scope="col">Nama Pemilik Rek</th>
-                                <th scope="col">Nomor Rek</th>
-                                <th scope="col">Aktif</th>
+                                <th scope="col">Judul</th>
+                                <th scope="col">Promo</th>
+                                <th scope="col">Created At</th>
                                 <th scope="col" class="text-center"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if ($banks != NULL): ?>
-                                <?php foreach ($banks as $bank): ?>
+                            <?php if ($artikels != NULL): ?>
+                                <?php foreach ($artikels as $artikel): ?>
                                     <tr>
-                                        <td><?= $bank->b_penerbit; ?></td>
-                                        <td><?= $bank->b_nama; ?></td>
-                                        <td><?= $bank->b_rek; ?></td>
-                                        <td><?= $bank->b_isaktif == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
+                                        <td><?= $artikel->ar_judul; ?></td>
+                                        <td><?= $artikel->ar_ispromo == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
+                                        <td><?= $artikel->created_at; ?></td>
                                         <td class="text-center">
-                                            <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
-                                               href="#"
-                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static"
-                                               data-keyboard="false"
-                                               data-id="<?= $bank->b_kode; ?>"><i
-                                                        class="far fa-edit"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
-                                               href="#"
-                                               onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $bank->b_kode; ?>"><i
-                                                        class="far fa-trash-alt"></i></a>
+                                            <?php if ($artikel->ar_kode != '0'): ?>
+                                                <a data-toggle="modal" title="Ubah <?= $title_page; ?>"
+                                                   href="#"
+                                                   onclick="edit($(this))" data-target="#crud" data-backdrop="static"
+                                                   data-keyboard="false"
+                                                   data-id="<?= $artikel->ar_kode; ?>"><i
+                                                            class="far fa-edit"></i></a> |
+                                                <a data-toggle="modal" title="Hapus <?= $title_page; ?>"
+                                                   href="#"
+                                                   onclick="hapus($(this))" data-target="#hapus"
+                                                   data-id="<?= $artikel->ar_kode; ?>"><i
+                                                            class="far fa-trash-alt"></i></a>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -115,7 +115,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('bank/tambah'); ?>");
+                bodymodal.load("<?= site_url('artikel/tambah'); ?>");
             }
 
             function edit(data) {
@@ -124,7 +124,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('bank/ubah/'); ?>" + id);
+                bodymodal.load("<?= site_url('artikel/ubah/'); ?>" + id);
             }
 
             function detil(data) {
@@ -133,19 +133,21 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('bank/detil/'); ?>" + id);
+                bodymodal.load("<?= site_url('artikel/detil/'); ?>" + id);
             }
 
             function hapus(data) {
                 d = data;
                 id = d.attr('data-id');
-                $('a#hapus').attr('href', "<?= site_url('bank/hapus/'); ?>" + id);
+                $('a#hapus').attr('href', "<?= site_url('artikel/hapus/'); ?>" + id);
             }
 
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();
             });
+
+            $('[id="konten"]').ellipsis();
 
             // ------------------------------------------------------ //
             // Remove after 5 second
@@ -172,7 +174,7 @@
     </footer>
 </div>
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
 
             <div class="modal-body">
