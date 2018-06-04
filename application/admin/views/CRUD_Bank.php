@@ -5,11 +5,13 @@ if ($submit == 'Ubah') {
     $penerbit = $bank->b_penerbit;
     $nama = $bank->b_nama;
     $rekening = $bank->b_rek;
+    $isaktif = $bank->b_isaktif;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $penerbit = '';
     $nama = '';
     $rekening = '';
+    $isaktif = 0;
 }
 ?>
 
@@ -32,8 +34,17 @@ if ($submit == 'Ubah') {
                placeholder="Input Nomor Rekening">
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"><?= $submit; ?></button>
-        <button type="button" onclick="window.location.reload()" class="btn btn-danger btn-block">Tutup</button>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="aktif" value="1"
+                   id="aktif" <?= $isaktif == 1 ? 'checked' : ''; ?>>
+            <label class="form-check-label" for="aktif">
+                Aktif
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+        <button type="button" onclick="window.location.reload()" class="btn btn-danger">Tutup</button>
     </div>
     <?php if (isset($berhasil)): ?>
         <p class="text-success"><?= $berhasil; ?></p>

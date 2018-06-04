@@ -181,7 +181,7 @@ class MY_Controller extends CI_Controller
         };
 
         $this->data->bank_s = function () {
-            return $this->bank->get_all();
+            return $this->bank->where('b_isaktif', 1)->get_all();
         };
     }
 

@@ -4,6 +4,10 @@ include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
 <?php $nomor_order = $this->uri->segment(2); ?>
+<?php $biaya_subtotal = $biaya_subtotal();
+$biaya_pengiriman = $biaya_pengiriman();
+$total = $biaya_subtotal + $biaya_pengiriman;
+?>
     <br>
     <!-- Content -->
     <div class="container-fluid f-padding">
@@ -180,8 +184,10 @@ include "layout/Menu.php";
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="total_pembayaran">Total Pembayan : *</label>
-                                        <input type="number" class="form-control"
+                                        <input type="number" class="form-control" min="<?= $total; ?>"
+                                               max="<?= $total; ?>"
                                                name="total_pembayaran" placeholder="Input Total Pembayaran"
+                                               value="<?= $total; ?>"
                                                required>
                                     </div>
 
@@ -214,10 +220,7 @@ include "layout/Menu.php";
             <!-- END KOTAK KIRI -->
 
             <!-- KOTAK KANAN -->
-            <?php $biaya_subtotal = $biaya_subtotal();
-            $biaya_pengiriman = $biaya_pengiriman();
-            $total = $biaya_subtotal + $biaya_pengiriman;
-            ?>
+
             <div class="col-lg-6 col-md-12 f-font-troli">
                 <div class="border f-border-padding f-radius">
                     <h5>Perhitungan Harga</h5>
