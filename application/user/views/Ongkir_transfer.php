@@ -3,9 +3,9 @@ include "layout/Header.php";
 include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
+    <br>
     <!-- Content -->
-    <div class="container">
-        <br>
+    <div class="container-fluid f-padding">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
@@ -90,7 +90,7 @@ include "layout/Menu.php";
         </div>
     </div>
     <br>
-    <div class="container">
+    <div class="container-fluid f-padding">
         <h5 class="mb-3"><i class="fa fa-handshake"></i> Metode Pengiriman & Pembayaran</h5>
         <!-- Konten -->
         <div class="row">

@@ -5,6 +5,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #fefefe;
+    border-radius: 0;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
@@ -28,6 +29,14 @@ a {
 .popover {
     max-width: none;
     width: 500px;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.form-control {
+    border-radius: 0;
 }
 
 .form-control:focus {
@@ -1337,10 +1346,6 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     font-size: 1.1rem;
 }
 
-f-font-resi2 {
-    font-size: 1.0rem;
-}
-
 .f-hover a {
     text-decoration: none;
 }
@@ -1355,4 +1360,21 @@ f-font-resi2 {
 
 a {
     text-decoration: none;
+}
+
+.thumbnail img {
+    height: 300px;
+    width: 300px;
+}
+
+.navbar-toggler {
+    border-radius: 0;
+}
+
+.list-group-item:first-child, .list-group-item:last-child {
+    border-radius: 0;
+}
+
+.card {
+    border-radius: 0;
 }

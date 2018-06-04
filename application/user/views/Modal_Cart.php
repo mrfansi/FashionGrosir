@@ -70,6 +70,6 @@
         <a href="<?= site_url('/'); ?>" class="btn btn-sm btn-primary r-btn-pink btn-block">Lanjutkan Belanja</a>
     </div>
     <div class="col">
-        <a href="<?= site_url('cart'); ?>" class="btn btn-sm btn-primary r-btn-pink btn-block">Check Out</a>
+        <a href="<?= site_url('cart'); ?>" class="btn btn-sm btn-primary r-btn-pink btn-block">Proses Pembayara</a>
     </div>
 </div>

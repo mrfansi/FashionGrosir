@@ -3,9 +3,9 @@ include "layout/Header.php";
 include "layout/Brand.php";
 include "layout/Menu.php";
 ?>
+    <br>
     <!-- Content -->
-    <div class="container">
-        <br>
+    <div class="container-fluid f-padding">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
@@ -83,21 +83,26 @@ include "layout/Menu.php";
         </div>
     </div>
     <br>
-    <div class="container" id="#content">
-        <h5 class="mb-3"><i class="fa fa-shopping-cart"></i> Keranjang Saya</h5>
-
+    <div class="container-fluid f-padding" id="#content">
+        <h5 class="mb-3"><i class="fa fa-shopping-cart"></i> Keranjang</h5>
         <div class="row">
-
             <div class="col-lg-12 col-md-12 container">
                 <div class="card mb-3 r-layout-troli">
 
                     <div class="row f-text-hidden">
                         <div class="col-lg-12 col-md-12">
                             <div class="row">
-                                <div class="col-lg-7 col-md-7">
-                                    <h6><?= $this->cart->where_p_kode($_SESSION['id'])->count_rows(); ?> Produk</h6>
+                                <div class="col-lg-4 col-md-7">
+                                    <h6>Item : <?= $this->cart->where_p_kode($_SESSION['id'])->count_rows(); ?>
+                                        Produk</h6>
                                 </div>
                                 <div class="col-lg-2 col-md-2">
+                                    <h6>Warna</h6>
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <h6>Ukuran</h6>
+                                </div>
+                                <div class="col-lg-1 col-md-2">
                                     <h6>QTY</h6>
                                 </div>
                                 <div class="col-lg-2 col-md-2">
@@ -111,7 +116,7 @@ include "layout/Menu.php";
                         <?php foreach ($cart_s($_SESSION['id']) as $cart): ?>
                             <div class="border f-border-padding">
                                 <div class="row">
-                                    <div class="col-lg-7 col-md-7">
+                                    <div class="col-lg-4 col-md-7">
                                         <div class="media">
                                             <?php if ($item_detil($cart->ide_kode)->item->i_kode): ?>
                                                 <?php $item_kode = $item_detil($cart->ide_kode)->item->i_kode; ?>
@@ -122,22 +127,22 @@ include "layout/Menu.php";
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                             <div class="media-body mb-3">
-                                                <h5 class="mt-0"><?= $item_detil($cart->ide_kode)->item->i_nama; ?></h5>
-                                                <?= $item_detil($cart->ide_kode)->item->i_deskripsi; ?>
-                                                <p><i class="fa fa-tag fa-lg f-icon-margin"></i>Warna
-                                                    : <?= $item_detil($cart->ide_kode)->warna->w_nama; ?></p>
-                                                <p><i class="fa fa-thumb-tack fa-lg f-icon-margin"></i> Ukuran
-                                                    : <?= $item_detil($cart->ide_kode)->ukuran->u_nama; ?></p>
+                                                <h6 class="mt-0"><?= $item_detil($cart->ide_kode)->item->i_nama; ?></h6>
+                                                <p class="text-justify"><?= $item_detil($cart->ide_kode)->item->i_deskripsi; ?></p>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="col-lg-2 col-md-2">
-                                        <h5 class="card-title f-font-harga f-margin-media">x <?= $cart->ca_qty; ?></h5>
+                                        <p><?= $item_detil($cart->ide_kode)->warna->w_nama; ?></p>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2">
+                                        <p><?= $item_detil($cart->ide_kode)->ukuran->u_nama; ?></p>
+                                    </div>
+                                    <div class="col-lg-1 col-md-2">
+                                        <p>x <?= $cart->ca_qty; ?></p>
                                     </div>
                                     <div class="col-md-2">
-                                        <h5 id="rupiah"
-                                            class="card-title f-font-harga f-margin-media"><?= $cart->ca_tharga; ?></h5>
+                                        <p id="rupiah"><?= $cart->ca_tharga; ?></p>
                                     </div>
                                     <div class="col-md-1 f-delete-troli">
                                         <!-- Optional | Check -->
@@ -171,8 +176,8 @@ include "layout/Menu.php";
                 </div>
                 </div>
                 <div class="col-lg-4 p-0">
-                    <a href="<?= site_url('cart/checkout'); ?>" class="btn btn-primary btn-lg btn-block f-button-font">Check
-                        Out</a>
+                    <a href="<?= site_url('cart/checkout'); ?>" class="btn btn-primary btn-lg btn-block f-button-font">Proses
+                        Pembayaran</a>
                 </div>
 
 

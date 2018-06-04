@@ -25,7 +25,7 @@ include "layout/Menu.php";
                     <?php if (isset($kat->item) && isset($kat->kategori) && $kat->item != NULL): ?>
                         <?php $stok = $qty($kat->item->i_kode); ?>
                         <?php if ($stok >= 1): ?>
-                            <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
                                 <div class="thumbnail">
                                     <?php if ($item_img($kat->item->i_kode) != NULL): ?>
                                         <img class="img-fluid"
@@ -47,7 +47,7 @@ include "layout/Menu.php";
                                        id="title"><?= $kat->item->i_deskripsi; ?></p>
                                     <hr class="line">
                                     <div class="row">
-                                        <div class="col-md-7 col-sm-7">
+                                        <div class="col-6 col-md-6 col-sm-6">
                                             <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
                                                 <p id="rupiah" class="mt-1 price"><?= $kat->item->i_hrg_vip; ?></p>
                                             <?php else: ?>
@@ -55,7 +55,7 @@ include "layout/Menu.php";
                                                    class="mt-1 align-middle price"><?= $kat->item->i_hrg_reseller; ?></p>
                                             <?php endif; ?>
                                         </div>
-                                        <div class="col-md-5 col-sm-5">
+                                        <div class="col-6 col-md-6 col-sm-6">
                                             <a class="btn btn-primary btn-sm r-btn-pink right"
                                                href="<?= site_url('kategori/' . $kat->kategori->k_url . '/item/' . $kat->item->i_url . '/detil'); ?>">
                                                 <i class="fa fa-shopping-cart"></i> Beli

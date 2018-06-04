@@ -7,18 +7,20 @@ include "layout/Menu.php";
     <!-- Content -->
     <!-- SHOP -->
     <div class="container-fluid f-padding">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb f-hover">
-                <li class="breadcrumb-item">
-                    <a href="<?= site_url('/'); ?>">Home</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                    <a href="#">Pencarian "<?= $this->input->get('cari'); ?>"</a>
-                </li>
-            </ol>
-        </nav>
-    </div>
-    <div class="container-fluid f-padding">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb f-hover">
+                        <li class="breadcrumb-item">
+                            <a href="<?= site_url('/'); ?>">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a href="#">Pencarian "<?= $this->input->get('cari'); ?>"</a>
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
         <div class="row">
             <?php if (isset($cari_s) && $cari_s != NULL): ?>
                 <?php foreach ($cari_s as $cari): ?>
@@ -68,7 +70,9 @@ include "layout/Menu.php";
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>Tidak ada item yang ditampilkan</p>
+                <div class="col">
+                    <p>Tidak ada item yang ditampilkan</p>
+                </div>
             <?php endif; ?>
 
         </div>

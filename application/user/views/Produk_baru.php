@@ -24,7 +24,7 @@ include "layout/Menu.php";
                 <?php foreach ($terbaru_items() as $terbaru): ?>
                     <?php $stok = $qty($terbaru->i_kode); ?>
                     <?php if ($stok >= 1): ?>
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
                             <div class="thumbnail">
                                 <?php if ($item_img($terbaru->i_kode) != NULL): ?>
                                     <img class="img-fluid"
@@ -46,7 +46,7 @@ include "layout/Menu.php";
                                    id="title"><?= $terbaru->i_deskripsi; ?></p>
                                 <hr class="line">
                                 <div class="row">
-                                    <div class="col-md-7 col-sm-7">
+                                    <div class="col-6 col-md-6 col-sm-6">
                                         <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
                                             <p id="rupiah" class="mt-1 price"><?= $terbaru->i_hrg_vip; ?></p>
                                         <?php else: ?>
@@ -54,7 +54,7 @@ include "layout/Menu.php";
                                                class="mt-1 align-middle price"><?= $terbaru->i_hrg_reseller; ?></p>
                                         <?php endif; ?>
                                     </div>
-                                    <div class="col-md-5 col-sm-5">
+                                    <div class="col-6 col-md-6 col-sm-6">
                                         <a class="btn btn-primary btn-sm r-btn-pink right"
                                            href="<?= site_url('produk-terbaru/item/' . $terbaru->i_url . '/detil'); ?>">
                                             <i class="fa fa-shopping-cart"></i> Beli

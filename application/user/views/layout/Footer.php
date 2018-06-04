@@ -138,7 +138,7 @@
             </tr>
             </tfoot>
         </table>
-        <a class="btn btn-primary btn-sm r-btn-pink btn-block" href="<?= site_url('cart'); ?>">Check Out</a>
+        <a class="btn btn-primary btn-sm r-btn-pink btn-block" href="<?= site_url('cart'); ?>">Proses Pembayara</a>
     <?php else: ?>
         <p>Tidak ada item di keranjang.</p>
     <?php endif; ?>
@@ -153,7 +153,7 @@
     // ------------------------------------------------------ //
     var moneyFormat = wNumb({
         mark: ',',
-        decimals: 2,
+        decimals: 0,
         thousand: '.',
         prefix: 'Rp. ',
         suffix: ''

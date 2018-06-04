@@ -111,7 +111,7 @@ include "layout/Menu.php";
         <h5>Hot Item</h5>
         <div class="row">
             <?php foreach ($this->item->with_item_img('where:ii_default =1')->limit(5)->get_all() as $hot): ?>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="col-12 col-sm-3 col-md-3 col-lg-3">
                     <div class="thumbnail">
                         <?php if ($item_img($hot->i_kode) != NULL): ?>
                             <img class="img-fluid" src="<?= base_url('upload/' . $item_img($hot->i_kode)->ii_nama); ?>"
