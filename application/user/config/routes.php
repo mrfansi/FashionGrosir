@@ -51,6 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['login'] = 'auth/login';
+$route['register'] = 'auth/register';
+$route['forgot'] = 'auth/forgot';
 $route['logout'] = 'auth/logout';
 $route['cari'] = 'pencarian';
 $route['produk-terbaru'] = 'home/produkbaru';

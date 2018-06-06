@@ -16,6 +16,16 @@ class Auth extends MY_Controller
 
     }
 
+    public function forgot()
+    {
+        $this->load->view('Forgot', $this->data);
+    }
+
+    public function register()
+    {
+        $this->load->view('Register', $this->data);
+    }
+
     public function login()
     {
         // load library

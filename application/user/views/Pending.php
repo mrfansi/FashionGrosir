@@ -68,7 +68,9 @@ include "layout/Menu.php";
                             <tbody>
                             <?php foreach ($orders as $order): ?>
                                 <tr>
-                                    <td rowspan="1" class="text-danger"><?= $order->o_noorder; ?></td>
+                                    <td rowspan="1" class="text-danger"><a
+                                                href="<?= site_url('DetailPesanan'); ?>"><?= $order->o_noorder; ?></a>
+                                    </td>
                                     <td><?= $order->created_at; ?></td>
                                     <td id="rupiah"><?= $order->total; ?></td>
                                     <td><?= $order->p_nama; ?></td>

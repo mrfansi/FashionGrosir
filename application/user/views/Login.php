@@ -19,11 +19,11 @@ include "layout/Header.php";
                    required autocomplete="off">
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block f-button-font" type="submit">Sign in</button>
-<!--        <p class="text-center f-margin-forgot f-hover-forgot"><a href="--><?//= site_url('forgot'); ?><!--">Kamu lupa password-->
-<!--                ?</a></p>-->
-<!--        <hr>-->
-<!--        <p class="text-center">Belum punya akun? <a href="--><?//= site_url('register'); ?><!--">Mendaftar disini</a></p>-->
+        <button class="btn btn-lg btn-primary btn-block f-button-font" type="submit">Login</button>
+        <p class="text-center f-margin-forgot f-hover-forgot"><a href="<?= site_url('forgot'); ?>">Kamu lupa password
+                ?</a></p>
+        <hr>
+        <p class="text-center">Belum punya akun? <a href="<?= site_url('register'); ?>">Mendaftar disini</a></p>
     </form>
     <!-- End Login -->
 
