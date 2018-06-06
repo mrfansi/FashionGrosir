@@ -59,10 +59,10 @@ include "layout/Menu.php";
 
                         <div class="row">
 
-                            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                                <p class="r-detailstatuspesanan-judul">No Pesanan : </p>
+                            <div class="pr-4 pl-4 col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                                <p class="r-detailstatuspesanan-judul">No pesanan : </p>
                                 <p class="r-font-orderid">#ASUCAESAR2018</p> <br>
-                                <p class="r-detailstatuspesanan-judul">Kurir Ekpedisi : </p>
+                                <p class="r-detailstatuspesanan-judul">Kurir ekpedisi : </p>
                                 <p class="r-font-orderid"> JNE </p>
                                 <small class="r-small-detail-pesanan r-font-date ">
                                     Dipesan pada 10 Maret 2018
@@ -70,7 +70,7 @@ include "layout/Menu.php";
 
                             </div>
 
-                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                            <div class="pr-4 pl-4 col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
 
                                 <p class="r-detailstatuspesanan-judulkanan">
                                     Total Harga :
@@ -78,7 +78,7 @@ include "layout/Menu.php";
                                 <p class="r-detailstatuspesanan-judulhargakanan">
                                     100.000
                                 </p>
-                                <h6 class="r-badge">Status Transaksi : <span class="badge badge-success">Sukses</span>
+                                <h6 class="r-detailstatuspesanan-judulkanan">Status Transaksi : <span class="badge badge-success">Sukses</span>
                                 </h6>
 
 
@@ -87,180 +87,219 @@ include "layout/Menu.php";
 
                         <!-- -->
 
-                        <div class="row">
-                            <div class="col">
-
-                            </div>
-                            <div class="col">
-
-
-                            </div>
-                            <div class="col">
-
-                            </div>
-                        </div>
-                        <!-- -->
-                        <!-- END JUDUL -->
-                    </div>
-                    <hr class="r-hr-juduldetail">
-
-                    <div class="container">
-                        <h5 class="r-style-detailbarangpesanan">
-                            <i class="fa fa-dropbox" style="font-size: 20px;"></i> Detail Produk
-                        </h5>
-
-                        <div class="row mb-3">
-                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                <p>No</p>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                <p>Nama Produk</p>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-2 col-md-2 col-xl-2">
-                                <p>Kuantiti</p>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-2 col-md-2 col-xl-2">
-                                <p>Harga Satuan</p>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-2 col-md-2 col-xl-2">
-                                <p>Harga Total</p>
-                            </div>
-
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
-                                <p>1</p>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                                <p class="r-p-detailproduk">Powerlogic X-Craft Quantum Z7000 Gaming Mouse</p>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-2 col-md-2 col-xl-2">
-                                <p class="r-p-detailproduk">2</p>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-2 col-md-2 col-xl-2">
-                                <p class="r-p-detailproduk">10.000</p>
-                            </div>
-                            <div class="col-12 col-sm-12 col-md-2 col-md-2 col-xl-2">
-                                <p class="r-p-detailproduk">20.000</p>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-
-                    <hr class="r-hr-juduldetail">
-
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-
-
-                            </div>
-
-                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
-
-                                <h6 class="r-judul-kotak4-detailpesanan">
-                                    <i class="fa fa-money" style="font-size: 20px;"></i> Perhitungan Harga :
+                        <div class="container">
+                        <div class="row mt-3">
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 r-posisi-kotak4-1">
+                                <h6 class="r-judul-kotak4-1">
+                                    <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
                                 </h6>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                                        <h6 class="r-perhitungan-detailpesanan ">Subtotal</h6>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-5 col-6">
-                                        <div class="row">
-                                            <div class="col-lg col-md-5 col-sm-5 col-4">
-                                                <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
-                                            </div>
-                                            <div class="col-lg col-md-6 col-sm-7 col">
-                                                <h5 class="card-title f-sub-total r-perhitungan-detailpesanan ">
-                                                    1.000.000</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                                        <h6 class="r-perhitungan-detailpesanan ">Biaya Pengiriman</h6>
-                                    </div>
-                                    <div class="col-lg-6 col-md col-sm-5 col-6">
-                                        <div class="row">
-                                            <div class="col-lg col-md-5 col-sm-5 col-4">
-                                                <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
-                                            </div>
-                                            <div class="col-lg col-md-6 col-sm-7 col">
-                                                <h5 class="card-title f-sub-total r-perhitungan-detailpesanan ">
-                                                    125.000</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                                        <h6 class="r-perhitungan-detailpesanan ">Biaya Lain-lain</h6>
-                                    </div>
-                                    <div class="col-lg-6 col-md col-sm-5 col-6">
-                                        <div class="row">
-                                            <div class="col-lg col-md-5 col-sm-5 col-4">
-                                                <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
-                                            </div>
-                                            <div class="col-lg col-md-6 col-sm-7 col">
-                                                <h5 class="card-title f-sub-total r-perhitungan-detailpesanan ">-</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <hr>
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                                        <p class="r-perhitungan-detailpesanan "><b class="r-perhitungan-detailpesanan ">Total</b><br><i>*tidak
-                                                termasuk PPN</i></p>
-                                    </div>
-                                    <div class="col-lg-6 col-md col-sm-5 col-6">
-                                        <div class="row">
-                                            <div class="col-lg col-md-5 col-sm-5 col-4">
-                                                <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
-                                            </div>
-                                            <div class="col-lg col-md-6 col-sm-7 col">
-                                                <h5 class="card-title f-sub-total r-perhitungan-detailpesanan">
-                                                    1.125.000</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <p class="r-konten-kotak4-1">
+                                    Contoh alamat
+                                </p>
 
                             </div>
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 r-posisi-kotak4-1">
 
+                            <h6 class="r-judul-kotak4-1">
+                                <i class="fa fa-truck" style="font-size: 20px;"></i>
+                                Metode Pengiriman :
+                            </h6>
+                            <p class="r-konten-kotak4-1">
+                                contoh pengiriman
+                            </p>
+
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 r-posisi-kotak4-1">
+                            <h6 class="r-judul-kotak4-1">
+                                <i class="fa fa-credit-card" style="font-size: 20px;"></i>
+                                Metode Pembayaran:
+                            </h6>
+                            <p class="r-konten-kotak4-1">
+                                Contoh metode pembayaran
+                            </p>
                         </div>
                     </div>
-
-                    <div class="row container mb-2 mt-2">
-                        <div class="col d-flex justify-content-center">
-                            <button type="submit" class="btn btn-info btn-sm mr-1 ml-1"><i class="fa fa-file"></i> Cetak
-                            </button>
-                            <button type="submit" class="btn btn-danger btn-sm mr-1 ml-1"><i class="fa fa-undo"></i>
-                                Kembali
-                            </button>
                         </div>
+                    <!-- -->
+                    <!-- END JUDUL -->
+                </div>
+                <hr class="r-hr-juduldetail">
+
+                    <div class="container">
+                    <h5 class="r-style-detailbarangpesanan">
+                        <i class="fa fa-dropbox" style="font-size: 20px;"></i> Detail Produk
+                    </h5>
+                    <div class="table-responsive ">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="r-thdetailbarang">No</th>
+                                <th class="r-thdetailbarang"">Nama Produk</th>
+                                <th class="r-thdetailbarang"">Qty</th>
+                                <th class="r-thdetailbarang"">Harga Satuan</th>
+                                <th class="r-thdetailbarang"">Harga Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="r-tddetailbarang">1</td>
+                                <td class="r-tddetailbarang">Powerlogic X-Craft Quantum Z7000 Gaming Mouse</td>
+                                <td class="r-tddetailbarang">2</td>
+                                <td class="r-tddetailbarang">10.000</td>
+                                <td class="r-tddetailbarang">20.000</td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="r-tddetailbarang">1</td>
+                                <td class="r-tddetailbarang">Powerlogic X-Craft Quantum Z7000 Gaming Mouse</td>
+                                <td class="r-tddetailbarang">2</td>
+                                <td class="r-tddetailbarang">10.000</td>
+                                <td class="r-tddetailbarang">20.000</td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="r-tddetailbarang">1</td>
+                                <td class="r-tddetailbarang">Powerlogic X-Craft Quantum Z7000 Gaming Mouse</td>
+                                <td class="r-tddetailbarang">2</td>
+                                <td class="r-tddetailbarang">10.000</td>
+                                <td class="r-tddetailbarang">20.000</td>
+
+
+                            </tr>
+                            <tr>
+                                <td class="r-tddetailbarang">1</td>
+                                <td class="r-tddetailbarang">Powerlogic X-Craft Quantum Z7000 Gaming Mouse</td>
+                                <td class="r-tddetailbarang">2</td>
+                                <td class="r-tddetailbarang">10.000</td>
+                                <td class="r-tddetailbarang">20.000</td>
+
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+
+
+
+
+
+
+                <hr class="r-hr-juduldetail">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+
+
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
+
+                            <h6 class="r-judul-kotak4-detailpesanan">
+                                <i class="fa fa-money" style="font-size: 20px;"></i> Perhitungan Harga :
+                            </h6>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-5 col-sm-4 col-4">
+                                    <h6 class="r-perhitungan-detailpesanan ">Subtotal</h6>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-8 col-8">
+                                    <div class="row">
+                                        <div class="col-lg col-md-4 col-sm-4 col-5">
+                                            <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
+                                        </div>
+                                        <div class="col-lg col-md-8 col-sm-8 col-7">
+                                            <h5 class="card-title f-sub-total r-perhitungan-detailpesanan ">
+                                                1.000.000</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-5 col-sm-4 col-4">
+                                    <h6 class="r-perhitungan-detailpesanan ">Biaya Pengiriman</h6>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-8 col-8">
+                                    <div class="row">
+                                        <div class="col-lg col-md-4 col-sm-4 col-5">
+                                            <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
+                                        </div>
+                                        <div class="col-lg col-md-8 col-sm-8 col-7">
+                                            <h5 class="card-title f-sub-total r-perhitungan-detailpesanan ">
+                                                125.000</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-5 col-sm-4 col-4">
+                                    <h6 class="r-perhitungan-detailpesanan ">Biaya Lain-lain</h6>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-8 col-8">
+                                    <div class="row">
+                                        <div class="col-lg col-md-4 col-sm-5 col-5">
+                                            <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
+                                        </div>
+                                        <div class="col-lg col-md-8 col-sm-7 col-7">
+                                            <h5 class="card-title f-sub-total r-perhitungan-detailpesanan ">-</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-5 col-sm-7 col-4">
+                                    <p class="r-perhitungan-detailpesanan "><b class="r-perhitungan-detailpesanan ">Total</b><br><i>*tidak
+                                            termasuk PPN</i></p>
+                                </div>
+                                <div class="col-lg-6 col-md-7 col-sm-5 col-8">
+                                    <div class="row">
+                                        <div class="col-lg col-md-4 col-sm-5 col-5">
+                                            <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
+                                        </div>
+                                        <div class="col-lg col-md-8 col-sm-7 col-7">
+                                            <h5 class="card-title f-sub-total r-perhitungan-detailpesanan">
+                                                1.125.000</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
                     </div>
                 </div>
-                <!-- END CARD -->
 
-
+                <div class="row container mb-4 mt-2">
+                    <div class="col d-flex justify-content-center">
+                        <button type="submit" class="btn btn-info btn-sm mr-1 ml-1"><i class="fa fa-file"></i> Cetak
+                        </button>
+                        <button type="submit" class="btn btn-danger btn-sm mr-1 ml-1"><i class="fa fa-undo"></i>
+                            Kembali
+                        </button>
+                    </div>
+                </div>
             </div>
+            <!-- END CARD -->
 
-
-            <br>
 
         </div>
 
-        <!-- End Konten -->
+
+        <br>
+
+    </div>
+
+    <!-- End Konten -->
 
 
     </div>

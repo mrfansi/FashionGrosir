@@ -1382,6 +1382,7 @@ a {
 .r-detailstatuspesanan-judul {
     margin: 0px;
     color: #F06292;
+    font-size: 15px;
     display: inline-block;
 }
 
@@ -1409,13 +1410,13 @@ a {
 
 .r-detailstatuspesanan-judulkanan {
     color: #F06292;
-    font-size: 17px;
+    font-size: 15px;
     margin: 0;
     display: inline-block;
 }
 
 .r-detailstatuspesanan-judulhargakanan {
-    font-size: 17px;
+    font-size: 15px;
     color: #888;
     display: inline-block;
     margin:0;
@@ -1554,7 +1555,47 @@ a {
 
 }
 
+/** Style Update detail Pesanan */
+
+.r-thdetailbarang {
+    color: #F06292;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.r-tddetailbarang {
+    color: black;
+    font-size: 13px;
+    text-align: center;
+}
+
+
 .r-perhitungan-detailpesanan {
     font-size: 15px;
 
 }
+
+@media screen and (max-width: 768px) {
+    .r-perhitungan-detailpesanan {
+        font-size: 12px;
+
+    }
+    .r-tddetailbarang {
+        font-size: 12px;
+    }
+
+    .r-judul-kotak4-1 {
+        text-align: center;
+        font-size: 15px;
+    }
+    .r-konten-kotak4-1 {
+        text-align: center;
+        font-size: 12px;
+    }
+
+
+}
+
+
+
