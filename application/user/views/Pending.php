@@ -35,6 +35,8 @@ include "layout/Menu.php";
                         Pesanan</a>
                     <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('pending'); ?>">Transaksi
                         Tertunda</a>
+                    <a class="list-group-item list-group-item-action"
+                       href="<?= site_url('resi'); ?>">Resi</a>
                 </div>
             </div>
 

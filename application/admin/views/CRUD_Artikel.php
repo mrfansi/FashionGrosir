@@ -60,10 +60,10 @@ if ($submit == 'Ubah') {
             </div>
             <div class="col">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="pengumuman" value="1"
-                           id="pengumuman" <?= $isnotifikasi == 1 ? 'checked' : ''; ?>>
-                    <label class="form-check-label" for="pengumuman">
-                        Pengumuman
+                    <input class="form-check-input" type="checkbox" name="notikasi" value="1"
+                           id="notikasi" <?= $isnotifikasi == 1 ? 'checked' : ''; ?>>
+                    <label class="form-check-label" for="notikasi">
+                        Notifikasi
                     </label>
                 </div>
             </div>
@@ -75,7 +75,7 @@ if ($submit == 'Ubah') {
     </div>
     <div class="form-group">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="pengumuman" value="1"
+            <input class="form-check-input" type="checkbox" name="aktif" value="1"
                    id="aktif" <?= $isaktif == 1 ? 'checked' : ''; ?>>
             <label class="form-check-label" for="aktif">
                 Tampilkan

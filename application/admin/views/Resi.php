@@ -58,7 +58,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1>Artikel</h1>
+                    <h1>Resi</h1>
                     <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static"
                        data-keyboard="false">Buat baru</a>
 
@@ -69,39 +69,30 @@
                             <thead>
                             <tr>
                                 <th scope="col">Judul</th>
-                                <th scope="col">Promo</th>
-                                <th scope="col">Blog</th>
-                                <th scope="col">Notifikasi</th>
                                 <th scope="col" class="text-center"></th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php if ($artikels != NULL): ?>
                                 <?php foreach ($artikels as $artikel): ?>
-                                    <?php if ($artikel->ar_isresi == 0): ?>
-                                        <tr>
-                                            <td><?= $artikel->ar_judul; ?></td>
-                                            <td><?= $artikel->ar_ispromo == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
-                                            <td><?= $artikel->ar_isblog == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
-                                            <td><?= $artikel->ar_isnotifikasi == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
-                                            <td class="text-center">
-                                                <?php if ($artikel->ar_kode != '0'): ?>
-                                                    <a data-toggle="modal" title="Ubah <?= $title_page; ?>"
-                                                       href="#"
-                                                       onclick="edit($(this))" data-target="#crud"
-                                                       data-backdrop="static"
-                                                       data-keyboard="false"
-                                                       data-id="<?= $artikel->ar_kode; ?>"><i
-                                                                class="far fa-edit"></i></a> |
-                                                    <a data-toggle="modal" title="Hapus <?= $title_page; ?>"
-                                                       href="#"
-                                                       onclick="hapus($(this))" data-target="#hapus"
-                                                       data-id="<?= $artikel->ar_kode; ?>"><i
-                                                                class="far fa-trash-alt"></i></a>
-                                                <?php endif; ?>
-                                            </td>
-                                        </tr>
-                                    <?php endif; ?>
+                                    <tr>
+                                        <td><?= $artikel->ar_judul; ?></td>
+                                        <td class="text-center">
+                                            <?php if ($artikel->ar_kode != '0'): ?>
+                                                <a data-toggle="modal" title="Ubah <?= $title_page; ?>"
+                                                   href="#"
+                                                   onclick="edit($(this))" data-target="#crud" data-backdrop="static"
+                                                   data-keyboard="false"
+                                                   data-id="<?= $artikel->ar_kode; ?>"><i
+                                                            class="far fa-edit"></i></a> |
+                                                <a data-toggle="modal" title="Hapus <?= $title_page; ?>"
+                                                   href="#"
+                                                   onclick="hapus($(this))" data-target="#hapus"
+                                                   data-id="<?= $artikel->ar_kode; ?>"><i
+                                                            class="far fa-trash-alt"></i></a>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                             </tbody>
@@ -120,7 +111,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('artikel/tambah'); ?>");
+                bodymodal.load("<?= site_url('resi/tambah'); ?>");
             }
 
             function edit(data) {
@@ -129,7 +120,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('artikel/ubah/'); ?>" + id);
+                bodymodal.load("<?= site_url('resi/ubah/'); ?>" + id);
             }
 
             function detil(data) {
@@ -138,13 +129,13 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('artikel/detil/'); ?>" + id);
+                bodymodal.load("<?= site_url('resi/detil/'); ?>" + id);
             }
 
             function hapus(data) {
                 d = data;
                 id = d.attr('data-id');
-                $('a#hapus').attr('href', "<?= site_url('artikel/hapus/'); ?>" + id);
+                $('a#hapus').attr('href', "<?= site_url('resi/hapus/'); ?>" + id);
             }
 
 

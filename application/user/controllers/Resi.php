@@ -10,18 +10,14 @@ class Resi extends MY_Controller
 
     public function index()
     {
-        $this->data->breadcumb = 'Resi';
-        $this->data->breadcumburl = site_url('resi');
+        $this->data->resis = $this->artikel->where('ar_isresi', 1)->get_all();
         $this->load->view('Resi', $this->data);
     }
 
-    public function detail()
+    public function get($id)
     {
-        $this->data->breadcumb = 'Resi';
-        $this->data->breadcumb2 = 'Detail aResi';
-        $this->data->breadcumburl = site_url('resi');
-        $this->data->breadcumburl2 = site_url('resi/detail');
-        $this->load->view('Resi_detail', $this->data);
+        $this->data->resi = $this->artikel->where('ar_url', $id)->get();
+        $this->load->view('Resi_detil', $this->data);
 
     }
 }

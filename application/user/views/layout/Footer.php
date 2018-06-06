@@ -24,21 +24,14 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 f-margin-nav">
                     <ul class="navbar-nav">
+                        <?php if ($blogs != ''): ?>
+                            <?php foreach ($blogs as $blog): ?>
                         <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="#">Tentang Kami</a>
+                            <a class="nav-link f-footer-new"
+                               href="<?= site_url('blog/' . $blog->ar_url); ?>"><?= $blog->ar_judul; ?></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="#">Hubungi Kami</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="#">Menjadi Reseler</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="#">FAQ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="#">Bantuan</a>
-                        </li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </ul>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 f-margin-nav">
@@ -72,13 +65,13 @@
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 f-margin-nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="#">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="#">Syarat & Ketentuan</a>
+                            <a class="nav-link f-footer-new" href="<?= site_url('resi'); ?>">Resi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link f-footer-new" href="<?= site_url('pending'); ?>">Status Order</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link f-footer-new" href="<?= site_url('riwayat'); ?>">Riwayat Pesanan</a>
                         </li>
                     </ul>
                 </div>

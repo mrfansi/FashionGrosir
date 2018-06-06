@@ -6,11 +6,12 @@
  * Time: 23.23
  */
 
-class Artikel extends MY_Controller
+class Resi extends MY_Controller
 {
     public function __construct()
     {
         parent::__construct();
+
         if (!$this->session->isonline) {
             redirect('login');
         } else {
@@ -30,30 +31,28 @@ class Artikel extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Artikel';
-        $this->data->title_page = 'Artikel';
+        $this->data->title = 'Fashion Grosir | Resi';
+        $this->data->title_page = 'Resi';
         $this->data->total_artikel = $this->artikel->count_rows();
-        $this->data->artikels = $this->artikel->get_all();
-        $this->load->view('Artikel', $this->data);
+        $this->data->artikels = $this->artikel->where('ar_isresi', 1)->get_all();
+        $this->load->view('Resi', $this->data);
     }
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Artikel > Tambah';
+        $this->data->title = 'Fashion Grosir | Resi > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->artikel->guid();
-        $this->data->artikels = $this->artikel->get_all();
-        $this->load->view('CRUD_Artikel', $this->data);
+        $this->load->view('CRUD_Resi', $this->data);
     }
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Artikel > Ubah';
+        $this->data->title = 'Fashion Grosir | Resi > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->artikel = $this->artikel->where('ar_kode', $id)->get();
-        $this->data->artikels = $this->artikel->get_all();
-        $this->load->view('CRUD_Artikel', $this->data);
+        $this->load->view('CRUD_Resi', $this->data);
     }
 
     public function simpan()
@@ -69,22 +68,19 @@ class Artikel extends MY_Controller
                 'ar_judul' => $this->input->post('judul'),
                 'ar_content' => $this->input->post('content'),
                 'ar_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
-                'ar_ispromo' => $this->input->post('promo'),
-                'ar_isblog' => $this->input->post('blog'),
-                'ar_isresi' => $this->input->post('resi'),
-                'ar_isnotifikasi' => $this->input->post('notikasi'),
-                'ar_isaktif' => $this->input->post('aktif')
+                'ar_isresi' => 1,
+                'ar_isaktif' => 1
             ));
             if ($artikel) {
-                $this->data->berhasil = 'Artikel berhasil diperbarui.';
+                $this->data->berhasil = 'Resi berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-                redirect('artikel');
+                redirect('resi');
             } else {
-                $this->data->gagal = 'Artikel gagal diperbarui.';
+                $this->data->gagal = 'Resi gagal diperbarui.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
-                redirect('artikel');
+                redirect('resi');
             }
         } else {
             $artikel = $this->artikel->insert(array(
@@ -92,22 +88,19 @@ class Artikel extends MY_Controller
                 'ar_judul' => $this->input->post('judul'),
                 'ar_content' => $this->input->post('content'),
                 'ar_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
-                'ar_ispromo' => $this->input->post('promo'),
-                'ar_isblog' => $this->input->post('blog'),
-                'ar_isresi' => $this->input->post('resi'),
-                'ar_isnotifikasi' => $this->input->post('notikasi'),
-                'ar_isaktif' => $this->input->post('aktif')
+                'ar_isresi' => 1,
+                'ar_isaktif' => 1
             ));
             if ($artikel) {
-                $this->data->berhasil = 'Artikel berhasil dibuat.';
+                $this->data->berhasil = 'Resi berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-                redirect('artikel');
+                redirect('resi');
             } else {
-                $this->data->gagal = 'Artikel gagal dibuat.';
+                $this->data->gagal = 'Resi gagal dibuat.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
-                redirect('artikel');
+                redirect('resi');
             }
         }
     }
@@ -117,15 +110,15 @@ class Artikel extends MY_Controller
 
         $artikel = $this->artikel->where('ar_kode', $id)->delete();
         if ($artikel) {
-            $this->data->berhasil = 'Artikel berhasil dihapus';
+            $this->data->berhasil = 'Resi berhasil dihapus';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-            redirect('artikel');
+            redirect('resi');
         } else {
-            $this->data->gagal = 'Artikel gagal dihapus';
+            $this->data->gagal = 'Resi gagal dihapus';
             $this->session->set_flashdata('berhasil', $this->data->gagal);
 
-            redirect('artikel');
+            redirect('resi');
         }
     }
 }

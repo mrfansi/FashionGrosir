@@ -23,6 +23,9 @@ include "layout/Menu.php";
             <div class="card-body">
                 <h5 class="card-title"><?= $artikel->ar_judul; ?></h5>
                 <h6 class="card-subtitle mb-2 text-muted small">Dibuat pada : <?= $artikel->created_at; ?></h6>
+                <?php if ($resi->updated_at != NULL): ?>
+                    <h6 class="card-subtitle mb-2 text-muted small">Diubah pada : <?= $resi->updated_at; ?></h6>
+                <?php endif; ?>
                 <hr>
                 <p><?= $artikel->ar_content; ?></p>
             </div>

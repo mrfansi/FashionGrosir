@@ -62,6 +62,7 @@ class MY_Controller extends CI_Controller
 
         $this->callback();
         $this->load_pref();
+        $this->blog_load();
     }
 
 
@@ -199,6 +200,16 @@ class MY_Controller extends CI_Controller
         }
 
 
+    }
+
+    private function blog_load()
+    {
+        $blog = $this->artikel->where('ar_isblog', 1)->get_all();
+        if ($blog) {
+            $this->data->blogs = $blog;
+        } else {
+            $this->data->blogs = '';
+        }
     }
 }
 

@@ -60,6 +60,7 @@
                     </ul>
                 </li>
                 <li><a href="<?= site_url('artikel'); ?>"><i class="fas fa-newspaper"></i> Artikel</a></li>
+                <li><a href="<?= site_url('resi'); ?>"><i class="fas fa-truck-loading"></i> Resi</a></li>
             </ul>
         </div>
         <div class="admin-menu">
