@@ -93,7 +93,7 @@ include "layout/Menu.php";
                                 <td>Jln Cengkareng...</td>
                                 <td>Sukses</td>
                                 <td>
-                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-info"></i> Lihat</button>
+                                    <button type="submit" class="btn r-btn-konten-profile" href="#"><i class="fa fa-info"></i> Lihat</button>
 
 
                                 </td>
