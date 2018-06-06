@@ -4,7 +4,7 @@ include "layout/Header.php";
 <?php if (isset($log) && $log != ""): ?>
     <p class="text-danger text-center"><?= $log; ?></p>
 <?php endif; ?>
-    <form class="form-signin">
+    <form class="form-signin" action="<?= site_url('auth/forgot_post'); ?>" method="post">
         <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
         <h4 class="h4 mb-3 font-weight-normal text-center f-title-color"><?= $brandname; ?></h4>
 

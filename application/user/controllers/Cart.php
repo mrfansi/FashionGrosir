@@ -104,6 +104,14 @@ class Cart extends MY_Controller
         if ($cart) {
             $cart = $this->cart->where_ca_kode($ca_kode)->delete();
             if ($cart) {
+                $this->data->berhasil = 'Item berhasil dihapus.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+                redirect('cart');
+            } else {
+                $this->data->gagal = 'Item gagal dihapus.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
                 redirect('cart');
             }
         }

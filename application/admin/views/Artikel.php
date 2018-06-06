@@ -70,6 +70,9 @@
                             <tr>
                                 <th scope="col">Judul</th>
                                 <th scope="col">Promo</th>
+                                <th scope="col">Blog</th>
+                                <th scope="col">Resi</th>
+                                <th scope="col">Pengumuman</th>
                                 <th scope="col">Created At</th>
                                 <th scope="col" class="text-center"></th>
                             </tr>
@@ -80,6 +83,9 @@
                                     <tr>
                                         <td><?= $artikel->ar_judul; ?></td>
                                         <td><?= $artikel->ar_ispromo == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
+                                        <td><?= $artikel->ar_isblog == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
+                                        <td><?= $artikel->ar_isresi == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
+                                        <td><?= $artikel->ar_isnotifikasi == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
                                         <td><?= $artikel->created_at; ?></td>
                                         <td class="text-center">
                                             <?php if ($artikel->ar_kode != '0'): ?>

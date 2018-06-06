@@ -33,7 +33,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                             <i class="fa fa-shopping-cart f-troli-text"></i>
                         </div>
                         <div class="col-6 f-font-ricky">
-                            Troli Belanja
+                            Keranjang
                         </div>
                     </div>
                 </div>
@@ -215,7 +215,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                         <br>
                         <!--  END KONTEN BAWAH -->
                     </div>
-                </div>  <!-- Saya pusing mas ini untuk apa tidak tahu -->
+                </div>  <!-- pusing mas ini untuk apa tidak tahu -->
             </div>  <!-- yang penting jalan lah mas -->
             <!-- END KOTAK KIRI -->
 

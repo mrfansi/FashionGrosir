@@ -26,11 +26,92 @@ class Auth extends MY_Controller
         $this->load->view('Register', $this->data);
     }
 
+    public function forgot_post()
+    {
+        $this->data->email = $this->input->post('email');
+
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://mail.fashiongrosir-ind.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'dont-reply@fashiongrosir-ind.com',
+            'smtp_pass' => 'p1nacate88',
+            'smtp_timeout' => '4',
+            'mailtype' => 'html',
+            'newline' => "\r\n",
+            'charset' => 'utf-8',
+            'validation' => TRUE
+        );
+        $this->email->initialize($config);
+        $this->email->from('dont-reply@fashiongrosir-ind.com', 'Fashion Grosir');
+        $this->email->to($this->data->email);
+        $this->email->subject('Testing');
+
+//        $body = $this->load->view('email/template', $this->data);
+
+        $this->email->message('Testing');
+
+        $this->email->send(FALSE);
+
+        $hasil = $this->email->print_debugger();
+        echo '<script>console.log(' . $hasil . ')</script>';
+
+    }
+
+    public function register_post()
+    {
+        $this->data->nama = $this->input->post('nama');
+        $this->data->email = $this->input->post('email');
+        $this->data->telp = $this->input->post('notelp');
+        $this->data->guid = $this->pengguna->guid();
+
+        $register = $this->pengguna->insert(array(
+            'p_kode' => $this->data->guid,
+            'p_username' => $this->data->email,
+            'p_nama' => $this->data->nama,
+            'p_email' => $this->data->email,
+            'p_password' => 'dasdasjghfhrneb',
+            'p_tipe' => 2,
+            'p_telp' => $this->data->telp
+        ));
+
+        if ($register) {
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://mail.fashiongrosir-ind.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'dont-reply@fashiongrosir-ind.com',
+                'smtp_pass' => 'p1nacate88',
+                'smtp_timeout' => '4',
+                'mailtype' => 'html',
+                'newline' => "\r\n",
+                'charset' => 'utf-8',
+                'validation' => TRUE
+            );
+            $this->email->initialize($config);
+            $this->email->from('dont-reply@fashiongrosir-ind.com', 'Fashion Grosir');
+            $this->email->to($this->data->email);
+            $this->email->subject('Aktivasi Akun Pengguna Fashion Grosir');
+
+            $body = $this->load->view('email/template', $this->data);
+
+            $this->email->message($body);
+
+            $this->email->send(FALSE);
+
+            $hasil = $this->email->print_debugger();
+            echo '<script>console.log(' . $hasil . ')</script>';
+            echo $body;
+//            $this->data->berhasil = 'Silahkan cek email untuk aktivasi akun anda.';
+//            $this->session->set_flashdata('berhasil', $this->data->berhasil);
+//
+//            redirect('register');
+        }
+
+    }
+
     public function login()
     {
-        // load library
-        $this->load->library('form_validation');
-
         // buat validation
         $validation = array(
             array(

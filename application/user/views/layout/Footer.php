@@ -138,7 +138,7 @@
             </tr>
             </tfoot>
         </table>
-        <a class="btn btn-primary btn-sm r-btn-pink btn-block" href="<?= site_url('cart/checkout'); ?>">Proses
+        <a class="btn btn-primary btn-sm r-btn-pink btn-block" href="<?= site_url('cart'); ?>">Proses
             Pembayaran</a>
     <?php else: ?>
         <p>Tidak ada item di keranjang.</p>

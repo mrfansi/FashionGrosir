@@ -34,7 +34,7 @@ include "layout/Menu.php";
                             <i class="fa fa-shopping-cart f-troli-text"></i>
                         </div>
                         <div class="col-6 f-font-ricky">
-                            Troli Belanja
+                            Keranjang
                         </div>
                     </div>
                 </div>

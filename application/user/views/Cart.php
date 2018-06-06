@@ -27,7 +27,7 @@ include "layout/Menu.php";
                             <i class="fa fa-shopping-cart f-troli-text"></i>
                         </div>
                         <div class="col-6 f-font-ricky">
-                            Troli Belanja
+                            Keranjang
                         </div>
                     </div>
                 </div>
@@ -85,6 +85,33 @@ include "layout/Menu.php";
     <br>
     <div class="container-fluid f-padding" id="#content">
         <h5 class="mb-3"><i class="fa fa-shopping-cart"></i> Keranjang</h5>
+        <div class="row">
+            <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>
+                <div class="col">
+                    <div class="alert alert-danger alert-dismissible fade show"
+                         role="alert">
+                        <?php echo $_SESSION['gagal']; ?>
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
+                <div class="col">
+                    <div class="alert alert-success alert-dismissible fade show"
+                         role="alert">
+                        <?php echo $_SESSION['berhasil']; ?>
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+
         <div class="row">
             <div class="col-lg-12 col-md-12 container">
                 <div class="card mb-3 r-layout-troli">

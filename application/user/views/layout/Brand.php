@@ -49,11 +49,11 @@
             <?php if (isset($_SESSION['id'])): ?>
             <div class="row">
                 <div class="col f-hover">
-                    <a class="small" href="<?= site_url('resi'); ?>">Cek Resi</a>
+                    <a class="small" href="<?= site_url('resi'); ?>">Resi</a>
                     <span class="f-span">|</span>
                     <a class="small" href="<?= site_url('pending'); ?>">Status Order</a>
                     <span class="f-span">|</span>
-                    <a class="small" href="<?= site_url('riwayat'); ?>">Histori Belanja</a>
+                    <a class="small" href="<?= site_url('riwayat'); ?>">Riwayat Pesanan</a>
                 </div>
             </div>
             <?php endif; ?>

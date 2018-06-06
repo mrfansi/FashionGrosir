@@ -82,7 +82,7 @@ include "layout/Menu.php";
                         <br>
                         <!--  END KONTEN BAWAH -->
                     </div>
-                </div>  <!-- Saya pusing mas ini untuk apa tidak tahu -->
+                </div>  <!-- pusing mas ini untuk apa tidak tahu -->
             </div>  <!-- yang penting jalan lah mas -->
             <!-- END KOTAK KIRI -->
 
