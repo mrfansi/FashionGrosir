@@ -1370,7 +1370,7 @@ display: block;
 
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (min-width: 376px) and (max-width: 425px) {
 	.r-p-detailproduk {
 		font-size: 14px;
 		text-align: center;
@@ -1394,14 +1394,14 @@ display: block;
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 426px)  and (max-width: 768px) {
 	.r-p-detailproduk {
 		font-size: 13px;
 		text-align: center;
 	}
 
 	.r-image-detailpesanan {
-		margin-left: 20%;
+		margin-left: 35%;
 	}
 
 	.r-style-detailbarangpesanan {
