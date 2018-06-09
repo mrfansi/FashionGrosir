@@ -1159,9 +1159,24 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     margin-top: 5%;
 }
 
-.pagination {
-    display: inline-block;
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #F06292;
+    border-color: #F06292;
 }
+
+.page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 
 .pagination a {
     color: black;

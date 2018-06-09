@@ -26,10 +26,10 @@
                     <ul class="navbar-nav">
                         <?php if ($blogs != ''): ?>
                             <?php foreach ($blogs as $blog): ?>
-                        <li class="nav-item">
-                            <a class="nav-link f-footer-new"
-                               href="<?= site_url('blog/' . $blog->ar_url); ?>"><?= $blog->ar_judul; ?></a>
-                        </li>
+                                <li class="nav-item">
+                                    <a class="nav-link f-footer-new"
+                                       href="<?= site_url('blog/' . $blog->ar_url); ?>"><?= $blog->ar_judul; ?></a>
+                                </li>
                             <?php endforeach; ?>
                         <?php endif; ?>
                     </ul>
@@ -175,6 +175,13 @@
 </script>
 <script>
     $('[id="title"]').ellipsis();
+</script>
+<script>
+    $('#table').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+        }
+    });
 </script>
 <?php if (isset($_SESSION['modal'])): ?>
     <script>

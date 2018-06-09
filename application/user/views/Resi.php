@@ -47,10 +47,9 @@ include "layout/Menu.php";
             <div class="col-12 col-sm-12 col-md-9">
                 <div class="card container-fluid p-4">
                     <div class="table-responsive mt-2">
-                        <table class="table table-sm">
+                        <table class="table table-sm" id="table">
                             <thead>
                             <tr>
-                                <th scope="col">No</th>
                                 <th scope="col">Laporan</th>
                                 <th scope="col">Tanggal</th>
                                 <th scope="col"></th>
@@ -60,9 +59,7 @@ include "layout/Menu.php";
                             <?php if ($resis != NULL): ?>
                                 <?php $counter = 0; ?>
                                 <?php foreach ($resis as $resi): ?>
-                                    <?php $counter += 1; ?>
-                                    <tr counter="<?= $counter; ?>">
-                                        <td><?= $counter; ?></td>
+                                    <tr>
                                         <td><?= $resi->ar_judul; ?></td>
                                         <td><?= $resi->created_at; ?></td>
                                         <td><a href="<?= site_url('resi/' . $resi->ar_url . '/detil'); ?>">Lihat</a>
@@ -72,20 +69,6 @@ include "layout/Menu.php";
                             <?php endif; ?>
                             </tbody>
                         </table>
-                    </div>
-                    <div class="row pagination-layout">
-                        <div class="col ">
-                            <div class="pagination">
-                                <a href="#">&laquo;</a>
-                                <a href="#">1</a>
-                                <a href="#" class="active">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">&raquo;</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
