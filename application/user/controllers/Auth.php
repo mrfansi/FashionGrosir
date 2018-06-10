@@ -63,16 +63,19 @@ class Auth extends MY_Controller
         $this->data->nama = $this->input->post('nama');
         $this->data->email = $this->input->post('email');
         $this->data->telp = $this->input->post('notelp');
+        $this->data->pass = $this->input->post('password');
         $this->data->guid = $this->pengguna->guid();
+        $this->data->token = $this->pengguna->guid();
 
         $register = $this->pengguna->insert(array(
             'p_kode' => $this->data->guid,
             'p_username' => $this->data->email,
             'p_nama' => $this->data->nama,
             'p_email' => $this->data->email,
-            'p_password' => 'dasdasjghfhrneb',
+            'p_password' => $this->data->pass,
             'p_tipe' => 2,
-            'p_telp' => $this->data->telp
+            'p_telp' => $this->data->telp,
+            'p_token' => $this->data->token
         ));
 
         if ($register) {
@@ -93,19 +96,15 @@ class Auth extends MY_Controller
             $this->email->to($this->data->email);
             $this->email->subject('Aktivasi Akun Pengguna Fashion Grosir');
 
-            $body = $this->load->view('email/template', $this->data);
+            $body = $this->load->view('email/template', $this->data, TRUE);
 
             $this->email->message($body);
 
-            $this->email->send(FALSE);
+            $this->email->send();
+            $this->data->berhasil = 'Silahkan cek email untuk aktivasi akun anda.';
+            $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-            $hasil = $this->email->print_debugger();
-            echo '<script>console.log(' . $hasil . ')</script>';
-            echo $body;
-//            $this->data->berhasil = 'Silahkan cek email untuk aktivasi akun anda.';
-//            $this->session->set_flashdata('berhasil', $this->data->berhasil);
-//
-//            redirect('register');
+            redirect('register');
         }
 
     }
@@ -184,6 +183,33 @@ class Auth extends MY_Controller
         $this->session->unset_userdata('tipe');
         $this->session->unset_userdata('isonline');
         redirect('/');
+    }
+
+    public function aktivasi_akun($id, $token)
+    {
+        $pengguna = $this->pengguna->where(array(
+            'p_kode' => $id,
+            'p_token' => $token
+        ))->get();
+
+        if ($pengguna) {
+            if ($pengguna->p_isaktif == 0) {
+                $this->pengguna->where('p_kode', $id)->update(array(
+                    'p_isaktif' => 1,
+                    'p_token' => $this->pengguna->guid
+                ));
+                $this->data->berhasil = 'Akun anda sudah aktif, Silahkan login untuk melakukan transaksi.';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+            } else {
+                $this->data->gagal = 'Akun ini sudah aktif.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+            }
+        } else {
+            $this->data->gagal = 'Akun tidak ada atau token sudah kadaluarsa.';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+        }
+
+        redirect('login');
     }
 }
 
