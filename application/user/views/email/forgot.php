@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 
 <head>
@@ -10,16 +11,20 @@
     <title></title>
     <!--[if (mso 16)]>
     <style type="text/css">
-        a {text-decoration: none;}
+        a {
+            text-decoration: none;
+        }
     </style>
     <![endif]-->
-    <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]-->
+    <!--[if gte mso 9]>
+    <style>sup {
+        font-size: 100% !important;
+    }</style><![endif]-->
     <!--[if !mso]><!-- -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
     <!--<![endif]-->
     <style>
         /* CONFIG STYLES Please do not delete and edit CSS styles below */
-
 
         /* IMPORTANT THIS STYLES MUST BE ON FINAL EMAIL */
 
@@ -53,11 +58,6 @@
             font-weight: inherit !important;
             line-height: inherit !important;
         }
-
-        @-ms-viewport {
-            width: device-width;
-        }
-
 
         /* END OF IMPORTANT */
 
@@ -304,7 +304,6 @@
             display: inline !important;
         }
 
-
         /* END CONFIG STYLES */
 
         a {
@@ -478,7 +477,6 @@
             width: auto;
         }
 
-
         /* RESPONSIVE STYLES Please do not delete and edit CSS styles below. If you don't need responsive layout, please delete this section. */
 
         @media only screen and (max-width: 600px) {
@@ -488,86 +486,105 @@
             a {
                 font-size: 16px !important;
             }
+
             h1 {
                 font-size: 32px !important;
                 text-align: center;
             }
+
             h2 {
                 font-size: 26px !important;
                 text-align: center;
             }
+
             h3 {
                 font-size: 20px !important;
                 text-align: center;
             }
+
             h1 a {
                 font-size: 32px !important;
             }
+
             h2 a {
                 font-size: 26px !important;
             }
+
             h3 a {
                 font-size: 20px !important;
             }
+
             .es-menu td a {
                 font-size: 16px !important;
             }
+
             .es-header-body p,
             .es-header-body ul li,
             .es-header-body ol li,
             .es-header-body a {
                 font-size: 16px !important;
             }
+
             .es-footer-body p,
             .es-footer-body ul li,
             .es-footer-body ol li,
             .es-footer-body a {
                 font-size: 16px !important;
             }
+
             .es-infoblock p,
             .es-infoblock ul li,
             .es-infoblock ol li,
             .es-infoblock a {
                 font-size: 12px !important;
             }
+
             *[class="gmail-fix"] {
                 display: none !important;
             }
+
             .es-m-txt-c,
             .es-m-txt-c h1,
             .es-m-txt-c h2,
             .es-m-txt-c h3 {
                 text-align: center !important;
             }
+
             .es-m-txt-r,
             .es-m-txt-r h1,
             .es-m-txt-r h2,
             .es-m-txt-r h3 {
                 text-align: right !important;
             }
+
             .es-m-txt-l,
             .es-m-txt-l h1,
             .es-m-txt-l h2,
             .es-m-txt-l h3 {
                 text-align: left !important;
             }
+
             .es-m-txt-r a img,
             .es-m-txt-c a img,
             .es-m-txt-l a img {
                 display: inline !important;
             }
+
             .es-button-border {
                 display: inline-block !important;
             }
+
             .es-button {
                 font-size: 16px !important;
                 display: inline-block !important;
                 border-width: 15px 30px 15px 30px !important;
             }
+
             .es-btn-fw {
                 border-width: 10px 0px !important;
                 text-align: center !important;
             }
+
             .es-adaptive table,
             .es-btn-fw,
             .es-btn-fw-brdr,
@@ -575,6 +592,7 @@
             .es-right {
                 width: 100% !important;
             }
+
             .es-content table,
             .es-header table,
             .es-footer table,
@@ -584,47 +602,58 @@
                 width: 100% !important;
                 max-width: 600px !important;
             }
+
             .es-adapt-td {
                 display: block !important;
                 width: 100% !important;
             }
+
             .adapt-img {
                 width: 100% !important;
                 height: auto !important;
             }
+
             .es-m-p0 {
                 padding: 0px !important;
             }
+
             .es-m-p0r {
                 padding-right: 0px !important;
             }
+
             .es-m-p0l {
                 padding-left: 0px !important;
             }
+
             .es-m-p0t {
                 padding-top: 0px !important;
             }
+
             .es-m-p0b {
                 padding-bottom: 0 !important;
             }
+
             .es-m-p20b {
                 padding-bottom: 20px !important;
             }
+
             .es-hidden {
                 display: none !important;
             }
+
             table.es-table-not-adapt,
             .esd-block-html table {
                 width: auto !important;
             }
+
             table.es-social {
                 display: inline-block !important;
             }
+
             table.es-social td {
                 display: inline-block !important;
             }
         }
-
 
         /* END RESPONSIVE STYLES */
 
@@ -654,14 +683,18 @@
             <td class="esd-email-paddings" valign="top">
                 <table class="es-content esd-header-popover" cellspacing="0" cellpadding="0" align="center">
                     <tbody>
-                    <tr> </tr>
+                    <tr></tr>
                     <tr>
                         <td class="esd-stripe" esd-custom-block-id="7954" align="center">
-                            <table class="es-content-body" style="background-color: transparent;" width="600" cellspacing="0" cellpadding="0" align="center">
+                            <table class="es-content-body" style="background-color: transparent;" width="600"
+                                   cellspacing="0" cellpadding="0" align="center">
                                 <tbody>
                                 <tr>
                                     <td class="esd-structure es-p15t es-p15b es-p10r es-p10l" align="left">
-                                        <!--[if mso]><table width="580" cellpadding="0" cellspacing="0"><tr><td width="282" valign="top"><![endif]-->
+                                        <!--[if mso]>
+                                        <table width="580" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td width="282" valign="top"><![endif]-->
                                         <table class="es-left" cellspacing="0" cellpadding="0" align="left">
                                             <tbody>
                                             <tr>
@@ -669,8 +702,10 @@
                                                     <table width="100%" cellspacing="0" cellpadding="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td class="es-infoblock esd-block-text es-m-txt-c" align="left">
-                                                                <p style="font-family: arial, helvetica\ neue, helvetica, sans-serif;">https://fashiongrosir-ind.com</p>
+                                                            <td class="es-infoblock esd-block-text es-m-txt-c"
+                                                                align="left">
+                                                                <p style="font-family: arial, helvetica\ neue, helvetica, sans-serif;">
+                                                                    https://fashiongrosir-ind.com</p>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -679,7 +714,9 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <!--[if mso]></td><td width="20"></td><td width="278" valign="top"><![endif]-->
+                                        <!--[if mso]></td>
+                                        <td width="20"></td>
+                                        <td width="278" valign="top"><![endif]-->
                                         <table class="es-right" cellspacing="0" cellpadding="0" align="right">
                                             <tbody>
                                             <tr>
@@ -687,8 +724,11 @@
                                                     <table width="100%" cellspacing="0" cellpadding="0">
                                                         <tbody>
                                                         <tr>
-                                                            <td class="es-infoblock esd-block-text es-m-txt-c" align="right">
-                                                                <p><a href="http://#" target="_blank" style="font-family: 'arial', 'helvetica neue', 'helvetica', 'sans-serif';">View in browser</a><br></p>
+                                                            <td class="es-infoblock esd-block-text es-m-txt-c"
+                                                                align="right">
+                                                                <p><a href="http://#" target="_blank"
+                                                                      style="font-family: 'arial', 'helvetica neue', 'helvetica', 'sans-serif';">View
+                                                                        in browser</a><br></p>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -708,23 +748,29 @@
                 </table>
                 <table class="es-content" cellspacing="0" cellpadding="0" align="center">
                     <tbody>
-                    <tr> </tr>
+                    <tr></tr>
                     <tr>
                         <td class="esd-stripe" esd-custom-block-id="7681" align="center">
-                            <table class="es-header-body" style="background-color: #F06292;" width="600" cellspacing="0" cellpadding="0" bgcolor="#F06292" align="center">
+                            <table class="es-header-body" style="background-color: #F06292;" width="600" cellspacing="0"
+                                   cellpadding="0" bgcolor="#F06292" align="center">
                                 <tbody>
                                 <tr>
                                     <td class="esd-structure es-p35t es-p35b es-p35r es-p35l" align="left">
-                                        <!--[if mso]><table width="530" cellpadding="0" cellspacing="0"><tr><td width="340" valign="top"><![endif]-->
+                                        <!--[if mso]>
+                                        <table width="530" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td width="340" valign="top"><![endif]-->
                                         <table class="es-left" cellspacing="0" cellpadding="0" align="left">
                                             <tbody>
                                             <tr>
-                                                <td class="es-m-p0r es-m-p20b esd-container-frame" width="340" valign="top" align="center">
+                                                <td class="es-m-p0r es-m-p20b esd-container-frame" width="340"
+                                                    valign="top" align="center">
                                                     <table width="100%" cellspacing="0" cellpadding="0">
                                                         <tbody>
                                                         <tr>
                                                             <td class="esd-block-text es-m-txt-c" align="left">
-                                                                <h1 style="color: #ffffff; line-height: 100%;"><?= $brandname; ?><br></h1>
+                                                                <h1 style="color: #ffffff; line-height: 100%;"><?= $brandname; ?>
+                                                                    <br></h1>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -733,16 +779,20 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <!--[if mso]></td><td width="20"></td><td width="170" valign="top"><![endif]-->
+                                        <!--[if mso]></td>
+                                        <td width="20"></td>
+                                        <td width="170" valign="top"><![endif]-->
                                         <table cellspacing="0" cellpadding="0" align="right">
                                             <tbody>
                                             <tr class="es-hidden">
-                                                <td class="es-m-p20b esd-container-frame" esd-custom-block-id="7704" width="170" align="left">
+                                                <td class="es-m-p20b esd-container-frame" esd-custom-block-id="7704"
+                                                    width="170" align="left">
                                                     <table width="100%" cellspacing="0" cellpadding="0">
                                                         <tbody>
                                                         <tr>
                                                             <td class="esd-block-spacer es-p5b" align="center">
-                                                                <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+                                                                <table width="100%" height="100%" cellspacing="0"
+                                                                       cellpadding="0" border="0">
                                                                     <tbody>
                                                                     <tr>
                                                                         <td style="border-bottom: 1px solid #F06292; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; height: 1px; width: 100%; margin: 0px;"></td>
@@ -771,10 +821,12 @@
                     <tbody>
                     <tr>
                         <td class="esd-stripe" align="center">
-                            <table class="es-content-body" width="600" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center">
+                            <table class="es-content-body" width="600" cellspacing="0" cellpadding="0" bgcolor="#ffffff"
+                                   align="center">
                                 <tbody>
                                 <tr>
-                                    <td class="esd-structure es-p40t es-p35b es-p35r es-p35l" esd-custom-block-id="7685" style="background-color: rgb(247, 247, 247);" bgcolor="#f7f7f7" align="left">
+                                    <td class="esd-structure es-p40t es-p35b es-p35r es-p35l" esd-custom-block-id="7685"
+                                        style="background-color: rgb(247, 247, 247);" bgcolor="#f7f7f7" align="left">
                                         <table width="100%" cellspacing="0" cellpadding="0">
                                             <tbody>
                                             <tr>
@@ -783,21 +835,30 @@
                                                         <tbody>
                                                         <tr>
                                                             <td class="esd-block-text es-p15b" align="center">
-                                                                <h2 style="color: #333333;">Aktivasi Akun<br></h2>
+                                                                <h2 style="color: #333333;">Recovery Akun<br></h2>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="esd-block-text es-m-txt-l es-p20t" align="left">
-                                                                <h3 style="font-size: 18px;">Halo, <?= $nama; ?><br></h3>
+                                                                <h3 style="font-size: 18px;">Halo, <?= $nama; ?><br>
+                                                                </h3>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="esd-block-text es-p15t es-p10b" align="left">
-                                                                <p style="font-size: 16px; color: #777777;">Selamat datang di Fashion Grosir, klik tautan dibawah ini untuk aktivasi akun anda.</p>
+                                                                <p style="font-size: 16px; color: #777777;">Selamat
+                                                                    datang di Fashion Grosir, klik tautan dibawah ini
+                                                                    untuk menreset password anda.</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="esd-block-button es-p25t es-p20b es-p10r es-p10l" align="center"> <span class="es-button-border" style="background-color: #F06292"> <a href="<?= site_url('auth/aktivasi_akun/' .  $guid . '/' . $token); ?>" class="es-button" target="_blank" style="font-weight: normal; border-width: 15px 30px; background-color: #F06292; border-color: #F06292; color: rgb(255, 255, 255); font-size: 18px;">Klik</a> </span> </td>
+                                                            <td class="esd-block-button es-p25t es-p20b es-p10r es-p10l"
+                                                                align="center"><span class="es-button-border"
+                                                                                     style="background-color: #F06292"> <a
+                                                                            href="<?= site_url('auth/recovery_akun/' . $guid . '/' . $token); ?>"
+                                                                            class="es-button" target="_blank"
+                                                                            style="font-weight: normal; border-width: 15px 30px; background-color: #F06292; border-color: #F06292; color: rgb(255, 255, 255); font-size: 18px;">Klik</a> </span>
+                                                            </td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -820,7 +881,8 @@
                     <tbody>
                     <tr>
                         <td class="esd-stripe" align="center">
-                            <table class="es-content-body" style="background-color: transparent;" width="600" cellspacing="0" cellpadding="0" align="center">
+                            <table class="es-content-body" style="background-color: transparent;" width="600"
+                                   cellspacing="0" cellpadding="0" align="center">
                                 <tbody>
                                 <tr>
                                     <td class="esd-structure es-p30t es-p30b es-p20r es-p20l" align="left">
@@ -841,4 +903,4 @@
 
 
 </body>
-</html>
+</html

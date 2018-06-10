@@ -18,15 +18,64 @@ class Auth extends MY_Controller
 
     public function forgot()
     {
-        $this->load->view('Forgot', $this->data);
+        // validation
+        $validation = array(
+
+            array(
+                'field' => 'email',
+                'label' => 'E-mail',
+                'rules' => 'required|valid_email',
+            )
+        );
+
+        $this->form_validation->set_rules($validation);
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('Forgot', $this->data);
+        } else {
+            $this->forgot_post();
+        }
+
     }
 
     public function register()
     {
-        $this->load->view('Register', $this->data);
+        // validation
+        $validation = array(
+            array(
+                'field' => 'nama',
+                'label' => 'Nama Lengkap',
+                'rules' => 'required'
+            ),
+
+            array(
+                'field' => 'email',
+                'label' => 'E-mail',
+                'rules' => 'required|valid_email|is_unique[pengguna.p_email]'
+            ),
+            array(
+                'field' => 'notelp',
+                'label' => 'No. Telp',
+                'rules' => 'required|integer|is_unique[pengguna.p_telp]'
+            ),
+            array(
+                'field' => 'password',
+                'label' => 'Password',
+                'rules' => 'required|min_length[8]|max_length[15]'
+            ),
+
+        );
+
+        $this->form_validation->set_rules($validation);
+
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('Register', $this->data);
+        } else {
+            $this->register_post();
+        }
+
     }
 
-    public function forgot_post()
+    private function forgot_post()
     {
         $this->data->email = $this->input->post('email');
 
@@ -51,14 +100,11 @@ class Auth extends MY_Controller
 
         $this->email->message('Testing');
 
-        $this->email->send(FALSE);
-
-        $hasil = $this->email->print_debugger();
-        echo '<script>console.log(' . $hasil . ')</script>';
+        $this->email->send();
 
     }
 
-    public function register_post()
+    private function register_post()
     {
         $this->data->nama = $this->input->post('nama');
         $this->data->email = $this->input->post('email');
