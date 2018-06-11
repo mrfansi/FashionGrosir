@@ -96,9 +96,9 @@ class Auth extends MY_Controller
         $this->email->to($this->data->email);
         $this->email->subject('Testing');
 
-//        $body = $this->load->view('email/template', $this->data);
+        $body = $this->load->view('email/forgot', $this->data);
 
-        $this->email->message('Testing');
+        $this->email->message($body);
 
         $this->email->send();
 
@@ -142,7 +142,7 @@ class Auth extends MY_Controller
             $this->email->to($this->data->email);
             $this->email->subject('Aktivasi Akun Pengguna Fashion Grosir');
 
-            $body = $this->load->view('email/template', $this->data, TRUE);
+            $body = $this->load->view('email/new', $this->data, TRUE);
 
             $this->email->message($body);
 
@@ -256,6 +256,11 @@ class Auth extends MY_Controller
         }
 
         redirect('login');
+    }
+
+    public function recovery_akun()
+    {
+
     }
 }
 
