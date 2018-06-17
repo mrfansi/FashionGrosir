@@ -123,6 +123,19 @@ h1, h2, h3, h4, h5 {
 
 }
 
+@media screen and (max-width: 768px) {
+    a.f-link{
+        color: #F06292;
+    }
+    a.f-link:hover {
+        color: #888;
+    }
+    .f-brand-cos {
+        color: #F06292;
+        margin-top: -5px;
+    }
+}
+
 .f-color {
     background-color: #fefefe;
 }
