@@ -139,20 +139,56 @@ class API extends MY_Controller
         $data['results'] = [];
         $p_kode = $_SESSION['id'];
 
+
         if (isset($q)) {
             $alamat = $this->pengguna_alamat->with_pengguna()->with_alamat()->where('p_kode', $p_kode)->get_all();
             foreach ($alamat as $g) {
+                $hasil = array();
+                $hasil['provinsi'] = $this->provinsi
+                    ->where('provinsi_id', $g->alamat->a_provinsi)
+                    ->get()->provinsi_nama;
+                $hasil['kabupaten'] = $this->kabupaten
+                    ->where('kabupaten_id', $g->alamat->a_kabupaten)
+                    ->get()->kabupaten_nama;
+                $hasil['kecamatan'] = $this->kecamatan
+                    ->where('kecamatan_id', $g->alamat->a_kecamatan)
+                    ->get()->kecamatan_nama;
+                $hasil['desa'] = $this->desa
+                    ->where('desa_id', $g->alamat->a_desa)
+                    ->get()->desa_nama;
+
+
+                $text = $g->alamat->a_deskripsi . ', ' . $hasil['desa'] . ', ' . $hasil['kecamatan'] . ', ' . $hasil['kabupaten'] .
+                    ', ' . $hasil['provinsi'] . ', ' . $g->alamat->a_kodepos;
+
                 array_push($data['results'], array(
                     'id' => $g->alamat->a_kode,
-                    'text' => $g->alamat->a_nama
+                    'text' => $text
                 ));
             }
         } else {
             $alamat = $this->pengguna_alamat->with_pengguna()->with_alamat()->where('p_kode', $p_kode)->get_all();
             foreach ($alamat as $g) {
+                $hasil = array();
+                $hasil['provinsi'] = $this->provinsi
+                    ->where('provinsi_id', $g->alamat->a_provinsi)
+                    ->get()->provinsi_nama;
+                $hasil['kabupaten'] = $this->kabupaten
+                    ->where('kabupaten_id', $g->alamat->a_kabupaten)
+                    ->get()->kabupaten_nama;
+                $hasil['kecamatan'] = $this->kecamatan
+                    ->where('kecamatan_id', $g->alamat->a_kecamatan)
+                    ->get()->kecamatan_nama;
+                $hasil['desa'] = $this->desa
+                    ->where('desa_id', $g->alamat->a_desa)
+                    ->get()->desa_nama;
+
+
+                $text = $g->alamat->a_deskripsi . ', ' . $hasil['desa'] . ', ' . $hasil['kecamatan'] . ', ' . $hasil['kabupaten'] .
+                    ', ' . $hasil['provinsi'] . ', ' . $g->alamat->a_kodepos;
                 array_push($data['results'], array(
                     'id' => $g->alamat->a_kode,
-                    'text' => $g->alamat->a_nama
+                    'text' => $text
                 ));
             }
         }
@@ -163,21 +199,20 @@ class API extends MY_Controller
 
     public function get_full_alamat($id)
     {
-        $g = $this->pengguna_alamat->with_alamat('where:a_kode = \''. $id . '\'')->get_all();
+        $g = $this->pengguna_alamat->with_alamat('where:a_kode = \'' . $id . '\'')->get_all();
         foreach ($g as $alamat) {
             $hasil = array(
-                'pa_r_nama'     => $alamat->pa_r_nama,
-                'pa_r_kontak'   => $alamat->pa_r_kontak,
-                'pa_s_nama'   => $alamat->pa_s_nama,
-                'pa_s_kontak'   => $alamat->pa_s_kontak,
+                'pa_r_nama' => $alamat->pa_r_nama,
+                'pa_r_kontak' => $alamat->pa_r_kontak,
+                'pa_s_nama' => $alamat->pa_s_nama,
+                'pa_s_kontak' => $alamat->pa_s_kontak,
                 'a_kode' => $alamat->alamat->a_kode,
-                'a_nama'   => $alamat->alamat->a_nama,
-                'a_provinsi'   => $alamat->alamat->a_provinsi,
-                'a_kabupaten'   => $alamat->alamat->a_kabupaten,
-                'a_kecamatan'   => $alamat->alamat->a_kecamatan,
-                'a_desa'   => $alamat->alamat->a_desa,
-                'a_kodepos'   => $alamat->alamat->a_kodepos,
-                'a_deskripsi'   => $alamat->alamat->a_deskripsi,
+                'a_provinsi' => $alamat->alamat->a_provinsi,
+                'a_kabupaten' => $alamat->alamat->a_kabupaten,
+                'a_kecamatan' => $alamat->alamat->a_kecamatan,
+                'a_desa' => $alamat->alamat->a_desa,
+                'a_kodepos' => $alamat->alamat->a_kodepos,
+                'a_deskripsi' => $alamat->alamat->a_deskripsi,
             );
         }
 
