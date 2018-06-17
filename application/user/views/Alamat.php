@@ -93,7 +93,7 @@ include "layout/Menu.php";
 
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <form action="alamat_pengiriman/simpan" method="post">
+                <form action="alamat_pengiriman/simpan" method="post" id="form_alamat">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <input type="hidden" name="nomor_order" value="<?= $this->uri->segment(2); ?>">
                     <input type="hidden" name="a_kode" id="a_kode" value="<?= $a_kode; ?>">
@@ -101,8 +101,8 @@ include "layout/Menu.php";
                     <div class="row form-group">
                         <div class="col">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="simpan" value="true" id="simpan">
-                                <label class="form-check-label" for="simpan">
+                                <input class="form-check-input" type="checkbox" name="alamat_exist" value="true" id="alamat_exist">
+                                <label class="form-check-label" for="alamat_exist">
                                     Pilih dari alamat yang sudah ada
                                 </label>
                             </div>
@@ -121,24 +121,6 @@ include "layout/Menu.php";
                     <div class="row form-group" id="row_nama_alamat" style="display: none;">
                         <div class="col">
                             <select name="pilih_alamat" id="pilih_alamat" class="form-control"></select>
-                        </div>
-                    </div>
-                    <div class="row form-group" id="row_simpan_alamat">
-                        <div class="col">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="true" name="check_simpan"
-                                       id="check_simpan">
-                                <label class="form-check-label" for="check_simpan">
-                                    Simpan alamat ini
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row form-group" id="row_judul_alamat" style="display: none;">
-                        <div class="col">
-                            <label for="nama_alamat">Judul</label>
-                            <input type="text" name="nama_alamat" id="nama_alamat" class="form-control"
-                                   placeholder="Judul Alamat" required>
                         </div>
                     </div>
                     <div id="pengirim" style="display: none;">
@@ -213,6 +195,7 @@ include "layout/Menu.php";
                         <div class="col">
                             <button type="submit" class="btn btn-primary r-btn-pink">Lanjutkan Metode Pembayaran
                             </button>
+                            <button type="reset" class="btn btn-primary r-btn-pink">Reset</button>
                         </div>
                     </div>
                 </form>
@@ -304,7 +287,6 @@ include "layout/Menu.php";
             }).on('select2:select', function () {
                 var id = $(this).val();
                 var a_kode = $('#a_kode');
-                var nama_alamat = $('#nama_alamat');
                 var nama_penerima = $('#nama_penerima');
                 var kontak_penerima = $('#kontak_penerima');
                 var nama_pengirim = $('#nama_pengirim');
@@ -364,7 +346,6 @@ include "layout/Menu.php";
                                 }
                             })
                         }),
-                        nama_alamat.val(data.a_nama),
                         nama_penerima.val(data.pa_r_nama),
                         kontak_penerima.val(data.pa_r_kontak),
                         nama_pengirim.val(data.pa_s_nama),
@@ -378,6 +359,7 @@ include "layout/Menu.php";
         });
     </script>
     <script>
+
         $('#check_dropship').change(function () {
             if (this.checked) {
                 $('[id=pengirim]').show();
@@ -386,40 +368,13 @@ include "layout/Menu.php";
             }
         });
 
-        $('#simpan').change(function () {
+        $('#alamat_exist').change(function () {
             if (this.checked) {
                 $('#row_nama_alamat').show();
-                $('#row_simpan_alamat').hide();
             } else {
                 $('#row_nama_alamat').hide();
-                $('#row_simpan_alamat').show();
             }
         });
-
-        $('#check_simpan').change(function () {
-            if (this.checked) {
-                $('#row_judul_alamat').show();
-            } else {
-                $('#row_judul_alamat').hide();
-            }
-        });
-
-        $('input:radio[id=simpan]').change(function () {
-            var simpan = $(this).val();
-            if (simpan === "true") {
-                $('#nama_alamat').show();
-            } else {
-                $('#nama_alamat').hide();
-            }
-        });
-        $('input:radio[id=d_simpan]').change(function () {
-            var d_simpan = $(this).val();
-            if (d_simpan === "true") {
-                $('#d_nama_alamat').show();
-            } else {
-                $('#d_nama_alamat').hide();
-            }
-        })
 
     </script>
     <!-- End Content -->
