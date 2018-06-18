@@ -28,7 +28,7 @@
                             <?php foreach ($blogs as $blog): ?>
                                 <li class="nav-item">
                                     <a class="nav-link f-footer-new"
-                                       href="<?= site_url('blog/' . $blog->ar_url); ?>"><?= $blog->ar_judul; ?></a>
+                                       href="<?= site_url('blog/' . $blog->artikel_url); ?>"><?= $blog->artikel_judul; ?></a>
                                 </li>
                             <?php endforeach; ?>
                         <?php endif; ?>

@@ -42,7 +42,7 @@ class Order extends MY_Controller
     {
         $order = $this->order->where_o_kode($id)->update(
             array(
-                'o_status' => 4
+                'orders_status' => 4
             )
         );
 
@@ -151,7 +151,7 @@ class Order extends MY_Controller
     {
         $order = $this->order->where_o_kode($id)->update(
             array(
-                'o_status' => 5
+                'orders_status' => 5
             )
         );
 
@@ -173,8 +173,8 @@ class Order extends MY_Controller
         $text = $this->input->post('alasan');
         $order = $this->order->where_o_kode($id)->update(
             array(
-                'o_status' => 7,
-                'o_deskripsi'   => $text
+                'orders_status' => 7,
+                'orders_deskripsi'   => $text
             )
         );
 

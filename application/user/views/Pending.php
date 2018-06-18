@@ -71,52 +71,52 @@ include "layout/Menu.php";
                             <?php foreach ($orders as $order): ?>
                                 <tr>
                                     <td rowspan="1" class="text-danger"><a
-                                                href="<?= site_url('DetailPesanan'); ?>"><?= $order->o_noorder; ?></a>
+                                                href="<?= site_url('DetailPesanan'); ?>"><?= $order->orders_noid; ?></a>
                                     </td>
                                     <td><?= $order->created_at; ?></td>
                                     <td id="rupiah"><?= $order->total; ?></td>
-                                    <td><?= $order->p_nama; ?></td>
+                                    <td><?= $order->pengguna_nama; ?></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td><b>Status : </b>
-                                        <?php if ($order->o_status == 0): ?>
+                                        <?php if ($order->orders_status == 0): ?>
                                             <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
-                                        <?php elseif ($order->o_status == 1): ?>
+                                        <?php elseif ($order->orders_status == 1): ?>
                                             <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN</div>
-                                        <?php elseif ($order->o_status == 2): ?>
+                                        <?php elseif ($order->orders_status == 2): ?>
                                             <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
-                                        <?php elseif ($order->o_status == 3): ?>
+                                        <?php elseif ($order->orders_status == 3): ?>
                                             <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
-                                        <?php elseif ($order->o_status == 4): ?>
+                                        <?php elseif ($order->orders_status == 4): ?>
                                             <div class="text-success">ADMIN SEDANG MEMPROSES ORDER</div>
-                                        <?php elseif ($order->o_status == 5): ?>
+                                        <?php elseif ($order->orders_status == 5): ?>
                                             <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
-                                        <?php elseif ($order->o_status == 6): ?>
+                                        <?php elseif ($order->orders_status == 6): ?>
                                             <div class="text-success">SUKSES</div>
-                                        <?php elseif ($order->o_status == 7): ?>
+                                        <?php elseif ($order->orders_status == 7): ?>
                                             <div class="text-danger">BATAL</div>
                                         <?php endif; ?>
                                     </td>
                                     <td><b>Reason : </b><br>
                                         <div class="text-danger">
-                                            <?= $order->o_deskripsi; ?>
+                                            <?= $order->orders_deskripsi; ?>
                                         </div>
                                     </td>
                                     <td><b>Aksi :</b><br>
-                                        <?php if ($order->o_status == 0): ?>
+                                        <?php if ($order->orders_status == 0): ?>
                                             <a
-                                                    href="<?= site_url('checkout/' . $order->o_noorder . '/alamat_pengiriman'); ?>">
+                                                    href="<?= site_url('checkout/' . $order->orders_noid . '/alamat_pengiriman'); ?>">
                                                 Konfirmasi
                                             </a>
-                                        <?php elseif ($order->o_status == 1): ?>
+                                        <?php elseif ($order->orders_status == 1): ?>
                                             <a
-                                                    href="<?= site_url('checkout/' . $order->o_noorder . '/ongkir_transfer'); ?>">
+                                                    href="<?= site_url('checkout/' . $order->orders_noid . '/ongkir_transfer'); ?>">
                                                 Konfirmasi
                                             </a>
-                                        <?php elseif ($order->o_status == 2): ?>
+                                        <?php elseif ($order->orders_status == 2): ?>
                                             <a
-                                                    href="<?= site_url('checkout/' . $order->o_noorder . '/konfirmasi_pembayaran'); ?>">
+                                                    href="<?= site_url('checkout/' . $order->orders_noid . '/konfirmasi_pembayaran'); ?>">
                                                 Konfirmasi
                                             </a>
                                         <?php else: ?>

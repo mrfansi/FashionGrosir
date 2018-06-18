@@ -81,26 +81,26 @@
                                 <?php foreach ($customers as $customer): ?>
                                     <tr>
                                         <td>
-                                            <?php if ($customer->p_tipe == 1): ?>
+                                            <?php if ($customer->pengguna_tipe == 1): ?>
                                                 VIP
-                                            <?php elseif ($customer->p_tipe == 2): ?>
+                                            <?php elseif ($customer->pengguna_tipe == 2): ?>
                                                 Reseller
                                             <?php endif; ?>
                                         </td>
-                                        <td><?= $customer->p_nama; ?></td>
-                                        <td><?= $customer->p_username; ?></td>
-                                        <td><?= $customer->p_email; ?></td>
-                                        <td><?= $customer->p_status == 0 ? 'Aktif' : 'Blocked'; ?></td>
-                                        <td><?= $customer->p_ipaddr; ?></td>
-                                        <td><?= $customer->p_login_terakhir; ?></td>
+                                        <td><?= $customer->pengguna_nama; ?></td>
+                                        <td><?= $customer->pengguna_username; ?></td>
+                                        <td><?= $customer->pengguna_email; ?></td>
+                                        <td><?= $customer->pengguna_status == 0 ? 'Aktif' : 'Blocked'; ?></td>
+                                        <td><?= $customer->pengguna_ipaddr; ?></td>
+                                        <td><?= $customer->pengguna_login_terakhir; ?></td>
                                         <td class="text-center">
                                             <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
                                                onclick="edit($(this))" data-target="#crud" data-backdrop="static"
                                                data-keyboard="false"
-                                               data-id="<?= $customer->p_kode; ?>"><i class="far fa-edit"></i></a> |
+                                               data-id="<?= $customer->pengguna_kode; ?>"><i class="far fa-edit"></i></a> |
                                             <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $customer->p_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                               data-id="<?= $customer->pengguna_kode; ?>"><i class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

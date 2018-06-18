@@ -18,13 +18,13 @@ class Order_pengiriman_m extends MY_Model
         $this->has_one['order'] = array(
             'foreign_model'=>'Order_m',
             'foreign_table'=>'orders',
-            'foreign_key'=>'o_kode',
-            'local_key'=>'o_kode');
+            'foreign_key'=>'orders_kode',
+            'local_key'=>'orders_kode');
         $this->has_one['alamat'] = array(
             'foreign_model'=>'Alamat_m',
             'foreign_table'=>'alamat',
-            'foreign_key'=>'a_kode',
-            'local_key'=>'a_kode');
+            'foreign_key'=>'alamat_kode',
+            'local_key'=>'alamat_kode');
         parent::__construct();
     }
 

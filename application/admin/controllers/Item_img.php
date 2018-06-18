@@ -129,7 +129,7 @@ class Item_img extends MY_Controller
     public function detil($id)
     {
         $this->data->title = 'Fashion Grosir | Foto > Detil';
-        $this->data->item_img = $this->item_img->where('p_kode', $id)->get();
+        $this->data->item_img = $this->item_img->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Foto', $this->data);
     }
 
@@ -138,7 +138,7 @@ class Item_img extends MY_Controller
         $this->data->title = 'Fashion Grosir | Foto > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
-        $this->data->item_img = $this->item_img->where('p_kode', $id)->get();
+        $this->data->item_img = $this->item_img->where('pengguna_kode', $id)->get();
 
         $this->load->view('CRUD_Foto', $this->data);
     }

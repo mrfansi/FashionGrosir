@@ -76,19 +76,19 @@
                             <?php if ($artikels != NULL): ?>
                                 <?php foreach ($artikels as $artikel): ?>
                                     <tr>
-                                        <td><?= $artikel->ar_judul; ?></td>
+                                        <td><?= $artikel->artikel_judul; ?></td>
                                         <td class="text-center">
-                                            <?php if ($artikel->ar_kode != '0'): ?>
+                                            <?php if ($artikel->artikel_kode != '0'): ?>
                                                 <a data-toggle="modal" title="Ubah <?= $title_page; ?>"
                                                    href="#"
                                                    onclick="edit($(this))" data-target="#crud" data-backdrop="static"
                                                    data-keyboard="false"
-                                                   data-id="<?= $artikel->ar_kode; ?>"><i
+                                                   data-id="<?= $artikel->artikel_kode; ?>"><i
                                                             class="far fa-edit"></i></a> |
                                                 <a data-toggle="modal" title="Hapus <?= $title_page; ?>"
                                                    href="#"
                                                    onclick="hapus($(this))" data-target="#hapus"
-                                                   data-id="<?= $artikel->ar_kode; ?>"><i
+                                                   data-id="<?= $artikel->artikel_kode; ?>"><i
                                                             class="far fa-trash-alt"></i></a>
                                             <?php endif; ?>
                                         </td>

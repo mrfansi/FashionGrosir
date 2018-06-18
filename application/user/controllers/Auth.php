@@ -50,12 +50,12 @@ class Auth extends MY_Controller
             array(
                 'field' => 'email',
                 'label' => 'E-mail',
-                'rules' => 'required|valid_email|is_unique[pengguna.p_email]'
+                'rules' => 'required|valid_email|is_unique[pengguna.pengguna_email]'
             ),
             array(
                 'field' => 'notelp',
                 'label' => 'No. Telp',
-                'rules' => 'required|integer|is_unique[pengguna.p_telp]'
+                'rules' => 'required|integer|is_unique[pengguna.pengguna_telp]'
             ),
             array(
                 'field' => 'password',
@@ -114,14 +114,14 @@ class Auth extends MY_Controller
         $this->data->token = $this->pengguna->guid();
 
         $register = $this->pengguna->insert(array(
-            'p_kode' => $this->data->guid,
-            'p_username' => $this->data->email,
-            'p_nama' => $this->data->nama,
-            'p_email' => $this->data->email,
-            'p_password' => $this->data->pass,
-            'p_tipe' => 2,
-            'p_telp' => $this->data->telp,
-            'p_token' => $this->data->token
+            'pengguna_kode' => $this->data->guid,
+            'pengguna_username' => $this->data->email,
+            'pengguna_nama' => $this->data->nama,
+            'pengguna_email' => $this->data->email,
+            'pengguna_password' => $this->data->pass,
+            'pengguna_tipe' => 2,
+            'pengguna_telp' => $this->data->telp,
+            'pengguna_token' => $this->data->token
         ));
 
         if ($register) {
@@ -189,24 +189,24 @@ class Auth extends MY_Controller
 
             // get database
             $user = $this->pengguna->where(array(
-                'p_email' => $email,
-                'p_password' => $password
+                'pengguna_email' => $email,
+                'pengguna_password' => $password
             ))->get();
 
             if ($user) {
                 // Update IP Address
                 $this->pengguna->where(array(
-                    'p_email' => $email,
+                    'pengguna_email' => $email,
                 ))->update(array(
-                    'p_ipaddr' => $_SERVER['REMOTE_ADDR'],
-                    'p_login_terakhir' => date('Y-m-d H:i:s')
+                    'pengguna_ipaddr' => $_SERVER['REMOTE_ADDR'],
+                    'pengguna_login_terakhir' => date('Y-m-d H:i:s')
                 ));
 
                 $sessiondata = array(
-                    'id' => $user->p_kode,
-                    'nama' => $user->p_nama,
-                    'email' => $user->p_email,
-                    'tipe' => $user->p_tipe,
+                    'id' => $user->pengguna_kode,
+                    'nama' => $user->pengguna_nama,
+                    'email' => $user->pengguna_email,
+                    'tipe' => $user->pengguna_tipe,
                     'isonline' => true
                 );
                 $this->session->set_userdata($sessiondata);
@@ -234,15 +234,15 @@ class Auth extends MY_Controller
     public function aktivasi_akun($id, $token)
     {
         $pengguna = $this->pengguna->where(array(
-            'p_kode' => $id,
-            'p_token' => $token
+            'pengguna_kode' => $id,
+            'pengguna_token' => $token
         ))->get();
 
         if ($pengguna) {
-            if ($pengguna->p_isaktif == 0) {
-                $this->pengguna->where('p_kode', $id)->update(array(
-                    'p_isaktif' => 1,
-                    'p_token' => $this->pengguna->guid
+            if ($pengguna->pengguna_isaktif == 0) {
+                $this->pengguna->where('pengguna_kode', $id)->update(array(
+                    'pengguna_isaktif' => 1,
+                    'pengguna_token' => $this->pengguna->guid
                 ));
                 $this->data->berhasil = 'Akun anda sudah aktif, Silahkan login untuk melakukan transaksi.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);

@@ -11,8 +11,8 @@ class Bank_m extends MY_Model
     public function __construct()
     {
         $this->table = 'bank';
-        $this->primary_key = 'b_id';
-        $this->protected = array('b_id', 'created_at', 'update_at');
+        $this->primary_key = 'bank_id';
+        $this->protected = array('bank_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = TRUE;
         parent::__construct();

@@ -21,10 +21,10 @@ class Resi extends MY_Controller
         }
 
         $config = array(
-            'field' => 'ar_judul',
+            'field' => 'artikel_judul',
             'title' => 'title',
             'table' => 'artikel',
-            'id' => 'ar_id',
+            'id' => 'artikel_id',
         );
         $this->load->library('slug', $config);
     }
@@ -34,7 +34,7 @@ class Resi extends MY_Controller
         $this->data->title = 'Fashion Grosir | Resi';
         $this->data->title_page = 'Resi';
         $this->data->total_artikel = $this->artikel->count_rows();
-        $this->data->artikels = $this->artikel->where('ar_isresi', 1)->get_all();
+        $this->data->artikels = $this->artikel->where('artikel_isresi', 1)->get_all();
         $this->load->view('Resi', $this->data);
     }
 
@@ -51,7 +51,7 @@ class Resi extends MY_Controller
         $this->data->title = 'Fashion Grosir | Resi > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
-        $this->data->artikel = $this->artikel->where('ar_kode', $id)->get();
+        $this->data->artikel = $this->artikel->where('artikel_kode', $id)->get();
         $this->load->view('CRUD_Resi', $this->data);
     }
 
@@ -65,11 +65,11 @@ class Resi extends MY_Controller
 
         if ($artikel) {
             $artikel = $this->artikel->where_ar_kode($id)->update(array(
-                'ar_judul' => $this->input->post('judul'),
-                'ar_content' => $this->input->post('content'),
-                'ar_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
-                'ar_isresi' => 1,
-                'ar_isaktif' => 1
+                'artikel_judul' => $this->input->post('judul'),
+                'artikel_content' => $this->input->post('content'),
+                'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
+                'artikel_isresi' => 1,
+                'artikel_isaktif' => 1
             ));
             if ($artikel) {
                 $this->data->berhasil = 'Resi berhasil diperbarui.';
@@ -84,12 +84,12 @@ class Resi extends MY_Controller
             }
         } else {
             $artikel = $this->artikel->insert(array(
-                'ar_kode' => $this->input->post('id'),
-                'ar_judul' => $this->input->post('judul'),
-                'ar_content' => $this->input->post('content'),
-                'ar_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
-                'ar_isresi' => 1,
-                'ar_isaktif' => 1
+                'artikel_kode' => $this->input->post('id'),
+                'artikel_judul' => $this->input->post('judul'),
+                'artikel_content' => $this->input->post('content'),
+                'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
+                'artikel_isresi' => 1,
+                'artikel_isaktif' => 1
             ));
             if ($artikel) {
                 $this->data->berhasil = 'Resi berhasil dibuat.';
@@ -108,7 +108,7 @@ class Resi extends MY_Controller
     public function hapus($id)
     {
 
-        $artikel = $this->artikel->where('ar_kode', $id)->delete();
+        $artikel = $this->artikel->where('artikel_kode', $id)->delete();
         if ($artikel) {
             $this->data->berhasil = 'Resi berhasil dihapus';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);

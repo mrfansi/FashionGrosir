@@ -1,9 +1,9 @@
 <?php
 $url = site_url('resi/simpan');
 if ($submit == 'Ubah') {
-    $id = $artikel->ar_kode;
-    $judul = $artikel->ar_judul;
-    $content = $artikel->ar_content;
+    $id = $artikel->artikel_kode;
+    $judul = $artikel->artikel_judul;
+    $content = $artikel->artikel_content;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $judul = 'Laporan Resi ' . date('d-m-Y H:i:s');

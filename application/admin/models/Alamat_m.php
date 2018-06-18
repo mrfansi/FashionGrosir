@@ -11,20 +11,20 @@ class Alamat_m extends MY_Model
     public function __construct()
     {
         $this->table = 'alamat';
-        $this->primary_key = 'a_id';
-        $this->protected = array('a_id', 'created_at', 'update_at');
+        $this->primary_key = 'alamat_id';
+        $this->protected = array('alamat_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = TRUE;
         $this->has_many['order_pengiriman'] = array(
             'foreign_model'=>'Order_pengiriman_m',
             'foreign_table'=>'orders_pengiriman',
-            'foreign_key'=>'a_kode',
-            'local_key'=>'a_kode');
+            'foreign_key'=>'alamat_kode',
+            'local_key'=>'alamat_kode');
         $this->has_many['Pengguna_alamat'] = array(
             'foreign_model'=>'Pengguna_alamat_m',
             'foreign_table'=> 'Pengguna_alamat',
-            'foreign_key'=>'a_kode',
-            'local_key'=>'a_kode');
+            'foreign_key'=>'alamat_kode',
+            'local_key'=>'alamat_kode');
         parent::__construct();
     }
 

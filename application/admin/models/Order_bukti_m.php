@@ -18,8 +18,8 @@ class Order_bukti_m extends MY_Model
         $this->has_one['order'] = array(
             'foreign_model' => 'Order_m',
             'foreign_table' => 'orders',
-            'foreign_key' => 'o_kode',
-            'local_key' => 'o_kode');
+            'foreign_key' => 'orders_kode',
+            'local_key' => 'orders_kode');
         parent::__construct();
     }
 

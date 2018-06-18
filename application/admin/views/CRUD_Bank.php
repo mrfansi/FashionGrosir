@@ -1,11 +1,11 @@
 <?php
 $url = site_url('bank/simpan');
 if ($submit == 'Ubah') {
-    $id = $bank->b_kode;
-    $penerbit = $bank->b_penerbit;
-    $nama = $bank->b_nama;
-    $rekening = $bank->b_rek;
-    $isaktif = $bank->b_isaktif;
+    $id = $bank->bank_kode;
+    $penerbit = $bank->bank_penerbit;
+    $nama = $bank->bank_nama;
+    $rekening = $bank->bank_rek;
+    $isaktif = $bank->bank_isaktif;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $penerbit = '';

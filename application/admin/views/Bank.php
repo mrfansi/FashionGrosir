@@ -79,21 +79,21 @@
                             <?php if ($banks != NULL): ?>
                                 <?php foreach ($banks as $bank): ?>
                                     <tr>
-                                        <td><?= $bank->b_penerbit; ?></td>
-                                        <td><?= $bank->b_nama; ?></td>
-                                        <td><?= $bank->b_rek; ?></td>
-                                        <td><?= $bank->b_isaktif == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
+                                        <td><?= $bank->bank_penerbit; ?></td>
+                                        <td><?= $bank->bank_nama; ?></td>
+                                        <td><?= $bank->bank_rek; ?></td>
+                                        <td><?= $bank->bank_isaktif == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
                                         <td class="text-center">
                                             <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
                                                href="#"
                                                onclick="edit($(this))" data-target="#crud" data-backdrop="static"
                                                data-keyboard="false"
-                                               data-id="<?= $bank->b_kode; ?>"><i
+                                               data-id="<?= $bank->bank_kode; ?>"><i
                                                         class="far fa-edit"></i></a> |
                                             <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
                                                href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $bank->b_kode; ?>"><i
+                                               data-id="<?= $bank->bank_kode; ?>"><i
                                                         class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>

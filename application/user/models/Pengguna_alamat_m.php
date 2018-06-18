@@ -17,13 +17,13 @@ class Pengguna_alamat_m extends MY_Model {
         $this->has_one['pengguna'] = array(
             'foreign_model'=>'Pengguna_m',
             'foreign_table'=> 'pengguna',
-            'foreign_key'=>'p_kode',
-            'local_key'=>'p_kode');
+            'foreign_key'=>'pengguna_kode',
+            'local_key'=>'pengguna_kode');
         $this->has_one['alamat'] = array(
             'foreign_model'=>'Alamat_m',
             'foreign_table'=>'alamat',
-            'foreign_key'=>'a_kode',
-            'local_key'=>'a_kode');
+            'foreign_key'=>'alamat_kode',
+            'local_key'=>'alamat_kode');
         parent::__construct();
     }
 

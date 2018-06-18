@@ -1,11 +1,11 @@
 <?php
 $url = site_url('users/simpan');
 if ($submit == 'Ubah') {
-    $id = $users->p_kode;
-    $nama = $users->p_nama;
-    $username = $users->p_username;
-    $password = $users->p_password;
-    $email = $users->p_email;
+    $id = $users->pengguna_kode;
+    $nama = $users->pengguna_nama;
+    $username = $users->pengguna_username;
+    $password = $users->pengguna_password;
+    $email = $users->pengguna_email;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $nama = '';

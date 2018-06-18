@@ -52,7 +52,7 @@ include "layout/Menu.php";
                                 <form action="profil_alamat/simpan" method="post">
                                     <input type="hidden" name="token_fg"
                                            value="<?= $this->security->get_csrf_hash(); ?>">
-                                    <input type="hidden" name="a_kode" id="a_kode">
+                                    <input type="hidden" name="alamat_kode" id="alamat_kode">
                                     <div class="row form-group" id="row_nama_alamat">
                                         <div class="col">
                                             <select name="pilih_alamat" id="pilih_alamat" class="form-control"></select>
@@ -266,7 +266,7 @@ include "layout/Menu.php";
                 }
             }).on('select2:select', function () {
                 var id = $(this).val();
-                var a_kode = $('#a_kode');
+                var alamat_kode = $('#alamat_kode');
                 var nama_alamat = $('#nama_alamat');
                 var nama_penerima = $('#nama_penerima');
                 var kontak_penerima = $('#kontak_penerima');
@@ -283,7 +283,7 @@ include "layout/Menu.php";
                 }).then(function (data) {
                     console.log(data);
                     $.when(
-                        $.getJSON('<?= site_url('API/get_provinsi/'); ?>' + data.a_provinsi, function (res) {
+                        $.getJSON('<?= site_url('API/get_provinsi/'); ?>' + data.alamat_provinsi, function (res) {
                             provinsi.append(new Option(
                                 res.results[0].text, res.results[0].id, true, true
                             )).trigger('change');
@@ -294,7 +294,7 @@ include "layout/Menu.php";
                                 }
                             })
                         }),
-                        $.getJSON('<?= site_url('API/get_kabupaten/'); ?>' + data.a_kabupaten, function (res) {
+                        $.getJSON('<?= site_url('API/get_kabupaten/'); ?>' + data.alamat_kabupaten, function (res) {
                             kabupaten.append(new Option(
                                 res.results[0].text, res.results[0].id, true, true
                             )).trigger('change');
@@ -305,7 +305,7 @@ include "layout/Menu.php";
                                 }
                             })
                         }),
-                        $.getJSON('<?= site_url('API/get_kecamatan/'); ?>' + data.a_kecamatan, function (res) {
+                        $.getJSON('<?= site_url('API/get_kecamatan/'); ?>' + data.alamat_kecamatan, function (res) {
                             kecamatan.append(new Option(
                                 res.results[0].text, res.results[0].id, true, true
                             )).trigger('change');
@@ -316,7 +316,7 @@ include "layout/Menu.php";
                                 }
                             })
                         }),
-                        $.getJSON('<?= site_url('API/get_kelurahan/'); ?>' + data.a_desa, function (res) {
+                        $.getJSON('<?= site_url('API/get_kelurahan/'); ?>' + data.alamat_desa, function (res) {
                             kelurahan.append(new Option(
                                 res.results[0].text, res.results[0].id, true, true
                             )).trigger('change');
@@ -332,8 +332,8 @@ include "layout/Menu.php";
                         kontak_penerima.val(data.pa_r_kontak),
                         nama_pengirim.val(data.pa_s_nama),
                         kontak_pengirim.val(data.pa_s_kontak),
-                        alamat.val(data.a_deskripsi),
-                        a_kode.val(data.a_kode)
+                        alamat.val(data.alamat_deskripsi),
+                        alamat_kode.val(data.alamat_kode)
                     );
 
                 });

@@ -18,22 +18,22 @@ class Profil_alamat extends MY_Controller
 
     public function simpan()
     {
-        $a_kode = $this->input->post('a_kode');
+        $a_kode = $this->input->post('alamat_kode');
 
-        $alamat = $this->alamat->where('a_kode', $a_kode)->get();
+        $alamat = $this->alamat->where('alamat_kode', $a_kode)->get();
 
         if ($alamat) {
-            $alamat = $this->alamat->where('a_kode', $a_kode)->update(array(
-                'a_provinsi' => $this->input->post('provinsi'),
-                'a_kabupaten' => $this->input->post('kabupaten'),
-                'a_kecamatan' => $this->input->post('kecamatan'),
-                'a_desa' => $this->input->post('kelurahan'),
-                'a_kodepos' => $this->input->post('kodepos'),
-                'a_deskripsi' => $this->input->post('alamat')
+            $alamat = $this->alamat->where('alamat_kode', $a_kode)->update(array(
+                'alamat_provinsi' => $this->input->post('provinsi'),
+                'alamat_kabupaten' => $this->input->post('kabupaten'),
+                'alamat_kecamatan' => $this->input->post('kecamatan'),
+                'alamat_desa' => $this->input->post('kelurahan'),
+                'alamat_kodepos' => $this->input->post('kodepos'),
+                'alamat_deskripsi' => $this->input->post('alamat')
             ));
 
-            $alamat_pengguna = $this->pengguna_alamat->where('a_kode', $a_kode)->update(array(
-                'p_kode' => $_SESSION['id'],
+            $alamat_pengguna = $this->pengguna_alamat->where('alamat_kode', $a_kode)->update(array(
+                'pengguna_kode' => $_SESSION['id'],
                 'pa_r_nama' => $this->input->post('nama_penerima'),
                 'pa_r_kontak' => $this->input->post('kontak_penerima'),
                 'pa_s_nama' => $this->input->post('nama_pengirim'),

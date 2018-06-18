@@ -37,7 +37,7 @@ class Cart extends MY_Controller
             $cart = $this->cart->where_ide_kode($ide_kode)->update(array(
                 'ca_qty' => (int)$cart->ca_qty + (int)$this->input->post('qty'),
                 'ca_tharga' => ((int)$cart->ca_qty + (int)$this->input->post('qty')) * (int)$this->input->post('harga'),
-                'p_kode' => $_SESSION['id']
+                'pengguna_kode' => $_SESSION['id']
             ));
 
             if ($cart) {
@@ -52,7 +52,7 @@ class Cart extends MY_Controller
                 'ca_qty' => (int)$this->input->post('qty'),
                 'ca_tharga' => (int)$this->input->post('qty') * (int)$this->input->post('harga'),
                 'ide_kode' => $ide_kode,
-                'p_kode' => $_SESSION['id']
+                'pengguna_kode' => $_SESSION['id']
             ));
 
             if ($cart) {
@@ -69,11 +69,11 @@ class Cart extends MY_Controller
         $p_kode = $_SESSION['id'];
         $carts = $this->cart->where_p_kode($p_kode)->get_all();
         $o_kode = $this->order->guid();
-        $o_noorder = date('ymd') . (int)$this->order->count_rows() + 1;
+        $o_nomor = date('ymd') . (int)$this->order->count_rows() + 1;
         $this->order->insert(array(
-            'o_kode' => $o_kode,
-            'o_noorder' => $o_noorder,
-            'p_kode' => $p_kode
+            'orders_kode' => $o_kode,
+            'orders_noid' => $o_nomor,
+            'pengguna_kode' => $p_kode
         ));
 
         foreach ($carts as $cart) {
@@ -81,7 +81,7 @@ class Cart extends MY_Controller
                 'od_kode' => $this->order_detil->guid(),
                 'od_qty' => (int)$cart->ca_qty,
                 'od_tharga' => (int)$cart->ca_tharga,
-                'o_kode' => $o_kode,
+                'orders_kode' => $o_kode,
                 'ide_kode' => $cart->ide_kode
             ));
 
@@ -93,7 +93,7 @@ class Cart extends MY_Controller
 
         }
         $this->cart->where_p_kode($p_kode)->delete();
-        redirect('checkout/' . $o_noorder .'/alamat_pengiriman');
+        redirect('checkout/' . $o_nomor .'/alamat_pengiriman');
     }
 
 

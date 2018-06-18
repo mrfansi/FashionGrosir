@@ -78,25 +78,25 @@
                             <tbody>
                             <?php if ($artikels != NULL): ?>
                                 <?php foreach ($artikels as $artikel): ?>
-                                    <?php if ($artikel->ar_isresi == 0): ?>
+                                    <?php if ($artikel->artikel_isresi == 0): ?>
                                         <tr>
-                                            <td><?= $artikel->ar_judul; ?></td>
-                                            <td><?= $artikel->ar_ispromo == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
-                                            <td><?= $artikel->ar_isblog == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
-                                            <td><?= $artikel->ar_isnotifikasi == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
+                                            <td><?= $artikel->artikel_judul; ?></td>
+                                            <td><?= $artikel->artikel_ispromo == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
+                                            <td><?= $artikel->artikel_isblog == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
+                                            <td><?= $artikel->artikel_isnotifikasi == 1 ? '<i class="fas fa-check"></i>' : '<i class="fas fa-times"></i>'; ?></td>
                                             <td class="text-center">
-                                                <?php if ($artikel->ar_kode != '0'): ?>
+                                                <?php if ($artikel->artikel_kode != '0'): ?>
                                                     <a data-toggle="modal" title="Ubah <?= $title_page; ?>"
                                                        href="#"
                                                        onclick="edit($(this))" data-target="#crud"
                                                        data-backdrop="static"
                                                        data-keyboard="false"
-                                                       data-id="<?= $artikel->ar_kode; ?>"><i
+                                                       data-id="<?= $artikel->artikel_kode; ?>"><i
                                                                 class="far fa-edit"></i></a> |
                                                     <a data-toggle="modal" title="Hapus <?= $title_page; ?>"
                                                        href="#"
                                                        onclick="hapus($(this))" data-target="#hapus"
-                                                       data-id="<?= $artikel->ar_kode; ?>"><i
+                                                       data-id="<?= $artikel->artikel_kode; ?>"><i
                                                                 class="far fa-trash-alt"></i></a>
                                                 <?php endif; ?>
                                             </td>

@@ -80,12 +80,12 @@
                             <?php if ($orders != NULL): ?>
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td class="text-danger"><?= $order->o_noorder; ?></td>
+                                        <td class="text-danger"><?= $order->orders_noid; ?></td>
                                         <td id="rupiah"><?= $order->ob_nominal; ?></td>
                                         <td class="text-center">
                                             <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
                                                onclick="proses($(this))" data-target="#proses"
-                                               data-id="<?= $order->o_kode; ?>"><i class="fas fa-check"></i></a>
+                                               data-id="<?= $order->orders_kode; ?>"><i class="fas fa-check"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -118,22 +118,22 @@
                                             <?= $order->ob_bank_nama; ?>
                                         </td>
                                         <td><b>Status : </b><br>
-                                            <?php if ($order->o_status == 0): ?>
+                                            <?php if ($order->orders_status == 0): ?>
                                                 <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
-                                            <?php elseif ($order->o_status == 1): ?>
+                                            <?php elseif ($order->orders_status == 1): ?>
                                                 <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN
                                                 </div>
-                                            <?php elseif ($order->o_status == 2): ?>
+                                            <?php elseif ($order->orders_status == 2): ?>
                                                 <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
-                                            <?php elseif ($order->o_status == 3): ?>
+                                            <?php elseif ($order->orders_status == 3): ?>
                                                 <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
-                                            <?php elseif ($order->o_status == 4): ?>
+                                            <?php elseif ($order->orders_status == 4): ?>
                                                 <div class="text-success">ADMIN SEDANG MEMPROSES ORDER</div>
-                                            <?php elseif ($order->o_status == 5): ?>
+                                            <?php elseif ($order->orders_status == 5): ?>
                                                 <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
-                                            <?php elseif ($order->o_status == 6): ?>
+                                            <?php elseif ($order->orders_status == 6): ?>
                                                 <div class="text-success">SUKSES</div>
-                                            <?php elseif ($order->o_status == 7): ?>
+                                            <?php elseif ($order->orders_status == 7): ?>
                                                 <div class="text-danger">BATAL</div>
                                             <?php endif; ?>
                                         </td>

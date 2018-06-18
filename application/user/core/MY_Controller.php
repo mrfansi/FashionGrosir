@@ -182,7 +182,7 @@ class MY_Controller extends CI_Controller
         };
 
         $this->data->bank_s = function () {
-            return $this->bank->where('b_isaktif', 1)->get_all();
+            return $this->bank->where('bank_isaktif', 1)->get_all();
         };
     }
 
@@ -204,7 +204,7 @@ class MY_Controller extends CI_Controller
 
     private function blog_load()
     {
-        $blog = $this->artikel->where('ar_isblog', 1)->get_all();
+        $blog = $this->artikel->where('artikel_isblog', 1)->get_all();
         if ($blog) {
             $this->data->blogs = $blog;
         } else {

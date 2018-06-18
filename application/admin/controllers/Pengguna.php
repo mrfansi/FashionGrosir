@@ -39,10 +39,10 @@ class Pengguna extends MY_Controller
 
         if ($user) {
             $user = $this->pengguna->where_p_kode($id)->update(array(
-                'p_nama' => $this->input->post('nama'),
-                'p_username' => $this->input->post('username'),
-                'p_password' => $this->input->post('password'),
-                'p_email' => $this->input->post('email'),
+                'pengguna_nama' => $this->input->post('nama'),
+                'pengguna_username' => $this->input->post('username'),
+                'pengguna_password' => $this->input->post('password'),
+                'pengguna_email' => $this->input->post('email'),
                 'updated_by' => $_SESSION['username'],
             ));
             if ($user) {
@@ -58,11 +58,11 @@ class Pengguna extends MY_Controller
             }
         } else {
             $user = $this->pengguna->insert(array(
-                'p_kode' => $this->input->post('id'),
-                'p_nama' => $this->input->post('nama'),
-                'p_username' => $this->input->post('username'),
-                'p_password' => $this->input->post('password'),
-                'p_email' => $this->input->post('email'),
+                'pengguna_kode' => $this->input->post('id'),
+                'pengguna_nama' => $this->input->post('nama'),
+                'pengguna_username' => $this->input->post('username'),
+                'pengguna_password' => $this->input->post('password'),
+                'pengguna_email' => $this->input->post('email'),
 //                'created_by'      => $_SESSION['username'],
             ));
             if ($user) {
@@ -90,7 +90,7 @@ class Pengguna extends MY_Controller
     public function detil($id)
     {
         $this->data->title = 'Fashion Grosir | Admin > Detil';
-        $this->data->users = $this->pengguna->where('p_kode', $id)->get();
+        $this->data->users = $this->pengguna->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Pengguna', $this->data);
     }
 
@@ -99,14 +99,14 @@ class Pengguna extends MY_Controller
         $this->data->title = 'Fashion Grosir | Admin > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
-        $this->data->users = $this->pengguna->where('p_kode', $id)->get();
+        $this->data->users = $this->pengguna->where('pengguna_kode', $id)->get();
 
         $this->load->view('CRUD_Pengguna', $this->data);
     }
 
     public function hapus($id)
     {
-        $customer = $this->pengguna->where('p_kode', $id)->delete();
+        $customer = $this->pengguna->where('pengguna_kode', $id)->delete();
         if ($customer) {
             $this->data->berhasil = 'Data Admin berhasil dihapus';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);

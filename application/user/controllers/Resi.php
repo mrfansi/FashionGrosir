@@ -10,13 +10,13 @@ class Resi extends MY_Controller
 
     public function index()
     {
-        $this->data->resis = $this->artikel->where('ar_isresi', 1)->get_all();
+        $this->data->resis = $this->artikel->where('artikel_isresi', 1)->get_all();
         $this->load->view('Resi', $this->data);
     }
 
     public function get($id)
     {
-        $this->data->resi = $this->artikel->where('ar_url', $id)->get();
+        $this->data->resi = $this->artikel->where('artikel_url', $id)->get();
         $this->load->view('Resi_detil', $this->data);
 
     }

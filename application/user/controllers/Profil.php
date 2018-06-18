@@ -13,7 +13,7 @@ class Profil extends MY_Controller
 
     public function index()
     {
-        $this->data->profil = $this->pengguna->where('p_kode', $_SESSION['id'])->get();
+        $this->data->profil = $this->pengguna->where('pengguna_kode', $_SESSION['id'])->get();
         $this->load->view('Profil', $this->data);
     }
 
@@ -21,10 +21,10 @@ class Profil extends MY_Controller
     {
         $id = $this->input->post('id');
 
-        $profil = $this->pengguna->where('p_kode', $id)->update(array(
-            'p_nama' => $this->input->post('nama'),
-            'p_email' => $this->input->post('email'),
-            'p_telp' => $this->input->post('notelp'),
+        $profil = $this->pengguna->where('pengguna_kode', $id)->update(array(
+            'pengguna_nama' => $this->input->post('nama'),
+            'pengguna_email' => $this->input->post('email'),
+            'pengguna_telp' => $this->input->post('notelp'),
         ));
 
         if ($profil) {

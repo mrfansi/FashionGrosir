@@ -1,14 +1,14 @@
 <?php
 $url = site_url('artikel/simpan');
 if ($submit == 'Ubah') {
-    $id = $artikel->ar_kode;
-    $judul = $artikel->ar_judul;
-    $content = $artikel->ar_content;
-    $ispromo = $artikel->ar_ispromo;
-    $isblog = $artikel->ar_isblog;
-    $isresi = $artikel->ar_isresi;
-    $isnotifikasi = $artikel->ar_isnotifikasi;
-    $isaktif = $artikel->ar_isaktif;
+    $id = $artikel->artikel_kode;
+    $judul = $artikel->artikel_judul;
+    $content = $artikel->artikel_content;
+    $ispromo = $artikel->artikel_ispromo;
+    $isblog = $artikel->artikel_isblog;
+    $isresi = $artikel->artikel_isresi;
+    $isnotifikasi = $artikel->artikel_isnotifikasi;
+    $isaktif = $artikel->artikel_isaktif;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $judul = '';

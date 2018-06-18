@@ -25,7 +25,7 @@ class Customers extends MY_Controller
         $this->data->title = 'Fashion Grosir | Pelanggan';
         $this->data->title_page = 'Pelanggan';
         $this->data->total_customers = $this->pengguna->count_rows();
-        $this->data->customers = $this->pengguna->where('p_tipe', array('1', '2'))->get_all();
+        $this->data->customers = $this->pengguna->where('pengguna_tipe', array('1', '2'))->get_all();
         $this->load->view('Customers', $this->data);
     }
 
@@ -34,7 +34,7 @@ class Customers extends MY_Controller
         $this->data->title = 'Fashion Grosir | Pelanggan VIP';
         $this->data->title_page = 'VIP';
         $this->data->total_customers = $this->pengguna->count_rows();
-        $this->data->customers = $this->pengguna->where('p_tipe', '1')->get_all();
+        $this->data->customers = $this->pengguna->where('pengguna_tipe', '1')->get_all();
         $this->load->view('Customers', $this->data);
     }
     public function by_reseller()
@@ -42,7 +42,7 @@ class Customers extends MY_Controller
         $this->data->title = 'Fashion Grosir | Pelanggan Reseller';
         $this->data->title_page = 'Reseller';
         $this->data->total_customers = $this->pengguna->count_rows();
-        $this->data->customers = $this->pengguna->where('p_tipe', '2')->get_all();
+        $this->data->customers = $this->pengguna->where('pengguna_tipe', '2')->get_all();
         $this->load->view('Customers', $this->data);
     }
 
@@ -57,11 +57,11 @@ class Customers extends MY_Controller
         if ($customer)
         {
             $customer = $this->pengguna->where_p_kode($id)->update(array(
-                'p_tipe'    => $this->input->post('tipe'),
-                'p_nama'    => $this->input->post('nama'),
-                'p_username' => $this->input->post('email'),
-                'p_password'    => $this->input->post('password'),
-                'p_email'       => $this->input->post('email'),
+                'pengguna_tipe'    => $this->input->post('tipe'),
+                'pengguna_nama'    => $this->input->post('nama'),
+                'pengguna_username' => $this->input->post('email'),
+                'pengguna_password'    => $this->input->post('password'),
+                'pengguna_email'       => $this->input->post('email'),
             ));
             if ($customer)
             {
@@ -81,12 +81,12 @@ class Customers extends MY_Controller
         else
         {
             $customer = $this->pengguna->insert(array(
-                'p_kode'          => $this->input->post('id'),
-                'p_tipe' => $this->input->post('tipe'),
-                'p_nama' => $this->input->post('nama'),
-                'p_username' => $this->input->post('email'),
-                'p_password' => $this->input->post('password'),
-                'p_email' => $this->input->post('email'),
+                'pengguna_kode'          => $this->input->post('id'),
+                'pengguna_tipe' => $this->input->post('tipe'),
+                'pengguna_nama' => $this->input->post('nama'),
+                'pengguna_username' => $this->input->post('email'),
+                'pengguna_password' => $this->input->post('password'),
+                'pengguna_email' => $this->input->post('email'),
             ));
             if ($customer)
             {
@@ -116,7 +116,7 @@ class Customers extends MY_Controller
     public function detil($id)
     {
         $this->data->title = 'Fashion Grosir | Pelanggan > Detil';
-        $this->data->customers = $this->pengguna->where('p_kode', $id)->get();
+        $this->data->customers = $this->pengguna->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Customers', $this->data);
     }
 
@@ -125,14 +125,14 @@ class Customers extends MY_Controller
         $this->data->title = 'Fashion Grosir | Pelanggan > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
-        $this->data->customers = $this->pengguna->where('p_kode', $id)->get();
+        $this->data->customers = $this->pengguna->where('pengguna_kode', $id)->get();
 
         $this->load->view('CRUD_Customers', $this->data);
     }
 
     public  function hapus($id)
     {
-        $customer = $this->pengguna->where('p_kode', $id)->delete();
+        $customer = $this->pengguna->where('pengguna_kode', $id)->delete();
         if ($customer)
         {
             $this->data->berhasil = 'Data Pelanggan berhasil dihapus';

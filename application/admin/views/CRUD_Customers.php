@@ -1,12 +1,12 @@
 <?php
 $url = site_url('customers/simpan');
 if ($submit == 'Ubah') {
-    $id = $customers->p_kode;
-    $tipe = $customers->p_tipe;
-    $nama = $customers->p_nama;
-    $username = $customers->p_username;
-    $password = $customers->p_password;
-    $email = $customers->p_email;
+    $id = $customers->pengguna_kode;
+    $tipe = $customers->pengguna_tipe;
+    $nama = $customers->pengguna_nama;
+    $username = $customers->pengguna_username;
+    $password = $customers->pengguna_password;
+    $email = $customers->pengguna_email;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $tipe = '';

@@ -97,7 +97,7 @@ include "layout/Menu.php";
             <!-- KOTAK KIRI -->
             <form class="col-lg-12 col-md-12" action="ongkir_transfer/simpan" method="post">
                 <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
-                <input type="hidden" name="o_kode" value="<?= $orders->o_kode; ?>">
+                <input type="hidden" name="orders_kode" value="<?= $orders->orders_kode; ?>">
                 <input type="hidden" name="nomor_order" value="<?= $this->uri->segment(2); ?>">
                 <h6>Pilih Metode Pengiriman</h6>
                 <?php foreach ($pengiriman as $k1): ?>
@@ -127,11 +127,11 @@ include "layout/Menu.php";
 
                 <h6>Pilih Metode Pembayaran</h6>
                 <?php foreach ($bank_s() as $bank): ?>
-                    <?php $name = $bank->b_penerbit . ' (A/N: ' . $bank->b_nama . ') (Nomor Rek: ' . $bank->b_rek . ')'; ?>
+                    <?php $name = $bank->bank_penerbit . ' (A/N: ' . $bank->bank_nama . ') (Nomor Rek: ' . $bank->bank_rek . ')'; ?>
                     <div class="form-check">
 
                         <input class="form-check-input" type="radio"
-                               data-id="<?= $bank->b_kode; ?>"
+                               data-id="<?= $bank->bank_kode; ?>"
                                name="bank" id="bank"
                                value="1" required>
                         <label class="form-check-label" for="bank"><?= $name; ?></label>

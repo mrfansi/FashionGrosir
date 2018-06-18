@@ -20,10 +20,10 @@ class Bank extends MY_Controller
         }
 
         $config = array(
-            'field' => 'k_nama',
+            'field' => 'bank_nama',
             'title' => 'title',
             'table' => 'bank',
-            'id' => 'k_id',
+            'id' => 'bank_id',
         );
         $this->load->library('slug', $config);
     }
@@ -51,7 +51,7 @@ class Bank extends MY_Controller
         $this->data->title = 'Fashion Grosir | Bank > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
-        $this->data->bank = $this->bank->where('b_kode', $id)->get();
+        $this->data->bank = $this->bank->where('bank_kode', $id)->get();
         $this->data->banks = $this->bank->get_all();
         $this->load->view('CRUD_Bank', $this->data);
     }
@@ -66,10 +66,10 @@ class Bank extends MY_Controller
 
         if ($bank) {
             $bank = $this->bank->where_b_kode($id)->update(array(
-                'b_penerbit' => $this->input->post('penerbit'),
-                'b_nama' => $this->input->post('nama'),
-                'b_rek' => $this->input->post('rekening'),
-                'b_isaktif' => $this->input->post('aktif')
+                'bank_penerbit' => $this->input->post('penerbit'),
+                'bank_nama' => $this->input->post('nama'),
+                'bank_rek' => $this->input->post('rekening'),
+                'bank_isaktif' => $this->input->post('aktif')
             ));
             if ($bank) {
                 $this->data->berhasil = 'Data Bank berhasil diperbarui.';
@@ -84,11 +84,11 @@ class Bank extends MY_Controller
             }
         } else {
             $bank = $this->bank->insert(array(
-                'b_kode' => $id,
-                'b_penerbit' => $this->input->post('penerbit'),
-                'b_nama' => $this->input->post('nama'),
-                'b_rek' => $this->input->post('rekening'),
-                'b_isaktif' => $this->input->post('aktif')
+                'bank_kode' => $id,
+                'bank_penerbit' => $this->input->post('penerbit'),
+                'bank_nama' => $this->input->post('nama'),
+                'bank_rek' => $this->input->post('rekening'),
+                'bank_isaktif' => $this->input->post('aktif')
             ));
             if ($bank) {
                 $this->data->berhasil = 'Data Bank berhasil dibuat.';
@@ -107,7 +107,7 @@ class Bank extends MY_Controller
     public function hapus($id)
     {
 
-        $bank = $this->bank->where('b_kode', $id)->delete();
+        $bank = $this->bank->where('bank_kode', $id)->delete();
         if ($bank) {
             $this->data->berhasil = 'Data Bank berhasil dihapus';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);

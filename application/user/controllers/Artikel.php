@@ -15,9 +15,9 @@ class Artikel extends MY_Controller
 
     public function get($url)
     {
-        $this->data->artikel = $this->artikel->where('ar_url', $url)->get();
-        $this->data->breadcumburl = site_url('artikel/' . $this->data->artikel->ar_url);
-        $this->data->breadcumb = $this->data->artikel->ar_judul;
+        $this->data->artikel = $this->artikel->where('artikel_url', $url)->get();
+        $this->data->breadcumburl = site_url('artikel/' . $this->data->artikel->artikel_url);
+        $this->data->breadcumb = $this->data->artikel->artikel_judul;
         $this->load->view('Artikel', $this->data);
     }
 }

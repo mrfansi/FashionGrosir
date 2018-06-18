@@ -79,21 +79,21 @@
                             <tbody>
                             <?php if ($users != NULL): ?>
                                 <?php foreach ($users as $user): ?>
-                                    <?php if ($user->p_kode != '0'): ?>
+                                    <?php if ($user->pengguna_kode != '0'): ?>
                                         <tr>
-                                            <td><?= $user->p_nama; ?></td>
-                                            <td><?= $user->p_username; ?></td>
-                                            <td><?= $user->p_email; ?></td>
-                                            <td><?= $user->p_status == 0 ? 'Aktif' : 'Blocked'; ?></td>
-                                            <td><?= $user->p_ipaddr; ?></td>
-                                            <td><?= $user->p_login_terakhir; ?></td>
+                                            <td><?= $user->pengguna_nama; ?></td>
+                                            <td><?= $user->pengguna_username; ?></td>
+                                            <td><?= $user->pengguna_email; ?></td>
+                                            <td><?= $user->pengguna_status == 0 ? 'Aktif' : 'Blocked'; ?></td>
+                                            <td><?= $user->pengguna_ipaddr; ?></td>
+                                            <td><?= $user->pengguna_login_terakhir; ?></td>
                                             <td class="text-center">
                                                 <a tooltip data-toggle="modal" title="Ubah User" href="#"
                                                    onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                                   data-id="<?= $user->p_kode; ?>"><i class="far fa-edit"></i></a> |
+                                                   data-id="<?= $user->pengguna_kode; ?>"><i class="far fa-edit"></i></a> |
                                                 <a tooltip data-toggle="modal" title="Hapus User" href="#"
                                                    onclick="hapus($(this))" data-target="#hapus"
-                                                   data-id="<?= $user->p_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                                   data-id="<?= $user->pengguna_kode; ?>"><i class="far fa-trash-alt"></i></a>
                                             </td>
                                         </tr>
                                     <?php endif; ?>

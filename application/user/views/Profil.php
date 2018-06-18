@@ -58,7 +58,7 @@ include "layout/Menu.php";
                                         <div class="col">
                                             <label class="r-font-konten-profile">Tipe Pengguna : </label>
                                             <input type="text" class="form-control"
-                                                   value="<?= $profil->p_tipe == 1 ? 'VIP' : 'Reseller'; ?>"
+                                                   value="<?= $profil->pengguna_tipe == 1 ? 'VIP' : 'Reseller'; ?>"
                                                    placeholder="Tipe" disabled>
                                         </div>
 
@@ -67,7 +67,7 @@ include "layout/Menu.php";
                                         <div class="col">
                                             <label class="r-font-konten-profile">Nama Lengkap : </label>
                                             <input type="text" class="form-control"
-                                                   value="<?= $profil->p_nama; ?>"
+                                                   value="<?= $profil->pengguna_nama; ?>"
                                                    name="nama"
                                                    placeholder="Nama Lengkap">
                                         </div>
@@ -77,7 +77,7 @@ include "layout/Menu.php";
                                         <div class="col">
                                             <label class="r-font-konten-profile">E-mail : </label>
                                             <input type="email" class="form-control"
-                                                   value="<?= $profil->p_email; ?>"
+                                                   value="<?= $profil->pengguna_email; ?>"
                                                    name="email"
                                                    placeholder="E-mail">
                                         </div>
@@ -88,7 +88,7 @@ include "layout/Menu.php";
                                         <div class="col">
                                             <label class="r-font-konten-profile">Nomor Telepon : </label>
                                             <input type="text" class="form-control"
-                                                   value="<?= $profil->p_telp; ?>"
+                                                   value="<?= $profil->pengguna_telp; ?>"
                                                    name="notelp"
                                                    placeholder="Nomor Telepon">
                                         </div>

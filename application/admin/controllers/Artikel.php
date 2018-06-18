@@ -20,10 +20,10 @@ class Artikel extends MY_Controller
         }
 
         $config = array(
-            'field' => 'ar_judul',
+            'field' => 'artikel_judul',
             'title' => 'title',
             'table' => 'artikel',
-            'id' => 'ar_id',
+            'id' => 'artikel_id',
         );
         $this->load->library('slug', $config);
     }
@@ -51,7 +51,7 @@ class Artikel extends MY_Controller
         $this->data->title = 'Fashion Grosir | Artikel > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
-        $this->data->artikel = $this->artikel->where('ar_kode', $id)->get();
+        $this->data->artikel = $this->artikel->where('artikel_kode', $id)->get();
         $this->data->artikels = $this->artikel->get_all();
         $this->load->view('CRUD_Artikel', $this->data);
     }
@@ -66,14 +66,14 @@ class Artikel extends MY_Controller
 
         if ($artikel) {
             $artikel = $this->artikel->where_ar_kode($id)->update(array(
-                'ar_judul' => $this->input->post('judul'),
-                'ar_content' => $this->input->post('content'),
-                'ar_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
-                'ar_ispromo' => $this->input->post('promo'),
-                'ar_isblog' => $this->input->post('blog'),
-                'ar_isresi' => $this->input->post('resi'),
-                'ar_isnotifikasi' => $this->input->post('notikasi'),
-                'ar_isaktif' => $this->input->post('aktif')
+                'artikel_judul' => $this->input->post('judul'),
+                'artikel_content' => $this->input->post('content'),
+                'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
+                'artikel_ispromo' => $this->input->post('promo'),
+                'artikel_isblog' => $this->input->post('blog'),
+                'artikel_isresi' => $this->input->post('resi'),
+                'artikel_isnotifikasi' => $this->input->post('notikasi'),
+                'artikel_isaktif' => $this->input->post('aktif')
             ));
             if ($artikel) {
                 $this->data->berhasil = 'Artikel berhasil diperbarui.';
@@ -88,15 +88,15 @@ class Artikel extends MY_Controller
             }
         } else {
             $artikel = $this->artikel->insert(array(
-                'ar_kode' => $this->input->post('id'),
-                'ar_judul' => $this->input->post('judul'),
-                'ar_content' => $this->input->post('content'),
-                'ar_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
-                'ar_ispromo' => $this->input->post('promo'),
-                'ar_isblog' => $this->input->post('blog'),
-                'ar_isresi' => $this->input->post('resi'),
-                'ar_isnotifikasi' => $this->input->post('notikasi'),
-                'ar_isaktif' => $this->input->post('aktif')
+                'artikel_kode' => $this->input->post('id'),
+                'artikel_judul' => $this->input->post('judul'),
+                'artikel_content' => $this->input->post('content'),
+                'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
+                'artikel_ispromo' => $this->input->post('promo'),
+                'artikel_isblog' => $this->input->post('blog'),
+                'artikel_isresi' => $this->input->post('resi'),
+                'artikel_isnotifikasi' => $this->input->post('notikasi'),
+                'artikel_isaktif' => $this->input->post('aktif')
             ));
             if ($artikel) {
                 $this->data->berhasil = 'Artikel berhasil dibuat.';
@@ -115,7 +115,7 @@ class Artikel extends MY_Controller
     public function hapus($id)
     {
 
-        $artikel = $this->artikel->where('ar_kode', $id)->delete();
+        $artikel = $this->artikel->where('artikel_kode', $id)->delete();
         if ($artikel) {
             $this->data->berhasil = 'Artikel berhasil dihapus';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);

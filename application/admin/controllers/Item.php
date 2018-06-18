@@ -211,7 +211,7 @@ class Item extends MY_Controller
     public function detil($id)
     {
         $this->data->title = 'Fashion Grosir | Item > Detil';
-        $this->data->item = $this->item->where('p_kode', $id)->get();
+        $this->data->item = $this->item->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Item', $this->data);
     }
 

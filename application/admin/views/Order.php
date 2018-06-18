@@ -79,39 +79,39 @@
                             <?php if ($orders != NULL): ?>
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td class="text-danger"><?= $order->o_noorder; ?></td>
-                                        <td><?= $order->p_nama; ?></td>
+                                        <td class="text-danger"><?= $order->orders_noid; ?></td>
+                                        <td><?= $order->pengguna_nama; ?></td>
                                         <td id="rupiah"><?= $order->total; ?></td>
                                         <td>
-                                            <?php if ($order->o_status == 3): ?>
+                                            <?php if ($order->orders_status == 3): ?>
                                                 <a class="btn btn-sm btn-primary" data-toggle="modal" href="#"
                                                    onclick="konfirmasi($(this))" data-target="#konfirmasi"
-                                                   data-id="<?= $order->o_kode; ?>">Konfirmasi <?= $title_page; ?>
+                                                   data-id="<?= $order->orders_kode; ?>">Konfirmasi <?= $title_page; ?>
                                                 </a>
                                             <?php endif; ?>
 
-                                            <?php if ($order->o_status == 4): ?>
-                                                <a class="btn btn-sm btn-primary" <?= $order->o_status == 4 ? '' : 'disabled'; ?>
+                                            <?php if ($order->orders_status == 4): ?>
+                                                <a class="btn btn-sm btn-primary" <?= $order->orders_status == 4 ? '' : 'disabled'; ?>
                                                    data-toggle="modal" href="#"
                                                    onclick="proses($(this))" data-target="#konfirmasi"
-                                                   data-id="<?= $order->o_kode; ?>">Proses <?= $title_page; ?>
+                                                   data-id="<?= $order->orders_kode; ?>">Proses <?= $title_page; ?>
                                                 </a>
                                             <?php endif; ?>
 
-                                            <?php if ($order->o_status == 5): ?>
+                                            <?php if ($order->orders_status == 5): ?>
                                                 <a class="btn btn-sm btn-primary" data-toggle="modal"
                                                    title="Konfirmasi Pengiriman" href="#"
                                                    onclick="pengiriman($(this))" data-target="#crud"
                                                    data-backdrop="static" data-keyboard="false"
-                                                   data-id="<?= $order->o_kode; ?>">
+                                                   data-id="<?= $order->orders_kode; ?>">
                                                     Konfirmasi Pengiriman
                                                 </a>
                                             <?php endif; ?>
-                                            <?php if ($order->o_status != 7): ?>
-                                                <a class="btn btn-sm btn-primary"
+                                            <?php if ($order->orders_status != 7 && $order->orders_status < 5): ?>
+                                                <a class="btn btn-sm btn-danger"
                                                    data-toggle="modal"
                                                    data-target="#batal"
-                                                   data-url="<?= site_url('order/batal/' . $order->o_kode); ?>"
+                                                   data-url="<?= site_url('order/batal/' . $order->orders_kode); ?>"
                                                    onclick="batal($(this))"
                                                    href="#">
                                                     Batal <?= $title_page; ?>
@@ -128,22 +128,22 @@
                                     <tr>
                                         <td></td>
                                         <td colspan="3"><b>Status Order : </b>
-                                            <?php if ($order->o_status == 0): ?>
+                                            <?php if ($order->orders_status == 0): ?>
                                                 <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
-                                            <?php elseif ($order->o_status == 1): ?>
+                                            <?php elseif ($order->orders_status == 1): ?>
                                                 <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN
                                                 </div>
-                                            <?php elseif ($order->o_status == 2): ?>
+                                            <?php elseif ($order->orders_status == 2): ?>
                                                 <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
-                                            <?php elseif ($order->o_status == 3): ?>
+                                            <?php elseif ($order->orders_status == 3): ?>
                                                 <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
-                                            <?php elseif ($order->o_status == 4): ?>
+                                            <?php elseif ($order->orders_status == 4): ?>
                                                 <div class="text-success">ADMIN SEDANG MEMPROSES ORDER</div>
-                                            <?php elseif ($order->o_status == 5): ?>
+                                            <?php elseif ($order->orders_status == 5): ?>
                                                 <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
-                                            <?php elseif ($order->o_status == 6): ?>
+                                            <?php elseif ($order->orders_status == 6): ?>
                                                 <div class="text-success">SUKSES</div>
-                                            <?php elseif ($order->o_status == 7): ?>
+                                            <?php elseif ($order->orders_status == 7): ?>
                                                 <div class="text-danger">BATAL</div>
                                             <?php endif; ?>
                                         </td>

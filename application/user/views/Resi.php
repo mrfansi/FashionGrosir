@@ -60,9 +60,9 @@ include "layout/Menu.php";
                                 <?php $counter = 0; ?>
                                 <?php foreach ($resis as $resi): ?>
                                     <tr>
-                                        <td><?= $resi->ar_judul; ?></td>
+                                        <td><?= $resi->artikel_judul; ?></td>
                                         <td><?= $resi->created_at; ?></td>
-                                        <td><a href="<?= site_url('resi/' . $resi->ar_url . '/detil'); ?>">Lihat</a>
+                                        <td><a href="<?= site_url('resi/' . $resi->artikel_url . '/detil'); ?>">Lihat</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
