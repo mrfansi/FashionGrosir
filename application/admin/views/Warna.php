@@ -66,11 +66,11 @@
                         <?php foreach ($warnas as $warna): ?>
                             <div class="btn-group mb-2" role="group" aria-label="Basic example">
                                 <button type="button" class="btn">Warna : <?= $warna->w_nama; ?></button>
-                                <a class="btn btn-primary" tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
+                                <a class="btn btn-sm btn-primary" tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
                                    href="#"
                                    onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                    data-id="<?= $warna->w_kode; ?>"><i class="far fa-edit"></i></a>
-                                <a class="btn btn-danger" tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
+                                <a class="btn btn-sm btn-danger" tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
                                    href="#"
                                    onclick="hapus($(this))" data-target="#hapus"
                                    data-id="<?= $warna->w_kode; ?>"><i class="far fa-trash-alt"></i></a>

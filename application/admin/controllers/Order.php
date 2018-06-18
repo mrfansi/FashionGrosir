@@ -146,4 +146,49 @@ class Order extends MY_Controller
             redirect('order');
         }
     }
+
+    public function proses($id)
+    {
+        $order = $this->order->where_o_kode($id)->update(
+            array(
+                'o_status' => 5
+            )
+        );
+
+        if ($order) {
+            $this->data->berhasil = 'Order telah/sedang berhasil diproses';
+            $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+            redirect('order');
+        } else {
+            $this->data->gagal = 'Order telah/sedang gagal diproses';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+
+            redirect('order');
+        }
+    }
+
+    public function batal($id)
+    {
+        $text = $this->input->post('alasan');
+        $order = $this->order->where_o_kode($id)->update(
+            array(
+                'o_status' => 7,
+                'o_deskripsi'   => $text
+            )
+        );
+
+        if ($order) {
+            $this->data->berhasil = 'Order telah berhasil dibatalkan';
+            $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+            redirect('order');
+        } else {
+            $this->data->gagal = 'Order telah gagal dibatalkan';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+
+            redirect('order');
+        }
+    }
+
 }

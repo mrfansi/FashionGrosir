@@ -148,10 +148,10 @@
                             </p>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
-                            <button type="button" onclick="window.location.reload()" class="btn btn-danger">Tutup
+                            <button type="submit" class="btn btn-sm btn-primary"><?= $submit; ?></button>
+                            <button type="button" onclick="window.location.reload()" class="btn btn-sm btn-danger">Tutup
                             </button>
-                            <a href="<?= site_url('customers/alamat/' . $id); ?>" class="btn btn-danger">Kembali</a>
+                            <a href="<?= site_url('customers/alamat/' . $id); ?>" class="btn btn-sm btn-danger">Kembali</a>
                         </div>
                         <?php if (isset($berhasil)): ?>
                             <p class="text-success"><?= $berhasil; ?></p>

@@ -18,21 +18,21 @@ if ($submit == 'Ubah') {
     <div class="row">
         <div class="col">
             <p class="text-danger">Master Warna tidak ada.</p>
-            <button class="btn btn-danger btn-sm" onclick="window.location.reload()">Tutup</button>
+            <button class="btn btn-sm btn-danger" onclick="window.location.reload()">Tutup</button>
         </div>
     </div>
 <?php elseif (!isset($ukuran_all) && $ukuran_all == NULL): ?>
     <div class="row">
         <div class="col">
             <p class="text-danger">Master Warna tidak ada.</p>
-            <button class="btn btn-danger btn-sm" onclick="window.location.reload()">Tutup</button>
+            <button class="btn btn-sm btn-danger" onclick="window.location.reload()">Tutup</button>
         </div>
     </div>
 <?php elseif (!isset($kategori_all) && $kategori_all == NULL): ?>
     <div class="row">
         <div class="col">
             <p class="text-danger">Master Warna tidak ada.</p>
-            <button class="btn btn-danger btn-sm" onclick="window.location.reload()">Tutup</button>
+            <button class="btn btn-sm btn-danger" onclick="window.location.reload()">Tutup</button>
         </div>
     </div>
 <?php else: ?>
@@ -141,8 +141,8 @@ if ($submit == 'Ubah') {
 
         <div class="form-group">
             <input type="hidden" id="counter" name="counter" value="1">
-            <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
-            <button type="button" onclick="window.location.reload()" class="btn btn-danger">Tutup</button>
+            <button type="submit" class="btn btn-sm btn-primary"><?= $submit; ?></button>
+            <button type="button" onclick="window.location.reload()" class="btn btn-sm btn-danger">Tutup</button>
         </div>
     </form>
     <link rel="stylesheet" href="<?= base_url('assets/vendor/select/css/multi-select.css'); ?>">

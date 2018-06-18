@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Simpan</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>

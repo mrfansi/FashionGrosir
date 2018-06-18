@@ -230,8 +230,8 @@
                 <p>Apakah anda yakin?</p>
             </div>
             <div class="modal-footer">
-                <a id="proses" href="#" class="btn btn-primary btn-sm">Proses</a>
-                <a data-dismiss="modal" href="#" class="btn btn-danger btn-sm">Tutup</a>
+                <a id="proses" href="#" class="btn btn-sm btn-primary">Proses</a>
+                <a data-dismiss="modal" href="#" class="btn btn-sm btn-danger">Tutup</a>
             </div>
         </div>
     </div>

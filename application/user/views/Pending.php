@@ -79,7 +79,7 @@ include "layout/Menu.php";
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td colspan="2"><b>Status : </b>
+                                    <td><b>Status : </b>
                                         <?php if ($order->o_status == 0): ?>
                                             <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
                                         <?php elseif ($order->o_status == 1): ?>
@@ -97,6 +97,11 @@ include "layout/Menu.php";
                                         <?php elseif ($order->o_status == 7): ?>
                                             <div class="text-danger">BATAL</div>
                                         <?php endif; ?>
+                                    </td>
+                                    <td><b>Reason : </b><br>
+                                        <div class="text-danger">
+                                            <?= $order->o_deskripsi; ?>
+                                        </div>
                                     </td>
                                     <td><b>Aksi :</b><br>
                                         <?php if ($order->o_status == 0): ?>

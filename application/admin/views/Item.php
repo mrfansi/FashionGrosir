@@ -469,7 +469,7 @@
                     <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30" rows="10"></textarea>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary" onclick="window.location.reload()">Tutup</button>
+                    <button class="btn btn-sm btn-primary" onclick="window.location.reload()">Tutup</button>
                 </div>
             </div>
         </div>

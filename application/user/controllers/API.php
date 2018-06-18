@@ -217,10 +217,6 @@ class API extends MY_Controller
         }
 
         echo json_encode($hasil);
-//
-//        echo '<pre>';
-//        echo print_r($alamat);
-//        echo '</pre>';
     }
 
 }

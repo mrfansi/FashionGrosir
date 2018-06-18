@@ -84,28 +84,37 @@
                                         <td id="rupiah"><?= $order->total; ?></td>
                                         <td>
                                             <?php if ($order->o_status == 3): ?>
-                                                <a tooltip data-toggle="modal" title="Konfirmasi Pembayaran" href="#"
+                                                <a class="btn btn-sm btn-primary" data-toggle="modal" href="#"
                                                    onclick="konfirmasi($(this))" data-target="#konfirmasi"
-                                                   data-id="<?= $order->o_kode; ?>"><i class="fas fa-check"></i>
+                                                   data-id="<?= $order->o_kode; ?>">Konfirmasi <?= $title_page; ?>
                                                 </a>
                                             <?php endif; ?>
 
                                             <?php if ($order->o_status == 4): ?>
-                                                <a <?= $order->o_status == 4 ? '' : 'disabled'; ?>
-                                                        tooltip data-toggle="modal" title="Proses <?= $title_page; ?>"
-                                                        href="#"
-                                                        onclick="proses($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                                        data-id="<?= $order->o_kode; ?>"><i
-                                                            class="fas fa-exchange-alt"></i>
+                                                <a class="btn btn-sm btn-primary" <?= $order->o_status == 4 ? '' : 'disabled'; ?>
+                                                   data-toggle="modal" href="#"
+                                                   onclick="proses($(this))" data-target="#konfirmasi"
+                                                   data-id="<?= $order->o_kode; ?>">Proses <?= $title_page; ?>
                                                 </a>
                                             <?php endif; ?>
 
                                             <?php if ($order->o_status == 5): ?>
-                                                <a tooltip data-toggle="modal"
+                                                <a class="btn btn-sm btn-primary" data-toggle="modal"
                                                    title="Konfirmasi Pengiriman" href="#"
-                                                   onclick="pengiriman($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
+                                                   onclick="pengiriman($(this))" data-target="#crud"
+                                                   data-backdrop="static" data-keyboard="false"
                                                    data-id="<?= $order->o_kode; ?>">
-                                                    <i class="fas fa-truck-moving"></i>
+                                                    Konfirmasi Pengiriman
+                                                </a>
+                                            <?php endif; ?>
+                                            <?php if ($order->o_status != 7): ?>
+                                                <a class="btn btn-sm btn-primary"
+                                                   data-toggle="modal"
+                                                   data-target="#batal"
+                                                   data-url="<?= site_url('order/batal/' . $order->o_kode); ?>"
+                                                   onclick="batal($(this))"
+                                                   href="#">
+                                                    Batal <?= $title_page; ?>
                                                 </a>
                                             <?php endif; ?>
                                         </td>
@@ -160,11 +169,25 @@
                 $('a#konfirmasi').attr('href', "<?= site_url('order/konfirmasi/'); ?>" + id + "/proses");
             }
 
+            function proses(data) {
+                d = data;
+                id = d.attr('data-id');
+                $('a#konfirmasi').attr('href', "<?= site_url('order/proses/'); ?>" + id + "/proses");
+            }
+
             function tambah() {
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
                 bodymodal.load("<?= site_url('ukuran/tambah'); ?>");
+            }
+
+            function batal(data) {
+                d = data;
+                url = d.attr('data-url');
+                modal = $('#batal');
+                formmodal = modal.find('div.modal-body > form');
+                formmodal.prop('action', url);
             }
 
             function edit(data) {
@@ -260,11 +283,31 @@
         <div class="modal-content">
 
             <div class="modal-body">
-                <p>Apakah anda yakin?</p>
+                <p>Apakah anda yakin ingin melanjutkan proses ini?</p>
             </div>
             <div class="modal-footer">
-                <a id="konfirmasi" href="#" class="btn btn-primary btn-sm">Proses</a>
-                <a data-dismiss="modal" href="#" class="btn btn-danger btn-sm">Tutup</a>
+                <a id="konfirmasi" href="#" class="btn btn-sm btn-primary">Proses</a>
+                <a data-dismiss="modal" href="#" class="btn btn-sm btn-danger">Tutup</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="batal" tabindex="-1" role="dialog" aria-labelledby="batal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form action="#" method="post">
+                    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                    <div class="form-group">
+                        <label for="alasan">Reason</label>
+                        <textarea class="form-control" name="alasan" id="alasan" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-sm btn-danger">Batalkan</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
