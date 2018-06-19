@@ -110,7 +110,17 @@ class Item extends MY_Controller
                 'i_url'     => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));
 
-            if ($item) {
+            $this->item_kategori->where('i_kode', $id)->delete();
+
+            foreach ($this->input->post('kategori') as $kategori) {
+                $item_kategori = $this->item_kategori->insert(array(
+                    'ik_kode' => $this->item_kategori->guid(),
+                    'i_kode' => $this->input->post('id'),
+                    'k_kode' => $kategori,
+                ));
+            }
+
+            if ($item && $item_kategori) {
                 $this->data->berhasil = 'Data Item berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 

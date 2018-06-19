@@ -120,7 +120,7 @@
                                                        href="#"
                                                        onclick="tambah_detil($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                        data-id="<?= $item->i_kode; ?>"><i
-                                                                class="fas fa-cart-plus fa-lg"></i> Tambaht Detil</a>
+                                                                class="fas fa-plus fa-lg"></i> Tambah Detil</a>
                                                 </div>
 
                                             </div>
@@ -234,11 +234,11 @@
                                                             class="btn btn-sm btn-primary dropdown-toggle"
                                                             data-toggle="dropdown" aria-haspopup="true"
                                                             aria-expanded="false">
-                                                        Toko
+                                                        Opsi
                                                     </button>
-                                                    <div class="dropdown-menu" aria-labelledby="toko">
+                                                    <div class="dropdown-menu" aria-labelledby="opsi">
                                                         <a class="dropdown-item small" data-toggle="modal" href="#"
-                                                           onclick="edit_item($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
+                                                           onclick="tambah_detil($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                            data-id="<?= $item->i_kode; ?>">
                                                             Tambah Detil
                                                         </a>
@@ -286,15 +286,15 @@
                                                                 class="btn btn-sm btn-primary dropdown-toggle"
                                                                 data-toggle="dropdown" aria-haspopup="true"
                                                                 aria-expanded="false">
-                                                            Toko
+                                                            Opsi
                                                         </button>
-                                                        <div class="dropdown-menu" aria-labelledby="toko">
+                                                        <div class="dropdown-menu" aria-labelledby="opsi">
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="edit_detil($(this))" data-target="#crud"
                                                                data-backdrop="static" data-keyboard="false"
                                                                data-id="<?= $detil->item_detil_kode; ?>"><i
-                                                                        class="far fa-edit fa-lg"></i> Ubah</a>
+                                                                        class="far fa-edit fa-lg"></i> Ubah Detil</a>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="tambah_qty($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
