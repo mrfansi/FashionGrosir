@@ -48,14 +48,14 @@ include "layout/Menu.php";
 
                 <div class="card container-fluid p-4">
 
-                    <!--                    <div class="row container">-->
-                    <!--                        <div class="col">-->
-                    <!--                            <h3 class="r-style-title-konten-profile">-->
-                    <!--                                Transaksi Tertunda-->
-                    <!--                            </h3>-->
-                    <!--                            <hr style="width: 30%;">-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
+                    <div class="row container">
+                        <div class="col">
+                            <h3 class="r-style-title-konten-profile">
+                                Transaksi Tertunda
+                            </h3>
+                            <hr style="width: 30%;">
+                        </div>
+                    </div>
 
                     <div class="table-responsive mt-2">
                         <table class="table table-sm table-borderless">

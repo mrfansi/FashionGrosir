@@ -40,7 +40,7 @@ class Order extends MY_Controller
 
     public function proses_konfirmasi($id)
     {
-        $order = $this->order->where_o_kode($id)->update(
+        $order = $this->order->where_orders_noid($id)->update(
             array(
                 'orders_status' => 4
             )
@@ -149,7 +149,7 @@ class Order extends MY_Controller
 
     public function proses($id)
     {
-        $order = $this->order->where_o_kode($id)->update(
+        $order = $this->order->where_orders_noid($id)->update(
             array(
                 'orders_status' => 5
             )
@@ -171,7 +171,7 @@ class Order extends MY_Controller
     public function batal($id)
     {
         $text = $this->input->post('alasan');
-        $order = $this->order->where_o_kode($id)->update(
+        $order = $this->order->where_orders_noid($id)->update(
             array(
                 'orders_status' => 7,
                 'orders_deskripsi'   => $text
