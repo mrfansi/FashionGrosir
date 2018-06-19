@@ -77,6 +77,8 @@ class Item extends MY_Controller
         $this->load->view('Item', $this->data);
     }
 
+
+
     public function by($kategori_kode)
     {
         $this->data->title = $this->data->brandname . ' | Item';
@@ -108,10 +110,7 @@ class Item extends MY_Controller
                 'i_url'     => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));
 
-            $item_kategori = $this->item_kategori->where_i_kode($id)->update(array(
-                'k_kode' => $this->input->post('kategori'),
-            ));
-            if ($item && $item_kategori) {
+            if ($item) {
                 $this->data->berhasil = 'Data Item berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
@@ -179,6 +178,36 @@ class Item extends MY_Controller
         $this->data->title = $this->data->brandname . ' | Item > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->item->guid();
+
+        $this->load->view('CRUD_Item', $this->data);
+    }
+
+    public function edit_item($id)
+    {
+        $this->data->title = $this->data->brandname . ' | Item > Ubah';
+        $this->data->submit = 'Ubah';
+        $this->data->items = $this->item->where('i_kode', $id)->get();
+        $this->data->kategori_selected = function ($k_kode, $i_kode)
+        {
+            $item_kategori = $this->item_kategori->where(array('k_kode' => $k_kode, 'i_kode' => $i_kode))->get();
+            if ($item_kategori) {
+                $selected = 'selected';
+            } else {
+                $selected = '';
+            }
+
+            return $selected;
+
+        };
+
+        $this->load->view('CRUD_Item', $this->data);
+    }
+
+    public function tambah_detil($id)
+    {
+        $this->data->title = $this->data->brandname . ' | Item > Tambah Detil';
+        $this->data->submit = 'Tambah Detil';
+        $this->data->items = $this->item->where('i_kode', $id)->get();
 
         $this->load->view('CRUD_Item', $this->data);
     }
@@ -252,6 +281,43 @@ class Item extends MY_Controller
 
             redirect('item');
         }
+    }
+
+    public function tambah_detil_simpan()
+    {
+        $id = $this->input->post('id');
+        $counter = (int)$this->input->post('counter');
+
+        for ($i = 0; $i < $counter; $i++) {
+            $id_detil = $this->item_detil->guid();
+            $item_detil = $this->item_detil->insert(array(
+                'item_detil_kode' => $id_detil,
+                'i_kode' => $id,
+                'w_kode' => $_POST['warna'][$i],
+                's_kode' => $_POST['seri'][$i],
+                'u_kode' => $_POST['ukuran'][$i],
+            ));
+
+            $item_qty = $this->item_qty->insert(array(
+                'iq_kode' => $this->item_qty->guid(),
+                'item_detil_kode' => $id_detil,
+                'iq_qty' => $_POST['qty'][$i]
+            ));
+        }
+
+        if ($item_detil && $item_qty)
+        {
+            $this->data->berhasil = 'Item detil berhasil ditambah';
+            $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+            redirect('item');
+        } else {
+            $this->data->gagal = 'Item detil gagal ditambah';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+
+            redirect('item');
+        }
+
     }
 
     public function hapus($id)

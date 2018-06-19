@@ -56,6 +56,15 @@ class Seri extends MY_Controller
 
     public function simpan()
     {
+        $this->form_validation->set_rules('nama','Seri','is_unique[seri.s_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
+
+        if ($this->form_validation->run() === FALSE) {
+            $this->data->gagal = validation_errors();
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+
+            redirect('seri');
+        }
+
         // create object
 
         // get guid form post

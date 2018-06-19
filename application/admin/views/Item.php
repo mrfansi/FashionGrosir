@@ -77,8 +77,9 @@
                         <table id="tables" class="table table-sm">
                             <thead>
                             <tr>
+                                <th scope="col"></th>
                                 <th scope="col">Foto</th>
-                                <th scope="col">Nama</th>
+                                <th scope="col">Item</th>
                                 <th scope="col">Kategori</th>
                                 <th scope="col">Deskripsi</th>
                                 <th scope="col">Hrg VIP</th>
@@ -98,6 +99,32 @@
                                                as $item): ?>
                                     <?php $counter = isset($item->item_detil) ? count((array)$item->item_detil) : 0 ?>
                                     <tr>
+                                        <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
+                                                scope="row"
+                                                class="align-middle">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <button id="itembtn" type="button"
+                                                        class="btn btn-sm btn-primary dropdown-toggle"
+                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                    Item
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="itembtn">
+                                                    <a class="dropdown-item small" data-toggle="modal"
+                                                       href="#"
+                                                       onclick="edit_item($(this))" data-target="#crud"
+                                                       data-backdrop="static" data-keyboard="false"
+                                                       data-id="<?= $item->i_kode; ?>"><i
+                                                                class="far fa-edit fa-lg"></i> Ubah Item</a>
+                                                    <a class="dropdown-item small" data-toggle="modal"
+                                                       href="#"
+                                                       onclick="tambah_detil($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
+                                                       data-id="<?= $item->i_kode; ?>"><i
+                                                                class="fas fa-cart-plus fa-lg"></i> Tambaht Detil</a>
+                                                </div>
+
+                                            </div>
+                                        </td>
                                         <td <?= $counter <= 1 ? '' : 'rowspan="' . (string)($counter + 1) . '" '; ?>
                                                 class="align-middle">
                                             <a data-toggle="modal"
@@ -167,19 +194,19 @@
 
                                                 <td class="align-middle">
                                                     <div class="btn-group btn-group-sm" role="group">
-                                                        <button id="toko" type="button"
+                                                        <button id="opsi" type="button"
                                                                 class="btn btn-sm btn-primary dropdown-toggle"
                                                                 data-toggle="dropdown" aria-haspopup="true"
                                                                 aria-expanded="false">
-                                                            Toko
+                                                            Opsi
                                                         </button>
-                                                        <div class="dropdown-menu" aria-labelledby="toko">
+                                                        <div class="dropdown-menu" aria-labelledby="opsi">
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="edit_detil($(this))" data-target="#crud"
                                                                data-backdrop="static" data-keyboard="false"
                                                                data-id="<?= $detil->item_detil_kode; ?>"><i
-                                                                        class="far fa-edit fa-lg"></i> Ubah</a>
+                                                                        class="far fa-edit fa-lg"></i> Ubah Detil</a>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="tambah_qty($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
@@ -304,6 +331,24 @@
                 bodymodal = modal.find('div.modal-body');
 
                 bodymodal.load("<?= site_url('item/tambah'); ?>");
+            }
+
+            function edit_item(data) {
+                d = data;
+                id = d.attr('data-id');
+                modal = $('#crud');
+                bodymodal = modal.find('div.modal-body');
+
+                bodymodal.load("<?= site_url('item/edit_item/'); ?>" + id);
+            }
+
+            function tambah_detil(data) {
+                d = data;
+                id = d.attr('data-id');
+                modal = $('#crud');
+                bodymodal = modal.find('div.modal-body');
+
+                bodymodal.load("<?= site_url('item/tambah_detil/'); ?>" + id);
             }
 
             function detil_item(data) {
