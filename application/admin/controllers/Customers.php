@@ -22,7 +22,7 @@ class Customers extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Pelanggan';
+        $this->data->title = $this->data->brandname . ' | Pelanggan';
         $this->data->title_page = 'Pelanggan';
         $this->data->total_customers = $this->pengguna->count_rows();
         $this->data->customers = $this->pengguna->where('pengguna_tipe', array('1', '2'))->get_all();
@@ -31,7 +31,7 @@ class Customers extends MY_Controller
 
     public function by_vip()
     {
-        $this->data->title = 'Fashion Grosir | Pelanggan VIP';
+        $this->data->title = $this->data->brandname . ' | Pelanggan VIP';
         $this->data->title_page = 'VIP';
         $this->data->total_customers = $this->pengguna->count_rows();
         $this->data->customers = $this->pengguna->where('pengguna_tipe', '1')->get_all();
@@ -39,7 +39,7 @@ class Customers extends MY_Controller
     }
     public function by_reseller()
     {
-        $this->data->title = 'Fashion Grosir | Pelanggan Reseller';
+        $this->data->title = $this->data->brandname . ' | Pelanggan Reseller';
         $this->data->title_page = 'Reseller';
         $this->data->total_customers = $this->pengguna->count_rows();
         $this->data->customers = $this->pengguna->where('pengguna_tipe', '2')->get_all();
@@ -107,7 +107,7 @@ class Customers extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Pelanggan > Tambah';
+        $this->data->title = $this->data->brandname . ' | Pelanggan > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->pengguna->guid();
         $this->load->view('CRUD_Customers', $this->data);
@@ -115,14 +115,14 @@ class Customers extends MY_Controller
 
     public function detil($id)
     {
-        $this->data->title = 'Fashion Grosir | Pelanggan > Detil';
+        $this->data->title = $this->data->brandname . ' | Pelanggan > Detil';
         $this->data->customers = $this->pengguna->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Customers', $this->data);
     }
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Pelanggan > Ubah';
+        $this->data->title = $this->data->brandname . ' | Pelanggan > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->customers = $this->pengguna->where('pengguna_kode', $id)->get();

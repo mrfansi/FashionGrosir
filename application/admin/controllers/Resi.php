@@ -31,7 +31,7 @@ class Resi extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Resi';
+        $this->data->title = $this->data->brandname . ' | Resi';
         $this->data->title_page = 'Resi';
         $this->data->total_artikel = $this->artikel->count_rows();
         $this->data->artikels = $this->artikel->where('artikel_isresi', 1)->get_all();
@@ -40,7 +40,7 @@ class Resi extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Resi > Tambah';
+        $this->data->title = $this->data->brandname . ' | Resi > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->artikel->guid();
         $this->load->view('CRUD_Resi', $this->data);
@@ -48,7 +48,7 @@ class Resi extends MY_Controller
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Resi > Ubah';
+        $this->data->title = $this->data->brandname . ' | Resi > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->artikel = $this->artikel->where('artikel_kode', $id)->get();

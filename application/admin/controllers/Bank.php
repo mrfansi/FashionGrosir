@@ -30,7 +30,7 @@ class Bank extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Bank';
+        $this->data->title = $this->data->brandname . ' | Bank';
         $this->data->title_page = 'Bank';
         $this->data->total_bank = $this->bank->count_rows();
         $this->data->banks = $this->bank->get_all();
@@ -39,7 +39,7 @@ class Bank extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Bank > Tambah';
+        $this->data->title = $this->data->brandname . ' | Bank > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->bank->guid();
         $this->data->banks = $this->bank->get_all();
@@ -48,7 +48,7 @@ class Bank extends MY_Controller
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Bank > Ubah';
+        $this->data->title = $this->data->brandname . ' | Bank > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->bank = $this->bank->where('bank_kode', $id)->get();

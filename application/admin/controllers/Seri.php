@@ -29,7 +29,7 @@ class Seri extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Nomor Seri';
+        $this->data->title = $this->data->brandname . ' | Nomor Seri';
         $this->data->title_page = 'Nomor Seri';
         $this->data->total_seri = $this->seri->count_rows();
         $this->data->seris = $this->seri->get_all();
@@ -38,7 +38,7 @@ class Seri extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Nomor Seri > Tambah';
+        $this->data->title = $this->data->brandname . ' | Nomor Seri > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->seri->guid();
         $this->load->view('CRUD_Seri', $this->data);
@@ -46,7 +46,7 @@ class Seri extends MY_Controller
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Nomor Seri > Ubah';
+        $this->data->title = $this->data->brandname . ' | Nomor Seri > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->seris = $this->seri->where('s_kode', $id)->get();

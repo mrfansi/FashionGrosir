@@ -30,7 +30,7 @@ class Artikel extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Artikel';
+        $this->data->title = $this->data->brandname . ' | Artikel';
         $this->data->title_page = 'Artikel';
         $this->data->total_artikel = $this->artikel->count_rows();
         $this->data->artikels = $this->artikel->get_all();
@@ -39,7 +39,7 @@ class Artikel extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Artikel > Tambah';
+        $this->data->title = $this->data->brandname . ' | Artikel > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->artikel->guid();
         $this->data->artikels = $this->artikel->get_all();
@@ -48,7 +48,7 @@ class Artikel extends MY_Controller
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Artikel > Ubah';
+        $this->data->title = $this->data->brandname . ' | Artikel > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->artikel = $this->artikel->where('artikel_kode', $id)->get();

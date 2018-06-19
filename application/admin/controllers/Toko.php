@@ -23,7 +23,7 @@ class Toko extends MY_Controller
 
     public function index() {
         // set title
-        $this->data->title = 'Fashion Grosir | Toko';
+        $this->data->title = $this->data->brandname . ' | Toko';
         $this->data->id = $this->toko->guid();
         $this->data->toko = $this->toko->get();
         $this->load->view('Toko', $this->data);

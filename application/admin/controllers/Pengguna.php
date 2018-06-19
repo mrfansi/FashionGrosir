@@ -22,9 +22,9 @@ class Pengguna extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Admin';
+        $this->data->title = $this->data->brandname . ' | Admin';
         $this->data->total_pengguna = $this->pengguna->count_rows();
-        $this->data->users = $this->pengguna->where_p_tipe('0')->get_all();
+        $this->data->users = $this->pengguna->where_pengguna_tipe('0')->get_all();
         $this->load->view('Pengguna', $this->data);
     }
 
@@ -81,7 +81,7 @@ class Pengguna extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Admin > Tambah';
+        $this->data->title = $this->data->brandname . ' | Admin > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->pengguna->guid();
         $this->load->view('CRUD_Pengguna', $this->data);
@@ -89,14 +89,14 @@ class Pengguna extends MY_Controller
 
     public function detil($id)
     {
-        $this->data->title = 'Fashion Grosir | Admin > Detil';
+        $this->data->title = $this->data->brandname . ' | Admin > Detil';
         $this->data->users = $this->pengguna->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Pengguna', $this->data);
     }
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Admin > Ubah';
+        $this->data->title = $this->data->brandname . ' | Admin > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->users = $this->pengguna->where('pengguna_kode', $id)->get();

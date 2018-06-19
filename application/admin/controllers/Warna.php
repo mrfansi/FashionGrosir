@@ -29,7 +29,7 @@ class Warna extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Warna';
+        $this->data->title = $this->data->brandname . ' | Warna';
         $this->data->title_page = 'Warna';
         $this->data->total_warna = $this->warna->count_rows();
         $this->data->warnas = $this->warna->get_all();
@@ -38,7 +38,7 @@ class Warna extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Warna > Tambah';
+        $this->data->title = $this->data->brandname . ' | Warna > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->warna->guid();
         $this->load->view('CRUD_Warna', $this->data);
@@ -46,7 +46,7 @@ class Warna extends MY_Controller
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Warna > Ubah';
+        $this->data->title = $this->data->brandname . ' | Warna > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->warnas = $this->warna->where('w_kode', $id)->get();
@@ -100,8 +100,8 @@ class Warna extends MY_Controller
 
     public function hapus($id)
     {
-        $item_warna = $this->item_warna->where('w_kode', $id)->get();
-        if ($item_warna)
+        $item_detil = $this->item_detil->where('w_kode', $id)->get();
+        if ($item_detil)
         {
             $this->data->gagal = 'Warna ini tidak boleh dihapus karena masih digunakan.';
             $this->session->set_flashdata('gagal', $this->data->gagal);

@@ -34,7 +34,7 @@ class Item extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Item';
+        $this->data->title = $this->data->brandname . ' | Item';
         $this->data->title_page = 'Item';
 
         $this->data->total_item = $this->item->count_rows();
@@ -79,7 +79,7 @@ class Item extends MY_Controller
 
     public function by($kategori_kode)
     {
-        $this->data->title = 'Fashion Grosir | Item';
+        $this->data->title = $this->data->brandname . ' | Item';
         $this->data->title_page = 'Item';
         $this->data->total_item = $this->item->count_rows();
         $this->data->items = $this->item->select_sum_qty_where($kategori_kode);
@@ -176,7 +176,7 @@ class Item extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Item > Tambah';
+        $this->data->title = $this->data->brandname . ' | Item > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->item->guid();
 
@@ -185,7 +185,7 @@ class Item extends MY_Controller
 
     public function tambah_qty($id)
     {
-        $this->data->title = 'Fashion Grosir | Item > Tambah QTY';
+        $this->data->title = $this->data->brandname . ' | Item > Tambah QTY';
         $this->data->submit = 'Tambah QTY';
         $this->data->kode = $id;
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -214,14 +214,14 @@ class Item extends MY_Controller
 
     public function detil($id)
     {
-        $this->data->title = 'Fashion Grosir | Item > Detil';
+        $this->data->title = $this->data->brandname . ' | Item > Detil';
         $this->data->item = $this->item->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Item', $this->data);
     }
 
     public function ubah_detil($id)
     {
-        $this->data->title = 'Fashion Grosir | Item > Ubah';
+        $this->data->title = $this->data->brandname . ' | Item > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->item_detil = $this->item_detil->where('item_detil_kode', $id)->get();

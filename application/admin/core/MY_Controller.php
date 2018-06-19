@@ -192,7 +192,7 @@ class MY_Controller extends CI_Controller
         if ($toko) {
             $this->data->brandname = $toko->t_nama;
         } else {
-            $this->data->brandname = '';
+            $this->data->brandname = 'No Name';
         }
 
 

@@ -30,7 +30,7 @@ class Kategori extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Kategori';
+        $this->data->title = $this->data->brandname . ' | Kategori';
         $this->data->title_page = 'Kategori';
         $this->data->total_kategori = $this->kategori->count_rows();
         $this->data->kategoris = $this->kategori->get_all();
@@ -39,7 +39,7 @@ class Kategori extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Kategori > Tambah';
+        $this->data->title = $this->data->brandname . ' | Kategori > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->kategori->guid();
         $this->data->kategoris = $this->kategori->where_k_parent_kode(0)->get_all();
@@ -48,7 +48,7 @@ class Kategori extends MY_Controller
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Pelanggan > Ubah';
+        $this->data->title = $this->data->brandname . ' | Pelanggan > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->kategori = $this->kategori->where('k_kode', $id)->get();

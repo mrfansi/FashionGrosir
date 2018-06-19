@@ -24,7 +24,7 @@ class Dashboard extends MY_Controller
     public function index()
     {
         // set title
-        $this->data->title = 'Fashion Grosir | Dashboard';
+        $this->data->title = $this->data->brandname . ' | Dashboard';
 
         // set total
         $this->data->totalitem = $this->set_totalitem();

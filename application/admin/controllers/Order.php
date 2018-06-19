@@ -22,7 +22,7 @@ class Order extends MY_Controller
 
     public function index()
     {
-        $this->data->title = 'Fashion Grosir | Order';
+        $this->data->title = $this->data->brandname . ' | Order';
         $this->data->title_page = 'Order';
         $this->data->total_order = $this->order->count_rows();
         $this->data->orders = $this->order->select_orders();
@@ -31,7 +31,7 @@ class Order extends MY_Controller
 
     public function konfirmasi()
     {
-        $this->data->title = 'Fashion Grosir | Kofirmasi Order';
+        $this->data->title = $this->data->brandname . ' | Kofirmasi Order';
         $this->data->title_page = 'Pembayaran';
         $this->data->total_order = $this->order->count_rows();
         $this->data->orders = $this->order->select_orders_bukti(3);
@@ -61,7 +61,7 @@ class Order extends MY_Controller
 
     public function invoice()
     {
-        $this->data->title = 'Fashion Grosir | Invoice';
+        $this->data->title = $this->data->brandname . ' | Invoice';
         $this->data->title_page = 'Invoice';
         $this->data->total_order = $this->order->count_rows();
         $this->data->orders = $this->order->select_invoice(6);
@@ -70,7 +70,7 @@ class Order extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = 'Fashion Grosir | Order > Tambah';
+        $this->data->title = $this->data->brandname . ' | Order > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->order->guid();
         $this->load->view('CRUD_Order', $this->data);
@@ -78,7 +78,7 @@ class Order extends MY_Controller
 
     public function ubah($id)
     {
-        $this->data->title = 'Fashion Grosir | Order > Ubah';
+        $this->data->title = $this->data->brandname . ' | Order > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->orders = $this->order->where('u_kode', $id)->get();
