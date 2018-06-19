@@ -15,7 +15,7 @@ class Auth extends MY_Controller
         $this->load->helper('form');
         $this->load->library('user_agent');
 
-        $check = $this->pengguna->where_p_kode(0)->get();
+        $check = $this->pengguna->where_pengguna_kode(0)->get();
         if (!$check)
         {
             $this->pengguna->insert(array(

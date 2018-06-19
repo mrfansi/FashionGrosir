@@ -120,7 +120,7 @@ include "layout/Menu.php";
                         <div class="col-lg-12 col-md-12">
                             <div class="row">
                                 <div class="col-lg-4 col-md-7">
-                                    <h6>Item : <?= $this->cart->where_p_kode($_SESSION['id'])->count_rows(); ?>
+                                    <h6>Item : <?= $this->cart->where_pengguna_kode($_SESSION['id'])->count_rows(); ?>
                                         Produk</h6>
                                 </div>
                                 <div class="col-lg-2 col-md-2">

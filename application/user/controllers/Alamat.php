@@ -25,7 +25,7 @@ class Alamat extends MY_Controller
         $this->data->orders_total = function () {
             $hasil = 0;
             foreach ($this->data->orders->order_detil as $order) {
-                $hasil += $order->od_tharga;
+                $hasil += $order->orders_detil_tharga;
             }
             return $hasil;
         };
@@ -39,7 +39,7 @@ class Alamat extends MY_Controller
         $no_order = $this->input->post('nomor_order');
 
         $a_kode = $this->input->post('alamat_kode');
-        $o_kode = $this->get_o_kode($no_order);
+        $orders_noid = $this->get_o_kode($no_order);
 
         $nama_pengirim = $this->input->post('nama_pengirim');
         $kontak_pengirim = $this->input->post('kontak_pengirim');
@@ -56,23 +56,23 @@ class Alamat extends MY_Controller
             }
             if (isset($check_dropship) && $check_dropship == true) {
                 $this->order_pengiriman->insert(array(
-                    'orders_kode' => $o_kode,
+                    'orders_noid' => $orders_noid,
                     'alamat_kode' => $a_kode,
-                    'op_s_nama' => $nama_pengirim,
-                    'op_s_kontak' => $kontak_pengirim,
-                    'op_r_nama' => $nama_penerima,
-                    'op_r_kontak' => $kontak_penerima
+                    'orders_pengiriman_s_nama' => $nama_pengirim,
+                    'orders_pengiriman_s_kontak' => $kontak_pengirim,
+                    'orders_pengiriman_r_nama' => $nama_penerima,
+                    'orders_pengiriman_r_kontak' => $kontak_penerima
                 ));
 
-                $this->order->where('orders_kode', $o_kode)->update(array('orders_status' => 1));
+                $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 1));
             } else {
                 $this->order_pengiriman->insert(array(
-                    'orders_kode' => $o_kode,
+                    'orders_noid' => $orders_noid,
                     'alamat_kode' => $a_kode,
-                    'op_r_nama' => $nama_penerima,
-                    'op_r_kontak' => $kontak_penerima
+                    'orders_pengiriman_r_nama' => $nama_penerima,
+                    'orders_pengiriman_r_kontak' => $kontak_penerima
                 ));
-                $this->order->where('orders_kode', $o_kode)->update(array('orders_status' => 1));
+                $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 1));
             }
 
         } else {
@@ -98,22 +98,22 @@ class Alamat extends MY_Controller
 
             if (isset($check_dropship) && $check_dropship == true) {
                 $this->order_pengiriman->insert(array(
-                    'orders_kode' => $o_kode,
+                    'orders_noid' => $orders_noid,
                     'alamat_kode' => $a_kode,
-                    'op_s_nama' => $nama_pengirim,
-                    'op_s_kontak' => $kontak_pengirim,
-                    'op_r_nama' => $nama_penerima,
-                    'op_r_kontak' => $kontak_penerima
+                    'orders_pengiriman_s_nama' => $nama_pengirim,
+                    'orders_pengiriman_s_kontak' => $kontak_pengirim,
+                    'orders_pengiriman_r_nama' => $nama_penerima,
+                    'orders_pengiriman_r_kontak' => $kontak_penerima
                 ));
-                $this->order->where('orders_kode', $o_kode)->update(array('orders_status' => 1));
+                $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 1));
             } else {
                 $this->order_pengiriman->insert(array(
-                    'orders_kode' => $o_kode,
+                    'orders_noid' => $orders_noid,
                     'alamat_kode' => $a_kode,
-                    'op_r_nama' => $nama_penerima,
-                    'op_r_kontak' => $kontak_penerima
+                    'orders_pengiriman_r_nama' => $nama_penerima,
+                    'orders_pengiriman_r_kontak' => $kontak_penerima
                 ));
-                $this->order->where('orders_kode', $o_kode)->update(array('orders_status' => 1));
+                $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 1));
             }
 
         }
@@ -125,6 +125,6 @@ class Alamat extends MY_Controller
     private function get_o_kode($no_order)
     {
         $hasil = $this->order->where_o_nomor($no_order)->get();
-        return $hasil->orders_kode;
+        return $hasil->orders_noid;
     }
 }

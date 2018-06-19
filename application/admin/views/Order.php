@@ -86,7 +86,7 @@
                                             <?php if ($order->orders_status == 3): ?>
                                                 <a class="btn btn-sm btn-primary" data-toggle="modal" href="#"
                                                    onclick="konfirmasi($(this))" data-target="#konfirmasi"
-                                                   data-id="<?= $order->orders_kode; ?>">Konfirmasi <?= $title_page; ?>
+                                                   data-id="<?= $order->orders_noid; ?>">Konfirmasi <?= $title_page; ?>
                                                 </a>
                                             <?php endif; ?>
 
@@ -94,7 +94,7 @@
                                                 <a class="btn btn-sm btn-primary" <?= $order->orders_status == 4 ? '' : 'disabled'; ?>
                                                    data-toggle="modal" href="#"
                                                    onclick="proses($(this))" data-target="#konfirmasi"
-                                                   data-id="<?= $order->orders_kode; ?>">Proses <?= $title_page; ?>
+                                                   data-id="<?= $order->orders_noid; ?>">Proses <?= $title_page; ?>
                                                 </a>
                                             <?php endif; ?>
 
@@ -103,7 +103,7 @@
                                                    title="Konfirmasi Pengiriman" href="#"
                                                    onclick="pengiriman($(this))" data-target="#crud"
                                                    data-backdrop="static" data-keyboard="false"
-                                                   data-id="<?= $order->orders_kode; ?>">
+                                                   data-id="<?= $order->orders_noid; ?>">
                                                     Konfirmasi Pengiriman
                                                 </a>
                                             <?php endif; ?>
@@ -111,7 +111,7 @@
                                                 <a class="btn btn-sm btn-danger"
                                                    data-toggle="modal"
                                                    data-target="#batal"
-                                                   data-url="<?= site_url('order/batal/' . $order->orders_kode); ?>"
+                                                   data-url="<?= site_url('order/batal/' . $order->orders_noid); ?>"
                                                    onclick="batal($(this))"
                                                    href="#">
                                                     Batal <?= $title_page; ?>

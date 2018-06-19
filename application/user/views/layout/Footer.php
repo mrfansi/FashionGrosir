@@ -96,7 +96,7 @@
 <div id="pop_cart" style="display: none">
     <?php
     $p_kode = isset($_SESSION['id']) ? $_SESSION['id'] : '';
-    $pop_carts = $this->cart->where_p_kode($p_kode)->get_all();
+    $pop_carts = $this->cart->where_pengguna_kode($p_kode)->get_all();
     if ($pop_carts): ?>
         <table class="table table-sm table-borderless">
             <thead>

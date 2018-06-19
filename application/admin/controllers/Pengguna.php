@@ -35,10 +35,10 @@ class Pengguna extends MY_Controller
         $id = $this->input->post('id');
 
         // get user from database where guid
-        $user = $this->pengguna->where_p_kode($id)->get();
+        $user = $this->pengguna->where_pengguna_kode($id)->get();
 
         if ($user) {
-            $user = $this->pengguna->where_p_kode($id)->update(array(
+            $user = $this->pengguna->where_pengguna_kode($id)->update(array(
                 'pengguna_nama' => $this->input->post('nama'),
                 'pengguna_username' => $this->input->post('username'),
                 'pengguna_password' => $this->input->post('password'),

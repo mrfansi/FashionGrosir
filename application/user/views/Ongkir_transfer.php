@@ -97,7 +97,7 @@ include "layout/Menu.php";
             <!-- KOTAK KIRI -->
             <form class="col-lg-12 col-md-12" action="ongkir_transfer/simpan" method="post">
                 <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
-                <input type="hidden" name="orders_kode" value="<?= $orders->orders_kode; ?>">
+                <input type="hidden" name="orders_noid" value="<?= $orders->orders_noid; ?>">
                 <input type="hidden" name="nomor_order" value="<?= $this->uri->segment(2); ?>">
                 <h6>Pilih Metode Pengiriman</h6>
                 <?php foreach ($pengiriman as $k1): ?>

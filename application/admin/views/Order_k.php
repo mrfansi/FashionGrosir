@@ -81,17 +81,17 @@
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
                                         <td class="text-danger"><?= $order->orders_noid; ?></td>
-                                        <td id="rupiah"><?= $order->ob_nominal; ?></td>
+                                        <td id="rupiah"><?= $order->orders_bukti_nominal; ?></td>
                                         <td class="text-center">
                                             <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
                                                onclick="proses($(this))" data-target="#proses"
-                                               data-id="<?= $order->orders_kode; ?>"><i class="fas fa-check"></i></a>
+                                               data-id="<?= $order->orders_noid; ?>"><i class="fas fa-check"></i></a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td></td>
                                         <td><b>No Pemilik Rekening : </b><br>
-                                            <?= $order->ob_no_rek; ?>
+                                            <?= $order->orders_bukti_no_rek; ?>
                                         </td>
                                         <td rowspan="2"><b>Bukti : </b>
                                             <div class="fotorama"
@@ -109,13 +109,13 @@
                                     <tr>
                                         <td></td>
                                         <td><b>Nama Pemilik Rekening : </b><br>
-                                            <?= $order->ob_nama_rek; ?>
+                                            <?= $order->orders_bukti_nama_rek; ?>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td></td>
                                         <td><b>Bank : </b><br>
-                                            <?= $order->ob_bank_nama; ?>
+                                            <?= $order->orders_bukti_bank_nama; ?>
                                         </td>
                                         <td><b>Status : </b><br>
                                             <?php if ($order->orders_status == 0): ?>

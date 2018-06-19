@@ -63,7 +63,7 @@ class Dashboard extends MY_Controller
     {
         // load model
         $this->load->model('Order_m','order');
-        $total = $this->order->where_o_status(4)->count_rows();
+        $total = $this->order->where_orders_status(4)->count_rows();
         return $total;
     }
 

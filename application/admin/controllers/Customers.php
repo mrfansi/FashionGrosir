@@ -52,11 +52,11 @@ class Customers extends MY_Controller
         $id = $this->input->post('id');
 
         // get user from database where guid
-        $customer = $this->pengguna->where_p_kode($id)->get();
+        $customer = $this->pengguna->where_pengguna_kode($id)->get();
 
         if ($customer)
         {
-            $customer = $this->pengguna->where_p_kode($id)->update(array(
+            $customer = $this->pengguna->where_pengguna_kode($id)->update(array(
                 'pengguna_tipe'    => $this->input->post('tipe'),
                 'pengguna_nama'    => $this->input->post('nama'),
                 'pengguna_username' => $this->input->post('email'),

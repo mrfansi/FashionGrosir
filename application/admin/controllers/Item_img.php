@@ -37,7 +37,7 @@ class Item_img extends MY_Controller
         $id = $this->input->post('id');
 
         // get user from database where guid
-        $item_img = $this->item_img->where_p_kode($id)->get();
+        $item_img = $this->item_img->where_pengguna_kode($id)->get();
 
         if ($item_img) {
             $item_img = $this->item_img->where_i_kode($id)->update(array(

@@ -67,11 +67,11 @@ class Cart extends MY_Controller
     public function checkout()
     {
         $p_kode = $_SESSION['id'];
-        $carts = $this->cart->where_p_kode($p_kode)->get_all();
-        $o_kode = $this->order->guid();
+        $carts = $this->cart->where_pengguna_kode($p_kode)->get_all();
+        $orders_noid = $this->order->guid();
         $o_nomor = date('ymd') . (int)$this->order->count_rows() + 1;
         $this->order->insert(array(
-            'orders_kode' => $o_kode,
+            'orders_noid' => $orders_noid,
             'orders_noid' => $o_nomor,
             'pengguna_kode' => $p_kode
         ));
@@ -79,9 +79,9 @@ class Cart extends MY_Controller
         foreach ($carts as $cart) {
             $this->order_detil->insert(array(
                 'od_kode' => $this->order_detil->guid(),
-                'od_qty' => (int)$cart->ca_qty,
-                'od_tharga' => (int)$cart->ca_tharga,
-                'orders_kode' => $o_kode,
+                'orders_detil_qty' => (int)$cart->ca_qty,
+                'orders_detil_tharga' => (int)$cart->ca_tharga,
+                'orders_noid' => $orders_noid,
                 'ide_kode' => $cart->ide_kode
             ));
 
@@ -92,7 +92,7 @@ class Cart extends MY_Controller
             ));
 
         }
-        $this->cart->where_p_kode($p_kode)->delete();
+        $this->cart->where_pengguna_kode($p_kode)->delete();
         redirect('checkout/' . $o_nomor .'/alamat_pengiriman');
     }
 

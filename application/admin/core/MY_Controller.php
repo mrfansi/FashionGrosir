@@ -40,6 +40,7 @@ class MY_Controller extends CI_Controller
         $this->load->model('Order_ongkir_m', 'order_ongkir');
         $this->load->model('Order_payment_m', 'order_payment');
         $this->load->model('Order_bukti_m', 'order_bukti');
+        $this->load->model('Order_pengguna_m', 'order_pengguna');
         $this->load->model('Seri_m', 'seri');
         $this->load->model('Toko_m', 'toko');
         $this->load->model('Ukuran_m', 'ukuran');
@@ -57,7 +58,7 @@ class MY_Controller extends CI_Controller
         $this->data->meta_keywords = $this->config->item('webkeywords');
         $this->data->menu_kategori = $this->item_kategori->with_kategori()->group_by('k_kode')->get_all();
         $this->data->menu_cart = function ($session_id) {
-            return $this->cart->with_item_detil()->where_p_kode($session_id)->get_all();
+            return $this->cart->with_item_detil()->where_pengguna_kode($session_id)->get_all();
         };
 
         $this->callback();
@@ -168,12 +169,12 @@ class MY_Controller extends CI_Controller
         };
 
         $this->data->cart_s = function ($p_kode) {
-            return $this->cart->where_p_kode($p_kode)->get_all();
+            return $this->cart->where_pengguna_kode($p_kode)->get_all();
         };
 
         $this->data->cart_total = function ($p_kode) {
             $hasil = 0;
-            foreach ($this->cart->where_p_kode($p_kode)->get_all() as $cart_total) {
+            foreach ($this->cart->where_pengguna_kode($p_kode)->get_all() as $cart_total) {
                 $hasil += (int)$cart_total->ca_tharga;
             }
 

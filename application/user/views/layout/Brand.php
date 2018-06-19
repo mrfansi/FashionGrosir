@@ -90,7 +90,7 @@
                data-placement="bottom"
                data-content="">
                 <i class="fa fa-shopping-cart fa-lg"></i>
-                <span class="badge"><?= $counter_cart = isset($_SESSION['id']) ? $this->cart->where_p_kode($_SESSION['id'])->count_rows() : ''; ?></span>
+                <span class="badge"><?= $counter_cart = isset($_SESSION['id']) ? $this->cart->where_pengguna_kode($_SESSION['id'])->count_rows() : ''; ?></span>
             </a>
         </div>
     </div>

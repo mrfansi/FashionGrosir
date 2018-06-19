@@ -26,7 +26,7 @@ class Ongkir_transfer extends MY_Controller
         $this->data->orders_total = function () {
             $hasil = 0;
             foreach ($this->data->orders->order_detil as $order) {
-                $hasil += $order->od_tharga;
+                $hasil += $order->orders_detil_tharga;
             }
             return $hasil;
         };
@@ -71,7 +71,7 @@ class Ongkir_transfer extends MY_Controller
         $orders = $this->order->with_order_detil()->where('orders_noid', $nomor_order)->get();
         foreach ($orders->order_detil as $detil) {
             $item_berat = (int)$this->item_detil->with_item()->where('ide_kode', $detil->ide_kode)->get()->item->i_berat;
-            $item_qty = (int)$detil->od_qty;
+            $item_qty = (int)$detil->orders_detil_qty;
 
             $hasil = $item_berat * $item_qty;
         }
@@ -81,41 +81,41 @@ class Ongkir_transfer extends MY_Controller
 
     public function simpan()
     {
-        $o_kode = $this->input->post('orders_kode');
+        $orders_noid = $this->input->post('orders_noid');
 
         $nomor_order = $this->input->post('nomor_order');
 
-        $order_ongkir = $this->order_ongkir->where('orders_kode', $o_kode)->get();
-        $order_payment = $this->order_payment->where('orders_kode', $o_kode)->get();
+        $order_ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
+        $order_payment = $this->order_payment->where('orders_noid', $orders_noid)->get();
 
         if ($order_ongkir && $order_payment) {
-            $this->order_ongkir->where('orders_kode', $o_kode)->update(array(
-                'oo_nama' => $this->input->post('nama'),
-                'oo_deskripsi' => $this->input->post('deskripsi'),
-                'oo_estimasi' => $this->input->post('estimasi'),
-                'oo_biaya' => $this->input->post('biaya')
+            $this->order_ongkir->where('orders_noid', $orders_noid)->update(array(
+                'orders_ongkir_nama' => $this->input->post('nama'),
+                'orders_ongkir_deskripsi' => $this->input->post('deskripsi'),
+                'orders_ongkir_estimasi' => $this->input->post('estimasi'),
+                'orders_biaya' => $this->input->post('biaya')
             ));
 
-            $this->order_payment->where('orders_kode', $o_kode)->update(array(
+            $this->order_payment->where('orders_noid', $orders_noid)->update(array(
                 'bank_kode' => $this->input->post('bank_id')
             ));
 
-            $this->order->where('orders_kode', $o_kode)->update(array('orders_status' => 2));
+            $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 2));
         } else {
             $this->order_ongkir->insert(array(
-                'oo_nama' => $this->input->post('nama'),
-                'oo_deskripsi' => $this->input->post('deskripsi'),
-                'oo_estimasi' => $this->input->post('estimasi'),
-                'oo_biaya' => $this->input->post('biaya'),
-                'orders_kode' => $o_kode
+                'orders_ongkir_nama' => $this->input->post('nama'),
+                'orders_ongkir_deskripsi' => $this->input->post('deskripsi'),
+                'orders_ongkir_estimasi' => $this->input->post('estimasi'),
+                'orders_biaya' => $this->input->post('biaya'),
+                'orders_noid' => $orders_noid
             ));
 
             $this->order_payment->insert(array(
-                'orders_kode' => $o_kode,
+                'orders_noid' => $orders_noid,
                 'bank_kode' => $this->input->post('bank_id')
 
             ));
-            $this->order->where('orders_kode', $o_kode)->update(array('orders_status' => 2));
+            $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 2));
         }
 
         redirect('checkout/' . $nomor_order . '/konfirmasi_pembayaran');

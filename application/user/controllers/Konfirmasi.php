@@ -20,7 +20,7 @@ class Konfirmasi extends MY_Controller
         $this->data->orders_total = function () {
             $hasil = 0;
             foreach ($this->data->orders->order_detil as $order) {
-                $hasil += $order->od_tharga;
+                $hasil += $order->orders_detil_tharga;
             }
             return $hasil;
         };
@@ -53,41 +53,41 @@ class Konfirmasi extends MY_Controller
         };
 
         $this->data->jasa = function () {
-            $o_kode = $this->order_ongkir
+            $orders_noid = $this->order_ongkir
                 ->with_order('where:orders_noid = \'' . $this->data->nomor_order . '\'')
-                ->get()->orders_kode;
-            $ongkir = $this->order_ongkir->where('orders_kode', $o_kode)->get();
+                ->get()->orders_noid;
+            $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
 
-            return $ongkir->oo_nama . ' - ' . $ongkir->oo_deskripsi . ' (' . $ongkir->oo_estimasi . ' hari)';
+            return $ongkir->orders_ongkir_nama . ' - ' . $ongkir->orders_ongkir_deskripsi . ' (' . $ongkir->orders_ongkir_estimasi . ' hari)';
         };
 
         $this->data->metode_pembayaran = function () {
-            $o_kode = $this->order
+            $orders_noid = $this->order
                 ->where('orders_noid', $this->data->nomor_order)
-                ->get()->orders_kode;
-            $pembayaran = $this->order_payment->with_bank()->where('orders_kode', $o_kode)->get()->bank;
+                ->get()->orders_noid;
+            $pembayaran = $this->order_payment->with_bank()->where('orders_noid', $orders_noid)->get()->bank;
 
             return $pembayaran->bank_penerbit . ' - (A/N: ' . $pembayaran->bank_nama . ') (Nomor Rek: ' . $pembayaran->bank_rek . ')';
         };
 
         $this->data->biaya_subtotal = function () {
             $hasil = 0;
-            $o_kode = $this->order
+            $orders_noid = $this->order
                 ->where('orders_noid', $this->data->nomor_order)
-                ->get()->orders_kode;
-            foreach ($this->order_detil->where('orders_kode', $o_kode)->get_all() as $od) {
-                $hasil += (int)$od->od_tharga;
+                ->get()->orders_noid;
+            foreach ($this->order_detil->where('orders_noid', $orders_noid)->get_all() as $od) {
+                $hasil += (int)$od->orders_detil_tharga;
             }
 
             return $hasil;
         };
 
         $this->data->biaya_pengiriman = function () {
-            $o_kode = $this->order
+            $orders_noid = $this->order
                 ->where('orders_noid', $this->data->nomor_order)
-                ->get()->orders_kode;
-            $ongkir = $this->order_ongkir->where('orders_kode', $o_kode)->get();
-            return (int)$ongkir->oo_biaya;
+                ->get()->orders_noid;
+            $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
+            return (int)$ongkir->orders_biaya;
         };
         $this->load->view('Konfirmasi', $this->data);
     }
@@ -95,11 +95,11 @@ class Konfirmasi extends MY_Controller
 
     public function simpan()
     {
-        $o_kode = $this->order
+        $orders_noid = $this->order
             ->where('orders_noid', $this->uri->segment(2))
-            ->get()->orders_kode;
+            ->get()->orders_noid;
 
-        $order_bukti = $this->order_bukti->where('orders_kode', $o_kode)->get();
+        $order_bukti = $this->order_bukti->where('orders_noid', $orders_noid)->get();
 
         if ($order_bukti) {
             //upload an image options
@@ -113,16 +113,16 @@ class Konfirmasi extends MY_Controller
             $this->upload->do_upload('bukti_pembayaran');
             $this->upload->data();
 
-            $konfirmasi = $this->order_bukti->where('orders_kode', $o_kode)->update(array(
-                'ob_nama_rek' => $this->input->post('rek_atasnama'),
-                'ob_no_rek' => $this->input->post('nomor_rekening'),
-                'ob_bank_nama' => $this->input->post('bank'),
-                'ob_nominal' => $this->input->post('total_pembayaran'),
-                'ob_foto' => $_FILES['bukti_pembayaran']['name'],
+            $konfirmasi = $this->order_bukti->where('orders_noid', $orders_noid)->update(array(
+                'orders_bukti_nama_rek' => $this->input->post('rek_atasnama'),
+                'orders_bukti_no_rek' => $this->input->post('nomor_rekening'),
+                'orders_bukti_bank_nama' => $this->input->post('bank'),
+                'orders_bukti_nominal' => $this->input->post('total_pembayaran'),
+                'orders_bukti_foto' => $_FILES['bukti_pembayaran']['name'],
             ));
 
             if ($konfirmasi) {
-                $this->order->where('orders_kode', $o_kode)->update(array('orders_status' => 3));
+                $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 3));
             }
         } else {
             //upload an image options
@@ -137,16 +137,16 @@ class Konfirmasi extends MY_Controller
             $this->upload->data();
 
             $konfirmasi = $this->order_bukti->insert(array(
-                'ob_nama_rek' => $this->input->post('rek_atasnama'),
-                'ob_no_rek' => $this->input->post('nomor_rekening'),
-                'ob_bank_nama' => $this->input->post('bank'),
-                'ob_nominal' => $this->input->post('total_pembayaran'),
-                'ob_foto' => $_FILES['bukti_pembayaran']['name'],
-                'orders_kode' => $o_kode
+                'orders_bukti_nama_rek' => $this->input->post('rek_atasnama'),
+                'orders_bukti_no_rek' => $this->input->post('nomor_rekening'),
+                'orders_bukti_bank_nama' => $this->input->post('bank'),
+                'orders_bukti_nominal' => $this->input->post('total_pembayaran'),
+                'orders_bukti_foto' => $_FILES['bukti_pembayaran']['name'],
+                'orders_noid' => $orders_noid
             ));
 
             if ($konfirmasi) {
-                $this->order->where('orders_kode', $o_kode)->update(array('orders_status' => 3));
+                $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 3));
             }
         }
 
@@ -160,7 +160,7 @@ class Konfirmasi extends MY_Controller
         $this->data->orders_total = function () {
             $hasil = 0;
             foreach ($this->data->orders->order_detil as $order) {
-                $hasil += $order->od_tharga;
+                $hasil += $order->orders_detil_tharga;
             }
             return $hasil;
         };
@@ -191,41 +191,41 @@ class Konfirmasi extends MY_Controller
         };
 
         $this->data->jasa = function () {
-            $o_kode = $this->order_ongkir
+            $orders_noid = $this->order_ongkir
                 ->with_order('where:orders_noid = \'' . $this->data->nomor_order . '\'')
-                ->get()->orders_kode;
-            $ongkir = $this->order_ongkir->where('orders_kode', $o_kode)->get();
+                ->get()->orders_noid;
+            $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
 
-            return $ongkir->oo_nama . ' - ' . $ongkir->oo_deskripsi . ' (' . $ongkir->oo_estimasi . ' hari)';
+            return $ongkir->orders_ongkir_nama . ' - ' . $ongkir->orders_ongkir_deskripsi . ' (' . $ongkir->orders_ongkir_estimasi . ' hari)';
         };
 
         $this->data->metode_pembayaran = function () {
-            $o_kode = $this->order
+            $orders_noid = $this->order
                 ->where('orders_noid', $this->data->nomor_order)
-                ->get()->orders_kode;
-            $pembayaran = $this->order_payment->with_bank()->where('orders_kode', $o_kode)->get()->bank;
+                ->get()->orders_noid;
+            $pembayaran = $this->order_payment->with_bank()->where('orders_noid', $orders_noid)->get()->bank;
 
             return $pembayaran->bank_penerbit . ' - (A/N: ' . $pembayaran->bank_nama . ') (Nomor Rek: ' . $pembayaran->bank_rek . ')';
         };
 
         $this->data->biaya_subtotal = function () {
             $hasil = 0;
-            $o_kode = $this->order
+            $orders_noid = $this->order
                 ->where('orders_noid', $this->data->nomor_order)
-                ->get()->orders_kode;
-            foreach ($this->order_detil->where('orders_kode', $o_kode)->get_all() as $od) {
-                $hasil += (int)$od->od_tharga;
+                ->get()->orders_noid;
+            foreach ($this->order_detil->where('orders_noid', $orders_noid)->get_all() as $od) {
+                $hasil += (int)$od->orders_detil_tharga;
             }
 
             return $hasil;
         };
 
         $this->data->biaya_pengiriman = function () {
-            $o_kode = $this->order
+            $orders_noid = $this->order
                 ->where('orders_noid', $this->data->nomor_order)
-                ->get()->orders_kode;
-            $ongkir = $this->order_ongkir->where('orders_kode', $o_kode)->get();
-            return (int)$ongkir->oo_biaya;
+                ->get()->orders_noid;
+            $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
+            return (int)$ongkir->orders_biaya;
         };
 
         $order = $this->order->where('orders_noid', $this->uri->segment(2))->get();

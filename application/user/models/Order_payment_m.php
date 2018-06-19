@@ -11,15 +11,15 @@ class Order_payment_m extends MY_Model
     public function __construct()
     {
         $this->table = 'orders_payment';
-        $this->primary_key = 'op_id';
-        $this->protected = array('op_id', 'created_at', 'update_at');
+        $this->primary_key = 'orders_noid';
+        $this->protected = array('created_at', 'update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = TRUE;
         $this->has_one['order'] = array(
             'foreign_model' => 'Order_m',
             'foreign_table' => 'orders',
-            'foreign_key' => 'orders_kode',
-            'local_key' => 'orders_kode');
+            'foreign_key' => 'orders_noid',
+            'local_key' => 'orders_noid');
         $this->has_one['bank'] = array(
             'foreign_model' => 'Bank_m',
             'foreign_table' => 'bank',
