@@ -132,7 +132,7 @@
                                             <?php elseif ($order->orders_status == 5): ?>
                                                 <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
                                             <?php elseif ($order->orders_status == 6): ?>
-                                                <div class="text-success">SUKSES</div>
+                                                <div class="text-success">SUKSES (Telah dikirim)</div>
                                             <?php elseif ($order->orders_status == 7): ?>
                                                 <div class="text-danger">BATAL</div>
                                             <?php endif; ?>

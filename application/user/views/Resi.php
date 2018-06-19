@@ -15,7 +15,7 @@ include "layout/Menu.php";
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb f-no-background f-hover">
                         <li class="breadcrumb-item"><a href="<?= site_url('/'); ?>">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Resi</li>
+                        <li class="breadcrumb-item active" aria-current="page">Laporan Resi</li>
                     </ol>
                 </nav>
             </div>
@@ -36,7 +36,7 @@ include "layout/Menu.php";
                     <a class="list-group-item list-group-item-action" href="<?= site_url('pending'); ?>">Transaksi
                         Tertunda</a>
                     <a class="list-group-item list-group-item-action r-active-step"
-                       href="<?= site_url('resi'); ?>">Resi</a>
+                       href="<?= site_url('resi'); ?>">Laporan Resi</a>
                 </div>
             </div>
 
@@ -46,8 +46,16 @@ include "layout/Menu.php";
             <!-- Konten  -->
             <div class="col-12 col-sm-12 col-md-9">
                 <div class="card container-fluid p-4">
+                    <div class="row container">
+                        <div class="col">
+                            <h3 class="r-style-title-konten-profile">
+                                Laporan Resi
+                            </h3>
+                            <hr style="width: 30%;">
+                        </div>
+                    </div>
                     <div class="table-responsive mt-2">
-                        <table class="table table-sm" id="table">
+                        <table class="table table-sm table-borderless" id="table">
                             <thead>
                             <tr>
                                 <th scope="col">Laporan</th>

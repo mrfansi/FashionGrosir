@@ -36,7 +36,7 @@ include "layout/Menu.php";
                     <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('pending'); ?>">Transaksi
                         Tertunda</a>
                     <a class="list-group-item list-group-item-action"
-                       href="<?= site_url('resi'); ?>">Resi</a>
+                       href="<?= site_url('resi'); ?>">Laporan Resi</a>
                 </div>
             </div>
 
@@ -93,7 +93,7 @@ include "layout/Menu.php";
                                         <?php elseif ($order->orders_status == 5): ?>
                                             <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
                                         <?php elseif ($order->orders_status == 6): ?>
-                                            <div class="text-success">SUKSES</div>
+                                            <div class="text-success">SUKSES (Telah dikirim)</div>
                                         <?php elseif ($order->orders_status == 7): ?>
                                             <div class="text-danger">BATAL</div>
                                         <?php endif; ?>

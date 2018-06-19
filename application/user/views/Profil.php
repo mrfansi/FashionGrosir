@@ -36,7 +36,7 @@ include "layout/Menu.php";
                     <a class="list-group-item list-group-item-action" href="<?= site_url('pending'); ?>">Transaksi
                         Tertunda</a>
                     <a class="list-group-item list-group-item-action"
-                       href="<?= site_url('resi'); ?>">Resi</a>
+                       href="<?= site_url('resi'); ?>">Laporan Resi</a>
                 </div>
             </div>
 

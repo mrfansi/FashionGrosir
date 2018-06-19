@@ -65,7 +65,7 @@
                 <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6 f-margin-nav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link f-footer-new" href="<?= site_url('resi'); ?>">Resi</a>
+                            <a class="nav-link f-footer-new" href="<?= site_url('resi'); ?>">Laporan Resi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link f-footer-new" href="<?= site_url('pending'); ?>">Status Order</a>

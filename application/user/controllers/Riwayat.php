@@ -13,6 +13,7 @@ class Riwayat extends MY_Controller
 
     public function index()
     {
+        $this->data->orders = $this->order->select_invoice(6);
         $this->load->view('Riwayat', $this->data);
     }
 }

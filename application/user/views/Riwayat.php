@@ -36,7 +36,7 @@ include "layout/Menu.php";
                     <a class="list-group-item list-group-item-action" href="<?= site_url('pending'); ?>">Transaksi
                         Tertunda</a>
                     <a class="list-group-item list-group-item-action"
-                       href="<?= site_url('resi'); ?>">Resi</a>
+                       href="<?= site_url('resi'); ?>">Laporan Resi</a>
                 </div>
             </div>
 
@@ -48,109 +48,79 @@ include "layout/Menu.php";
 
                 <div class="card container-fluid p-4">
 
-<!--                    <div class="row container">-->
-<!--                        <div class="col">-->
-<!--                            <h3 class="r-style-title-konten-profile">-->
-<!--                                Riwayat Pesanan-->
-<!--                            </h3>-->
-<!--                            <hr style="width: 30%;">-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <div class="row container">
+                        <div class="col">
+                            <h3 class="r-style-title-konten-profile">
+                                Riwayat Pesanan
+                            </h3>
+                            <hr style="width: 30%;">
+                        </div>
+                    </div>
 
                     <div class="table-responsive mt-2">
-                        <table class="table">
+                        <table class="table table-sm table-borderless" id="table">
                             <thead>
-                            <tr class="text-center">
-                                <th>No</th>
+                            <tr>
                                 <th>ID Pesanan</th>
                                 <th>Tanggal Transaksi</th>
+                                <th>Nomor Resi</th>
                                 <th>Total Harga</th>
-                                <th>Nama Penerima</th>
-                                <th>Alamat</th>
                                 <th>Status</th>
-                                <th>   </th>
                             </tr>
                             </thead>
+                            <?php foreach ($orders as $order): ?>
+                                <tr>
+                                    <td><a href="<?= site_url('DetailPesanan'); ?>"><?= $order->orders_noid; ?></td>
+                                    <td><?= $order->created_at; ?></td>
+                                    <td><?= $order->orders_resi_no; ?></td>
+                                    <td id="rupiah"><?= $order->total; ?></td>
+                                    <td>
+                                        <?php if ($order->orders_status == 0): ?>
+                                            <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
+                                        <?php elseif ($order->orders_status == 1): ?>
+                                            <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN</div>
+                                        <?php elseif ($order->orders_status == 2): ?>
+                                            <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
+                                        <?php elseif ($order->orders_status == 3): ?>
+                                            <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
+                                        <?php elseif ($order->orders_status == 4): ?>
+                                            <div class="text-success">ADMIN SEDANG MEMPROSES ORDER</div>
+                                        <?php elseif ($order->orders_status == 5): ?>
+                                            <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
+                                        <?php elseif ($order->orders_status == 6): ?>
+                                            <div class="text-success">SUKSES (Telah dikirim)</div>
+                                        <?php elseif ($order->orders_status == 7): ?>
+                                            <div class="text-danger">BATAL</div>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                             <tbody>
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>ASD21345</td>
-                                <td>12-Mar-2018</td>
-                                <td>100.000</td>
-                                <td>Caesar</td>
-                                <td>Jln Cengkareng...</td>
-                                <td>Sukses</td>
-                                <td>
-                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-info"></i> Lihat</button>
-
-
-                                </td>
-                            </tr>
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>ASD21345</td>
-                                <td>12-Mar-2018</td>
-                                <td>100.000</td>
-                                <td>Caesar</td>
-                                <td>Jln Cengkareng...</td>
-                                <td>Sukses</td>
-                                <td>
-                                    <button type="submit" class="btn r-btn-konten-profile" href="#"><i class="fa fa-info"></i> Lihat</button>
-
-
-                                </td>
-                            </tr>
-                            <tr class="text-center">
-                                <td>1</td>
-                                <td>ASD21345</td>
-                                <td>12-Mar-2018</td>
-                                <td>100.000</td>
-                                <td>Caesar</td>
-                                <td>Jln Cengkareng...</td>
-                                <td>Sukses</td>
-                                <td>
-                                    <button type="submit" class="btn r-btn-konten-profile "><i class="fa fa-info"></i> Lihat</button>
-
-
-                                </td>
-                            </tr>
-
-
-
 
                             </tbody>
                         </table>
 
 
-
                     </div>
-                    <div class="row pagination-layout">
-                        <div class="col ">
-                            <div class="pagination">
-                                <a href="#">&laquo;</a>
-                                <a href="#">1</a>
-                                <a href="#" class="active">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">&raquo;</a>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="row pagination-layout">-->
+<!--                        <div class="col ">-->
+<!--                            <div class="pagination">-->
+<!--                                <a href="#">&laquo;</a>-->
+<!--                                <a href="#">1</a>-->
+<!--                                <a href="#" class="active">2</a>-->
+<!--                                <a href="#">3</a>-->
+<!--                                <a href="#">4</a>-->
+<!--                                <a href="#">5</a>-->
+<!--                                <a href="#">6</a>-->
+<!--                                <a href="#">&raquo;</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                 </div>
 
 
-
-
-
-
-
             </div>
-
-
-
 
 
         </div>

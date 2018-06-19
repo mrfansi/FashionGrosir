@@ -12,7 +12,7 @@
         <div class="float-none float-md-right f-brand-cos">
         <?php if (isset($_SESSION['id'])): ?>
         <a class="alert-link f-link" href="<?= site_url('resi'); ?>">
-            Resi
+            Laporan Resi
         </a>
         | <a class="alert-link f-link" href="<?= site_url('pending'); ?>">
             Status Order
@@ -73,7 +73,7 @@
 <!--            --><?php //if (isset($_SESSION['id'])): ?>
 <!--            <div class="row">-->
 <!--                <div class="col f-hover">-->
-<!--                    <a class="small" href="--><?//= site_url('resi'); ?><!--">Resi</a>-->
+<!--                    <a class="small" href="--><?//= site_url('resi'); ?><!--">Laporan Resi</a>-->
 <!--                    <span class="f-span">|</span>-->
 <!--                    <a class="small" href="--><?//= site_url('pending'); ?><!--">Status Order</a>-->
 <!--                    <span class="f-span">|</span>-->

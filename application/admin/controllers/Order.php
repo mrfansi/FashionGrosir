@@ -191,4 +191,58 @@ class Order extends MY_Controller
         }
     }
 
+    public function resi($id)
+    {
+        $this->data->orders_noid = $id;
+        $this->load->view('CRUD_Pengiriman', $this->data);
+    }
+
+    public function resi_pengiriman()
+    {
+        $orders_noid = $this->input->post('orders_noid');
+        $order_resi = $this->order_resi->where('orders_noid', $orders_noid)->get();
+        if (($order_resi))
+        {
+            $order_resi = $this->order_resi->where('orders_noid', $orders_noid)->update(array(
+                'orders_resi_no'     => $this->input->post('resi')
+            ));
+
+            if ($order_resi)
+            {
+                $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 6));
+                $this->data->berhasil = 'Resi telah berhasil dibuat';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+                redirect('order');
+            } else {
+                $this->data->gagal = 'Resi telah gagal dibuat';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('order');
+            }
+        } else {
+            $order_resi = $this->order_resi->insert(array(
+                'orders_noid'       => $orders_noid,
+                'orders_resi_no'     => $this->input->post('resi')
+            ));
+
+            if ($order_resi)
+            {
+                $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 6));
+                $this->data->berhasil = 'Resi telah berhasil dibuat';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+                redirect('order');
+            } else {
+                $this->data->gagal = 'Resi telah gagal dibuat';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('order');
+            }
+        }
+
+
+
+    }
+
 }

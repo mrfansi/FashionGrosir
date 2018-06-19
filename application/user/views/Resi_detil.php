@@ -15,7 +15,7 @@ include "layout/Menu.php";
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb f-no-background f-hover">
                     <li class="breadcrumb-item"><a href="<?= site_url('/'); ?>">Home</a></li>
-                    <li class="breadcrumb-item"><a href="<?= site_url('resi'); ?>">Resi</a></li>
+                    <li class="breadcrumb-item"><a href="<?= site_url('resi'); ?>">Laporan Resi</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><?= $resi->artikel_judul; ?></li>
                 </ol>
             </nav>
@@ -37,7 +37,7 @@ include "layout/Menu.php";
             <a class="list-group-item list-group-item-action" href="<?= site_url('pending'); ?>">Transaksi
                 Tertunda</a>
             <a class="list-group-item list-group-item-action r-active-step"
-               href="<?= site_url('resi'); ?>">Resi</a>
+               href="<?= site_url('resi'); ?>">Laporan Resi</a>
         </div>
     </div>
 
