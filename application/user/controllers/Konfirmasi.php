@@ -91,9 +91,7 @@ class Konfirmasi extends MY_Controller
 
     public function simpan()
     {
-        $orders_noid = $this->order
-            ->where('orders_noid', $this->uri->segment(2))
-            ->get()->orders_noid;
+        $orders_noid = $this->uri->segment(2);
 
         $order_bukti = $this->order_bukti->where('orders_noid', $orders_noid)->get();
 
@@ -160,29 +158,26 @@ class Konfirmasi extends MY_Controller
             }
             return $hasil;
         };
-        $this->data->pengiriman = function () {
-            $hasil = array();
-            $a_kode = $this->order_pengiriman
-                ->with_order('where:orders_noid = \'' . $this->data->orders_noid . '\'')
-                ->get()->alamat_kode;
-            $alamat = $this->alamat->where('alamat_kode', $a_kode)->get();
 
-            $hasil['provinsi'] = $this->provinsi
-                ->where('provinsi_id', $alamat->alamat_provinsi)
+        $this->data->pengiriman = function () {
+            $hasil = new stdClass();
+            $order_pengiriman = $this->order_pengiriman->where('orders_noid', $this->data->orders_noid)->get();
+            $hasil->provinsi = $this->provinsi
+                ->where('provinsi_id', $order_pengiriman->orders_pengiriman_provinsi)
                 ->get()->provinsi_nama;
-            $hasil['kabupaten'] = $this->kabupaten
-                ->where('kabupaten_id', $alamat->alamat_kabupaten)
+            $hasil->kabupaten = $this->kabupaten
+                ->where('kabupaten_id', $order_pengiriman->orders_pengiriman_kabupaten)
                 ->get()->kabupaten_nama;
-            $hasil['kecamatan'] = $this->kecamatan
-                ->where('kecamatan_id', $alamat->alamat_kecamatan)
+            $hasil->kecamatan = $this->kecamatan
+                ->where('kecamatan_id', $order_pengiriman->orders_pengiriman_kecamatan)
                 ->get()->kecamatan_nama;
-            $hasil['desa'] = $this->desa
-                ->where('desa_id', $alamat->alamat_desa)
+            $hasil->desa = $this->desa
+                ->where('desa_id', $order_pengiriman->orders_pengiriman_desa)
                 ->get()->desa_nama;
 
 
-            return $alamat->alamat_deskripsi . '<br>' . $hasil['desa'] . '<br>' . $hasil['kecamatan'] . ', ' . $hasil['kabupaten'] . '<br>' .
-                $hasil['provinsi'] . ', ' . $alamat->alamat_kodepos;
+            return $order_pengiriman->orders_pengiriman_deskripsi . '<br>' . $hasil->desa . '<br>' . $hasil->kecamatan . ', ' . $hasil->kabupaten . '<br>' .
+                $hasil->provinsi . ', ' . $order_pengiriman->orders_pengiriman_kodepos;
 
         };
 
@@ -221,7 +216,7 @@ class Konfirmasi extends MY_Controller
                 ->where('orders_noid', $this->data->orders_noid)
                 ->get()->orders_noid;
             $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
-            return (int)$ongkir->orders_biaya;
+            return (int)$ongkir->orders_ongkir_biaya;
         };
 
         $order = $this->order->where('orders_noid', $this->uri->segment(2))->get();

@@ -81,8 +81,6 @@ class Ongkir_transfer extends MY_Controller
 
     public function simpan()
     {
-        $orders_noid = $this->input->post('orders_noid');
-
         $orders_noid = $this->input->post('nomor_order');
 
         $order_ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();

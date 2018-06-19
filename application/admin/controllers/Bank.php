@@ -62,10 +62,10 @@ class Bank extends MY_Controller
         $id = $this->input->post('id');
 
         // get user from database where guid
-        $bank = $this->bank->where_b_kode($id)->get();
+        $bank = $this->bank->where_bank_kode($id)->get();
 
         if ($bank) {
-            $bank = $this->bank->where_b_kode($id)->update(array(
+            $bank = $this->bank->where_bank_kode($id)->update(array(
                 'bank_penerbit' => $this->input->post('penerbit'),
                 'bank_nama' => $this->input->post('nama'),
                 'bank_rek' => $this->input->post('rekening'),
