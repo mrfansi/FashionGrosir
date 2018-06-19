@@ -1,7 +1,7 @@
 <?php
 $url = site_url('item/simpan_detil');
 if ($submit == 'Ubah') {
-    $id = $item_detil->ide_kode;
+    $id = $item_detil->item_detil_kode;
     $warna = $item_detil->w_kode;
     $ukuran = $item_detil->u_kode;
     $seri = $item_detil->s_kode;

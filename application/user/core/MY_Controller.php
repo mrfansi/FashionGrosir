@@ -112,7 +112,7 @@ class MY_Controller extends CI_Controller
                 ->with_ukuran('order_by:u_nama')
                 ->with_seri()
                 ->with_item_img()
-                ->where_ide_kode($ide_kode)
+                ->where_item_detil_kode($ide_kode)
                 ->get();
         };
 
@@ -123,7 +123,7 @@ class MY_Controller extends CI_Controller
                 ->with_ukuran('order_by:u_nama')
                 ->with_seri()
                 ->with_item_img()
-                ->where_ide_kode($ide_kode)
+                ->where_item_detil_kode($ide_kode)
                 ->get_all();
         };
 
@@ -151,7 +151,7 @@ class MY_Controller extends CI_Controller
 
         $this->data->qty_detil = function ($ide_kode) {
             $hasil = 0;
-            $stoks = $this->item_qty->fields('iq_qty')->where_ide_kode($ide_kode)->get_all();
+            $stoks = $this->item_qty->fields('iq_qty')->where_item_detil_kode($ide_kode)->get_all();
             foreach ($stoks as $stok) {
                 $hasil += $stok->iq_qty;
             }

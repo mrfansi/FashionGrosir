@@ -328,10 +328,10 @@ include "layout/Menu.php";
                             })
                         }),
                         nama_alamat.val(data.a_nama),
-                        nama_penerima.val(data.pa_r_nama),
-                        kontak_penerima.val(data.pa_r_kontak),
-                        nama_pengirim.val(data.pa_s_nama),
-                        kontak_pengirim.val(data.pa_s_kontak),
+                        nama_penerima.val(data.pengguna_alamat_r_nama),
+                        kontak_penerima.val(data.pengguna_alamat_r_kontak),
+                        nama_pengirim.val(data.pengguna_alamat_s_nama),
+                        kontak_pengirim.val(data.pengguna_alamat_s_kontak),
                         alamat.val(data.alamat_deskripsi),
                         alamat_kode.val(data.alamat_kode)
                     );

@@ -145,8 +145,8 @@ include "layout/Menu.php";
                                 <div class="row">
                                     <div class="col-lg-4 col-md-7">
                                         <div class="media">
-                                            <?php if ($item_detil($cart->ide_kode)->item->i_kode): ?>
-                                                <?php $item_kode = $item_detil($cart->ide_kode)->item->i_kode; ?>
+                                            <?php if ($item_detil($cart->item_detil_kode)->item->i_kode): ?>
+                                                <?php $item_kode = $item_detil($cart->item_detil_kode)->item->i_kode; ?>
                                                 <?php if ($item_img($item_kode)->ii_nama): ?>
                                                     <img class="mr-3"
                                                          src="<?= base_url('upload/' . $item_img($item_kode)->ii_nama); ?>"
@@ -154,16 +154,16 @@ include "layout/Menu.php";
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                             <div class="media-body mb-3">
-                                                <h6 class="mt-0"><?= $item_detil($cart->ide_kode)->item->i_nama; ?></h6>
-                                                <p class="text-justify"><?= $item_detil($cart->ide_kode)->item->i_deskripsi; ?></p>
+                                                <h6 class="mt-0"><?= $item_detil($cart->item_detil_kode)->item->i_nama; ?></h6>
+                                                <p class="text-justify"><?= $item_detil($cart->item_detil_kode)->item->i_deskripsi; ?></p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-2">
-                                        <p><?= $item_detil($cart->ide_kode)->warna->w_nama; ?></p>
+                                        <p><?= $item_detil($cart->item_detil_kode)->warna->w_nama; ?></p>
                                     </div>
                                     <div class="col-lg-2 col-md-2">
-                                        <p><?= $item_detil($cart->ide_kode)->ukuran->u_nama; ?></p>
+                                        <p><?= $item_detil($cart->item_detil_kode)->ukuran->u_nama; ?></p>
                                     </div>
                                     <div class="col-lg-1 col-md-2">
                                         <p>x <?= $cart->ca_qty; ?></p>

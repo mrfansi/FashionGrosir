@@ -34,10 +34,10 @@ class Profil_alamat extends MY_Controller
 
             $alamat_pengguna = $this->pengguna_alamat->where('alamat_kode', $a_kode)->update(array(
                 'pengguna_kode' => $_SESSION['id'],
-                'pa_r_nama' => $this->input->post('nama_penerima'),
-                'pa_r_kontak' => $this->input->post('kontak_penerima'),
-                'pa_s_nama' => $this->input->post('nama_pengirim'),
-                'pa_s_kontak' => $this->input->post('kontak_pengirim'),
+                'pengguna_alamat_r_nama' => $this->input->post('nama_penerima'),
+                'pengguna_alamat_r_kontak' => $this->input->post('kontak_penerima'),
+                'pengguna_alamat_s_nama' => $this->input->post('nama_pengirim'),
+                'pengguna_alamat_s_kontak' => $this->input->post('kontak_pengirim'),
             ));
 
             if ($alamat && $alamat_pengguna) {

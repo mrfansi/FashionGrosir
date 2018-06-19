@@ -66,7 +66,7 @@ include "layout/Menu.php";
                             <select name="wu" id="wu" class="form-control" required>
                                 <option data-qty="0" value="">Pilih Warna & Ukuran</option>
                                 <?php foreach ($item_detil_with_item_all($item->i_kode) as $id): ?>
-                                    <option data-qty="<?= $qty_detil($id->ide_kode); ?>" value="<?= $id->ide_kode; ?>">
+                                    <option data-qty="<?= $qty_detil($id->item_detil_kode); ?>" value="<?= $id->item_detil_kode; ?>">
                                         <?= $id->warna->w_nama; ?> -
                                         <?= $id->ukuran->u_nama; ?>
                                     </option>

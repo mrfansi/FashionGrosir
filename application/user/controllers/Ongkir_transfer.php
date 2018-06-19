@@ -22,7 +22,7 @@ class Ongkir_transfer extends MY_Controller
     public function get($order)
     {
         $this->data->nomor_order = $order;
-        $this->data->orders = $this->order->with_order_detil()->where_o_nomor($order)->get();
+        $this->data->orders = $this->order->with_order_detil()->where_orders_noid($order)->get();
         $this->data->orders_total = function () {
             $hasil = 0;
             foreach ($this->data->orders->order_detil as $order) {
@@ -35,11 +35,11 @@ class Ongkir_transfer extends MY_Controller
         $this->load->view('Ongkir_transfer', $this->data);
     }
 
-    private function get_biaya($nomor_order)
+    private function get_biaya($orders_noid)
     {
         $hasil = new stdClass();
-        $alamat = $this->order_pengiriman->with_order('where:orders_noid = \'' . $nomor_order . '\'')->get()->alamat_kode;
-        $dst_id = $this->alamat->where('alamat_kode', $alamat)->get()->alamat_kabupaten;
+        $order_pengiriman = $this->order_pengiriman->where('orders_noid', $orders_noid)->get();
+        $dst_id = $order_pengiriman->orders_pengiriman_kabupaten;
         $ori_id = $this->toko->get()->t_kabupaten;
         $dst = (string)$this->kabupaten->where('kabupaten_id', $dst_id)->get()->kabupaten_nama;
         $origin = (string)$this->kabupaten->where('kabupaten_id', $ori_id)->get()->kabupaten_nama;
@@ -61,16 +61,16 @@ class Ongkir_transfer extends MY_Controller
 
         }
 
-        $cost = $this->ongkir->cost($hasil->origin_id, $hasil->dst_id, $this->get_berat($nomor_order), "jne");
+        $cost = $this->ongkir->cost($hasil->origin_id, $hasil->dst_id, $this->get_berat($orders_noid), "jne");
         echo '<script>console.log(' . $cost . ')</script>';
         return json_decode($cost);
     }
 
-    private function get_berat($nomor_order)
+    private function get_berat($orders_noid)
     {
-        $orders = $this->order->with_order_detil()->where('orders_noid', $nomor_order)->get();
+        $orders = $this->order->with_order_detil()->where('orders_noid', $orders_noid)->get();
         foreach ($orders->order_detil as $detil) {
-            $item_berat = (int)$this->item_detil->with_item()->where('ide_kode', $detil->ide_kode)->get()->item->i_berat;
+            $item_berat = (int)$this->item_detil->with_item()->where('item_detil_kode', $detil->item_detil_kode)->get()->item->i_berat;
             $item_qty = (int)$detil->orders_detil_qty;
 
             $hasil = $item_berat * $item_qty;
@@ -83,7 +83,7 @@ class Ongkir_transfer extends MY_Controller
     {
         $orders_noid = $this->input->post('orders_noid');
 
-        $nomor_order = $this->input->post('nomor_order');
+        $orders_noid = $this->input->post('nomor_order');
 
         $order_ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
         $order_payment = $this->order_payment->where('orders_noid', $orders_noid)->get();
@@ -93,7 +93,7 @@ class Ongkir_transfer extends MY_Controller
                 'orders_ongkir_nama' => $this->input->post('nama'),
                 'orders_ongkir_deskripsi' => $this->input->post('deskripsi'),
                 'orders_ongkir_estimasi' => $this->input->post('estimasi'),
-                'orders_biaya' => $this->input->post('biaya')
+                'orders_ongkir_biaya' => $this->input->post('biaya')
             ));
 
             $this->order_payment->where('orders_noid', $orders_noid)->update(array(
@@ -106,7 +106,7 @@ class Ongkir_transfer extends MY_Controller
                 'orders_ongkir_nama' => $this->input->post('nama'),
                 'orders_ongkir_deskripsi' => $this->input->post('deskripsi'),
                 'orders_ongkir_estimasi' => $this->input->post('estimasi'),
-                'orders_biaya' => $this->input->post('biaya'),
+                'orders_ongkir_biaya' => $this->input->post('biaya'),
                 'orders_noid' => $orders_noid
             ));
 
@@ -118,7 +118,7 @@ class Ongkir_transfer extends MY_Controller
             $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 2));
         }
 
-        redirect('checkout/' . $nomor_order . '/konfirmasi_pembayaran');
+        redirect('checkout/' . $orders_noid . '/konfirmasi_pembayaran');
     }
 
 }

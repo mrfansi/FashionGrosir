@@ -16,8 +16,8 @@ class Cart_m extends MY_Model {
         $this->has_one['item_detil'] = array(
             'foreign_model'=>'Item_detil_m',
             'foreign_table'=>'item_detil',
-            'foreign_key'=>'ide_kode',
-            'local_key'=>'ide_kode');
+            'foreign_key'=>'item_detil_kode',
+            'local_key'=>'item_detil_kode');
         $this->soft_deletes = TRUE;
         parent::__construct();
     }

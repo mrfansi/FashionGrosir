@@ -95,9 +95,7 @@ include "layout/Menu.php";
             <div class="col-lg-12 col-md-12">
                 <form action="alamat_pengiriman/simpan" method="post" id="form_alamat">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
-                    <input type="hidden" name="nomor_order" value="<?= $this->uri->segment(2); ?>">
-                    <input type="hidden" name="alamat_kode" id="alamat_kode" value="<?= $a_kode; ?>">
-
+                    <input type="hidden" name="alamat_simpan" id="alamat_simpan">
                     <div class="row form-group">
                         <div class="col">
                             <div class="form-check">
@@ -113,7 +111,7 @@ include "layout/Menu.php";
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="true" id="check_dropship">
                                 <label class="form-check-label" for="check_dropship">
-                                    Dropship
+                                    Dropshipper
                                 </label>
                             </div>
                         </div>
@@ -193,7 +191,11 @@ include "layout/Menu.php";
                     </div>
                     <div class="row form-group">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary r-btn-pink">Lanjutkan Metode Pembayaran
+                            <button id="lanjutbtn"
+                                    type="button"
+                                    data-toggle="modal"
+                                    data-target="#lanjut"
+                                    class="btn btn-primary r-btn-pink">Lanjutkan Metode Pembayaran
                             </button>
                             <button type="reset" class="btn btn-primary r-btn-pink">Reset</button>
                         </div>
@@ -202,6 +204,19 @@ include "layout/Menu.php";
             </div>
         </div>
         <hr>
+    </div>
+    <div class="modal fade" id="lanjut" tabindex="-1" role="dialog" aria-labelledby="lanjut" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5>Apakah ingin menyimpan alamat ini?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-primary r-btn-pink" onclick="simpan_iya()">Iya</button>
+                    <button class="btn btn-sm btn-danger r-btn-pink" onclick="simpan_tidak()">Tidak</button>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Script File -->
     <script>
@@ -286,7 +301,6 @@ include "layout/Menu.php";
                 }
             }).on('select2:select', function () {
                 var id = $(this).val();
-                var alamat_kode = $('#alamat_kode');
                 var nama_penerima = $('#nama_penerima');
                 var kontak_penerima = $('#kontak_penerima');
                 var nama_pengirim = $('#nama_pengirim');
@@ -346,12 +360,11 @@ include "layout/Menu.php";
                                 }
                             })
                         }),
-                        nama_penerima.val(data.pa_r_nama),
-                        kontak_penerima.val(data.pa_r_kontak),
-                        nama_pengirim.val(data.pa_s_nama),
-                        kontak_pengirim.val(data.pa_s_kontak),
-                        alamat.val(data.alamat_deskripsi),
-                        alamat_kode.val(data.alamat_kode)
+                        nama_penerima.val(data.pengguna_alamat_r_nama),
+                        kontak_penerima.val(data.pengguna_alamat_r_kontak),
+                        nama_pengirim.val(data.pengguna_alamat_s_nama),
+                        kontak_pengirim.val(data.pengguna_alamat_s_kontak),
+                        alamat.val(data.alamat_deskripsi)
                     );
 
                 });
@@ -370,11 +383,25 @@ include "layout/Menu.php";
 
         $('#alamat_exist').change(function () {
             if (this.checked) {
+                $('#lanjutbtn').prop('type', 'submit').removeAttr("data-toggle").removeAttr("data-target");
                 $('#row_nama_alamat').show();
             } else {
+                $('#lanjutbtn').prop('type', 'button').attr("data-toggle",'modal').attr("data-target",'#lanjut');
                 $('#row_nama_alamat').hide();
             }
         });
+
+       function simpan_iya() {
+           $('#form_alamat').find('input[name=alamat_simpan]')
+               .val(true);
+           $('#form_alamat').submit();
+       }
+
+       function simpan_tidak() {
+           $('#form_alamat').find('input[name=alamat_simpan]')
+               .val(false);
+           $('#form_alamat').submit();
+       }
 
     </script>
     <!-- End Content -->

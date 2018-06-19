@@ -141,28 +141,28 @@
                                         <?php if (isset($item->item_detil) && count((array)$item->item_detil) == 1): ?>
                                             <?php foreach ($item->item_detil as $detil): ?>
                                                 <td class="align-middle text-center">
-                                                    <?php if (isset($warna($detil->ide_kode, $detil->w_kode)->w_nama)): ?>
-                                                        <?= $warna($detil->ide_kode, $detil->w_kode)->w_nama; ?>
+                                                    <?php if (isset($warna($detil->item_detil_kode, $detil->w_kode)->w_nama)): ?>
+                                                        <?= $warna($detil->item_detil_kode, $detil->w_kode)->w_nama; ?>
                                                     <?php else: ?>
                                                         <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <?php if (isset($ukuran($detil->ide_kode, $detil->u_kode)->u_nama)): ?>
-                                                        <?= $ukuran($detil->ide_kode, $detil->u_kode)->u_nama; ?>
+                                                    <?php if (isset($ukuran($detil->item_detil_kode, $detil->u_kode)->u_nama)): ?>
+                                                        <?= $ukuran($detil->item_detil_kode, $detil->u_kode)->u_nama; ?>
                                                     <?php else: ?>
                                                         <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <?php if (isset($seri($detil->ide_kode, $detil->s_kode)->s_nama)): ?>
-                                                        <?= $seri($detil->ide_kode, $detil->s_kode)->s_nama; ?>
+                                                    <?php if (isset($seri($detil->item_detil_kode, $detil->s_kode)->s_nama)): ?>
+                                                        <?= $seri($detil->item_detil_kode, $detil->s_kode)->s_nama; ?>
                                                     <?php else: ?>
                                                         <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <?= $qty($detil->ide_kode); ?>
+                                                    <?= $qty($detil->item_detil_kode); ?>
                                                 </td>
 
                                                 <td class="align-middle">
@@ -178,18 +178,18 @@
                                                                href="#"
                                                                onclick="edit_detil($(this))" data-target="#crud"
                                                                data-backdrop="static" data-keyboard="false"
-                                                               data-id="<?= $detil->ide_kode; ?>"><i
+                                                               data-id="<?= $detil->item_detil_kode; ?>"><i
                                                                         class="far fa-edit fa-lg"></i> Ubah</a>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="tambah_qty($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                                               data-id="<?= $detil->ide_kode; ?>"><i
+                                                               data-id="<?= $detil->item_detil_kode; ?>"><i
                                                                         class="fas fa-cart-plus fa-lg"></i> Tambaht QTY</a>
                                                             <div class="dropdown-divider"></div>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="hapus($(this))" data-target="#hapus"
-                                                               data-id="<?= $detil->ide_kode; ?>"><i
+                                                               data-id="<?= $detil->item_detil_kode; ?>"><i
                                                                         class="far fa-trash-alt fa-lg"></i> Hapus</a>
                                                         </div>
 
@@ -229,28 +229,28 @@
                                         <?php foreach ($item->item_detil as $detil): ?>
                                             <tr>
                                                 <td class="align-middle text-center">
-                                                    <?php if (isset($warna($detil->ide_kode, $detil->w_kode)->w_nama)): ?>
-                                                        <?= $warna($detil->ide_kode, $detil->w_kode)->w_nama; ?>
+                                                    <?php if (isset($warna($detil->item_detil_kode, $detil->w_kode)->w_nama)): ?>
+                                                        <?= $warna($detil->item_detil_kode, $detil->w_kode)->w_nama; ?>
                                                     <?php else: ?>
                                                         <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <?php if (isset($ukuran($detil->ide_kode, $detil->u_kode)->u_nama)): ?>
-                                                        <?= $ukuran($detil->ide_kode, $detil->u_kode)->u_nama; ?>
+                                                    <?php if (isset($ukuran($detil->item_detil_kode, $detil->u_kode)->u_nama)): ?>
+                                                        <?= $ukuran($detil->item_detil_kode, $detil->u_kode)->u_nama; ?>
                                                     <?php else: ?>
                                                         <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <?php if (isset($seri($detil->ide_kode, $detil->s_kode)->s_nama)): ?>
-                                                        <?= $seri($detil->ide_kode, $detil->s_kode)->s_nama; ?>
+                                                    <?php if (isset($seri($detil->item_detil_kode, $detil->s_kode)->s_nama)): ?>
+                                                        <?= $seri($detil->item_detil_kode, $detil->s_kode)->s_nama; ?>
                                                     <?php else: ?>
                                                         <i>(Null)</i>
                                                     <?php endif; ?>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <?= $qty($detil->ide_kode); ?>
+                                                    <?= $qty($detil->item_detil_kode); ?>
                                                 </td>
 
                                                 <td class="align-middle">
@@ -266,18 +266,18 @@
                                                                href="#"
                                                                onclick="edit_detil($(this))" data-target="#crud"
                                                                data-backdrop="static" data-keyboard="false"
-                                                               data-id="<?= $detil->ide_kode; ?>"><i
+                                                               data-id="<?= $detil->item_detil_kode; ?>"><i
                                                                         class="far fa-edit fa-lg"></i> Ubah</a>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="tambah_qty($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                                               data-id="<?= $detil->ide_kode; ?>"><i
+                                                               data-id="<?= $detil->item_detil_kode; ?>"><i
                                                                         class="fas fa-cart-plus fa-lg"></i> Tambaht QTY</a>
                                                             <div class="dropdown-divider"></div>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="hapus($(this))" data-target="#hapus"
-                                                               data-id="<?= $detil->ide_kode; ?>"><i
+                                                               data-id="<?= $detil->item_detil_kode; ?>"><i
                                                                         class="far fa-trash-alt fa-lg"></i> Hapus</a>
                                                         </div>
                                                 </td>

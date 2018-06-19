@@ -166,10 +166,10 @@ class API extends MY_Controller
         $g = $this->pengguna_alamat->with_alamat('where:alamat_kode = \'' . $id . '\'')->get_all();
         foreach ($g as $alamat) {
             $hasil = array(
-                'pa_r_nama' => $alamat->pa_r_nama,
-                'pa_r_kontak' => $alamat->pa_r_kontak,
-                'pa_s_nama' => $alamat->pa_s_nama,
-                'pa_s_kontak' => $alamat->pa_s_kontak,
+                'pengguna_alamat_r_nama' => $alamat->pengguna_alamat_r_nama,
+                'pengguna_alamat_r_kontak' => $alamat->pengguna_alamat_r_kontak,
+                'pengguna_alamat_s_nama' => $alamat->pengguna_alamat_s_nama,
+                'pengguna_alamat_s_kontak' => $alamat->pengguna_alamat_s_kontak,
                 'alamat_kode' => $alamat->alamat->alamat_kode,
                 'a_nama' => $alamat->alamat->a_nama,
                 'alamat_provinsi' => $alamat->alamat->alamat_provinsi,

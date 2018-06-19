@@ -13,10 +13,10 @@ class Konfirmasi extends MY_Controller
         $this->load->view('Konfirmasi', $this->data);
     }
 
-    public function get($order)
+    public function get($orders_noid)
     {
-        $this->data->nomor_order = $order;
-        $this->data->orders = $this->order->with_order_detil()->where_o_nomor($order)->get();
+        $this->data->nomor_order = $orders_noid;
+        $this->data->orders = $this->order->with_order_detil()->where_orders_noid($orders_noid)->get();
         $this->data->orders_total = function () {
             $hasil = 0;
             foreach ($this->data->orders->order_detil as $order) {
@@ -156,7 +156,7 @@ class Konfirmasi extends MY_Controller
     public function sukses()
     {
         $this->data->nomor_order = $this->uri->segment(2);
-        $this->data->orders = $this->order->with_order_detil()->where_o_nomor($this->data->nomor_order)->get();
+        $this->data->orders = $this->order->with_order_detil()->where_orders_noid($this->data->nomor_order)->get();
         $this->data->orders_total = function () {
             $hasil = 0;
             foreach ($this->data->orders->order_detil as $order) {
