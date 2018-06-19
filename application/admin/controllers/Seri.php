@@ -103,19 +103,31 @@ class Seri extends MY_Controller
 
     public function hapus($id)
     {
+        $item_seri = $this->item_seri->where('s_kode', $id)->get();
 
-        $seri = $this->seri->where('s_kode', $id)->delete();
-        if ($seri) {
-            $this->data->berhasil = 'Nomor Seri berhasil dihapus';
-            $this->session->set_flashdata('berhasil', $this->data->berhasil);
-
-            redirect('seri');
-        } else {
-            $this->data->gagal = 'Nomor Seri gagal dihapus';
-            $this->session->set_flashdata('berhasil', $this->data->gagal);
+        if ($item_seri)
+        {
+            $this->data->gagal = 'Nomor Seri tidak boleh dihapus karena masih digunakan.';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
 
             redirect('seri');
         }
+        else
+        {
+            $seri = $this->seri->where('s_kode', $id)->delete();
+            if ($seri) {
+                $this->data->berhasil = 'Nomor Seri berhasil dihapus';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+                redirect('seri');
+            } else {
+                $this->data->gagal = 'Nomor Seri gagal dihapus';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('seri');
+            }
+        }
+
     }
 
     public function get($item)

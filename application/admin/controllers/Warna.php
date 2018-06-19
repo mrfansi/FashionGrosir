@@ -100,19 +100,30 @@ class Warna extends MY_Controller
 
     public function hapus($id)
     {
-
-        $warna = $this->warna->where('w_kode', $id)->delete();
-        if ($warna) {
-            $this->data->berhasil = 'Data Warna berhasil dihapus';
-            $this->session->set_flashdata('berhasil', $this->data->berhasil);
-
-            redirect('warna');
-        } else {
-            $this->data->gagal = 'Data Warna gagal dihapus';
-            $this->session->set_flashdata('berhasil', $this->data->gagal);
+        $item_warna = $this->item_warna->where('w_kode', $id)->get();
+        if ($item_warna)
+        {
+            $this->data->gagal = 'Warna ini tidak boleh dihapus karena masih digunakan.';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
 
             redirect('warna');
         }
+        else
+        {
+            $warna = $this->warna->where('w_kode', $id)->delete();
+            if ($warna) {
+                $this->data->berhasil = 'Data Warna berhasil dihapus';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+                redirect('warna');
+            } else {
+                $this->data->gagal = 'Data Warna gagal dihapus';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('warna');
+            }
+        }
+
     }
 
     public function get($item)

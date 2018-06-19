@@ -104,19 +104,29 @@ class Kategori extends MY_Controller
 
     public function hapus($id)
     {
+        $item_kategori = $this->item_kategori->where('k_kode', $id)->get();
 
-        $kategori = $this->kategori->where('k_kode', $id)->delete();
-        if ($kategori) {
-            $this->data->berhasil = 'Data Kategori berhasil dihapus';
-            $this->session->set_flashdata('berhasil', $this->data->berhasil);
+        if ($item_kategori)
+        {
+            $this->data->gagal = 'Kategori ini tidak boleh dihapus karena sedang digunakan';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
 
             redirect('kategori');
         } else {
-            $this->data->gagal = 'Data Kategori gagal dihapus';
-            $this->session->set_flashdata('berhasil', $this->data->gagal);
+            $kategori = $this->kategori->where('k_kode', $id)->delete();
+            if ($kategori) {
+                $this->data->berhasil = 'Data Kategori berhasil dihapus';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-            redirect('kategori');
+                redirect('kategori');
+            } else {
+                $this->data->gagal = 'Data Kategori gagal dihapus';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('kategori');
+            }
         }
+
     }
 
     public function get($item)

@@ -15,7 +15,7 @@ class Konfirmasi extends MY_Controller
 
     public function get($orders_noid)
     {
-        $this->data->nomor_order = $orders_noid;
+        $this->data->orders_noid = $orders_noid;
         $this->data->orders = $this->order->with_order_detil()->where_orders_noid($orders_noid)->get();
         $this->data->orders_total = function () {
             $hasil = 0;
@@ -28,33 +28,29 @@ class Konfirmasi extends MY_Controller
 
         $this->data->pengiriman = function () {
             $hasil = new stdClass();
-            $a_kode = $this->order_pengiriman
-                ->with_order('where:orders_noid = \'' . $this->data->nomor_order . '\'')
-                ->get()->alamat_kode;
-            $alamat = $this->alamat->where('alamat_kode', $a_kode)->get();
-
+            $order_pengiriman = $this->order_pengiriman->where('orders_noid', $this->data->orders_noid)->get();
             $hasil->provinsi = $this->provinsi
-                ->where('provinsi_id', $alamat->alamat_provinsi)
+                ->where('provinsi_id', $order_pengiriman->orders_pengiriman_provinsi)
                 ->get()->provinsi_nama;
             $hasil->kabupaten = $this->kabupaten
-                ->where('kabupaten_id', $alamat->alamat_kabupaten)
+                ->where('kabupaten_id', $order_pengiriman->orders_pengiriman_kabupaten)
                 ->get()->kabupaten_nama;
             $hasil->kecamatan = $this->kecamatan
-                ->where('kecamatan_id', $alamat->alamat_kecamatan)
+                ->where('kecamatan_id', $order_pengiriman->orders_pengiriman_kecamatan)
                 ->get()->kecamatan_nama;
             $hasil->desa = $this->desa
-                ->where('desa_id', $alamat->alamat_desa)
+                ->where('desa_id', $order_pengiriman->orders_pengiriman_desa)
                 ->get()->desa_nama;
 
 
-            return $alamat->alamat_kode. ',' .$alamat->alamat_deskripsi . '<br>' . $hasil->desa . '<br>' . $hasil->kecamatan . ', ' . $hasil->kabupaten . '<br>' .
-                $hasil->provinsi . ', ' . $alamat->alamat_kodepos;
+            return $order_pengiriman->orders_pengiriman_deskripsi . '<br>' . $hasil->desa . '<br>' . $hasil->kecamatan . ', ' . $hasil->kabupaten . '<br>' .
+                $hasil->provinsi . ', ' . $order_pengiriman->orders_pengiriman_kodepos;
 
         };
 
         $this->data->jasa = function () {
             $orders_noid = $this->order_ongkir
-                ->with_order('where:orders_noid = \'' . $this->data->nomor_order . '\'')
+                ->with_order('where:orders_noid = \'' . $this->data->orders_noid . '\'')
                 ->get()->orders_noid;
             $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
 
@@ -63,7 +59,7 @@ class Konfirmasi extends MY_Controller
 
         $this->data->metode_pembayaran = function () {
             $orders_noid = $this->order
-                ->where('orders_noid', $this->data->nomor_order)
+                ->where('orders_noid', $this->data->orders_noid)
                 ->get()->orders_noid;
             $pembayaran = $this->order_payment->with_bank()->where('orders_noid', $orders_noid)->get()->bank;
 
@@ -73,7 +69,7 @@ class Konfirmasi extends MY_Controller
         $this->data->biaya_subtotal = function () {
             $hasil = 0;
             $orders_noid = $this->order
-                ->where('orders_noid', $this->data->nomor_order)
+                ->where('orders_noid', $this->data->orders_noid)
                 ->get()->orders_noid;
             foreach ($this->order_detil->where('orders_noid', $orders_noid)->get_all() as $od) {
                 $hasil += (int)$od->orders_detil_tharga;
@@ -84,10 +80,10 @@ class Konfirmasi extends MY_Controller
 
         $this->data->biaya_pengiriman = function () {
             $orders_noid = $this->order
-                ->where('orders_noid', $this->data->nomor_order)
+                ->where('orders_noid', $this->data->orders_noid)
                 ->get()->orders_noid;
             $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
-            return (int)$ongkir->orders_biaya;
+            return (int)$ongkir->orders_ongkir_biaya;
         };
         $this->load->view('Konfirmasi', $this->data);
     }
@@ -155,8 +151,8 @@ class Konfirmasi extends MY_Controller
 
     public function sukses()
     {
-        $this->data->nomor_order = $this->uri->segment(2);
-        $this->data->orders = $this->order->with_order_detil()->where_orders_noid($this->data->nomor_order)->get();
+        $this->data->orders_noid = $this->uri->segment(2);
+        $this->data->orders = $this->order->with_order_detil()->where_orders_noid($this->data->orders_noid)->get();
         $this->data->orders_total = function () {
             $hasil = 0;
             foreach ($this->data->orders->order_detil as $order) {
@@ -167,7 +163,7 @@ class Konfirmasi extends MY_Controller
         $this->data->pengiriman = function () {
             $hasil = array();
             $a_kode = $this->order_pengiriman
-                ->with_order('where:orders_noid = \'' . $this->data->nomor_order . '\'')
+                ->with_order('where:orders_noid = \'' . $this->data->orders_noid . '\'')
                 ->get()->alamat_kode;
             $alamat = $this->alamat->where('alamat_kode', $a_kode)->get();
 
@@ -192,7 +188,7 @@ class Konfirmasi extends MY_Controller
 
         $this->data->jasa = function () {
             $orders_noid = $this->order_ongkir
-                ->with_order('where:orders_noid = \'' . $this->data->nomor_order . '\'')
+                ->with_order('where:orders_noid = \'' . $this->data->orders_noid . '\'')
                 ->get()->orders_noid;
             $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
 
@@ -201,7 +197,7 @@ class Konfirmasi extends MY_Controller
 
         $this->data->metode_pembayaran = function () {
             $orders_noid = $this->order
-                ->where('orders_noid', $this->data->nomor_order)
+                ->where('orders_noid', $this->data->orders_noid)
                 ->get()->orders_noid;
             $pembayaran = $this->order_payment->with_bank()->where('orders_noid', $orders_noid)->get()->bank;
 
@@ -211,7 +207,7 @@ class Konfirmasi extends MY_Controller
         $this->data->biaya_subtotal = function () {
             $hasil = 0;
             $orders_noid = $this->order
-                ->where('orders_noid', $this->data->nomor_order)
+                ->where('orders_noid', $this->data->orders_noid)
                 ->get()->orders_noid;
             foreach ($this->order_detil->where('orders_noid', $orders_noid)->get_all() as $od) {
                 $hasil += (int)$od->orders_detil_tharga;
@@ -222,7 +218,7 @@ class Konfirmasi extends MY_Controller
 
         $this->data->biaya_pengiriman = function () {
             $orders_noid = $this->order
-                ->where('orders_noid', $this->data->nomor_order)
+                ->where('orders_noid', $this->data->orders_noid)
                 ->get()->orders_noid;
             $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
             return (int)$ongkir->orders_biaya;

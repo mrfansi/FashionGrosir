@@ -12,7 +12,7 @@ class Order_bukti_m extends MY_Model
     {
         $this->table = 'orders_bukti';
         $this->primary_key = 'orders_noid';
-        $this->protected = array('orders_noid', 'created_at', 'update_at');
+        $this->protected = array('created_at', 'update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = TRUE;
         $this->has_one['order'] = array(

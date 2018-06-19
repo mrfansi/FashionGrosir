@@ -102,18 +102,29 @@ class Ukuran extends MY_Controller
 
     public function hapus($id)
     {
-        $ukuran = $this->ukuran->where('u_kode', $id)->delete();
-        if ($ukuran) {
-            $this->data->berhasil = 'Data Ukuran berhasil dihapus';
-            $this->session->set_flashdata('berhasil', $this->data->berhasil);
-
-            redirect('ukuran');
-        } else {
-            $this->data->gagal = 'Data Ukuran gagal dihapus';
-            $this->session->set_flashdata('berhasil', $this->data->gagal);
+        $item_ukuran = $this->item_ukuran->where('u_kode', $id)->get();
+        if ($item_ukuran)
+        {
+            $this->data->gagal = 'Ukuran ini tidak boleh dihapus karena masih digunakan';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
 
             redirect('ukuran');
         }
+        else{
+            $ukuran = $this->ukuran->where('u_kode', $id)->delete();
+            if ($ukuran) {
+                $this->data->berhasil = 'Data Ukuran berhasil dihapus';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
+
+                redirect('ukuran');
+            } else {
+                $this->data->gagal = 'Data Ukuran gagal dihapus';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('ukuran');
+            }
+        }
+
     }
 
     public function get($item)

@@ -63,9 +63,13 @@ class Item extends MY_Controller
 
         $this->data->kategori = function ($i_kode) {
             $kategori = [];
-            foreach ($this->item_kategori->with_kategori()->where_i_kode($i_kode)->get_all() as $kat) {
-                array_push($kategori, $kat->kategori->k_nama);
+            $item_kategori = $this->item_kategori->with_kategori()->where_i_kode($i_kode)->get_all();
+            if ($item_kategori != NULL) {
+                foreach ($item_kategori as $kat) {
+                    array_push($kategori, $kat->kategori->k_nama);
+                }
             }
+
 
             return implode('<br>', $kategori);
         };
