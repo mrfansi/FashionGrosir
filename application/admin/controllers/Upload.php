@@ -42,6 +42,7 @@ class Upload extends MY_Controller
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']      = '0';
             $config['overwrite']     = TRUE;
+            $config['encrypt_name'] = TRUE;
 
             $this->load->library('upload', $config);
             $this->upload->do_upload('image');

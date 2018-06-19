@@ -102,17 +102,18 @@ class Konfirmasi extends MY_Controller
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '0';
             $config['overwrite'] = TRUE;
+            $config['encrypt_name'] = TRUE;
 
             $this->load->library('upload', $config);
             $this->upload->do_upload('bukti_pembayaran');
-            $this->upload->data();
+            $hasil = $this->upload->data();
 
             $konfirmasi = $this->order_bukti->where('orders_noid', $orders_noid)->update(array(
                 'orders_bukti_nama_rek' => $this->input->post('rek_atasnama'),
                 'orders_bukti_no_rek' => $this->input->post('nomor_rekening'),
                 'orders_bukti_bank_nama' => $this->input->post('bank'),
                 'orders_bukti_nominal' => $this->input->post('total_pembayaran'),
-                'orders_bukti_foto' => $_FILES['bukti_pembayaran']['name'],
+                'orders_bukti_foto' => $hasil['file_name'],
             ));
 
             if ($konfirmasi) {
@@ -125,17 +126,18 @@ class Konfirmasi extends MY_Controller
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '0';
             $config['overwrite'] = TRUE;
+            $config['encrypt_name'] = TRUE;
 
             $this->load->library('upload', $config);
             $this->upload->do_upload('bukti_pembayaran');
-            $this->upload->data();
+            $hasil = $this->upload->data();
 
             $konfirmasi = $this->order_bukti->insert(array(
                 'orders_bukti_nama_rek' => $this->input->post('rek_atasnama'),
                 'orders_bukti_no_rek' => $this->input->post('nomor_rekening'),
                 'orders_bukti_bank_nama' => $this->input->post('bank'),
                 'orders_bukti_nominal' => $this->input->post('total_pembayaran'),
-                'orders_bukti_foto' => $_FILES['bukti_pembayaran']['name'],
+                'orders_bukti_foto' => $hasil['file_name'],
                 'orders_noid' => $orders_noid
             ));
 

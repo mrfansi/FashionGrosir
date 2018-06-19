@@ -73,7 +73,7 @@
                             <tr>
                                 <th scope="col">No. Order</th>
                                 <th scope="col">Nominal</th>
-                                <th scope="col" class="text-center">Konfirmasi</th>
+                                <th scope="col">Konfirmasi</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -82,10 +82,10 @@
                                     <tr>
                                         <td class="text-danger"><?= $order->orders_noid; ?></td>
                                         <td id="rupiah"><?= $order->orders_bukti_nominal; ?></td>
-                                        <td class="text-center">
-                                            <a tooltip data-toggle="modal" title="Proses <?= $title_page; ?>" href="#"
+                                        <td>
+                                            <a class="btn btn-sm btn-primary" data-toggle="modal"href="#"
                                                onclick="proses($(this))" data-target="#proses"
-                                               data-id="<?= $order->orders_noid; ?>"><i class="fas fa-check"></i></a>
+                                               data-id="<?= $order->orders_noid; ?>"><i class="fas fa-check"></i> Proses <?= $title_page; ?></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -102,7 +102,7 @@
                                                  data-allowfullscreen="true"
                                                  data-width="220"
                                                  data-height="150">
-                                                <img src="http://s.fotorama.io/1.jpg" width="220" height="150">
+                                                <img src="<?= base_url('upload/' . $order->orders_bukti_foto); ?>" width="220" height="150">
                                             </div>
                                         </td>
                                     </tr>
