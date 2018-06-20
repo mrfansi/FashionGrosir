@@ -47,8 +47,8 @@
     <div class="row f-padding-header">
         <!-- Brand -->
         <div class="col-12 col-lg-3 col-md-2">
-            <a href="index.html" class="navbar-brand f-logo">
-                <img src="assets/brand/citrus-logo.png" alt="">
+            <a href="<?= site_url('/'); ?>" class="navbar-brand f-logo">
+                <img src="<?= base_url('upload/' . $logo); ?>" alt="<?= $logo; ?>" height="100" width="150">
             </a>
         </div>
         <!-- End Brand -->

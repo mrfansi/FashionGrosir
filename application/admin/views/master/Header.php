@@ -27,7 +27,7 @@
         }
     </style>
     <link rel="stylesheet" href="<?= base_url('assets/vendor/datatable/css/dataTables.bootstrap4.min.css'); ?>">
-    <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
+    <link rel="shortcut icon" href="<?= base_url('upload/' . $icon); ?>">
 
     <!-- Javascript files-->
     <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>

@@ -77,5 +77,7 @@ $route['checkout/(:any)/sukses'] = 'konfirmasi/sukses';
 $route['artikel/(:any)'] = 'artikel/get/$1';
 $route['blog/(:any)'] = 'artikel/get/$1';
 $route['resi/(:any)/detil'] = 'resi/get/$1';
+$route['riwayat/(:any)/detil'] = 'detil';
+$route['pending/(:any)/detil'] = 'detil';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

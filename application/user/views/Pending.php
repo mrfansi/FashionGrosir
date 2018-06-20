@@ -71,7 +71,7 @@ include "layout/Menu.php";
                             <?php foreach ($orders as $order): ?>
                                 <tr>
                                     <td rowspan="1" class="text-danger"><a
-                                                href="<?= site_url('DetailPesanan'); ?>"><?= $order->orders_noid; ?></a>
+                                                href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>"><?= $order->orders_noid; ?></a>
                                     </td>
                                     <td><?= $order->created_at; ?></td>
                                     <td id="rupiah"><?= $order->total; ?></td>

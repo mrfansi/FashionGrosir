@@ -34,6 +34,9 @@ class Toko extends MY_Controller
         $id = $this->input->post('t_kode');
         $toko = $this->toko->where('t_kode', $id)->get();
 
+        $logo = $this->upload_logo();
+        $icon = $this->upload_icon();
+
         if ($toko) {
             $toko = $this->toko->where('t_kode', $id)->update(array(
                 't_nama' => $this->input->post('nama'),
@@ -48,19 +51,19 @@ class Toko extends MY_Controller
                 't_email' => $this->input->post('email'),
                 't_fb' => $this->input->post('facebook'),
                 't_insta' => $this->input->post('instagram'),
-                't_wa' => $this->input->post('whatsapp')
+                't_wa' => $this->input->post('whatsapp'),
+                't_logo' => $logo['file_name'],
+                't_icon' => $icon['file_name'],
             ));
 
             if ($toko) {
                 $this->data->berhasil = 'Informasi Toko berhasil diupdate.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-                redirect('toko');
             } else {
                 $this->data->berhasil = 'Informasi Toko gagal diupdate.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-                redirect('toko');
             }
         } else {
             $toko = $this->toko->insert(array(
@@ -77,20 +80,56 @@ class Toko extends MY_Controller
                 't_email' => $this->input->post('email'),
                 't_fb' => $this->input->post('facebook'),
                 't_insta' => $this->input->post('instagram'),
-                't_wa' => $this->input->post('whatsapp')
+                't_wa' => $this->input->post('whatsapp'),
+                't_logo' => $logo['file_name'],
+                't_icon' => $icon['file_name'],
             ));
 
             if ($toko) {
                 $this->data->berhasil = 'Informasi Toko berhasil diupdate.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
-
-                redirect('toko');
             } else {
                 $this->data->berhasil = 'Informasi Toko gagal diupdate.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
-
-                redirect('toko');
             }
         }
+        redirect('toko');
+
     }
+
+    protected function upload_logo()
+    {
+        //upload an image options
+        $config = array();
+        $config['upload_path'] = './upload';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '0';
+        $config['overwrite'] = TRUE;
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('logo');
+        $hasil = $this->upload->data();
+
+        return $hasil;
+    }
+
+    protected function upload_icon()
+    {
+        //upload an image options
+        $config = array();
+        $config['upload_path'] = './upload';
+        $config['allowed_types'] = 'ico';
+        $config['max_size'] = '0';
+        $config['overwrite'] = TRUE;
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('icon');
+        $hasil = $this->upload->data();
+
+        print_r($hasil);
+        return $hasil;
+    }
+
 }

@@ -31,5 +31,7 @@
     <script src="<?= base_url('assets/vendor/wnumb/wNumb.js'); ?>"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <link rel="shortcut icon" href="<?= base_url('upload/' . $icon); ?>">
+
     <title><?= $brandname; ?></title>
 </head>

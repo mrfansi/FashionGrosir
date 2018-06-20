@@ -95,9 +95,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <div class="card-header">
                     <h1><i class="fa fa-cogs"></i> Toko</h1>
                 </div>
-                <form action="<?= site_url('toko/simpan'); ?>" method="post" class="card-body">
+                <form action="<?= site_url('toko/simpan'); ?>" method="post" enctype="multipart/form-data"
+                      class="card-body">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <input type="hidden" name="t_kode" value="<?= $tokoid; ?>">
+                    <div class="row form-group">
+                        <div class="col">
+                            <label for="logo">Logo</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="logo" name="logo" required>
+                                <label class="custom-file-label" for="logo">Pilih Logo...</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="icon">Icon</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="icon" name="icon" required>
+                                <label class="custom-file-label" for="icon">Pilih Icon...</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row form-group">
                         <div class="col">
                             <label for="nama">Nama Toko</label>

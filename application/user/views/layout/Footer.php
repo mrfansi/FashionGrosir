@@ -15,8 +15,8 @@
     <div class="row">
         <div class="col-xl-4 col-lg-3 col-md-4 col-sm-5 col-12">
             <div class="text-center f-bottom">
-                <a href="index.html" class="navbar-brand f-logo-footer">
-                    <img src="assets/brand/citrus-logo.png" alt="">
+                <a href="<?= site_url('/'); ?>" class="navbar-brand f-logo-footer">
+                    <img src="<?= base_url('upload/' . $logo); ?>" alt="<?= $logo; ?>" height="100" width="150">
                 </a>
             </div>
         </div>

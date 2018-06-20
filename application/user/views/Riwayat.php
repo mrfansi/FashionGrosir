@@ -70,7 +70,9 @@ include "layout/Menu.php";
                             </thead>
                             <?php foreach ($orders as $order): ?>
                                 <tr>
-                                    <td><a href="<?= site_url('DetailPesanan'); ?>"><?= $order->orders_noid; ?></td>
+                                    <td>
+                                        <a href="<?= site_url('riwayat/' . $order->orders_noid . '/detil'); ?>"><?= $order->orders_noid; ?>
+                                    </td>
                                     <td><?= $order->created_at; ?></td>
                                     <td><?= $order->orders_resi_no; ?></td>
                                     <td id="rupiah"><?= $order->total; ?></td>

@@ -15,7 +15,8 @@ include "layout/Menu.php";
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb f-no-background f-hover">
                         <li class="breadcrumb-item"><a href="<?= site_url('/'); ?>">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Alamat</li>
+                        <li class="breadcrumb-item"><a href="<?= $breadcumurl1; ?>"><?= ucfirst($breadcum1); ?></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?= $breadcum2; ?></li>
                     </ol>
                 </nav>
             </div>
@@ -26,16 +27,27 @@ include "layout/Menu.php";
             <!-- Side bar menu -->
             <div class="col-12 col-sm-12 col-md-2">
                 <div class="list-group">
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('profil'); ?>">Profil</a>
-                    <a class="list-group-item list-group-item-action "
-                       href="<?= site_url('profil_alamat'); ?>">Alamat
+                    <a class="list-group-item list-group-item-action <?= $breadcum1 == 'profil' ? 'r-active-step' : ''; ?>"
+                       href="<?= site_url('profil'); ?>">
+                        Profil
                     </a>
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('profil_password'); ?>">Ubah
-                        Password</a>
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('riwayat'); ?>">Riwayat
-                        Pesanan</a>
-                    <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('pending'); ?>">Transaksi
-                        Tertunda</a>
+                    <a class="list-group-item list-group-item-action <?= $breadcum1 == 'profil_alamat' ? 'r-active-step' : ''; ?>"
+                       href="<?= site_url('profil_alamat'); ?>">
+                        Alamat
+                    </a>
+                    <a class="list-group-item list-group-item-action <?= $breadcum1 == 'profil_password' ? 'r-active-step' : ''; ?>"
+                       href="<?= site_url('profil_password'); ?>">
+                        Ubah Password</a>
+                    <a class="list-group-item list-group-item-action <?= $breadcum1 == 'riwayat' ? 'r-active-step' : ''; ?>"
+                       href="<?= site_url('riwayat'); ?>">
+                        Riwayat Pesanan
+                    </a>
+                    <a class="list-group-item list-group-item-action <?= $breadcum1 == 'pending' ? 'r-active-step' : ''; ?>"
+                       href="<?= site_url('pending'); ?>">
+                        Transaksi Tertunda
+                    </a>
+                    <a class="list-group-item list-group-item-action <?= $breadcum1 == 'resi' ? 'r-active-step' : ''; ?>"
+                       href="<?= site_url('resi'); ?>">Laporan Resi</a>
                 </div>
             </div>
 
@@ -45,263 +57,194 @@ include "layout/Menu.php";
             <!-- Konten -->
 
             <div class="col-12 col-sm-12 col-md-9">
-
                 <div class="card">
-
-                    <h4 class="r-style-title-konten-profile">
-                        Detail Pesanan
-                    </h4>
-
-                    <hr class="r-hr-juduldetail">
-                    <div class="container">
-                        <!-- START JUDUL -->
-
-
-                        <div class="row">
-
-                            <div class="pr-4 pl-4 col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
-                                <p class="r-detailstatuspesanan-judul">No pesanan : </p>
-                                <p class="r-font-orderid">#ASUCAESAR2018</p> <br>
-                                <p class="r-detailstatuspesanan-judul">Kurir ekpedisi : </p>
-                                <p class="r-font-orderid"> JNE </p>
-                                <small class="r-small-detail-pesanan r-font-date ">
-                                    Dipesan pada 10 Maret 2018
-                                </small>
-
+                    <div class="card-header">
+                        <h4 class="r-style-title-konten-profile">
+                            Detail Pesanan
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-5">
+                            <div class="col">
+                                <h6 class="r-judul-kotak4-1">Nomor Order : </h6>
+                                <p class="r-konten-kotak4-1">#<?= $orders_noid; ?></p>
                             </div>
-
-                            <div class="pr-4 pl-4 col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-
-                                <p class="r-detailstatuspesanan-judulkanan">
-                                    Total Harga :
-                                </p>
-                                <p class="r-detailstatuspesanan-judulhargakanan">
-                                    100.000
-                                </p>
-                                <h6 class="r-detailstatuspesanan-judulkanan">Status Transaksi : <span class="badge badge-success">Sukses</span>
-                                </h6>
-
-
-                            </div>
-                        </div>
-
-                        <!-- -->
-
-                        <div class="container">
-                        <div class="row mt-3">
-                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 r-posisi-kotak4-1">
-                                <h6 class="r-judul-kotak4-1">
-                                    <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
-                                </h6>
-
-
+                            <div class="col">
+                                <h6 class="r-judul-kotak4-1">Status : </h6>
                                 <p class="r-konten-kotak4-1">
-                                    Contoh alamat
+                                    <?php if ($orders->orders_status == 0): ?>
+                                        BELUM MENGISI ALAMAT PENGIRIMAN
+                                    <?php elseif ($orders->orders_status == 1): ?>
+                                        BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN
+                                    <?php elseif ($orders->orders_status == 2): ?>
+                                        PELANGGAN BELUM KONFIRMASI PEMBAYARAN
+                                    <?php elseif ($orders->orders_status == 3): ?>
+                                        ADMIN BELUM KONFIRMASI PEMBAYARAN
+                                    <?php elseif ($orders->orders_status == 4): ?>
+                                        ADMIN SEDANG MEMPROSES ORDER
+                                    <?php elseif ($orders->orders_status == 5): ?>
+                                        ADMIN BELUM KONFIRMASI PENGIRIMAN
+                                    <?php elseif ($orders->orders_status == 6): ?>
+                                        SUKSES (Telah dikirim)
+                                    <?php elseif ($orders->orders_status == 7): ?>
+                                        BATAL
+                                    <?php endif; ?>
                                 </p>
-
                             </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 r-posisi-kotak4-1">
-
-                            <h6 class="r-judul-kotak4-1">
-                                <i class="fa fa-truck" style="font-size: 20px;"></i>
-                                Metode Pengiriman :
-                            </h6>
-                            <p class="r-konten-kotak4-1">
-                                contoh pengiriman
-                            </p>
-
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 r-posisi-kotak4-1">
-                            <h6 class="r-judul-kotak4-1">
-                                <i class="fa fa-credit-card" style="font-size: 20px;"></i>
-                                Metode Pembayaran:
-                            </h6>
-                            <p class="r-konten-kotak4-1">
-                                Contoh metode pembayaran
-                            </p>
-                        </div>
-                    </div>
-                        </div>
-                    <!-- -->
-                    <!-- END JUDUL -->
-                </div>
-                <hr class="r-hr-juduldetail">
-
-                    <div class="container">
-                    <h5 class="r-style-detailbarangpesanan">
-                        <i class="fa fa-dropbox" style="font-size: 20px;"></i> Detail Produk
-                    </h5>
-                    <div class="table-responsive ">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th class="r-thdetailbarang">No</th>
-                                <th class="r-thdetailbarang"">Nama Produk</th>
-                                <th class="r-thdetailbarang"">Qty</th>
-                                <th class="r-thdetailbarang"">Harga Satuan</th>
-                                <th class="r-thdetailbarang"">Harga Total</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="r-tddetailbarang">1</td>
-                                <td class="r-tddetailbarang">Powerlogic X-Craft Quantum Z7000 Gaming Mouse</td>
-                                <td class="r-tddetailbarang">2</td>
-                                <td class="r-tddetailbarang">10.000</td>
-                                <td class="r-tddetailbarang">20.000</td>
-
-
-                            </tr>
-                            <tr>
-                                <td class="r-tddetailbarang">1</td>
-                                <td class="r-tddetailbarang">Powerlogic X-Craft Quantum Z7000 Gaming Mouse</td>
-                                <td class="r-tddetailbarang">2</td>
-                                <td class="r-tddetailbarang">10.000</td>
-                                <td class="r-tddetailbarang">20.000</td>
-
-
-                            </tr>
-                            <tr>
-                                <td class="r-tddetailbarang">1</td>
-                                <td class="r-tddetailbarang">Powerlogic X-Craft Quantum Z7000 Gaming Mouse</td>
-                                <td class="r-tddetailbarang">2</td>
-                                <td class="r-tddetailbarang">10.000</td>
-                                <td class="r-tddetailbarang">20.000</td>
-
-
-                            </tr>
-                            <tr>
-                                <td class="r-tddetailbarang">1</td>
-                                <td class="r-tddetailbarang">Powerlogic X-Craft Quantum Z7000 Gaming Mouse</td>
-                                <td class="r-tddetailbarang">2</td>
-                                <td class="r-tddetailbarang">10.000</td>
-                                <td class="r-tddetailbarang">20.000</td>
-
-
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    </div>
-
-
-
-
-
-
-                <hr class="r-hr-juduldetail">
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-
-
                         </div>
 
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
-
-                            <h6 class="r-judul-kotak4-detailpesanan">
-                                <i class="fa fa-money" style="font-size: 20px;"></i> Perhitungan Harga :
-                            </h6>
-                            <hr>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-5 col-sm-4 col-4">
-                                    <h6 class="r-perhitungan-detailpesanan ">Subtotal</h6>
+                        <?php if ($orders->orders_status > 2): ?>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <h6 class="r-judul-kotak4-1">
+                                        <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
+                                    </h6>
+                                    <p class="r-konten-kotak4-1">
+                                        <?= $pengiriman(); ?>
+                                </p>
                                 </div>
-                                <div class="col-lg-6 col-md-7 col-sm-8 col-8">
-                                    <div class="row">
-                                        <div class="col-lg col-md-4 col-sm-4 col-5">
-                                            <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
-                                        </div>
-                                        <div class="col-lg col-md-8 col-sm-8 col-7">
-                                            <h5 class="card-title f-sub-total r-perhitungan-detailpesanan ">
-                                                1.000.000</h5>
+                                <div class="col">
+                                    <h6 class="r-judul-kotak4-1">
+                                        <i class="fa fa-truck" style="font-size: 20px;"></i>
+                                        Metode Pengiriman :
+                                </h6>
+                                    <p class="r-konten-kotak4-1">
+                                        <?= $jasa(); ?>
+                                    </p>
+                                </div>
+
+                                <div class="col">
+                                    <h6 class="r-judul-kotak4-1">
+                                        <i class="fa fa-credit-card" style="font-size: 20px;"></i>
+                                        Metode Pembayaran:
+                                    </h6>
+                                    <p class="r-konten-kotak4-1">
+                                        <?= $metode_pembayaran(); ?>
+                                    </p>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <h6 class="r-judul-kotak4-1">
+                                    <i class="fa fa-dropbox" style="font-size: 20px;"></i> Detail Produk
+                                </h6>
+                                <div class="table-responsive ">
+                                    <table class="table table-sm table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Item</th>
+                                            <th scope="col">Qty</th>
+                                            <th scope="col">Harga Satuan</th>
+                                            <th scope="col">Harga Total</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php foreach ($orders->order_detil as $detil): ?>
+                                            <tr>
+                                                <td><?= $item_detil($detil->item_detil_kode)->item->i_nama; ?></td>
+                                                <td><?= $detil->orders_detil_qty; ?></td>
+                                                <td id="rupiah"><?= $detil->orders_detil_harga; ?></td>
+                                                <td id="rupiah"><?= $detil->orders_detil_tharga; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6"></div>
+
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-2">
+                                <h6 class="r-judul-kotak4-detailpesanan">
+                                    <i class="fa fa-money" style="font-size: 20px;"></i> Perhitungan Harga :
+                                </h6>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-5 col-sm-4 col-4">
+                                        <h6 class="r-perhitungan-detailpesanan ">Subtotal</h6>
+                                    </div>
+                                    <div class="col-lg-6 col-md-7 col-sm-8 col-8">
+                                        <div class="row">
+                                            <div class="col-lg col-md-8 col-sm-8 col-7">
+                                                <h5 id="rupiah"
+                                                    class="card-title f-sub-total r-perhitungan-detailpesanan ">
+                                                    <?= $biaya_subtotal(); ?>
+                                                </h5>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-lg-6 col-md-5 col-sm-4 col-4">
-                                    <h6 class="r-perhitungan-detailpesanan ">Biaya Pengiriman</h6>
-                                </div>
-                                <div class="col-lg-6 col-md-7 col-sm-8 col-8">
-                                    <div class="row">
-                                        <div class="col-lg col-md-4 col-sm-4 col-5">
-                                            <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
-                                        </div>
-                                        <div class="col-lg col-md-8 col-sm-8 col-7">
-                                            <h5 class="card-title f-sub-total r-perhitungan-detailpesanan ">
-                                                125.000</h5>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-5 col-sm-4 col-4">
+                                        <h6 class="r-perhitungan-detailpesanan ">Biaya Pengiriman</h6>
+                                    </div>
+                                    <div class="col-lg-6 col-md-7 col-sm-8 col-8">
+                                        <div class="row">
+                                            <div class="col-lg col-md-8 col-sm-8 col-7">
+                                                <h5 id="rupiah"
+                                                    class="card-title f-sub-total r-perhitungan-detailpesanan ">
+                                                    <?= $biaya_pengiriman(); ?>
+                                                </h5>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-lg-6 col-md-5 col-sm-4 col-4">
-                                    <h6 class="r-perhitungan-detailpesanan ">Biaya Lain-lain</h6>
-                                </div>
-                                <div class="col-lg-6 col-md-7 col-sm-8 col-8">
-                                    <div class="row">
-                                        <div class="col-lg col-md-4 col-sm-5 col-5">
-                                            <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
-                                        </div>
-                                        <div class="col-lg col-md-8 col-sm-7 col-7">
-                                            <h5 class="card-title f-sub-total r-perhitungan-detailpesanan ">-</h5>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-5 col-sm-4 col-4">
+                                        <h6 class="r-perhitungan-detailpesanan ">Biaya Lain-lain</h6>
+                                    </div>
+                                    <div class="col-lg-6 col-md-7 col-sm-8 col-8">
+                                        <div class="row">
+                                            <div class="col-lg col-md-8 col-sm-7 col-7">
+                                                <h5 class="card-title f-sub-total r-perhitungan-detailpesanan ">-</h5>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <hr>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-5 col-sm-7 col-4">
-                                    <p class="r-perhitungan-detailpesanan "><b class="r-perhitungan-detailpesanan ">Total</b><br><i>*tidak
-                                            termasuk PPN</i></p>
-                                </div>
-                                <div class="col-lg-6 col-md-7 col-sm-5 col-8">
-                                    <div class="row">
-                                        <div class="col-lg col-md-4 col-sm-5 col-5">
-                                            <h5 class="r-perhitungan-detailpesanan ">IDR</h5>
-                                        </div>
-                                        <div class="col-lg col-md-8 col-sm-7 col-7">
-                                            <h5 class="card-title f-sub-total r-perhitungan-detailpesanan">
-                                                1.125.000</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-5 col-sm-7 col-4">
+                                        <p class="r-perhitungan-detailpesanan "><b class="r-perhitungan-detailpesanan ">Total</b><br><i>*tidak
+                                                termasuk PPN</i></p>
+                                    </div>
+                                    <div class="col-lg-6 col-md-7 col-sm-5 col-8">
+                                        <div class="row">
+                                            <div class="col-lg col-md-8 col-sm-7 col-7">
+                                                <h5 id="rupiah"
+                                                    class="card-title f-sub-total r-perhitungan-detailpesanan">
+                                                    <?= $biaya_subtotal() + $biaya_pengiriman(); ?>
+                                                </h5>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
+
+                            </div>
 
                         </div>
-
-                    </div>
-                </div>
-
-                <div class="row container mb-4 mt-2">
-                    <div class="col d-flex justify-content-center">
-                        <button type="submit" class="btn btn-info btn-sm mr-1 ml-1"><i class="fa fa-file"></i> Cetak
-                        </button>
-                        <button type="submit" class="btn btn-danger btn-sm mr-1 ml-1"><i class="fa fa-undo"></i>
-                            Kembali
-                        </button>
+                        <div class="row mt-2">
+                            <div class="col d-flex justify-content-center">
+                                <button type="submit" class="btn btn-info btn-sm mr-1 ml-1"><i class="fa fa-file"></i>
+                                    Cetak
+                                </button>
+                                <button type="submit" class="btn btn-danger btn-sm mr-1 ml-1"><i class="fa fa-undo"></i>
+                                    Kembali
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- END CARD -->
-
-
         </div>
-
-
-        <br>
-
-    </div>
-
-    <!-- End Konten -->
-
-
+        <!-- End Konten -->
     </div>
 
     <!-- END Konten -->

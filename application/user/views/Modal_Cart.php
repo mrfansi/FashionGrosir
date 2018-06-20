@@ -22,8 +22,13 @@
             <?php foreach ($pop_carts as $pop_cart): ?>
                 <tr>
                     <td>
-                        <img src="<?= base_url('upload/' . $item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode)->ii_nama); ?>"
-                             alt="" width="50" height="50"></td>
+                        <?php if ($item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode) == NULL): ?>
+                            <img src="<?= base_url('upload/' . $item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode)->ii_nama); ?>"
+                        <?php else: ?>
+                            <img src="<?= base_url('assets/img/noimg.png'); ?>"
+                                 alt="" width="50" height="50">
+                        <?php endif; ?>
+                    </td>
                     <td id="title"><?= $item_detil($pop_cart->item_detil_kode)->item->i_nama; ?></td>
                     <td>x <?= $pop_cart->ca_qty; ?></td>
                     <td id="rupiah"><?= $pop_cart->ca_tharga; ?></td>

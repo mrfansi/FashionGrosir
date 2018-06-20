@@ -36,6 +36,7 @@ class Cart extends MY_Controller
         if ($cart) {
             $cart = $this->cart->where_item_detil_kode($ide_kode)->update(array(
                 'ca_qty' => (int)$cart->ca_qty + (int)$this->input->post('qty'),
+                'ca_harga' => (int)$this->input->post('harga'),
                 'ca_tharga' => ((int)$cart->ca_qty + (int)$this->input->post('qty')) * (int)$this->input->post('harga'),
                 'pengguna_kode' => $_SESSION['id']
             ));
@@ -50,6 +51,7 @@ class Cart extends MY_Controller
             $cart = $this->cart->insert(array(
                 'ca_kode' => $this->cart->guid(),
                 'ca_qty' => (int)$this->input->post('qty'),
+                'ca_harga' => (int)$this->input->post('harga'),
                 'ca_tharga' => (int)$this->input->post('qty') * (int)$this->input->post('harga'),
                 'item_detil_kode' => $ide_kode,
                 'pengguna_kode' => $_SESSION['id']
@@ -77,6 +79,7 @@ class Cart extends MY_Controller
         foreach ($carts as $cart) {
             $this->order_detil->insert(array(
                 'orders_detil_qty' => (int)$cart->ca_qty,
+                'orders_detil_harga' => (int)$cart->ca_harga,
                 'orders_detil_tharga' => (int)$cart->ca_tharga,
                 'orders_noid' => $noid,
                 'item_detil_kode' => $cart->item_detil_kode

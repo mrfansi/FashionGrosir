@@ -195,10 +195,14 @@ class MY_Controller extends CI_Controller
             $this->data->brandname = $toko->t_nama;
             $this->data->instagram = $toko->t_insta;
             $this->data->facebook = $toko->t_fb;
+            $this->data->logo = $toko->t_logo;
+            $this->data->icon = $toko->t_icon;
         } else {
             $this->data->brandname = 'No Name';
             $this->data->instagram = '';
             $this->data->facebook = '';
+            $this->data->logo = '';
+            $this->data->icon = '';
         }
 
 
