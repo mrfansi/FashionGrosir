@@ -22,7 +22,7 @@
             <?php foreach ($pop_carts as $pop_cart): ?>
                 <tr>
                     <td>
-                        <?php if ($item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode) == NULL): ?>
+                        <?php if ($item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode) != NULL): ?>
                             <img src="<?= base_url('upload/' . $item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode)->ii_nama); ?>"
                         <?php else: ?>
                             <img src="<?= base_url('assets/img/noimg.png'); ?>"

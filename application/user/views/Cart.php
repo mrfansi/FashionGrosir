@@ -147,10 +147,14 @@ include "layout/Menu.php";
                                         <div class="media">
                                             <?php if ($item_detil($cart->item_detil_kode)->item->i_kode): ?>
                                                 <?php $item_kode = $item_detil($cart->item_detil_kode)->item->i_kode; ?>
-                                                <?php if ($item_img($item_kode)->ii_nama): ?>
+                                                <?php if ($item_img($item_kode) != NULL): ?>
                                                     <img class="mr-3"
                                                          src="<?= base_url('upload/' . $item_img($item_kode)->ii_nama); ?>"
                                                          alt="<?= $item_img($item_kode)->ii_nama; ?>">
+                                                <?php else: ?>
+                                                    <img class="mr-3"
+                                                         src="<?= base_url('assets/img/noimg.png'); ?>"
+                                                         alt="noimg.png">
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                             <div class="media-body mb-3">

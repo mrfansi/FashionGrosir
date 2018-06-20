@@ -61,10 +61,10 @@ class Resi extends MY_Controller
         $id = $this->input->post('id');
 
         // get user from database where guid
-        $artikel = $this->artikel->where_ar_kode($id)->get();
+        $artikel = $this->artikel->where_artikel_kode($id)->get();
 
         if ($artikel) {
-            $artikel = $this->artikel->where_ar_kode($id)->update(array(
+            $artikel = $this->artikel->where_artikel_kode($id)->update(array(
                 'artikel_judul' => $this->input->post('judul'),
                 'artikel_content' => $this->input->post('content'),
                 'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),

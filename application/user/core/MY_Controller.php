@@ -161,9 +161,15 @@ class MY_Controller extends CI_Controller
         };
 
         $this->data->item_img = function ($i_kode) {
-            return $this->item_img
+            $hasil = $this->item_img
                 ->where(array('i_kode' => $i_kode, 'ii_default' => 1))
                 ->get();
+
+            if ($hasil) {
+                return $hasil;
+            } else {
+                return NULL;
+            }
         };
 
         $this->data->item_img_all = function ($i_kode) {
