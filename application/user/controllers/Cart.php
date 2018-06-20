@@ -89,23 +89,33 @@ class Cart extends MY_Controller
         $p_kode = $_SESSION['id'];
         $carts = $this->cart->where_pengguna_kode($p_kode)->get_all();
         $noid = date('ymd') . (int)$this->order->count_rows() + 1;
-        $this->order->insert(array(
-            'orders_noid' => $noid,
-            'pengguna_kode' => $p_kode
-        ));
 
-        foreach ($carts as $cart) {
-            $this->order_detil->insert(array(
-                'orders_detil_qty' => (int)$cart->ca_qty,
-                'orders_detil_harga' => (int)$cart->ca_harga,
-                'orders_detil_tharga' => (int)$cart->ca_tharga,
+        if ($carts) {
+
+            $this->order->insert(array(
                 'orders_noid' => $noid,
-                'item_detil_kode' => $cart->item_detil_kode
+                'pengguna_kode' => $p_kode
             ));
 
+            foreach ($carts as $cart) {
+                $this->order_detil->insert(array(
+                    'orders_detil_qty' => (int)$cart->ca_qty,
+                    'orders_detil_harga' => (int)$cart->ca_harga,
+                    'orders_detil_tharga' => (int)$cart->ca_tharga,
+                    'orders_noid' => $noid,
+                    'item_detil_kode' => $cart->item_detil_kode
+                ));
+
+            }
+            $this->cart->where_pengguna_kode($p_kode)->delete();
+            redirect('checkout/' . $noid . '/alamat_pengiriman');
+        } else {
+            $this->data->gagal = 'Tidak ada item didalam keranjang.';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+            redirect('cart');
         }
-        $this->cart->where_pengguna_kode($p_kode)->delete();
-        redirect('checkout/' . $noid .'/alamat_pengiriman');
+
+
     }
 
 
