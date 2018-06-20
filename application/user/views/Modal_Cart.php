@@ -24,6 +24,7 @@
                     <td>
                         <?php if ($item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode) != NULL): ?>
                             <img src="<?= base_url('upload/' . $item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode)->ii_nama); ?>"
+                                 width="50" height="50">
                         <?php else: ?>
                             <img src="<?= base_url('assets/img/noimg.png'); ?>"
                                  alt="" width="50" height="50">

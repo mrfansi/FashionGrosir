@@ -34,21 +34,33 @@ class Cart extends MY_Controller
 
         $cart = $this->cart->where_item_detil_kode($ide_kode)->get();
         if ($cart) {
-            $cart = $this->cart->where_item_detil_kode($ide_kode)->update(array(
-                'ca_qty' => (int)$cart->ca_qty + (int)$this->input->post('qty'),
+            $qty_exist = (int)$cart->ca_qty;
+            $qty_new = (int)$this->input->post('qty');
+
+            $cart_update = $this->cart->where_item_detil_kode($ide_kode)->update(array(
+                'ca_qty' => $qty_exist + $qty_new,
                 'ca_harga' => (int)$this->input->post('harga'),
                 'ca_tharga' => ((int)$cart->ca_qty + (int)$this->input->post('qty')) * (int)$this->input->post('harga'),
                 'pengguna_kode' => $_SESSION['id']
             ));
 
-            if ($cart) {
-                $this->data->berhasil = 'Berhasil menambah item ke keranjanng';
+            $qty_exist = -1 * abs($qty_exist);
+            $qty_new = -1 * abs($qty_new);
+
+            $item_qty_update = $this->item_qty->insert(array(
+                'iq_kode' => $this->item_qty->guid(),
+                'iq_qty' => $qty_new,
+                'item_detil_kode' => $cart->item_detil_kode
+            ));
+
+            if ($cart_update && $item_qty_update) {
+                $this->data->berhasil = 'Berhasil menambah item kedalam keranjang';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
                 $this->session->set_flashdata('modal', '1');
                 redirect('/');
             }
         } else {
-            $cart = $this->cart->insert(array(
+            $cart_insert = $this->cart->insert(array(
                 'ca_kode' => $this->cart->guid(),
                 'ca_qty' => (int)$this->input->post('qty'),
                 'ca_harga' => (int)$this->input->post('harga'),
@@ -57,8 +69,14 @@ class Cart extends MY_Controller
                 'pengguna_kode' => $_SESSION['id']
             ));
 
-            if ($cart) {
-                $this->data->berhasil = 'Berhasil menambah item ke keranjanng';
+            $item_qty_update = $this->item_qty->insert(array(
+                'iq_kode' => $this->item_qty->guid(),
+                'iq_qty' => -(int)$this->input->post('qty'),
+                'item_detil_kode' => $ide_kode
+            ));
+
+            if ($cart_insert && $item_qty_update) {
+                $this->data->berhasil = 'Berhasil menambah item kedalam keranjang';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
                 $this->session->set_flashdata('modal', '1');
                 redirect('/');
@@ -85,12 +103,6 @@ class Cart extends MY_Controller
                 'item_detil_kode' => $cart->item_detil_kode
             ));
 
-            $this->item_qty->insert(array(
-                'iq_kode' => $this->item_qty->guid(),
-                'iq_qty' => -(int)$cart->ca_qty,
-                'item_detil_kode' => $cart->item_detil_kode
-            ));
-
         }
         $this->cart->where_pengguna_kode($p_kode)->delete();
         redirect('checkout/' . $noid .'/alamat_pengiriman');
@@ -102,8 +114,15 @@ class Cart extends MY_Controller
         $cart = $this->cart->where_ca_kode($ca_kode)->get();
 
         if ($cart) {
-            $cart = $this->cart->where_ca_kode($ca_kode)->delete();
-            if ($cart) {
+
+            $item_qty_update = $this->item_qty->insert(array(
+                'iq_kode' => $this->item_qty->guid(),
+                'iq_qty' => $cart->ca_qty,
+                'item_detil_kode' => $cart->item_detil_kode
+            ));
+
+            $cart_delete = $this->cart->where_ca_kode($ca_kode)->delete();
+            if ($item_qty_update && $cart_delete) {
                 $this->data->berhasil = 'Item berhasil dihapus.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
