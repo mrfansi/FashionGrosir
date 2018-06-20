@@ -48,6 +48,20 @@ class Order_m extends MY_Model
         return $query->result();
     }
 
+    public function select_orders_users($id)
+    {
+        $query = $this->db->query("SELECT orders.orders_noid, orders.created_at, orders.orders_status, orders.orders_deskripsi, pengguna.pengguna_nama, SUM(orders_detil.orders_detil_tharga) total
+                                    FROM orders
+                                    INNER JOIN pengguna
+                                    ON orders.pengguna_kode = pengguna.pengguna_kode
+                                    LEFT JOIN orders_detil
+                                    ON orders.orders_noid = orders_detil.orders_noid
+                                    WHERE pengguna.pengguna_kode = '$id'
+                                    GROUP BY orders.orders_noid;");
+
+        return $query->result();
+    }
+
     public function select_orders_where($status)
     {
         $query = $this->db->query("SELECT orders.orders_noid, orders.orders_status, pengguna.pengguna_nama, SUM(orders_detil.orders_detil_tharga) total
