@@ -65,8 +65,6 @@ class Seri extends MY_Controller
             redirect('seri');
         }
 
-        // create object
-
         // get guid form post
         $id = $this->input->post('id');
 
@@ -74,10 +72,10 @@ class Seri extends MY_Controller
         $seri = $this->seri->where_s_kode($id)->get();
 
         if ($seri) {
-            $seri = $this->seri->where_s_kode($id)->update(array(
-                's_nama' => $this->input->post('nama'),
+            $seri = $this->seri->update(array(
+                's_kode' => $id,
                 's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            ));
+            ), 's_kode');
             if ($seri) {
                 $this->data->berhasil = 'Nomor Seri berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);

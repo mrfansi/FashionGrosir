@@ -149,10 +149,11 @@ class Order extends MY_Controller
 
     public function proses($id)
     {
-        $order = $this->order->where_orders_noid($id)->update(
+        $order = $this->order->update(
             array(
+                'orders_noid' => $id,
                 'orders_status' => 5
-            )
+            ), 'orders_noid'
         );
 
         if ($order) {
@@ -171,11 +172,14 @@ class Order extends MY_Controller
     public function batal($id)
     {
         $text = $this->input->post('alasan');
-        $order = $this->order->where_orders_noid($id)->update(
+
+        $order = $this->order->update(
             array(
+                'orders_noid' => $id,
                 'orders_status' => 7,
                 'orders_deskripsi'   => $text
-            )
+
+            ), 'orders_noid'
         );
 
         if ($order) {

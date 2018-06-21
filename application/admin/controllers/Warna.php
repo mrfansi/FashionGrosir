@@ -56,7 +56,7 @@ class Warna extends MY_Controller
 
     public function simpan()
     {
-        $this->form_validation->set_rules('nama','Warna','is_unique[warna.w_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
+        $this->form_validation->set_rules('nama', 'Warna', 'is_unique[warna.w_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
 
         if ($this->form_validation->run() === FALSE) {
             $this->data->gagal = validation_errors();
@@ -72,10 +72,10 @@ class Warna extends MY_Controller
         $warna = $this->warna->where_w_kode($id)->get();
 
         if ($warna) {
-            $warna = $this->warna->where_w_kode($id)->update(array(
-                'w_nama' => $this->input->post('nama'),
+            $warna = $this->warna->update(array(
+                'w_kode' => $id,
                 'w_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            ));
+            ), 'w_kode');
             if ($warna) {
                 $this->data->berhasil = 'Data Warna berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
@@ -110,15 +110,12 @@ class Warna extends MY_Controller
     public function hapus($id)
     {
         $item_detil = $this->item_detil->where('w_kode', $id)->get();
-        if ($item_detil)
-        {
+        if ($item_detil) {
             $this->data->gagal = 'Warna ini tidak boleh dihapus karena masih digunakan.';
             $this->session->set_flashdata('gagal', $this->data->gagal);
 
             redirect('warna');
-        }
-        else
-        {
+        } else {
             $warna = $this->warna->where('w_kode', $id)->delete();
             if ($warna) {
                 $this->data->berhasil = 'Data Warna berhasil dihapus';

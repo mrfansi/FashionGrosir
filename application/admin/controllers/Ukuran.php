@@ -76,7 +76,6 @@ class Ukuran extends MY_Controller
         if ($ukuran) {
             $ukuran = $this->ukuran->update(array(
                 'u_kode' => $id,
-                'u_nama' => $this->input->post('nama'),
                 'u_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ), 'u_kode');
             if ($ukuran) {
