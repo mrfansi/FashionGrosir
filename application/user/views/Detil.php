@@ -130,7 +130,7 @@ include "layout/Menu.php";
                         <p tooltip title="<?= $hot->i_deskripsi; ?>" id="title"><?= $hot->i_deskripsi; ?></p>
                         <hr class="line">
                         <div class="row">
-                            <div class="col-md-7 col-sm-7">
+                            <div class="col-md-7 col-sm-7 mb-2 mb-sm-0">
                                 <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
                                     <p id="rupiah" class="mt-1 price"><?= $hot->i_hrg_vip; ?></p>
                                 <?php else: ?>
@@ -179,3 +179,5 @@ include "layout/Menu.php";
 <?php
 include "layout/Footer.php";
 ?>
+
+
