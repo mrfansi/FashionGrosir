@@ -96,7 +96,7 @@ class Item extends MY_Controller
             $this->data->gagal = validation_errors();
             $this->session->set_flashdata('gagal', $this->data->gagal);
             redirect('item');
-        } else if (preg_match('/\s/', $this->input->post('deskripsi'))) {
+        } else if (!preg_match('/\s/', $this->input->post('deskripsi'))) {
             $this->data->gagal = 'Karakter harus mempunyai spasi';
             $this->session->set_flashdata('gagal', $this->data->gagal);
             redirect('item');
