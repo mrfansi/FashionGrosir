@@ -76,7 +76,12 @@ class Ongkir_transfer extends MY_Controller
             $hasil = $item_berat * $item_qty;
         }
 
-        return $hasil;
+        if ($hasil > 2899) {
+            return $hasil = 2899;
+        } else {
+            return $hasil;
+        }
+
     }
 
     public function simpan()

@@ -97,7 +97,8 @@ if ($submit == 'Ubah') {
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="berat">Berat / Gr</label>
-                                <input type="number" class="form-control" min="1" name="berat" placeholder="Berat"
+                                <input type="number" class="form-control" min="1" max="1000" name="berat"
+                                       placeholder="Berat"
                                        value="<?= $hrg_reseller; ?>" required>
                             </div>
                         </div>

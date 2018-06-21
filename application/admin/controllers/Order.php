@@ -182,17 +182,28 @@ class Order extends MY_Controller
             ), 'orders_noid'
         );
 
-        if ($order) {
-            $this->data->berhasil = 'Order telah berhasil dibatalkan';
-            $this->session->set_flashdata('berhasil', $this->data->berhasil);
+        $order_detil = $this->order_detil->where('orders_noid', $id)->get();
 
-            redirect('order');
-        } else {
-            $this->data->gagal = 'Order telah gagal dibatalkan';
-            $this->session->set_flashdata('gagal', $this->data->gagal);
+        if ($order_detil && $order) {
+            $item_qty_update = $this->item_qty->insert(array(
+                'iq_kode' => $this->item_qty->guid(),
+                'iq_qty' => $order_detil->orders_detil_qty,
+                'item_detil_kode' => $order_detil->item_detil_kode
+            ));
+            if ($item_qty_update) {
+                $this->data->berhasil = 'Order telah berhasil dibatalkan';
+                $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-            redirect('order');
+                redirect('order');
+            } else {
+                $this->data->gagal = 'Order telah gagal dibatalkan';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('order');
+            }
         }
+
+
     }
 
     public function resi($id)
