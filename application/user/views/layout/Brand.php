@@ -45,10 +45,12 @@
 <!-- Header -->
 <div class="container mt-5 mt-sm-3 mt-md-2 mt-lg-0">
     <nav class="navbar navbar-expand-lg text-sm-center">
-        <a class="navbar-brand" href="<?= site_url('/'); ?>">
-            <img src="<?= base_url('upload/' . $logo); ?>" width="150" height="80" class="d-inline-block align-top"
-                 alt="">
-        </a>
+        <div class="m-auto">
+            <a class="navbar-brand" href="<?= site_url('/'); ?>">
+                <img src="<?= base_url('upload/' . $logo); ?>" width="150" height="80" class="d-inline-block align-top"
+                     alt="">
+            </a>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
