@@ -67,11 +67,12 @@ class Kategori extends MY_Controller
         $kategori = $this->kategori->where('k_kode', $id)->get();
 
         if ($kategori) {
-            $kategori = $this->kategori->where('k_kode', $id)->update(array(
+            $kategori = $this->kategori->update(array(
+                'k_kode' => $id,
                 'k_parent_kode' => $this->input->post('parent'),
                 'k_nama' => $this->input->post('nama'),
                 'k_url'  => $this->slug->create_uri(array('title' => $this->input->post('nama')))
-            ));
+            ), 'k_kode');
             if ($kategori) {
                 $this->data->berhasil = 'Data Kategori berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);

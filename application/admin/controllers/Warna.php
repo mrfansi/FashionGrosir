@@ -74,6 +74,7 @@ class Warna extends MY_Controller
         if ($warna) {
             $warna = $this->warna->update(array(
                 'w_kode' => $id,
+                'w_nama' => $this->input->post('nama'),
                 'w_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ), 'w_kode');
             if ($warna) {

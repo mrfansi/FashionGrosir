@@ -69,6 +69,7 @@ class Seri extends MY_Controller
         if ($seri) {
             $seri = $this->seri->update(array(
                 's_kode' => $id,
+                's_nama' => $this->input->post('nama'),
                 's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ), 's_kode');
             if ($seri) {
