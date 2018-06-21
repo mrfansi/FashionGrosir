@@ -72,7 +72,7 @@
 </div>
 <hr>
 <div class="row small">
-    <div class="col">
+    <div class="col mb-1">
         <a href="<?= site_url('/'); ?>" class="btn btn-sm btn-primary r-btn-pink btn-block">Lanjutkan Belanja</a>
     </div>
     <div class="col">
