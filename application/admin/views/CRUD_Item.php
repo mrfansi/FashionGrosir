@@ -81,14 +81,15 @@ if ($submit == 'Ubah') {
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="hrg_vip">Harga VIP</label>
-                                <input type="number" class="form-control" name="hrg_vip" placeholder="Input Hrg VIP"
+                                <input type="number" class="form-control" min="1000" name="hrg_vip"
+                                       placeholder="Input Hrg VIP"
                                        value="<?= $hrg_vip; ?>" required>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="hrg_reseller">Harga Reseller</label>
-                                <input type="number" class="form-control" name="hrg_reseller"
+                                <input type="number" class="form-control" min="1000" name="hrg_reseller"
                                        placeholder="Input Hrg Reseller"
                                        value="<?= $hrg_reseller; ?>" required>
                             </div>
@@ -96,7 +97,7 @@ if ($submit == 'Ubah') {
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="berat">Berat / Gr</label>
-                                <input type="number" class="form-control" name="berat" placeholder="Berat"
+                                <input type="number" class="form-control" min="1" name="berat" placeholder="Berat"
                                        value="<?= $hrg_reseller; ?>" required>
                             </div>
                         </div>
@@ -144,7 +145,7 @@ if ($submit == 'Ubah') {
                         </td>
                         <td>
                             <select name="seri[]" id="seri" class="form-control small">
-                                <option value="0">None</option>
+                                <option value="" disabled>Pilih Seri</option>
                                 <?php foreach ($this->seri->get_all() as $katseri): ?>
                                     <option value="<?= $katseri->s_kode; ?>"><?= $katseri->s_nama; ?></option>
                                 <?php endforeach; ?>
@@ -183,13 +184,22 @@ if ($submit == 'Ubah') {
         var $table = $('#tabel').find("tbody");
 
         $('#baru_detil').click(function () {
+            var $warna = $('[id="warna"]'),
+                $ukuran = $('[id="ukuran"]'),
+                $seri = $('[id="seri"]');
+
             var $trLast = $table.find("tr:last"),
                 $trNew = $trLast.clone();
 
-            $trLast.after($trNew);
+            $('option', $trNew.find('select#warna')).filter(function (i) {
+                return $warna.find('option:selected[value="' + $(this).val() + '"]').length;
+            }).remove();
 
-            var counter = parseInt($('#counter').val());
-            $('#counter').val(counter + 1);
+            if ($trLast.find('select#warna option').length !== 2) {
+                $trLast.after($trNew);
+                var counter = parseInt($('#counter').val());
+                $('#counter').val(counter + 1);
+            }
 
         });
 
@@ -200,6 +210,7 @@ if ($submit == 'Ubah') {
                     .find('input, select')
                     .attr('disabled', false);
                 $data.closest('tr').remove();
+                $('#counter').val(counter - 1);
             }
         }
     </script>

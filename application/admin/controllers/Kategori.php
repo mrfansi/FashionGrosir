@@ -71,7 +71,7 @@ class Kategori extends MY_Controller
         $id = $this->input->post('id');
 
         // get user from database where guid
-        $kategori = $this->kategori->where_k_kode($id)->get();
+        $kategori = $this->kategori->where('k_kode', $id)->get();
 
         if ($kategori) {
             $kategori = $this->kategori->where_k_kode($id)->update(array(

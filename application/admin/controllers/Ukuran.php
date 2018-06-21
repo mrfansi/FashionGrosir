@@ -57,7 +57,7 @@ class Ukuran extends MY_Controller
 
     public function simpan()
     {
-        $this->form_validation->set_rules('nama','Ukuran','is_unique[ukuran.u_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
+        $this->form_validation->set_rules('nama', 'Ukuran', 'is_unique[ukuran.u_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
 
         if ($this->form_validation->run() === FALSE) {
             $this->data->gagal = validation_errors();
@@ -71,13 +71,14 @@ class Ukuran extends MY_Controller
         $id = $this->input->post('id');
 
         // get user from database where guid
-        $ukuran = $this->ukuran->where_u_kode($id)->get();
+        $ukuran = $this->ukuran->where('u_kode', $id)->get();
 
         if ($ukuran) {
-            $ukuran = $this->ukuran->where_u_kode($id)->update(array(
+            $ukuran = $this->ukuran->update(array(
+                'u_kode' => $id,
                 'u_nama' => $this->input->post('nama'),
                 'u_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            ));
+            ), 'u_kode');
             if ($ukuran) {
                 $this->data->berhasil = 'Data Ukuran berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
@@ -91,7 +92,7 @@ class Ukuran extends MY_Controller
             }
         } else {
             $ukuran = $this->ukuran->insert(array(
-                'u_kode' => $this->input->post('id'),
+                'u_kode' => $id,
                 'u_nama' => $this->input->post('nama'),
                 'u_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
             ));

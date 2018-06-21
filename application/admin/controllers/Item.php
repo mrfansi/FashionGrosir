@@ -91,24 +91,29 @@ class Item extends MY_Controller
 
     public function simpan()
     {
-        // create object
-
+        $this->form_validation->set_rules('nama', 'Item', 'is_unique[item.i_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
+        if ($this->form_validation->run() === FALSE) {
+            $this->data->gagal = validation_errors();
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+            redirect('item');
+        }
         // get guid form post
         $id = $this->input->post('id');
         $counter = (int)$this->input->post('counter');
 
         // get user from database where guid
-        $item = $this->item->where_i_kode($id)->get();
+        $item = $this->item->where('i_kode', $id)->get();
 
         if ($item) {
-            $item_update = $this->item->where_i_kode($id)->update(array(
+            $item_update = $this->item->update(array(
+                'i_kode' => $id,
                 'i_nama' => $this->input->post('nama'),
                 'i_hrg_vip' => $this->input->post('hrg_vip'),
                 'i_hrg_reseller' => $this->input->post('hrg_reseller'),
                 'i_berat' => $this->input->post('berat'),
                 'i_deskripsi' => $this->input->post('deskripsi'),
                 'i_url'     => $this->slug->create_uri(array('title' => $this->input->post('nama')))
-            ));
+            ), 'i_kode');
 
             $this->item_kategori->where('i_kode', $id)->delete();
 
