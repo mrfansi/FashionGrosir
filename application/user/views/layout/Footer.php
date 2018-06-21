@@ -88,8 +88,8 @@
         </div>
     </div>
 </div>
-<div class="container-fluid text-center clear-footer" role="alert">
-    &copy; Copyright <?= $brandname; ?> 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
+<div class="container-fluid text-center clear-footer f-foot-m" role="alert">
+    &copy; <?= $brandname; ?> 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
     <!-- <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-love"></i></a> -->
 </div>
 

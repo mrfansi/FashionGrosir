@@ -120,6 +120,9 @@ h1, h2, h3, h4, h5 {
     .f-media-right {
         float: right;
     }
+    .f-foot-m {
+        font-size: 0.7rem;
+    }
 
 }
 
@@ -132,7 +135,8 @@ h1, h2, h3, h4, h5 {
     }
     .f-brand-cos {
         color: #F06292;
-        margin-top: -5px;
+        margin-top: 5px;
+        line-height: 20px;
     }
 }
 
@@ -171,6 +175,10 @@ h1, h2, h3, h4, h5 {
 
 .f-logo {
     margin-left: 10px;
+}
+
+.f-width-full {
+    width: 100% !important;
 }
 
 .f-nav {

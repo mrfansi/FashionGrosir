@@ -119,31 +119,31 @@ include "layout/Menu.php";
                     <div class="row f-text-hidden">
                         <div class="col-lg-12 col-md-12">
                             <div class="row">
-                                <div class="col-lg-4 col-md-7">
+                                <div class="col-lg-5 col-md-5">
                                     <h6>Item : <?= $this->cart->where_pengguna_kode($_SESSION['id'])->count_rows(); ?>
                                         Produk</h6>
                                 </div>
-                                <div class="col-lg-2 col-md-2">
-                                    <h6>Warna</h6>
+                                <div class="col-md-2">
+                                    <h6 class="text-center">Warna</h6>
                                 </div>
-                                <div class="col-lg-2 col-md-2">
+                                <div class="col-md-1 p-md-0" style="min-width: 80px;">
                                     <h6>Ukuran</h6>
                                 </div>
-                                <div class="col-lg-1 col-md-2">
+                                <div class="col-md-1 p-md-0">
                                     <h6>QTY</h6>
                                 </div>
-                                <div class="col-lg-2 col-md-2">
+                                <div class="col-md-1 p-md-0">
                                     <h6>Total</h6>
                                 </div>
                             </div>
                         </div>
-
                     </div>
+
                     <?php if ($cart_s($_SESSION['id']) != NULL): ?>
                         <?php foreach ($cart_s($_SESSION['id']) as $cart): ?>
                             <div class="border f-border-padding">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-7">
+                                    <div class="col-lg-5 col-md-5">
                                         <div class="media">
                                             <?php if ($item_detil($cart->item_detil_kode)->item->i_kode): ?>
                                                 <?php $item_kode = $item_detil($cart->item_detil_kode)->item->i_kode; ?>
@@ -163,13 +163,13 @@ include "layout/Menu.php";
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-2">
-                                        <p><?= $item_detil($cart->item_detil_kode)->warna->w_nama; ?></p>
+                                    <div class="col-md-2">
+                                        <p class="text-md-center"><?= $item_detil($cart->item_detil_kode)->warna->w_nama; ?></p>
                                     </div>
-                                    <div class="col-lg-2 col-md-2">
+                                    <div class="col-md-1">
                                         <p><?= $item_detil($cart->item_detil_kode)->ukuran->u_nama; ?></p>
                                     </div>
-                                    <div class="col-lg-1 col-md-2">
+                                    <div class="col-md-1">
                                         <p>x <?= $cart->ca_qty; ?></p>
                                     </div>
                                     <div class="col-md-2">

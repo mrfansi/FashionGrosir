@@ -55,10 +55,10 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="row">
-                <div class="col-8 col-sm-8">
+            <div class="row f-width-full"">
+                <div class="col-10">
                     <form class="form-inline my-2 my-lg-0" action="<?= site_url('cari'); ?>" method="get">
-                        <div class="input-group">
+                        <div class="input-group f-width-full"">
                             <input class="form-control" type="text" placeholder="Cari Produk"
                                    aria-label="Search" id="cari" name="cari" autocomplete="off">
                             <div class="input-group-addon">
@@ -70,7 +70,7 @@
                     </form>
                 </div>
 
-                <div class="col-4 col-sm-4">
+                <div class="col-2">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <button class="btn btn-primary r-btn-pink my-2 my-sm-0" tabindex="0" class="nav-link"

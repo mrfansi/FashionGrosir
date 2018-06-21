@@ -29,7 +29,7 @@ include "layout/Slide.php";
                                     <img class="img-fluid" src="<?= base_url('assets/img/noimg.png'); ?>"
                                          alt="No Image">
                                 <?php endif; ?>
-                                <h4 id="title"><?= $terbaru->i_nama; ?></h4>
+                                <h4 id="title" class="mt-2"><?= $terbaru->i_nama; ?></h4>
                                 <div class="ratings">
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
@@ -37,9 +37,9 @@ include "layout/Slide.php";
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star-empty"></span>
                                 </div>
-                                <p tooltip title="<?= $terbaru->i_deskripsi; ?>"
+                                <p tooltip class="" title="<?= $terbaru->i_deskripsi; ?>"
                                    id="title"><?= $terbaru->i_deskripsi; ?></p>
-                                <hr class="line">
+                                <hr class="mb-2 mt-0">
                                 <div class="row">
                                     <div class="col-6 col-md-6 col-sm-6">
                                         <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>

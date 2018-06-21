@@ -111,7 +111,7 @@ include "layout/Menu.php";
         <h5>Hot Item</h5>
         <div class="row">
             <?php foreach ($this->item->with_item_img('where:ii_default =1')->limit(5)->get_all() as $hot): ?>
-                <div class="col-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="col-12 col-sm-3 col-md-3 col-lg-3 mb-3">
                     <div class="thumbnail">
                         <?php if ($item_img($hot->i_kode) != NULL): ?>
                             <img class="img-fluid" src="<?= base_url('upload/' . $item_img($hot->i_kode)->ii_nama); ?>"
@@ -119,7 +119,7 @@ include "layout/Menu.php";
                         <?php else: ?>
                             <img class="img-fluid" src="<?= base_url('assets/img/noimg.png'); ?>" alt="No Image">
                         <?php endif; ?>
-                        <h4 id="title"><?= $hot->i_nama; ?></h4>
+                        <h4 id="title" class="mt-2"><?= $hot->i_nama; ?></h4>
                         <div class="ratings">
                             <span class="glyphicon glyphicon-star"></span>
                             <span class="glyphicon glyphicon-star"></span>
@@ -130,7 +130,7 @@ include "layout/Menu.php";
                         <p tooltip title="<?= $hot->i_deskripsi; ?>" id="title"><?= $hot->i_deskripsi; ?></p>
                         <hr class="line">
                         <div class="row">
-                            <div class="col-md-7 col-sm-7">
+                            <div class="col-md-7 col-sm-7 mb-2 mb-sm-0">
                                 <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
                                     <p id="rupiah" class="mt-1 price"><?= $hot->i_hrg_vip; ?></p>
                                 <?php else: ?>
@@ -179,3 +179,5 @@ include "layout/Menu.php";
 <?php
 include "layout/Footer.php";
 ?>
+
+
