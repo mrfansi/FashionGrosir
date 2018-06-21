@@ -88,6 +88,12 @@ class Warna extends MY_Controller
                 redirect('warna');
             }
         } else {
+            if ($this->form_validation->run() === FALSE) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('warna');
+            }
             $warna = $this->warna->insert(array(
                 'w_kode' => $this->input->post('id'),
                 'w_nama' => $this->input->post('nama'),

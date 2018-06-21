@@ -92,15 +92,7 @@ class Item extends MY_Controller
     public function simpan()
     {
         $this->form_validation->set_rules('nama', 'Item', 'is_unique[item.i_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
-        if ($this->form_validation->run() === FALSE) {
-            $this->data->gagal = validation_errors();
-            $this->session->set_flashdata('gagal', $this->data->gagal);
-            redirect('item');
-        } else if (!preg_match('/\s/', $this->input->post('deskripsi'))) {
-            $this->data->gagal = 'Karakter harus mempunyai spasi';
-            $this->session->set_flashdata('gagal', $this->data->gagal);
-            redirect('item');
-        }
+
         // get guid form post
         $id = $this->input->post('id');
         $counter = (int)$this->input->post('counter');
@@ -110,8 +102,15 @@ class Item extends MY_Controller
 
         // item
         if ($item) {
+            if (!preg_match('/\s/', $this->input->post('deskripsi'))) {
+                $this->data->gagal = 'Karakter harus mempunyai spasi';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+                redirect('item');
+            }
+
             $item_update = $this->item->update(array(
                 'i_kode' => $id,
+                'i_nama' => $this->input->post('nama'),
                 'i_hrg_vip' => $this->input->post('hrg_vip'),
                 'i_hrg_reseller' => $this->input->post('hrg_reseller'),
                 'i_berat' => $this->input->post('berat'),
@@ -141,6 +140,17 @@ class Item extends MY_Controller
                 redirect('item');
             }
         } else {
+
+            if ($this->form_validation->run() === FALSE) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+                redirect('item');
+            } else if (!preg_match('/\s/', $this->input->post('deskripsi'))) {
+                $this->data->gagal = 'Karakter harus mempunyai spasi';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+                redirect('item');
+            }
+
             $item = $this->item->insert(array(
                 'i_kode' => $this->input->post('id'),
                 'i_nama' => $this->input->post('nama'),
