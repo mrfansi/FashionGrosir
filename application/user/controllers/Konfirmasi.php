@@ -85,6 +85,13 @@ class Konfirmasi extends MY_Controller
             $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
             return (int)$ongkir->orders_ongkir_biaya;
         };
+
+        if ($this->data->orders->orders_status == 7) {
+            $this->data->gagal = 'Order tidak ada atau telah dibatalkan.';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+            redirect('/');
+        }
+
         $this->load->view('Konfirmasi', $this->data);
     }
 

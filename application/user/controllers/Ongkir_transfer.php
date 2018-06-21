@@ -32,6 +32,13 @@ class Ongkir_transfer extends MY_Controller
         };
 
         $this->data->pengiriman = $this->get_biaya($order)->rajaongkir->results;
+
+        if ($this->data->orders->orders_status == 7) {
+            $this->data->gagal = 'Order tidak ada atau telah dibatalkan.';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+            redirect('/');
+        }
+
         $this->load->view('Ongkir_transfer', $this->data);
     }
 
