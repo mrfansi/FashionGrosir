@@ -104,7 +104,7 @@
                                                 class="align-middle">
                                             <div class="btn-group btn-group-sm" role="group">
                                                 <button id="itembtn" type="button"
-                                                        class="btn btn-sm btn-primary dropdown-toggle"
+                                                        class="btn btn-xs btn-primary dropdown-toggle"
                                                         data-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false">
                                                     Item
@@ -195,7 +195,7 @@
                                                 <td class="align-middle">
                                                     <div class="btn-group btn-group-sm" role="group">
                                                         <button id="opsi" type="button"
-                                                                class="btn btn-sm btn-primary dropdown-toggle"
+                                                                class="btn btn-xs btn-primary dropdown-toggle"
                                                                 data-toggle="dropdown" aria-haspopup="true"
                                                                 aria-expanded="false">
                                                             Opsi
@@ -231,7 +231,7 @@
                                             <td class="align-middle">
                                                 <div class="btn-group btn-group-sm" role="group">
                                                     <button id="toko" type="button"
-                                                            class="btn btn-sm btn-primary dropdown-toggle"
+                                                            class="btn btn-xs btn-primary dropdown-toggle"
                                                             data-toggle="dropdown" aria-haspopup="true"
                                                             aria-expanded="false">
                                                         Opsi

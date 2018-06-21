@@ -84,14 +84,14 @@
                                         <td id="rupiah"><?= $order->total; ?></td>
                                         <td>
                                             <?php if ($order->orders_status == 3): ?>
-                                                <a class="btn btn-sm btn-primary" data-toggle="modal" href="#"
+                                                <a class="btn btn-xs btn-primary" data-toggle="modal" href="#"
                                                    onclick="konfirmasi($(this))" data-target="#konfirmasi"
                                                    data-id="<?= $order->orders_noid; ?>">Konfirmasi <?= $title_page; ?>
                                                 </a>
                                             <?php endif; ?>
 
                                             <?php if ($order->orders_status == 4): ?>
-                                                <a class="btn btn-sm btn-primary" <?= $order->orders_status == 4 ? '' : 'disabled'; ?>
+                                                <a class="btn btn-xs btn-primary" <?= $order->orders_status == 4 ? '' : 'disabled'; ?>
                                                    data-toggle="modal" href="#"
                                                    onclick="proses($(this))" data-target="#konfirmasi"
                                                    data-id="<?= $order->orders_noid; ?>">Proses <?= $title_page; ?>
@@ -99,7 +99,7 @@
                                             <?php endif; ?>
 
                                             <?php if ($order->orders_status == 5): ?>
-                                                <a class="btn btn-sm btn-primary" data-toggle="modal"
+                                                <a class="btn btn-xs btn-primary" data-toggle="modal"
                                                    title="Konfirmasi Pengiriman" href="#"
                                                    onclick="pengiriman($(this))" data-target="#crud"
                                                    data-backdrop="static" data-keyboard="false"
@@ -108,7 +108,7 @@
                                                 </a>
                                             <?php endif; ?>
                                             <?php if ($order->orders_status != 7 && $order->orders_status < 5): ?>
-                                                <a class="btn btn-sm btn-danger"
+                                                <a class="btn btn-xs btn-danger"
                                                    data-toggle="modal"
                                                    data-target="#batal"
                                                    data-url="<?= site_url('order/batal/' . $order->orders_noid); ?>"

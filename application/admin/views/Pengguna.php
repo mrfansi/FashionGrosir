@@ -88,12 +88,14 @@
                                             <td><?= $user->pengguna_ipaddr; ?></td>
                                             <td><?= $user->pengguna_login_terakhir; ?></td>
                                             <td class="text-center">
-                                                <a tooltip data-toggle="modal" title="Ubah User" href="#"
+                                                <a class="btn btn-xs btn-primary" data-toggle="modal" href="#"
                                                    onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                                   data-id="<?= $user->pengguna_kode; ?>"><i class="far fa-edit"></i></a> |
-                                                <a tooltip data-toggle="modal" title="Hapus User" href="#"
+                                                   data-id="<?= $user->pengguna_kode; ?>"><i class="far fa-edit"></i>
+                                                    Ubah</a>
+                                                <a class="btn btn-xs btn-danger" data-toggle="modal" href="#"
                                                    onclick="hapus($(this))" data-target="#hapus"
-                                                   data-id="<?= $user->pengguna_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                                   data-id="<?= $user->pengguna_kode; ?>"><i
+                                                            class="far fa-trash-alt"></i> Hapus</a>
                                             </td>
                                         </tr>
                                     <?php endif; ?>

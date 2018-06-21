@@ -62,21 +62,44 @@
                     <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
                 </div>
                 <div class="card-body">
-                    <?php if ($seris != NULL): ?>
-                        <?php foreach ($seris as $seri): ?>
-                            <div class="btn-group mb-2" role="group" aria-label="Basic example">
-                                <button type="button" class="btn">Seri : <?= $seri->s_nama; ?></button>
-                                <a class="btn btn-sm btn-primary" tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
-                                   href="#"
-                                   onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                   data-id="<?= $seri->s_kode; ?>"><i class="far fa-edit"></i></a>
-                                <a class="btn btn-sm btn-danger" tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
-                                   href="#"
-                                   onclick="hapus($(this))" data-target="#hapus"
-                                   data-id="<?= $seri->s_kode; ?>"><i class="far fa-trash-alt"></i></a>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-borderless">
+                            <thead>
+                            <tr>
+                                <th>Seri</th>
+                                <th>Dibuat pada</th>
+                                <th>Diupdate pada</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if ($seris != NULL): ?>
+                                <?php foreach ($seris as $seri): ?>
+                                    <tr>
+                                        <td><?= $seri->s_nama; ?></td>
+                                        <td><?= $seri->created_at; ?></td>
+                                        <td><?= $seri->updated_at; ?></td>
+                                        <td>
+                                            <a class="btn btn-xs btn-primary" data-toggle="modal"
+                                               title="Ubah <?= $title_page; ?>"
+                                               href="#"
+                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static"
+                                               data-keyboard="false"
+                                               data-id="<?= $seri->s_kode; ?>"><i class="far fa-edit"></i> Ubah</a>
+                                            <a class="btn btn-xs btn-danger" data-toggle="modal"
+                                               title="Hapus <?= $title_page; ?>"
+                                               href="#"
+                                               onclick="hapus($(this))" data-target="#hapus"
+                                               data-id="<?= $seri->s_kode; ?>"><i class="far fa-trash-alt"></i>
+                                                Hapus</a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </table>
+                    </div>
+
+
                 </div>
             </div>
 
