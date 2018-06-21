@@ -108,6 +108,7 @@ class Item extends MY_Controller
         // get user from database where guid
         $item = $this->item->where('i_kode', $id)->get();
 
+        // item
         if ($item) {
             $item_update = $this->item->update(array(
                 'i_kode' => $id,
