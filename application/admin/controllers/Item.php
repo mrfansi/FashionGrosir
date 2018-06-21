@@ -101,7 +101,7 @@ class Item extends MY_Controller
         $item = $this->item->where_i_kode($id)->get();
 
         if ($item) {
-            $item = $this->item->where_i_kode($id)->update(array(
+            $item_update = $this->item->where_i_kode($id)->update(array(
                 'i_nama' => $this->input->post('nama'),
                 'i_hrg_vip' => $this->input->post('hrg_vip'),
                 'i_hrg_reseller' => $this->input->post('hrg_reseller'),
@@ -120,7 +120,7 @@ class Item extends MY_Controller
                 ));
             }
 
-            if ($item && $item_kategori) {
+            if ($item_update && $item_kategori) {
                 $this->data->berhasil = 'Data Item berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 

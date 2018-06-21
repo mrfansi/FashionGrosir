@@ -151,9 +151,6 @@ include "layout/Menu.php";
         </div>
     </div>
     <script>
-        $('[id="title"]').ellipsis();
-    </script>
-    <script>
         $('#wu').change(function () {
             var qty = $(this).find(':selected').data('qty');
             var value = $(this).val();

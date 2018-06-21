@@ -261,11 +261,6 @@ h1, h2, h3, h4, h5 {
     padding: 0.8em;
 }
 
-.form-inline .form-control {
-    min-width: 750px;
-    margin-left: 15px;
-}
-
 input .form-control {
 
 }

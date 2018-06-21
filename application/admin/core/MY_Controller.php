@@ -62,6 +62,18 @@ class MY_Controller extends CI_Controller
             return $this->cart->with_item_detil()->where_pengguna_kode($session_id)->get_all();
         };
 
+        // cek user
+        if (isset($_SESSION['id'])) {
+            $user = $this->pengguna->where('pengguna_kode', $_SESSION['id'])->get();
+            if (!$user) {
+                $this->session->unset_userdata('id');
+                $this->session->unset_userdata('nama');
+                $this->session->unset_userdata('username');
+                $this->session->unset_userdata('isonline');
+            }
+        }
+
+
         $this->callback();
         $this->load_pref();
     }
@@ -195,7 +207,7 @@ class MY_Controller extends CI_Controller
             $this->data->logo = $toko->t_logo;
             $this->data->icon = $toko->t_icon;
         } else {
-            $this->data->brandname = 'No Name';
+            $this->data->brandname = 'E-Commerce Brand';
             $this->data->logo = '';
             $this->data->icon = '';
 

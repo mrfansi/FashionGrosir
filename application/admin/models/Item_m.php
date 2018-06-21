@@ -11,8 +11,8 @@ class Item_m extends MY_Model
     public function __construct()
     {
         $this->table = 'item';
-        $this->primary_key = 'i_id';
-        $this->protected = array('i_id', 'created_at', 'update_at');
+        $this->primary_key = 'i_kode';
+        $this->protected = array('i_kode', 'created_at', 'update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = TRUE;
         $this->has_many['item_detil'] = array(

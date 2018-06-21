@@ -20,11 +20,22 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css'); ?>">
 
     <style>
+        .form-control {
+            border-radius: 0;
+        }
         .form-control:focus {
             background-color: #fff;
             border-color: #258141;
             box-shadow: none;
         }
+
+        .custom-file-label {
+            border-radius: 0;
+        }
+
+        .custom-file-input:focus ~ .custom-file-label {
+            border-color: #258141;
+            box-shadow: none;
     </style>
     <link rel="stylesheet" href="<?= base_url('assets/vendor/datatable/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="shortcut icon" href="<?= base_url('upload/' . $icon); ?>">

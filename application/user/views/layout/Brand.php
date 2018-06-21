@@ -1,63 +1,63 @@
 <body>
 
+
 <!-- Alert Promo -->
 <div class="container-fluid text-center clear-header">
     <div class="row">
-    <div class="col-lg-7 col-md-5">
-        <div class="float-none float-md-left">
-            Selamat datang di <b><?= $brandname; ?></b>
+        <div class="col-lg-7 col-md-5">
+            <div class="float-none float-md-left">
+                Selamat datang di <b><?= $brandname; ?></b>
+            </div>
         </div>
-    </div>
-    <div class="col-lg-5 col-md-7">
-        <div class="float-none float-md-right f-brand-cos">
-        <?php if (isset($_SESSION['id'])): ?>
-        <a class="alert-link f-link" href="<?= site_url('resi'); ?>">
-            Laporan Resi
-        </a>
-        | <a class="alert-link f-link" href="<?= site_url('pending'); ?>">
-            Status Order
-        </a>
-        | <a class="alert-link f-link" href="<?= site_url('riwayat'); ?>">
-            Riwayat Pesanan
-        </a>
-        <?php endif; ?>
-    <?php if (isset($_SESSION['isonline']) && $_SESSION['isonline'] == true): ?>
-        | <a href="<?= site_url('profil'); ?>" class="alert-link f-link">
-            <i class="fa fa-user"></i> <?= $_SESSION['nama']; ?>
-        </a>
-        | <a class="alert-link f-link" href="<?= site_url('logout'); ?>">
-            Log Out
-        </a>
-    <?php else: ?>
-        <a class="alert-link f-link" href="<?= site_url('login'); ?>">
-            <i class="fa fa-user"></i> Login
-        </a>
-        | <a class="alert-link f-link" href="<?= site_url('register'); ?>">
-            <i class="fa fa-sign-in"></i> Register
-        </a>
-    <?php endif; ?>
+        <div class="col-lg-5 col-md-7">
+            <div class="float-none float-md-right f-brand-cos">
+                <?php if (isset($_SESSION['id'])): ?>
+                    <a class="alert-link f-link" href="<?= site_url('resi'); ?>">
+                        Laporan Resi
+                    </a>
+                    | <a class="alert-link f-link" href="<?= site_url('pending'); ?>">
+                        Status Order
+                    </a>
+                    | <a class="alert-link f-link" href="<?= site_url('riwayat'); ?>">
+                        Riwayat Pesanan
+                    </a>
+                <?php endif; ?>
+                <?php if (isset($_SESSION['isonline']) && $_SESSION['isonline'] == true): ?>
+                    | <a href="<?= site_url('profil'); ?>" class="alert-link f-link">
+                        <i class="fa fa-user"></i> <?= $_SESSION['nama']; ?>
+                    </a>
+                    | <a class="alert-link f-link" href="<?= site_url('logout'); ?>">
+                        Log Out
+                    </a>
+                <?php else: ?>
+                    <a class="alert-link f-link" href="<?= site_url('login'); ?>">
+                        <i class="fa fa-user"></i> Login
+                    </a>
+                    | <a class="alert-link f-link" href="<?= site_url('register'); ?>">
+                        <i class="fa fa-sign-in"></i> Register
+                    </a>
+                <?php endif; ?>
+            </div>
         </div>
-    </div>
     </div>
 </div>
 <!-- End Alert Promo -->
-<br>
 <!-- Header -->
-<div class="container-fluid f-color">
-    <div class="row f-padding-header">
-        <!-- Brand -->
-        <div class="col-12 col-lg-3 col-md-2">
-            <a href="<?= site_url('/'); ?>" class="navbar-brand f-logo">
-                <img src="<?= base_url('upload/' . $logo); ?>" alt="<?= $logo; ?>" height="100" width="150">
-            </a>
-        </div>
-        <!-- End Brand -->
+<div class="container mt-5 mt-sm-3 mt-md-2 mt-lg-0">
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="<?= site_url('/'); ?>">
+            <img src="<?= base_url('upload/' . $logo); ?>" width="110" height="80" class="d-inline-block align-top"
+                 alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <!-- Search -->
-        <div class="col-10 col-lg-6 col-md-8">
-            <div class="row mb-4">
-                <div class="col">
-                    <form class="form" action="<?= site_url('cari'); ?>"method="get">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="row">
+                <div class="col-8 col-sm-8">
+                    <form class="form-inline my-2 my-lg-0" action="<?= site_url('cari'); ?>" method="get">
                         <div class="input-group">
                             <input class="form-control" type="text" placeholder="Cari Produk"
                                    aria-label="Search" id="cari" name="cari" autocomplete="off">
@@ -69,29 +69,23 @@
                         </div>
                     </form>
                 </div>
+
+                <div class="col-4 col-sm-4">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <button class="btn btn-primary r-btn-pink my-2 my-sm-0" tabindex="0" class="nav-link"
+                                    title="Cart"
+                                    data-toggle="popover" data-placement="bottom" data-content="">
+                                <i class="fa fa-shopping-cart fa-lg"></i>
+                                <span><?= $counter_cart = isset($_SESSION['id']) ? $this->cart->where_pengguna_kode($_SESSION['id'])->count_rows() : ''; ?></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-<!--            --><?php //if (isset($_SESSION['id'])): ?>
-<!--            <div class="row">-->
-<!--                <div class="col f-hover">-->
-<!--                    <a class="small" href="--><?//= site_url('resi'); ?><!--">Laporan Resi</a>-->
-<!--                    <span class="f-span">|</span>-->
-<!--                    <a class="small" href="--><?//= site_url('pending'); ?><!--">Status Order</a>-->
-<!--                    <span class="f-span">|</span>-->
-<!--                    <a class="small" href="--><?//= site_url('riwayat'); ?><!--">Riwayat Pesanan</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            --><?php //endif; ?>
+
+
         </div>
-        <!-- End Search -->
-        <div class="col-2 col-lg-3 col-md-2 mb-2">
-            <a tabindex="0" class="btn btn-primary r-btn-pink f-media-right"
-               title="Cart"
-               data-toggle="popover"
-               data-placement="bottom"
-               data-content="">
-                <i class="fa fa-shopping-cart fa-lg"></i>
-                <span class="badge"><?= $counter_cart = isset($_SESSION['id']) ? $this->cart->where_pengguna_kode($_SESSION['id'])->count_rows() : ''; ?></span>
-            </a>
-        </div>
-    </div>
+    </nav>
 </div>
+
