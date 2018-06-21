@@ -44,9 +44,9 @@
 <!-- End Alert Promo -->
 <!-- Header -->
 <div class="container mt-5 mt-sm-3 mt-md-2 mt-lg-0">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg text-sm-center">
         <a class="navbar-brand" href="<?= site_url('/'); ?>">
-            <img src="<?= base_url('upload/' . $logo); ?>" width="110" height="80" class="d-inline-block align-top"
+            <img src="<?= base_url('upload/' . $logo); ?>" width="150" height="80" class="d-inline-block align-top"
                  alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -70,7 +70,7 @@
                     </form>
                 </div>
 
-                <div class="col-2">
+                <div class="col-2 mt-xl-0 mt-lg-0 mt-sm-2">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <button class="btn btn-primary r-btn-pink my-2 my-sm-0" tabindex="0" class="nav-link"

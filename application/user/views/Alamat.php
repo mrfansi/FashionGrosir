@@ -117,7 +117,7 @@ include "layout/Menu.php";
                         </div>
                     </div>
                     <div class="row form-group" id="row_nama_alamat" style="display: none;">
-                        <div class="col">
+                        <div class="col-lg-6 col-sm-12"">
                             <select name="pilih_alamat" id="pilih_alamat" class="form-control"></select>
                         </div>
                     </div>
@@ -128,22 +128,22 @@ include "layout/Menu.php";
                                 <input type="text" name="nama_pengirim" id="nama_pengirim" class="form-control"
                                        placeholder="Nama Pengirim">
                             </div>
-                            <div class="col">
+                            <div class="col-lg-6 col-sm-12"">
                                 <label for="kontak_pengirim">Nomor Telp. Pengirim</label>
                                 <input type="text" name="kontak_pengirim" id="kontak_pengirim" class="form-control"
                                        placeholder="Kontak Pengirim">
                             </div>
                         </div>
-                        <hr>
+                        <hr class="mb-4 mt-4">
                     </div>
 
                     <div class="row form-group">
-                        <div class="col">
+                        <div class="col-lg-6 col-sm-12 mb-2">
                             <label for="nama_penerima">Nama Penerima</label>
                             <input type="text" name="nama_penerima" id="nama_penerima" class="form-control"
                                    placeholder="Nama Penerima">
                         </div>
-                        <div class="col">
+                        <div class="col-lg-6 col-sm-12"">
                             <label for="kontak_penerima">Nomor Telp. Penerima</label>
                             <input type="text" name="kontak_penerima" id="kontak_penerima" class="form-control"
                                    placeholder="Kontak Penerima">
@@ -174,8 +174,10 @@ include "layout/Menu.php";
                             <select name="kelurahan" id="kelurahan" class="kelurahan form-control" required>
                             </select>
                         </div>
+                    </div>
 
-                        <div class="col">
+                    <div class="row form-group">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="kodepos">Kode Pos</label>
                             <input name="kodepos" id="kodepos" type="number"
                                    class="form-control" placeholder="Kode Pos" required>
@@ -197,6 +199,7 @@ include "layout/Menu.php";
                                     data-target="#lanjut"
                                     class="btn btn-primary r-btn-pink">Lanjutkan Metode Pembayaran
                             </button>
+                            <br><br>
                             <button type="reset" class="btn btn-primary r-btn-pink">Reset</button>
                         </div>
                     </div>
