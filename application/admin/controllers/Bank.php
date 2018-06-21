@@ -65,12 +65,13 @@ class Bank extends MY_Controller
         $bank = $this->bank->where_bank_kode($id)->get();
 
         if ($bank) {
-            $bank = $this->bank->where_bank_kode($id)->update(array(
+            $bank = $this->bank->update(array(
+                'bank_kode' => $id,
                 'bank_penerbit' => $this->input->post('penerbit'),
                 'bank_nama' => $this->input->post('nama'),
                 'bank_rek' => $this->input->post('rekening'),
                 'bank_isaktif' => $this->input->post('aktif')
-            ));
+            ), 'bank_kode');
             if ($bank) {
                 $this->data->berhasil = 'Data Bank berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);

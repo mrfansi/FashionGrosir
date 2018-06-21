@@ -1,5 +1,5 @@
 <?php
-$url = site_url('users/simpan');
+$url = site_url('pengguna/simpan');
 if ($submit == 'Ubah') {
     $id = $users->pengguna_kode;
     $nama = $users->pengguna_nama;

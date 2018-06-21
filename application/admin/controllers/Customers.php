@@ -37,6 +37,7 @@ class Customers extends MY_Controller
         $this->data->customers = $this->pengguna->where('pengguna_tipe', '1')->get_all();
         $this->load->view('Customers', $this->data);
     }
+
     public function by_reseller()
     {
         $this->data->title = $this->data->brandname . ' | Pelanggan Reseller';
@@ -54,49 +55,41 @@ class Customers extends MY_Controller
         // get user from database where guid
         $customer = $this->pengguna->where_pengguna_kode($id)->get();
 
-        if ($customer)
-        {
-            $customer = $this->pengguna->where_pengguna_kode($id)->update(array(
-                'pengguna_tipe'    => $this->input->post('tipe'),
-                'pengguna_nama'    => $this->input->post('nama'),
+        if ($customer) {
+            $customer = $this->pengguna->update(array(
+                'pengguna_kode' => $id,
+                'pengguna_tipe' => $this->input->post('tipe'),
+                'pengguna_nama' => $this->input->post('nama'),
                 'pengguna_username' => $this->input->post('email'),
-                'pengguna_password'    => $this->input->post('password'),
-                'pengguna_email'       => $this->input->post('email'),
-            ));
-            if ($customer)
-            {
+                'pengguna_password' => $this->input->post('password'),
+                'pengguna_email' => $this->input->post('email'),
+            ), 'pengguna_kode');
+            if ($customer) {
                 $this->data->berhasil = 'Data Pelaggan berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('customers');
-            }
-            else
-            {
+            } else {
                 $this->data->gagal = 'Data Pelaggan gagal diperbarui.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('customers');
             }
-        }
-        else
-        {
+        } else {
             $customer = $this->pengguna->insert(array(
-                'pengguna_kode'          => $this->input->post('id'),
+                'pengguna_kode' => $id,
                 'pengguna_tipe' => $this->input->post('tipe'),
                 'pengguna_nama' => $this->input->post('nama'),
                 'pengguna_username' => $this->input->post('email'),
                 'pengguna_password' => $this->input->post('password'),
                 'pengguna_email' => $this->input->post('email'),
             ));
-            if ($customer)
-            {
+            if ($customer) {
                 $this->data->berhasil = 'Data Pelanggan berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('customers');
-            }
-            else
-            {
+            } else {
                 $this->data->gagal = 'Data Pelanggan gagal dibuat.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
@@ -130,18 +123,15 @@ class Customers extends MY_Controller
         $this->load->view('CRUD_Customers', $this->data);
     }
 
-    public  function hapus($id)
+    public function hapus($id)
     {
         $customer = $this->pengguna->where('pengguna_kode', $id)->delete();
-        if ($customer)
-        {
+        if ($customer) {
             $this->data->berhasil = 'Data Pelanggan berhasil dihapus';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
             redirect('customers');
-        }
-        else
-        {
+        } else {
             $this->data->gagal = 'Data Pelanggan gagal dihapus';
             $this->session->set_flashdata('berhasil', $this->data->gagal);
 

@@ -65,7 +65,8 @@ class Artikel extends MY_Controller
         $artikel = $this->artikel->where_artikel_kode($id)->get();
 
         if ($artikel) {
-            $artikel = $this->artikel->where_artikel_kode($id)->update(array(
+            $artikel = $this->artikel->update(array(
+                'artikel_kode' => $id,
                 'artikel_judul' => $this->input->post('judul'),
                 'artikel_content' => $this->input->post('content'),
                 'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
@@ -74,7 +75,7 @@ class Artikel extends MY_Controller
                 'artikel_isresi' => $this->input->post('resi'),
                 'artikel_isnotifikasi' => $this->input->post('notikasi'),
                 'artikel_isaktif' => $this->input->post('aktif')
-            ));
+            ), 'artikel_kode');
             if ($artikel) {
                 $this->data->berhasil = 'Artikel berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
@@ -88,7 +89,7 @@ class Artikel extends MY_Controller
             }
         } else {
             $artikel = $this->artikel->insert(array(
-                'artikel_kode' => $this->input->post('id'),
+                'artikel_kode' => $id,
                 'artikel_judul' => $this->input->post('judul'),
                 'artikel_content' => $this->input->post('content'),
                 'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
