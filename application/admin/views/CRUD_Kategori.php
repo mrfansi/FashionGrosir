@@ -16,7 +16,7 @@ if ($submit == 'Ubah') {
     <input type="hidden" name="id" value="<?= $id; ?>">
     <div class="form-group">
         <label for="nama">Kategori</label>
-        <input type="text" class="form-control" name="nama" placeholder="Input Nama Kategori" value="<?= $nama; ?>"
+        <input type="text" class="form-control" name="nama" placeholder="Input Kategori" value="<?= $nama; ?>"
                required>
         <p>
             <?= form_error('nama'); ?>
