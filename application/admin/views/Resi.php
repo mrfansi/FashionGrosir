@@ -69,7 +69,9 @@
                             <thead>
                             <tr>
                                 <th scope="col">Judul</th>
-                                <th scope="col" class="text-center"></th>
+                                <th scope="col">Dibuat pada</th>
+                                <th scope="col">Diupdate pada</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -77,19 +79,23 @@
                                 <?php foreach ($artikels as $artikel): ?>
                                     <tr>
                                         <td><?= $artikel->artikel_judul; ?></td>
+                                        <td><?= $artikel->created_at; ?></td>
+                                        <td><?= $artikel->updated_at; ?></td>
                                         <td class="text-center">
                                             <?php if ($artikel->artikel_kode != '0'): ?>
-                                                <a data-toggle="modal" title="Ubah <?= $title_page; ?>"
+                                                <a class="btn btn-xs btn-primary" data-toggle="modal"
+                                                   title="Ubah <?= $title_page; ?>"
                                                    href="#"
                                                    onclick="edit($(this))" data-target="#crud" data-backdrop="static"
                                                    data-keyboard="false"
                                                    data-id="<?= $artikel->artikel_kode; ?>"><i
-                                                            class="far fa-edit"></i></a> |
-                                                <a data-toggle="modal" title="Hapus <?= $title_page; ?>"
+                                                            class="far fa-edit"></i> Ubah</a>
+                                                <a class="btn btn-xs btn-danger" data-toggle="modal"
+                                                   title="Hapus <?= $title_page; ?>"
                                                    href="#"
                                                    onclick="hapus($(this))" data-target="#hapus"
                                                    data-id="<?= $artikel->artikel_kode; ?>"><i
-                                                            class="far fa-trash-alt"></i></a>
+                                                            class="far fa-trash-alt"></i> Hapus</a>
                                             <?php endif; ?>
                                         </td>
                                     </tr>

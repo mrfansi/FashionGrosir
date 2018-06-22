@@ -58,14 +58,7 @@ class Seri extends MY_Controller
     {
         $this->form_validation->set_rules('nama','Seri','is_unique[seri.s_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
 
-        if ($this->form_validation->run() === FALSE) {
-            $this->data->gagal = validation_errors();
-            $this->session->set_flashdata('gagal', $this->data->gagal);
 
-            redirect('seri');
-        }
-
-        // create object
 
         // get guid form post
         $id = $this->input->post('id');
@@ -74,10 +67,11 @@ class Seri extends MY_Controller
         $seri = $this->seri->where_s_kode($id)->get();
 
         if ($seri) {
-            $seri = $this->seri->where_s_kode($id)->update(array(
+            $seri = $this->seri->update(array(
+                's_kode' => $id,
                 's_nama' => $this->input->post('nama'),
                 's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            ));
+            ), 's_kode');
             if ($seri) {
                 $this->data->berhasil = 'Nomor Seri berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
@@ -90,6 +84,14 @@ class Seri extends MY_Controller
                 redirect('seri');
             }
         } else {
+
+            if ($this->form_validation->run() === FALSE) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('seri');
+            }
+
             $seri = $this->seri->insert(array(
                 's_kode' => $this->input->post('id'),
                 's_nama' => $this->input->post('nama'),

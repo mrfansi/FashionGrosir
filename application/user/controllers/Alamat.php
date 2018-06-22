@@ -19,6 +19,7 @@ class Alamat extends MY_Controller
 
     public function get($order)
     {
+
         $this->data->alamat_kode = $this->alamat->guid();
         $this->data->nomor_order = $order;
         $this->data->orders = $this->order->with_order_detil()->where_orders_noid($order)->get();
@@ -29,6 +30,12 @@ class Alamat extends MY_Controller
             }
             return $hasil;
         };
+
+        if ($this->data->orders->orders_status == 7) {
+            $this->data->gagal = 'Order tidak ada atau telah dibatalkan.';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
+            redirect('/');
+        }
         $this->load->view('Alamat', $this->data);
     }
 

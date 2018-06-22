@@ -59,80 +59,103 @@
             <div class="card">
                 <div class="card-header">
                     <h1>Warna</h1>
-                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
+                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static"
+                       data-keyboard="false">Buat baru</a>
                 </div>
                 <div class="card-body">
-                    <?php if ($warnas != NULL): ?>
-                        <?php foreach ($warnas as $warna): ?>
-                            <div class="btn-group mb-2" role="group" aria-label="Basic example">
-                                <button type="button" class="btn">Warna : <?= $warna->w_nama; ?></button>
-                                <a class="btn btn-sm btn-primary" tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>"
-                                   href="#"
-                                   onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                   data-id="<?= $warna->w_kode; ?>"><i class="far fa-edit"></i></a>
-                                <a class="btn btn-sm btn-danger" tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>"
-                                   href="#"
-                                   onclick="hapus($(this))" data-target="#hapus"
-                                   data-id="<?= $warna->w_kode; ?>"><i class="far fa-trash-alt"></i></a>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-borderless">
+                            <thead>
+                            <tr>
+                                <th>Warna</th>
+                                <th>Dibuat pada</th>
+                                <th>Diupdate pada</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php if ($warnas != NULL): ?>
+                                <?php foreach ($warnas as $warna): ?>
+                                    <tr>
+                                        <td><?= $warna->w_nama; ?></td>
+                                        <td><?= $warna->created_at; ?></td>
+                                        <td><?= $warna->updated_at; ?></td>
+                                        <td>
+                                            <a class="btn btn-xs btn-primary" data-toggle="modal"
+                                               title="Ubah <?= $title_page; ?>"
+                                               href="#"
+                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static"
+                                               data-keyboard="false"
+                                               data-id="<?= $warna->w_kode; ?>"><i class="far fa-edit"></i> Ubah</a>
+                                            <a class="btn btn-xs btn-danger" data-toggle="modal"
+                                               title="Hapus <?= $title_page; ?>"
+                                               href="#"
+                                               onclick="hapus($(this))" data-target="#hapus"
+                                               data-id="<?= $warna->w_kode; ?>"><i class="far fa-trash-alt"></i>
+                                                Hapus</a>
+                                        </td>
+                                    </tr>
+
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
             </div>
+            <script>
+                // ------------------------------------------------------ //
+                // Modal CRUD
+                // ------------------------------------------------------ //
 
-        </div>
-        <script>
-            // ------------------------------------------------------ //
-            // Modal CRUD
-            // ------------------------------------------------------ //
+                function tambah() {
+                    modal = $('#crud');
+                    bodymodal = modal.find('div.modal-body');
 
-            function tambah() {
-                modal = $('#crud');
-                bodymodal = modal.find('div.modal-body');
+                    bodymodal.load("<?= site_url('warna/tambah'); ?>");
+                }
 
-                bodymodal.load("<?= site_url('warna/tambah'); ?>");
-            }
+                function edit(data) {
+                    d = data;
+                    id = d.attr('data-id');
+                    modal = $('#crud');
+                    bodymodal = modal.find('div.modal-body');
 
-            function edit(data) {
-                d = data;
-                id = d.attr('data-id');
-                modal = $('#crud');
-                bodymodal = modal.find('div.modal-body');
+                    bodymodal.load("<?= site_url('warna/ubah/'); ?>" + id);
+                }
 
-                bodymodal.load("<?= site_url('warna/ubah/'); ?>" + id);
-            }
+                function detil(data) {
+                    d = data;
+                    id = d.attr('data-id');
+                    modal = $('#crud');
+                    bodymodal = modal.find('div.modal-body');
 
-            function detil(data) {
-                d = data;
-                id = d.attr('data-id');
-                modal = $('#crud');
-                bodymodal = modal.find('div.modal-body');
+                    bodymodal.load("<?= site_url('warna/detil/'); ?>" + id);
+                }
 
-                bodymodal.load("<?= site_url('warna/detil/'); ?>" + id);
-            }
+                function hapus(data) {
+                    d = data;
+                    id = d.attr('data-id');
+                    $('a#hapus').attr('href', "<?= site_url('warna/hapus/'); ?>" + id);
+                }
 
-            function hapus(data) {
-                d = data;
-                id = d.attr('data-id');
-                $('a#hapus').attr('href', "<?= site_url('warna/hapus/'); ?>" + id);
-            }
+                $(document).ready(function () {
+                    $('[tooltip]').tooltip();
+                });
 
-            $(document).ready(function () {
-                $('[tooltip]').tooltip();
-            });
+                // ------------------------------------------------------ //
+                // Remove after 5 second
+                // ------------------------------------------------------ //
 
-            // ------------------------------------------------------ //
-            // Remove after 5 second
-            // ------------------------------------------------------ //
-
-            $(document).ready(function () {
-                setTimeout(function () {
-                    if ($('[role="alert"]').length > 0) {
-                        $('[role="alert"]').remove();
-                    }
-                }, 5000);
-            });
-        </script>
+                $(document).ready(function () {
+                    setTimeout(function () {
+                        if ($('[role="alert"]').length > 0) {
+                            $('[role="alert"]').remove();
+                        }
+                    }, 5000);
+                });
+            </script>
     </section>
     <footer class="main-footer">
         <div class="container-fluid">

@@ -94,13 +94,17 @@
                                         <td><?= $customer->pengguna_ipaddr; ?></td>
                                         <td><?= $customer->pengguna_login_terakhir; ?></td>
                                         <td class="text-center">
-                                            <a tooltip data-toggle="modal" title="Ubah <?= $title_page; ?>" href="#"
+                                            <a class="btn btn-xs btn-primary" data-toggle="modal"
+                                               title="Ubah <?= $title_page; ?>" href="#"
                                                onclick="edit($(this))" data-target="#crud" data-backdrop="static"
                                                data-keyboard="false"
-                                               data-id="<?= $customer->pengguna_kode; ?>"><i class="far fa-edit"></i></a> |
-                                            <a tooltip data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
+                                               data-id="<?= $customer->pengguna_kode; ?>"><i class="far fa-edit"></i>
+                                                Ubah</a>
+                                            <a class="btn btn-xs btn-danger" data-toggle="modal"
+                                               title="Hapus <?= $title_page; ?>" href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $customer->pengguna_kode; ?>"><i class="far fa-trash-alt"></i></a>
+                                               data-id="<?= $customer->pengguna_kode; ?>"><i
+                                                        class="far fa-trash-alt"></i> Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

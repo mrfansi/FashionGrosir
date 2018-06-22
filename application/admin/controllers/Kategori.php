@@ -60,13 +60,6 @@ class Kategori extends MY_Controller
     {
         $this->form_validation->set_rules('nama','Nama Kategori','is_unique[kategori.k_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
 
-        if ($this->form_validation->run() === FALSE) {
-            $this->data->gagal = validation_errors();
-            $this->session->set_flashdata('gagal', $this->data->gagal);
-
-            redirect('kategori');
-        }
-
         // get guid form post
         $id = $this->input->post('id');
 
@@ -74,11 +67,12 @@ class Kategori extends MY_Controller
         $kategori = $this->kategori->where('k_kode', $id)->get();
 
         if ($kategori) {
-            $kategori = $this->kategori->where_k_kode($id)->update(array(
+            $kategori = $this->kategori->update(array(
+                'k_kode' => $id,
                 'k_parent_kode' => $this->input->post('parent'),
                 'k_nama' => $this->input->post('nama'),
                 'k_url'  => $this->slug->create_uri(array('title' => $this->input->post('nama')))
-            ));
+            ), 'k_kode');
             if ($kategori) {
                 $this->data->berhasil = 'Data Kategori berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
@@ -91,6 +85,12 @@ class Kategori extends MY_Controller
                 redirect('kategori');
             }
         } else {
+            if ($this->form_validation->run() === FALSE) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('kategori');
+            }
             $kategori = $this->kategori->insert(array(
                 'k_kode' => $this->input->post('id'),
                 'k_parent_kode' => $this->input->post('parent'),

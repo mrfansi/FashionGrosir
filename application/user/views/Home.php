@@ -15,6 +15,32 @@ include "layout/Slide.php";
     <!-- Content -->
     <div class="container-fluid f-padding">
         <div class="row">
+            <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>
+                <div class="col">
+                    <div class="alert alert-danger alert-dismissible fade show"
+                         role="alert">
+                        <?php echo $_SESSION['gagal']; ?>
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
+                <div class="col">
+                    <div class="alert alert-success alert-dismissible fade show"
+                         role="alert">
+                        <?php echo $_SESSION['berhasil']; ?>
+                        <button type="button" class="close" data-dismiss="alert"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="row">
             <?php if ($terbaru_items() != NULL): ?>
                 <?php foreach ($terbaru_items() as $terbaru): ?>
                     <?php $stok = $qty($terbaru->i_kode); ?>

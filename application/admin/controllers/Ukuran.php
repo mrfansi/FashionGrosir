@@ -59,12 +59,7 @@ class Ukuran extends MY_Controller
     {
         $this->form_validation->set_rules('nama', 'Ukuran', 'is_unique[ukuran.u_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
 
-        if ($this->form_validation->run() === FALSE) {
-            $this->data->gagal = validation_errors();
-            $this->session->set_flashdata('gagal', $this->data->gagal);
 
-            redirect('ukuran');
-        }
 
         // create object
         // get guid form post
@@ -91,6 +86,12 @@ class Ukuran extends MY_Controller
                 redirect('ukuran');
             }
         } else {
+            if ($this->form_validation->run() === FALSE) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('ukuran');
+            }
             $ukuran = $this->ukuran->insert(array(
                 'u_kode' => $id,
                 'u_nama' => $this->input->post('nama'),

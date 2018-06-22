@@ -40,15 +40,15 @@ class Item extends MY_Controller
         $this->data->total_item = $this->item->count_rows();
         $this->data->items = $this->item->with_item_detil()->with_item_kategori()->get_all();
         $this->data->warna = function ($ide_kode, $w_kode) {
-            return $this->warna->fields('w_nama')->with_item_detil('where:item_detil_kode = \'' . $ide_kode . '\'')->where_w_kode($w_kode)->get();
+            return $this->warna->fields('w_nama')->with_item_detil('where:item_detil_kode = \'' . $ide_kode . '\'')->where('w_kode', $w_kode)->get();
         };
 
         $this->data->ukuran = function ($ide_kode, $u_kode) {
-            return $this->ukuran->fields('u_nama')->with_item_detil('where:item_detil_kode = \'' . $ide_kode . '\'')->where_u_kode($u_kode)->get();
+            return $this->ukuran->fields('u_nama')->with_item_detil('where:item_detil_kode = \'' . $ide_kode . '\'')->where('u_kode', $u_kode)->get();
         };
 
         $this->data->seri = function ($ide_kode, $s_kode) {
-            return $this->seri->fields('s_nama')->with_item_detil('where:item_detil_kode = \'' . $ide_kode . '\'')->where_s_kode($s_kode)->get();
+            return $this->seri->fields('s_nama')->with_item_detil('where:item_detil_kode = \'' . $ide_kode . '\'')->where('s_kode', $s_kode)->get();
         };
 
         $this->data->qty = function ($ide_kode) {
@@ -63,7 +63,7 @@ class Item extends MY_Controller
 
         $this->data->kategori = function ($i_kode) {
             $kategori = [];
-            $item_kategori = $this->item_kategori->with_kategori()->where_i_kode($i_kode)->get_all();
+            $item_kategori = $this->item_kategori->with_kategori()->where('i_kode', $i_kode)->get_all();
             if ($item_kategori != NULL) {
                 foreach ($item_kategori as $kat) {
                     array_push($kategori, $kat->kategori->k_nama);
@@ -92,11 +92,7 @@ class Item extends MY_Controller
     public function simpan()
     {
         $this->form_validation->set_rules('nama', 'Item', 'is_unique[item.i_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
-        if ($this->form_validation->run() === FALSE) {
-            $this->data->gagal = validation_errors();
-            $this->session->set_flashdata('gagal', $this->data->gagal);
-            redirect('item');
-        }
+
         // get guid form post
         $id = $this->input->post('id');
         $counter = (int)$this->input->post('counter');
@@ -104,7 +100,14 @@ class Item extends MY_Controller
         // get user from database where guid
         $item = $this->item->where('i_kode', $id)->get();
 
+        // item
         if ($item) {
+            if (!preg_match('/\s/', $this->input->post('deskripsi'))) {
+                $this->data->gagal = 'Karakter harus mempunyai spasi';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+                redirect('item');
+            }
+
             $item_update = $this->item->update(array(
                 'i_kode' => $id,
                 'i_nama' => $this->input->post('nama'),
@@ -137,6 +140,17 @@ class Item extends MY_Controller
                 redirect('item');
             }
         } else {
+
+            if ($this->form_validation->run() === FALSE) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+                redirect('item');
+            } else if (!preg_match('/\s/', $this->input->post('deskripsi'))) {
+                $this->data->gagal = 'Karakter harus mempunyai spasi';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+                redirect('item');
+            }
+
             $item = $this->item->insert(array(
                 'i_kode' => $this->input->post('id'),
                 'i_nama' => $this->input->post('nama'),

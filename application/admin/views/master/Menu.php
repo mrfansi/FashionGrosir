@@ -74,6 +74,7 @@
                 </li>
                 <li><a href="<?= site_url('toko'); ?>"><i class="fa fa-cogs"></i>Toko </a></li>
                 <li><a href="<?= site_url('bank'); ?>"><i class="fa fa-bank"></i>Bank </a></li>
+                <li><a href="<?= site_url('slide'); ?>"><i class="fas fa-images"></i>Slide Promo</a></li>
             </ul>
         </div>
     </div>

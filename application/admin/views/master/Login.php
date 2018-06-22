@@ -16,7 +16,7 @@
           href="<?= base_url('assets/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css" id="theme-stylesheet'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/custom.css'); ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.pink.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css'); ?>">
 
     <link rel="shortcut icon" href="<?= base_url('assets/img/favicon.ico'); ?>">
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

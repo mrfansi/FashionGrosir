@@ -97,7 +97,8 @@ if ($submit == 'Ubah') {
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="berat">Berat / Gr</label>
-                                <input type="number" class="form-control" min="1" name="berat" placeholder="Berat"
+                                <input type="number" class="form-control" min="1" max="1000" name="berat"
+                                       placeholder="Berat"
                                        value="<?= $hrg_reseller; ?>" required>
                             </div>
                         </div>
@@ -129,7 +130,6 @@ if ($submit == 'Ubah') {
                     <tr>
                         <td>
                             <select name="warna[]" id="warna" class="form-control small" required>
-                                <option value="" disabled>Pilih Warna</option>
                                 <?php foreach ($this->warna->get_all() as $katwarna): ?>
                                     <option value="<?= $katwarna->w_kode; ?>"><?= $katwarna->w_nama; ?></option>
                                 <?php endforeach; ?>
@@ -137,7 +137,6 @@ if ($submit == 'Ubah') {
                         </td>
                         <td>
                             <select name="ukuran[]" id="ukuran" class="form-control small" required>
-                                <option value="" disabled>Pilih Ukuran</option>
                                 <?php foreach ($this->ukuran->get_all() as $katukuran): ?>
                                     <option value="<?= $katukuran->u_kode; ?>"><?= $katukuran->u_nama; ?></option>
                                 <?php endforeach; ?>
@@ -145,7 +144,7 @@ if ($submit == 'Ubah') {
                         </td>
                         <td>
                             <select name="seri[]" id="seri" class="form-control small">
-                                <option value="" disabled>Pilih Seri</option>
+                                <option value="0">Tidak ada</option>
                                 <?php foreach ($this->seri->get_all() as $katseri): ?>
                                     <option value="<?= $katseri->s_kode; ?>"><?= $katseri->s_nama; ?></option>
                                 <?php endforeach; ?>
@@ -191,11 +190,12 @@ if ($submit == 'Ubah') {
             var $trLast = $table.find("tr:last"),
                 $trNew = $trLast.clone();
 
-            $('option', $trNew.find('select#warna')).filter(function (i) {
-                return $warna.find('option:selected[value="' + $(this).val() + '"]').length;
-            }).remove();
+            // $('option', $trNew.find('select#warna')).filter(function (i) {
+            //     return $warna.find('option:selected[value="' + $(this).val() + '"]').length;
+            // }).remove();
 
-            if ($trLast.find('select#warna option').length !== 2) {
+
+            if ($trLast.find('select#warna option').length !== 1) {
                 $trLast.after($trNew);
                 var counter = parseInt($('#counter').val());
                 $('#counter').val(counter + 1);

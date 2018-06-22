@@ -58,6 +58,8 @@ class Bank extends MY_Controller
 
     public function simpan()
     {
+        $this->form_validation->set_rules('rekening', 'Nomor Rek', 'is_unique[bank.bank_rek]', array('is_unique' => 'Terdapat nomor rekening yang sama. Silahkan coba lagi.'));
+
         // get guid form post
         $id = $this->input->post('id');
 
@@ -84,6 +86,12 @@ class Bank extends MY_Controller
                 redirect('bank');
             }
         } else {
+            if ($this->form_validation->run() === FALSE) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('kategori');
+            }
             $bank = $this->bank->insert(array(
                 'bank_kode' => $id,
                 'bank_penerbit' => $this->input->post('penerbit'),

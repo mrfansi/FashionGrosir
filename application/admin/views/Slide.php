@@ -24,6 +24,7 @@
 
     <br>
     <section>
+
         <?php if (isset($_SESSION['validation']) && $_SESSION['validation'] != ""): ?>
             <div class="col">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -57,9 +58,9 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1><i class="fa fa-users"></i> Admin</h1>
-                    <a data-toggle="modal" title="Tambah Admin" href="#" onclick="tambah()"
-                       data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
+                    <h1>Slide Promo</h1>
+                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static"
+                       data-keyboard="false">Buat baru</a>
 
                 </div>
                 <div class="card-body">
@@ -67,44 +68,50 @@
                         <table id="tables" class="table table-sm table-borderless">
                             <thead>
                             <tr>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">IP Address</th>
-                                <th scope="col">Login terakhir</th>
-                                <th scope="col" class="text-center">Aksi</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Dibuat pada</th>
+                                <th scope="col">Diupdate pada</th>
+                                <th scope="col" class="text-center"></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if ($users != NULL): ?>
-                                <?php foreach ($users as $user): ?>
-                                    <?php if ($user->pengguna_kode != '0'): ?>
-                                        <tr>
-                                            <td><?= $user->pengguna_nama; ?></td>
-                                            <td><?= $user->pengguna_username; ?></td>
-                                            <td><?= $user->pengguna_email; ?></td>
-                                            <td><?= $user->pengguna_status == 0 ? 'Aktif' : 'Blocked'; ?></td>
-                                            <td><?= $user->pengguna_ipaddr; ?></td>
-                                            <td><?= $user->pengguna_login_terakhir; ?></td>
-                                            <td class="text-center">
-                                                <a class="btn btn-xs btn-primary" data-toggle="modal" href="#"
-                                                   onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
-                                                   data-id="<?= $user->pengguna_kode; ?>"><i class="far fa-edit"></i>
-                                                    Ubah</a>
-                                                <a class="btn btn-xs btn-danger" data-toggle="modal" href="#"
-                                                   onclick="hapus($(this))" data-target="#hapus"
-                                                   data-id="<?= $user->pengguna_kode; ?>"><i
-                                                            class="far fa-trash-alt"></i> Hapus</a>
-                                            </td>
-                                        </tr>
-                                    <?php endif; ?>
+                            <?php if ($slide_promos != NULL): ?>
+                                <?php foreach ($slide_promos as $promo): ?>
+                                    <tr>
+                                        <td>
+                                            <div class="fotorama"
+                                                 data-nav="false"
+                                                 data-arrows="false"
+                                                 data-click="true"
+                                                 data-swipe="true"
+                                                 data-allowfullscreen="true"
+                                                 data-width="220"
+                                                 data-height="150">
+                                                <img src="<?= base_url('upload/' . $promo->slide_promo_img); ?>"
+                                                     width="220" height="150">
+                                            </div>
+                                        </td>
+                                        <td><?= $promo->created_at; ?></td>
+                                        <td><?= $promo->updated_at; ?></td>
+                                        <td>
+                                            <a data-toggle="modal" class="btn btn-xs btn-primary"
+                                               href="#"
+                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static"
+                                               data-keyboard="false"
+                                               data-id="<?= $promo->slide_promo_kode; ?>"><i
+                                                        class="far fa-edit"></i> Ubah</a>
+                                            <a data-toggle="modal" class="btn btn-xs btn-danger"
+                                               href="#"
+                                               onclick="hapus($(this))" data-target="#hapus"
+                                               data-id="<?= $promo->slide_promo_kode; ?>"><i
+                                                        class="far fa-trash-alt"></i> Hapus</a>
+                                        </td>
+                                    </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
 
@@ -118,7 +125,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('pengguna/tambah'); ?>");
+                bodymodal.load("<?= site_url('slide/tambah'); ?>");
             }
 
             function edit(data) {
@@ -127,7 +134,7 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('pengguna/ubah/'); ?>" + id);
+                bodymodal.load("<?= site_url('slide/ubah/'); ?>" + id);
             }
 
             function detil(data) {
@@ -136,19 +143,15 @@
                 modal = $('#crud');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('pengguna/detil/'); ?>" + id);
+                bodymodal.load("<?= site_url('slide/detil/'); ?>" + id);
             }
 
             function hapus(data) {
                 d = data;
                 id = d.attr('data-id');
-                $('a#hapus').attr('href', "<?= site_url('users/hapus/'); ?>" + id);
+                $('a#hapus').attr('href', "<?= site_url('slide/hapus/'); ?>" + id);
             }
 
-            // ------------------------------------------------------ //
-            // Data table users
-            // ------------------------------------------------------ //
-            $('#tables').DataTable();
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();
