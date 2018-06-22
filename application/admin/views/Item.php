@@ -115,13 +115,13 @@
                                                        onclick="edit_item($(this))" data-target="#crud"
                                                        data-backdrop="static" data-keyboard="false"
                                                        data-id="<?= $item->i_kode; ?>"><i
-                                                                class="far fa-edit fa-lg"></i> Ubah Item</a>
+                                                                class="far fa-edit mr-2"></i>Ubah Item</a>
                                                     <a class="dropdown-item small" data-toggle="modal"
                                                        href="#"
                                                        onclick="tambah_detil($(this))" data-target="#crud"
                                                        data-backdrop="static" data-keyboard="false"
                                                        data-id="<?= $item->i_kode; ?>"><i
-                                                                class="fas fa-plus fa-lg"></i> Tambah Detil</a>
+                                                                class="fas fa-plus mr-2"></i>Tambah Detil</a>
                                                 </div>
 
                                             </div>
@@ -193,19 +193,20 @@
                                                                onclick="edit_detil($(this))" data-target="#crud"
                                                                data-backdrop="static" data-keyboard="false"
                                                                data-id="<?= $detil->item_detil_kode; ?>"><i
-                                                                        class="far fa-edit fa-lg"></i> Ubah Detil</a>
+                                                                        class="far fa-edit mr-2"></i> Ubah Detil</a>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="tambah_qty($(this))" data-target="#crud"
                                                                data-backdrop="static" data-keyboard="false"
                                                                data-id="<?= $detil->item_detil_kode; ?>"><i
-                                                                        class="fas fa-cart-plus fa-lg"></i> Tambaht QTY</a>
+                                                                        class="fas fa-cart-plus mr-2"></i> Tambaht
+                                                                QTY</a>
                                                             <div class="dropdown-divider"></div>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="hapus($(this))" data-target="#hapus"
                                                                data-id="<?= $detil->item_detil_kode; ?>"><i
-                                                                        class="far fa-trash-alt fa-lg"></i> Hapus</a>
+                                                                        class="far fa-trash-alt mr-2"></i> Hapus</a>
                                                         </div>
 
                                                     </div>
@@ -280,19 +281,20 @@
                                                                onclick="edit_detil($(this))" data-target="#crud"
                                                                data-backdrop="static" data-keyboard="false"
                                                                data-id="<?= $detil->item_detil_kode; ?>"><i
-                                                                        class="far fa-edit fa-lg"></i> Ubah Detil</a>
+                                                                        class="far fa-edit mr-2"></i> Ubah Detil</a>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="tambah_qty($(this))" data-target="#crud"
                                                                data-backdrop="static" data-keyboard="false"
                                                                data-id="<?= $detil->item_detil_kode; ?>"><i
-                                                                        class="fas fa-cart-plus fa-lg"></i> Tambaht QTY</a>
+                                                                        class="fas fa-cart-plus mr-2"></i> Tambaht
+                                                                QTY</a>
                                                             <div class="dropdown-divider"></div>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
                                                                onclick="hapus($(this))" data-target="#hapus"
                                                                data-id="<?= $detil->item_detil_kode; ?>"><i
-                                                                        class="far fa-trash-alt fa-lg"></i> Hapus</a>
+                                                                        class="far fa-trash-alt mr-2"></i> Hapus</a>
                                                         </div>
                                                 </td>
                                             </tr>

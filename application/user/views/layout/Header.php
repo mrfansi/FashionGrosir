@@ -34,5 +34,5 @@
     <link rel="shortcut icon" href="<?= base_url('upload/' . $icon); ?>">
 
     <title><?= $brandname; ?></title>
-
 </head>
+<body>

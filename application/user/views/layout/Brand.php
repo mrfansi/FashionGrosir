@@ -1,6 +1,3 @@
-<body>
-
-
 <!-- Alert Promo -->
 <div class="container-fluid text-center clear-header">
     <div class="row">
