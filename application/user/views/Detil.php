@@ -49,7 +49,7 @@ include "layout/Menu.php";
                         <div class="col-lg-12">
                             <p><i class="fa fa-check fa-lg f-icon-margin f-font-detail"></i>Kondisi : Baru</p>
                             <p><i class="fa fa-cube fa-lg f-icon-margin f-font-detail"></i>Berat
-                                : <?= $item->i_berat; ?> Gr</p>
+                                : <?= $item->i_berat; ?> Gram</p>
                             <p><i class="fa fa-dropbox fa-lg f-icon-margin f-font-detail"></i>Min. Pesanan : 1pcs</p>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ include "layout/Menu.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="mb-2 col-12 col-sm-4 col-md-3 col-lg-4">
+                        <div class="mb-2 col-12 col-sm-6 col-md-5 col-lg-5">
                             <label for="wu"></i>Warna - Ukuran</label>
                             <select name="wu" id="wu" class="form-control" required>
                                 <option data-qty="0" value="">Pilih Warna & Ukuran</option>
@@ -86,7 +86,7 @@ include "layout/Menu.php";
                         <div class="col-12 col-sm-8 col-md-7 col-lg-8">
                             <label id="check"></label>
                         </div>
-                        <div class="col-12 col-sm-8 col-md-7 col-lg-8">
+                        <div class="col-12 col-sm-10 col-md-9 col-lg-9">
                             <button type="submit"
                                     class="btn btn-primary btn-lg btn-block f-button-font">Tambah ke Keranjang
                             </button>
@@ -111,7 +111,7 @@ include "layout/Menu.php";
         <h5>Hot Item</h5>
         <div class="row">
             <?php foreach ($this->item->with_item_img('where:ii_default =1')->limit(5)->get_all() as $hot): ?>
-                <div class="col-12 col-sm-3 col-md-3 col-lg-3 mb-3">
+                <div class="col-12 col-sm-6  col-md-4 col-lg-4 col-xl-3 mb-3">
                     <div class="thumbnail">
                         <?php if ($item_img($hot->i_kode) != NULL): ?>
                             <img class="img-fluid" src="<?= base_url('upload/' . $item_img($hot->i_kode)->ii_nama); ?>"

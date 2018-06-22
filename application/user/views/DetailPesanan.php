@@ -66,7 +66,7 @@ include "layout/Menu.php";
                     <div class="card-body">
                         <div class="row mb-5">
                             <div class="col">
-                                <h6 class="r-judul-kotak4-1">Nomor Order : </h6>
+                                <h6 class="r-judul-kotak4-1">ID Pesanan : </h6>
                                 <p class="r-konten-kotak4-1">#<?= $orders_noid; ?></p>
                             </div>
                             <div class="col">
@@ -231,12 +231,9 @@ include "layout/Menu.php";
 
                         </div>
                         <div class="row mt-2">
-                            <div class="col d-flex justify-content-center">
-                                <button type="submit" class="btn btn-info btn-sm mr-1 ml-1"><i class="fa fa-file"></i>
-                                    Cetak
-                                </button>
-                                <button type="submit" class="btn btn-danger btn-sm mr-1 ml-1"><i class="fa fa-undo"></i>
-                                    Kembali
+                            <div class="col text-right">
+                                <a href="<?= site_url('riwayat'); ?>" class="btn btn-danger btn-sm mr-1 ml-1 f-button-font"><i class="fa fa-undo"></i>
+                                    Kembali</a>
                                 </button>
                             </div>
                         </div>
