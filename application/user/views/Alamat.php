@@ -130,7 +130,7 @@ include "layout/Menu.php";
                             </div>
                             <div class="col-lg-6 col-sm-12"">
                                 <label for="kontak_pengirim">Nomor Telp. Pengirim</label>
-                                <input type="text" name="kontak_pengirim" id="kontak_pengirim" class="form-control"
+                                <input type="number" name="kontak_pengirim" id="kontak_pengirim" class="form-control"
                                        placeholder="Kontak Pengirim">
                             </div>
                         </div>

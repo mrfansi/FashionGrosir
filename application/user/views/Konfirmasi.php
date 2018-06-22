@@ -108,17 +108,25 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                     <div class="container-fluid">
                         <!-- START KONTEN ATAS -->
                         <div class="row">
-                            <div class="col-12 r-posisi-kotak4-1">
-                                <h6 class="r-judul-kotak4-1">
-                                    <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
-                                </h6>
+                            <div class="col-6">
+
                             </div>
-                            <div class="col-12">
-                                <p class="r-konten-kotak4-1">
-                                    <?= $pengiriman(); ?>
-                                </p>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-12 r-posisi-kotak4-1">
+                                        <h6 class="r-judul-kotak4-1">
+                                            <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
+                                        </h6>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="r-konten-kotak4-1">
+                                            <?= $pengiriman(); ?>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
 
                         <div class="row">
                             <div class="col r-posisi-kotak4-1">
