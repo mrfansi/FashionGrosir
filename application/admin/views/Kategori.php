@@ -163,6 +163,10 @@
                 $('a#hapus').attr('href', "<?= site_url('kategori/hapus/'); ?>" + id);
             }
 
+            // ------------------------------------------------------ //
+            // Data table users
+            // ------------------------------------------------------ //
+            $('#tables').DataTable();
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();

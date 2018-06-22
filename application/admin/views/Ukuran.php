@@ -57,21 +57,22 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <h1>Ukuran</h1>
-                            <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud"
-                               data-backdrop="static" data-keyboard="false">Buat baru</a>
-                        </div>
-                        <div class="col-sm-2">
+                    <h1>Ukuran</h1>
 
-                        </div>
-                    </div>
 
                 </div>
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                <a class="btn btn-primary" data-toggle="modal" href="#" onclick="tambah()"
+                                   data-target="#crud"
+                                   data-backdrop="static" data-keyboard="false">Buat baru</a>
+                            </p>
+                        </div>
+                    </div>
                     <div class="table-responsive">
-                        <table class="table table-sm table-borderless">
+                        <table id="tables" class="table">
                             <thead>
                             <tr>
                                 <th>Ukuran</th>
