@@ -57,23 +57,24 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <div class="row">
-                        <div class="col-sm-10">
-                            <h1><i class="fas fa-shopping-cart"></i> <?= $title_page; ?></h1>
-                            <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud"
-                               data-backdrop="static" data-keyboard="false">Buat baru</a>
-                        </div>
-                        <div class="col-sm-2">
-
-                        </div>
-                    </div>
+                    <h1><i class="fas fa-shopping-cart"></i> <?= $title_page; ?></h1>
 
                 </div>
                 <div class="card-body">
-                    <p class="small">
-                        *Note: <br>
-                        <i>W : Warna, U : Ukuran, S : Seri</i>
-                    </p>
+                    <div class="row">
+                        <div class="col-8">
+                            <a class="btn btn-primary" data-toggle="modal" href="#" onclick="tambah()"
+                               data-target="#crud"
+                               data-backdrop="static" data-keyboard="false">Buat baru</a>
+                        </div>
+                        <div class="col-4">
+                            <p class="small">
+                                *Note: <br>
+                                <i>W : Warna, U : Ukuran, S : Seri</i>
+                            </p>
+                        </div>
+                    </div>
+
                     <div class="table-responsive">
                         <table id="tables" class="table">
                             <thead>
