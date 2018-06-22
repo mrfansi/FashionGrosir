@@ -106,12 +106,14 @@
                                                 <?php if ($kategori->k_kode != '0'): ?>
                                                     <a data-toggle="modal" class="btn btn-sm btn-primary"
                                                        href="#"
-                                                       onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
+                                                       onclick="edit($(this))" data-target="#crud"
+                                                       data-backdrop="static" data-keyboard="false"
                                                        data-id="<?= $kategori->k_kode; ?>"><i
                                                                 class="far fa-edit"></i> Ubah</a>
                                                     <a data-toggle="modal" class="btn btn-sm btn-danger"
                                                        href="#"
                                                        onclick="hapus($(this))" data-target="#hapus"
+                                                       data-backdrop="static" data-keyboard="false"
                                                        data-id="<?= $kategori->k_kode; ?>"><i
                                                                 class="far fa-trash-alt"></i> Hapus</a>
                                                 <?php endif; ?>
@@ -214,7 +216,8 @@
                 <p>Apakah anda yakin ingin menghapus data ini?</p>
             </div>
             <div class="modal-footer">
-                <a id="hapus" href="#" class="btn btn-sm btn-danger">Hapus</a>
+                <button id="hapus" href="#" class="btn btn-sm btn-danger">Hapus</button>
+                <button id="batal" type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Batal</button>
             </div>
         </div>
     </div>
