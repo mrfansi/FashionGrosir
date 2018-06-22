@@ -31,24 +31,45 @@ include "layout/Menu.php";
 
                 <div class="card r-posisi-kartu mb-3 container-fluid">
                     <h5 class="r-judul-kotak4">
-                        Detil Pesanan
+                        Detail Pesanan
                         #<?= $nomor_order; ?>
                     </h5>
 
                     <div class="container-fluid">
                         <!-- START KONTEN ATAS -->
-                        <div class="row">
-                            <div class="col-12 r-posisi-kotak4-1">
-                                <h6 class="r-judul-kotak4-1">
-                                    <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
-                                </h6>
+                        <div class="row mt-4 mb-1">
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <h6 class="r-judul-kotak4-1">
+                                            <i class="fa fa-user mr-2" style="font-size: 20px;"></i> Data Penerima :
+                                        </h6>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="r-konten-kotak4-1">
+                                            Caesar Kenapa <br>
+                                            09302193674
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <p class="r-konten-kotak4-1">
-                                    <?= $pengiriman(); ?>
-                                </p>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h6 class="r-judul-kotak4-1">
+                                            <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
+                                        </h6>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="r-konten-kotak4-1">
+                                            <?= $pengiriman(); ?>
+                                        </p>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
+
 
                         <div class="row">
                             <div class="col r-posisi-kotak4-1">

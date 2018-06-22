@@ -14,7 +14,7 @@ if ($submit == 'Ubah') {
     $hrg_vip = '';
     $hrg_reseller = '';
     $deskripsi = '';
-} else if ($submit == 'Tambah Detil') {
+} else if ($submit == 'Tambah Detail') {
     $url = site_url('item/tambah_detil_simpan');
     $id = $items->i_kode;
 }
@@ -116,7 +116,7 @@ if ($submit == 'Ubah') {
         </div>
         <?php endif; ?>
 
-        <?php if ($submit == 'Simpan' || $submit == 'Tambah Detil'): ?>
+        <?php if ($submit == 'Simpan' || $submit == 'Tambah Detail'): ?>
             <div class="form-group">
                 <table class="table table-sm" id="tabel">
                     <thead>
@@ -161,7 +161,7 @@ if ($submit == 'Ubah') {
                     <tfoot>
                     <tr>
                         <th colspan="4">
-                            <a href="#" class="mt-1" id="baru_detil">Tambah Detil</a>
+                            <a href="#" class="mt-1" id="baru_detil">Tambah Detail</a>
                         </th>
                     </tr>
                     </tfoot>

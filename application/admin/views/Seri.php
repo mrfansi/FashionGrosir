@@ -59,44 +59,52 @@
             <div class="card">
                 <div class="card-header">
                     <h1>Nomor Seri</h1>
-                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-sm table-borderless">
-                            <thead>
-                            <tr>
-                                <th>Seri</th>
-                                <th>Dibuat pada</th>
-                                <th>Diupdate pada</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php if ($seris != NULL): ?>
-                                <?php foreach ($seris as $seri): ?>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                <a class="btn btn-primary"
+                                   data-toggle="modal" href="#"
+                                   onclick="tambah()"
+                                   data-target="#crud" data-backdrop="static" data-keyboard="false">
+                                    <i class="fa fa-plus mr-2"></i>Buat Data
+                                </a>
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table id="tables" class="table table-sm">
+                                    <thead>
                                     <tr>
-                                        <td><?= $seri->s_nama; ?></td>
-                                        <td><?= $seri->created_at; ?></td>
-                                        <td><?= $seri->updated_at; ?></td>
-                                        <td>
-                                            <a class="btn btn-sm btn-primary" data-toggle="modal"
-                                               title="Ubah <?= $title_page; ?>"
-                                               href="#"
-                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static"
-                                               data-keyboard="false"
-                                               data-id="<?= $seri->s_kode; ?>"><i class="far fa-edit"></i> Ubah</a>
-                                            <a class="btn btn-sm btn-danger" data-toggle="modal"
-                                               title="Hapus <?= $title_page; ?>"
-                                               href="#"
-                                               onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $seri->s_kode; ?>"><i class="far fa-trash-alt"></i>
-                                                Hapus</a>
-                                        </td>
+                                        <th>Seri</th>
+                                        <th></th>
                                     </tr>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </table>
+                                    </thead>
+                                    <tbody>
+                                    <?php if ($seris != NULL): ?>
+                                        <?php foreach ($seris as $seri): ?>
+                                            <tr>
+                                                <td><?= $seri->s_nama; ?></td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-danger" data-toggle="modal"
+                                                       title="Hapus <?= $title_page; ?>"
+                                                       href="#"
+                                                       onclick="hapus($(this))" data-target="#hapus"
+                                                       data-backdrop="static" data-keyboard="false"
+                                                       data-id="<?= $seri->s_kode; ?>"><i class="far fa-trash-alt"></i>
+                                                        Hapus</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
 
 
@@ -141,9 +149,13 @@
             }
 
             // ------------------------------------------------------ //
-            // Data table users
+            // Data table
             // ------------------------------------------------------ //
-            $('#tables').DataTable();
+            $('#tables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+                }
+            });
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();
@@ -196,6 +208,7 @@
             </div>
             <div class="modal-footer">
                 <a id="hapus" href="#" class="btn btn-sm btn-danger">Hapus</a>
+                <a id="batal" href="#" class="btn btn-sm btn-primary" data-dismiss="modal">Batal</a>
             </div>
         </div>
     </div>

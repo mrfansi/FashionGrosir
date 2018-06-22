@@ -20,6 +20,14 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.default.css'); ?>">
 
     <style>
+        .show > .btn-primary.dropdown-toggle:focus {
+            box-shadow: none;
+        }
+
+        .btn-group-sm > .btn, .btn-sm {
+            border-radius: 0;
+        }
+
         .form-control {
             border-radius: 0;
         }
