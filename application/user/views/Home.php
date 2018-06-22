@@ -71,8 +71,7 @@ include "layout/Slide.php";
                                         <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
                                             <p id="rupiah" class="mt-1 price"><?= $terbaru->i_hrg_vip; ?></p>
                                         <?php else: ?>
-                                            <p id="rupiah"
-                                               class="mt-1 align-middle price"><?= $terbaru->i_hrg_reseller; ?></p>
+                                            <p id="rupiah" class="mt-1 align-middle price"><?= $terbaru->i_hrg_reseller; ?></p>
                                         <?php endif; ?>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6">

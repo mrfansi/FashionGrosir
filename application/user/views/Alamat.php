@@ -97,7 +97,7 @@ include "layout/Menu.php";
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <input type="hidden" name="alamat_simpan" id="alamat_simpan">
                     <div class="row form-group">
-                        <div class="col">
+                        <div class="col-lg-12 col-sm-12">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="alamat_exist" value="true" id="alamat_exist">
                                 <label class="form-check-label" for="alamat_exist">

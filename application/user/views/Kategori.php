@@ -35,7 +35,7 @@ include "layout/Menu.php";
                                         <img class="img-fluid" src="<?= base_url('assets/img/noimg.png'); ?>"
                                              alt="No Image">
                                     <?php endif; ?>
-                                    <h4 id="title"><?= $kat->item->i_nama; ?></h4>
+                                    <h4 id="title" class="mt-2"><?= $kat->item->i_nama; ?></h4>
                                     <div class="ratings">
                                         <span class="glyphicon glyphicon-star"></span>
                                         <span class="glyphicon glyphicon-star"></span>
