@@ -39,17 +39,14 @@ class Detil extends MY_Controller
                 $hasil = $order_pengiriman->orders_pengiriman_deskripsi . '<br>' . $alamat->desa . '<br>' . $alamat->kecamatan . ', ' . $alamat->kabupaten . '<br>' .
                     $alamat->provinsi . ', ' . $order_pengiriman->orders_pengiriman_kodepos;
             } else {
-                $hasil = '(NULL)';
+                $hasil = '';
             }
             return $hasil;
 
         };
 
         $this->data->jasa = function () {
-            $orders_noid = $this->order_ongkir
-                ->with_order('where:orders_noid = \'' . $this->data->orders_noid . '\'')
-                ->get()->orders_noid;
-            $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
+            $ongkir = $this->order_ongkir->where('orders_noid', $this->data->orders_noid)->get();
 
             return $ongkir->orders_ongkir_nama . ' - ' . $ongkir->orders_ongkir_deskripsi . ' (' . $ongkir->orders_ongkir_estimasi . ' hari)';
         };
@@ -64,7 +61,7 @@ class Detil extends MY_Controller
                 $hasil = $pembayaran->bank->bank_penerbit . ' - (A/N: ' . $pembayaran->bank->bank_nama . ') (Nomor Rek: ' . $pembayaran->bank->bank_rek . ')';
 
             } else {
-                $hasil = '(NULL)';
+                $hasil = '';
             }
 
             return $hasil;

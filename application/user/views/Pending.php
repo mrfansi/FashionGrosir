@@ -61,7 +61,7 @@ include "layout/Menu.php";
                         <table class="table table-sm table-borderless">
                             <thead>
                             <tr>
-                                <th scope="col">Nomor Order</th>
+                                <th scope="col">ID Pesanan</th>
                                 <th scope="col">Tanggal Transaksi</th>
                                 <th scope="col">Total Harga</th>
                                 <th scope="col">Nama Penerima</th>
@@ -70,8 +70,7 @@ include "layout/Menu.php";
                             <tbody>
                             <?php foreach ($orders as $order): ?>
                                 <tr>
-                                    <td rowspan="1" class="text-danger"><a
-                                                href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>"><?= $order->orders_noid; ?></a>
+                                    <td rowspan="1" class="text-danger"><a class="btn btn-primary f-button-font" href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>"><?= $order->orders_noid; ?></a>
                                     </td>
                                     <td><?= $order->created_at; ?></td>
                                     <td id="rupiah"><?= $order->total; ?></td>
@@ -120,7 +119,7 @@ include "layout/Menu.php";
                                                 Konfirmasi
                                             </a>
                                         <?php else: ?>
-                                            <i>(NULL)</i>
+                                            <i></i>
                                         <?php endif; ?>
                                     </td>
                                 </tr>

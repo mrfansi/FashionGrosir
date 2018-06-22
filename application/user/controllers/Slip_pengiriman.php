@@ -1,20 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Riwayat extends MY_Controller
+class Slip_pengiriman extends MY_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        if (!$this->session->isonline) {
-            redirect('login');
-        }
     }
 
     public function index()
     {
-        $this->data->orders = $this->order->select_invoice_users($_SESSION['id'], 6);
-        $this->load->view('Riwayat', $this->data);
+        $this->load->view('Slip_pengiriman', $this->data);
     }
 }
 

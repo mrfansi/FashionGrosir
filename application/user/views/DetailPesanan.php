@@ -66,7 +66,7 @@ include "layout/Menu.php";
                     <div class="card-body">
                         <div class="row mb-5">
                             <div class="col">
-                                <h6 class="r-judul-kotak4-1">Nomor Order : </h6>
+                                <h6 class="r-judul-kotak4-1">ID Pesanan : </h6>
                                 <p class="r-konten-kotak4-1">#<?= $orders_noid; ?></p>
                             </div>
                             <div class="col">
