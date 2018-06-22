@@ -216,8 +216,8 @@
                 <p>Apakah anda yakin ingin menghapus data ini?</p>
             </div>
             <div class="modal-footer">
-                <button id="hapus" href="#" class="btn btn-sm btn-danger">Hapus</button>
-                <button id="batal" type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Batal</button>
+                <a id="hapus" href="#" class="btn btn-sm btn-danger">Hapus</a>
+                <a id="batal" href="#" class="btn btn-sm btn-primary" data-dismiss="modal">Batal</a>
             </div>
         </div>
     </div>
