@@ -12,7 +12,7 @@
 
 
     <div class="form-group">
-        <button type="submit" class="btn btn-sm btn-primary">Unggah</button>
+        <button type="submit" class="btn btn-primary">Upload</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
     </div>
-
 </form>

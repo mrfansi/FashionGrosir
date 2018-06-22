@@ -90,7 +90,7 @@
                                             <td><?= $artikel->updated_at; ?></td>
                                             <td class="text-center">
                                                 <?php if ($artikel->artikel_kode != '0'): ?>
-                                                    <a class="btn btn-xs btn-primary" data-toggle="modal"
+                                                    <a class="btn btn-sm btn-primary" data-toggle="modal"
                                                        title="Ubah <?= $title_page; ?>"
                                                        href="#"
                                                        onclick="edit($(this))" data-target="#crud"
@@ -98,7 +98,7 @@
                                                        data-keyboard="false"
                                                        data-id="<?= $artikel->artikel_kode; ?>"><i
                                                                 class="far fa-edit"></i> Ubah</a>
-                                                    <a class="btn btn-xs btn-danger" data-toggle="modal"
+                                                    <a class="btn btn-sm btn-danger" data-toggle="modal"
                                                        title="Hapus <?= $title_page; ?>"
                                                        href="#"
                                                        onclick="hapus($(this))" data-target="#hapus"

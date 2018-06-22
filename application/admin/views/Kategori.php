@@ -96,12 +96,12 @@
                                             </td>
                                             <td class="text-center">
                                                 <?php if ($kategori->k_kode != '0'): ?>
-                                                    <a data-toggle="modal" class="btn btn-xs btn-primary"
+                                                    <a data-toggle="modal" class="btn btn-sm btn-primary"
                                                        href="#"
                                                        onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                        data-id="<?= $kategori->k_kode; ?>"><i
                                                                 class="far fa-edit"></i> Ubah</a>
-                                                    <a data-toggle="modal" class="btn btn-xs btn-danger"
+                                                    <a data-toggle="modal" class="btn btn-sm btn-danger"
                                                        href="#"
                                                        onclick="hapus($(this))" data-target="#hapus"
                                                        data-id="<?= $kategori->k_kode; ?>"><i

@@ -94,13 +94,13 @@
                                         <td><?= $customer->pengguna_ipaddr; ?></td>
                                         <td><?= $customer->pengguna_login_terakhir; ?></td>
                                         <td class="text-center">
-                                            <a class="btn btn-xs btn-primary" data-toggle="modal"
+                                            <a class="btn btn-sm btn-primary" data-toggle="modal"
                                                title="Ubah <?= $title_page; ?>" href="#"
                                                onclick="edit($(this))" data-target="#crud" data-backdrop="static"
                                                data-keyboard="false"
                                                data-id="<?= $customer->pengguna_kode; ?>"><i class="far fa-edit"></i>
                                                 Ubah</a>
-                                            <a class="btn btn-xs btn-danger" data-toggle="modal"
+                                            <a class="btn btn-sm btn-danger" data-toggle="modal"
                                                title="Hapus <?= $title_page; ?>" href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
                                                data-id="<?= $customer->pengguna_kode; ?>"><i

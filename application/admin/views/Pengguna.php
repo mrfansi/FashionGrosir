@@ -88,11 +88,11 @@
                                             <td><?= $user->pengguna_ipaddr; ?></td>
                                             <td><?= $user->pengguna_login_terakhir; ?></td>
                                             <td class="text-center">
-                                                <a class="btn btn-xs btn-primary" data-toggle="modal" href="#"
+                                                <a class="btn btn-sm btn-primary" data-toggle="modal" href="#"
                                                    onclick="edit($(this))" data-target="#crud" data-backdrop="static" data-keyboard="false"
                                                    data-id="<?= $user->pengguna_kode; ?>"><i class="far fa-edit"></i>
                                                     Ubah</a>
-                                                <a class="btn btn-xs btn-danger" data-toggle="modal" href="#"
+                                                <a class="btn btn-sm btn-danger" data-toggle="modal" href="#"
                                                    onclick="hapus($(this))" data-target="#hapus"
                                                    data-id="<?= $user->pengguna_kode; ?>"><i
                                                             class="far fa-trash-alt"></i> Hapus</a>

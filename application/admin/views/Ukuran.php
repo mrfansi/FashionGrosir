@@ -90,13 +90,13 @@
                                 <td><?= $ukuran->created_at; ?></td>
                                 <td><?= $ukuran->updated_at; ?></td>
                                 <td>
-                                    <a class="btn btn-xs btn-primary" data-toggle="modal"
+                                    <a class="btn btn-sm btn-primary" data-toggle="modal"
                                        title="Ubah <?= $title_page; ?>"
                                        href="#"
                                        onclick="edit($(this))" data-target="#crud" data-backdrop="static"
                                        data-keyboard="false"
                                        data-id="<?= $ukuran->u_kode; ?>"><i class="far fa-edit"></i> Ubah</a>
-                                    <a class="btn btn-xs btn-danger" data-toggle="modal"
+                                    <a class="btn btn-sm btn-danger" data-toggle="modal"
                                        title="Hapus <?= $title_page; ?>"
                                        href="#"
                                        onclick="hapus($(this))" data-target="#hapus"

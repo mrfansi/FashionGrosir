@@ -24,7 +24,7 @@
     </div>
 <?php endif; ?>
 <div class="table-responsive">
-    <table id="tables" class="table table-sm table-borderless">
+    <table id="tables" class="table">
         <thead>
         <tr>
             <th scope="col">Foto</th>
@@ -40,11 +40,12 @@
                              width="100"></td>
                     <td class="align-middle"><?= $img->ii_default == 0 ? '<i class="fas fa-times"></i>' : '<i class="fas fa-check"></i>'; ?></td>
                     <td class="align-middle">
-                        <a href="<?= site_url('item_img/set_default/' . $img->i_kode . '/' . $img->ii_kode); ?>"
+                        <a class="btn btn-primary"
+                           href="<?= site_url('item_img/set_default/' . $img->i_kode . '/' . $img->ii_kode); ?>"
                            onclick="utama($(this))" data-id="<?= $img->ii_kode; ?>">
-                            Jadikan utama
-                        </a> |
-                        <a data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
+                            Set Default
+                        </a>
+                        <a class="btn btn-danger" data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
                            onclick="hapus($(this))" data-target="#hapus"
                            data-id="<?= $img->ii_kode; ?>">
                             Hapus
@@ -56,6 +57,8 @@
         </tbody>
     </table>
 </div>
+<hr>
+<button class="btn btn-danger" data-dismiss="modal">Tutup</button>
 <script>
     // ------------------------------------------------------ //
     // Modal CRUD

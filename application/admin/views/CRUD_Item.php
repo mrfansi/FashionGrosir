@@ -46,8 +46,8 @@ if ($submit == 'Ubah') {
         <input type="hidden" name="id" value="<?= $id; ?>">
         <?php if ($submit == 'Simpan' || $submit == 'Ubah'): ?>
             <div class="form-group">
-                <label for="nama">Nama Item</label>
-                <input type="text" class="form-control" name="nama" placeholder="Input Nama" value="<?= $nama; ?>"
+                <label for="nama">Item</label>
+                <input type="text" class="form-control" name="nama" placeholder="Input Item" value="<?= $nama; ?>"
                        required>
             </div>
         <?php endif; ?>
@@ -80,23 +80,25 @@ if ($submit == 'Ubah') {
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="hrg_vip">Harga VIP</label>
-                                <input type="number" class="form-control" min="1000" name="hrg_vip"
-                                       placeholder="Input Hrg VIP"
-                                       value="<?= $hrg_vip; ?>" required>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="form-group">
                                 <label for="hrg_reseller">Harga Reseller</label>
                                 <input type="number" class="form-control" min="1000" name="hrg_reseller"
                                        placeholder="Input Hrg Reseller"
                                        value="<?= $hrg_reseller; ?>" required>
                             </div>
                         </div>
+
                         <div class="col-12">
                             <div class="form-group">
-                                <label for="berat">Berat / Gr</label>
+                                <label for="hrg_vip">Harga VIP</label>
+                                <input type="number" class="form-control" min="1000" name="hrg_vip"
+                                       placeholder="Input Hrg VIP"
+                                       value="<?= $hrg_vip; ?>" required>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="berat">Berat (Gram)</label>
                                 <input type="number" class="form-control" min="1" max="1000" name="berat"
                                        placeholder="Berat"
                                        value="<?= $hrg_reseller; ?>" required>
@@ -169,8 +171,8 @@ if ($submit == 'Ubah') {
         <?php endif; ?>
         <div class="form-group">
             <input type="hidden" id="counter" name="counter" value="1">
-            <button type="submit" class="btn btn-sm btn-primary"><?= $submit; ?></button>
-            <button type="button" onclick="window.location.reload()" class="btn btn-sm btn-danger">Tutup</button>
+            <button type="submit" class="btn btn-primary"><?= $submit; ?></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
         </div>
     </form>
     <link rel="stylesheet" href="<?= base_url('assets/vendor/select/css/multi-select.css'); ?>">
