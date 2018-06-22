@@ -80,6 +80,7 @@
                                     <?php if ($kategori->k_parent_kode == 0): ?>
                                         <tr>
                                             <td><?= $kategori->k_nama; ?></td>
+                                            <td><?= $kategori->k_parent_kode == 0 ? 'Root' : ''; ?></td>
                                             <td><?= $kategori->created_at; ?></td>
                                             <td><?= $kategori->updated_at; ?></td>
                                             <td>
