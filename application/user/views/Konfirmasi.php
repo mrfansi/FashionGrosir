@@ -107,26 +107,28 @@ $total = $biaya_subtotal + $biaya_pengiriman;
 
                     <div class="container-fluid">
                         <!-- START KONTEN ATAS -->
-                        <div class="row mt-3">
+                        <div class="row mt-4 mb-1">
                             <div class="col-6">
                                 <div class="row">
-                                    <div class="col-12 r-posisi-kotak4-1">
+                                    <div class="col-12 ">
                                         <h6 class="r-judul-kotak4-1">
-                                            <i class="fa fa-map-marker" style="font-size: 20px;"></i> :
+                                            <i class="fa fa-user mr-2" style="font-size: 20px;"></i> Data Penerima :
                                         </h6>
                                     </div>
                                     <div class="col-12">
                                         <p class="r-konten-kotak4-1">
-                                            <?= $pengiriman(); ?>
+                                            Caesar Kenapa <br>
+                                            09302193674
                                         </p>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="col-6">
                                 <div class="row">
-                                    <div class="col-12 r-posisi-kotak4-1">
+                                    <div class="col-12 ">
                                         <h6 class="r-judul-kotak4-1">
-                                            <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
+                                            <i class="fa fa-map-marker mr-2" style="font-size: 20px;"></i> Alamat Pengiriman :
                                         </h6>
                                     </div>
                                     <div class="col-12">
@@ -139,19 +141,19 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                         </div>
 
 
-                        <div class="row">
-                            <div class="col r-posisi-kotak4-1">
+                        <div class="row mb-4">
+                            <div class="col">
                                 <h6 class="r-judul-kotak4-1">
-                                    <i class="fa fa-truck" style="font-size: 20px;"></i>
+                                    <i class="fa fa-truck mr-2" style="font-size: 20px;"></i>
                                     Metode Pengiriman :
                                 </h6>
                                 <p class="r-konten-kotak4-1">
                                     <?= $jasa(); ?>
                                 </p>
                             </div>
-                            <div class="col r-posisi-kotak4-1">
+                            <div class="col">
                                 <h6 class="r-judul-kotak4-1">
-                                    <i class="fa fa-credit-card" style="font-size: 20px;"></i>
+                                    <i class="fa fa-credit-card mr-2" style="font-size: 20px;"></i>
                                     Metode Pembayaran:
                                 </h6>
                                 <p class="r-konten-kotak4-1">
@@ -175,14 +177,9 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="bank">Pembayaran Dari Bank : *</label>
-                                        <select class="form-control" id="bank"
-                                                name="bank" required>
-                                            <option value="BCA">BCA</option>
-                                            <option value="BNI">BNI</option>
-                                            <option value="MANDIRI">MANDIRI</option>
-                                            <option value="BRI">BRI</option>
-                                            <option value="PERMATA">PERMATA</option>
-                                        </select>
+                                        <input class="form-control" id="bank"
+                                                name="bank" required placeholder="Input Nama Bank">
+                                        </input>
                                     </div>
 
                                     <div class="form-group">
@@ -211,13 +208,13 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="bukti_pembayaran">Upload Bukti Pembayaran : *</label>
+                                        <label for="bukti_pembayaran">Upload Bukti Pembayaran : </label>
                                         <br>
                                         <div class="r-upload-f-button-font-wrapper">
                                             <button class="r-btn"><i class="fa fa-upload" style="font-size: 18px;"></i>Unggah
                                                 Bukti
                                             </button>
-                                            <input type="file" name="bukti_pembayaran" required>
+                                            <input type="file" name="bukti_pembayaran">
                                         </div>
                                     </div>
                                 </div>
