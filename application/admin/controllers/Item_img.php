@@ -128,7 +128,7 @@ class Item_img extends MY_Controller
 
     public function detil($id)
     {
-        $this->data->title = $this->data->brandname . ' | Foto > Detil';
+        $this->data->title = $this->data->brandname . ' | Foto > Detail';
         $this->data->item_img = $this->item_img->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Foto', $this->data);
     }

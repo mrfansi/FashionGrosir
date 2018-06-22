@@ -234,8 +234,8 @@ class Item extends MY_Controller
 
     public function tambah_detil($id)
     {
-        $this->data->title = $this->data->brandname . ' | Item > Tambah Detil';
-        $this->data->submit = 'Tambah Detil';
+        $this->data->title = $this->data->brandname . ' | Item > Tambah Detail';
+        $this->data->submit = 'Tambah Detail';
         $this->data->items = $this->item->where('i_kode', $id)->get();
 
         $this->load->view('CRUD_Item', $this->data);
@@ -272,7 +272,7 @@ class Item extends MY_Controller
 
     public function detil($id)
     {
-        $this->data->title = $this->data->brandname . ' | Item > Detil';
+        $this->data->title = $this->data->brandname . ' | Item > Detail';
         $this->data->item = $this->item->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Item', $this->data);
     }
@@ -300,12 +300,12 @@ class Item extends MY_Controller
             ));
 
         if ($item_detil) {
-            $this->data->berhasil = 'Detil item berhasil diubah.';
+            $this->data->berhasil = 'Detail item berhasil diubah.';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
             redirect('item');
         } else {
-            $this->data->gagal = 'Detil item gagal diubah.';
+            $this->data->gagal = 'Detail item gagal diubah.';
             $this->session->set_flashdata('gagal', $this->data->gagal);
 
             redirect('item');
