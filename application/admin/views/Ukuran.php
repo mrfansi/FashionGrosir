@@ -98,9 +98,10 @@
                                         </td>
                                     </tr>
 
-                                    </tbody>
                                     <?php endforeach; ?>
                                     <?php endif; ?>
+                                    </tbody>
+
                                 </table>
                             </div>
 
@@ -147,9 +148,13 @@
             }
 
             // ------------------------------------------------------ //
-            // Data table users
+            // Data table
             // ------------------------------------------------------ //
-            $('#tables').DataTable();
+            $('#tables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+                }
+            });
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();
