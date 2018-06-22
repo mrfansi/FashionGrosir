@@ -59,12 +59,20 @@
             <div class="card">
                 <div class="card-header">
                     <h1>Kategori</h1>
-                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
 
                 </div>
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                <a class="btn btn-primary" data-toggle="modal" href="#" onclick="tambah()"
+                                   data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
+
+                            </p>
+                        </div>
+                    </div>
                     <div class="table-responsive">
-                        <table id="tables" class="table table-sm table-borderless">
+                        <table id="tables" class="table">
                             <thead>
                             <tr>
                                 <th scope="col">Kategori</th>
@@ -80,9 +88,6 @@
                                     <?php if ($kategori->k_parent_kode == 0): ?>
                                         <tr>
                                             <td><?= $kategori->k_nama; ?></td>
-                                            <td><?= $kategori->k_parent_kode == 0 ? 'Root' : ''; ?></td>
-                                            <td><?= $kategori->created_at; ?></td>
-                                            <td><?= $kategori->updated_at; ?></td>
                                             <td>
                                                 <?php
                                                 $child = array();
@@ -94,6 +99,9 @@
                                                 echo implode(',', $child);
                                                 ?>
                                             </td>
+                                            <td><?= $kategori->created_at; ?></td>
+                                            <td><?= $kategori->updated_at; ?></td>
+
                                             <td class="text-center">
                                                 <?php if ($kategori->k_kode != '0'): ?>
                                                     <a data-toggle="modal" class="btn btn-sm btn-primary"
