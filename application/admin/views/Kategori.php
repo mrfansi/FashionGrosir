@@ -71,33 +71,40 @@
                             </p>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table id="tables" class="table table-sm">
-                            <thead>
-                            <tr>
-                                <th scope="col">Kategori</th>
-                                <th scope="col"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php if ($kategoris != NULL): ?>
-                                <?php foreach ($kategoris as $kategori): ?>
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table id="tables" class="table table-sm">
+                                    <thead>
                                     <tr>
-                                        <td class="align-middle"><?= $kategori->k_nama; ?></td>
-
-                                        <td class="align-middle">
-                                            <a data-toggle="modal" class="btn btn-sm btn-danger"
-                                               href="#"
-                                               onclick="hapus($(this))" data-target="#hapus"
-                                               data-backdrop="static" data-keyboard="false"
-                                               data-id="<?= $kategori->k_kode; ?>"><i
-                                                        class="far fa-trash-alt"></i> Hapus</a>
-                                        </td>
+                                        <th>Kategori</th>
+                                        <th></th>
                                     </tr>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                            </tbody>
-                        </table>
+                                    </thead>
+                                    <tbody>
+                                    <?php if ($kategoris != NULL): ?>
+                                        <?php foreach ($kategoris as $kategori): ?>
+                                            <tr>
+                                                <td class="align-middle">
+                                                    <?= $kategori->k_nama; ?>
+                                                </td>
+
+                                                <td class="align-middle">
+                                                    <a data-toggle="modal" class="btn btn-sm btn-danger"
+                                                       href="#"
+                                                       onclick="hapus($(this))" data-target="#hapus"
+                                                       data-backdrop="static" data-keyboard="false"
+                                                       data-id="<?= $kategori->k_kode; ?>"><i
+                                                                class="far fa-trash-alt"></i> Hapus</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,9 +147,13 @@
             }
 
             // ------------------------------------------------------ //
-            // Data table users
+            // Data table
             // ------------------------------------------------------ //
-            $('#tables').DataTable();
+            $('#tables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+                }
+            });
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();
@@ -185,7 +196,12 @@
 <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
-
+            <div class="modal-header">
+                <h1 class="modal-title" id="hapus"><?= $title_page; ?></h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
                 <p>Apakah anda yakin ingin menghapus data ini?</p>
             </div>

@@ -59,47 +59,52 @@
             <div class="card">
                 <div class="card-header">
                     <h1>Warna</h1>
-                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static"
-                       data-keyboard="false">Buat baru</a>
+
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-sm table-borderless">
-                            <thead>
-                            <tr>
-                                <th>Warna</th>
-                                <th>Dibuat pada</th>
-                                <th>Diupdate pada</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php if ($warnas != NULL): ?>
-                                <?php foreach ($warnas as $warna): ?>
-                                    <tr>
-                                        <td><?= $warna->w_nama; ?></td>
-                                        <td><?= $warna->created_at; ?></td>
-                                        <td><?= $warna->updated_at; ?></td>
-                                        <td>
-                                            <a class="btn btn-sm btn-primary" data-toggle="modal"
-                                               title="Ubah <?= $title_page; ?>"
-                                               href="#"
-                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static"
-                                               data-keyboard="false"
-                                               data-id="<?= $warna->w_kode; ?>"><i class="far fa-edit"></i> Ubah</a>
-                                            <a class="btn btn-sm btn-danger" data-toggle="modal"
-                                               title="Hapus <?= $title_page; ?>"
-                                               href="#"
-                                               onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $warna->w_kode; ?>"><i class="far fa-trash-alt"></i>
-                                                Hapus</a>
-                                        </td>
-                                    </tr>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                <a class="btn btn-primary" data-toggle="modal" href="#" onclick="tambah()"
+                                   data-target="#crud" data-backdrop="static" data-keyboard="false"><i
+                                            class="fa fa-plus mr-2"></i>Buat Data</a>
+                            </p>
 
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                            </tbody>
-                        </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table id="tables" class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>Warna</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php if ($warnas != NULL): ?>
+                                        <?php foreach ($warnas as $warna): ?>
+                                            <tr>
+                                                <td><?= $warna->w_nama; ?></td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-danger" data-toggle="modal"
+                                                       title="Hapus <?= $title_page; ?>"
+                                                       href="#"
+                                                       onclick="hapus($(this))" data-target="#hapus"
+                                                       data-target="#crud" data-backdrop="static"
+                                                       data-id="<?= $warna->w_kode; ?>"><i class="far fa-trash-alt"></i>
+                                                        Hapus</a>
+                                                </td>
+                                            </tr>
+
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
@@ -139,6 +144,15 @@
                     id = d.attr('data-id');
                     $('a#hapus').attr('href', "<?= site_url('warna/hapus/'); ?>" + id);
                 }
+
+                // ------------------------------------------------------ //
+                // Data table
+                // ------------------------------------------------------ //
+                $('#tables').DataTable({
+                    "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+                    }
+                });
 
                 $(document).ready(function () {
                     $('[tooltip]').tooltip();
@@ -187,6 +201,7 @@
             </div>
             <div class="modal-footer">
                 <a id="hapus" href="#" class="btn btn-sm btn-danger">Hapus</a>
+                <a id="batal" href="#" class="btn btn-sm btn-primary" data-dismiss="modal">Batal</a>
             </div>
         </div>
     </div>

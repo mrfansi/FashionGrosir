@@ -67,48 +67,45 @@
                             <p>
                                 <a class="btn btn-primary" data-toggle="modal" href="#" onclick="tambah()"
                                    data-target="#crud"
-                                   data-backdrop="static" data-keyboard="false">Buat baru</a>
+                                   data-backdrop="static" data-keyboard="false"><i class="fa fa-plus mr-2"></i>Buat Data</a>
                             </p>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table id="tables" class="table">
-                            <thead>
-                            <tr>
-                                <th>Ukuran</th>
-                                <th>Dibuat pada</th>
-                                <th>Diupdate pada</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php if ($ukurans != NULL): ?>
-                            <?php foreach ($ukurans
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table id="tables" class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>Ukuran</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php if ($ukurans != NULL): ?>
+                                    <?php foreach ($ukurans
 
-                            as $ukuran): ?>
-                            <tr>
-                                <td><?= $ukuran->u_nama; ?></td>
-                                <td><?= $ukuran->created_at; ?></td>
-                                <td><?= $ukuran->updated_at; ?></td>
-                                <td>
-                                    <a class="btn btn-sm btn-primary" data-toggle="modal"
-                                       title="Ubah <?= $title_page; ?>"
-                                       href="#"
-                                       onclick="edit($(this))" data-target="#crud" data-backdrop="static"
-                                       data-keyboard="false"
-                                       data-id="<?= $ukuran->u_kode; ?>"><i class="far fa-edit"></i> Ubah</a>
-                                    <a class="btn btn-sm btn-danger" data-toggle="modal"
-                                       title="Hapus <?= $title_page; ?>"
-                                       href="#"
-                                       onclick="hapus($(this))" data-target="#hapus"
-                                       data-id="<?= $ukuran->u_kode; ?>"><i class="far fa-trash-alt"></i> Hapus</a>
-                                </td>
-                            </tr>
+                                    as $ukuran): ?>
+                                    <tr>
+                                        <td class="align-middle"><?= $ukuran->u_nama; ?></td>
+                                        <td class="align-middle">
+                                            <a class="btn btn-sm btn-danger" data-toggle="modal"
+                                               title="Hapus <?= $title_page; ?>"
+                                               href="#"
+                                               onclick="hapus($(this))" data-target="#hapus"
+                                               data-backdrop="static" data-keyboard="false"
+                                               data-id="<?= $ukuran->u_kode; ?>"><i class="far fa-trash-alt"></i> Hapus</a>
+                                        </td>
+                                    </tr>
 
-                            </tbody>
-                            <?php endforeach; ?>
-                            <?php endif; ?>
-                        </table>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -151,9 +148,13 @@
             }
 
             // ------------------------------------------------------ //
-            // Data table users
+            // Data table
             // ------------------------------------------------------ //
-            $('#tables').DataTable();
+            $('#tables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+                }
+            });
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();
@@ -196,12 +197,18 @@
 <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
-
+            <div class="modal-header">
+                <h1 class="modal-title" id="hapus"><?= $title_page; ?></h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
                 <p>Apakah anda yakin ingin menghapus data ini?</p>
             </div>
             <div class="modal-footer">
                 <a id="hapus" href="#" class="btn btn-sm btn-danger">Hapus</a>
+                <a id="batal" href="#" class="btn btn-sm btn-primary" data-dismiss="modal">Batal</a>
             </div>
         </div>
     </div>
