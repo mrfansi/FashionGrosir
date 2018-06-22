@@ -66,8 +66,8 @@
                         <div class="col">
                             <p>
                                 <a class="btn btn-primary" data-toggle="modal" href="#" onclick="tambah()"
-                                   data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
-
+                                   data-target="#crud" data-backdrop="static" data-keyboard="false"><i
+                                            class="fa fa-plus mr-2"></i>Buat Data</a>
                             </p>
                         </div>
                     </div>
@@ -76,7 +76,6 @@
                             <thead>
                             <tr>
                                 <th scope="col">Kategori</th>
-                                <th scope="col">Sub Kategori</th>
                                 <th scope="col">Dibuat pada</th>
                                 <th scope="col">Diupdate pada</th>
                                 <th scope="col" class="text-center"></th>
@@ -85,31 +84,19 @@
                             <tbody>
                             <?php if ($kategoris != NULL): ?>
                                 <?php foreach ($kategoris as $kategori): ?>
-                                    <?php if ($kategori->k_parent_kode == 0): ?>
                                         <tr>
                                             <td><?= $kategori->k_nama; ?></td>
-                                            <td>
-                                                <?php
-                                                $child = array();
-                                                foreach ($kategoris as $subkat) {
-                                                    if ($subkat->k_parent_kode == $kategori->k_kode) {
-                                                        array_push($child, $subkat->k_nama);
-                                                    }
-                                                }
-                                                echo implode(',', $child);
-                                                ?>
-                                            </td>
                                             <td><?= $kategori->created_at; ?></td>
                                             <td><?= $kategori->updated_at; ?></td>
 
                                             <td class="text-center">
                                                 <?php if ($kategori->k_kode != '0'): ?>
-                                                    <a data-toggle="modal" class="btn btn-sm btn-primary"
-                                                       href="#"
-                                                       onclick="edit($(this))" data-target="#crud"
-                                                       data-backdrop="static" data-keyboard="false"
-                                                       data-id="<?= $kategori->k_kode; ?>"><i
-                                                                class="far fa-edit"></i> Ubah</a>
+                                                    <!--                                                    <a data-toggle="modal" class="btn btn-sm btn-primary"-->
+                                                    <!--                                                       href="#"-->
+                                                    <!--                                                       onclick="edit($(this))" data-target="#crud"-->
+                                                    <!--                                                       data-backdrop="static" data-keyboard="false"-->
+                                                    <!--                                                       data-id="--><? //= $kategori->k_kode; ?><!--"><i-->
+                                                    <!--                                                                class="far fa-edit"></i> Ubah</a>-->
                                                     <a data-toggle="modal" class="btn btn-sm btn-danger"
                                                        href="#"
                                                        onclick="hapus($(this))" data-target="#hapus"
@@ -119,7 +106,6 @@
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
-                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                             </tbody>

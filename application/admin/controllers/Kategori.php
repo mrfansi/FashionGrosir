@@ -42,13 +42,13 @@ class Kategori extends MY_Controller
         $this->data->title = $this->data->brandname . ' | Kategori > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->kategori->guid();
-        $this->data->kategoris = $this->kategori->where_k_parent_kode(0)->get_all();
+        $this->data->kategoris = $this->kategori->get_all();
         $this->load->view('CRUD_Kategori', $this->data);
     }
 
     public function ubah($id)
     {
-        $this->data->title = $this->data->brandname . ' | Pelanggan > Ubah';
+        $this->data->title = $this->data->brandname . ' | Kategori > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->kategori = $this->kategori->where('k_kode', $id)->get();
@@ -69,7 +69,6 @@ class Kategori extends MY_Controller
         if ($kategori) {
             $kategori = $this->kategori->update(array(
                 'k_kode' => $id,
-                'k_parent_kode' => $this->input->post('parent'),
                 'k_url'  => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ), 'k_kode');
             if ($kategori) {
