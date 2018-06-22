@@ -66,11 +66,11 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tables" class="table table-sm table-borderless">
+                        <table id="tables" class="table table-sm">
                             <thead>
                             <tr>
                                 <th scope="col">No. Order</th>
-                                <th scope="col">Nama Pelanggan</th>
+                                <th scope="col"></th>
                                 <th scope="col">Total</th>
                                 <th scope="col"></th>
                             </tr>
@@ -79,10 +79,64 @@
                             <?php if ($orders != NULL): ?>
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td class="text-danger"><?= $order->orders_noid; ?></td>
-                                        <td><?= $order->pengguna_nama; ?></td>
-                                        <td id="rupiah"><?= $order->total; ?></td>
-                                        <td>
+                                        <td class="align-middle text-danger"><?= $order->orders_noid; ?></td>
+                                        <td class="align-middle">
+                                            <div class="mb-2">
+                                                <b>Nama Pelanggan :</b><br>
+                                                <?= $order->pengguna_nama; ?>
+                                            </div>
+                                            <div class="mb-2">
+                                                <b>Tanggal Order : </b><br>
+                                                <?= $order->created_at; ?>
+                                            </div>
+                                            <div class="mb-2">
+                                                <b>Status Order : </b><br>
+                                                <?php if ($order->orders_status == 0): ?>
+                                                    <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
+                                                <?php elseif ($order->orders_status == 1): ?>
+                                                    <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN &
+                                                        PEMBAYARAN
+                                                    </div>
+                                                <?php elseif ($order->orders_status == 2): ?>
+                                                    <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN
+                                                    </div>
+                                                <?php elseif ($order->orders_status == 3): ?>
+                                                    <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
+                                                <?php elseif ($order->orders_status == 4): ?>
+                                                    <div class="text-success">ADMIN SEDANG MEMPROSES ORDER</div>
+                                                <?php elseif ($order->orders_status == 5): ?>
+                                                    <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
+                                                <?php elseif ($order->orders_status == 6): ?>
+                                                    <div class="text-success">SUKSES (Telah dikirim)</div>
+                                                <?php elseif ($order->orders_status == 7): ?>
+                                                    <div class="text-danger">BATAL</div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle" id="rupiah"><?= $order->total; ?></td>
+                                        <td class="align-middle">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <button id="cetak" type="button"
+                                                        class="btn btn-primary dropdown-toggle"
+                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                    Cetak
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="opsi">
+                                                    <a class="dropdown-item small" data-toggle="modal" href="#"
+                                                       onclick="print_slip($(this))" data-target="#crud"
+                                                       data-id="<?= $order->orders_noid; ?>"><i
+                                                                class="fas fa-file mr-2"></i>Alamat
+                                                    </a>
+                                                    <a class="dropdown-item small" data-toggle="modal" href="#"
+                                                       onclick="print_invoice($(this))" data-target="#crud"
+                                                       data-id="<?= $order->orders_noid; ?>"><i
+                                                                class="fas fa-file mr-2"></i>Invoice
+                                                    </a>
+                                                </div>
+                                            </div>
+
+
                                             <?php if ($order->orders_status == 3): ?>
                                                 <a class="btn btn-sm btn-primary" data-toggle="modal" href="#"
                                                    onclick="konfirmasi($(this))" data-target="#konfirmasi"
@@ -119,36 +173,6 @@
                                             <?php endif; ?>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td colspan="3"><b>Tanggal Order : </b><br>
-                                            <?= $order->created_at; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td colspan="3"><b>Status Order : </b>
-                                            <?php if ($order->orders_status == 0): ?>
-                                                <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
-                                            <?php elseif ($order->orders_status == 1): ?>
-                                                <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN
-                                                </div>
-                                            <?php elseif ($order->orders_status == 2): ?>
-                                                <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
-                                            <?php elseif ($order->orders_status == 3): ?>
-                                                <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
-                                            <?php elseif ($order->orders_status == 4): ?>
-                                                <div class="text-success">ADMIN SEDANG MEMPROSES ORDER</div>
-                                            <?php elseif ($order->orders_status == 5): ?>
-                                                <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
-                                            <?php elseif ($order->orders_status == 6): ?>
-                                                <div class="text-success">SUKSES (Telah dikirim)</div>
-                                            <?php elseif ($order->orders_status == 7): ?>
-                                                <div class="text-danger">BATAL</div>
-                                            <?php endif; ?>
-                                        </td>
-                                    </tr>
-
                                 <?php endforeach; ?>
                             <?php endif; ?>
                             </tbody>
@@ -218,9 +242,13 @@
             }
 
             // ------------------------------------------------------ //
-            // Data table users
+            // Data table
             // ------------------------------------------------------ //
-            // $('#tables').DataTable();
+            $('#tables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+                }
+            });
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();

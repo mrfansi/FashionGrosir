@@ -46,10 +46,7 @@ class Detil extends MY_Controller
         };
 
         $this->data->jasa = function () {
-            $orders_noid = $this->order_ongkir
-                ->with_order('where:orders_noid = \'' . $this->data->orders_noid . '\'')
-                ->get()->orders_noid;
-            $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
+            $ongkir = $this->order_ongkir->where('orders_noid', $this->data->orders_noid)->get();
 
             return $ongkir->orders_ongkir_nama . ' - ' . $ongkir->orders_ongkir_deskripsi . ' (' . $ongkir->orders_ongkir_estimasi . ' hari)';
         };
