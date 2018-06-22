@@ -120,7 +120,7 @@ include "layout/Menu.php";
                                                 Konfirmasi
                                             </a>
                                         <?php else: ?>
-                                            <i>(NULL)</i>
+                                            <i></i>
                                         <?php endif; ?>
                                     </td>
                                 </tr>

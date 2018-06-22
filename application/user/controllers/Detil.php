@@ -39,7 +39,7 @@ class Detil extends MY_Controller
                 $hasil = $order_pengiriman->orders_pengiriman_deskripsi . '<br>' . $alamat->desa . '<br>' . $alamat->kecamatan . ', ' . $alamat->kabupaten . '<br>' .
                     $alamat->provinsi . ', ' . $order_pengiriman->orders_pengiriman_kodepos;
             } else {
-                $hasil = '(NULL)';
+                $hasil = '';
             }
             return $hasil;
 
@@ -61,7 +61,7 @@ class Detil extends MY_Controller
                 $hasil = $pembayaran->bank->bank_penerbit . ' - (A/N: ' . $pembayaran->bank->bank_nama . ') (Nomor Rek: ' . $pembayaran->bank->bank_rek . ')';
 
             } else {
-                $hasil = '(NULL)';
+                $hasil = '';
             }
 
             return $hasil;
