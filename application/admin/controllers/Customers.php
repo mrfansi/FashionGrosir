@@ -108,7 +108,7 @@ class Customers extends MY_Controller
 
     public function detil($id)
     {
-        $this->data->title = $this->data->brandname . ' | Pelanggan > Detil';
+        $this->data->title = $this->data->brandname . ' | Pelanggan > Detail';
         $this->data->customers = $this->pengguna->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Customers', $this->data);
     }

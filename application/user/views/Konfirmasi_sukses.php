@@ -31,7 +31,7 @@ include "layout/Menu.php";
 
                 <div class="card r-posisi-kartu mb-3 container-fluid">
                     <h5 class="r-judul-kotak4">
-                        Detil Pesanan
+                        Detail Pesanan
                         #<?= $nomor_order; ?>
                     </h5>
 

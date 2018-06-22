@@ -38,7 +38,7 @@ class Home extends MY_Controller
         $this->data->breadcumb = 'Produk Terbaru';
         $this->data->breadcumb1 = $this->item->where_i_url($i_url)->get()->i_nama;
 
-        $this->load->view('Detil', $this->data);
+        $this->load->view('Detail', $this->data);
     }
 }
 

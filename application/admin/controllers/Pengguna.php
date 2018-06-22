@@ -89,7 +89,7 @@ class Pengguna extends MY_Controller
 
     public function detil($id)
     {
-        $this->data->title = $this->data->brandname . ' | Admin > Detil';
+        $this->data->title = $this->data->brandname . ' | Admin > Detail';
         $this->data->users = $this->pengguna->where('pengguna_kode', $id)->get();
         $this->load->view('CRUD_Pengguna', $this->data);
     }
