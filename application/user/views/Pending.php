@@ -61,7 +61,7 @@ include "layout/Menu.php";
                         <table class="table table-sm table-borderless">
                             <thead>
                             <tr>
-                                <th scope="col">Nomor Order</th>
+                                <th scope="col">ID Pesanan</th>
                                 <th scope="col">Tanggal Transaksi</th>
                                 <th scope="col">Total Harga</th>
                                 <th scope="col">Nama Penerima</th>

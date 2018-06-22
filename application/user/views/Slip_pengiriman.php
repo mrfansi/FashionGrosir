@@ -39,11 +39,14 @@
         .f-my-width{
             width: 900px;
         }
+        .f-margin-lala {
+            margin-top: 200px;
+        }
     </style>
 </head>
 <body>
 
-<div class="container border margin-form f-my-width px-5">
+<div class="container border margin-form f-my-width px-5 f-margin-lala">
 <!--    <div class="row padding-form">-->
 <!--        <div class="col-xl-10 col-lg-9 col-md-8">-->
 <!--            <img src="--><?//= base_url('upload/' . $icon); ?><!--" class="rounded float-left size-logo" alt="...">-->
