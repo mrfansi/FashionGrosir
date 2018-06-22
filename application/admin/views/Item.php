@@ -290,10 +290,13 @@
                                                             <div class="dropdown-divider"></div>
                                                             <a class="dropdown-item small" data-toggle="modal"
                                                                href="#"
-                                                               onclick="hapus($(this))" data-target="#hapus"
+                                                               onclick="hapus($(this))" data-target="#modal_hapus"
+                                                               data-backdrop="static" data-keyboard="false"
+
                                                                data-id="<?= $detil->item_detil_kode; ?>"><i
-                                                                        class="far fa-trash-alt mr-2"></i> Hapus</a>
+                                                                        class="far fa-trash-alt mr-2"></i>Hapus</a>
                                                         </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -532,15 +535,15 @@
     </div>
 </div>
 
-<div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="hapus" aria-hidden="true">
+<div class="modal fade" id="modal_hapus" tabindex="-1" role="dialog" aria-labelledby="modal_hapus" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
-
             <div class="modal-body">
                 <p>Apakah anda yakin ingin menghapus data ini?</p>
             </div>
             <div class="modal-footer">
                 <a id="hapus" href="#" class="btn btn-sm btn-danger">Hapus</a>
+                <a id="batal" href="#" class="btn btn-sm btn-primary" data-dismiss="modal">Batal</a>
             </div>
         </div>
     </div>
