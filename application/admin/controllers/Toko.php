@@ -128,7 +128,6 @@ class Toko extends MY_Controller
         $this->upload->do_upload('icon');
         $hasil = $this->upload->data();
 
-        print_r($hasil);
         return $hasil;
     }
 
