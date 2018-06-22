@@ -72,40 +72,28 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table id="tables" class="table">
+                        <table id="tables" class="table table-sm">
                             <thead>
                             <tr>
                                 <th scope="col">Kategori</th>
-                                <th scope="col">Dibuat pada</th>
-                                <th scope="col">Diupdate pada</th>
-                                <th scope="col" class="text-center"></th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php if ($kategoris != NULL): ?>
                                 <?php foreach ($kategoris as $kategori): ?>
-                                        <tr>
-                                            <td><?= $kategori->k_nama; ?></td>
-                                            <td><?= $kategori->created_at; ?></td>
-                                            <td><?= $kategori->updated_at; ?></td>
+                                    <tr>
+                                        <td class="align-middle"><?= $kategori->k_nama; ?></td>
 
-                                            <td class="text-center">
-                                                <?php if ($kategori->k_kode != '0'): ?>
-                                                    <!--                                                    <a data-toggle="modal" class="btn btn-sm btn-primary"-->
-                                                    <!--                                                       href="#"-->
-                                                    <!--                                                       onclick="edit($(this))" data-target="#crud"-->
-                                                    <!--                                                       data-backdrop="static" data-keyboard="false"-->
-                                                    <!--                                                       data-id="--><? //= $kategori->k_kode; ?><!--"><i-->
-                                                    <!--                                                                class="far fa-edit"></i> Ubah</a>-->
-                                                    <a data-toggle="modal" class="btn btn-sm btn-danger"
-                                                       href="#"
-                                                       onclick="hapus($(this))" data-target="#hapus"
-                                                       data-backdrop="static" data-keyboard="false"
-                                                       data-id="<?= $kategori->k_kode; ?>"><i
-                                                                class="far fa-trash-alt"></i> Hapus</a>
-                                                <?php endif; ?>
-                                            </td>
-                                        </tr>
+                                        <td class="align-middle">
+                                            <a data-toggle="modal" class="btn btn-sm btn-danger"
+                                               href="#"
+                                               onclick="hapus($(this))" data-target="#hapus"
+                                               data-backdrop="static" data-keyboard="false"
+                                               data-id="<?= $kategori->k_kode; ?>"><i
+                                                        class="far fa-trash-alt"></i> Hapus</a>
+                                        </td>
+                                    </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                             </tbody>
