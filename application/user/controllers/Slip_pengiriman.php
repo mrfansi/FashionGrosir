@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Form_pengiriman extends MY_Controller
+class Slip_pengiriman extends MY_Controller
 {
     public function __construct()
     {
@@ -10,7 +10,7 @@ class Form_pengiriman extends MY_Controller
 
     public function index()
     {
-        $this->load->view('Form_pengiriman', $this->data);
+        $this->load->view('Slip_pengiriman', $this->data);
     }
 }
 
