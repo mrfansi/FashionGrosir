@@ -101,6 +101,12 @@ include "layout/Menu.php";
                         </h4>
                         <h2 class="text-center">Sukses</h2>
                         <br>
+                        <div class="row mb-3">
+                            <div class="col-3 m-auto">
+                                <a href="<?= site_url('pending'); ?>" class="btn btn-primary btn-lg pt-4 pb-4 btn-block f-button-font">
+                                    Lihat Status</a>
+                            </div>
+                        </div>
                         <!--  END KONTEN BAWAH -->
                     </div>
                 </div>  <!-- pusing mas ini untuk apa tidak tahu -->
@@ -112,50 +118,7 @@ include "layout/Menu.php";
             $biaya_pengiriman = $biaya_pengiriman();
             $total = $biaya_subtotal + $biaya_pengiriman;
             ?>
-            <div class="col-lg-6 col-md-12 f-font-troli">
-                <div class="border f-border-padding f-radius">
-                    <h5>Perhitungan Harga</h5>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                            <h6>Sub Total</h6>
-                        </div>
-                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
-                            <div class="row">
-                                <div class="col-lg col-md-6 col-sm-7 col">
-                                    <h5 id="rupiah"
-                                        class="card-title f-sub-total"><?= $biaya_subtotal; ?></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                            <h6>Biaya Pengiriman</h6>
-                        </div>
-                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
-                            <div class="row">
-                                <div class="col-lg col-md-6 col-sm-7 col">
-                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $biaya_pengiriman; ?></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                            <h6>Total</h6>
-                        </div>
-                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
-                            <div class="row">
-                                <div class="col-lg col-md-6 col-sm-7 col">
-                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $total; ?></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
     <!-- End Content -->

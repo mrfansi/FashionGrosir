@@ -231,12 +231,9 @@ include "layout/Menu.php";
 
                         </div>
                         <div class="row mt-2">
-                            <div class="col d-flex justify-content-center">
-                                <button type="submit" class="btn btn-info btn-sm mr-1 ml-1"><i class="fa fa-file"></i>
-                                    Cetak
-                                </button>
-                                <button type="submit" class="btn btn-danger btn-sm mr-1 ml-1"><i class="fa fa-undo"></i>
-                                    Kembali
+                            <div class="col text-right">
+                                <a href="<?= site_url('riwayat'); ?>" class="btn btn-danger btn-sm mr-1 ml-1 f-button-font"><i class="fa fa-undo"></i>
+                                    Kembali</a>
                                 </button>
                             </div>
                         </div>

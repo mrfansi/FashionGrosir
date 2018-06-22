@@ -108,7 +108,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                     <div class="container-fluid">
                         <!-- START KONTEN ATAS -->
                         <div class="row mt-4 mb-1">
-                            <div class="col-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <div class="row">
                                     <div class="col-12 ">
                                         <h6 class="r-judul-kotak4-1">
@@ -124,7 +124,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                                 </div>
 
                             </div>
-                            <div class="col-6">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <div class="row">
                                     <div class="col-12 ">
                                         <h6 class="r-judul-kotak4-1">
@@ -142,7 +142,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
 
 
                         <div class="row mb-4">
-                            <div class="col">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <h6 class="r-judul-kotak4-1">
                                     <i class="fa fa-truck mr-2" style="font-size: 20px;"></i>
                                     Metode Pengiriman :
@@ -151,7 +151,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                                     <?= $jasa(); ?>
                                 </p>
                             </div>
-                            <div class="col">
+                            <div class="col-12 col-sm-12 col-md-6">
                                 <h6 class="r-judul-kotak4-1">
                                     <i class="fa fa-credit-card mr-2" style="font-size: 20px;"></i>
                                     Metode Pembayaran:
@@ -174,7 +174,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                             <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
 
                             <div class="row">
-                                <div class="col">
+                                <div class="col-12 col-sm-12 col-md-6">
                                     <div class="form-group">
                                         <label for="bank">Pembayaran Dari Bank : *</label>
                                         <input class="form-control" id="bank"
@@ -197,7 +197,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
 
                                 <!-- konten pembayaran sisi kanan -->
 
-                                <div class="col">
+                                <div class="col-12 col-sm-12 col-md-6">
                                     <div class="form-group">
                                         <label for="total_pembayaran">Total Pembayan : *</label>
                                         <input type="number" class="form-control" min="<?= $total; ?>"
@@ -220,8 +220,8 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                                 </div>
                                 <!-- konten pembayaran sisi kanan -->
                             </div>
-                            <div class="row">
-                                <div class="col">
+                            <div class="row ">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-2 col-xl-2">
                                     <button type="submit" class="btn btn-primary btn-block r-btn-pink">
                                         Konfirmasi
                                     </button>
