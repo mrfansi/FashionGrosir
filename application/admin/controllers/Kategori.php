@@ -91,7 +91,6 @@ class Kategori extends MY_Controller
             }
             $kategori = $this->kategori->insert(array(
                 'k_kode' => $this->input->post('id'),
-                'k_parent_kode' => $this->input->post('parent'),
                 'k_nama' => $this->input->post('nama'),
                 'k_url'  => $this->slug->create_uri(array('title' => $this->input->post('nama')))
             ));
