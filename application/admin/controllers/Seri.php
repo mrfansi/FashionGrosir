@@ -58,21 +58,30 @@ class Seri extends MY_Controller
     {
         $this->form_validation->set_rules('nama','Seri','is_unique[seri.s_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
 
-
-
         // get guid form post
         $id = $this->input->post('id');
 
         // get user from database where guid
         $seri = $this->seri->where_s_kode($id)->get();
+        $seri_nama = $this->input->post('nama');
+        $seri_array = array(
+            's_kode' => $id,
+            's_nama' => $seri_nama,
+            's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama')))
+        );
 
         if ($seri) {
-            $seri = $this->seri->update(array(
-                's_kode' => $id,
-                's_nama' => $this->input->post('nama'),
-                's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            ), 's_kode');
-            if ($seri) {
+
+            if ($this->form_validation->run() === FALSE && $seri->s_nama != $seri_nama) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('seri');
+            }
+
+            // update
+            $seri_update = $this->seri->update($seri_array, 's_kode');
+            if ($seri_update) {
                 $this->data->berhasil = 'Nomor Seri berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
@@ -85,6 +94,7 @@ class Seri extends MY_Controller
             }
         } else {
 
+            // validasi
             if ($this->form_validation->run() === FALSE) {
                 $this->data->gagal = validation_errors();
                 $this->session->set_flashdata('gagal', $this->data->gagal);
@@ -92,13 +102,9 @@ class Seri extends MY_Controller
                 redirect('seri');
             }
 
-            $seri = $this->seri->insert(array(
-                's_kode' => $this->input->post('id'),
-                's_nama' => $this->input->post('nama'),
-                's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-
-            ));
-            if ($seri) {
+            // insert
+            $seri_insert = $this->seri->insert($seri_array);
+            if ($seri_insert) {
                 $this->data->berhasil = 'Nomor Seri berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 

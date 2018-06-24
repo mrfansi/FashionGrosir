@@ -78,6 +78,8 @@
                                     <thead>
                                     <tr>
                                         <th>Ukuran</th>
+                                        <th>Dibuat pada</th>
+                                        <th>Diupdate pada</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -88,6 +90,8 @@
                                     as $ukuran): ?>
                                     <tr>
                                         <td class="align-middle"><?= $ukuran->u_nama; ?></td>
+                                        <td class="align-middle"><?= $ukuran->created_at; ?></td>
+                                        <td class="align-middle"><?= $ukuran->updated_at; ?></td>
                                         <td class="align-middle">
                                             <a class="btn btn-sm btn-primary" data-toggle="modal"
                                                href="#"
