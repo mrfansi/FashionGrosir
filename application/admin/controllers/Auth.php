@@ -15,17 +15,24 @@ class Auth extends MY_Controller
         $this->load->helper('form');
         $this->load->library('user_agent');
 
-        $check = $this->pengguna->where('pengguna_kode', 0)->get();
-        if (!$check)
-        {
-            $this->pengguna->insert(array(
-                'pengguna_kode'        => 0,
-                'pengguna_nama'        => 'Super User',
-                'pengguna_username'    => 'eazy',
-                'pengguna_password'    => 'eazy9090',
-                'pengguna_email'       => 'super@eazy-dev.xyz',
-                'pengguna_ipaddr'      => '1.1.1.1'
-            ));
+
+        $toko = $this->toko->get();
+        $user = $this->pengguna->get();
+
+        if (!$toko && !$user) {
+            redirect('new_toko');
+        } else {
+            $check = $this->pengguna->where('pengguna_kode', 0)->get();
+            if (!$check) {
+                $this->pengguna->insert(array(
+                    'pengguna_kode' => 0,
+                    'pengguna_nama' => 'Super User',
+                    'pengguna_username' => 'eazy',
+                    'pengguna_password' => 'eazy9090',
+                    'pengguna_email' => 'super@eazy-dev.xyz',
+                    'pengguna_ipaddr' => '1.1.1.1'
+                ));
+            }
         }
     }
 
