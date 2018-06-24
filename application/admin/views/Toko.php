@@ -197,9 +197,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                                    placeholder="Whatsapp">
                         </div>
                         <div class="col">
-                            <label for="line">Facebook</label>
+                            <label for="line">Line</label>
                             <input type="text" class="form-control" name="line" value="<?= $line; ?>"
-                                   placeholder="Facebook">
+                                   placeholder="Line">
                         </div>
                     </div>
                     <div class="form-group">
