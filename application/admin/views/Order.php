@@ -70,8 +70,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">No. Order</th>
-                                <th scope="col"></th>
-                                <th scope="col">Total</th>
+                                <th scope="col">Detail Order</th>
                                 <th scope="col"></th>
                             </tr>
                             </thead>
@@ -84,6 +83,12 @@
                                             <div class="mb-2">
                                                 <b>Nama Pelanggan :</b><br>
                                                 <?= $order->pengguna_nama; ?>
+                                            </div>
+                                            <div class="mb-2">
+                                                <b>Total Pembayaran : </b><br>
+                                                <div id="rupiah">
+                                                    <?= $order->total; ?>
+                                                </div>
                                             </div>
                                             <div class="mb-2">
                                                 <b>Tanggal Order : </b><br>
@@ -113,7 +118,6 @@
                                                 <?php endif; ?>
                                             </div>
                                         </td>
-                                        <td class="align-middle" id="rupiah"><?= $order->total; ?></td>
                                         <td class="align-middle">
                                             <div class="btn-group btn-group-sm" role="group">
                                                 <button id="cetak" type="button"
@@ -278,7 +282,7 @@
             });
 
             $(document).ready(function () {
-                $('td[id="rupiah"]').each(function (index) {
+                $('div[id="rupiah"]').each(function (index) {
                     var value = parseInt($(this).html()),
                         hasil = moneyFormat.to(value);
 
@@ -332,7 +336,7 @@
                 <form action="#" method="post">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="form-group">
-                        <label for="alasan">Reason</label>
+                        <label for="alasan">Alasan</label>
                         <textarea class="form-control" name="alasan" id="alasan" required></textarea>
                     </div>
                     <div class="form-group">

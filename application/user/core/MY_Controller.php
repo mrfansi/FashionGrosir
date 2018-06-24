@@ -212,15 +212,19 @@ class MY_Controller extends CI_Controller
         if ($toko) {
             $this->data->brandname = $toko->t_nama;
             $this->data->instagram = $toko->t_insta;
-            $this->data->facebook = $toko->t_line;
+            $this->data->whatsapp = $toko->t_wa;
+            $this->data->line = $toko->t_line;
             $this->data->logo = $toko->t_logo;
             $this->data->icon = $toko->t_icon;
+            $this->data->email = $toko->t_email;
         } else {
             $this->data->brandname = 'E-Commerce Brand';
             $this->data->instagram = '';
-            $this->data->facebook = '';
+            $this->data->whatsapp = '';
+            $this->data->line = '';
             $this->data->logo = '';
             $this->data->icon = '';
+            $this->data->email = '';
         }
 
 

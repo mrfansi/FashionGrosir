@@ -1,32 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: irfandihati
- * Date: 12/03/2018
- * Time: 23.23
- */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Toko extends MY_Controller
+class New_toko extends MY_Controller
 {
     public function __construct()
     {
         parent::__construct();
-
-        if (!$this->session->isonline) {
-            redirect('login');
-        } else {
-            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                $this->session->set_userdata('redirect', current_url());
-            }
-        }
     }
 
-    public function index() {
+    public function index()
+    {
         // set title
         $this->data->title = $this->data->brandname . ' | Toko';
         $this->data->id = $this->toko->guid();
-        $this->data->toko = $this->toko->get();
-        $this->load->view('Toko', $this->data);
+        $this->load->view('master/New_toko', $this->data);
     }
 
     public function simpan()
@@ -84,7 +71,7 @@ class Toko extends MY_Controller
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
             }
         }
-        redirect('toko');
+        redirect('new_user');
 
     }
 

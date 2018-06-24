@@ -77,6 +77,11 @@ class Seri extends MY_Controller
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('seri');
+            } else if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $seri_nama)) {
+                $this->data->gagal = 'Karakter untuk nomor seri tidak diperbolehkan.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('seri');
             }
 
             // update
@@ -97,6 +102,11 @@ class Seri extends MY_Controller
             // validasi
             if ($this->form_validation->run() === FALSE) {
                 $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('seri');
+            } else if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $seri_nama)) {
+                $this->data->gagal = 'Karakter untuk nomor seri tidak diperbolehkan.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('seri');
