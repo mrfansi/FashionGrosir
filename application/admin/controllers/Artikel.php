@@ -74,7 +74,7 @@ class Artikel extends MY_Controller
             'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
             'artikel_ispromo' => $this->input->post('promo'),
             'artikel_isblog' => $this->input->post('blog'),
-            'artikel_isresi' => $this->input->post('resi'),
+            'artikel_isresi' => 0,
             'artikel_isnotifikasi' => $this->input->post('notikasi'),
             'artikel_isaktif' => $this->input->post('aktif')
         );
@@ -83,6 +83,11 @@ class Artikel extends MY_Controller
             // cek validasi
             if ($this->form_validation->run() === FALSE && $artikel->artikel_judul != $artikel_judul) {
                 $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('artikel');
+            } else if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $artikel_judul)) {
+                $this->data->gagal = 'Karakter untuk judul tidak diperbolehkan.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('artikel');
@@ -106,6 +111,11 @@ class Artikel extends MY_Controller
             // cek validasi
             if ($this->form_validation->run() === FALSE) {
                 $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('artikel');
+            } else if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $artikel_judul)) {
+                $this->data->gagal = 'Karakter untuk judul tidak diperbolehkan.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('artikel');

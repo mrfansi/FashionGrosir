@@ -31,7 +31,7 @@
                         <i class="fa fa-user"></i> Login
                     </a>
                     | <a class="alert-link f-link" href="<?= site_url('register'); ?>">
-                        <i class="fa fa-sign-in"></i> Register
+                        <i class="fas fa-sign-in-alt"></i> Register
                     </a>
                 <?php endif; ?>
             </div>

@@ -97,7 +97,7 @@ include "layout/Menu.php";
                                             <div class="text-danger">BATAL</div>
                                         <?php endif; ?>
                                     </td>
-                                    <td><b>Reason : </b><br>
+                                    <td><b>Alasan : </b><br>
                                         <div class="text-danger">
                                             <?= $order->orders_deskripsi; ?>
                                         </div>

@@ -51,15 +51,6 @@ if ($submit == 'Ubah') {
             </div>
             <div class="col">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="resi" value="1"
-                           id="resi" <?= $isresi == 1 ? 'checked' : ''; ?>>
-                    <label class="form-check-label" for="resi">
-                        Resi
-                    </label>
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="notikasi" value="1"
                            id="notikasi" <?= $isnotifikasi == 1 ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="notikasi">
