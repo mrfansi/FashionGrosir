@@ -5,6 +5,28 @@ include "layout/Header.php";
     <p class="text-danger text-center"><?= $log; ?></p>
 <?php endif; ?>
 
+    <!-- Alert Promo -->
+    <div class="container-fluid text-center clear-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-5">
+                <div class="float-none float-md-left">
+                    Selamat datang di <b><?= $brandname; ?></b>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-7">
+                <div class="float-none float-md-right f-brand-cos">
+                    <a class="alert-link f-link" href="<?= site_url('/'); ?>">
+                        Kembali <i class="fa fa-undo"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Alert Promo -->
+
+
+
+
     <!-- Login -->
     <form method="post" action="<?= site_url('login'); ?>" class="form-signin">
         <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
