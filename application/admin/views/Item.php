@@ -121,6 +121,14 @@
                                                        onclick="unggah($(this))" data-target="#crudfoto"
                                                        data-id="<?= $item->i_kode; ?>"><i
                                                                 class="fas fa-upload mr-2"></i>Upload Gambar</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item small" data-toggle="modal"
+                                                       data-backdrop="static" data-keyboard="false"
+                                                       href="#"
+                                                       onclick="hapus_item($(this))" data-target="#crudfoto"
+                                                       data-id="<?= $item->i_kode; ?>"><i
+                                                                class="far fa-trash-alt mr-2"></i>Hapus Item</a>
+
                                                 </div>
 
                                             </div>
@@ -139,31 +147,31 @@
                                                         <th>Ukuran</th>
                                                         <th>Seri</th>
                                                         <th>QTY</th>
-                                                        <th>Aksi</th>
+                                                        <th></th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     <?php foreach ($item->item_detil as $detil): ?>
                                                         <tr>
-                                                            <td>
+                                                            <td class="align-middle">
                                                                 <?php if (isset($warna($detil->item_detil_kode, $detil->w_kode)->w_nama)): ?>
                                                                     <?= $warna($detil->item_detil_kode, $detil->w_kode)->w_nama; ?>
 
                                                                 <?php endif; ?>
                                                             </td>
-                                                            <td>
+                                                            <td class="align-middle">
                                                                 <?php if (isset($ukuran($detil->item_detil_kode, $detil->u_kode)->u_nama)): ?>
                                                                     <?= $ukuran($detil->item_detil_kode, $detil->u_kode)->u_nama; ?>
 
                                                                 <?php endif; ?>
                                                             </td>
-                                                            <td>
+                                                            <td class="align-middle">
                                                                 <?php if (isset($seri($detil->item_detil_kode, $detil->s_kode)->s_nama)): ?>
                                                                     <?= $seri($detil->item_detil_kode, $detil->s_kode)->s_nama; ?>
 
                                                                 <?php endif; ?>
                                                             </td>
-                                                            <td>
+                                                            <td class="align-middle">
                                                                 <?= $qty($detil->item_detil_kode); ?>
                                                             </td>
 
@@ -199,7 +207,8 @@
                                                                         <a class="dropdown-item small"
                                                                            data-toggle="modal"
                                                                            href="#"
-                                                                           onclick="hapus($(this))" data-target="#hapus"
+                                                                           onclick="hapus($(this))"
+                                                                           data-target="#modal_hapus"
                                                                            data-backdrop="static" data-keyboard="false"
                                                                            data-id="<?= $detil->item_detil_kode; ?>"><i
                                                                                     class="far fa-trash-alt mr-2"></i>
@@ -211,6 +220,7 @@
                                                         </tr>
                                                     <?php endforeach; ?>
                                                     </tbody>
+
                                                 </table>
                                             <?php endif; ?>
                                         </td>
