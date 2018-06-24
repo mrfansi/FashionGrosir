@@ -74,7 +74,7 @@ class Artikel extends MY_Controller
             'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
             'artikel_ispromo' => $this->input->post('promo'),
             'artikel_isblog' => $this->input->post('blog'),
-            'artikel_isresi' => $this->input->post('resi'),
+            'artikel_isresi' => 0,
             'artikel_isnotifikasi' => $this->input->post('notikasi'),
             'artikel_isaktif' => $this->input->post('aktif')
         );
