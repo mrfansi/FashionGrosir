@@ -80,7 +80,7 @@
                             <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col">Item</th>
+                                <th scope="col">Kode Item</th>
                                 <th scope="col">Hrg Reseller</th>
                                 <th scope="col">Hrg VIP</th>
                                 <th scope="col">Berat (Gram)</th>

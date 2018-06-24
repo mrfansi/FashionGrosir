@@ -47,7 +47,7 @@ if ($submit == 'Ubah') {
         <?php if ($submit == 'Simpan' || $submit == 'Ubah'): ?>
             <div class="form-group">
                 <label for="nama">Item</label>
-                <input type="text" class="form-control" name="nama" placeholder="Input Item" value="<?= $nama; ?>"
+                <input type="text" class="form-control" name="nama" placeholder="Input Kode Item" value="<?= $nama; ?>"
                        required>
             </div>
         <?php endif; ?>
