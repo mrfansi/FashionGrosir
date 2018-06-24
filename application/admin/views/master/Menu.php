@@ -13,8 +13,8 @@
                 <h2 class="h5"><?= $_SESSION['nama']; ?></h2><span>Admin</span>
             </div>
             <!-- Small Brand information, appears on minimized sidebar-->
-            <div class="sidenav-header-logo"><a href="<?= site_url('dashboard'); ?>"" class="brand-small text-center">
-                <strong>F</strong><strong class="text-primary">G</strong></a></div>
+            <div class="sidenav-header-logo"><a href="<?= site_url('dashboard'); ?>" class="brand-small text-center">
+                    <strong class="text-primary"><?= $brandkode; ?></strong></a></div>
         </div>
         <!-- Sidebar Navigation Menus-->
         <div class="main-menu">
