@@ -59,22 +59,31 @@ class Ukuran extends MY_Controller
     {
         $this->form_validation->set_rules('nama', 'Ukuran', 'is_unique[ukuran.u_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
 
-
-
-        // create object
         // get guid form post
         $id = $this->input->post('id');
 
         // get user from database where guid
         $ukuran = $this->ukuran->where('u_kode', $id)->get();
+        $ukuran_nama = $this->input->post('nama');
+        $ukuran_array = array(
+            'u_kode' => $id,
+            'u_nama' => $this->input->post('nama'),
+            'u_url' => $this->slug->create_uri(array('title' => $this->input->post('nama')))
+        );
 
         if ($ukuran) {
-            $ukuran = $this->ukuran->update(array(
-                'u_kode' => $id,
-                'u_nama' => $this->input->post('nama'),
-                'u_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            ), 'u_kode');
-            if ($ukuran) {
+
+            // validasi
+            if ($this->form_validation->run() === FALSE && $ukuran->u_nama != $ukuran_nama) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('ukuran');
+            }
+
+            // update
+            $ukuran_update = $this->ukuran->update($ukuran_array, 'u_kode');
+            if ($ukuran_update) {
                 $this->data->berhasil = 'Data Ukuran berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
@@ -86,18 +95,18 @@ class Ukuran extends MY_Controller
                 redirect('ukuran');
             }
         } else {
+
+            // validasi
             if ($this->form_validation->run() === FALSE) {
                 $this->data->gagal = validation_errors();
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('ukuran');
             }
-            $ukuran = $this->ukuran->insert(array(
-                'u_kode' => $id,
-                'u_nama' => $this->input->post('nama'),
-                'u_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            ));
-            if ($ukuran) {
+
+            // insert
+            $ukuran_insert = $this->ukuran->insert($ukuran_array);
+            if ($ukuran_insert) {
                 $this->data->berhasil = 'Data Ukuran berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 

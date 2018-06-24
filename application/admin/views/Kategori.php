@@ -78,6 +78,8 @@
                                     <thead>
                                     <tr>
                                         <th>Kategori</th>
+                                        <th>Dibuat pada</th>
+                                        <th>Diupdate pada</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -88,6 +90,8 @@
                                                 <td class="align-middle">
                                                     <?= $kategori->k_nama; ?>
                                                 </td>
+                                                <td class="align-middle"><?= $kategori->created_at; ?></td>
+                                                <td class="align-middle"><?= $kategori->updated_at; ?></td>
 
                                                 <td class="align-middle">
                                                     <a data-toggle="modal" class="btn btn-sm btn-primary"

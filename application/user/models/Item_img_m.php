@@ -18,7 +18,7 @@ class Item_img_m extends MY_Model {
             'foreign_key'=>'item_detil_kode',
             'local_key'=>'item_detil_kode');
         $this->timestamps = TRUE;
-        $this->soft_deletes = TRUE;
+        $this->soft_deletes = FALSE;
         parent::__construct();
     }
 

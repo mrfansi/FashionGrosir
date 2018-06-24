@@ -14,7 +14,7 @@ class Alamat_m extends MY_Model
         $this->primary_key = 'alamat_id';
         $this->protected = array('alamat_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
-        $this->soft_deletes = TRUE;
+        $this->soft_deletes = FALSE;
         $this->has_many['order_pengiriman'] = array(
             'foreign_model'=>'Order_pengiriman_m',
             'foreign_table'=>'orders_pengiriman',

@@ -13,7 +13,7 @@ class Pengguna_m extends MY_Model {
         $this->primary_key = 'pengguna_id';
         $this->protected = array('pengguna_id','created_at','update_at');
         $this->timestamps = TRUE;
-        $this->soft_deletes = TRUE;
+        $this->soft_deletes = FALSE;
         parent::__construct();
     }
 
