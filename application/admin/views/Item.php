@@ -57,7 +57,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1><i class="fas fa-shopping-cart"></i> <?= $title_page; ?></h1>
+                    <h1><i class="fas fa-shopping-cart mr-2"></i><?= $title_page; ?></h1>
 
                 </div>
                 <div class="card-body">
