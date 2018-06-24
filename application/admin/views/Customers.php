@@ -72,7 +72,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="table-responsive">
-                                <table id="tables" class="table table-sm table-borderless">
+                                <table id="tables" class="table table-sm">
                                     <thead>
                                     <tr>
                                         <th scope="col">Tipe</th>

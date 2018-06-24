@@ -332,7 +332,7 @@
                 <form action="#" method="post">
                     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="form-group">
-                        <label for="alasan">Reason</label>
+                        <label for="alasan">Alasan</label>
                         <textarea class="form-control" name="alasan" id="alasan" required></textarea>
                     </div>
                     <div class="form-group">

@@ -68,74 +68,80 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tables" class="table table-sm table-borderless">
+                        <table id="tables" class="table table-sm">
                             <thead>
                             <tr>
                                 <th scope="col">No. Order</th>
-                                <th scope="col">Nominal</th>
-                                <th scope="col">Konfirmasi</th>
+                                <th scope="col">Detail Bank & Bukti</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php if ($orders != NULL): ?>
                                 <?php foreach ($orders as $order): ?>
                                     <tr>
-                                        <td class="text-danger"><?= $order->orders_noid; ?></td>
-                                        <td id="rupiah"><?= $order->orders_bukti_nominal; ?></td>
-                                        <td>
+                                        <td class="align-middle text-danger"><?= $order->orders_noid; ?></td>
+                                        <td class="align-middle">
+                                            <div class="mb-2">
+                                                <b>Nominal : </b><br>
+                                                <div id="rupiah">
+                                                    <?= $order->orders_bukti_nominal; ?>
+                                                </div>
+                                            </div>
+                                            <div class="mb-2">
+                                                <b>Bank : </b><br>
+                                                <?= $order->orders_bukti_bank_nama; ?>
+                                            </div>
+                                            <div class="mb-2">
+                                                <b>Nomor Pemilik Rekening : </b><br>
+                                                <?= $order->orders_bukti_no_rek; ?>
+                                            </div>
+                                            <div class="mb-2">
+                                                <b>Bukti : </b><br>
+                                                <?php if ($order->orders_bukti_foto != NULL): ?>
+                                                    <div class="fotorama"
+                                                         data-nav="false"
+                                                         data-arrows="false"
+                                                         data-click="true"
+                                                         data-swipe="true"
+                                                         data-allowfullscreen="true"
+                                                         data-width="220"
+                                                         data-height="150">
+                                                        <img src="<?= base_url('upload/' . $order->orders_bukti_foto); ?>"
+                                                             width="220" height="150">
+                                                    </div>
+                                                <?php else: ?>
+                                                    Tidak ada gambar.
+                                                <?php endif; ?>
+                                            </div>
+                                            <div class="mb-2">
+                                                <b>Status : </b><br>
+                                                <?php if ($order->orders_status == 0): ?>
+                                                    <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
+                                                <?php elseif ($order->orders_status == 1): ?>
+                                                    <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN &
+                                                        PEMBAYARAN
+                                                    </div>
+                                                <?php elseif ($order->orders_status == 2): ?>
+                                                    <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN
+                                                    </div>
+                                                <?php elseif ($order->orders_status == 3): ?>
+                                                    <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
+                                                <?php elseif ($order->orders_status == 4): ?>
+                                                    <div class="text-success">ADMIN SEDANG MEMPROSES ORDER</div>
+                                                <?php elseif ($order->orders_status == 5): ?>
+                                                    <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
+                                                <?php elseif ($order->orders_status == 6): ?>
+                                                    <div class="text-success">SUKSES (Telah dikirim)</div>
+                                                <?php elseif ($order->orders_status == 7): ?>
+                                                    <div class="text-danger">BATAL</div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle">
                                             <a class="btn btn-sm btn-primary" data-toggle="modal" href="#"
                                                onclick="proses($(this))" data-target="#proses"
                                                data-id="<?= $order->orders_noid; ?>"><i class="fas fa-check"></i> Proses <?= $title_page; ?></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td><b>No Pemilik Rekening : </b><br>
-                                            <?= $order->orders_bukti_no_rek; ?>
-                                        </td>
-                                        <td rowspan="2"><b>Bukti : </b>
-                                            <div class="fotorama"
-                                                 data-nav="false"
-                                                 data-arrows="false"
-                                                 data-click="true"
-                                                 data-swipe="true"
-                                                 data-allowfullscreen="true"
-                                                 data-width="220"
-                                                 data-height="150">
-                                                <img src="<?= base_url('upload/' . $order->orders_bukti_foto); ?>" width="220" height="150">
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td><b>Nama Pemilik Rekening : </b><br>
-                                            <?= $order->orders_bukti_nama_rek; ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td><b>Bank : </b><br>
-                                            <?= $order->orders_bukti_bank_nama; ?>
-                                        </td>
-                                        <td><b>Status : </b><br>
-                                            <?php if ($order->orders_status == 0): ?>
-                                                <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
-                                            <?php elseif ($order->orders_status == 1): ?>
-                                                <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN
-                                                </div>
-                                            <?php elseif ($order->orders_status == 2): ?>
-                                                <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
-                                            <?php elseif ($order->orders_status == 3): ?>
-                                                <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
-                                            <?php elseif ($order->orders_status == 4): ?>
-                                                <div class="text-success">ADMIN SEDANG MEMPROSES ORDER</div>
-                                            <?php elseif ($order->orders_status == 5): ?>
-                                                <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
-                                            <?php elseif ($order->orders_status == 6): ?>
-                                                <div class="text-success">SUKSES (Telah dikirim)</div>
-                                            <?php elseif ($order->orders_status == 7): ?>
-                                                <div class="text-danger">BATAL</div>
-                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -201,7 +207,7 @@
             });
 
             $(document).ready(function () {
-                $('td[id="rupiah"]').each(function (index) {
+                $('div[id="rupiah"]').each(function (index) {
                     var value = parseInt($(this).html()),
                         hasil = moneyFormat.to(value);
 
@@ -240,7 +246,7 @@
             </div>
             <div class="modal-footer">
                 <a id="proses" href="#" class="btn btn-sm btn-primary">Proses</a>
-                <a data-dismiss="modal" href="#" class="btn btn-sm btn-danger">Tutup</a>
+                <a href="#" class="btn btn-sm btn-danger" data-dismiss="modal">Tutup</a>
             </div>
         </div>
     </div>
