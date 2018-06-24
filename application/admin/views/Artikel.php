@@ -137,6 +137,7 @@
 
             function tambah() {
                 modal = $('#crud');
+                modal.find('form').remove();
                 bodymodal = modal.find('div.modal-body');
 
                 bodymodal.load("<?= site_url('artikel/tambah'); ?>");
@@ -194,6 +195,8 @@
                 }, 5000);
             });
         </script>
+
+
     </section>
     <footer class="main-footer">
         <div class="container-fluid">
