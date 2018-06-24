@@ -52,7 +52,7 @@ class Kategori extends MY_Controller
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->kategori = $this->kategori->where('k_kode', $id)->get();
-        $this->data->kategoris = $this->kategori->where_k_parent_kode(0)->get_all();
+        $this->data->kategoris = $this->kategori->get_all();
         $this->load->view('CRUD_Kategori', $this->data);
     }
 
@@ -65,13 +65,25 @@ class Kategori extends MY_Controller
 
         // get user from database where guid
         $kategori = $this->kategori->where('k_kode', $id)->get();
+        $kategori_nama = $this->input->post('nama');
+        $kategori_array = array(
+            'k_kode' => $id,
+            'k_nama' => $kategori_nama,
+            'k_url' => $this->slug->create_uri(array('title' => $this->input->post('nama')))
+        );
 
         if ($kategori) {
-            $kategori = $this->kategori->update(array(
-                'k_kode' => $id,
-                'k_url'  => $this->slug->create_uri(array('title' => $this->input->post('nama')))
-            ), 'k_kode');
-            if ($kategori) {
+            // validasi
+            if ($this->form_validation->run() === FALSE && $kategori->k_nama != $kategori_nama) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('kategori');
+            }
+
+            // update
+            $kategori_update = $this->kategori->update($kategori_array, 'k_kode');
+            if ($kategori_update) {
                 $this->data->berhasil = 'Data Kategori berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
@@ -83,18 +95,18 @@ class Kategori extends MY_Controller
                 redirect('kategori');
             }
         } else {
+
+            // validasi
             if ($this->form_validation->run() === FALSE) {
                 $this->data->gagal = validation_errors();
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('kategori');
             }
-            $kategori = $this->kategori->insert(array(
-                'k_kode' => $this->input->post('id'),
-                'k_nama' => $this->input->post('nama'),
-                'k_url'  => $this->slug->create_uri(array('title' => $this->input->post('nama')))
-            ));
-            if ($kategori) {
+
+            // insert
+            $kategori_insert = $this->kategori->insert($kategori_array);
+            if ($kategori_insert) {
                 $this->data->berhasil = 'Data Kategori berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
