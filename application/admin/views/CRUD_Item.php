@@ -7,6 +7,7 @@ if ($submit == 'Ubah') {
     $hrg_vip = $items->i_hrg_vip;
     $hrg_reseller = $items->i_hrg_reseller;
     $deskripsi = $items->i_deskripsi;
+    $berat = $items->i_berat;
 } else if ($submit == 'Simpan') {
     $url = site_url('item/simpan');
     $id = $kode;
@@ -14,6 +15,8 @@ if ($submit == 'Ubah') {
     $hrg_vip = '';
     $hrg_reseller = '';
     $deskripsi = '';
+    $berat = '';
+
 } else if ($submit == 'Tambah Detail') {
     $url = site_url('item/tambah_detil_simpan');
     $id = $items->i_kode;
@@ -67,7 +70,7 @@ if ($submit == 'Ubah') {
                 <div class="col-xs-12 col-md-12 col-lg-6">
                     <div class="form-group">
                         <label for="kategori">Kategori</label>
-                        <select name="kategori[]" id="kategori" class="form-control" multiple required>
+                        <select name="kategori[]" id="kategori" class="form-control" multiple>
                             <?php foreach ($this->kategori->get_all() as $katitem): ?>
                                 <option value="<?= $katitem->k_kode; ?>" <?= $kategori_selected($katitem->k_kode, $id); ?>><?= $katitem->k_nama; ?></option>
                             <?php endforeach; ?>
@@ -101,7 +104,7 @@ if ($submit == 'Ubah') {
                                 <label for="berat">Berat (Gram)</label>
                                 <input type="number" class="form-control" min="1" max="1000" name="berat"
                                        placeholder="Berat"
-                                       value="<?= $hrg_reseller; ?>" required>
+                                       value="<?= $berat; ?>" required>
                             </div>
                         </div>
                     </div>
@@ -110,8 +113,8 @@ if ($submit == 'Ubah') {
         </div>
         <?php if ($submit == 'Simpan' || $submit == 'Ubah'): ?>
         <div class="form-group">
-            <label for="deskripsi">Deskripsi (minimal: 100 Karakter)</label>
-            <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Item" minlength="100"
+            <label for="deskripsi">Deskripsi</label>
+            <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Item"
                       required><?= $deskripsi; ?></textarea>
         </div>
         <?php endif; ?>
@@ -152,7 +155,7 @@ if ($submit == 'Ubah') {
                                 <?php endforeach; ?>
                             </select>
                         </td>
-                        <td><input name="qty[]" type="number" class="form-control" value="0"></td>
+                        <td><input name="qty[]" id="qty" type="number" class="form-control" value="0" min="0"></td>
                         <td>
                             <a href="#" class="mt-1" onclick="hapus_detil($(this))"><i
                                         class="fa fa-window-close fa-2x"></i></a>
@@ -196,6 +199,7 @@ if ($submit == 'Ubah') {
             //     return $warna.find('option:selected[value="' + $(this).val() + '"]').length;
             // }).remove();
 
+            $trNew.find('input#qty').val(0);
 
             if ($trLast.find('select#warna option').length !== 1) {
                 $trLast.after($trNew);

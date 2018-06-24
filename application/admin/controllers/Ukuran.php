@@ -67,7 +67,7 @@ class Ukuran extends MY_Controller
         $ukuran_nama = $this->input->post('nama');
         $ukuran_array = array(
             'u_kode' => $id,
-            'u_nama' => $this->input->post('nama'),
+            'u_nama' => strtoupper($this->input->post('nama')),
             'u_url' => $this->slug->create_uri(array('title' => $this->input->post('nama')))
         );
 

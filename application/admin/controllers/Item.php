@@ -99,36 +99,46 @@ class Item extends MY_Controller
 
         // get user from database where guid
         $item = $this->item->where('i_kode', $id)->get();
+        $item_nama = $this->input->post('nama');
+        $item_array = array(
+            'i_kode' => $id,
+            'i_nama' => $item_nama,
+            'i_hrg_vip' => $this->input->post('hrg_vip'),
+            'i_hrg_reseller' => $this->input->post('hrg_reseller'),
+            'i_berat' => $this->input->post('berat'),
+            'i_deskripsi' => $this->input->post('deskripsi'),
+            'i_url' => $this->slug->create_uri(array('title' => $this->input->post('nama')))
+        );
 
         // item
         if ($item) {
-            if (!preg_match('/\s/', $this->input->post('deskripsi'))) {
-                $this->data->gagal = 'Karakter harus mempunyai spasi';
+
+            // validasi
+            if ($this->form_validation->run() === FALSE && $item->i_nama != $item_nama) {
+                $this->data->gagal = validation_errors();
                 $this->session->set_flashdata('gagal', $this->data->gagal);
                 redirect('item');
             }
 
-            $item_update = $this->item->update(array(
-                'i_kode' => $id,
-                'i_nama' => $this->input->post('nama'),
-                'i_hrg_vip' => $this->input->post('hrg_vip'),
-                'i_hrg_reseller' => $this->input->post('hrg_reseller'),
-                'i_berat' => $this->input->post('berat'),
-                'i_deskripsi' => $this->input->post('deskripsi'),
-                'i_url'     => $this->slug->create_uri(array('title' => $this->input->post('nama')))
-            ), 'i_kode');
+            // update
+            $item_update = $this->item->update($item_array, 'i_kode');
 
-            $this->item_kategori->where('i_kode', $id)->delete();
+            $item_kategori_hapus = $this->item_kategori->where('i_kode', $id)->delete();
 
-            foreach ($this->input->post('kategori') as $kategori) {
-                $item_kategori = $this->item_kategori->insert(array(
-                    'ik_kode' => $this->item_kategori->guid(),
-                    'i_kode' => $this->input->post('id'),
-                    'k_kode' => $kategori,
-                ));
+            if ($item_kategori_hapus) {
+                if (isset($_POST['kategori'])) {
+                    foreach ($this->input->post('kategori') as $kategori) {
+                        $this->item_kategori->insert(array(
+                            'ik_kode' => $this->item_kategori->guid(),
+                            'i_kode' => $this->input->post('id'),
+                            'k_kode' => $kategori,
+                        ));
+                    }
+                }
             }
 
-            if ($item_update && $item_kategori) {
+
+            if ($item_update) {
                 $this->data->berhasil = 'Data Item berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
@@ -145,29 +155,19 @@ class Item extends MY_Controller
                 $this->data->gagal = validation_errors();
                 $this->session->set_flashdata('gagal', $this->data->gagal);
                 redirect('item');
-            } else if (!preg_match('/\s/', $this->input->post('deskripsi'))) {
-                $this->data->gagal = 'Karakter harus mempunyai spasi';
-                $this->session->set_flashdata('gagal', $this->data->gagal);
-                redirect('item');
             }
 
-            $item = $this->item->insert(array(
-                'i_kode' => $this->input->post('id'),
-                'i_nama' => $this->input->post('nama'),
-                'i_hrg_vip' => $this->input->post('hrg_vip'),
-                'i_hrg_reseller' => $this->input->post('hrg_reseller'),
-                'i_berat' => $this->input->post('berat'),
-                'i_deskripsi' => $this->input->post('deskripsi'),
-                'i_url'     => $this->slug->create_uri(array('title' => $this->input->post('nama')))
-            ));
+            // insert
+            $item_insert = $this->item->insert($item_array);
 
-
-            foreach ($this->input->post('kategori') as $kategori) {
-                $item_kategori = $this->item_kategori->insert(array(
-                    'ik_kode' => $this->item_kategori->guid(),
-                    'i_kode' => $this->input->post('id'),
-                    'k_kode' => $kategori,
-                ));
+            if (isset($_POST['kategori'])) {
+                foreach ($this->input->post('kategori') as $kategori) {
+                    $this->item_kategori->insert(array(
+                        'ik_kode' => $this->item_kategori->guid(),
+                        'i_kode' => $this->input->post('id'),
+                        'k_kode' => $kategori,
+                    ));
+                }
             }
 
             for ($i = 0; $i < $counter; $i++) {
@@ -188,7 +188,7 @@ class Item extends MY_Controller
             }
 
 
-            if ($item && $item_kategori && $item_detil && $item_qty) {
+            if ($item_insert && $item_detil && $item_qty) {
                 $this->data->berhasil = 'Data Item berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 

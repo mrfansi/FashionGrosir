@@ -51,6 +51,15 @@ class Konfirmasi extends MY_Controller
 
         };
 
+        $this->data->nama_nomor = function () {
+            $order_pengiriman = $this->order_pengiriman->where('orders_noid', $this->data->orders_noid)->get();
+            $hasil = new stdClass();
+            $hasil->nama = $order_pengiriman->orders_pengiriman_r_nama;
+            $hasil->kontak = $order_pengiriman->orders_pengiriman_r_kontak;
+
+            return $hasil->nama . '<br>' . $hasil->kontak;
+        };
+
         $this->data->jasa = function () {
             $ongkir = $this->order_ongkir->where('orders_noid', $this->data->orders_noid)->get();
 
@@ -188,6 +197,15 @@ class Konfirmasi extends MY_Controller
             return $order_pengiriman->orders_pengiriman_deskripsi . '<br>' . $hasil->desa . '<br>' . $hasil->kecamatan . ', ' . $hasil->kabupaten . '<br>' .
                 $hasil->provinsi . ', ' . $order_pengiriman->orders_pengiriman_kodepos;
 
+        };
+
+        $this->data->nama_nomor = function () {
+            $order_pengiriman = $this->order_pengiriman->where('orders_noid', $this->data->orders_noid)->get();
+            $hasil = new stdClass();
+            $hasil->nama = $order_pengiriman->orders_pengiriman_r_nama;
+            $hasil->kontak = $order_pengiriman->orders_pengiriman_r_kontak;
+
+            return $hasil->nama . '<br>' . $hasil->kontak;
         };
 
         $this->data->jasa = function () {
