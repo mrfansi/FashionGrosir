@@ -57,7 +57,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1><i class="fa fa-users"></i> Admin</h1>
+                    <h1>Admin</h1>
 
 
                 </div>
@@ -67,7 +67,8 @@
                             <p>
                                 <a class="btn btn-primary" data-toggle="modal" title="Tambah Admin" href="#"
                                    onclick="tambah()"
-                                   data-target="#crud" data-backdrop="static" data-keyboard="false">Buat baru</a>
+                                   data-target="#crud" data-backdrop="static" data-keyboard="false"><i
+                                            class="fa fa-plus mr-2"></i>Buat Data</a>
                             </p>
                         </div>
                     </div>
@@ -161,9 +162,13 @@
             }
 
             // ------------------------------------------------------ //
-            // Data table users
+            // Data table
             // ------------------------------------------------------ //
-            $('#tables').DataTable();
+            $('#tables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+                }
+            });
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();

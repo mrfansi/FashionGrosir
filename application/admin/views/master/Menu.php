@@ -22,7 +22,7 @@
             <ul id="side-main-menu" class="side-menu list-unstyled">
                 <li><a href="<?= site_url('dashboard'); ?>"> <i class="icon-home"></i>Dashboard </a></li>
                 <li>
-                    <a href="#misc" aria-expanded="false" data-toggle="collapse"><i class="fas fa-filter"></i>Master</a>
+                    <a href="#misc" aria-expanded="false" data-toggle="collapse"><i class="fas fa-filter mr-2"></i>Master</a>
                     <ul id="misc" class="collapse list-unstyled ">
                         <li><a href="<?= site_url('kategori'); ?>"><i class="fas fa-angle-right mr-2"></i>Kategori </a>
                         </li>
@@ -33,16 +33,17 @@
                 </li>
                 <li><a href="<?= site_url('item'); ?>"><i class="fas fa-shopping-cart mr-2"></i>Item</a></li>
                 <li><a href="#transaksi" aria-expanded="false" data-toggle="collapse"><i
-                                class="fas fa-exchange-alt"></i>Transaksi</a>
+                                class="fas fa-exchange-alt mr-2"></i>Transaksi</a>
                     <ul id="transaksi" class="collapse list-unstyled">
                         <li>
-                            <a href="<?= site_url('order'); ?>"><i class="fas fa-file-alt mr-2"></i>Order</a>
+                            <a href="<?= site_url('order'); ?>"><i class="fas fa-angle-right mr-2"></i>Order</a>
                         </li>
                         <li>
-                            <a href="<?= site_url('order/konfirmasi'); ?>"><i class="fas fa-file-alt mr-2"></i>Pembayaran</a>
+                            <a href="<?= site_url('order/konfirmasi'); ?>"><i class="fas fa-angle-right mr-2"></i>Pembayaran</a>
                         </li>
                         <li>
-                            <a href="<?= site_url('order/invoice'); ?>"><i class="fas fa-file-alt mr-2"></i>Invoice</a>
+                            <a href="<?= site_url('order/invoice'); ?>"><i
+                                        class="fas fa-angle-right mr-2"></i>Invoice</a>
                         </li>
                     </ul>
                 </li>
@@ -50,13 +51,14 @@
                     </a>
                     <ul id="pelanggan" class="collapse list-unstyled">
                         <li>
-                            <a href="<?= site_url('customers'); ?>"><i class="fas fa-user mr-2"></i>Semua</a>
+                            <a href="<?= site_url('customers'); ?>"><i class="fas fa-angle-right mr-2"></i>Semua</a>
                         </li>
                         <li>
-                            <a href="<?= site_url('customers/by_vip'); ?>"><i class="fas fa-user mr-2"></i>VIP</a>
+                            <a href="<?= site_url('customers/by_vip'); ?>"><i
+                                        class="fas fa-angle-right mr-2"></i>VIP</a>
                         </li>
                         <li>
-                            <a href="<?= site_url('customers/by_reseller'); ?>"><i class="fas fa-user mr-2"></i>Reseller</a>
+                            <a href="<?= site_url('customers/by_reseller'); ?>"><i class="fas fa-angle-right mr-2"></i>Reseller</a>
                         </li>
                     </ul>
                 </li>

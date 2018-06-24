@@ -68,7 +68,7 @@
                             <p>
                                 <a class="btn btn-primary" data-toggle="modal" href="#" onclick="tambah()"
                                    data-target="#crud" data-backdrop="static"
-                                   data-keyboard="false">Buat baru</a>
+                                   data-keyboard="false"><i class="fa fa-plus mr-2"></i>Buat Data</a>
                             </p>
                         </div>
                     </div>

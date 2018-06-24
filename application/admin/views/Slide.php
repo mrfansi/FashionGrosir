@@ -59,58 +59,72 @@
             <div class="card">
                 <div class="card-header">
                     <h1>Slide Promo</h1>
-                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static"
-                       data-keyboard="false">Buat baru</a>
+
 
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="tables" class="table table-sm table-borderless">
-                            <thead>
-                            <tr>
-                                <th scope="col">Image</th>
-                                <th scope="col">Dibuat pada</th>
-                                <th scope="col">Diupdate pada</th>
-                                <th scope="col" class="text-center"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php if ($slide_promos != NULL): ?>
-                                <?php foreach ($slide_promos as $promo): ?>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                <a class="btn btn-primary" data-toggle="modal" href="#" onclick="tambah()"
+                                   data-target="#crud" data-backdrop="static"
+                                   data-keyboard="false"><i class="fa fa-plus mr-2"></i>Buat Data</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table id="tables" class="table table-sm">
+                                    <thead>
                                     <tr>
-                                        <td>
-                                            <div class="fotorama"
-                                                 data-nav="false"
-                                                 data-arrows="false"
-                                                 data-click="true"
-                                                 data-swipe="true"
-                                                 data-allowfullscreen="true"
-                                                 data-width="220"
-                                                 data-height="150">
-                                                <img src="<?= base_url('upload/' . $promo->slide_promo_img); ?>"
-                                                     width="220" height="150">
-                                            </div>
-                                        </td>
-                                        <td><?= $promo->created_at; ?></td>
-                                        <td><?= $promo->updated_at; ?></td>
-                                        <td>
-                                            <a data-toggle="modal" class="btn btn-sm btn-primary"
-                                               href="#"
-                                               onclick="edit($(this))" data-target="#crud" data-backdrop="static"
-                                               data-keyboard="false"
-                                               data-id="<?= $promo->slide_promo_kode; ?>"><i
-                                                        class="far fa-edit"></i> Ubah</a>
-                                            <a data-toggle="modal" class="btn btn-sm btn-danger"
-                                               href="#"
-                                               onclick="hapus($(this))" data-target="#hapus"
-                                               data-id="<?= $promo->slide_promo_kode; ?>"><i
-                                                        class="far fa-trash-alt"></i> Hapus</a>
-                                        </td>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Dibuat pada</th>
+                                        <th scope="col">Diupdate pada</th>
+                                        <th scope="col" class="text-center"></th>
                                     </tr>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                            </tbody>
-                        </table>
+                                    </thead>
+                                    <tbody>
+                                    <?php if ($slide_promos != NULL): ?>
+                                        <?php foreach ($slide_promos as $promo): ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="fotorama"
+                                                         data-nav="false"
+                                                         data-arrows="false"
+                                                         data-click="true"
+                                                         data-swipe="true"
+                                                         data-allowfullscreen="true"
+                                                         data-width="220"
+                                                         data-height="150">
+                                                        <img src="<?= base_url('upload/' . $promo->slide_promo_img); ?>"
+                                                             width="220" height="150">
+                                                    </div>
+                                                </td>
+                                                <td><?= $promo->created_at; ?></td>
+                                                <td><?= $promo->updated_at; ?></td>
+                                                <td>
+                                                    <a data-toggle="modal" class="btn btn-sm btn-primary"
+                                                       href="#"
+                                                       onclick="edit($(this))" data-target="#crud"
+                                                       data-backdrop="static"
+                                                       data-keyboard="false"
+                                                       data-id="<?= $promo->slide_promo_kode; ?>"><i
+                                                                class="far fa-edit"></i> Ubah</a>
+                                                    <a data-toggle="modal" class="btn btn-sm btn-danger"
+                                                       href="#"
+                                                       onclick="hapus($(this))" data-target="#hapus"
+                                                       data-id="<?= $promo->slide_promo_kode; ?>"><i
+                                                                class="far fa-trash-alt"></i> Hapus</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -151,6 +165,15 @@
                 id = d.attr('data-id');
                 $('a#hapus').attr('href', "<?= site_url('slide/hapus/'); ?>" + id);
             }
+
+            // ------------------------------------------------------ //
+            // Data table
+            // ------------------------------------------------------ //
+            $('#tables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+                }
+            });
 
 
             $(document).ready(function () {

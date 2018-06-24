@@ -59,7 +59,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h1><i class="fas fa-file-alt mr-2"></i>Invoice</h1>
+                            <h1>Invoice</h1>
                         </div>
                     </div>
 

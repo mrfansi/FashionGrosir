@@ -57,7 +57,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1><i class="fa fa-users mr-2"></i><?= $title_page; ?></h1>
+                    <h1><?= $title_page; ?></h1>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -65,7 +65,7 @@
                             <p>
                                 <a class="btn btn-primary" data-toggle="modal" href="#" onclick="tambah()"
                                    data-target="#crud" data-backdrop="static"
-                                   data-keyboard="false">Buat baru</a>
+                                   data-keyboard="false"><i class="fa fa-plus mr-2"></i>Buat Data</a>
                             </p>
                         </div>
                     </div>
