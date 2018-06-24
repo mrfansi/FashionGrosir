@@ -59,50 +59,64 @@
             <div class="card">
                 <div class="card-header">
                     <h1>Resi</h1>
-                    <a data-toggle="modal" href="#" onclick="tambah()" data-target="#crud" data-backdrop="static"
-                       data-keyboard="false">Buat baru</a>
+
 
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="tables" class="table table-sm table-borderless">
-                            <thead>
-                            <tr>
-                                <th scope="col">Judul</th>
-                                <th scope="col">Dibuat pada</th>
-                                <th scope="col">Diupdate pada</th>
-                                <th scope="col"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php if ($artikels != NULL): ?>
-                                <?php foreach ($artikels as $artikel): ?>
+                    <div class="row">
+                        <div class="col">
+                            <p>
+                                <a class="btn btn-primary" data-toggle="modal" href="#" onclick="tambah()"
+                                   data-target="#crud" data-backdrop="static"
+                                   data-keyboard="false"><i class="fa fa-plus mr-2"></i>Buat Data</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="table-responsive">
+                                <table id="tables" class="table table-sm">
+                                    <thead>
                                     <tr>
-                                        <td><?= $artikel->artikel_judul; ?></td>
-                                        <td><?= $artikel->created_at; ?></td>
-                                        <td><?= $artikel->updated_at; ?></td>
-                                        <td class="text-center">
-                                            <?php if ($artikel->artikel_kode != '0'): ?>
-                                                <a class="btn btn-sm btn-primary" data-toggle="modal"
-                                                   title="Ubah <?= $title_page; ?>"
-                                                   href="#"
-                                                   onclick="edit($(this))" data-target="#crud" data-backdrop="static"
-                                                   data-keyboard="false"
-                                                   data-id="<?= $artikel->artikel_kode; ?>"><i
-                                                            class="far fa-edit"></i> Ubah</a>
-                                                <a class="btn btn-sm btn-danger" data-toggle="modal"
-                                                   title="Hapus <?= $title_page; ?>"
-                                                   href="#"
-                                                   onclick="hapus($(this))" data-target="#hapus"
-                                                   data-id="<?= $artikel->artikel_kode; ?>"><i
-                                                            class="far fa-trash-alt"></i> Hapus</a>
-                                            <?php endif; ?>
-                                        </td>
+                                        <th scope="col">Judul</th>
+                                        <th scope="col">Dibuat pada</th>
+                                        <th scope="col">Diupdate pada</th>
+                                        <th scope="col"></th>
                                     </tr>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                            </tbody>
-                        </table>
+                                    </thead>
+                                    <tbody>
+                                    <?php if ($artikels != NULL): ?>
+                                        <?php foreach ($artikels as $artikel): ?>
+                                            <tr>
+                                                <td><?= $artikel->artikel_judul; ?></td>
+                                                <td><?= $artikel->created_at; ?></td>
+                                                <td><?= $artikel->updated_at; ?></td>
+                                                <td class="text-center">
+                                                    <?php if ($artikel->artikel_kode != '0'): ?>
+                                                        <a class="btn btn-sm btn-primary" data-toggle="modal"
+                                                           title="Ubah <?= $title_page; ?>"
+                                                           href="#"
+                                                           onclick="edit($(this))" data-target="#crud"
+                                                           data-backdrop="static"
+                                                           data-keyboard="false"
+                                                           data-id="<?= $artikel->artikel_kode; ?>"><i
+                                                                    class="far fa-edit"></i> Ubah</a>
+                                                        <a class="btn btn-sm btn-danger" data-toggle="modal"
+                                                           title="Hapus <?= $title_page; ?>"
+                                                           href="#"
+                                                           onclick="hapus($(this))" data-target="#hapus"
+                                                           data-id="<?= $artikel->artikel_kode; ?>"><i
+                                                                    class="far fa-trash-alt"></i> Hapus</a>
+                                                    <?php endif; ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,6 +157,15 @@
                 id = d.attr('data-id');
                 $('a#hapus').attr('href', "<?= site_url('resi/hapus/'); ?>" + id);
             }
+
+            // ------------------------------------------------------ //
+            // Data table
+            // ------------------------------------------------------ //
+            $('#tables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+                }
+            });
 
 
             $(document).ready(function () {

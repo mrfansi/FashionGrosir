@@ -14,7 +14,7 @@ class Order_payment_m extends MY_Model
         $this->primary_key = 'orders_noid';
         $this->protected = array('created_at', 'update_at');
         $this->timestamps = TRUE;
-        $this->soft_deletes = TRUE;
+        $this->soft_deletes = FALSE;
         $this->has_one['order'] = array(
             'foreign_model' => 'Order_m',
             'foreign_table' => 'orders',

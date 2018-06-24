@@ -79,6 +79,8 @@
                                     <thead>
                                     <tr>
                                         <th>Warna</th>
+                                        <th>Dibuat pada</th>
+                                        <th>Diupdate pada</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -87,14 +89,20 @@
                                         <?php foreach ($warnas as $warna): ?>
                                             <tr>
                                                 <td><?= $warna->w_nama; ?></td>
+                                                <td><?= $warna->created_at; ?></td>
+                                                <td><?= $warna->updated_at; ?></td>
                                                 <td>
+                                                    <a class="btn btn-sm btn-primary" data-toggle="modal"
+                                                       href="#"
+                                                       onclick="edit($(this))" data-target="#crud"
+                                                       data-backdrop="static"
+                                                       data-id="<?= $warna->w_kode; ?>"><i class="far fa-edit mr-2"></i>Ubah</a>
                                                     <a class="btn btn-sm btn-danger" data-toggle="modal"
-                                                       title="Hapus <?= $title_page; ?>"
                                                        href="#"
                                                        onclick="hapus($(this))" data-target="#hapus"
-                                                       data-target="#crud" data-backdrop="static"
-                                                       data-id="<?= $warna->w_kode; ?>"><i class="far fa-trash-alt"></i>
-                                                        Hapus</a>
+                                                       data-backdrop="static"
+                                                       data-id="<?= $warna->w_kode; ?>"><i
+                                                                class="far fa-trash-alt mr-2"></i>Hapus</a>
                                                 </td>
                                             </tr>
 

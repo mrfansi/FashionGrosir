@@ -3,7 +3,6 @@ $url = site_url('kategori/simpan');
 if ($submit == 'Ubah') {
     $id = $kategori->k_kode;
     $nama = $kategori->k_nama;
-    $parent = $kategori->k_parent_kode;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $nama = '';

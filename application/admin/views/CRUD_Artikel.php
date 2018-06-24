@@ -84,7 +84,7 @@ if ($submit == 'Ubah') {
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-sm btn-primary"><?= $submit; ?></button>
-        <button type="button" onclick="window.location.reload()" class="btn btn-sm btn-danger">Tutup</button>
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Tutup</button>
     </div>
     <?php if (isset($berhasil)): ?>
         <p class="text-success"><?= $berhasil; ?></p>
@@ -94,18 +94,22 @@ if ($submit == 'Ubah') {
     <?php endif; ?>
 </form>
 <script>
-    tinymce.init({
-        selector: 'textarea',
-        height: 300,
-        menubar: false,
-        plugins: [
-            'advlist autolink lists link image charmap print preview anchor textcolor',
-            'searchreplace visualblocks code fullscreen',
-            'insertdatetime media table contextmenu paste code help wordcount'
-        ],
-        toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
-        content_css: [
-            '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-            '//www.tinymce.com/css/codepen.min.css']
-    });
+    $(document).ready(function () {
+        tinymce.remove();
+        tinymce.init({
+            selector: 'textarea',
+            height: 300,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor textcolor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code help wordcount'
+            ],
+            toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
+            content_css: [
+                '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                '//www.tinymce.com/css/codepen.min.css']
+        });
+    })
+
 </script>

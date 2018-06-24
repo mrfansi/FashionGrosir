@@ -14,7 +14,7 @@ class Order_detil_m extends MY_Model
         $this->primary_key = 'od_id';
         $this->protected = array('od_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
-        $this->soft_deletes = TRUE;
+        $this->soft_deletes = FALSE;
         $this->has_one['order'] = array(
             'foreign_model'=>'Order_m',
             'foreign_table'=>'orders',

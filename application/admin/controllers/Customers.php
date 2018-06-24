@@ -49,22 +49,35 @@ class Customers extends MY_Controller
 
     public function simpan()
     {
+        $this->form_validation->set_rules('email', 'E-mail', 'is_unique[pengguna.pengguna_username]', array('is_unique' => 'Terdapat email yang sama. Silahkan coba lagi.'));
+
         // get guid form post
         $id = $this->input->post('id');
 
         // get user from database where guid
         $customer = $this->pengguna->where_pengguna_kode($id)->get();
+        $customer_email = $this->input->post('email');
+        $customer_array = array(
+            'pengguna_kode' => $id,
+            'pengguna_tipe' => $this->input->post('tipe'),
+            'pengguna_nama' => $this->input->post('nama'),
+            'pengguna_username' => $customer_email,
+            'pengguna_password' => $this->input->post('password'),
+            'pengguna_email' => $customer_email
+        );
 
         if ($customer) {
-            $customer = $this->pengguna->update(array(
-                'pengguna_kode' => $id,
-                'pengguna_tipe' => $this->input->post('tipe'),
-                'pengguna_nama' => $this->input->post('nama'),
-                'pengguna_username' => $this->input->post('email'),
-                'pengguna_password' => $this->input->post('password'),
-                'pengguna_email' => $this->input->post('email'),
-            ), 'pengguna_kode');
-            if ($customer) {
+            // cek validasi
+            if ($this->form_validation->run() === FALSE && $customer->pengguna_username != $customer_email) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('customers');
+            }
+
+            // update
+            $customer_update = $this->pengguna->update($customer_array, 'pengguna_kode');
+            if ($customer_update) {
                 $this->data->berhasil = 'Data Pelaggan berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
@@ -76,15 +89,17 @@ class Customers extends MY_Controller
                 redirect('customers');
             }
         } else {
-            $customer = $this->pengguna->insert(array(
-                'pengguna_kode' => $id,
-                'pengguna_tipe' => $this->input->post('tipe'),
-                'pengguna_nama' => $this->input->post('nama'),
-                'pengguna_username' => $this->input->post('email'),
-                'pengguna_password' => $this->input->post('password'),
-                'pengguna_email' => $this->input->post('email'),
-            ));
-            if ($customer) {
+
+            // cek validasi
+            if ($this->form_validation->run() === FALSE) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('customers');
+            }
+
+            $customer_insert = $this->pengguna->insert($customer_array);
+            if ($customer_insert) {
                 $this->data->berhasil = 'Data Pelanggan berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 

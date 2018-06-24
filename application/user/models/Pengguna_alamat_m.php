@@ -13,7 +13,7 @@ class Pengguna_alamat_m extends MY_Model {
         $this->primary_key = 'pengguna_alamat_id';
         $this->protected = array('pengguna_alamat_id','created_at','update_at');
         $this->timestamps = TRUE;
-        $this->soft_deletes = TRUE;
+        $this->soft_deletes = FALSE;
         $this->has_one['pengguna'] = array(
             'foreign_model'=>'Pengguna_m',
             'foreign_table'=> 'pengguna',

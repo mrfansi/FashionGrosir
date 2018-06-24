@@ -61,7 +61,7 @@ include "layout/Menu.php";
                         </div>
                     </div>
                     <div class="row">
-                        <div class="mb-2 col-12 col-sm-6 col-md-5 col-lg-5">
+                        <div class="mb-2 col-12 col-sm-6 col-md-5 col-lg-6">
                             <label for="wu"></i>Warna - Ukuran</label>
                             <select name="wu" id="wu" class="form-control" required>
                                 <option data-qty="0" value="">Pilih Warna & Ukuran</option>
@@ -86,7 +86,7 @@ include "layout/Menu.php";
                         <div class="col-12 col-sm-8 col-md-7 col-lg-8">
                             <label id="check"></label>
                         </div>
-                        <div class="col-12 col-sm-10 col-md-9 col-lg-9">
+                        <div class="col-12 col-sm-10 col-md-9 col-lg-10">
                             <button type="submit"
                                     class="btn btn-primary btn-lg btn-block f-button-font">Tambah ke Keranjang
                             </button>

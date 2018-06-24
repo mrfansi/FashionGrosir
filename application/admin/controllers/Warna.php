@@ -58,26 +58,32 @@ class Warna extends MY_Controller
     {
         $this->form_validation->set_rules('nama', 'Warna', 'is_unique[warna.w_nama]', array('is_unique' => 'Terdapat nama yang sama. Silahkan coba lagi.'));
 
-        if ($this->form_validation->run() === FALSE) {
-            $this->data->gagal = validation_errors();
-            $this->session->set_flashdata('gagal', $this->data->gagal);
 
-            redirect('warna');
-        }
 
         // get guid form post
         $id = $this->input->post('id');
 
         // get user from database where guid
         $warna = $this->warna->where_w_kode($id)->get();
+        $warna_nama = $this->input->post('nama');
+        $warna_array = array(
+            'w_kode' => $id,
+            'w_nama' => $warna_nama,
+            'w_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
+        );
 
         if ($warna) {
-            $warna = $this->warna->update(array(
-                'w_kode' => $id,
-                'w_nama' => $this->input->post('nama'),
-                'w_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            ), 'w_kode');
-            if ($warna) {
+            // validasi
+            if ($this->form_validation->run() === FALSE && $warna->w_nama != $warna_nama) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('warna');
+            }
+
+            // update
+            $warna_update = $this->warna->update($warna_array, 'w_kode');
+            if ($warna_update) {
                 $this->data->berhasil = 'Data Warna berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
@@ -89,18 +95,18 @@ class Warna extends MY_Controller
                 redirect('warna');
             }
         } else {
+
+            // validasi
             if ($this->form_validation->run() === FALSE) {
                 $this->data->gagal = validation_errors();
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('warna');
             }
-            $warna = $this->warna->insert(array(
-                'w_kode' => $this->input->post('id'),
-                'w_nama' => $this->input->post('nama'),
-                'w_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            ));
-            if ($warna) {
+
+            // insert
+            $warna_insert = $this->warna->insert($warna_array);
+            if ($warna_insert) {
                 $this->data->berhasil = 'Data Warna berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 

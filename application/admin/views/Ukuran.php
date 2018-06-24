@@ -78,6 +78,8 @@
                                     <thead>
                                     <tr>
                                         <th>Ukuran</th>
+                                        <th>Dibuat pada</th>
+                                        <th>Diupdate pada</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -88,13 +90,20 @@
                                     as $ukuran): ?>
                                     <tr>
                                         <td class="align-middle"><?= $ukuran->u_nama; ?></td>
+                                        <td class="align-middle"><?= $ukuran->created_at; ?></td>
+                                        <td class="align-middle"><?= $ukuran->updated_at; ?></td>
                                         <td class="align-middle">
+                                            <a class="btn btn-sm btn-primary" data-toggle="modal"
+                                               href="#"
+                                               onclick="edit($(this))" data-target="#crud"
+                                               data-backdrop="static" data-keyboard="false"
+                                               data-id="<?= $ukuran->u_kode; ?>"><i
+                                                        class="far fa-edit mr-2"></i>Ubah</a>
                                             <a class="btn btn-sm btn-danger" data-toggle="modal"
-                                               title="Hapus <?= $title_page; ?>"
                                                href="#"
                                                onclick="hapus($(this))" data-target="#hapus"
                                                data-backdrop="static" data-keyboard="false"
-                                               data-id="<?= $ukuran->u_kode; ?>"><i class="far fa-trash-alt"></i> Hapus</a>
+                                               data-id="<?= $ukuran->u_kode; ?>"><i class="far fa-trash-alt mr-2"></i>Hapus</a>
                                         </td>
                                     </tr>
 

@@ -65,20 +65,33 @@ class Artikel extends MY_Controller
 
         // get user from database where guid
         $artikel = $this->artikel->where_artikel_kode($id)->get();
+        $artikel_judul = $this->input->post('judul');
+
+        $artikel_array = array(
+            'artikel_kode' => $id,
+            'artikel_judul' => $artikel_judul,
+            'artikel_content' => $this->input->post('content'),
+            'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
+            'artikel_ispromo' => $this->input->post('promo'),
+            'artikel_isblog' => $this->input->post('blog'),
+            'artikel_isresi' => $this->input->post('resi'),
+            'artikel_isnotifikasi' => $this->input->post('notikasi'),
+            'artikel_isaktif' => $this->input->post('aktif')
+        );
 
         if ($artikel) {
-            $artikel = $this->artikel->update(array(
-                'artikel_kode' => $id,
-                'artikel_judul' => $this->input->post('judul'),
-                'artikel_content' => $this->input->post('content'),
-                'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
-                'artikel_ispromo' => $this->input->post('promo'),
-                'artikel_isblog' => $this->input->post('blog'),
-                'artikel_isresi' => $this->input->post('resi'),
-                'artikel_isnotifikasi' => $this->input->post('notikasi'),
-                'artikel_isaktif' => $this->input->post('aktif')
-            ), 'artikel_kode');
-            if ($artikel) {
+            // cek validasi
+            if ($this->form_validation->run() === FALSE && $artikel->artikel_judul != $artikel_judul) {
+                $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('artikel');
+            }
+
+            // update
+            $artikel_update = $this->artikel->update($artikel_array, 'artikel_kode');
+
+            if ($artikel_update) {
                 $this->data->berhasil = 'Artikel berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
@@ -90,6 +103,7 @@ class Artikel extends MY_Controller
                 redirect('artikel');
             }
         } else {
+            // cek validasi
             if ($this->form_validation->run() === FALSE) {
                 $this->data->gagal = validation_errors();
                 $this->session->set_flashdata('gagal', $this->data->gagal);
@@ -97,18 +111,10 @@ class Artikel extends MY_Controller
                 redirect('artikel');
             }
 
-            $artikel = $this->artikel->insert(array(
-                'artikel_kode' => $id,
-                'artikel_judul' => $this->input->post('judul'),
-                'artikel_content' => $this->input->post('content'),
-                'artikel_url' => $this->slug->create_uri(array('title' => $this->input->post('judul'))),
-                'artikel_ispromo' => $this->input->post('promo'),
-                'artikel_isblog' => $this->input->post('blog'),
-                'artikel_isresi' => $this->input->post('resi'),
-                'artikel_isnotifikasi' => $this->input->post('notikasi'),
-                'artikel_isaktif' => $this->input->post('aktif')
-            ));
-            if ($artikel) {
+            // insert
+            $artikel_insert = $this->artikel->insert($artikel_array);
+
+            if ($artikel_insert) {
                 $this->data->berhasil = 'Artikel berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 

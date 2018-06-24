@@ -205,10 +205,12 @@ class MY_Controller extends CI_Controller
         $toko = $this->toko->get();
         if ($toko) {
             $this->data->brandname = $toko->t_nama;
+            $this->data->brandkode = $toko->t_singkatan;
             $this->data->logo = $toko->t_logo;
             $this->data->icon = $toko->t_icon;
         } else {
             $this->data->brandname = 'E-Commerce Brand';
+            $this->data->brandkode = 'EB';
             $this->data->logo = '';
             $this->data->icon = '';
 

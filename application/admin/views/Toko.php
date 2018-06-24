@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $email = $toko->t_email;
         $instagram = $toko->t_insta;
         $whatsapp = $toko->t_wa;
-        $facebook = $toko->t_fb;
+        $line = $toko->t_line;
     } else {
         $tokoid = $id;
         $namatoko = '';
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $email = '';
         $instagram = '';
         $whatsapp = '';
-        $facebook = '';
+        $line = '';
     }
 }
 ?>
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1><i class="fa fa-cogs"></i> Toko</h1>
+                    <h1>Toko</h1>
                 </div>
                 <form action="<?= site_url('toko/simpan'); ?>" method="post" enctype="multipart/form-data"
                       class="card-body">
@@ -197,9 +197,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                                    placeholder="Whatsapp">
                         </div>
                         <div class="col">
-                            <label for="facebook">Facebook</label>
-                            <input type="text" class="form-control" name="facebook" value="<?= $facebook; ?>"
-                                   placeholder="Facebook">
+                            <label for="line">Line</label>
+                            <input type="text" class="form-control" name="line" value="<?= $line; ?>"
+                                   placeholder="Line">
                         </div>
                     </div>
                     <div class="form-group">

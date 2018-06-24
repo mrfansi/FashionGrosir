@@ -61,7 +61,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-10">
-                            <h1><i class="fas fa-file-alt"></i> Pembayaran</h1>
+                            <h1>Pembayaran</h1>
                         </div>
                     </div>
 
@@ -163,6 +163,15 @@
             // Data table users
             // ------------------------------------------------------ //
             // $('#tables').DataTable();
+
+            // ------------------------------------------------------ //
+            // Data table
+            // ------------------------------------------------------ //
+            $('#tables').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
+                }
+            });
 
             $(document).ready(function () {
                 $('[tooltip]').tooltip();

@@ -14,7 +14,7 @@ class Bank_m extends MY_Model
         $this->primary_key = 'bank_id';
         $this->protected = array('bank_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
-        $this->soft_deletes = TRUE;
+        $this->soft_deletes = FALSE;
         parent::__construct();
     }
 

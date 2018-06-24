@@ -78,6 +78,8 @@
                                     <thead>
                                     <tr>
                                         <th>Kategori</th>
+                                        <th>Dibuat pada</th>
+                                        <th>Diupdate pada</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -88,14 +90,22 @@
                                                 <td class="align-middle">
                                                     <?= $kategori->k_nama; ?>
                                                 </td>
+                                                <td class="align-middle"><?= $kategori->created_at; ?></td>
+                                                <td class="align-middle"><?= $kategori->updated_at; ?></td>
 
                                                 <td class="align-middle">
+                                                    <a data-toggle="modal" class="btn btn-sm btn-primary"
+                                                       href="#"
+                                                       onclick="edit($(this))" data-target="#crud"
+                                                       data-backdrop="static" data-keyboard="false"
+                                                       data-id="<?= $kategori->k_kode; ?>"><i
+                                                                class="far fa-edit mr-2"></i>Ubah</a>
                                                     <a data-toggle="modal" class="btn btn-sm btn-danger"
                                                        href="#"
                                                        onclick="hapus($(this))" data-target="#hapus"
                                                        data-backdrop="static" data-keyboard="false"
                                                        data-id="<?= $kategori->k_kode; ?>"><i
-                                                                class="far fa-trash-alt"></i> Hapus</a>
+                                                                class="far fa-trash-alt mr-2"></i> Hapus</a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

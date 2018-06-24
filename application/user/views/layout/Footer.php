@@ -83,11 +83,10 @@
         <hr class="f-hr-footer">
         <div class="text-center">
             <h6 class="f-font-footer">Ikuti Kami</h6>
-            <a href="https://www.facebook.com/<?= $facebook; ?>"><i class="fab fa-facebook fa-2x f-sosmed"></i></a>
-            <a href="https://www.instagram.com/<?= $instagram; ?>"><i class="fab fa-instagram fa-2x f-sosmed"></i></a>
-            <a href=""><i class="fab fa-whatsapp fa-2x f-sosmed"></i></a>
-            <a href=""><i class="far fa-envelope fa-2x f-sosmed"></i></a>
-            <a href=""><i class="fab fa-line fa-2x f-sosmed"></i></a>
+            <a href="https://www.instagram.com/<?= $instagram; ?>"><i class="fa fa-instagram fa-lg f-sosmed"></i></a>
+            <a href="https://www.instagram.com/<?= $instagram; ?>"><i class="fa fa-safari fa-lg f-sosmed"></i></a>
+            <a href="https://www.instagram.com/<?= $instagram; ?>"><i class="fa fa-envelope fa-lg f-sosmed"></i></a>
+            <a href="https://www.instagram.com/<?= $instagram; ?>"><i class="fa fa-whatsapp fa-lg f-sosmed"></i></a>
         </div>
     </div>
 </div>

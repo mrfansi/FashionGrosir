@@ -47,8 +47,7 @@ include "layout/Menu.php";
                                     </div>
                                     <div class="col-12">
                                         <p class="r-konten-kotak4-1">
-                                            Caesar Kenapa <br>
-                                            09302193674
+                                            <?= $nama_nomor(); ?>
                                         </p>
                                     </div>
                                 </div>
