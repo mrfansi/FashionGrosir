@@ -212,7 +212,7 @@ class MY_Controller extends CI_Controller
         if ($toko) {
             $this->data->brandname = $toko->t_nama;
             $this->data->instagram = $toko->t_insta;
-            $this->data->facebook = $toko->t_fb;
+            $this->data->facebook = $toko->t_line;
             $this->data->logo = $toko->t_logo;
             $this->data->icon = $toko->t_icon;
         } else {

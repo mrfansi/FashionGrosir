@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $email = $toko->t_email;
         $instagram = $toko->t_insta;
         $whatsapp = $toko->t_wa;
-        $facebook = $toko->t_fb;
+        $line = $toko->t_line;
     } else {
         $tokoid = $id;
         $namatoko = '';
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $email = '';
         $instagram = '';
         $whatsapp = '';
-        $facebook = '';
+        $line = '';
     }
 }
 ?>
@@ -197,8 +197,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                                    placeholder="Whatsapp">
                         </div>
                         <div class="col">
-                            <label for="facebook">Facebook</label>
-                            <input type="text" class="form-control" name="facebook" value="<?= $facebook; ?>"
+                            <label for="line">Facebook</label>
+                            <input type="text" class="form-control" name="line" value="<?= $line; ?>"
                                    placeholder="Facebook">
                         </div>
                     </div>
