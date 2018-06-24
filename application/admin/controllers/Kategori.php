@@ -79,6 +79,11 @@ class Kategori extends MY_Controller
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('kategori');
+            } else if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $kategori_nama)) {
+                $this->data->gagal = 'Karakter untuk kategori tidak diperbolehkan.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('kategori');
             }
 
             // update
@@ -99,6 +104,11 @@ class Kategori extends MY_Controller
             // validasi
             if ($this->form_validation->run() === FALSE) {
                 $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('kategori');
+            } else if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $kategori_nama)) {
+                $this->data->gagal = 'Karakter untuk kategori tidak diperbolehkan.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('kategori');

@@ -79,6 +79,11 @@ class Warna extends MY_Controller
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('warna');
+            } else if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $warna_nama)) {
+                $this->data->gagal = 'Karakter untuk warna tidak diperbolehkan.';
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('warna');
             }
 
             // update
@@ -99,6 +104,11 @@ class Warna extends MY_Controller
             // validasi
             if ($this->form_validation->run() === FALSE) {
                 $this->data->gagal = validation_errors();
+                $this->session->set_flashdata('gagal', $this->data->gagal);
+
+                redirect('warna');
+            } else if (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $warna_nama)) {
+                $this->data->gagal = 'Karakter untuk warna tidak diperbolehkan.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('warna');
