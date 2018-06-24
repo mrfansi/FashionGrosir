@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1><i class="fa fa-cogs"></i> Toko</h1>
+                    <h1>Toko</h1>
                 </div>
                 <form action="<?= site_url('toko/simpan'); ?>" method="post" enctype="multipart/form-data"
                       class="card-body">
