@@ -126,19 +126,23 @@ include "layout/Menu.php";
 
 
                 <h6>Pilih Metode Pembayaran</h6>
-                <?php if($bank_s() != NULL): ?>
-                    <?php foreach ($bank_s() as $bank): ?>
-                        <?php $name = $bank->bank_penerbit . ' (A/N: ' . $bank->bank_nama . ') (Nomor Rek: ' . $bank->bank_rek . ')'; ?>
-                        <div class="form-check">
+                <?php if ($bank_opsi() === true): ?>
+                    <?php if ($bank_s() != NULL): ?>
+                        <?php foreach ($bank_s() as $bank): ?>
+                            <?php $name = $bank->bank_penerbit . ' (A/N: ' . $bank->bank_nama . ') (Nomor Rek: ' . $bank->bank_rek . ')'; ?>
+                            <div class="form-check">
 
-                            <input class="form-check-input" type="radio"
-                                   data-id="<?= $bank->bank_kode; ?>"
-                                   name="bank" id="bank"
-                                   value="1" required>
-                            <label class="form-check-label" for="bank"><?= $name; ?></label>
+                                <input class="form-check-input" type="radio"
+                                       data-id="<?= $bank->bank_kode; ?>"
+                                       name="bank" id="bank"
+                                       value="1" required>
+                                <label class="form-check-label" for="bank"><?= $name; ?></label>
 
-                        </div>
-                    <?php endforeach; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <p class="text-danger">Admin belum menentukan metode pembayaran.</p>
                 <?php endif; ?>
                 <br>
                 <input type="hidden" name="bank_id" id="bank_id">
