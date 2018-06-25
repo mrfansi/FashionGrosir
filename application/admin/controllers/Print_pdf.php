@@ -22,26 +22,17 @@ class Print_pdf extends MY_Controller
         $this->load->library('html2pdf');
     }
 
-    public function slip_pengiriman()
+    public function slip_pengiriman($orders_noid)
     {
-        //Set folder to save PDF to
-        $this->html2pdf->folder('./file/slip_pengiriman');
+        $this->data->orders_noid = $orders_noid;
+        $this->data->nama_nomor = function () {
+            $order_pengiriman = $this->order_pengiriman->where('orders_noid', $this->data->orders_noid)->get();
+            $hasil = new stdClass();
+            $hasil->nama = $order_pengiriman->orders_pengiriman_r_nama;
+            $hasil->kontak = $order_pengiriman->orders_pengiriman_r_kontak;
 
-        //Set the filename to save/download as
-        $this->html2pdf->filename('test.pdf');
-
-        //Set the paper defaults
-        $this->html2pdf->paper('a5', 'lanscape');
-
-        // view
-        $view = '';
-
-        //Load html view
-        $this->html2pdf->html($view);
-    }
-
-    public function invoice()
-    {
+            return $hasil->nama . '<br>' . $hasil->kontak;
+        };
         $this->data->pengiriman = function () {
             $hasil = new stdClass();
             $order_pengiriman = $this->order_pengiriman->where('orders_noid', $this->data->orders_noid)->get();
@@ -63,6 +54,26 @@ class Print_pdf extends MY_Controller
                 $hasil->provinsi . ', ' . $order_pengiriman->orders_pengiriman_kodepos;
 
         };
+
+        //Set folder to save PDF to
+        $this->html2pdf->folder('./file/slip_pengiriman');
+
+        //Set the filename to save/download as
+        $this->html2pdf->filename('test.pdf');
+
+        //Set the paper defaults
+        $this->html2pdf->paper('a5', 'lanscape');
+
+        // view
+        $view = '';
+
+        //Load html view
+        $this->html2pdf->html($view);
+    }
+
+    public function invoice($orders_noid)
+    {
+
 
         //Set folder to save PDF to
         $this->html2pdf->folder('./file/slip_pengiriman');
