@@ -65,7 +65,7 @@ class Print_pdf extends MY_Controller
         $this->html2pdf->paper('a5', 'lanscape');
 
         // view
-        $view = '';
+        $view = $this->load->view('Slip_pengiriman', $this->data);;
 
         //Load html view
         $this->html2pdf->html($view);
