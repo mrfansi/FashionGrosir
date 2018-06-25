@@ -128,6 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" name="username" placeholder="Input Username" value=""
+                               max="25"
                                required>
                         <p>
                             <?= form_error('username'); ?>
