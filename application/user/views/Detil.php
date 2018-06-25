@@ -50,7 +50,7 @@ include "layout/Menu.php";
                             <p><i class="fa fa-check fa-2x f-icon-margin f-font-detail"></i>Kondisi : Baru</p>
                             <p><i class="fa fa-cube fa-2x f-icon-margin f-font-detail"></i>Berat
                                 : <?= $item->i_berat; ?> Gram</p>
-                            <p><i class="fas fa-box-open fa-2x f-icon-margin f-font-detail"></i>Min. Pesanan : 1pcs</p>
+                            <p><i class="fas fa-box-open fa-2x f-icon-margin f-font-detail"></i>Min.. Pesanan : 1pcs</p>
                         </div>
                     </div>
                     <div class="row">
