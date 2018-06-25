@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Pengiriman</title>
+    <title>Order : <?= $orders_noid; ?></title>
     <link rel="stylesheet" href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>">
     <style>
         .size-logo {
@@ -65,19 +65,16 @@
             <h5>Kepada</h5>
             <table cellpadding="5" style="margin-left: 20px;">
                 <tr>
-                    <td class="t-kiri">Nama</td>
-                    <td>Harry Gons Drong</td>
+                    <td class="t-kiri">Nama :</td>
+                    <td><?= $nama_nomor()->nama; ?></td>
                 </tr>
                 <tr>
-                    <td class="t-kiri">Telpon/HP</td>
-                    <td>081288770431</td>
+                    <td class="t-kiri">Telpon / HP :</td>
+                    <td><?= $nama_nomor()->kontak; ?></td>
                 </tr>
                 <tr>
                     <td class="t-kiri">Alamat</td>
-                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio eius, provident natus, quidem
-                        cupiditate quaerat nostrum ipsum ea dignissimos delectus, adipisci libero accusantium harum?
-                        Unde voluptatem architecto, ipsa officiis
-                    </td>
+                    <td><?= $pengiriman(); ?></td>
                 </tr>
             </table>
         </div>
@@ -88,10 +85,10 @@
             <!--            <h5>Pengirim</h5>-->
             <table cellpadding="5" style="margin-left: 20px;">
                 <tr>
-                    <td class="t-kanan"><?= $brandname; ?> / Jakarta</td>
+                    <td class="t-kanan"><?= $brandname; ?></td>
                 </tr>
                 <tr>
-                    <td class="t-">08123234345</td>
+                    <td class="t-"><?= $email; ?></td>
                 </tr>
             </table>
         </div>

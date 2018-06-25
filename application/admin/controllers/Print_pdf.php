@@ -31,7 +31,7 @@ class Print_pdf extends MY_Controller
             $hasil->nama = $order_pengiriman->orders_pengiriman_r_nama;
             $hasil->kontak = $order_pengiriman->orders_pengiriman_r_kontak;
 
-            return $hasil->nama . '<br>' . $hasil->kontak;
+            return $hasil;
         };
         $this->data->pengiriman = function () {
             $hasil = new stdClass();
@@ -59,7 +59,7 @@ class Print_pdf extends MY_Controller
         $this->html2pdf->folder('./file/slip_pengiriman');
 
         //Set the filename to save/download as
-        $this->html2pdf->filename('test.pdf');
+        $this->html2pdf->filename('slip_pengiriman-' . $this->data->orders_noid . '.pdf');
 
         //Set the paper defaults
         $this->html2pdf->paper('a5', 'lanscape');
