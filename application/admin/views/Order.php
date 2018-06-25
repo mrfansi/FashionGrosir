@@ -127,8 +127,9 @@
                                                     Cetak
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="opsi">
-                                                    <a class="dropdown-item small" data-toggle="modal" href="#"
-                                                       onclick="print_slip($(this))" data-target="#crud"
+                                                    <a class="dropdown-item small" data-toggle="modal"
+                                                       href="<?= site_url('print_pdf/slip_pengiriman/' . $order->orders_noid); ?>"
+                                                       data-target="#crud"
                                                        data-id="<?= $order->orders_noid; ?>"><i
                                                                 class="fas fa-file mr-2"></i>Alamat
                                                     </a>

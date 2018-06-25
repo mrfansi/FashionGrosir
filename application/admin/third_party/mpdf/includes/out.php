@@ -48,7 +48,7 @@ if ($tempfilename && file_exists($path . $tempfilename)) {
     $interval = 86400;
     if ($handle = opendir(dirname($path . 'dummy'))) {
         while (false !== ($file = readdir($handle))) {
-            if (((filemtime($path . $file) + $interval) < time()) && ($file != "..") && ($file != ".") && substr($file, -3) == 'Libpdf') {
+            if (((filemtime($path . $file) + $interval) < time()) && ($file != "..") && ($file != ".") && substr($file, -3) == 'pdf') {
                 unlink($path . $file);
             }
         }
