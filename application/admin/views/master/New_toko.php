@@ -135,14 +135,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     <div class="col">
                         <label for="logo">Logo</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="logo" name="logo" required>
+                            <input type="file" class="custom-file-input" id="logo" name="logo">
                             <label class="custom-file-label" for="logo">Pilih Logo...</label>
                         </div>
                     </div>
                     <div class="col">
                         <label for="icon">Icon</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="icon" name="icon" required>
+                            <input type="file" class="custom-file-input" id="icon" name="icon">
                             <label class="custom-file-label" for="icon">Pilih Icon...</label>
                         </div>
                     </div>
