@@ -15,8 +15,15 @@
     <div class="row">
         <div class="col-xl-4 col-lg-3 col-md-4 col-sm-5 col-12">
             <div class="text-center f-bottom">
+
                 <a href="<?= site_url('/'); ?>" class="navbar-brand f-logo-footer">
-                    <img src="<?= base_url('upload/' . $logo); ?>" alt="<?= $logo; ?>" height="80" width="150">
+                    <?php if ($logo != NULL): ?>
+                        <img src="<?= base_url('upload/' . $logo); ?>" width="150" height="80"
+                             alt="">
+                    <?php else: ?>
+                        <img src="<?= base_url('assets/img/noimg.png'); ?>" width="150" height="80"
+                             alt="">
+                    <?php endif; ?>
                 </a>
             </div>
         </div>

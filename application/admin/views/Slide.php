@@ -79,6 +79,7 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">Image</th>
+                                        <th scope="col">Tampilkan</th>
                                         <th scope="col">Dibuat pada</th>
                                         <th scope="col">Diupdate pada</th>
                                         <th scope="col" class="text-center"></th>
@@ -101,6 +102,7 @@
                                                              width="220" height="150">
                                                     </div>
                                                 </td>
+                                                <td><?= $promo->slide_promo_isaktif == 0 ? '<i class="fas fa-times"></i>' : '<i class="fas fa-check"></i>'; ?></td>
                                                 <td><?= $promo->created_at; ?></td>
                                                 <td><?= $promo->updated_at; ?></td>
                                                 <td>
