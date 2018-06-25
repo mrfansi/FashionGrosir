@@ -141,7 +141,7 @@
                                         <td class="align-middle">
                                             <a class="btn btn-sm btn-primary" data-toggle="modal" href="#"
                                                onclick="proses($(this))" data-target="#proses"
-                                               data-id="<?= $order->orders_noid; ?>"><i class="fas fa-check"></i> Proses <?= $title_page; ?></a>
+                                               data-id="<?= $order->orders_noid; ?>"><i class="fas fa-check mr-2"></i>Proses <?= $title_page; ?></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
