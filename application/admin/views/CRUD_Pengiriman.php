@@ -7,6 +7,7 @@
         <input class="form-control" type="text" name="resi" id="resi" placeholder="Input nomor resi">
     </div>
     <div class="form-group">
-        <button class="btn btn-sm btn-primary" type="submit">Update</button>
+        <button class="btn btn-sm btn-primary" type="submit">Kirim</button>
+        <button class="btn btn-sm btn-danger" type="button" data-dismiss="modal">Batalkan</button>
     </div>
 </form>

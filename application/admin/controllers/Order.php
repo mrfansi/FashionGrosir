@@ -50,12 +50,12 @@ class Order extends MY_Controller
             $this->data->berhasil = 'Konfirmasi Order berhasil';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
-            redirect('order');
+            redirect('order/proses/' . $id);
         } else {
             $this->data->gagal = 'Konfirmasi Order gagal';
             $this->session->set_flashdata('gagal', $this->data->gagal);
 
-            redirect('order');
+            redirect('order/proses' . $id);
         }
     }
 
