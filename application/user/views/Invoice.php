@@ -59,7 +59,7 @@
     </tr>
     <tr>
         <td colspan="3" style="text-align: right;"><p style="margin-right: 20px;">Total Harga</p></td>
-        <td style="text-align: right;"><p style="margin-right: 20px;">Rp.1.200.000</p></td>
+        <td style="text-align: right;"><p style="margin-right: 20px;">Rp.1.225.000</p></td>
     </tr>
 </table>
 
