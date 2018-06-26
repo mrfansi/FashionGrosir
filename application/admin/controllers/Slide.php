@@ -55,16 +55,15 @@ class Slide extends MY_Controller
         // get user from database where guid
         $slide_promo = $this->slide_promo->where('slide_promo_kode', $id)->get();
 
+        $slide_promo_array = array(
+            'slide_promo_kode' => $this->input->post('id'),
+            'slide_promo_img' => $this->input->post('image'),
+            'slide_promo_isaktif' => $this->input->post('aktif'),
+            'slide_promo_caption' => $this->input->post('caption')
+        );
+
         if ($slide_promo) {
-
-            $img_exist = $this->upload_img();
-
-            $slide_promo_update = $this->slide_promo->update(array(
-                'slide_promo_kode' => $this->input->post('id'),
-                'slide_promo_img' => $img_exist['file_name'],
-                'slide_promo_isaktif' => $this->input->post('aktif'),
-                'slide_promo_caption' => $this->input->post('caption')
-            ), 'slide_promo_kode');
+            $slide_promo_update = $this->slide_promo->update($slide_promo_array, 'slide_promo_kode');
 
             if ($slide_promo_update) {
                 $this->data->berhasil = 'Slide Promo berhasil diperbarui.';
@@ -79,14 +78,7 @@ class Slide extends MY_Controller
             }
         } else {
 
-            $img_new = $this->upload_img();
-
-            $slide_promo_insert = $this->slide_promo->insert(array(
-                'slide_promo_kode' => $this->input->post('id'),
-                'slide_promo_img' => $img_new['file_name'],
-                'slide_promo_isaktif' => $this->input->post('aktif'),
-                'slide_promo_caption' => $this->input->post('caption')
-            ));
+            $slide_promo_insert = $this->slide_promo->insert($slide_promo_array);
 
             if ($slide_promo_insert) {
                 $this->data->berhasil = 'Slide Promo berhasil dibuat.';

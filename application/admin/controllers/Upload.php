@@ -78,13 +78,13 @@ class Upload extends MY_Controller
     public function multiple_image()
     {
         $files = array();
-        $counter = count($_FILES['file']['size']);
+        $counter = count($_FILES['images']['size']);
         for ($i = 0; $i < $counter; $i++) {
-            $_FILES['image']['name'] = $_FILES['file']['name'][$i];
-            $_FILES['image']['type'] = $_FILES['file']['type'][$i];
-            $_FILES['image']['tmp_name'] = $_FILES['file']['tmp_name'][$i];
-            $_FILES['image']['error'] = $_FILES['file']['error'][$i];
-            $_FILES['image']['size'] = $_FILES['file']['size'][$i];
+            $_FILES['image']['name'] = $_FILES['images']['name'][$i];
+            $_FILES['image']['type'] = $_FILES['images']['type'][$i];
+            $_FILES['image']['tmp_name'] = $_FILES['images']['tmp_name'][$i];
+            $_FILES['image']['error'] = $_FILES['images']['error'][$i];
+            $_FILES['image']['size'] = $_FILES['images']['size'][$i];
 
             //upload an image options
             $config = array();
@@ -99,7 +99,7 @@ class Upload extends MY_Controller
             $files[] = $this->upload->data();
         }
 
-        return $files;
+        echo json_encode($files);
     }
 
     public function single_image()
@@ -107,16 +107,16 @@ class Upload extends MY_Controller
         //upload an image options
         $config = array();
         $config['upload_path'] = './upload';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
         $config['max_size'] = '0';
         $config['overwrite'] = TRUE;
         $config['encrypt_name'] = TRUE;
 
         $this->load->library('upload', $config);
-        $this->upload->do_upload('file');
+        $this->upload->do_upload('image');
         $hasil = $this->upload->data();
 
-        return $hasil;
+        echo json_encode($hasil);
     }
 
 
