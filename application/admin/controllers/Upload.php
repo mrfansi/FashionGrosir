@@ -75,5 +75,49 @@ class Upload extends MY_Controller
         redirect('item');
     }
 
+    public function multiple_image()
+    {
+        $files = array();
+        $counter = count($_FILES['file']['size']);
+        for ($i = 0; $i < $counter; $i++) {
+            $_FILES['image']['name'] = $_FILES['file']['name'][$i];
+            $_FILES['image']['type'] = $_FILES['file']['type'][$i];
+            $_FILES['image']['tmp_name'] = $_FILES['file']['tmp_name'][$i];
+            $_FILES['image']['error'] = $_FILES['file']['error'][$i];
+            $_FILES['image']['size'] = $_FILES['file']['size'][$i];
+
+            //upload an image options
+            $config = array();
+            $config['upload_path'] = './upload';
+            $config['allowed_types'] = 'jpg|jpeg|png';
+            $config['max_size'] = '0';
+            $config['overwrite'] = TRUE;
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+            $this->upload->do_upload('image');
+            $files[] = $this->upload->data();
+        }
+
+        return $files;
+    }
+
+    public function single_image()
+    {
+        //upload an image options
+        $config = array();
+        $config['upload_path'] = './upload';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '0';
+        $config['overwrite'] = TRUE;
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('file');
+        $hasil = $this->upload->data();
+
+        return $hasil;
+    }
+
 
 }

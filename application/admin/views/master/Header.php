@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendor/font-awesome/css/all.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?= base_url('assets/vendor/font-awesome/css/font-awesome.min.css'); ?>" type="text/css">
     <link rel="stylesheet" href="<?= base_url('assets/css/fontastic.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/formstone/css/upload.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/vendor/formstone/css/themes/light.css'); ?>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="stylesheet" href="<?= base_url('assets/css/grasp_mobile_progress_circle-1.0.0.min.css'); ?>">
 
@@ -62,6 +64,8 @@
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/loadingoverlay/loadingoverlay_progress.min.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/jquery-ellipsis/jquery.ellipsis.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/formstone/js/core.js'); ?>"></script>
+    <script src="<?= base_url('assets/vendor/formstone/js/upload.js'); ?>"></script>
     <script src="<?= base_url('assets/vendor/wnumb/wNumb.js'); ?>"></script>
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=omulajpwx33earwq4t3xfgo7zbqaoey3a7cd3zipl90xlzbu"></script>
 

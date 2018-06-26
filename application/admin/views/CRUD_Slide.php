@@ -17,10 +17,20 @@ if ($submit == 'Ubah') {
     <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" name="id" value="<?= $id; ?>">
     <div class="form-group">
-        <label for="slide">Slide Image</label>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="slide" name="slide" value="<?= $img; ?>" required>
-            <label class="custom-file-label" for="logo">Pilih gambar...</label>
+        <label for="file">Gambar</label>
+        <div class="upload"></div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="filelists">
+            <h5>Complete</h5>
+            <ol class="filelist complete">
+            </ol>
+            <h5>Queued</h5>
+            <ol class="filelist queue">
+            </ol>
+            <span class="cancel_all">Cancel All</span>
         </div>
     </div>
 
