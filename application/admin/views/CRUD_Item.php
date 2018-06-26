@@ -195,9 +195,9 @@ if ($submit == 'Ubah') {
             var $trLast = $table.find("tr:last"),
                 $trNew = $trLast.clone();
 
-            // $('option', $trNew.find('select#warna')).filter(function (i) {
-            //     return $warna.find('option:selected[value="' + $(this).val() + '"]').length;
-            // }).remove();
+            $('option', $trNew.find('select#warna')).filter(function (i) {
+                return $warna.find('option:selected[value="' + $(this).val() + '"]').length;
+            }).remove();
 
             $trNew.find('input#qty').val(0);
 

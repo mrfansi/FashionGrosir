@@ -45,12 +45,13 @@
         <div class="m-auto">
             <a class="navbar-brand" href="<?= site_url('/'); ?>">
                 <?php if ($logo != NULL): ?>
-                    <img src="<?= base_url('upload/' . $logo); ?>" width="150" height="80" class="d-inline-block align-top"
+                    <img src="<?= base_url('upload/' . $logo); ?>" width="150" height="80"
+                         class="img-fluid mx-auto d-block"
                          alt="">
                 <?php else: ?>
-                    <img src="<?= base_url('assets/img/noimg.png'); ?>" width="150" height="80"
-                         class="d-inline-block align-top"
-                         alt="">
+                    <img class="img-fluid mx-auto d-block" width="150" height="80"
+                         src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
+                         alt="No Image">
                 <?php endif; ?>
             </a>
         </div>

@@ -45,8 +45,7 @@
                            onclick="utama($(this))" data-id="<?= $img->ii_kode; ?>">
                             Set Default
                         </a>
-                        <a class="btn btn-sm btn-danger" data-toggle="modal" title="Hapus <?= $title_page; ?>" href="#"
-                           onclick="hapus($(this))" data-target="#hapus"
+                        <a class="btn btn-sm btn-danger" href="<?= site_url('item_img/hapus/' . $img->ii_kode); ?>"
                            data-id="<?= $img->ii_kode; ?>">
                             Hapus
                         </a>

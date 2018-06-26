@@ -4,7 +4,8 @@
     <div class="form-group">
         <div class="input-group">
             <div class="custom-file">
-                <input type="file" name="images[]" class="custom-file-input" multiple required>
+                <input type="file" name="images[]" class="custom-file-input" accept="image/jpeg,image/png" multiple
+                       required>
                 <label class="custom-file-label" for="inputGroupFile04">Pilih file</label>
             </div>
         </div>

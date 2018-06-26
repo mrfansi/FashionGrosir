@@ -18,11 +18,13 @@
 
                 <a href="<?= site_url('/'); ?>" class="navbar-brand f-logo-footer">
                     <?php if ($logo != NULL): ?>
-                        <img src="<?= base_url('upload/' . $logo); ?>" width="150" height="80"
+                        <img class="img-fluid mx-auto d-block" width="150" height="80"
+                             src="<?= base_url('upload/' . $logo); ?>"
                              alt="">
                     <?php else: ?>
-                        <img src="<?= base_url('assets/img/noimg.png'); ?>" width="150" height="80"
-                             alt="">
+                        <img class="img-fluid mx-auto d-block" width="150" height="80"
+                             src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
+                             alt="No Image">
                     <?php endif; ?>
                 </a>
             </div>
