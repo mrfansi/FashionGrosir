@@ -1,14 +1,15 @@
 <?php
 $url = site_url('slide/simpan');
 if ($submit == 'Ubah') {
-    $id = $slide_promos->slide_promo_kode;
-    $img = $slide_promos->slide_promo_img;
-    $caption = $slide_promos->slide_promo_caption;
+    $id = $slide_promo->slide_promo_kode;
+    $img = $slide_promo->slide_promo_img;
+    $caption = $slide_promo->slide_promo_caption;
+    $isaktif = $slide_promo->slide_promo_isaktif;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $img = '';
     $caption = '';
-
+    $isaktif = '';
 }
 ?>
 
@@ -27,9 +28,19 @@ if ($submit == 'Ubah') {
         <label for="caption">Tulisan Promo</label>
         <textarea class="form-control" name="caption" id="caption"><?= $caption; ?></textarea>
     </div>
+
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="aktif" value="1"
+                   id="aktif" <?= $isaktif == 1 ? 'checked' : ''; ?>>
+            <label class="form-check-label" for="aktif">
+                Tampilkan
+            </label>
+        </div>
+    </div>
     <div class="form-group">
         <button type="submit" class="btn btn-sm btn-primary"><?= $submit; ?></button>
-        <button type="button" onclick="window.location.reload()" class="btn btn-sm btn-danger">Tutup</button>
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Tutup</button>
     </div>
     <?php if (isset($berhasil)): ?>
         <p class="text-success"><?= $berhasil; ?></p>

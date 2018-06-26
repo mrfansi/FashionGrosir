@@ -40,11 +40,10 @@ class Slide extends MY_Controller
 
     public function ubah($id)
     {
-        $this->data->title = $this->data->brandname . ' | Pelanggan > Ubah';
+        $this->data->title = $this->data->brandname . ' | Slide Promo > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->slide_promo = $this->slide_promo->where('slide_promo_kode', $id)->get();
-        $this->data->slide_promos = $this->slide_promo->where_k_parent_kode(0)->get_all();
         $this->load->view('CRUD_Slide', $this->data);
     }
 
@@ -63,7 +62,7 @@ class Slide extends MY_Controller
             $slide_promo_update = $this->slide_promo->update(array(
                 'slide_promo_kode' => $this->input->post('id'),
                 'slide_promo_img' => $img_exist['file_name'],
-                'slide_promo_isaktif' => $this->input->post('isaktif'),
+                'slide_promo_isaktif' => $this->input->post('aktif'),
                 'slide_promo_caption' => $this->input->post('caption')
             ), 'slide_promo_kode');
 
@@ -85,7 +84,7 @@ class Slide extends MY_Controller
             $slide_promo_insert = $this->slide_promo->insert(array(
                 'slide_promo_kode' => $this->input->post('id'),
                 'slide_promo_img' => $img_new['file_name'],
-                'slide_promo_isaktif' => $this->input->post('isaktif'),
+                'slide_promo_isaktif' => $this->input->post('aktif'),
                 'slide_promo_caption' => $this->input->post('caption')
             ));
 
