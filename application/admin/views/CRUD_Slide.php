@@ -3,9 +3,12 @@ $url = site_url('slide/simpan');
 if ($submit == 'Ubah') {
     $id = $slide_promos->slide_promo_kode;
     $img = $slide_promos->slide_promo_img;
+    $caption = $slide_promos->slide_promo_caption;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $img = '';
+    $caption = '';
+
 }
 ?>
 
@@ -15,9 +18,14 @@ if ($submit == 'Ubah') {
     <div class="form-group">
         <label for="slide">Slide Image</label>
         <div class="custom-file">
-            <input type="file" class="custom-file-input" id="slide" name="slide" required>
+            <input type="file" class="custom-file-input" id="slide" name="slide" value="<?= $img; ?>" required>
             <label class="custom-file-label" for="logo">Pilih gambar...</label>
         </div>
+    </div>
+
+    <div class="form-group">
+        <label for="caption">Tulisan Promo</label>
+        <textarea class="form-control" name="caption" id="caption"><?= $caption; ?></textarea>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-sm btn-primary"><?= $submit; ?></button>

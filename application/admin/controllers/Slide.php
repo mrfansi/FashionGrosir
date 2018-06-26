@@ -63,7 +63,8 @@ class Slide extends MY_Controller
             $slide_promo_update = $this->slide_promo->update(array(
                 'slide_promo_kode' => $this->input->post('id'),
                 'slide_promo_img' => $img_exist['file_name'],
-                'slide_promo_isaktif' => $this->input->post('isaktif')
+                'slide_promo_isaktif' => $this->input->post('isaktif'),
+                'slide_promo_caption' => $this->input->post('caption')
             ), 'slide_promo_kode');
 
             if ($slide_promo_update) {
@@ -84,8 +85,8 @@ class Slide extends MY_Controller
             $slide_promo_insert = $this->slide_promo->insert(array(
                 'slide_promo_kode' => $this->input->post('id'),
                 'slide_promo_img' => $img_new['file_name'],
-                'slide_promo_isaktif' => $this->input->post('isaktif')
-
+                'slide_promo_isaktif' => $this->input->post('isaktif'),
+                'slide_promo_caption' => $this->input->post('caption')
             ));
 
             if ($slide_promo_insert) {
