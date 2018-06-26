@@ -76,7 +76,7 @@ if ($submit == 'Ubah') {
 
                 hideupload.hide();
                 showprogress.show();
-                showimgsrc.show()
+                showimgsrc.show();
 
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('#progress').css(
