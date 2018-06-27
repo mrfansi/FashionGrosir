@@ -267,8 +267,6 @@ class Order extends MY_Controller
             $duedate = strtotime($this->data->orders->created_at);
             $duedate += 21600;
             $duedate = date('Y-m-d H:i:s', $duedate);
-
-
             return $duedate;
         };
 
