@@ -1655,4 +1655,16 @@ a {
 
 }
 
+@media only screen and (max-width: 768px) {
+    .r-btn-pink {
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .r-btn-pink {
+        margin-top: 0px;
+    }
+}
+
 
