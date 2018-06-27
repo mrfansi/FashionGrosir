@@ -50,6 +50,38 @@ include "layout/Menu.php";
                 <div class="card">
                     <div class="card-body">
                         <div class="row r-layout-konten-profile">
+                            <?php if (isset($validation_error)): ?>
+                                <div class="col-12 col-sm-12 col-md-8">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <?= $validation_error; ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
+                                <div class="col-12 col-sm-12 col-md-8">
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <?php echo $_SESSION['berhasil']; ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>
+                                <div class="col-12 col-sm-12 col-md-8">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <?php echo $_SESSION['gagal']; ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
 
                             <div class="col-12 col-sm-12 col-md-8">
                                 <form action="profil_password/simpan" method="post">
