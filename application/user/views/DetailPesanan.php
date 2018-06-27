@@ -97,7 +97,7 @@ include "layout/Menu.php";
                             <div class="row mb-4">
                                 <div class="col">
                                     <h6 class="r-judul-kotak4-1">
-                                        <i class="fa fa-map-marker" style="font-size: 20px;"></i> Alamat Pengiriman :
+                                        <i class="fa fa-map-marker" style="font-size: 20px;"></i>Alamat Pengiriman :
                                     </h6>
                                     <p class="r-konten-kotak4-1">
                                         <?= $pengiriman(); ?>
@@ -116,7 +116,7 @@ include "layout/Menu.php";
                                 <div class="col">
                                     <h6 class="r-judul-kotak4-1">
                                         <i class="fa fa-credit-card" style="font-size: 20px;"></i>
-                                        Metode Pembayaran:
+                                        Metode Pembayaran :
                                     </h6>
                                     <p class="r-konten-kotak4-1">
                                         <?= $metode_pembayaran(); ?>
@@ -128,10 +128,10 @@ include "layout/Menu.php";
                         <div class="row mb-3">
                             <div class="col">
                                 <h6 class="r-judul-kotak4-1">
-                                    <i class="fa fa-dropbox" style="font-size: 20px;"></i> Detail Produk
+                                    Detail Item :
                                 </h6>
                                 <div class="table-responsive ">
-                                    <table class="table table-sm table-borderless">
+                                    <table class="table">
                                         <thead>
                                         <tr>
                                             <th scope="col">Item</th>

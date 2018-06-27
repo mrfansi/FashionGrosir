@@ -45,7 +45,7 @@ if ($submit == 'Ubah') {
     </div>
 <?php else: ?>
     <form action="<?= $url; ?>" method="post">
-        <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+        <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
         <input type="hidden" name="id" value="<?= $id; ?>">
         <?php if ($submit == 'Simpan' || $submit == 'Ubah'): ?>
             <div class="form-group">
@@ -195,9 +195,9 @@ if ($submit == 'Ubah') {
             var $trLast = $table.find("tr:last"),
                 $trNew = $trLast.clone();
 
-            // $('option', $trNew.find('select#warna')).filter(function (i) {
-            //     return $warna.find('option:selected[value="' + $(this).val() + '"]').length;
-            // }).remove();
+            $('option', $trNew.find('select#warna')).filter(function (i) {
+                return $warna.find('option:selected[value="' + $(this).val() + '"]').length;
+            }).remove();
 
             $trNew.find('input#qty').val(0);
 

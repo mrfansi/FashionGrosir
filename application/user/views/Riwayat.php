@@ -62,21 +62,24 @@ include "layout/Menu.php";
                             <thead>
                             <tr>
                                 <th>ID Pesanan</th>
-                                <th>Tanggal Transaksi</th>
-                                <th>Nomor Resi</th>
-                                <th>Total Harga</th>
-                                <th>Status</th>
+                                <th>Detail Pesanan</th>
+                                <th>Aksi</th>
                             </tr>
                             </thead>
+                            <tbody>
                             <?php foreach ($orders as $order): ?>
                                 <tr>
-                                    <td>
-                                        <a href="<?= site_url('riwayat/' . $order->orders_noid . '/detil'); ?>"><?= $order->orders_noid; ?>
+                                    <td class="align-middle text-danger" style="width: 200px">
+                                        <?= $order->orders_noid; ?>
                                     </td>
-                                    <td><?= $order->created_at; ?></td>
-                                    <td><?= $order->orders_resi_no; ?></td>
-                                    <td id="rupiah"><?= $order->total; ?></td>
-                                    <td>
+                                    <td class="align-middle" style="width: 400px;" >
+                                        <b>Tanggal Transaksi</b><br>
+                                        <?= $order->created_at; ?><br>
+                                        <b>Nomer Resi</b><br>
+                                        <?= $order->orders_resi_no; ?><br>
+                                        <b>Total Harga</b><br>
+                                        <?= $order->total; ?><br>
+                                        <b>Status : </b>
                                         <?php if ($order->orders_status == 0): ?>
                                             <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
                                         <?php elseif ($order->orders_status == 1): ?>
@@ -95,9 +98,20 @@ include "layout/Menu.php";
                                             <div class="text-danger">BATAL</div>
                                         <?php endif; ?>
                                     </td>
+
+                                    <td class="align-middle">
+                                        <a class="btn btn-primary r-btn-pink text-center"
+                                           href="<?= site_url('riwayat/' . $order->orders_noid . '/detil'); ?>">
+                                            Detail
+                                        </a>
+                                        <a class="btn btn-primary r-btn-pink text-center"
+                                           href="<?= site_url('riwayat/' . $order->orders_noid . '/detil'); ?>">
+                                              Invoice
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
-                            <tbody>
+
 
                             </tbody>
                         </table>

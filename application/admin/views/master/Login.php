@@ -35,7 +35,7 @@
                 </div>
                 <p>Administrator</p>
                 <form id="loginForm" name="loginForm" method="post" action="<?= site_url('auth/login'); ?>">
-                    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                    <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="form-group-material">
                         <input id="login-username" type="text" name="username" class="input-material"
                                required>

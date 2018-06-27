@@ -1638,5 +1638,33 @@ a {
     box-shadow: none;
 }
 
+.r-btn-det {
+
+    background-color: #F06292;
+    color: white;
+}
+.r-btn-det:hover {
+    border: 1px solid #F06292;
+    color: #F06292;
+    background-color: white;
+}
+
+.r-font-det {
+    font-size: 14px;
+    color: #F06292;
+
+}
+
+@media only screen and (max-width: 768px) {
+    .r-btn-pink {
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .r-btn-pink {
+        margin-top: 0px;
+    }
+}
 
 

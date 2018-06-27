@@ -48,11 +48,12 @@ include "layout/Slide.php";
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
                             <div class="thumbnail">
                                 <?php if ($item_img($terbaru->i_kode) != NULL): ?>
-                                    <img class="img-fluid"
+                                    <img class="img-fluid mx-auto d-block"
                                          src="<?= base_url('upload/' . $item_img($terbaru->i_kode)->ii_nama); ?>"
                                          alt="<?= $item_img($terbaru->i_kode)->ii_nama; ?>">
                                 <?php else: ?>
-                                    <img class="img-fluid" src="<?= base_url('assets/img/noimg.png'); ?>"
+                                    <img class="img-fluid mx-auto d-block"
+                                         src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
                                          alt="No Image">
                                 <?php endif; ?>
                                 <h4 id="title" class="mt-2"><?= $terbaru->i_nama; ?></h4>

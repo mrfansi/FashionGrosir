@@ -19,11 +19,13 @@ class Print_pdf extends MY_Controller
             }
         }
 
-        $this->load->library('html2pdf');
+
     }
 
     public function slip_pengiriman($orders_noid)
     {
+        $this->load->library('pdf');
+
         $this->data->orders_noid = $orders_noid;
         $this->data->nama_nomor = function () {
             $order_pengiriman = $this->order_pengiriman->where('orders_noid', $this->data->orders_noid)->get();
@@ -31,7 +33,7 @@ class Print_pdf extends MY_Controller
             $hasil->nama = $order_pengiriman->orders_pengiriman_r_nama;
             $hasil->kontak = $order_pengiriman->orders_pengiriman_r_kontak;
 
-            return $hasil->nama . '<br>' . $hasil->kontak;
+            return $hasil;
         };
         $this->data->pengiriman = function () {
             $hasil = new stdClass();
@@ -50,45 +52,27 @@ class Print_pdf extends MY_Controller
                 ->get()->desa_nama;
 
 
-            return $order_pengiriman->orders_pengiriman_deskripsi . '<br>' . $hasil->desa . '<br>' . $hasil->kecamatan . ', ' . $hasil->kabupaten . '<br>' .
+            return $order_pengiriman->orders_pengiriman_deskripsi . ', ' . $hasil->desa . ', ' . $hasil->kecamatan . ', ' . $hasil->kabupaten . '<br>' .
                 $hasil->provinsi . ', ' . $order_pengiriman->orders_pengiriman_kodepos;
 
         };
 
-        //Set folder to save PDF to
-        $this->html2pdf->folder('./file/slip_pengiriman');
+        $view = $this->load->view('Slip_pengiriman', $this->data, true);
 
-        //Set the filename to save/download as
-        $this->html2pdf->filename('test.pdf');
+        $mpdf = $this->pdf->load([
+            'mode' => 'utf-8',
+            'format' => 'A5',
+            'orientation' => 'L'
+        ]);
 
-        //Set the paper defaults
-        $this->html2pdf->paper('a5', 'lanscape');
-
-        // view
-        $view = '';
-
-        //Load html view
-        $this->html2pdf->html($view);
+        $mpdf->WriteHTML($view);
+        $mpdf->Output();
     }
 
     public function invoice($orders_noid)
     {
 
-
-        //Set folder to save PDF to
-        $this->html2pdf->folder('./file/slip_pengiriman');
-
-        //Set the filename to save/download as
-        $this->html2pdf->filename('test.pdf');
-
-        //Set the paper defaults
-        $this->html2pdf->paper('a5', 'landscape');
-
-        // view
-        $view = '';
-
-        //Load html view
-        $this->html2pdf->html($view);
+        $this->load->library('pdf');
     }
 
 }

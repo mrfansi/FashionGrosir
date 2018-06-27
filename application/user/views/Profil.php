@@ -51,7 +51,7 @@ include "layout/Menu.php";
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-8">
                                 <form action="profil/simpan" method="post">
-                                    <input type="hidden" name="token_fg"
+                                    <input type="hidden" name="ecommerce_eazy"
                                            value="<?= $this->security->get_csrf_hash(); ?>">
                                     <input type="hidden" name="id" value="<?= $_SESSION['id']; ?>">
                                     <div class="row form-group">

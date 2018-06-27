@@ -31,6 +31,17 @@ class Ongkir_transfer extends MY_Controller
             return $hasil;
         };
 
+        $this->data->bank_opsi = function () {
+            $bank = $this->bank->get();
+            if ($bank) {
+                $hasil = true;
+            } else {
+                $hasil = false;
+            }
+
+            return $hasil;
+        };
+
         $this->data->pengiriman = $this->get_biaya($order)->rajaongkir->results;
 
         if ($this->data->orders->orders_status == 7) {

@@ -78,7 +78,8 @@
                                 <table id="tables" class="table table-sm">
                                     <thead>
                                     <tr>
-                                        <th scope="col">Image</th>
+                                        <th scope="col">Gambar</th>
+                                        <th scope="col" class="text-center">Tampilkan</th>
                                         <th scope="col">Dibuat pada</th>
                                         <th scope="col">Diupdate pada</th>
                                         <th scope="col" class="text-center"></th>
@@ -88,7 +89,7 @@
                                     <?php if ($slide_promos != NULL): ?>
                                         <?php foreach ($slide_promos as $promo): ?>
                                             <tr>
-                                                <td>
+                                                <td class="align-middle">
                                                     <div class="fotorama"
                                                          data-nav="false"
                                                          data-arrows="false"
@@ -101,9 +102,10 @@
                                                              width="220" height="150">
                                                     </div>
                                                 </td>
-                                                <td><?= $promo->created_at; ?></td>
-                                                <td><?= $promo->updated_at; ?></td>
-                                                <td>
+                                                <td class="align-middle text-center"><?= $promo->slide_promo_isaktif == 0 ? '<i class="fas fa-times"></i>' : '<i class="fas fa-check"></i>'; ?></td>
+                                                <td class="align-middle"><?= $promo->created_at; ?></td>
+                                                <td class="align-middle"><?= $promo->updated_at; ?></td>
+                                                <td class="align-middle">
                                                     <a data-toggle="modal" class="btn btn-sm btn-primary"
                                                        href="#"
                                                        onclick="edit($(this))" data-target="#crud"

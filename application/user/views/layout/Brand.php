@@ -44,8 +44,15 @@
     <nav class="navbar navbar-expand-lg text-sm-center">
         <div class="m-auto">
             <a class="navbar-brand" href="<?= site_url('/'); ?>">
-                <img src="<?= base_url('upload/' . $logo); ?>" width="150" height="80" class="d-inline-block align-top"
-                     alt="">
+                <?php if ($logo != NULL): ?>
+                    <img src="<?= base_url('upload/' . $logo); ?>" width="150" height="80"
+                         class="img-fluid mx-auto d-block"
+                         alt="">
+                <?php else: ?>
+                    <img class="img-fluid mx-auto d-block" width="150" height="80"
+                         src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
+                         alt="No Image">
+                <?php endif; ?>
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

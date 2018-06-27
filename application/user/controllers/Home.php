@@ -17,6 +17,7 @@ class Home extends MY_Controller
 
     public function index()
     {
+        $this->data->img_promos = $this->slide_promo->get_all();
         $this->load->view('Home', $this->data);
     }
 

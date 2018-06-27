@@ -94,7 +94,7 @@ include "layout/Menu.php";
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <form action="alamat_pengiriman/simpan" method="post" id="form_alamat">
-                    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                    <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
                     <input type="hidden" name="alamat_simpan" id="alamat_simpan">
                     <div class="row form-group">
                         <div class="col-lg-12 col-sm-12">

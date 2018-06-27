@@ -119,33 +119,42 @@
                                             </div>
                                         </td>
                                         <td class="align-middle">
-                                            <div class="btn-group btn-group-sm" role="group">
-                                                <button id="cetak" type="button"
-                                                        class="btn btn-primary dropdown-toggle"
-                                                        data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                    Cetak
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="opsi">
-                                                    <a class="dropdown-item small" data-toggle="modal" href="#"
-                                                       onclick="print_slip($(this))" data-target="#crud"
-                                                       data-id="<?= $order->orders_noid; ?>"><i
-                                                                class="fas fa-file mr-2"></i>Alamat
-                                                    </a>
-                                                    <a class="dropdown-item small" data-toggle="modal" href="#"
-                                                       onclick="print_invoice($(this))" data-target="#crud"
-                                                       data-id="<?= $order->orders_noid; ?>"><i
-                                                                class="fas fa-file mr-2"></i>Invoice
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            <a href="#" class="btn btn-sm btn-primary" data-toggle="modal"
+                                               onclick="detil($(this))" data-target="#cruddetil"
+                                               data-id="<?= $order->orders_noid; ?>"><i
+                                                        class="fas fa-sync mr-2"></i>Lihat <?= $title_page; ?>
 
+                                            </a>
+                                            <?php if ($order->orders_status > 4 && $order->orders_status < 7): ?>
+                                                <div class="btn-group btn-group-sm" role="group">
+                                                    <button id="cetak" type="button"
+                                                            class="btn btn-primary dropdown-toggle"
+                                                            data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false">
+                                                        Cetak
+                                                    </button>
+                                                    <div class="dropdown-menu" aria-labelledby="opsi">
+                                                        <a class="dropdown-item"
+                                                           href="<?= site_url('print_pdf/slip_pengiriman/' . $order->orders_noid); ?>"
+                                                        ><i class="far fa-file-alt mr-2"></i>Slip Pengiriman
+                                                        </a>
+                                                        <a class="dropdown-item" data-toggle="modal" href="#"
+                                                           onclick="print_invoice($(this))" data-target="#crud"
+                                                           data-id="<?= $order->orders_noid; ?>"><i
+                                                                    class="far fa-file-alt mr-2"></i>Invoice
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
 
                                             <?php if ($order->orders_status == 3): ?>
                                                 <a class="btn btn-sm btn-primary" data-toggle="modal" href="#"
                                                    onclick="konfirmasi($(this))" data-target="#konfirmasi"
-                                                   data-id="<?= $order->orders_noid; ?>">Konfirmasi <?= $title_page; ?>
+                                                   data-id="<?= $order->orders_noid; ?>"><i
+                                                            class="fas fa-sync mr-2"></i>Konfirmasi &
+                                                    Proses <?= $title_page; ?>
                                                 </a>
+
                                             <?php endif; ?>
 
                                             <?php if ($order->orders_status == 4): ?>
@@ -171,8 +180,8 @@
                                                    data-target="#batal"
                                                    data-url="<?= site_url('order/batal/' . $order->orders_noid); ?>"
                                                    onclick="batal($(this))"
-                                                   href="#">
-                                                    Batal <?= $title_page; ?>
+                                                   href="#"><i class="fas fa-times mr-2"></i>
+                                                    Batalkan <?= $title_page; ?>
                                                 </a>
                                             <?php endif; ?>
                                         </td>
@@ -233,10 +242,10 @@
             function detil(data) {
                 d = data;
                 id = d.attr('data-id');
-                modal = $('#crud');
+                modal = $('#cruddetil');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('ukuran/detil/'); ?>" + id);
+                bodymodal.load("<?= site_url('order/detil/'); ?>" + id);
             }
 
             function hapus(data) {
@@ -313,6 +322,20 @@
     </div>
 </div>
 
+<div class="modal fade" id="cruddetil" tabindex="-1" role="dialog" aria-labelledby="cruddetil" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="modal fade" id="konfirmasi" tabindex="-1" role="dialog" aria-labelledby="konfirmasi" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
@@ -334,13 +357,14 @@
         <div class="modal-content">
             <div class="modal-body">
                 <form action="#" method="post">
-                    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                    <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="form-group">
                         <label for="alasan">Alasan</label>
                         <textarea class="form-control" name="alasan" id="alasan" required></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-sm btn-danger">Batalkan</button>
+                        <button type="submit" class="btn btn-sm btn-primary">Batalkan</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Tutup</button>
                     </div>
                 </form>
             </div>

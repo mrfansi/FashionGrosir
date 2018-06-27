@@ -64,10 +64,10 @@ class Ukuran extends MY_Controller
 
         // get user from database where guid
         $ukuran = $this->ukuran->where('u_kode', $id)->get();
-        $ukuran_nama = $this->input->post('nama');
+        $ukuran_nama = strtoupper($this->input->post('nama'));
         $ukuran_array = array(
             'u_kode' => $id,
-            'u_nama' => strtoupper($ukuran_nama),
+            'u_nama' => $ukuran_nama,
             'u_url' => $this->slug->create_uri(array('title' => $this->input->post('nama')))
         );
 

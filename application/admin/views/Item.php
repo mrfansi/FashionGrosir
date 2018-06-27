@@ -121,14 +121,15 @@
                                                        onclick="unggah($(this))" data-target="#crudfoto"
                                                        data-id="<?= $item->i_kode; ?>"><i
                                                                 class="fas fa-upload mr-2"></i>Upload Gambar</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item small" data-toggle="modal"
-                                                       data-backdrop="static" data-keyboard="false"
-                                                       href="#"
-                                                       onclick="hapus_item($(this))" data-target="#crudfoto"
-                                                       data-id="<?= $item->i_kode; ?>"><i
-                                                                class="far fa-trash-alt mr-2"></i>Hapus Item</a>
-
+                                                    <?php if ($item->item_detil == NULL): ?>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item small" data-toggle="modal"
+                                                           data-backdrop="static" data-keyboard="false"
+                                                           href="#"
+                                                           onclick="hapus_item($(this))" data-target="#crudfoto"
+                                                           data-id="<?= $item->i_kode; ?>"><i
+                                                                    class="far fa-trash-alt mr-2"></i>Hapus Item</a>
+                                                    <?php endif; ?>
                                                 </div>
 
                                             </div>
@@ -456,12 +457,6 @@
 <div class="modal fade" id="crudfoto" tabindex="-1" role="dialog" aria-labelledby="crudfoto" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title" id="hapus"><?= $title_page; ?></h1>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="modal-body">
             </div>
         </div>

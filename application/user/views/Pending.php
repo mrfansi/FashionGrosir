@@ -58,27 +58,28 @@ include "layout/Menu.php";
                     </div>
 
                     <div class="table-responsive mt-2">
-                        <table class="table table-sm table-borderless">
+                        <table id="table" class="table">
                             <thead>
                             <tr>
-                                <th scope="col">ID Pesanan</th>
-                                <th scope="col">Tanggal Transaksi</th>
-                                <th scope="col">Total Harga</th>
-                                <th scope="col">Nama Penerima</th>
+                                <th scope="col">Nomor Order</th>
+                                <th scope="col">Detail Order</th>
+                                <th scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php foreach ($orders as $order): ?>
                                 <tr>
-                                    <td rowspan="1" class="text-danger"><a class="btn btn-primary f-button-font" href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>"><?= $order->orders_noid; ?></a>
+                                    <td class="align-middle text-danger">
+                                        <?= $order->orders_noid; ?>
                                     </td>
-                                    <td><?= $order->created_at; ?></td>
-                                    <td id="rupiah"><?= $order->total; ?></td>
-                                    <td><?= $order->pengguna_nama; ?></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><b>Status : </b>
+                                    <td>
+                                        <b>Tanggal Order :</b><br>
+                                        <?= $order->created_at; ?>
+                                        <br>
+                                        <b>Total Harga :</b><br>
+                                        <?= $order->total; ?>
+                                        <br>
+                                        <b>Status :</b><br>
                                         <?php if ($order->orders_status == 0): ?>
                                             <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
                                         <?php elseif ($order->orders_status == 1): ?>
@@ -96,27 +97,32 @@ include "layout/Menu.php";
                                         <?php elseif ($order->orders_status == 7): ?>
                                             <div class="text-danger">BATAL</div>
                                         <?php endif; ?>
-                                    </td>
-                                    <td><b>Alasan : </b><br>
+                                        <b>Deskripsi :</b><br>
                                         <div class="text-danger">
                                             <?= $order->orders_deskripsi; ?>
                                         </div>
+
                                     </td>
-                                    <td><b>Aksi :</b><br>
+                                    <td class="align-middle">
+                                        <a class="btn btn-primary r-btn-pink"
+                                           href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>">
+                                            Lihat Detail
+                                        </a>
+
                                         <?php if ($order->orders_status == 0): ?>
-                                            <a
-                                                    href="<?= site_url('checkout/' . $order->orders_noid . '/alamat_pengiriman'); ?>">
-                                                Konfirmasi
+                                            <a class="btn btn-primary r-btn-pink"
+                                               href="<?= site_url('checkout/' . $order->orders_noid . '/alamat_pengiriman'); ?>">
+                                                <i class="fas fa-sync mr-2"></i>Proses
                                             </a>
                                         <?php elseif ($order->orders_status == 1): ?>
-                                            <a
-                                                    href="<?= site_url('checkout/' . $order->orders_noid . '/ongkir_transfer'); ?>">
-                                                Konfirmasi
+                                            <a class="btn btn-primary r-btn-pink"
+                                               href="<?= site_url('checkout/' . $order->orders_noid . '/ongkir_transfer'); ?>">
+                                                <i class="fas fa-sync mr-2"></i>Proses
                                             </a>
                                         <?php elseif ($order->orders_status == 2): ?>
-                                            <a
-                                                    href="<?= site_url('checkout/' . $order->orders_noid . '/konfirmasi_pembayaran'); ?>">
-                                                Konfirmasi
+                                            <a class="btn btn-primary r-btn-pink"
+                                               href="<?= site_url('checkout/' . $order->orders_noid . '/konfirmasi_pembayaran'); ?>">
+                                                <i class="fas fa-sync mr-2"></i>Proses
                                             </a>
                                         <?php else: ?>
                                             <i></i>

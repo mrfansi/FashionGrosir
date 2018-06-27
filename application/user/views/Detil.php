@@ -41,7 +41,7 @@ include "layout/Menu.php";
 
                 </div>
                 <form action="add_to_cart" method="post" class="col-lg-7">
-                    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                    <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
                     <h2><?= $item->i_nama; ?></h2>
                     <hr>
                     <p class="f-font-detail"><?= $item->i_deskripsi; ?></p>

@@ -50,17 +50,54 @@ include "layout/Menu.php";
                 <div class="card">
                     <div class="card-body">
                         <div class="row r-layout-konten-profile">
+                            <?php if (isset($validation_error)): ?>
+                                <div class="col-12 col-sm-12 col-md-8">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <?= $validation_error; ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
+                                <div class="col-12 col-sm-12 col-md-8">
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <?php echo $_SESSION['berhasil']; ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>
+                                <div class="col-12 col-sm-12 col-md-8">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <?php echo $_SESSION['gagal']; ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
 
                             <div class="col-12 col-sm-12 col-md-8">
                                 <form action="profil_password/simpan" method="post">
+                                    <input type="hidden" name="ecommerce_eazy"
+                                           value="<?= $this->security->get_csrf_hash(); ?>">
+                                    <input type="hidden" name="id" value="<?= $_SESSION['id']; ?>">
                                     <div class="form-group">
                                         <label class="r-font-konten-profile">Kata Sandi Baru : </label>
-                                        <input type="password" class="form-control" placeholder="Sandi Baru">
+                                        <input type="password" class="form-control" name="sandi"
+                                               placeholder="Sandi Baru">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="r-font-konten-profile">Konfirmasi Kata Sandi Baru : </label>
-                                        <input type="password" class="form-control" placeholder="Konfirmasi Sandi Baru">
+                                        <input type="password" class="form-control" name="sandi_konfirm"
+                                               placeholder="Konfirmasi Sandi Baru">
                                     </div>
 
                                     <div class="form-group">
