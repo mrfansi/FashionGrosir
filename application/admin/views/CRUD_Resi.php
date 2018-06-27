@@ -12,7 +12,7 @@ if ($submit == 'Ubah') {
 ?>
 
 <form action="<?= $url; ?>" method="post">
-    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+    <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" name="id" value="<?= $id; ?>">
     <input type="hidden" name="judul" value="<?= $judul; ?>">
     <div class="form-group">

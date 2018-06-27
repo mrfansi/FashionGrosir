@@ -354,7 +354,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <form action="#" method="post">
-                    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                    <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
                     <div class="form-group">
                         <label for="alasan">Alasan</label>
                         <textarea class="form-control" name="alasan" id="alasan" required></textarea>

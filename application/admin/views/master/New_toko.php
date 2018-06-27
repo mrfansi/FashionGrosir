@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             </div>
             <form action="<?= site_url('new_toko/simpan'); ?>" method="post" enctype="multipart/form-data"
                   class="card-body">
-                <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
                 <input type="hidden" name="t_kode" value="<?= $tokoid; ?>">
                 <div class="row form-group">
                     <div class="col">

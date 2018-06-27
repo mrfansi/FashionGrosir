@@ -449,8 +449,8 @@ $config['global_xss_filtering'] = TRUE;
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
 $config['csrf_protection'] = TRUE;
-$config['csrf_token_name'] = 'token_fg';
-$config['csrf_cookie_name'] = 'cookie_fg';
+$config['csrf_token_name'] = 'ecommerce_eazy';
+$config['csrf_cookie_name'] = 'cookie_eazy';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = FALSE;
 $config['csrf_exclude_uris'] = array();
