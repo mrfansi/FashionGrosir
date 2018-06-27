@@ -128,7 +128,7 @@ include "layout/Menu.php";
                         <div class="row mb-3">
                             <div class="col">
                                 <h6 class="r-judul-kotak4-1">
-                                    <i class="fa fa-dropbox" style="font-size: 20px;"></i> Detail Produk
+                                    <i class="fas fa-box-open mr-1" style="font-size: 20px;"></i> Detail Produk
                                 </h6>
                                 <div class="table-responsive ">
                                     <table class="table table-sm table-borderless">

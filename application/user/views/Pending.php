@@ -70,7 +70,9 @@ include "layout/Menu.php";
                             <tbody>
                             <?php foreach ($orders as $order): ?>
                                 <tr>
-                                    <td rowspan="1" class="text-danger"><a class="btn btn-primary f-button-font" href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>"><?= $order->orders_noid; ?></a>
+                                    <td rowspan="1" class="text-danger">
+                                        <p class="r-font-det mb-0"> <?= $order->orders_noid; ?></p>
+                                        <a class="btn btn-sm r-btn-det mt-1" href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>">Lihat Detail</a>
                                     </td>
                                     <td><?= $order->created_at; ?></td>
                                     <td id="rupiah"><?= $order->total; ?></td>
