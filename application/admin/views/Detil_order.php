@@ -8,7 +8,7 @@
                 <p class="small"><?= $orders->created_at; ?></p>
             </div>
             <div class="col">
-                <div class="text-success">Tanggal Deadline Pembayaran :</div>
+                <div class="text-success">Tanggal Jatuh Tempo Pembayaran :</div>
                 <p class="small">
                     <?= $duedate(); ?>
                 </p>
@@ -53,7 +53,7 @@
                 <p class="small"><?= $jasa(); ?></p>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col">
                 <div class="text-success">Detail Item :</div>
                 <table class="table table-sm">
@@ -78,10 +78,27 @@
                 </table>
             </div>
         </div>
-        <hr>
+
         <div class="row">
-            <div class="col">
-                <button type="button" class="btn btn-sm btn-primary btn-danger" data-dismiss="modal">Tutup</button>
+            <div class="col-5">
+                <div class="row">
+                    <div class="col text-bold">Sub total</div>
+                    <div class="col">
+                        <div id="rupiah"><?= $biaya_subtotal(); ?></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-bold">Biaya pengiriman</div>
+                    <div class="col">
+                        <div id="rupiah"><?= $biaya_pengiriman(); ?></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-bold">Grand total</div>
+                    <div class="col">
+                        <div id="rupiah"><?= $biaya_subtotal() + $biaya_pengiriman(); ?></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -99,7 +116,7 @@
     });
 
     $(document).ready(function () {
-        $('td[id="rupiah"]').each(function (index) {
+        $('[id="rupiah"]').each(function (index) {
             var value = parseInt($(this).html()),
                 hasil = moneyFormat.to(value);
 

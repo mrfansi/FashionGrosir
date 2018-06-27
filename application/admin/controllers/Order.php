@@ -294,7 +294,7 @@ class Order extends MY_Controller
                 $alamat->desa = $this->desa
                     ->where('desa_id', $order_pengiriman->orders_pengiriman_desa)
                     ->get()->desa_nama;
-                $hasil = $order_pengiriman->orders_pengiriman_deskripsi . '<br>' . $alamat->desa . '<br>' . $alamat->kecamatan . ', ' . $alamat->kabupaten . '<br>' .
+                $hasil = $order_pengiriman->orders_pengiriman_deskripsi . ', ' . $alamat->desa . '<br>' . $alamat->kecamatan . ', ' . $alamat->kabupaten . '<br>' .
                     $alamat->provinsi . ', ' . $order_pengiriman->orders_pengiriman_kodepos;
             } else {
                 $hasil = '';
@@ -348,7 +348,14 @@ class Order extends MY_Controller
                 ->where('orders_noid', $this->data->orders_noid)
                 ->get()->orders_noid;
             $ongkir = $this->order_ongkir->where('orders_noid', $orders_noid)->get();
-            return (int)$ongkir->orders_ongkir_biaya;
+
+            if ($ongkir) {
+                return (int)$ongkir->orders_ongkir_biaya;
+            } else {
+                return 0;
+            }
+
+
         };
         $this->load->view('Detil_order', $this->data);
     }
