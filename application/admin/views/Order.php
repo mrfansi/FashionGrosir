@@ -119,6 +119,12 @@
                                             </div>
                                         </td>
                                         <td class="align-middle">
+                                            <a href="#" class="btn btn-sm btn-primary" data-toggle="modal"
+                                               onclick="detil($(this))" data-target="#cruddetil"
+                                               data-id="<?= $order->orders_noid; ?>"><i
+                                                        class="fas fa-sync mr-2"></i>Lihat <?= $title_page; ?>
+
+                                            </a>
                                             <?php if ($order->orders_status > 4 && $order->orders_status < 7): ?>
                                                 <div class="btn-group btn-group-sm" role="group">
                                                     <button id="cetak" type="button"
@@ -236,10 +242,10 @@
             function detil(data) {
                 d = data;
                 id = d.attr('data-id');
-                modal = $('#crud');
+                modal = $('#cruddetil');
                 bodymodal = modal.find('div.modal-body');
 
-                bodymodal.load("<?= site_url('ukuran/detil/'); ?>" + id);
+                bodymodal.load("<?= site_url('order/detil/'); ?>" + id);
             }
 
             function hapus(data) {
@@ -316,6 +322,17 @@
     </div>
 </div>
 
+<div class="modal fade" id="cruddetil" tabindex="-1" role="dialog" aria-labelledby="cruddetil" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="modal fade" id="konfirmasi" tabindex="-1" role="dialog" aria-labelledby="konfirmasi" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
@@ -344,7 +361,7 @@
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-sm btn-primary">Batalkan</button>
-                        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"></button>
+                        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Tutup</button>
                     </div>
                 </form>
             </div>

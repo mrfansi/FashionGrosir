@@ -11,11 +11,6 @@ class Konfirmasi extends MY_Controller
         }
     }
 
-    public function index()
-    {
-        $this->load->view('Konfirmasi', $this->data);
-    }
-
     public function get($orders_noid)
     {
         $this->data->orders_noid = $orders_noid;

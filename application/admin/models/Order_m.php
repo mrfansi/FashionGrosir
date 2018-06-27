@@ -76,6 +76,20 @@ class Order_m extends MY_Model
         return $query->result();
     }
 
+    public function select_orders_where_id($id)
+    {
+        $query = $this->db->query("SELECT orders.orders_noid, orders.orders_status, pengguna.pengguna_nama, SUM(orders_detil.orders_detil_tharga) total
+                                    FROM orders
+                                    INNER JOIN pengguna
+                                    ON orders.pengguna_kode = pengguna.pengguna_kode
+                                    LEFT JOIN orders_detil
+                                    ON orders.orders_noid = orders_detil.orders_noid
+                                    WHERE orders.orders_noid = $id
+                                    GROUP BY orders.orders_noid;");
+
+        return $query->result();
+    }
+
     public function select_orders_bukti($status)
     {
         $query = $this->db->query("SELECT orders_bukti.*, orders.orders_noid, orders.orders_status
