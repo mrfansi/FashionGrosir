@@ -7,6 +7,12 @@
                 <div class="text-success">Tanggal Order :</div>
                 <p class="small"><?= $orders->created_at; ?></p>
             </div>
+            <div class="col">
+                <div class="text-success">Tanggal Deadline Pembayaran :</div>
+                <p class="small">
+                    <?= $duedate(); ?>
+                </p>
+            </div>
         </div>
         <div class="row">
             <div class="col">

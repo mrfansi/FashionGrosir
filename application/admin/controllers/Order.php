@@ -263,6 +263,15 @@ class Order extends MY_Controller
     {
         $this->data->orders_noid = $id;
         $this->data->orders = $this->order->with_order_detil()->where_orders_noid($this->data->orders_noid)->get();
+        $this->data->duedate = function () {
+            $duedate = strtotime($this->data->orders->created_at);
+            $duedate += 21600;
+            $duedate = date('Y-m-d H:i:s', $duedate);
+
+
+            return $duedate;
+        };
+
         $this->data->orders_total = function () {
             $hasil = 0;
             foreach ($this->data->orders->order_detil as $order) {
