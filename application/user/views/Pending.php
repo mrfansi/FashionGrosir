@@ -104,23 +104,25 @@ include "layout/Menu.php";
 
                                     </td>
                                     <td class="align-middle">
-                                        <a href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>">Lihat
-                                            Detail</a>
+                                        <a class="btn btn-primary r-btn-pink"
+                                           href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>">
+                                            Lihat Detail
+                                        </a>
 
                                         <?php if ($order->orders_status == 0): ?>
-                                            <a
-                                                    href="<?= site_url('checkout/' . $order->orders_noid . '/alamat_pengiriman'); ?>">
-                                                Konfirmasi
+                                            <a class="btn btn-primary r-btn-pink"
+                                               href="<?= site_url('checkout/' . $order->orders_noid . '/alamat_pengiriman'); ?>">
+                                                <i class="fas fa-sync mr-2"></i>Proses
                                             </a>
                                         <?php elseif ($order->orders_status == 1): ?>
-                                            <a
-                                                    href="<?= site_url('checkout/' . $order->orders_noid . '/ongkir_transfer'); ?>">
-                                                Konfirmasi
+                                            <a class="btn btn-primary r-btn-pink"
+                                               href="<?= site_url('checkout/' . $order->orders_noid . '/ongkir_transfer'); ?>">
+                                                <i class="fas fa-sync mr-2"></i>Proses
                                             </a>
                                         <?php elseif ($order->orders_status == 2): ?>
-                                            <a
-                                                    href="<?= site_url('checkout/' . $order->orders_noid . '/konfirmasi_pembayaran'); ?>">
-                                                Konfirmasi
+                                            <a class="btn btn-primary r-btn-pink"
+                                               href="<?= site_url('checkout/' . $order->orders_noid . '/konfirmasi_pembayaran'); ?>">
+                                                <i class="fas fa-sync mr-2"></i>Proses
                                             </a>
                                         <?php else: ?>
                                             <i></i>
