@@ -53,14 +53,19 @@ include "layout/Menu.php";
 
                             <div class="col-12 col-sm-12 col-md-8">
                                 <form action="profil_password/simpan" method="post">
+                                    <input type="hidden" name="ecommerce_eazy"
+                                           value="<?= $this->security->get_csrf_hash(); ?>">
+                                    <input type="hidden" name="id" value="<?= $_SESSION['id']; ?>">
                                     <div class="form-group">
                                         <label class="r-font-konten-profile">Kata Sandi Baru : </label>
-                                        <input type="password" class="form-control" placeholder="Sandi Baru">
+                                        <input type="password" class="form-control" name="sandi"
+                                               placeholder="Sandi Baru">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="r-font-konten-profile">Konfirmasi Kata Sandi Baru : </label>
-                                        <input type="password" class="form-control" placeholder="Konfirmasi Sandi Baru">
+                                        <input type="password" class="form-control" name="sandi_konfirm"
+                                               placeholder="Konfirmasi Sandi Baru">
                                     </div>
 
                                     <div class="form-group">

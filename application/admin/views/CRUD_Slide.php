@@ -14,7 +14,7 @@ if ($submit == 'Ubah') {
 ?>
 
 <form action="<?= $url; ?>" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+    <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" id="inputfilename" name="image" value="<?= $img; ?>">
     <input type="hidden" name="id" value="<?= $id; ?>">
     <div class="form-group">

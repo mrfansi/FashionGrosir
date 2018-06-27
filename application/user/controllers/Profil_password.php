@@ -15,6 +15,11 @@ class Profil_password extends MY_Controller
     {
         $this->load->view('Profil_password', $this->data);
     }
+
+    public function simpan()
+    {
+
+    }
 }
 
 /* End of file Home.php */

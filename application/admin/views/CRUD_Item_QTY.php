@@ -3,7 +3,7 @@ $url = site_url('item/tambah_qty/' . $kode);
 ?>
 
 <form action="<?= $url; ?>" method="post">
-    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+    <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" name="id" value="<?= $kode; ?>">
     <div class="form-group">
         <label for="qty">QTY</label>

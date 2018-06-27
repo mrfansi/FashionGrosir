@@ -170,7 +170,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                         </h4>
                         <br>
                         <form action="konfirmasi_pembayaran/simpan" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                            <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
 
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-6">

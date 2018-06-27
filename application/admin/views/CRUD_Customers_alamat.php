@@ -68,7 +68,7 @@
                 </div>
                 <div class="card-body">
                     <form action="<?= site_url('customers/alamat/' . $id . '/tambah'); ?>" method="post">
-                        <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+                        <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
                         <div class="form-group">
                             <label for="judul">Judul</label>
                             <input type="text" class="form-control" name="judul" placeholder="Input Judul" required>

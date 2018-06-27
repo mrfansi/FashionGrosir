@@ -265,7 +265,7 @@ app.controller('DashboardController', function ($scope, $http, Page) {
             url: base_url + "adm.php/dashboard/dashboard_totalitem",
             data: $.param(
                 {
-                    token_fg: hashing
+                    ecommerce_eazy: hashing
                 }
             )
         }).then(function (res) {
@@ -373,7 +373,7 @@ app.controller('CrudKategoriController', function (Page, Key, $scope, $http) {
         if (valid) {
             var data = $.param(
                 {
-                    token_fg: hashing,
+                    ecommerce_eazy: hashing,
                     id: $scope.primarykey,
                     nama: $scope.b_kat_nama,
                     parent: $scope.b_kat_parent_id

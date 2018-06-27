@@ -21,7 +21,7 @@ include "layout/Header.php";
                 </button>
             </div>
         <?php endif; ?>
-        <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+        <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
         <h4 class="h4 mb-3 font-weight-normal text-center f-title-color"><?= $brandname; ?></h4>
 
         <div class="form-group">

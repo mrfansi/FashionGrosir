@@ -1,5 +1,5 @@
 <form action="<?= site_url('upload/do_upload'); ?>" enctype="multipart/form-data" method="post">
-    <input type="hidden" name="token_fg" value="<?= $this->security->get_csrf_hash(); ?>">
+    <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" name="image" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" name="i_kode" value="<?= $i_kode ?>">
     <div class="form-group">

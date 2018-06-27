@@ -6,7 +6,7 @@ app.controller('LoginController', function ($scope, $http) {
             if (valid) {
                 var data = $.param(
                     {
-                        token_fg: hashing,
+                        ecommerce_eazy: hashing,
                         loginUsername: $scope.loginUsername,
                         loginPassword: $scope.loginPassword
                     }
