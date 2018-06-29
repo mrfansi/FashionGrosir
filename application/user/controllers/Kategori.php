@@ -15,10 +15,16 @@ class Kategori extends MY_Controller
 
     public function get_item($k_url)
     {
-        $this->data->kategori_s = $this->item_kategori
-                ->with_kategori('where:k_url = \'' . $k_url .'\'')
-                ->with_item()
-                ->get_all();
+//        $this->data->kategori_s = $this->item_kategori
+//                ->with_kategori('where:k_url = \'' . $k_url .'\'')
+//                ->with_item()
+//                ->get_all();
+
+        $this->data->kategori = $this->kategori->where('k_url', $k_url)
+            ->with_item_kategori()->get();
+        $this->data->item_kategori = function ($k_kode) {
+            return $this->item_kategori->where('k_kode', $k_kode)->with_item()->get();
+        };
         $this->data->breadcumburl = site_url('kategori/'. $k_url);
         $this->data->breadcumb = $this->kategori->where_k_url($k_url)->get()->k_nama;
         $this->load->view('Kategori', $this->data);
@@ -28,12 +34,12 @@ class Kategori extends MY_Controller
     {
         $this->data->item = $this->item
                 ->with_item_detil()
-                ->where_i_url($i_url)
+            ->where('i_url', $i_url)
                 ->get();
         $this->data->breadcumburl = site_url('kategori/'. $k_url);
         $this->data->breadcumburl1 = site_url('kategori/'. $k_url . '/item/' . $i_url . '/detil');
-        $this->data->breadcumb = $this->kategori->where_k_url($k_url)->get()->k_nama;
-        $this->data->breadcumb1 = $this->item->where_i_url($i_url)->get()->i_nama;
+        $this->data->breadcumb = $this->kategori->where('k_url', $k_url)->get()->k_nama;
+        $this->data->breadcumb1 = $this->item->where('i_url', $i_url)->get()->i_nama;
         $this->load->view('Detil', $this->data);
     }
 }

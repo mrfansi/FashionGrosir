@@ -80,7 +80,7 @@
         </div>
 
         <div class="row">
-            <div class="col-5">
+            <div class="col-6">
                 <div class="row">
                     <div class="col text-bold">Sub total</div>
                     <div class="col">
