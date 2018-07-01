@@ -15,18 +15,18 @@ class Kategori extends MY_Controller
 
     public function get_item($k_url)
     {
-//        $this->data->kategori_s = $this->item_kategori
-//                ->with_kategori('where:k_url = \'' . $k_url .'\'')
-//                ->with_item()
-//                ->get_all();
-
-        $this->data->kategori = $this->kategori->where('k_url', $k_url)
-            ->with_item_kategori()->get();
-        $this->data->item_kategori = function ($k_kode) {
-            return $this->item_kategori->where('k_kode', $k_kode)->with_item()->get();
-        };
+        $kategori = $this->kategori->where('k_url', $k_url)->get();
+        if ($kategori) {
+            $item_kategori = $this->item_kategori
+                ->where('k_kode', $kategori->k_kode)
+                ->with_item()->get_all();
+        } else {
+            $item_kategori = '';
+        }
+        $this->data->k_url = $k_url;
+        $this->data->item_kategori = $item_kategori;
         $this->data->breadcumburl = site_url('kategori/'. $k_url);
-        $this->data->breadcumb = $this->kategori->where_k_url($k_url)->get()->k_nama;
+        $this->data->breadcumb = $this->kategori->where('k_url', $k_url)->get()->k_nama;
         $this->load->view('Kategori', $this->data);
     }
 

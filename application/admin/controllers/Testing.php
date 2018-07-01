@@ -199,9 +199,9 @@ class Testing extends MY_Controller
 
     }
 
-    private function item()
+    private function item($data = 10)
     {
-        for ($v = 1; $v <= 15; $v++) {
+        for ($v = 1; $v <= $data; $v++) {
             $config = array(
                 'field' => 'i_nama',
                 'title' => 'title',
@@ -229,6 +229,24 @@ class Testing extends MY_Controller
             $ukuran_table = $this->ukuran->get(1);
             $seri_table = $this->seri->get(1);
 
+
+            for ($i = 1; $i <= 5; $i++) {
+                $item_detil_kode = $this->item_detil->guid();
+                $item_detil = $this->item_detil->insert(array(
+                    'item_detil_kode' => $item_detil_kode,
+                    'i_kode' => $item_kode,
+                    'w_kode' => $warna_table->w_kode,
+                    's_kode' => $seri_table->s_kode,
+                    'u_kode' => $ukuran_table->u_kode,
+                ));
+
+                $item_qty = $this->item_qty->insert(array(
+                    'iq_kode' => $this->item_qty->guid(),
+                    'item_detil_kode' => $item_detil_kode,
+                    'iq_qty' => 999
+                ));
+            }
+
             if ($item_table) {
                 $counter = 1;
                 foreach ($kategori_table as $kategori) {
@@ -242,33 +260,16 @@ class Testing extends MY_Controller
                         echo '<ul>';
                         echo '<li>Testing item_kategori ' . $counter . ' data inserted</li>';
                         echo '</ul>';
-
                     }
                     $counter += 1;
                 }
 
-                for ($i = 1; $i <= 5; $i++) {
-                    $item_detil_kode = $this->item_detil->guid();
-                    $item_detil = $this->item_detil->insert(array(
-                        'item_detil_kode' => $item_detil_kode,
-                        'i_kode' => $item_kode,
-                        'w_kode' => $warna_table->w_kode,
-                        's_kode' => $seri_table->s_kode,
-                        'u_kode' => $ukuran_table->u_kode,
-                    ));
+            }
 
-                    $item_qty = $this->item_qty->insert(array(
-                        'iq_kode' => $this->item_qty->guid(),
-                        'item_detil_kode' => $item_detil_kode,
-                        'iq_qty' => 999
-                    ));
-
-                    if ($item_detil && $item_qty) {
-                        echo '<ul>';
-                        echo '<li>Testing item_detil && item_qty ' . $i . ' data inserted</li>';
-                        echo '</ul>';
-                    }
-                }
+            if ($item_detil && $item_qty) {
+                echo '<ul>';
+                echo '<li>Testing item_detil && item_qty ' . $i . ' data inserted</li>';
+                echo '</ul>';
             }
         }
 

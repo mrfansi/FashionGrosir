@@ -35,7 +35,8 @@ include "layout/Menu.php";
                                 <img src="<?= base_url('upload/' . $img->ii_nama); ?>" class="card-img-top">
                             <?php endforeach; ?>
                         <?php else: ?>
-                            <img src="<?= base_url('assets/img/noimg.png'); ?>" class="card-img-top">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
+                                 class="card-img-top">
                         <?php endif; ?>
                     </div>
 
@@ -117,7 +118,9 @@ include "layout/Menu.php";
                             <img class="img-fluid" src="<?= base_url('upload/' . $item_img($hot->i_kode)->ii_nama); ?>"
                                  alt="<?= $item_img($hot->i_kode)->ii_nama; ?>">
                         <?php else: ?>
-                            <img class="img-fluid" src="<?= base_url('assets/img/noimg.png'); ?>" alt="No Image">
+                            <img class="img-fluid"
+                                 src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
+                                 alt="No Image">
                         <?php endif; ?>
                         <h4 id="title" class="mt-2"><?= $hot->i_nama; ?></h4>
                         <div class="ratings">

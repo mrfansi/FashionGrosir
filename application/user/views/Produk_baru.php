@@ -57,7 +57,8 @@ include "layout/Menu.php";
                                          src="<?= base_url('upload/' . $item_img($terbaru->i_kode)->ii_nama); ?>"
                                          alt="<?= $item_img($terbaru->i_kode)->ii_nama; ?>">
                                 <?php else: ?>
-                                    <img class="img-fluid" src="<?= base_url('assets/img/noimg.png'); ?>"
+                                    <img class="img-fluid"
+                                         src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
                                          alt="No Image">
                                 <?php endif; ?>
                                 <h4 id="title" class="mt-2"><?= $terbaru->i_nama; ?></h4>
@@ -72,7 +73,7 @@ include "layout/Menu.php";
                                    id="title"><?= $terbaru->i_deskripsi; ?></p>
                                 <hr class="line">
                                 <div class="row">
-                                    <div class="col-6 col-md-6 col-sm-6">
+                                    <div class="col-7 col-md-7 col-sm-7">
                                         <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
                                             <p id="rupiah" class="mt-1 price"><?= $terbaru->i_hrg_vip; ?></p>
                                         <?php else: ?>
@@ -80,7 +81,7 @@ include "layout/Menu.php";
                                                class="mt-1 align-middle price"><?= $terbaru->i_hrg_reseller; ?></p>
                                         <?php endif; ?>
                                     </div>
-                                    <div class="col-6 col-md-6 col-sm-6">
+                                    <div class="col-5 col-md-5 col-sm-5">
                                         <a class="btn btn-primary btn-sm r-btn-pink right"
                                            href="<?= site_url('produk-terbaru/item/' . $terbaru->i_url . '/detil'); ?>">
                                             <i class="fa fa-shopping-cart"></i> Beli

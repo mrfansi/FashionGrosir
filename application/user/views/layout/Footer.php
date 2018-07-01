@@ -49,7 +49,7 @@
                             <?php foreach ($menu_kategori as $menukat): ?>
                                 <li class="nav-item">
                                     <a class="nav-link f-footer-new"
-                                       href="<?= site_url('kategori/' . $menukat->kategori->k_url); ?>"><?= $menukat->kategori->k_nama; ?></a>
+                                       href="<?= site_url('kategori/' . $menukat->k_url); ?>"><?= $menukat->k_nama; ?></a>
                                 </li>
                             <?php endforeach; ?>
                         <?php endif; ?>

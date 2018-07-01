@@ -59,9 +59,9 @@ class MY_Controller extends CI_Controller
         $this->data->meta_title = $this->config->item('webname');
         $this->data->meta_content = $this->config->item('webdeskripsi');
         $this->data->meta_keywords = $this->config->item('webkeywords');
-        $this->data->menu_kategori = $this->item_kategori->with_kategori()->group_by('k_kode')->get_all();
+        $this->data->menu_kategori = $this->kategori->get_all();
         $this->data->menu_cart = function ($session_id) {
-            return $this->cart->with_item_detil()->where_pengguna_kode($session_id)->get_all();
+            return $this->cart->with_item_detil()->where('pengguna_kode', $session_id)->get_all();
         };
 
         // cek user
@@ -86,14 +86,14 @@ class MY_Controller extends CI_Controller
         $this->data->item = function ($i_kode) {
             return $this->item
                 ->with_item_detil()
-                ->where_i_kode($i_kode)
+                ->where('i_kode', $i_kode)
                 ->get();
         };
 
         $this->data->item_all = function ($i_kode) {
             return $this->item
                 ->with_item_detil()
-                ->where_i_kode($i_kode)
+                ->where('i_kode', $i_kode)
                 ->get_all();
         };
         $this->data->item_detil_with_item = function ($i_kode) {
@@ -103,7 +103,7 @@ class MY_Controller extends CI_Controller
                 ->with_ukuran('order_by:u_nama')
                 ->with_seri()
                 ->with_item_img()
-                ->where_i_kode($i_kode)
+                ->where('i_kode', $i_kode)
                 ->get();
         };
 
@@ -114,7 +114,7 @@ class MY_Controller extends CI_Controller
                 ->with_ukuran('order_by:u_nama')
                 ->with_seri()
                 ->with_item_img()
-                ->where_i_kode($i_kode)
+                ->where('i_kode', $i_kode)
                 ->get_all();
         };
 
@@ -126,7 +126,7 @@ class MY_Controller extends CI_Controller
                 ->with_ukuran('order_by:u_nama')
                 ->with_seri()
                 ->with_item_img()
-                ->where_item_detil_kode($ide_kode)
+                ->where('item_detil_kode', $ide_kode)
                 ->get();
         };
 
@@ -137,21 +137,21 @@ class MY_Controller extends CI_Controller
                 ->with_ukuran('order_by:u_nama')
                 ->with_seri()
                 ->with_item_img()
-                ->where_item_detil_kode($ide_kode)
+                ->where('item_detil_kode', $ide_kode)
                 ->get_all();
         };
 
-        $this->data->warna = function ($i_kode) {
-            return $this->warna
-                ->with_item_detil('where:i_kode = \'' . $i_kode . '\'')
-                ->get_all();
-        };
-
-        $this->data->ukuran = function ($i_kode) {
-            return $this->ukuran
-                ->with_item_detil('where:i_kode = \'' . $i_kode . '\'')
-                ->get_all();
-        };
+//        $this->data->warna = function ($i_kode) {
+//            return $this->warna
+//                ->with_item_detil('where:i_kode = \'' . $i_kode . '\'')
+//                ->get_all();
+//        };
+//
+//        $this->data->ukuran = function ($i_kode) {
+//            return $this->ukuran
+//                ->with_item_detil('where:i_kode = \'' . $i_kode . '\'')
+//                ->get_all();
+//        };
 
         $this->data->qty = function ($i_kode) {
             $hasil = 0;
@@ -190,12 +190,12 @@ class MY_Controller extends CI_Controller
         };
 
         $this->data->cart_s = function ($p_kode) {
-            return $this->cart->where_pengguna_kode($p_kode)->get_all();
+            return $this->cart->where('pengguna_kode', $p_kode)->get_all();
         };
 
         $this->data->cart_total = function ($p_kode) {
             $hasil = 0;
-            foreach ($this->cart->where_pengguna_kode($p_kode)->get_all() as $cart_total) {
+            foreach ($this->cart->where('pengguna_kode', $p_kode)->get_all() as $cart_total) {
                 $hasil += (int) $cart_total->ca_tharga;
             }
 

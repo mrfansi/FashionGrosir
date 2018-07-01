@@ -1394,11 +1394,6 @@ a {
     text-decoration: none;
 }
 
-.thumbnail img {
-    height: 300px;
-    width: 300px;
-}
-
 .navbar-toggler {
     border-radius: 0;
 }
