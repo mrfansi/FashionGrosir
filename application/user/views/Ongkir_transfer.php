@@ -151,7 +151,7 @@ include "layout/Menu.php";
                 <input type="hidden" name="biaya" id="biaya">
                 <input type="hidden" name="estimasi" id="estimasi">
                 <button type="submit" class="btn f-button-color" <?= $bank_opsi() == true ? '' : 'disabled'; ?>>
-                    Lanjutkan
+                    Konfirmasi Pesanan
                 </button>
             </form>
         </div>

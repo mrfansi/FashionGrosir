@@ -152,12 +152,12 @@ include "layout/Menu.php";
                     </div>
                     <div class="row form-group">
                         <div class="col">
-                            <label for="provinsi">Provinsi</label>
+                            <label for="provinsi">Provinsi*</label>
                             <select name="provinsi" id="provinsi" class="provinsi form-control" required>
                             </select>
                         </div>
                         <div class="col">
-                            <label for="kabupaten">Kabupaten / Kota</label>
+                            <label for="kabupaten">Kabupaten / Kota*</label>
                             <select name="kabupaten" id="kabupaten" class="kabupaten form-control" required>
                             </select>
                         </div>
@@ -165,12 +165,12 @@ include "layout/Menu.php";
 
                     <div class="row form-group">
                         <div class="col">
-                            <label for="kecamatan">Kecamatan</label>
+                            <label for="kecamatan">Kecamatan*</label>
                             <select name="kecamatan" id="kecamatan" class="kecamatan form-control" required>
                             </select>
                         </div>
                         <div class="col">
-                            <label for="kelurahan">Kelurahan / Desa</label>
+                            <label for="kelurahan">Kelurahan / Desa*</label>
                             <select name="kelurahan" id="kelurahan" class="kelurahan form-control" required>
                             </select>
                         </div>
@@ -180,7 +180,7 @@ include "layout/Menu.php";
                         <div class="col-lg-3 col-sm-12">
                             <label for="kodepos">Kode Pos</label>
                             <input name="kodepos" id="kodepos" type="number"
-                                   class="form-control" placeholder="Kode Pos" required>
+                                   class="form-control" placeholder="Kode Pos">
                         </div>
                     </div>
                     <div class="row form-group">
