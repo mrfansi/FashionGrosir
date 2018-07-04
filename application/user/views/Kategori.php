@@ -27,15 +27,17 @@ include "layout/Menu.php";
                     <?php if ($stok >= 1): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
                             <div class="thumbnail">
-                                <?php if ($item_img($kat->item->i_kode) != NULL): ?>
-                                    <img class="img-fluid"
-                                         src="<?= base_url('upload/' . $item_img($kat->item->i_kode)->ii_nama); ?>"
-                                         alt="<?= $item_img($kat->item->i_kode)->ii_nama; ?>">
-                                <?php else: ?>
-                                    <img class="img-fluid"
-                                         src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
-                                         alt="No Image">
-                                <?php endif; ?>
+                                <div class="image mx-auto d-block">
+                                    <?php if ($item_img($kat->item->i_kode) != NULL): ?>
+                                        <img class="img-fluid"
+                                             src="<?= base_url('upload/' . $item_img($kat->item->i_kode)->ii_nama); ?>"
+                                             alt="<?= $item_img($kat->item->i_kode)->ii_nama; ?>">
+                                    <?php else: ?>
+                                        <img class="img-fluid"
+                                             src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
+                                             alt="No Image">
+                                    <?php endif; ?>
+                                </div>
                                 <h4 id="title" class="mt-2"><?= $kat->item->i_nama; ?></h4>
                                 <div class="ratings">
                                     <span class="glyphicon glyphicon-star"></span>

@@ -47,15 +47,18 @@ include "layout/Slide.php";
                     <?php if ($stok >= 1): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
                             <div class="thumbnail">
-                                <?php if ($item_img($terbaru->i_kode) != NULL): ?>
-                                    <img class="img-fluid mx-auto d-block"
-                                         src="<?= base_url('upload/' . $item_img($terbaru->i_kode)->ii_nama); ?>"
-                                         alt="<?= $item_img($terbaru->i_kode)->ii_nama; ?>">
-                                <?php else: ?>
-                                    <img class="img-fluid mx-auto d-block"
-                                         src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
-                                         alt="No Image">
-                                <?php endif; ?>
+                                <div class="image mx-auto d-block">
+
+                                    <?php if ($item_img($terbaru->i_kode) != NULL): ?>
+                                        <img class="img-fluid"
+                                             src="<?= base_url('upload/' . $item_img($terbaru->i_kode)->ii_nama); ?>"
+                                             alt="<?= $item_img($terbaru->i_kode)->ii_nama; ?>">
+                                    <?php else: ?>
+                                        <img class="img-fluid"
+                                             src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
+                                             alt="No Image">
+                                    <?php endif; ?>
+                                </div>
                                 <h4 id="title" class="mt-2"><?= $terbaru->i_nama; ?></h4>
                                 <div class="ratings">
                                     <span class="glyphicon glyphicon-star"></span>
@@ -72,7 +75,8 @@ include "layout/Slide.php";
                                         <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
                                             <p id="rupiah" class="mt-1 price"><?= $terbaru->i_hrg_vip; ?></p>
                                         <?php else: ?>
-                                            <p id="rupiah" class="mt-1 align-middle price"><?= $terbaru->i_hrg_reseller; ?></p>
+                                            <p id="rupiah"
+                                               class="mt-1 align-middle price"><?= $terbaru->i_hrg_reseller; ?></p>
                                         <?php endif; ?>
                                     </div>
                                     <div class="col-6 col-md-6 col-sm-6">

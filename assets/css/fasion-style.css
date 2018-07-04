@@ -1650,6 +1650,13 @@ a {
 
 }
 
+.thumbnail .image {
+    margin: 0;
+    padding: auto;
+    height: 250px;
+    width: 250px;
+}
+
 @media only screen and (max-width: 768px) {
     .r-btn-pink {
         margin-top: 5px;
