@@ -46,8 +46,6 @@ include "layout/Menu.php";
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star-empty"></span>
                                 </div>
-                                <p tooltip title="<?= $kat->item->i_deskripsi; ?>"
-                                   id="title"><?= $kat->item->i_deskripsi; ?></p>
                                 <hr class="line">
                                 <div class="row">
                                     <div class="col-7 col-md-7 col-sm-7">

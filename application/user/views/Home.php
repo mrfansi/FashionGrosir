@@ -67,8 +67,6 @@ include "layout/Slide.php";
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star-empty"></span>
                                 </div>
-                                <p tooltip class="" title="<?= $terbaru->i_deskripsi; ?>"
-                                   id="title"><?= $terbaru->i_deskripsi; ?></p>
                                 <hr class="mb-2 mt-0">
                                 <div class="row">
                                     <div class="col-6 col-md-6 col-sm-6">

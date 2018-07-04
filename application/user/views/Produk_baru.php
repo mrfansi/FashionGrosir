@@ -71,8 +71,6 @@ include "layout/Menu.php";
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star-empty"></span>
                                 </div>
-                                <p tooltip title="<?= $terbaru->i_deskripsi; ?>"
-                                   id="title"><?= $terbaru->i_deskripsi; ?></p>
                                 <hr class="line">
                                 <div class="row">
                                     <div class="col-8 col-md-8 col-sm-8">
