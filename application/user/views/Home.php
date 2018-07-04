@@ -47,7 +47,8 @@ include "layout/Slide.php";
                     <?php if ($stok >= 1): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
                             <div class="thumbnail">
-                                <div class="image mx-auto d-block">
+                                <div class="image mx-auto d-block"
+                                     data-url="<?= site_url('produk-terbaru/item/' . $terbaru->i_url . '/detil'); ?>">
 
                                     <?php if ($item_img($terbaru->i_kode) != NULL): ?>
                                         <img class="img-fluid"

@@ -48,6 +48,33 @@ include "layout/Menu.php";
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
+                            <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>
+                                <div class="col">
+                                    <div class="alert alert-danger alert-dismissible fade show"
+                                         role="alert">
+                                        <?php echo $_SESSION['gagal']; ?>
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
+                                <div class="col">
+                                    <div class="alert alert-success alert-dismissible fade show"
+                                         role="alert">
+                                        <?php echo $_SESSION['berhasil']; ?>
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="row">
                             <div class="col-lg-12 col-md-12">
                                 <form action="profil_alamat/simpan" method="post">
                                     <input type="hidden" name="ecommerce_eazy"
@@ -56,13 +83,6 @@ include "layout/Menu.php";
                                     <div class="row form-group" id="row_nama_alamat">
                                         <div class="col">
                                             <select name="pilih_alamat" id="pilih_alamat" class="form-control"></select>
-                                        </div>
-                                    </div>
-                                    <div class="row form-group" id="row_judul_alamat" style="display: none;">
-                                        <div class="col">
-                                            <label for="nama_alamat">Judul</label>
-                                            <input type="text" name="nama_alamat" id="nama_alamat" class="form-control"
-                                                   placeholder="Judul Alamat" required>
                                         </div>
                                     </div>
                                     <div id="pengirim">
@@ -100,13 +120,13 @@ include "layout/Menu.php";
                                     </div>
                                     <div class="row form-group">
                                         <div class="col">
-                                            <label for="provinsi">Provinsi</label>
+                                            <label for="provinsi">Provinsi*</label>
                                             <select name="provinsi" id="provinsi" class="provinsi form-control"
                                                     required>
                                             </select>
                                         </div>
                                         <div class="col">
-                                            <label for="kabupaten">Kabupaten / Kota</label>
+                                            <label for="kabupaten">Kabupaten / Kota*</label>
                                             <select name="kabupaten" id="kabupaten" class="kabupaten form-control"
                                                     required>
                                             </select>
@@ -115,13 +135,13 @@ include "layout/Menu.php";
 
                                     <div class="row form-group">
                                         <div class="col">
-                                            <label for="kecamatan">Kecamatan</label>
+                                            <label for="kecamatan">Kecamatan*</label>
                                             <select name="kecamatan" id="kecamatan" class="kecamatan form-control"
                                                     required>
                                             </select>
                                         </div>
                                         <div class="col">
-                                            <label for="kelurahan">Kelurahan / Desa</label>
+                                            <label for="kelurahan">Kelurahan / Desa*</label>
                                             <select name="kelurahan" id="kelurahan" class="kelurahan form-control"
                                                     required>
                                             </select>
@@ -130,7 +150,7 @@ include "layout/Menu.php";
                                         <div class="col">
                                             <label for="kodepos">Kode Pos</label>
                                             <input name="kodepos" id="kodepos" type="number"
-                                                   class="form-control" placeholder="Kode Pos" required>
+                                                   class="form-control" placeholder="Kode Pos">
                                         </div>
                                     </div>
                                     <div class="row form-group">
@@ -146,32 +166,6 @@ include "layout/Menu.php";
                                             <button type="submit" class="btn btn-primary r-btn-pink">Simpan
                                             </button>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>
-                                            <div class="col">
-                                                <div class="alert alert-danger alert-dismissible fade show"
-                                                     role="alert">
-                                                    <?php echo $_SESSION['gagal']; ?>
-                                                    <button type="button" class="close" data-dismiss="alert"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
-                                        <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
-                                            <div class="col">
-                                                <div class="alert alert-success alert-dismissible fade show"
-                                                     role="alert">
-                                                    <?php echo $_SESSION['berhasil']; ?>
-                                                    <button type="button" class="close" data-dismiss="alert"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
                                     </div>
                                 </form>
                             </div>

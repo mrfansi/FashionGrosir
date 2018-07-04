@@ -1652,9 +1652,10 @@ a {
 
 .thumbnail .image {
     margin: 0;
-    padding: auto;
+    padding: 0;
     height: 250px;
     width: 250px;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {

@@ -215,9 +215,9 @@ class Testing extends MY_Controller
             $item_array = array(
                 'i_kode' => $item_kode,
                 'i_nama' => $item_nama,
-                'i_hrg_vip' => rand(),
-                'i_hrg_reseller' => rand(),
-                'i_berat' => rand(2, 5),
+                'i_hrg_vip' => mt_rand(9999, 999999),
+                'i_hrg_reseller' => mt_rand(9999, 999999),
+                'i_berat' => mt_rand(9, 999),
                 'i_deskripsi' => $this->randomString(10),
                 'i_url' => $this->slug->create_uri(array('title' => $item_nama))
             );
@@ -243,7 +243,7 @@ class Testing extends MY_Controller
                 $item_qty = $this->item_qty->insert(array(
                     'iq_kode' => $this->item_qty->guid(),
                     'item_detil_kode' => $item_detil_kode,
-                    'iq_qty' => 999
+                    'iq_qty' => mt_rand(9, 999)
                 ));
             }
 
@@ -282,7 +282,7 @@ class Testing extends MY_Controller
                 'bank_kode' => $this->bank->guid(),
                 'bank_penerbit' => $this->randomString(3),
                 'bank_nama' => $this->randomString(10),
-                'bank_rek' => rand(10, 15),
+                'bank_rek' => mt_rand(9999999999, 999999999999999),
                 'bank_isaktif' => 1
             );
 

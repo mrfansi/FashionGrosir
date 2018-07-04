@@ -232,7 +232,8 @@ include "layout/Menu.php";
                         </div>
                         <div class="row mt-2">
                             <div class="col text-right">
-                                <a href="<?= site_url('riwayat'); ?>" class="btn btn-danger btn-sm mr-1 ml-1 f-button-font"><i class="fa fa-undo"></i>
+                                <a href="<?= site_url('pending'); ?>"
+                                   class="btn btn-danger btn-sm mr-1 ml-1 f-button-font"><i class="fa fa-undo"></i>
                                     Kembali</a>
                                 </button>
                             </div>

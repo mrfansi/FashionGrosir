@@ -49,6 +49,33 @@ include "layout/Menu.php";
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
+                            <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>
+                                <div class="col">
+                                    <div class="alert alert-danger alert-dismissible fade show"
+                                         role="alert">
+                                        <?php echo $_SESSION['gagal']; ?>
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
+                                <div class="col">
+                                    <div class="alert alert-success alert-dismissible fade show"
+                                         role="alert">
+                                        <?php echo $_SESSION['berhasil']; ?>
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="row">
                             <div class="col-12 col-sm-12 col-md-8">
                                 <form action="profil/simpan" method="post">
                                     <input type="hidden" name="ecommerce_eazy"
@@ -98,32 +125,6 @@ include "layout/Menu.php";
                                             <button type="submit" class="btn btn-primary r-btn-pink">Simpan
                                             </button>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>
-                                            <div class="col">
-                                                <div class="alert alert-danger alert-dismissible fade show"
-                                                     role="alert">
-                                                    <?php echo $_SESSION['gagal']; ?>
-                                                    <button type="button" class="close" data-dismiss="alert"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
-                                        <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
-                                            <div class="col">
-                                                <div class="alert alert-success alert-dismissible fade show"
-                                                     role="alert">
-                                                    <?php echo $_SESSION['berhasil']; ?>
-                                                    <button type="button" class="close" data-dismiss="alert"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
                                     </div>
                                 </form>
                             </div>

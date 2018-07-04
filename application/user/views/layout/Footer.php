@@ -209,5 +209,11 @@
         $('#cart > div > div > div.modal-body').load('<?= site_url('cart/modal_cart'); ?>');
     </script>
 <?php endif; ?>
+<script>
+    $('div.image.mx-auto.d-block').click(function () {
+        var url = $(this).attr('data-url');
+        window.location.href = url;
+    })
+</script>
 </body>
 </html>

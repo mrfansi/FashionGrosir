@@ -88,11 +88,9 @@ include "layout/Menu.php";
                     <div class="mb-2 col-12 col-sm-6 col-md-5 col-lg-6">
                         <label for="wu"></i>Warna - Ukuran</label>
                         <select name="wu" id="wu" class="form-control" required>
-                            <option data-qty="0" value="">Pilih Warna & Ukuran</option>
                             <?php foreach ($item_detil_with_item_all($item->i_kode) as $id): ?>
                                 <option data-qty="<?= $qty_detil($id->item_detil_kode); ?>"
-                                        value="<?= $id->item_detil_kode; ?>"
-                                        data-value="<?= $id->warna->w_nama; ?> - <?= $id->ukuran->u_nama; ?>">
+                                        value="<?= $id->item_detil_kode; ?>">
                                     <?= $id->warna->w_nama; ?> -
                                     <?= $id->ukuran->u_nama; ?>
                                 </option>
@@ -139,7 +137,8 @@ include "layout/Menu.php";
         <?php foreach ($this->item->with_item_img('where:ii_default =1')->limit(5)->get_all() as $hot): ?>
             <div class="col-12 col-sm-6  col-md-4 col-lg-4 col-xl-3 mb-3">
                 <div class="thumbnail">
-                    <div class="image mx-auto d-block">
+                    <div class="image mx-auto d-block"
+                         data-url="<?= site_url('produk-terbaru/item/' . $hot->i_url . '/detil'); ?>">
 
                         <?php if ($item_img($hot->i_kode) != NULL): ?>
                             <img class="img-fluid" src="<?= base_url('upload/' . $item_img($hot->i_kode)->ii_nama); ?>"
@@ -181,65 +180,50 @@ include "layout/Menu.php";
     </div>
 </div>
 <script>
-    $('#wu').change(function () {
-        var qty = $(this).find(':selected').data('qty');
-        var value = $(this).val();
-        $.when(
-            $('#stok').val(qty),
-            $('#qty').attr('max', qty)
-        );
-        if (qty === 0 && value !== '') {
-            $('body > div.container > div > form > div:nth-child(8) > div:nth-child(2)').removeClass('mt-3');
-            $('#check').show()
-                .removeClass('text-success')
-                .addClass('text-danger')
-                .html('Stok habis');
-        } else if (qty > 0 && value !== '') {
-            $('body > div.container > div > form > div:nth-child(8) > div:nth-child(2)').removeClass('mt-3');
-            $('#check').show()
-                .removeClass('text-danger')
-                .addClass('text-success')
-                .html('Stok tersedia');
-        } else {
-            $('body > div.container > div > form > div:nth-child(8) > div:nth-child(2)').addClass('mt-3');
-            $('#check').hide();
-        }
-    })
+    $(document).ready(function () {
+        $('#wu').change(function () {
+            var qty = $(this).find(':selected').data('qty');
+            var value = $(this).val();
+            $.when(
+                $('#stok').val(qty),
+                $('#qty').attr('max', qty)
+            );
+            if (qty === 0 && value !== '') {
+                $('body > div.container > div > form > div:nth-child(8) > div:nth-child(2)').removeClass('mt-3');
+                $('#check').show()
+                    .removeClass('text-success')
+                    .addClass('text-danger')
+                    .html('Stok habis');
+            } else if (qty > 0 && value !== '') {
+                $('body > div.container > div > form > div:nth-child(8) > div:nth-child(2)').removeClass('mt-3');
+                $('#check').show()
+                    .removeClass('text-danger')
+                    .addClass('text-success')
+                    .html('Stok tersedia');
+            } else {
+                $('body > div.container > div > form > div:nth-child(8) > div:nth-child(2)').addClass('mt-3');
+                $('#check').hide();
+            }
+        })
+    });
 </script>
 <script>
     $(document).ready(function () {
-        // get the select
-        var $dd = $('#wu');
-        if ($dd.length > 0) { // make sure we found the select we were looking for
+        var options = $('#wu option');
+        var arr = options.map(function (_, o) {
+            return {t: $(o).text(), v: o.value, q: $(o).attr('data-qty')};
+        }).get();
+        arr.sort(function (o1, o2) {
+            var t1 = o1.t.toLowerCase(), t2 = o2.t.toLowerCase();
 
-            // save the selected value
-            var selectedVal = $dd.val();
-
-            // get the options and loop through them
-            var $options = $('option', $dd);
-            var arrVals = [];
-            $options.each(function () {
-                // push each option value and text into an array
-                arrVals.push({
-                    val: $(this).val(),
-                    text: $(this).text()
-                });
-            });
-
-            console.log(arrVals);
-            // sort the array by the value (change val to text to sort by text instead)
-            arrVals.sort(function (a, b) {
-                return a.val - b.val;
-            });
-
-            // loop through the sorted array and set the text/values to the options
-            for (var i = 0, l = arrVals.length; i < l; i++) {
-                $($options[i]).val(arrVals[i].val).text(arrVals[i].text);
-            }
-
-            // set the selected value back
-            $dd.val(selectedVal);
-        }
+            return t1 > t2 ? 1 : t1 < t2 ? -1 : 0;
+        });
+        options.each(function (i, o) {
+            o.value = arr[i].v;
+            $(o).text(arr[i].t);
+            $(o).attr('data-qty', arr[i].q);
+        });
+        $("#wu").prepend("<option value='' selected='selected'>Pilih warna & ukuran</option>");
     })
 </script>
 <?php

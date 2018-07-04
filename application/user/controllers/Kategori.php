@@ -26,7 +26,7 @@ class Kategori extends MY_Controller
         $this->data->k_url = $k_url;
         $this->data->item_kategori = $item_kategori;
         $this->data->breadcumburl = site_url('kategori/'. $k_url);
-        $this->data->breadcumb = $this->kategori->where('k_url', $k_url)->get()->k_nama;
+        $this->data->breadcumb = isset($this->kategori->where('k_url', $k_url)->get()->k_nama) ? $this->kategori->where('k_url', $k_url)->get()->k_nama : '';
         $this->load->view('Kategori', $this->data);
     }
 
