@@ -91,7 +91,8 @@ include "layout/Menu.php";
                             <option data-qty="0" value="">Pilih Warna & Ukuran</option>
                             <?php foreach ($item_detil_with_item_all($item->i_kode) as $id): ?>
                                 <option data-qty="<?= $qty_detil($id->item_detil_kode); ?>"
-                                        value="<?= $id->item_detil_kode; ?>">
+                                        value="<?= $id->item_detil_kode; ?>"
+                                        data-value="<?= $id->warna->w_nama; ?> - <?= $id->ukuran->u_nama; ?>">
                                     <?= $id->warna->w_nama; ?> -
                                     <?= $id->ukuran->u_nama; ?>
                                 </option>
@@ -202,6 +203,42 @@ include "layout/Menu.php";
         } else {
             $('body > div.container > div > form > div:nth-child(8) > div:nth-child(2)').addClass('mt-3');
             $('#check').hide();
+        }
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        // get the select
+        var $dd = $('#wu');
+        if ($dd.length > 0) { // make sure we found the select we were looking for
+
+            // save the selected value
+            var selectedVal = $dd.val();
+
+            // get the options and loop through them
+            var $options = $('option', $dd);
+            var arrVals = [];
+            $options.each(function () {
+                // push each option value and text into an array
+                arrVals.push({
+                    val: $(this).val(),
+                    text: $(this).text()
+                });
+            });
+
+            console.log(arrVals);
+            // sort the array by the value (change val to text to sort by text instead)
+            arrVals.sort(function (a, b) {
+                return a.val - b.val;
+            });
+
+            // loop through the sorted array and set the text/values to the options
+            for (var i = 0, l = arrVals.length; i < l; i++) {
+                $($options[i]).val(arrVals[i].val).text(arrVals[i].text);
+            }
+
+            // set the selected value back
+            $dd.val(selectedVal);
         }
     })
 </script>
