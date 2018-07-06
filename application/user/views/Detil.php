@@ -55,12 +55,6 @@ include "layout/Menu.php";
                         <div class="row">
                             <div class="col">
                                 <p>
-                                    <b>Kondisi</b><br>
-                                    Baru
-                                </p>
-                            </div>
-                            <div class="col">
-                                <p>
                                     <b>Berat</b><br>
                                     <?= $item->i_berat; ?> Gram
                                 </p>
@@ -69,7 +63,7 @@ include "layout/Menu.php";
                         <div class="row">
                             <div class="col">
                                 <p>
-                                    <b>Min. Pesanan</b><br>
+                                    <b>Kategori</b><br>
                                     1 pcs
                                 </p>
                             </div>
@@ -138,7 +132,7 @@ include "layout/Menu.php";
             <div class="col-12 col-sm-6  col-md-4 col-lg-4 col-xl-3 mb-3">
                 <div class="thumbnail">
                     <div class="image mx-auto d-block"
-                         data-url="<?= site_url('produk-terbaru/item/' . $hot->i_url . '/detil'); ?>">
+                         data-url="<?= site_url('hot-item/' . $hot->i_url . '/detil'); ?>">
 
                         <?php if ($item_img($hot->i_kode) != NULL): ?>
                             <img class="img-fluid" src="<?= base_url('upload/' . $item_img($hot->i_kode)->ii_nama); ?>"
@@ -168,7 +162,7 @@ include "layout/Menu.php";
                         </div>
                         <div class="col-md-5 col-sm-5">
                             <a class="btn btn-primary btn-sm r-btn-pink right"
-                               href="<?= site_url('produk-terbaru/item/' . $hot->i_url . '/detil'); ?>">
+                               href="<?= site_url('hot-item/' . $hot->i_url . '/detil'); ?>">
                                 <i class="fa fa-shopping-cart"></i> Beli
                             </a>
                         </div>
