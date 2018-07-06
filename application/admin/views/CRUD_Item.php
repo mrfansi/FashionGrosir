@@ -114,8 +114,8 @@ if ($submit == 'Ubah') {
         <?php if ($submit == 'Simpan' || $submit == 'Ubah'): ?>
         <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
-            <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Item"
-                      required><?= $deskripsi; ?></textarea>
+            <textarea class="form-control" name="deskripsi" id="deskripsi"
+                      placeholder="Deskripsi Item"><?= $deskripsi; ?></textarea>
         </div>
         <?php endif; ?>
 
