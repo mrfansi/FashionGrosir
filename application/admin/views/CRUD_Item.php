@@ -115,7 +115,7 @@ if ($submit == 'Ubah') {
         <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
             <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Item"
-                      required><?= $deskripsi; ?></textarea>
+            ><?= $deskripsi; ?></textarea>
         </div>
         <?php endif; ?>
 
