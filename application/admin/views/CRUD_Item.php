@@ -114,8 +114,8 @@ if ($submit == 'Ubah') {
         <?php if ($submit == 'Simpan' || $submit == 'Ubah'): ?>
         <div class="form-group">
             <label for="deskripsi">Deskripsi</label>
-            <textarea class="form-control" name="deskripsi" id="deskripsi"
-                      placeholder="Deskripsi Item"><?= $deskripsi; ?></textarea>
+            <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Item"
+            ><?= $deskripsi; ?></textarea>
         </div>
         <?php endif; ?>
 
@@ -232,7 +232,7 @@ if ($submit == 'Ubah') {
             plugins: [
                 'advlist autolink lists link image charmap print preview anchor textcolor',
                 'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table contextmenu paste code help wordcount'
+                'insertdatetime media table paste code help wordcount'
             ],
             toolbar: 'undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
             content_css: [
