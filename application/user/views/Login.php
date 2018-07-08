@@ -1,9 +1,6 @@
 <?php
 include "layout/Header.php";
 ?>
-<?php if (isset($log) && $log != ""): ?>
-    <p class="text-danger text-center"><?= $log; ?></p>
-<?php endif; ?>
 
     <!-- Alert Promo -->
     <div class="container-fluid text-center clear-header">
@@ -25,8 +22,9 @@ include "layout/Header.php";
     <!-- End Alert Promo -->
 
 
-
-
+<?php if (isset($log) && $log != ""): ?>
+    <p class="text-danger text-center"><?= $log; ?></p>
+<?php endif; ?>
     <!-- Login -->
     <form method="post" action="<?= site_url('login'); ?>" class="form-signin">
         <?php if (isset($_SESSION['berhasil']) && $_SESSION['berhasil'] != ""): ?>
