@@ -42,7 +42,7 @@ class Auth extends MY_Controller
         $this->data->email = $this->input->post('email');
 
         $config = Array(
-            'protocol' => 'smtp',
+            'protocol' => 'sendmail',
             'smtp_host' => 'ssl://mail.fashiongrosir-ind.com',
             'smtp_port' => 465,
             'smtp_user' => 'dont-reply@fashiongrosir-ind.com',
@@ -115,7 +115,7 @@ class Auth extends MY_Controller
 
 
         $config = Array(
-            'protocol' => 'smtp',
+            'protocol' => 'sendmail',
             'smtp_host' => 'ssl://mail.fashiongrosir-ind.com',
             'smtp_port' => 465,
             'smtp_user' => 'dont-reply@fashiongrosir-ind.com',
@@ -151,7 +151,8 @@ class Auth extends MY_Controller
             $this->data->berhasil = 'Silahkan cek email untuk aktivasi akun anda.';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);
         } else {
-            $this->data->gagal = 'E-mail anda tidak valid, silahkan ulangi pendaftaran.';
+
+            $this->data->gagal = $this->email->print_debugger();
             $this->session->set_flashdata('berhasil', $this->data->gagal);
         }
 
