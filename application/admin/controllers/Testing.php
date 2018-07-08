@@ -36,7 +36,8 @@ class Testing extends MY_Controller
                 'pengguna_username' => 'eazy',
                 'pengguna_password' => 'eazy9090',
                 'pengguna_email' => 'super@eazy-dev.xyz',
-                'pengguna_ipaddr' => '1.1.1.1'
+                'pengguna_ipaddr' => '1.1.1.1',
+                'pengguna_isaktif' => 1
             ));
         }
     }
