@@ -50,7 +50,7 @@ class FPDF_TPL extends fpdi_bridge
      *
      * @var array
      */
-    protected  $_res = array();
+    protected $_res = array();
 
     /**
      * Last used template data
@@ -242,12 +242,12 @@ class FPDF_TPL extends fpdi_bridge
             'scaleX' => ($w / $_w),
             'scaleY' => ($h / $_h),
             'tx' => $x,
-            'ty' =>  ($this->h - $y - $h),
+            'ty' => ($this->h - $y - $h),
             'lty' => ($this->h - $y - $h) - ($this->h - $_h) * ($h / $_h)
         );
 
         $this->_out(sprintf('q %.4F 0 0 %.4F %.4F %.4F cm',
-            $tplData['scaleX'], $tplData['scaleY'], $tplData['tx'] * $this->k, $tplData['ty'] * $this->k)
+                $tplData['scaleX'], $tplData['scaleY'], $tplData['tx'] * $this->k, $tplData['ty'] * $this->k)
         ); // Translate
         $this->_out(sprintf('%s%d Do Q', $this->tplPrefix, $tplIdx));
 
@@ -282,7 +282,7 @@ class FPDF_TPL extends fpdi_bridge
 
         if ($w == 0)
             $w = $h * $_w / $_h;
-        if($h == 0)
+        if ($h == 0)
             $h = $w * $_h / $_w;
 
         return array("w" => $w, "h" => $h);
@@ -438,13 +438,13 @@ class FPDF_TPL extends fpdi_bridge
      */
     protected function _putformxobjects()
     {
-        $filter=($this->compress) ? '/Filter /FlateDecode ' : '';
+        $filter = ($this->compress) ? '/Filter /FlateDecode ' : '';
         reset($this->_tpls);
 
-        foreach($this->_tpls AS $tplIdx => $tpl) {
+        foreach ($this->_tpls AS $tplIdx => $tpl) {
             $this->_newobj();
             $this->_tpls[$tplIdx]['n'] = $this->n;
-            $this->_out('<<'.$filter.'/Type /XObject');
+            $this->_out('<<' . $filter . '/Type /XObject');
             $this->_out('/Subtype /Form');
             $this->_out('/FormType 1');
             $this->_out(sprintf('/BBox [%.2F %.2F %.2F %.2F]',
@@ -472,23 +472,23 @@ class FPDF_TPL extends fpdi_bridge
                 if (isset($res['fonts']) && count($res['fonts'])) {
                     $this->_out('/Font <<');
 
-                    foreach($res['fonts'] as $font) {
+                    foreach ($res['fonts'] as $font) {
                         $this->_out('/F' . $font['i'] . ' ' . $font['n'] . ' 0 R');
                     }
 
                     $this->_out('>>');
                 }
 
-                if(isset($res['images']) || isset($res['tpls'])) {
+                if (isset($res['images']) || isset($res['tpls'])) {
                     $this->_out('/XObject <<');
 
                     if (isset($res['images'])) {
-                        foreach($res['images'] as $image)
+                        foreach ($res['images'] as $image)
                             $this->_out('/I' . $image['i'] . ' ' . $image['n'] . ' 0 R');
                     }
 
                     if (isset($res['tpls'])) {
-                        foreach($res['tpls'] as $i => $_tpl)
+                        foreach ($res['tpls'] as $i => $_tpl)
                             $this->_out($this->tplPrefix . $i . ' ' . $_tpl['n'] . ' 0 R');
                     }
 
@@ -525,7 +525,7 @@ class FPDF_TPL extends fpdi_bridge
     {
         parent::_putxobjectdict();
 
-        foreach($this->_tpls as $tplIdx => $tpl) {
+        foreach ($this->_tpls as $tplIdx => $tpl) {
             $this->_out(sprintf('%s%d %d 0 R', $this->tplPrefix, $tplIdx, $tpl['n']));
         }
     }

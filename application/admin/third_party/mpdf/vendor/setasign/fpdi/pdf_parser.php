@@ -294,7 +294,7 @@ class pdf_parser
             throw new Exception('Unable to find pointer to xref table.');
         }
 
-        return (int) $matches[1];
+        return (int)$matches[1];
     }
 
     /**
@@ -376,10 +376,10 @@ class pdf_parser
             if ($line) {
                 $pieces = explode(' ', $line);
                 $c = count($pieces);
-                switch($c) {
+                switch ($c) {
                     case 2:
                         $start = (int)$pieces[0];
-                        $end   = $start + (int)$pieces[1];
+                        $end = $start + (int)$pieces[1];
                         if ($end > $result['maxObject'])
                             $result['maxObject'] = $end;
                         break;
@@ -387,8 +387,8 @@ class pdf_parser
                         if (!isset($result['xref'][$start]))
                             $result['xref'][$start] = array();
 
-                        if (!array_key_exists($gen = (int) $pieces[1], $result['xref'][$start])) {
-                            $result['xref'][$start][$gen] = $pieces[2] == 'n' ? (int) $pieces[0] : null;
+                        if (!array_key_exists($gen = (int)$pieces[1], $result['xref'][$start])) {
+                            $result['xref'][$start][$gen] = $pieces[2] == 'n' ? (int)$pieces[0] : null;
                         }
                         $start++;
                         break;
@@ -443,7 +443,7 @@ class pdf_parser
 
                 $pos = $c->offset;
 
-                while(1) {
+                while (1) {
 
                     $match = strpos($c->buffer, '>', $pos);
 
@@ -461,7 +461,7 @@ class pdf_parser
                     $result = substr($c->buffer, $c->offset, $match - $c->offset);
                     $c->offset = $match + 1;
 
-                    return array (self::TYPE_HEX, $result);
+                    return array(self::TYPE_HEX, $result);
                 }
                 break;
 
@@ -477,7 +477,7 @@ class pdf_parser
                         return false;
                     }
 
-                    if (($value =   $this->_readValue($c)) === false) {
+                    if (($value = $this->_readValue($c)) === false) {
                         return false;
                     }
 
@@ -490,7 +490,7 @@ class pdf_parser
                     $result[$key] = $value;
                 }
 
-                return array (self::TYPE_DICTIONARY, $result);
+                return array(self::TYPE_DICTIONARY, $result);
 
             case '[':
                 // This is an array.
@@ -511,7 +511,7 @@ class pdf_parser
                     $result[] = $value;
                 }
 
-                return array (self::TYPE_ARRAY, $result);
+                return array(self::TYPE_ARRAY, $result);
 
             case '(':
                 // This is a string
@@ -531,12 +531,12 @@ class pdf_parser
                                 $pos++;
                         }
                     }
-                } while($openBrackets != 0 && $c->increaseLength());
+                } while ($openBrackets != 0 && $c->increaseLength());
 
                 $result = substr($c->buffer, $c->offset, $pos - $c->offset - 1);
                 $c->offset = $pos;
 
-                return array (self::TYPE_STRING, $result);
+                return array(self::TYPE_STRING, $result);
 
             case 'stream':
                 $tempPos = $c->getPos() - strlen($c->buffer);
@@ -621,12 +621,12 @@ class pdf_parser
                 } else if ($token == 'true' || $token == 'false') {
                     return array(self::TYPE_BOOLEAN, $token == 'true');
                 } else if ($token == 'null') {
-                   return array(self::TYPE_NULL);
+                    return array(self::TYPE_NULL);
                 } else {
                     // Just a token. Return it.
                     return array(self::TYPE_TOKEN, $token);
                 }
-         }
+        }
     }
 
     /**
@@ -681,7 +681,7 @@ class pdf_parser
                 // If we're being asked to store all the information
                 // about the object, we add the object ID and generation
                 // number for later use
-                $result = array (
+                $result = array(
                     self::TYPE_OBJECT,
                     'obj' => $objSpec[1],
                     'gen' => $objSpec[2]
@@ -786,7 +786,7 @@ class pdf_parser
                 // This is a comment - jump over it!
 
                 $pos = $c->offset;
-                while(1) {
+                while (1) {
                     $match = preg_match("/(\r\n|\r|\n)/", $c->buffer, $m, PREG_OFFSET_CAPTURE, $pos);
                     if ($match === 0) {
                         if (!$c->increaseLength()) {
@@ -811,7 +811,7 @@ class pdf_parser
                     return false;
                 }
 
-                while(1) {
+                while (1) {
 
                     // Determine the length of the token
 

@@ -107,25 +107,6 @@ class FilterLZW
     }
 
     /**
-     * Add a new string to the string table.
-     */
-    protected function _addStringToTable($oldString, $newString = '')
-    {
-        $string = $oldString . $newString;
-
-        // Add this new String to the table
-        $this->_sTable[$this->_tIdx++] = $string;
-
-        if ($this->_tIdx == 511) {
-            $this->_bitsToGet = 10;
-        } else if ($this->_tIdx == 1023) {
-            $this->_bitsToGet = 11;
-        } else if ($this->_tIdx == 2047) {
-            $this->_bitsToGet = 12;
-        }
-    }
-
-    /**
      * Returns the next 9, 10, 11 or 12 bits
      *
      * @return int
@@ -144,10 +125,29 @@ class FilterLZW
             $this->_nextBits += 8;
         }
 
-        $code = ($this->_nextData >> ($this->_nextBits - $this->_bitsToGet)) & $this->_andTable[$this->_bitsToGet-9];
+        $code = ($this->_nextData >> ($this->_nextBits - $this->_bitsToGet)) & $this->_andTable[$this->_bitsToGet - 9];
         $this->_nextBits -= $this->_bitsToGet;
 
         return $code;
+    }
+
+    /**
+     * Add a new string to the string table.
+     */
+    protected function _addStringToTable($oldString, $newString = '')
+    {
+        $string = $oldString . $newString;
+
+        // Add this new String to the table
+        $this->_sTable[$this->_tIdx++] = $string;
+
+        if ($this->_tIdx == 511) {
+            $this->_bitsToGet = 10;
+        } else if ($this->_tIdx == 1023) {
+            $this->_bitsToGet = 11;
+        } else if ($this->_tIdx == 2047) {
+            $this->_bitsToGet = 12;
+        }
     }
 
     /**

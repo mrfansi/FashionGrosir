@@ -112,11 +112,11 @@ if ($submit == 'Ubah') {
             <?php endif; ?>
         </div>
         <?php if ($submit == 'Simpan' || $submit == 'Ubah'): ?>
-        <div class="form-group">
-            <label for="deskripsi">Deskripsi</label>
-            <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Item"
-            ><?= $deskripsi; ?></textarea>
-        </div>
+            <div class="form-group">
+                <label for="deskripsi">Deskripsi</label>
+                <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi Item"
+                ><?= $deskripsi; ?></textarea>
+            </div>
         <?php endif; ?>
 
         <?php if ($submit == 'Simpan' || $submit == 'Tambah Detail'): ?>

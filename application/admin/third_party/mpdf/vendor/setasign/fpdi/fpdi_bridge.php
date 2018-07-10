@@ -120,7 +120,7 @@ if (!class_exists('TCPDF', false)) {
         {
             $out = '';
             for ($count = 0, $n = strlen($s); $count < $n; $count++) {
-                if ($s[$count] != '\\' || $count == $n-1) {
+                if ($s[$count] != '\\' || $count == $n - 1) {
                     $out .= $s[$count];
                 } else {
                     switch ($s[++$count]) {
@@ -145,7 +145,7 @@ if (!class_exists('TCPDF', false)) {
                             $out .= chr(0x0A);
                             break;
                         case "\r":
-                            if ($count != $n-1 && $s[$count+1] == "\n")
+                            if ($count != $n - 1 && $s[$count + 1] == "\n")
                                 $count++;
                             break;
                         case "\n":
@@ -154,14 +154,14 @@ if (!class_exists('TCPDF', false)) {
                             // Octal-Values
                             if (ord($s[$count]) >= ord('0') &&
                                 ord($s[$count]) <= ord('9')) {
-                                $oct = ''. $s[$count];
+                                $oct = '' . $s[$count];
 
-                                if (ord($s[$count+1]) >= ord('0') &&
-                                    ord($s[$count+1]) <= ord('9')) {
+                                if (ord($s[$count + 1]) >= ord('0') &&
+                                    ord($s[$count + 1]) <= ord('9')) {
                                     $oct .= $s[++$count];
 
-                                    if (ord($s[$count+1]) >= ord('0') &&
-                                        ord($s[$count+1]) <= ord('9')) {
+                                    if (ord($s[$count + 1]) >= ord('0') &&
+                                        ord($s[$count + 1]) <= ord('9')) {
                                         $oct .= $s[++$count];
                                     }
                                 }

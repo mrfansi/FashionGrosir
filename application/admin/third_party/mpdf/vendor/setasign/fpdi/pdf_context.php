@@ -14,36 +14,31 @@
 class pdf_context
 {
     /**
+     * @var resource|string
+     */
+    public $file;
+    /**
+     * @var string
+     */
+    public $buffer;
+    /**
+     * @var integer
+     */
+    public $offset;
+    /**
+     * @var integer
+     */
+    public $length;
+    /**
+     * @var array
+     */
+    public $stack;
+    /**
      * Mode
      *
      * @var integer 0 = file | 1 = string
      */
     protected $_mode = 0;
-
-    /**
-     * @var resource|string
-     */
-    public $file;
-
-    /**
-     * @var string
-     */
-    public $buffer;
-
-    /**
-     * @var integer
-     */
-    public $offset;
-
-    /**
-     * @var integer
-     */
-    public $length;
-
-    /**
-     * @var array
-     */
-    public $stack;
 
     /**
      * The constructor
@@ -57,27 +52,6 @@ class pdf_context
             $this->_mode = 1;
 
         $this->reset();
-    }
-
-    /**
-     * Get the position in the file stream
-     *
-     * @return int
-     */
-    public function getPos()
-    {
-        if ($this->_mode == 0) {
-            if (feof($this->file)) {
-                $stat = fstat($this->file);
-                fseek($this->file, $stat['size']);
-            }
-
-            $pos = ftell($this->file);
-
-            return $pos;
-        } else {
-            return 0;
-        }
     }
 
     /**
@@ -108,22 +82,6 @@ class pdf_context
     }
 
     /**
-     * Make sure that there is at least one character beyond the current offset in the buffer.
-     *
-     * To prevent the tokenizer from attempting to access data that does not exist.
-     *
-     * @return bool
-     */
-    public function ensureContent()
-    {
-        if ($this->offset >= $this->length - 1) {
-            return $this->increaseLength();
-        } else {
-            return true;
-        }
-    }
-
-    /**
      * Forcefully read more data into the buffer
      *
      * @param int $l
@@ -146,6 +104,43 @@ class pdf_context
             return true;
         } else {
             return false;
+        }
+    }
+
+    /**
+     * Get the position in the file stream
+     *
+     * @return int
+     */
+    public function getPos()
+    {
+        if ($this->_mode == 0) {
+            if (feof($this->file)) {
+                $stat = fstat($this->file);
+                fseek($this->file, $stat['size']);
+            }
+
+            $pos = ftell($this->file);
+
+            return $pos;
+        } else {
+            return 0;
+        }
+    }
+
+    /**
+     * Make sure that there is at least one character beyond the current offset in the buffer.
+     *
+     * To prevent the tokenizer from attempting to access data that does not exist.
+     *
+     * @return bool
+     */
+    public function ensureContent()
+    {
+        if ($this->offset >= $this->length - 1) {
+            return $this->increaseLength();
+        } else {
+            return true;
         }
     }
 }
