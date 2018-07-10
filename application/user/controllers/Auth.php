@@ -37,6 +37,35 @@ class Auth extends MY_Controller
 
     }
 
+    private function forgot_post()
+    {
+        $this->data->email = $this->input->post('email');
+
+        $config = Array(
+            'protocol' => 'sendmail',
+            'smtp_host' => 'ssl://mail.fashiongrosir-ind.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'dont-reply@fashiongrosir-ind.com',
+            'smtp_pass' => 'p1nacate88',
+            'smtp_timeout' => '4',
+            'mailtype' => 'html',
+            'newline' => "\r\n",
+            'charset' => 'utf-8',
+            'validation' => TRUE
+        );
+        $this->email->initialize($config);
+        $this->email->from('dont-reply@fashiongrosir-ind.com', $this->data->brandname);
+        $this->email->to($this->data->email);
+        $this->email->subject('Anda lupa password?, kami akan kembalikan akun anda.');
+
+        $body = $this->load->view('email/forgot', $this->data);
+
+        $this->email->message($body);
+
+        $this->email->send();
+
+    }
+
     public function register()
     {
         // validation
@@ -75,12 +104,18 @@ class Auth extends MY_Controller
 
     }
 
-    private function forgot_post()
+    private function register_post()
     {
+        $this->data->nama = $this->input->post('nama');
         $this->data->email = $this->input->post('email');
+        $this->data->telp = $this->input->post('notelp');
+        $this->data->pass = $this->input->post('password');
+        $this->data->guid = $this->pengguna->guid();
+        $this->data->token = $this->pengguna->guid();
+
 
         $config = Array(
-            'protocol' => 'smtp',
+            'protocol' => 'sendmail',
             'smtp_host' => 'ssl://mail.fashiongrosir-ind.com',
             'smtp_port' => 465,
             'smtp_user' => 'dont-reply@fashiongrosir-ind.com',
@@ -92,66 +127,37 @@ class Auth extends MY_Controller
             'validation' => TRUE
         );
         $this->email->initialize($config);
-        $this->email->from('dont-reply@fashiongrosir-ind.com', 'Fashion Grosir');
+        $this->email->from('dont-reply@fashiongrosir-ind.com', $this->data->brandname);
         $this->email->to($this->data->email);
-        $this->email->subject('Testing');
+        $this->email->subject('Aktivasi Akun Pengguna ' . $this->data->brandname);
 
-        $body = $this->load->view('email/forgot', $this->data);
+        $body = $this->load->view('email/new', $this->data, TRUE);
 
         $this->email->message($body);
 
-        $this->email->send();
 
-    }
+        if ($this->email->send()) {
+            $this->pengguna->insert(array(
+                'pengguna_kode' => $this->data->guid,
+                'pengguna_username' => $this->data->email,
+                'pengguna_nama' => $this->data->nama,
+                'pengguna_email' => $this->data->email,
+                'pengguna_password' => $this->data->pass,
+                'pengguna_tipe' => 2,
+                'pengguna_telp' => $this->data->telp,
+                'pengguna_token' => $this->data->token
+            ));
 
-    private function register_post()
-    {
-        $this->data->nama = $this->input->post('nama');
-        $this->data->email = $this->input->post('email');
-        $this->data->telp = $this->input->post('notelp');
-        $this->data->pass = $this->input->post('password');
-        $this->data->guid = $this->pengguna->guid();
-        $this->data->token = $this->pengguna->guid();
-
-        $register = $this->pengguna->insert(array(
-            'pengguna_kode' => $this->data->guid,
-            'pengguna_username' => $this->data->email,
-            'pengguna_nama' => $this->data->nama,
-            'pengguna_email' => $this->data->email,
-            'pengguna_password' => $this->data->pass,
-            'pengguna_tipe' => 2,
-            'pengguna_telp' => $this->data->telp,
-            'pengguna_token' => $this->data->token
-        ));
-
-        if ($register) {
-            $config = Array(
-                'protocol' => 'smtp',
-                'smtp_host' => 'ssl://mail.fashiongrosir-ind.com',
-                'smtp_port' => 465,
-                'smtp_user' => 'dont-reply@fashiongrosir-ind.com',
-                'smtp_pass' => 'p1nacate88',
-                'smtp_timeout' => '4',
-                'mailtype' => 'html',
-                'newline' => "\r\n",
-                'charset' => 'utf-8',
-                'validation' => TRUE
-            );
-            $this->email->initialize($config);
-            $this->email->from('dont-reply@fashiongrosir-ind.com', 'Fashion Grosir');
-            $this->email->to($this->data->email);
-            $this->email->subject('Aktivasi Akun Pengguna Fashion Grosir');
-
-            $body = $this->load->view('email/new', $this->data, TRUE);
-
-            $this->email->message($body);
-
-            $this->email->send();
             $this->data->berhasil = 'Silahkan cek email untuk aktivasi akun anda.';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);
+        } else {
 
-            redirect('register');
+            $this->data->gagal = $this->email->print_debugger();
+            $this->session->set_flashdata('berhasil', $this->data->gagal);
         }
+
+
+        redirect('register');
 
     }
 
@@ -193,7 +199,7 @@ class Auth extends MY_Controller
                 'pengguna_password' => $password
             ))->get();
 
-            if ($user) {
+            if (isset($user->pengguna_isaktif) && $user->pengguna_isaktif) {
                 // Update IP Address
                 $this->pengguna->where(array(
                     'pengguna_email' => $email,
@@ -213,6 +219,9 @@ class Auth extends MY_Controller
 
 
                 redirect('/');
+            } elseif (isset($user->pengguna_isaktif) && !$user->pengguna_isaktif) {
+                $this->data->log = 'Silahkan cek email untuk aktivasi akun anda..';
+                $this->load->view('Login', $this->data);
             } else {
                 $this->data->log = 'Username atau Password salah.';
                 $this->load->view('Login', $this->data);
