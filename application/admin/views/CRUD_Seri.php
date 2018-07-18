@@ -2,9 +2,11 @@
 $url = site_url('seri/simpan');
 if ($submit == 'Ubah') {
     $id = $seris->s_kode;
+    $img = $seris->s_image;
     $nama = $seris->s_nama;
 } else if ($submit == 'Simpan') {
     $id = $kode;
+    $img = '';
     $nama = '';
 }
 ?>
