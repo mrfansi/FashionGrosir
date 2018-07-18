@@ -29,13 +29,13 @@ include "layout/Menu.php";
             <!-- KOTAK KIRI -->
             <div class="col-lg-12 col-md-12">
 
-                <div class="card r-posisi-kartu mb-3 container-fluid">
+                <div class="card r-posisi-kartu mb-3 container">
                     <h5 class="r-judul-kotak4">
                         Detail Pesanan
                         #<?= $nomor_order; ?>
                     </h5>
 
-                    <div class="container-fluid">
+                    <div class="container">
                         <!-- START KONTEN ATAS -->
                         <div class="row mt-4 mb-1">
                             <div class="col-6">

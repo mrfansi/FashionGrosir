@@ -5,7 +5,7 @@ include "layout/Menu.php";
 ?>
     <br>
     <!-- Content -->
-    <div class="container-fluid f-padding">
+    <div class="container f-padding">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
@@ -88,7 +88,7 @@ include "layout/Menu.php";
 
     </div>
     <br>
-    <div class="container-fluid f-padding">
+    <div class="container f-padding">
         <h5><i class="fa fa-car"></i> Alamat Pengiriman</h5>
 
         <div class="row">

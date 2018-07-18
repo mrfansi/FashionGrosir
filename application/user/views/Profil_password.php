@@ -5,7 +5,7 @@ include "layout/Menu.php";
 ?>
 
     <!-- Konten -->
-    <div class="container-fluid">
+    <div class="container">
 
         <div class="row mt-1">
             <div class="col-2">

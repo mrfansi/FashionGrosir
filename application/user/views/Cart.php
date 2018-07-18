@@ -5,7 +5,7 @@ include "layout/Menu.php";
 ?>
     <br>
     <!-- Content -->
-    <div class="container-fluid f-padding">
+    <div class="container f-padding">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
@@ -83,7 +83,7 @@ include "layout/Menu.php";
         </div>
     </div>
     <br>
-    <div class="container-fluid f-padding" id="#content">
+    <div class="container f-padding" id="#content">
         <h5 class="mb-3"><i class="fa fa-shopping-cart"></i> Keranjang</h5>
         <div class="row">
             <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>

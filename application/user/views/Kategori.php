@@ -6,7 +6,7 @@ include "layout/Menu.php";
     <br>
     <!-- Content -->
     <!-- SHOP -->
-    <div class="container-fluid f-padding">
+    <div class="container f-padding">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb f-hover">
                 <li class="breadcrumb-item">
@@ -18,7 +18,7 @@ include "layout/Menu.php";
             </ol>
         </nav>
     </div>
-    <div class="container-fluid f-padding">
+    <div class="container f-padding">
         <div class="row">
             <?php if (isset($item_kategori) && $item_kategori != NULL): ?>
                 <?php foreach ($item_kategori as $kat): ?>

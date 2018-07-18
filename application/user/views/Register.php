@@ -6,7 +6,7 @@ include "layout/Header.php";
 <?php endif; ?>
 
     <!-- Alert Promo -->
-    <div class="container-fluid text-center clear-header">
+    <div class="container text-center clear-header">
         <div class="row">
             <div class="col-lg-7 col-md-5">
                 <div class="float-none float-md-left">

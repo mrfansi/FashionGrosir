@@ -5,7 +5,7 @@ include "layout/Menu.php";
 ?>
 
     <!-- Konten -->
-    <div class="container-fluid">
+    <div class="container">
 
         <div class="row mt-1">
             <div class="col-2">
@@ -44,7 +44,7 @@ include "layout/Menu.php";
             <!-- Konten  -->
             <div class="col-12 col-sm-12 col-md-9">
 
-                <div class="card container-fluid p-4">
+                <div class="card container p-4">
 
 <!--                    <div class="row container">-->
 <!--                        <div class="col">-->

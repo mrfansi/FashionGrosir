@@ -6,7 +6,7 @@ include "layout/Menu.php";
     <br>
     <!-- Content -->
     <!-- SHOP -->
-    <div class="container-fluid f-padding">
+    <div class="container f-padding">
         <div class="row">
             <div class="col">
                 <nav aria-label="breadcrumb">

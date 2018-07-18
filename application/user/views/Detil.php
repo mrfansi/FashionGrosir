@@ -124,7 +124,7 @@ include "layout/Menu.php";
 <!-- End Content -->
 <br>
 
-<div class="container-fluid f-padding">
+<div class="container f-padding">
     <hr>
     <h5>Hot Item</h5>
     <div class="row">

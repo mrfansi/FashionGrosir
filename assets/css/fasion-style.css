@@ -1653,8 +1653,6 @@ a {
 .thumbnail .image {
     margin: 0;
     padding: 0;
-    /*height: 250px;*/
-    /*width: 250px;*/
     cursor: pointer;
 }
 

@@ -11,7 +11,7 @@
 </div>
 
 <!-- Footer -->
-<div class="container-fluid navbar-light f-footer-bg" role="alert">
+<div class="container navbar-light f-footer-bg" role="alert">
     <div class="row">
         <div class="col-xl-4 col-lg-3 col-md-4 col-sm-5 col-12">
             <div class="text-center f-bottom">
@@ -99,7 +99,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid text-center clear-footer f-foot-m" role="alert">
+<div class="container text-center clear-footer f-foot-m" role="alert">
     &copy; <?= $brandname; ?> 2018 | Develop By. <a href="" class="alert-link f-footer-link">EazyDevTeam</a>
     <!-- <a href="" class="btn btn-danger"><i class="glyphicon glyphicon-love"></i></a> -->
 </div>
