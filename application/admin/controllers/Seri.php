@@ -63,13 +63,12 @@ class Seri extends MY_Controller
 
         // get user from database where guid
         $seri = $this->seri->where_s_kode($id)->get();
-        $seri_img = $this->upload_img();
         $seri_nama = $this->input->post('nama');
         $seri_array = array(
             's_kode' => $id,
             's_nama' => $seri_nama,
             's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            's_image' => $seri_img['file_name']
+            's_image' => $this->input->post('s_image')
         );
 
 

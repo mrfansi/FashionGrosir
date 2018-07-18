@@ -11,7 +11,7 @@ if ($submit == 'Ubah') {
 }
 ?>
 
-<form action="<?= $url; ?>" method="post" enctype="multipart/form-data">
+<form action="<?= $url; ?>" method="post">
     <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
     <input type="hidden" id="inputfilename" name="s_image" value="<?= $img; ?>">
     <input type="hidden" name="id" value="<?= $id; ?>">
@@ -19,8 +19,7 @@ if ($submit == 'Ubah') {
         <label for="file">Gambar</label>
         <img class="img-fluid mx-auto d-block mb-2" height="300" width="300" src="" id="filename"
              style="display: none;">
-        <div class="custom-file"
-        ">
+        <div class="custom-file">
         <input class="custom-file-input " id="imageupload" type="file" name="image"
                data-url="<?= site_url('upload/single_image'); ?>">
         <label class="custom-file-label" for="customFile">Pilih gambar</label>
@@ -59,8 +58,8 @@ if ($submit == 'Ubah') {
             },
             progressall: function (e, data) {
                 var showimgsrc = $('#filename');
-                var hideupload = $('#crud > div > div > div > form > div:nth-child(4) > div.custom-file');
-                var showprogress = $('#crud > div > div > div > form > div:nth-child(4) > div.progress');
+                var hideupload = $('div.custom-file');
+                var showprogress = $('div.progress');
 
                 hideupload.hide();
                 showprogress.show();
