@@ -95,7 +95,7 @@
             <a href="mailto:<?= $email; ?>"><i class="fa fa-envelope fa-2x f-sosmed mr-2"></i></a>
             <a href="https://www.instagram.com/<?= $instagram; ?>"><i class="fab fa-instagram fa-2x f-sosmed mr-2"></i></a>
             <a href="https://wa.me/62<?= $whatsapp; ?>"><i class="fab fa-whatsapp fa-2x f-sosmed mr-2"></i></a>
-            <a href="https://line.me/<?= $line; ?>"><i class="fab fa-line fa-2x f-sosmed mr-2"></i></a>
+            <a href="http://line.me/ti/p/<?= $line; ?>"><i class="fab fa-line fa-2x f-sosmed mr-2"></i></a>
         </div>
     </div>
 </div>
