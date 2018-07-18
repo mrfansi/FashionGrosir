@@ -119,7 +119,7 @@ class Upload extends MY_Controller
         $this->upload->do_upload('image');
         $hasil = $this->upload->data();
 
-//        echo json_encode($hasil);
+        echo json_encode($hasil);
     }
 
 

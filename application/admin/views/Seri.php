@@ -80,6 +80,7 @@
                                 <table id="tables" class="table table-sm">
                                     <thead>
                                     <tr>
+                                        <th>Gambar</th>
                                         <th>Seri</th>
                                         <th>Dibuat pada</th>
                                         <th>Diupdate pada</th>
@@ -90,10 +91,13 @@
                                     <?php if ($seris != NULL): ?>
                                         <?php foreach ($seris as $seri): ?>
                                             <tr>
-                                                <td><?= $seri->s_nama; ?></td>
-                                                <td><?= $seri->created_at; ?></td>
-                                                <td><?= $seri->updated_at; ?></td>
-                                                <td>
+                                                <td><img class="img-thumbnail" height="100" width="100"
+                                                         src="<?= base_url('upload/' . $seri->s_image); ?>"
+                                                         alt="<?= $seri->s_image; ?>"></td>
+                                                <td class="align-middle"><?= $seri->s_nama; ?></td>
+                                                <td class="align-middle"><?= $seri->created_at; ?></td>
+                                                <td class="align-middle"><?= $seri->updated_at; ?></td>
+                                                <td class="align-middle">
                                                     <a class="btn btn-sm btn-primary" data-toggle="modal"
                                                        href="#"
                                                        onclick="edit($(this))" data-target="#crud"

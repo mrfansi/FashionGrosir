@@ -68,7 +68,7 @@ class Seri extends MY_Controller
             's_kode' => $id,
             's_nama' => $seri_nama,
             's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
-            's_image' => $this->input->post('s_image')
+            's_image' => $this->input->post('image')
         );
 
 
