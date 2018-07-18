@@ -42,7 +42,7 @@ class Auth extends MY_Controller
         $this->data->email = $this->input->post('email');
 
         $config = Array(
-            'protocol' => 'sendmail',
+            'protocol' => 'smtp',
             'smtp_host' => 'ssl://mail.fashiongrosir-ind.com',
             'smtp_port' => 465,
             'smtp_user' => 'dont-reply@fashiongrosir-ind.com',
@@ -115,7 +115,7 @@ class Auth extends MY_Controller
 
 
         $config = Array(
-            'protocol' => 'sendmail',
+            'protocol' => 'smtp',
             'smtp_host' => 'ssl://mail.fashiongrosir-ind.com',
             'smtp_port' => 465,
             'smtp_user' => 'dont-reply@fashiongrosir-ind.com',
@@ -133,27 +133,27 @@ class Auth extends MY_Controller
 
         $body = $this->load->view('email/new', $this->data, TRUE);
 
-        $this->email->message($body);
+        $sender = $this->email->message($body);
+
+        $pengguna_insert = $this->pengguna->insert(array(
+            'pengguna_kode' => $this->data->guid,
+            'pengguna_username' => $this->data->email,
+            'pengguna_nama' => $this->data->nama,
+            'pengguna_email' => $this->data->email,
+            'pengguna_password' => $this->data->pass,
+            'pengguna_tipe' => 2,
+            'pengguna_telp' => $this->data->telp,
+            'pengguna_token' => $this->data->token
+        ));
 
 
-        if ($this->email->send()) {
-            $this->pengguna->insert(array(
-                'pengguna_kode' => $this->data->guid,
-                'pengguna_username' => $this->data->email,
-                'pengguna_nama' => $this->data->nama,
-                'pengguna_email' => $this->data->email,
-                'pengguna_password' => $this->data->pass,
-                'pengguna_tipe' => 2,
-                'pengguna_telp' => $this->data->telp,
-                'pengguna_token' => $this->data->token
-            ));
-
+        if ($sender OR $pengguna_insert) {
             $this->data->berhasil = 'Silahkan cek email untuk aktivasi akun anda.';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);
         } else {
 
-            $this->data->gagal = $this->email->print_debugger();
-            $this->session->set_flashdata('berhasil', $this->data->gagal);
+            $this->data->gagal = '';
+            $this->session->set_flashdata('gagal', $this->data->gagal);
         }
 
 
