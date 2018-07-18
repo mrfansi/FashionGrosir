@@ -1,5 +1,5 @@
 <!-- Navigasi Bar -->
-<div class="container-fluid f-color">
+<div class="container f-color">
     <hr class="f-hr">
     <div class="row">
         <nav class="navbar navbar-expand-lg navbar-light f-nav f-color">

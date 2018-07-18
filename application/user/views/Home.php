@@ -6,14 +6,14 @@ include "layout/Slide.php";
 ?>
     <br>
     <!-- Title Content -->
-    <div class="container-fluid f-padding">
+    <div class="container">
         <h5>Produk Terbaru</h5>
         <hr>
     </div>
     <!-- Title Content -->
 
     <!-- Content -->
-    <div class="container-fluid f-padding">
+    <div class="container">
         <div class="row">
             <?php if (isset($_SESSION['gagal']) && $_SESSION['gagal'] != ""): ?>
                 <div class="col">
