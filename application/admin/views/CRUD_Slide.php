@@ -33,9 +33,6 @@ if ($submit == 'Ubah') {
         </div>
     </div>
 
-    </div>
-
-
     <div class="form-group">
         <label for="caption">Tulisan Promo</label>
         <textarea class="form-control" name="caption" id="caption"><?= $caption; ?></textarea>

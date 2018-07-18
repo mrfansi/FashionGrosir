@@ -63,12 +63,15 @@ class Seri extends MY_Controller
 
         // get user from database where guid
         $seri = $this->seri->where_s_kode($id)->get();
+        $seri_img = $this->upload_img();
         $seri_nama = $this->input->post('nama');
         $seri_array = array(
             's_kode' => $id,
             's_nama' => $seri_nama,
-            's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama')))
+            's_url' => $this->slug->create_uri(array('title' => $this->input->post('nama'))),
+            's_image' => $seri_img['file_name']
         );
+
 
         if ($seri) {
 
@@ -161,5 +164,22 @@ class Seri extends MY_Controller
     {
         $this->data->members = $this->seri->many_to_many_where($item);
         $this->load->view('Tabel_detil', $this->data);
+    }
+
+    protected function upload_img()
+    {
+        //upload an image options
+        $config = array();
+        $config['upload_path'] = './upload';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = '0';
+        $config['overwrite'] = TRUE;
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('s_image');
+        $hasil = $this->upload->data();
+
+        return $hasil;
     }
 }

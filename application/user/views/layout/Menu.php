@@ -17,6 +17,11 @@
                             Produk Terbaru
                         </a>
                     </li>
+                    <li class="nav-item f-nav-margin">
+                        <a class="nav-link" href="<?= site_url('produk-terbaru'); ?>">
+                            Seri
+                        </a>
+                    </li>
                     <?php if ($menu_kategori != NULL): ?>
                         <?php foreach ($menu_kategori as $menukat): ?>
                             <li class="nav-item f-nav-margin">
