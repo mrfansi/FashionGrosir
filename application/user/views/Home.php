@@ -59,7 +59,7 @@ include "layout/Slide.php";
                         <?php foreach ($terbaru_items() as $terbaru): ?>
                             <?php $stok = $qty($terbaru->i_kode); ?>
                             <?php if ($stok >= 1): ?>
-                                <div class="col-12 col-sm-3 col-md-3 col-lg-3 mb-3">
+                                <div class="col-12 col-sm-12 col-md-3 col-lg-3 mb-3">
                                     <div class="thumbnail">
                                         <div class="image mx-auto d-block"
                                              data-url="<?= site_url('produk-terbaru/' . $terbaru->i_url . '/detil'); ?>">
