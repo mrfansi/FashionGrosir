@@ -148,7 +148,7 @@ class Auth extends MY_Controller
 
 
         if ($sender OR $pengguna_insert) {
-            $this->data->berhasil = 'Silahkan cek email untuk aktivasi akun anda.';
+            $this->data->berhasil = 'Silahkan cek email untuk aktivasi akun anda atau login.';
             $this->session->set_flashdata('berhasil', $this->data->berhasil);
         } else {
 
@@ -199,7 +199,7 @@ class Auth extends MY_Controller
                 'pengguna_password' => $password
             ))->get();
 
-            if (isset($user->pengguna_isaktif) && $user->pengguna_isaktif) {
+            if ($user) {
                 // Update IP Address
                 $this->pengguna->where(array(
                     'pengguna_email' => $email,
@@ -219,9 +219,6 @@ class Auth extends MY_Controller
 
 
                 redirect('/');
-            } elseif (isset($user->pengguna_isaktif) && !$user->pengguna_isaktif) {
-                $this->data->log = 'Silahkan cek email untuk aktivasi akun anda..';
-                $this->load->view('Login', $this->data);
             } else {
                 $this->data->log = 'Username atau Password salah.';
                 $this->load->view('Login', $this->data);
