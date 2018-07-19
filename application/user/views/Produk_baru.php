@@ -37,37 +37,40 @@ include "layout/Menu.php";
 
         <div class="row">
             <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-                <h5 class="card-title mb-0 text-left">Kategori</h5>
+                <h6 class="card-title mb-0 text-left">Kategori</h6>
                 <hr>
-                <ul class="nav flex-column c-ul-footer">
-                    <li class="nav-item mb-1 ml-1 r-itmkathome">
-                        <a class="" href="">
-                            dddd
-                        </a>
-                    </li>
-                </ul>
-
+                <?php if ($menu_kategori != NULL): ?>
+                    <ul class="nav flex-column c-ul-footer">
+                        <?php foreach ($menu_kategori as $menukat): ?>
+                            <li class="nav-item mb-1 ml-1 r-itmkathome">
+                                <a class="" href="<?= site_url('kategori/' . $menukat->k_url); ?>">
+                                    <?= $menukat->k_nama; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p>Tidak ada kategori</p>
+                <?php endif; ?>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-                <div class="">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb f-hover">
-                            <li class="breadcrumb-item">
-                                <a href="<?= site_url('/'); ?>">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
+            <div class="col-12 col-sm-12 col-md-10 col-lg-10">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb f-hover">
+                        <li class="breadcrumb-item">
+                            <a href="<?= site_url('/'); ?>">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
+                        </li>
+                    </ol>
+                </nav>
                 <div class="row">
                     <?php if ($terbaru_items() != NULL): ?>
                         <?php foreach ($terbaru_items() as $terbaru): ?>
                             <?php $stok = $qty($terbaru->i_kode); ?>
                             <?php if ($stok >= 1): ?>
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-3">
+                                <div class="col-12 col-sm-3 col-md-3 col-lg-3 mb-3">
                                     <div class="thumbnail">
                                         <div class="image mx-auto d-block"
                                              data-url="<?= site_url('produk-terbaru/' . $terbaru->i_url . '/detil'); ?>">
@@ -121,8 +124,8 @@ include "layout/Menu.php";
                 </div>
             </div>
         </div>
-
     </div>
+
     <!-- End Content -->
     <script>
         $('[id="title"]').ellipsis();
