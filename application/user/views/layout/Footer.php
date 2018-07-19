@@ -210,7 +210,7 @@
     </script>
 <?php endif; ?>
 <script>
-    $('div.image.mx-auto.d-block').click(function () {
+    $('div.thumbnail').click(function () {
         var url = $(this).attr('data-url');
         window.location.href = url;
     })

@@ -120,6 +120,7 @@ h1, h2, h3, h4, h5, h6 {
     .f-media-right {
         float: right;
     }
+
     .f-foot-m {
         font-size: 0.7rem;
     }
@@ -127,12 +128,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media screen and (max-width: 768px) {
-    a.f-link{
+    a.f-link {
         color: #F06292;
     }
+
     a.f-link:hover {
         color: #888;
     }
+
     .f-brand-cos {
         color: #F06292;
         margin-top: 5px;
@@ -187,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .f-nav-margin {
-    padding: 0px 5px;
+    padding-right: 10px;
 }
 
 .f-nav-margin:hover {
@@ -695,7 +698,6 @@ img.f-img-sidebar {
     margin-bottom: 1%;
 }
 
-
 .r-judul-kotak4-1 {
     color: #F06292;
     font-size: 18px;
@@ -764,12 +766,14 @@ img.f-img-sidebar {
     padding: 2%;
 }
 
-.container {
-
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: .5rem;
+        padding-left: 0;
+    }
 }
 
 /** Style troli 3 */
-
 .r-judul-kotak3 {
     text-align: left;
     color: #F06292;
@@ -780,7 +784,6 @@ img.f-img-sidebar {
 }
 
 /** Style header */
-
 .r-style-search {
     padding-left: 20px;
     margin: auto;
@@ -865,7 +868,6 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 }
 
 /* test */
-
 .dropbtn {
     color: white;
     border: none;
@@ -909,7 +911,6 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 }
 
 /* CSS Style - Halaman profil - Profil saya */
-
 .r-layout-row {
     margin-top: 3%;
 }
@@ -992,7 +993,6 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 }
 
 /* Style Kontak CSS **/
-
 .r-layout-konten-kontak {
     margin-left: 15%;
     margin-right: 15%;
@@ -1143,7 +1143,6 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
 }
 
 /* style Alamat Pengiriman **/
-
 .r-judul-shipping {
     color: #F06292;
     text-align: center;
@@ -1197,7 +1196,6 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
-
 
 .pagination a {
     color: black;
@@ -1421,6 +1419,7 @@ a {
     color: #888;
 
 }
+
 .r-hr-juduldetail {
     margin: 1%;
 }
@@ -1450,8 +1449,7 @@ a {
     font-size: 15px;
     color: #888;
     display: inline-block;
-    margin:0;
-
+    margin: 0;
 
 }
 
@@ -1488,7 +1486,6 @@ a {
 .r-konten-kotak4-detailpesanan {
     font-size: 14px;
 }
-
 
 @media screen and (max-width: 320px) {
     .r-p-detailproduk {
@@ -1587,7 +1584,6 @@ a {
 }
 
 /** Style Update detail Pesanan */
-
 .r-thdetailbarang {
     color: #F06292;
     font-size: 18px;
@@ -1601,7 +1597,6 @@ a {
     text-align: center;
 }
 
-
 .r-perhitungan-detailpesanan {
     font-size: 15px;
 
@@ -1612,6 +1607,7 @@ a {
         font-size: 12px;
 
     }
+
     .r-tddetailbarang {
         font-size: 12px;
     }
@@ -1620,11 +1616,11 @@ a {
         text-align: center;
         font-size: 15px;
     }
+
     .r-konten-kotak4-1 {
         text-align: center;
         font-size: 12px;
     }
-
 
 }
 
@@ -1642,6 +1638,7 @@ a {
     background-color: #F06292;
     color: white;
 }
+
 .r-btn-det:hover {
     border: 1px solid #F06292;
     color: #F06292;
