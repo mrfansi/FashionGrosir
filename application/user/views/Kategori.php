@@ -7,7 +7,6 @@ include "layout/Menu.php";
     <!-- Content -->
     <!-- SHOP -->
     <div class="container">
-
         <div class="row">
             <div class="col-12 col-sm-12 col-md-2 col-lg-2">
                 <h6 class="card-title mb-0 text-left">Kategori</h6>
@@ -26,17 +25,18 @@ include "layout/Menu.php";
                     <p>Tidak ada kategori</p>
                 <?php endif; ?>
             </div>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb f-hover">
-                    <li class="breadcrumb-item">
-                        <a href="<?= site_url('/'); ?>">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                        <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
-                    </li>
-                </ol>
-            </nav>
+
             <div class="col-12 col-sm-12 col-md-10 col-lg-10">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb f-hover">
+                        <li class="breadcrumb-item">
+                            <a href="<?= site_url('/'); ?>">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <a href="<?= $breadcumburl; ?>"><?= $breadcumb; ?></a>
+                        </li>
+                    </ol>
+                </nav>
                 <div class="row">
                     <?php if (isset($item_kategori) && $item_kategori != NULL): ?>
                         <?php foreach ($item_kategori as $kat): ?>
