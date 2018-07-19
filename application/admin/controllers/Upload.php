@@ -122,5 +122,37 @@ class Upload extends MY_Controller
         echo json_encode($hasil);
     }
 
+    public function simpan_img()
+    {
+        // cek update
+        $img = $this->item_img->where(array('i_kode' => $this->input->post('i_kode'), 'ii_default' => 1))->get();
+
+        if (!$img) {
+            $default = 1;
+        } else {
+            $default = 0;
+        }
+
+        //upload an image options
+        $config = array();
+        $config['upload_path'] = './upload';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
+        $config['max_size'] = '0';
+        $config['overwrite'] = TRUE;
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload('image');
+        $file = $this->upload->data();
+        $data = array(
+            'ii_kode' => $this->item_img->guid(),
+            'ii_nama' => $file['file_name'],
+            'ii_url' => $file['file_name'],
+            'ii_default' => $default,
+            'ii_type' => $file['image_type'],
+            'i_kode' => $this->input->post('i_kode')
+        );
+    }
+
 
 }
