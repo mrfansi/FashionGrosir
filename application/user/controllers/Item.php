@@ -34,7 +34,7 @@ class Item extends MY_Controller
             ->where('i_url', $i_url)
             ->get();
         $this->data->breadcumburl = site_url('hot-item');
-        $this->data->breadcumburl1 = site_url('hot-item/item/' . $i_url . '/detil');
+        $this->data->breadcumburl1 = site_url('hot-item/' . $i_url . '/detil');
         $this->data->breadcumb = 'Hot Item';
         $this->data->breadcumb1 = $this->item->where('i_url', $i_url)->get()->i_nama;
         $this->load->view('Detil', $this->data);
@@ -47,7 +47,7 @@ class Item extends MY_Controller
             ->where('i_url', $i_url)
             ->get();
         $this->data->breadcumburl = site_url('produk-terbaru');
-        $this->data->breadcumburl1 = site_url('produk-terbaru/item/' . $i_url . '/detil');
+        $this->data->breadcumburl1 = site_url('produk-terbaru/' . $i_url . '/detil');
         $this->data->breadcumb = 'Produk Terbaru';
         $this->data->breadcumb1 = $this->item->where('i_url', $i_url)->get()->i_nama;
         $this->load->view('Detil', $this->data);
@@ -60,7 +60,7 @@ class Item extends MY_Controller
             ->where('i_url', $i_url)
             ->get();
         $this->data->breadcumburl = site_url('kategori/' . $k_url);
-        $this->data->breadcumburl1 = site_url('kategori/' . $k_url . '/item/' . $i_url . '/detil');
+        $this->data->breadcumburl1 = site_url('kategori/' . $k_url . '/' . $i_url . '/detil');
         $this->data->breadcumb = $this->kategori->where('k_url', $k_url)->get()->k_nama;
         $this->data->breadcumb1 = $this->item->where('i_url', $i_url)->get()->i_nama;
         $this->load->view('Detil', $this->data);

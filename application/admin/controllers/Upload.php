@@ -133,25 +133,30 @@ class Upload extends MY_Controller
             $default = 0;
         }
 
-        //upload an image options
-        $config = array();
-        $config['upload_path'] = './upload';
-        $config['allowed_types'] = 'gif|jpg|jpeg|png';
-        $config['max_size'] = '0';
-        $config['overwrite'] = TRUE;
-        $config['encrypt_name'] = TRUE;
+        $data = $_POST['image'];
 
-        $this->load->library('upload', $config);
-        $this->upload->do_upload('image');
-        $file = $this->upload->data();
+        list($type, $data) = explode(';', $data);
+        list(, $data) = explode(',', $data);
+
+
+        $data = base64_decode($data);
+        $imageName = time() . '.png';
+        file_put_contents('upload/' . $imageName, $data);
+
         $data = array(
             'ii_kode' => $this->item_img->guid(),
-            'ii_nama' => $file['file_name'],
-            'ii_url' => $file['file_name'],
+            'ii_nama' => $imageName,
+            'ii_url' => $imageName,
             'ii_default' => $default,
-            'ii_type' => $file['image_type'],
+            'ii_type' => 'png',
             'i_kode' => $this->input->post('i_kode')
         );
+
+        // insert
+        $this->item_img->insert($data);
+
+        echo 'Gambar berhasil diupload';
+
     }
 
 

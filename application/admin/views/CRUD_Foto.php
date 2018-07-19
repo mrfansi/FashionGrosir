@@ -12,7 +12,7 @@
         </div>
     </div>
 </div>
-<div id="viewimage"></div>
+<div id="viewimage" style="display: none"></div>
 <div class="row">
     <div class="col">
         <div class="form-group">
@@ -29,13 +29,13 @@
         $image_crop = $('#viewimage').croppie({
             enableExif: true,
             viewport: {
-                width: 300,
-                height: 300,
+                width: 350,
+                height: 350,
                 type: 'square' //circle
             },
             boundary: {
-                width: 300,
-                height: 300
+                width: 350,
+                height: 350
             }
         });
 
