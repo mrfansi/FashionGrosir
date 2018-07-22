@@ -9,9 +9,9 @@
 class Item_seri_m extends MY_Model {
     public function __construct()
     {
-        $this->table = 'item_seri';
-        $this->primary_key = 'is_id';
-        $this->protected = array('is_id','created_at','update_at');
+        $this->table = 'item_detil_seri';
+        $this->primary_key = 'ideser_id';
+        $this->protected = array('ideser_id', 'created_at', 'update_at');
         $this->has_one['item'] = 'Item_m';
         $this->timestamps = TRUE;
         $this->soft_deletes = FALSE;

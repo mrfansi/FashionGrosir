@@ -58,7 +58,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h1>Nomor Seri</h1>
+                    <h1>Item Grosir</h1>
                 </div>
                 <div class="card-body">
                     <div class="row">
