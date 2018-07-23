@@ -41,6 +41,29 @@ class Seri extends MY_Controller
         $this->data->title = $this->data->brandname . ' | Nomor Seri > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->seri->guid();
+
+        $this->data->items = $this->item->with_item_detil()->with_item_kategori()->get_all();
+        $this->data->warna = function ($ide_kode, $w_kode) {
+            return $this->warna->fields('w_nama')->with_item_detil('where:item_detil_kode = \'' . $ide_kode . '\'')->where('w_kode', $w_kode)->get();
+        };
+
+//        $this->data->ukuran = function ($ide_kode, $u_kode) {
+//            return $this->ukuran->fields('u_nama')->with_item_detil('where:item_detil_kode = \'' . $ide_kode . '\'')->where('u_kode', $u_kode)->get();
+//        };
+
+        $this->data->seri = function ($ide_kode, $s_kode) {
+            return $this->seri->fields('s_nama')->with_item_detil('where:item_detil_kode = \'' . $ide_kode . '\'')->where('s_kode', $s_kode)->get();
+        };
+
+        $this->data->qty = function ($ide_kode) {
+            $hasil = 0;
+            $stoks = $this->item_detil->where('item_detil_kode', $ide_kode)->with_item_qty()->get();
+            foreach ($stoks->item_qty as $stok) {
+                $hasil += $stok->iq_qty;
+            }
+
+            return $hasil;
+        };
         $this->load->view('CRUD_Seri', $this->data);
     }
 

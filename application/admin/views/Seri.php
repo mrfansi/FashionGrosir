@@ -198,7 +198,7 @@
     </footer>
 </div>
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered " role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
             </div>
