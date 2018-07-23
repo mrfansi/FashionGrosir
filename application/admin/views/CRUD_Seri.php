@@ -40,7 +40,7 @@ if ($submit == 'Ubah') {
     </div>
     <div class="form-group">
         <div class="table-responsive">
-            <table id="tbl_seri" class="table table-sm table-hover">
+            <table id="tbl_seri" class="table table-sm">
                 <thead>
                 <tr>
                     <th scope="col"><input type="checkbox" name="select_all" value="1" id="pilih_item_semua"></th>
@@ -165,6 +165,8 @@ if ($submit == 'Ubah') {
         })
         .on('click', 'tr', function () {
             $(this).find('input[type="checkbox"]').click();
+            $(this).find('')
+
         });
 
 </script>
