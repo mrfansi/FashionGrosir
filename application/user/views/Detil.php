@@ -86,7 +86,7 @@ include "layout/Menu.php";
                                 <option data-qty="<?= $qty_detil($id->item_detil_kode); ?>"
                                         value="<?= $id->item_detil_kode; ?>">
                                     <?= $id->warna->w_nama; ?> -
-                                    <?= $id->ukuran->u_nama; ?>
+                                    <?= $id->item_detil_ukuran ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>

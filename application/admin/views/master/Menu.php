@@ -26,9 +26,6 @@
                     <ul id="misc" class="collapse list-unstyled ">
                         <li><a href="<?= site_url('kategori'); ?>"><i class="fas fa-angle-right mr-2"></i>Kategori </a>
                         </li>
-                        <li><a href="<?= site_url('ukuran'); ?>"><i class="fas fa-angle-right mr-2"></i>Ukuran </a></li>
-                        <!--                        <li><a href="-->
-                        <? //= site_url('seri'); ?><!--"><i class="fas fa-angle-right mr-2"></i>Seri </a></li>-->
                         <li><a href="<?= site_url('warna'); ?>"><i class="fas fa-angle-right mr-2"></i>Warna </a></li>
                     </ul>
                 </li>
@@ -79,7 +76,7 @@
                 </li>
                 <li><a href="<?= site_url('toko'); ?>"><i class="fa fa-cogs mr-2"></i>Toko </a></li>
                 <li><a href="<?= site_url('bank'); ?>"><i class="fa fa-bank mr-2"></i>Bank </a></li>
-                <li><a href="<?= site_url('slide'); ?>"><i class="fas fa-images mr-2"></i>Slide Promo</a></li>
+                <li><a href="<?= site_url('slide'); ?>"><i class="fas fa-images mr-2"></i>Slide</a></li>
             </ul>
         </div>
     </div>

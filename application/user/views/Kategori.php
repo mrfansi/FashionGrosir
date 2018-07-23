@@ -88,7 +88,9 @@ include "layout/Menu.php";
                             <?php endif; ?>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <p>Tidak ada item yang ditampilkan</p>
+                        <div class="col-12 col-sm-3 col-md-3 col-lg-3 mb-3">
+                            <p>Tidak ada item yang ditampilkan</p>
+                        </div>
                     <?php endif; ?>
 
                 </div>
