@@ -39,7 +39,7 @@ include "layout/Slide.php";
         </div>
         <div class="row">
             <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-                <h6 class="card-title mb-2 text-left r-title-kat">KATEGORI</h6>
+                <h6 class="card-title mb-2 text-left r-title-kat pt-2 pb-2">Kategori</h6>
                 <?php if ($menu_kategori != NULL): ?>
                     <ul class="nav flex-column c-ul-footer">
                         <?php foreach ($menu_kategori as $menukat): ?>
@@ -59,7 +59,7 @@ include "layout/Slide.php";
 
                 <div class="row">
                     <div class="container ">
-                        <h6 class="mb-3 r-title-kat pt-2 pt-2">Produk Terbaru</h6>
+                        <h6 class="mb-3 r-title-kat pt-2 pb-2">Produk Terbaru</h6>
                         <hr>
                     </div>
                     <?php if ($terbaru_items() != NULL): ?>
