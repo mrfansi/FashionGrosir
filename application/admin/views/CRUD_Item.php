@@ -126,7 +126,6 @@ if ($submit == 'Ubah') {
                     <tr>
                         <th scope="col">Warna</th>
                         <th scope="col">Ukuran</th>
-                        <th scope="col">No. Seri</th>
                         <th scope="col">QTY</th>
                         <th scope="col"></th>
                     </tr>
@@ -144,14 +143,6 @@ if ($submit == 'Ubah') {
                             <select name="ukuran[]" id="ukuran" class="form-control small" required>
                                 <?php foreach ($this->ukuran->get_all() as $katukuran): ?>
                                     <option value="<?= $katukuran->u_kode; ?>"><?= $katukuran->u_nama; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="seri[]" id="seri" class="form-control small">
-                                <option value="0">Tidak ada</option>
-                                <?php foreach ($this->seri->get_all() as $katseri): ?>
-                                    <option value="<?= $katseri->s_kode; ?>"><?= $katseri->s_nama; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </td>

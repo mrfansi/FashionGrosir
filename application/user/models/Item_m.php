@@ -93,9 +93,4 @@ class Item_m extends MY_Model
 
         return $query->result();
     }
-
-    public function select_seri_item($id)
-    {
-
-    }
 }
