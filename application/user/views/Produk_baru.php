@@ -37,16 +37,15 @@ include "layout/Menu.php";
 
         <div class="row">
             <div class="col-12 col-sm-12 col-md-2 col-lg-2">
-                <h6 class="card-title mb-0 text-left">Kategori</h6>
-                <hr>
+                <h6 class="card-title mb-2 text-left r-title-kat pt-2 pb-2">KATEGORI</h6>
                 <?php if ($menu_kategori != NULL): ?>
                     <ul class="nav flex-column c-ul-footer">
                         <?php foreach ($menu_kategori as $menukat): ?>
-                            <li class="nav-item mb-1 ml-1 r-itmkathome">
-                                <a class="" href="<?= site_url('kategori/' . $menukat->k_url); ?>">
+
+                                <a class="r-item-kat mb-1" href="<?= site_url('kategori/' . $menukat->k_url); ?>">
                                     <?= $menukat->k_nama; ?>
                                 </a>
-                            </li>
+
                         <?php endforeach; ?>
                     </ul>
                 <?php else: ?>
@@ -55,8 +54,8 @@ include "layout/Menu.php";
             </div>
 
             <div class="col-12 col-sm-12 col-md-10 col-lg-10">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb f-hover">
+                <nav aria-label="breadcrumb ">
+                    <ol class="breadcrumb r-title-kat f-hover">
                         <li class="breadcrumb-item">
                             <a href="<?= site_url('/'); ?>">Home</a>
                         </li>
