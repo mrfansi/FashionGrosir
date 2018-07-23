@@ -29,13 +29,6 @@ if ($submit == 'Ubah') {
             <button class="btn btn-sm btn-danger" onclick="window.location.reload()">Tutup</button>
         </div>
     </div>
-<?php elseif (!isset($ukuran_all) && $ukuran_all == NULL): ?>
-    <div class="row">
-        <div class="col">
-            <p class="text-danger">Master Warna tidak ada.</p>
-            <button class="btn btn-sm btn-danger" onclick="window.location.reload()">Tutup</button>
-        </div>
-    </div>
 <?php elseif (!isset($kategori_all) && $kategori_all == NULL): ?>
     <div class="row">
         <div class="col">
@@ -141,9 +134,11 @@ if ($submit == 'Ubah') {
                         </td>
                         <td>
                             <select name="ukuran[]" id="ukuran" class="form-control small" required>
-                                <?php foreach ($this->ukuran->get_all() as $katukuran): ?>
-                                    <option value="<?= $katukuran->u_kode; ?>"><?= $katukuran->u_nama; ?></option>
-                                <?php endforeach; ?>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
                             </select>
                         </td>
                         <td><input name="qty[]" id="qty" type="number" class="form-control" value="0" min="0"></td>
