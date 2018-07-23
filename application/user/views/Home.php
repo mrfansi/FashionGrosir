@@ -58,8 +58,8 @@ include "layout/Slide.php";
             <div class="col-12 col-sm-12 col-md-10 col-lg-10">
 
                 <div class="row">
-                    <div class="container">
-                        <h6 class="mb-3">Produk Terbaru</h6>
+                    <div class="container ">
+                        <h6 class="mb-3 r-title-kat pt-2 pt-2">Produk Terbaru</h6>
                         <hr>
                     </div>
                     <?php if ($terbaru_items() != NULL): ?>
