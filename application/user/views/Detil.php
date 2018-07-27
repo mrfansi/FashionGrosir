@@ -64,7 +64,7 @@ include "layout/Menu.php";
                             <div class="col">
                                 <p>
                                     <b>Kategori</b><br>
-                                    1 pcs
+                                    <?= print_r($kategori($item->i_kode)); ?>
                                 </p>
                             </div>
                         </div>
@@ -114,7 +114,6 @@ include "layout/Menu.php";
         <?php else: ?>
             <div class="col">
                 <h2 class="text-center text-muted">Item tidak ditemukan</h2>
-
             </div>
         <?php endif; ?>
 

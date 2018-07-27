@@ -4,50 +4,71 @@ if ($submit == 'Ubah') {
     $id = $seris->s_kode;
     $img = $seris->s_image;
     $nama = $seris->s_nama;
+    $hrg = $seris->s_harga;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $img = '';
     $nama = '';
+    $hrg = '';
 }
 ?>
-
+<style>
+    #tbl_seri_wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+</style>
 <form action="<?= $url; ?>" method="post" enctype="multipart/form-data">
     <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
-    <input type="hidden" id="inputfilename" name="image" value="<?= $img; ?>">
     <input type="hidden" name="id" value="<?= $id; ?>">
-    <div class="form-group">
-        <label for="file">Gambar</label>
-        <img class="img-fluid mx-auto d-block mb-2" height="300" width="300" src="" id="filename"
-             style="display: none;">
-        <div class="custom-file">
-            <input class="custom-file-input " id="imageupload" type="file" name="image"
-                   data-url="<?= site_url('upload/single_image'); ?>">
-            <label class="custom-file-label" for="customFile">Pilih gambar</label>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="nama">Kode Seri</label>
+                <input type="text" class="form-control" name="nama" placeholder="Input Nomor Seri" value="<?= $nama; ?>"
+                       required>
+                <p>
+                    <?= form_error('nama'); ?>
+                </p>
+            </div>
         </div>
-        <div class="progress" style="display: none;">
-            <div class="progress-bar bg-success" id="progress" role="progressbar" style="width: 25%" aria-valuenow="25"
-                 aria-valuemin="0" aria-valuemax="100">25%
+        <div class="col">
+            <div class="form-group">
+                <label for="harga">Harga</label>
+                <input type="number" class="form-control" name="harga" placeholder="Input Harga Grosir"
+                       value="<?= $hrg; ?>">
             </div>
         </div>
     </div>
+
     <div class="form-group">
-        <label for="nama">Nomor Seri</label>
-        <input type="text" class="form-control" name="nama" placeholder="Input Nomor Seri" value="<?= $nama; ?>"
-               required>
-        <p>
-            <?= form_error('nama'); ?>
-        </p>
-    </div>
-    <div class="form-group">
+        <label for="">Item yang dipilih</label>
         <div class="table-responsive">
-            <table id="tbl_seri" class="table table-sm table-hover">
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">Kode Item</th>
+                    <th scope="col">Warna</th>
+                    <th scope="col">Ukuran</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="form-group bg-light">
+        <div class="table-responsive">
+            <table id="tbl_seri" class="table table-sm">
                 <thead>
                 <tr>
                     <th scope="col"><input type="checkbox" name="select_all" value="1" id="pilih_item_semua"></th>
                     <th scope="col">Kode Item</th>
                     <th scope="col">Warna</th>
                     <th scope="col">Ukuran</th>
-                    <th scope="col">Harga</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -56,7 +77,7 @@ if ($submit == 'Ubah') {
                         <?php foreach ($item->item_detil as $detil): ?>
                             <?php if (isset($item->item_detil) && $qty($detil->item_detil_kode) != 0): ?>
                                 <tr>
-                                    <td class="align-middle"></td>
+                                    <td class="align-middle" id="<?= $item->i_kode; ?>"></td>
                                     <td class="align-middle"><?= $item->i_nama; ?></td>
                                     <td class="align-middle">
                                         <?php if (isset($warna($detil->item_detil_kode, $detil->w_kode)->w_nama)): ?>
@@ -66,10 +87,6 @@ if ($submit == 'Ubah') {
                                     </td>
                                     <td class="align-middle">
                                         <?= $detil->item_detil_ukuran; ?>
-                                    </td>
-                                    <td>
-                                        <input class="form-control" type="number" min="0" max="9999999" value="0"
-                                               name="harga" placeholder="Input harga grosir">
                                     </td>
                                 </tr>
                             <?php endif; ?>
@@ -131,12 +148,11 @@ if ($submit == 'Ubah') {
             'orderable': false,
             'className': 'dt-body-center',
             'render': function (data, type, full, meta) {
-                return '<input type="checkbox" name="pilih_item[]" value="' + $('<div/>').text(data).html() + '">';
+                return '<input type="checkbox" name="pilih_item[]" value="' + $('').attr('id') + '">';
             }
         }],
         "ordering": false,
         "info": false,
-        "paging": false,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Indonesian.json"
         }
@@ -165,6 +181,8 @@ if ($submit == 'Ubah') {
         })
         .on('click', 'tr', function () {
             $(this).find('input[type="checkbox"]').click();
+            $(this).find('')
+
         });
 
 </script>
