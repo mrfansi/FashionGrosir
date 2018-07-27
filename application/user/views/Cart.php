@@ -167,7 +167,7 @@ include "layout/Menu.php";
                                         <p class="text-md-center"><?= $item_detil($cart->item_detil_kode)->warna->w_nama; ?></p>
                                     </div>
                                     <div class="col-md-1">
-                                        <p><?= $item_detil($cart->item_detil_kode)->ukuran->u_nama; ?></p>
+                                        <p><?= $item_detil($cart->item_detil_kode)->item_detil_ukuran; ?></p>
                                     </div>
                                     <div class="col-md-1">
                                         <p>x <?= $cart->ca_qty; ?></p>
