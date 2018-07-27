@@ -58,7 +58,7 @@ include "layout/Menu.php";
                         <div class="col-4">
                             <i class="fa fa-handshake-o f-troli-text"></i>
                         </div>
-                        <div class="col-6 f-font-ricky" style="font-size: 13px">
+                        <div class="col-6 f-font-ricky" style="font-size: 12px">
                             Metode Pengiriman & Pembayaran
                         </div>
                     </div>
@@ -114,78 +114,114 @@ include "layout/Menu.php";
 
         <div class="row">
             <div class="col-lg-12 col-md-12 container">
-                <div class="card mb-3 r-layout-troli">
+                <div class="card mb-3 p-4">
 
-                    <div class="row f-text-hidden">
-                        <div class="col-lg-12 col-md-12">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-5">
-                                    <h6>Item : <?= $this->cart->where_pengguna_kode($_SESSION['id'])->count_rows(); ?>
-                                        Produk</h6>
-                                </div>
-                                <div class="col-md-2">
-                                    <h6 class="text-center">Warna</h6>
-                                </div>
-                                <div class="col-md-1 p-md-0" style="min-width: 80px;">
-                                    <h6>Ukuran</h6>
-                                </div>
-                                <div class="col-md-1 p-md-0">
-                                    <h6>QTY</h6>
-                                </div>
-                                <div class="col-md-1 p-md-0">
-                                    <h6>Total</h6>
-                                </div>
+<!--                    <div class="row f-text-hidden">-->
+<!--                        <div class="col-lg-12 col-md-12">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-lg-5 col-md-5">-->
+<!--                                    <h6>Item : -->
+<!--                                        Produk</h6>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-2">-->
+<!--                                    <h6 class="text-center">Warna</h6>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-1 p-md-0" style="min-width: 80px;">-->
+<!--                                    <h6>Ukuran</h6>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-1 p-md-0">-->
+<!--                                    <h6>QTY</h6>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-1 p-md-0">-->
+<!--                                    <h6>Total</h6>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+
+                            <div class="table-responsive-md">
+                                <h6 class="float-right mt-3">Banyaknya Item : <?= $this->cart->where_pengguna_kode($_SESSION['id'])->count_rows(); ?>
+                                    Produk</h6>
+                                <table class="table">
+
+
+
+                                    <tr class="mb-3">
+                                        <th>
+                                            <p class="r-font-konten-profile">Detail Produk</p>
+                                        </th>
+                                        <th><p class="r-font-konten-profile">Warna</p></th>
+                                        <th><p class="r-font-konten-profile">Ukuran</p></th>
+                                        <th><p class="r-font-konten-profile">Qty</p></th>
+                                        <th><p class="r-font-konten-profile">Total</p></th>
+                                        <th></th>
+                                    </tr>
+
+
+                                    <br>
+
+
+
+
+                                    <?php if ($cart_s($_SESSION['id']) != NULL): ?>
+                                        <?php foreach ($cart_s($_SESSION['id']) as $cart): ?>
+
+                                        <tr class="border mt-3">
+                                            <td>
+                                                <div class="">
+                                                    <div class="media">
+                                                        <?php if ($item_detil($cart->item_detil_kode)->item->i_kode): ?>
+                                                            <?php $item_kode = $item_detil($cart->item_detil_kode)->item->i_kode; ?>
+                                                            <?php if ($item_img($item_kode) != NULL): ?>
+                                                                <img class="mr-3"
+                                                                     src="<?= base_url('upload/' . $item_img($item_kode)->ii_nama); ?>"
+                                                                     alt="<?= $item_img($item_kode)->ii_nama; ?>">
+                                                            <?php else: ?>
+                                                                <img class="mr-3"
+                                                                     src="<?= base_url('assets/img/noimg.png'); ?>"
+                                                                     alt="noimg.png">
+                                                            <?php endif; ?>
+                                                        <?php endif; ?>
+                                                        <div class="media-body mb-3">
+                                                            <h6 class="mt-0"><?= $item_detil($cart->item_detil_kode)->item->i_nama; ?></h6>
+                                                            <p class="text-justify"><?= $item_detil($cart->item_detil_kode)->item->i_deskripsi; ?></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <p class=""><?= $item_detil($cart->item_detil_kode)->warna->w_nama; ?></p>
+                                            </td>
+                                            <td>
+                                                <p><?= $item_detil($cart->item_detil_kode)->item_detil_ukuran; ?></p>
+                                            </td>
+                                            <td>
+                                                <p><?= $cart->ca_qty; ?></p>
+                                            </td>
+                                            <td>
+                                                <p><?= $cart->ca_tharga; ?></p>
+                                            </td>
+                                            <td style="width:1px;">
+                                                <a class="float-right" tooltip title="Hapus item"
+                                                   href="<?= site_url('cart/' . $cart->ca_kode . '/delete'); ?>"><i
+                                                            class="fa fa-times-circle fa-lg f-delete-troli"></i></a>
+                                            </td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+
+
+                                </table>
+
                             </div>
-                        </div>
-                    </div>
 
-                    <?php if ($cart_s($_SESSION['id']) != NULL): ?>
-                        <?php foreach ($cart_s($_SESSION['id']) as $cart): ?>
-                            <div class="border f-border-padding">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-5">
-                                        <div class="media">
-                                            <?php if ($item_detil($cart->item_detil_kode)->item->i_kode): ?>
-                                                <?php $item_kode = $item_detil($cart->item_detil_kode)->item->i_kode; ?>
-                                                <?php if ($item_img($item_kode) != NULL): ?>
-                                                    <img class="mr-3"
-                                                         src="<?= base_url('upload/' . $item_img($item_kode)->ii_nama); ?>"
-                                                         alt="<?= $item_img($item_kode)->ii_nama; ?>">
-                                                <?php else: ?>
-                                                    <img class="mr-3"
-                                                         src="<?= base_url('assets/img/noimg.png'); ?>"
-                                                         alt="noimg.png">
-                                                <?php endif; ?>
-                                            <?php endif; ?>
-                                            <div class="media-body mb-3">
-                                                <h6 class="mt-0"><?= $item_detil($cart->item_detil_kode)->item->i_nama; ?></h6>
-                                                <p class="text-justify"><?= $item_detil($cart->item_detil_kode)->item->i_deskripsi; ?></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p class="text-md-center"><?= $item_detil($cart->item_detil_kode)->warna->w_nama; ?></p>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <p><?= $item_detil($cart->item_detil_kode)->item_detil_ukuran; ?></p>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <p>x <?= $cart->ca_qty; ?></p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p id="rupiah"><?= $cart->ca_tharga; ?></p>
-                                    </div>
-                                    <div class="col-md-1 f-delete-troli">
-                                        <!-- Optional | Check -->
-                                        <a tooltip title="Hapus item"
-                                           href="<?= site_url('cart/' . $cart->ca_kode . '/delete'); ?>"><i
-                                                    class="fa fa-times-circle fa-lg f-delete-troli"></i></a>
 
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
+
+
+
                 </div>
             </div>
 
@@ -207,7 +243,7 @@ include "layout/Menu.php";
                 </div>
                 </div>
                 <div class="col-lg-4 p-0">
-                    <a href="<?= site_url('cart/checkout'); ?>" class="btn btn-primary btn-lg btn-block f-button-font">Proses
+                    <a href="<?= site_url('cart/checkout'); ?>" class="btn btn-primary btn-lg f-button-font">Proses
                         Pembayaran</a>
                 </div>
 
