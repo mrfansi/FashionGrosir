@@ -1,6 +1,7 @@
 <?php include "master/Header.php"; ?>
 <body>
 <?php include 'master/Menu.php'; ?>
+
 <div class="page">
     <!-- navbar-->
     <header class="header">
