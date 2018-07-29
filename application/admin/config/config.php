@@ -381,7 +381,7 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'admFashionGrosir';
+$config['sess_cookie_name'] = 'fashiongrosir';
 $config['sess_expiration'] = 900;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
