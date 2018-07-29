@@ -179,7 +179,8 @@ if ($submit == 'Ubah') {
                 $seri = $('[id="seri"]');
 
             var $trLast = $table.find("tr:last"),
-                $trNew = $trLast.clone();
+                $trNew = $trLast.clone(),
+                $counter = $('#counter');
 
             $('option', $trNew.find('select#warna')).filter(function (i) {
                 return $warna.find('option:selected[value="' + $(this).val() + '"]').length;
@@ -189,8 +190,8 @@ if ($submit == 'Ubah') {
 
             if ($trLast.find('select#warna option').length !== 1) {
                 $trLast.after($trNew);
-                var counter = parseInt($('#counter').val());
-                $('#counter').val(counter + 1);
+                var countup = parseInt($counter.val());
+                $counter.val(countup + 1);
             }
 
         });
