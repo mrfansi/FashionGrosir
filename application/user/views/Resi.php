@@ -13,9 +13,9 @@ include "layout/Menu.php";
             </div>
             <div class="col-10">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb f-no-background f-hover">
+                    <ol class="breadcrumb f-no-background f-hover r-font-profile-title">
                         <li class="breadcrumb-item"><a href="<?= site_url('/'); ?>">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Laporan Resi</li>
+                        <li class="breadcrumb-item active r-font-profile-title" aria-current="page">Laporan Resi</li>
                     </ol>
                 </nav>
             </div>
@@ -26,16 +26,16 @@ include "layout/Menu.php";
             <!-- Side bar menu -->
             <div class="col-12 col-sm-12 col-md-2">
                 <div class="list-group">
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('profil'); ?>">Profil</a>
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('profil_alamat'); ?>">Alamat
+                    <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('profil'); ?>">Profil</a>
+                    <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('profil_alamat'); ?>">Alamat
                     </a>
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('profil_password'); ?>">Ubah
+                    <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('profil_password'); ?>">Ubah
                         Password</a>
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('riwayat'); ?>">Riwayat
+                    <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('riwayat'); ?>">Riwayat
                         Pesanan</a>
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('pending'); ?>">Transaksi
+                    <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('pending'); ?>">Transaksi
                         Tertunda</a>
-                    <a class="list-group-item list-group-item-action r-active-step"
+                    <a class="list-group-item list-group-item-action r-active-step r-font-profile"
                        href="<?= site_url('resi'); ?>">Laporan Resi</a>
                 </div>
             </div>
@@ -58,9 +58,9 @@ include "layout/Menu.php";
                         <table class="table table-sm table-borderless" id="table">
                             <thead>
                             <tr>
-                                <th scope="col">Laporan</th>
-                                <th scope="col">Tanggal</th>
-                                <th scope="col"></th>
+                                <th  class="r-font-list" scope="col">Laporan</th>
+                                <th class="r-font-list" scope="col">Tanggal</th>
+                                <th class="r-font-list" scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>

@@ -969,6 +969,7 @@ body > div.container-fluid.f-color > div.row.f-padding-header > div:nth-child(3)
     text-align: center;
     margin-top: 2%;
     margin-bottom: 2%;
+    font-size: 20px;
 
 }
 
@@ -1704,4 +1705,22 @@ a.r-item-kat:hover  {
    background-color:  #F48BAE;
     color: #fff;
 
+}
+.r-font-profile {
+    font-size: 12px;
+ }
+
+.r-font-profile-title {
+    font-size: 15px;
+ }
+
+.r-font-list {
+    font-size: 14px;
+    color: #F48BAE;
+}
+
+.r-font-pending {
+    font-size: 13px;
+    display: inline-block;
+    margin: 0;
 }

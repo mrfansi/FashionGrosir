@@ -13,9 +13,9 @@ include "layout/Menu.php";
             </div>
             <div class="col-10">
                 <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb f-no-background f-hover">
+                    <ol class="breadcrumb f-no-background f-hover r-font-profile-title">
                         <li class="breadcrumb-item"><a href="<?= site_url('/'); ?>">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Transaksi Tertunda</li>
+                        <li class="breadcrumb-item active r-font-profile-title" aria-current="page">Transaksi Tertunda</li>
                     </ol>
                 </nav>
             </div>
@@ -26,16 +26,16 @@ include "layout/Menu.php";
             <!-- Side bar menu -->
             <div class="col-12 col-sm-12 col-md-2">
                 <div class="list-group">
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('profil'); ?>">Profil</a>
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('profil_alamat'); ?>">Alamat
+                    <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('profil'); ?>">Profil</a>
+                    <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('profil_alamat'); ?>">Alamat
                     </a>
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('profil_password'); ?>">Ubah
+                    <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('profil_password'); ?>">Ubah
                         Password</a>
-                    <a class="list-group-item list-group-item-action" href="<?= site_url('riwayat'); ?>">Riwayat
+                    <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('riwayat'); ?>">Riwayat
                         Pesanan</a>
-                    <a class="list-group-item list-group-item-action r-active-step" href="<?= site_url('pending'); ?>">Transaksi
+                    <a class="list-group-item list-group-item-action r-active-step r-font-profile" href="<?= site_url('pending'); ?>">Transaksi
                         Tertunda</a>
-                    <a class="list-group-item list-group-item-action"
+                    <a class="list-group-item list-group-item-action r-font-profile"
                        href="<?= site_url('resi'); ?>">Laporan Resi</a>
                 </div>
             </div>
@@ -50,7 +50,7 @@ include "layout/Menu.php";
 
                     <div class="row container">
                         <div class="col">
-                            <h3 class="r-style-title-konten-profile">
+                            <h3 class="r-style-title-konten-profile ">
                                 Transaksi Tertunda
                             </h3>
                             <hr style="width: 30%;">
@@ -61,68 +61,71 @@ include "layout/Menu.php";
                         <table id="table" class="table">
                             <thead>
                             <tr>
-                                <th scope="col">Nomor Order</th>
-                                <th scope="col">Detail Order</th>
-                                <th scope="col"></th>
+                                <th class="r-font-list" style= scope="col">Nomor Order</th>
+                                <th class="r-font-list" scope="col">Detail Order</th>
+                                <th class="r-font-list" scope="col"></th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php foreach ($orders as $order): ?>
                                 <tr>
                                     <td class="align-middle text-danger">
-                                        <?= $order->orders_noid; ?>
+                                       <div class="r-font-list"><?= $order->orders_noid; ?></div>
                                     </td>
                                     <td>
-                                        <b>Tanggal Order :</b><br>
-                                        <?= $order->created_at; ?>
+                                        <b >Tanggal Order :</b><br>
+                                        <p class="r-font-pending"><?= $order->created_at; ?></p>
                                         <br>
-                                        <b>Total Harga :</b><br>
-                                        <?= $order->total; ?>
+                                        <b class="r-font-profile-title">Total Harga :</b><br>
+                                        <p class="r-font-pending"> <?= $order->total; ?></p>
                                         <br>
-                                        <b>Status :</b><br>
+                                        <b class="r-font-profile-title block">Status :</b><br>
                                         <?php if ($order->orders_status == 0): ?>
-                                            <div class="text-warning">BELUM MENGISI ALAMAT PENGIRIMAN</div>
+                                            <div class="text-warning r-font-pending">BELUM MENGISI ALAMAT PENGIRIMAN</div>
                                         <?php elseif ($order->orders_status == 1): ?>
-                                            <div class="text-warning">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN</div>
+                                            <div class="text-warning r-font-pending">BELUM MENGISI METODE PENGIRIMAN & PEMBAYARAN</div>
                                         <?php elseif ($order->orders_status == 2): ?>
-                                            <div class="text-success">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
+                                            <div class="text-success r-font-pending">PELANGGAN BELUM KONFIRMASI PEMBAYARAN</div>
                                         <?php elseif ($order->orders_status == 3): ?>
-                                            <div class="text-success">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
+                                            <div class="text-success r-font-pending">ADMIN BELUM KONFIRMASI PEMBAYARAN</div>
                                         <?php elseif ($order->orders_status == 4): ?>
-                                            <div class="text-success">ADMIN SEDANG MEMPROSES ORDER</div>
+                                            <div class="text-success r-font-pending">ADMIN SEDANG MEMPROSES ORDER</div>
                                         <?php elseif ($order->orders_status == 5): ?>
-                                            <div class="text-success">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
+                                            <div class="text-success r-font-pending">ADMIN BELUM KONFIRMASI PENGIRIMAN</div>
                                         <?php elseif ($order->orders_status == 6): ?>
-                                            <div class="text-success">SUKSES (Telah dikirim)</div>
+                                            <div class="text-success r-font-pending">SUKSES (Telah dikirim)</div>
                                         <?php elseif ($order->orders_status == 7): ?>
-                                            <div class="text-danger">BATAL</div>
+                                            <div class="text-danger r-font-pending">BATAL</div>
                                         <?php endif; ?>
-                                        <b>Deskripsi :</b><br>
+                                        <br>
+                                        <b class="r-font-profile-title">Deskripsi :</b><br>
                                         <div class="text-danger">
                                             <?= $order->orders_deskripsi; ?>
                                         </div>
 
                                     </td>
                                     <td class="align-middle">
-                                        <a class="btn btn-primary r-btn-pink"
-                                           href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>">
-                                            Lihat Detail
-                                        </a>
+
 
                                         <?php if ($order->orders_status == 0): ?>
                                             <a class="btn btn-primary r-btn-pink"
                                                href="<?= site_url('checkout/' . $order->orders_noid . '/alamat_pengiriman'); ?>">
-                                                <i class="fas fa-sync mr-2"></i>Proses
+                                                <i class="fas fa-sync mr-2"></i>Isi Alamat
                                             </a>
                                         <?php elseif ($order->orders_status == 1): ?>
                                             <a class="btn btn-primary r-btn-pink"
                                                href="<?= site_url('checkout/' . $order->orders_noid . '/ongkir_transfer'); ?>">
-                                                <i class="fas fa-sync mr-2"></i>Proses
+                                                <i class="fas fa-sync mr-2"></i>Pilih Metode
                                             </a>
                                         <?php elseif ($order->orders_status == 2): ?>
                                             <a class="btn btn-primary r-btn-pink"
                                                href="<?= site_url('checkout/' . $order->orders_noid . '/konfirmasi_pembayaran'); ?>">
-                                                <i class="fas fa-sync mr-2"></i>Proses
+                                                <i class="fas fa-sync mr-2"></i>Konfirmasi
+                                            </a>
+                                        <?php elseif ($order->orders_status == 6): ?>
+                                            <a class="btn btn-primary r-btn-pink"
+                                               href="<?= site_url('pending/' . $order->orders_noid . '/detil'); ?>">
+                                                <i class="fas fa-sync mr-2"></i>Detail
                                             </a>
                                         <?php else: ?>
                                             <i></i>

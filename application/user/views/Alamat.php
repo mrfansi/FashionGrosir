@@ -87,12 +87,16 @@ include "layout/Menu.php";
         </div>
 
     </div>
+
     <br>
-    <div class="container f-padding ">
-        <h5><i class="fa fa-car"></i> Alamat Pengiriman</h5>
+    <div class="container f-padding">
+
+
+
 
         <div class="row">
-            <div class="col-lg-8 col-md-8 margin-auto">
+            <div class="col-lg-9 col-md-9 mx-auto">
+                <h5><i class="fa fa-car mx-auto"></i> Alamat Pengiriman</h5>
                 <form action="alamat_pengiriman/simpan" method="post" id="form_alamat">
                     <input type="hidden" name="ecommerce_eazy" value="<?= $this->security->get_csrf_hash(); ?>">
                     <input type="hidden" name="alamat_simpan" id="alamat_simpan">
@@ -117,18 +121,18 @@ include "layout/Menu.php";
                         </div>
                     </div>
                     <div class="row form-group" id="row_nama_alamat" style="display: none;">
-                        <div class="col-lg-6 col-sm-12"">
+                        <div class="col-lg-12 col-sm-12"">
                             <select name="pilih_alamat" id="pilih_alamat" class="form-control"></select>
                         </div>
                     </div>
                     <div id="pengirim" style="display: none;">
                         <div class="row form-group">
-                            <div class="col">
+                            <div class="col-lg-12 col-sm-12">
                                 <label for="nama_pengirim">Nama Pengirim</label>
                                 <input type="text" name="nama_pengirim" id="nama_pengirim" class="form-control"
                                        placeholder="Nama Pengirim">
                             </div>
-                            <div class="col-lg-6 col-sm-12"">
+                            <div class="col-lg-12 col-sm-12">
                                 <label for="kontak_pengirim">Nomor Telp. Pengirim</label>
                                 <input type="number" name="kontak_pengirim" id="kontak_pengirim" class="form-control"
                                        placeholder="Kontak Pengirim">
@@ -137,26 +141,27 @@ include "layout/Menu.php";
                         <hr class="mb-4 mt-4">
                     </div>
 
-                    <div class="row form-group margin-auto">
-                        <div class="col-lg-8 col-sm-12 mb-2 ">
+                    <div class="row form-group">
+                        <div class="col-lg-12 col-sm-12 mb-2">
                             <label for="nama_penerima">Nama Penerima</label>
                             <input type="text" name="nama_penerima" id="nama_penerima" class="form-control"
                                    placeholder="Nama Penerima">
                         </div>
-                        <div class="col-lg-8 col-sm-12"">
+                        <div class="col-lg-12 col-sm-12 mb-2">
                             <label for="kontak_penerima">Nomor Telp. Penerima</label>
                             <input type="text" name="kontak_penerima" id="kontak_penerima" class="form-control"
                                    placeholder="Kontak Penerima">
                         </div>
 
                     </div>
+
                     <div class="row form-group">
-                        <div class="col-lg-8 col-sm-12 mb-2">
+                        <div class="col-lg-12 col-sm-12 mb-2">
                             <label for="provinsi">Provinsi*</label>
                             <select name="provinsi" id="provinsi" class="provinsi form-control" required>
                             </select>
                         </div>
-                        <div class="col-lg-8 col-sm-12">
+                        <div class="col-lg-12 col-sm-12 mb-2">
                             <label for="kabupaten">Kabupaten / Kota*</label>
                             <select name="kabupaten" id="kabupaten" class="kabupaten form-control" required>
                             </select>
@@ -164,27 +169,27 @@ include "layout/Menu.php";
                     </div>
 
                     <div class="row form-group">
-                        <div class="col-lg-8 col-sm-12 margin-auto">
+                        <div class="col-lg-12 col-sm-12 mb-2">
                             <label for="kecamatan">Kecamatan*</label>
                             <select name="kecamatan" id="kecamatan" class="kecamatan form-control" required>
                             </select>
                         </div>
-                        <div class="col-lg-8 col-sm-12 margin-auto">
-                            <label for="kelurahan">Kelurahan / Desa*</label>
-                            <select name="kelurahan" id="kelurahan" class="kelurahan form-control" required>
-                            </select>
-                        </div>
+<!--                        <div class="col-lg-12 col-sm-12 mb-2">-->
+<!--                            <label for="kelurahan">Kelurahan / Desa*</label>-->
+<!--                            <select name="kelurahan" id="kelurahan" class="kelurahan form-control" required>-->
+<!--                            </select>-->
+<!--                        </div>-->
                     </div>
 
                     <div class="row form-group">
-                        <div class="col-lg-8 col-sm-12">
+                        <div class="col-lg-12 col-sm-12 mb-2">
                             <label for="kodepos">Kode Pos</label>
                             <input name="kodepos" id="kodepos" type="number"
                                    class="form-control" placeholder="Kode Pos">
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-lg-8 col-sm-12">
+                        <div class="col-lg-12 col-sm-12 mb-2">
                             <label class="f-test" for="alamat">Alamat Lengkap</label>
                             <textarea name="alamat" id="alamat" class="form-control"
                                       placeholder="Nama Gedung, Jalan, dan lainnya"
