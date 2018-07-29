@@ -88,7 +88,9 @@ $total = $biaya_subtotal + $biaya_pengiriman;
             </div>
         </div>
 
+
     </div>
+
     <br>
     <div class="container f-padding">
         <h5 class="mb-3"><i class="fa fa-money"></i> Konfirmasi Pembayaran</h5>
@@ -161,6 +163,37 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                             </div>
                         </div>
 
+
+                        <div class="row">
+                            <div class="col-md-12 col-12 p-0">
+                                <div class="col-lg-12">
+                                    <h5 class="mb-4 mt-4 c-color-333">PESANAN ANDA</h5>
+                                    <table class="table table-bordered table-responsive-md">
+                                        <tbody>
+                                        <tr>
+                                            <th class="c-order-table-konfirmasi pl-4">Nama Produk</th>
+                                            <th class="text-center">Qty</th>
+                                            <th class="text-center">Harga Satuan</th>
+                                            <th class="text-center">Total Harga</th>
+                                        </tr>
+
+                                        <?php foreach ($orders->order_detil as $detil): ?>
+                                            <tr>
+                                                <td><p class="c-cart-productname ml-5"><a href="<?= base_url('Detil'); ?>"><?= $item_detil($detil->item_detil_kode)->item->i_nama; ?></a></p></td>
+                                                <td class="text-center"><span class="c-price-cart-3"><?= $detil->orders_detil_qty; ?></span></td>
+                                                <td class="text-center"><span id="rupiah"
+                                                                              class="c-price-cart-3"><?= $detil->orders_detil_harga; ?></span>
+                                                </td>
+                                                <td class="text-center"><span id="rupiah"
+                                                                              class="c-price-cart-3"><?= $detil->orders_detil_tharga; ?></span>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                         <hr>
                         <!-- END KONTEN ATAS -->
 

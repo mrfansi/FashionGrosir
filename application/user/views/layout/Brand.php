@@ -62,36 +62,36 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="row f-width-full"">
-                <div class="col-10">
-                    <form class="form-inline my-2 my-lg-0" action="<?= site_url('cari'); ?>" method="get">
-                        <div class="input-group f-width-full"">
-                            <input class="form-control" type="text" placeholder="Cari Produk"
-                                   aria-label="Search" id="cari" name="cari" autocomplete="off">
-                            <div class="input-group-addon">
-                                <button class="btn btn-search-color f-btn-search" type="submit" style=""
-                                        id="search-btn"><i
-                                            class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="col-2 mt-xl-0 mt-lg-0 mt-sm-2">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <button class="btn btn-primary r-btn-pink my-2 my-sm-0" tabindex="0" class="nav-link"
-                                    title="Cart"
-                                    data-toggle="popover" data-placement="bottom" data-content="">
-                                <i class="fa fa-shopping-cart fa-lg"></i>
-                                <span><?= $counter_cart = isset($_SESSION['id']) ? $this->cart->where_pengguna_kode($_SESSION['id'])->count_rows() : ''; ?></span>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+            <div class="col-10">
+                <form class="form-inline my-2 my-lg-0" action="<?= site_url('cari'); ?>" method="get">
+                    <div class="input-group f-width-full"">
+                    <input class="form-control" type="text" placeholder="Cari Produk"
+                           aria-label="Search" id="cari" name="cari" autocomplete="off">
+                    <div class="input-group-addon">
+                        <button class="btn btn-search-color f-btn-search" type="submit" style=""
+                                id="search-btn"><i
+                                    class="fa fa-search"></i></button>
+                    </div>
             </div>
-
-
+            </form>
         </div>
-    </nav>
+
+        <div class="col-2 mt-xl-0 mt-lg-0 mt-sm-2">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <button class="btn btn-primary r-btn-pink my-2 my-sm-0" tabindex="0" class="nav-link"
+                            title="Cart"
+                            data-toggle="popover" data-placement="bottom" data-content="">
+                        <i class="fa fa-shopping-cart fa-lg"></i>
+                        <span><?= $counter_cart = isset($_SESSION['id']) ? $this->cart->where_pengguna_kode($_SESSION['id'])->count_rows() : ''; ?></span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+</div>
+
+
+</div>
+</nav>
 </div>
 
