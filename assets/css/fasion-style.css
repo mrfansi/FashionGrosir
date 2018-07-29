@@ -1715,6 +1715,12 @@ a.r-item-kat:hover  {
  }
 
 .r-font-list {
-    font-size: 13px;
+    font-size: 14px;
     color: #F48BAE;
+}
+
+.r-font-pending {
+    font-size: 13px;
+    display: inline-block;
+    margin: 0;
 }
