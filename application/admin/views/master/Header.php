@@ -51,6 +51,7 @@
         #tables_wrapper {
             padding-right: 0;
             padding-left: 0;
+            background-color: white;
         }
     </style>
     <link rel="stylesheet" href="<?= base_url('assets/vendor/datatable/css/dataTables.bootstrap4.min.css'); ?>">
