@@ -139,6 +139,7 @@ if ($submit == 'Ubah') {
                                 <option value="L">L</option>
                                 <option value="XL">XL</option>
                                 <option value="XXL">XXL</option>
+                                <option value="ALL">ALL</option>
                             </select>
                         </td>
                         <td><input name="qty[]" id="qty" type="number" class="form-control" value="0" min="0"></td>
