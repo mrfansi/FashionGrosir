@@ -129,9 +129,9 @@ include "layout/Menu.php";
     <div class="row">
         <?php foreach ($this->item->with_item_img('where:ii_default =1')->limit(5)->get_all() as $hot): ?>
             <div class="col-12 col-sm-6  col-md-4 col-lg-4 col-xl-3 mb-3">
-                <div class="thumbnail">
-                    <div class="image mx-auto d-block"
-                         data-url="<?= site_url('hot-item/' . $hot->i_url . '/detil'); ?>">
+                <div class="thumbnail"
+                     data-url="<?= site_url('hot-item/' . $hot->i_url . '/detil'); ?>">
+                    <div class="image mx-auto d-block">
 
                         <?php if ($item_img($hot->i_kode) != NULL): ?>
                             <img class="img-fluid" src="<?= base_url('upload/' . $item_img($hot->i_kode)->ii_nama); ?>"
@@ -142,7 +142,10 @@ include "layout/Menu.php";
                                  alt="No Image">
                         <?php endif; ?>
                     </div>
-                    <h4 id="title" class="mt-2"><?= $hot->i_nama; ?></h4>
+                    <div class="col-12 col-md-12 col-sm-12 text-center">
+                        <h6 id="title" class="mt-2"><?= $hot->i_nama; ?></h6>
+                    </div>
+
                     <div class="ratings">
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star"></span>
@@ -150,24 +153,17 @@ include "layout/Menu.php";
                         <span class="glyphicon glyphicon-star"></span>
                         <span class="glyphicon glyphicon-star-empty"></span>
                     </div>
-                    <hr class="line">
-                    <div class="row">
-                        <div class="col-md-7 col-sm-7 mb-2 mb-sm-0">
-                            <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
-                                <p id="rupiah" class="mt-1 price"><?= $hot->i_hrg_vip; ?></p>
-                            <?php else: ?>
-                                <p id="rupiah" class="mt-1 align-middle price"><?= $hot->i_hrg_reseller; ?></p>
-                            <?php endif; ?>
-                        </div>
-                        <div class="col-md-5 col-sm-5">
-                            <a class="btn btn-primary btn-sm r-btn-pink right"
-                               href="<?= site_url('hot-item/' . $hot->i_url . '/detil'); ?>">
-                                <i class="fa fa-shopping-cart"></i> Beli
-                            </a>
-                        </div>
+                    <hr class="mb-2 mt-0">
+                    <div class="col-12 col-md-12 col-sm-12 text-center">
+                        <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
+                            <p id="rupiah" class="mt-1 price"><?= $hot->i_hrg_vip; ?></p>
+                        <?php else: ?>
+                            <p id="rupiah" class="mt-1 align-middle price"><?= $hot->i_hrg_reseller; ?></p>
+                        <?php endif; ?>
 
                     </div>
                 </div>
+
             </div>
         <?php endforeach; ?>
     </div>
