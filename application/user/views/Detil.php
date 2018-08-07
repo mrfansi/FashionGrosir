@@ -1,4 +1,4 @@
-s<?php
+<?php
 include "layout/Header.php";
 include "layout/Brand.php";
 include "layout/Menu.php";
