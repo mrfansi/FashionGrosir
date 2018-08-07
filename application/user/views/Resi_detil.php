@@ -27,16 +27,16 @@ include "layout/Menu.php";
     <!-- Side bar menu -->
     <div class="col-12 col-sm-12 col-md-2">
         <div class="list-group">
-            <a class="list-group-item list-group-item-action" href="<?= site_url('profil'); ?>">Profil</a>
-            <a class="list-group-item list-group-item-action" href="<?= site_url('profil_alamat'); ?>">Alamat
+            <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('profil'); ?>">Profil</a>
+            <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('profil_alamat'); ?>">Alamat
             </a>
-            <a class="list-group-item list-group-item-action" href="<?= site_url('profil_password'); ?>">Ubah
+            <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('profil_password'); ?>">Ubah
                 Password</a>
-            <a class="list-group-item list-group-item-action" href="<?= site_url('riwayat'); ?>">Riwayat
+            <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('riwayat'); ?>">Riwayat
                 Pesanan</a>
-            <a class="list-group-item list-group-item-action" href="<?= site_url('pending'); ?>">Transaksi
+            <a class="list-group-item list-group-item-action r-font-profile" href="<?= site_url('pending'); ?>">Transaksi
                 Tertunda</a>
-            <a class="list-group-item list-group-item-action r-active-step"
+            <a class="list-group-item list-group-item-action r-active-step r-font-profile"
                href="<?= site_url('resi'); ?>">Laporan Resi</a>
         </div>
     </div>

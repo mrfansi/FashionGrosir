@@ -135,8 +135,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     <div class="col">
                         <label for="logo">Logo</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="logo" name="logo">
-                            <label class="custom-file-label" for="logo">Pilih Logo...</label>
+
+
+                            <label class="custom-file-label" for="logo" id="uploadFile" name="logo">Pilih Logo...</label>
+                            <input type="file" class="custom-file-input" id="logo" name="logo" onchange="showname()">
                         </div>
                     </div>
                     <div class="col">
@@ -419,6 +421,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             })
         );
 
+    </script>
+    <script>
+        function showname () {
+            var name = document.getElementById('fileInput');
+            alert('Selected file: ' + name.files.item(0).name);
+            alert('Selected file: ' + name.files.item(0).size);
+            alert('Selected file: ' + name.files.item(0).type);
+        };
     </script>
 </section>
 <div class="modal fade" id="crud" tabindex="-1" role="dialog" aria-labelledby="crud" aria-hidden="true">

@@ -24,14 +24,14 @@
                         <i class="fa fa-user"></i> <?= $_SESSION['nama']; ?>
                     </a>
                     | <a class="alert-link f-link" href="<?= site_url('logout'); ?>">
-                        Log Out
+                       Keluar
                     </a>
                 <?php else: ?>
                     <a class="alert-link f-link" href="<?= site_url('login'); ?>">
-                        <i class="fa fa-user"></i> Login
+                        <i class="fa fa-user"></i> Masuk
                     </a>
                     | <a class="alert-link f-link" href="<?= site_url('register'); ?>">
-                        <i class="fas fa-sign-in-alt"></i> Register
+                        <i class="fas fa-sign-in-alt"></i> Daftar
                     </a>
                 <?php endif; ?>
             </div>

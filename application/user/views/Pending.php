@@ -98,7 +98,7 @@ include "layout/Menu.php";
                                             <div class="text-danger r-font-pending">BATAL</div>
                                         <?php endif; ?>
                                         <br>
-                                        <b class="r-font-profile-title">Deskripsi :</b><br>
+                                        <b class="r-font-profile-title">Deskripsi / Alasan :</b><br>
                                         <div class="text-danger">
                                             <?= $order->orders_deskripsi; ?>
                                         </div>
