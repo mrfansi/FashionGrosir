@@ -103,6 +103,7 @@ class Konfirmasi extends MY_Controller
     public function simpan()
     {
         $orders_noid = $this->uri->segment(2);
+        $order_bukti = $this->order_bukti->where('orders_noid', $orders_noid)->get();
 
         //upload an image options
         $config = array();
@@ -116,7 +117,7 @@ class Konfirmasi extends MY_Controller
         $this->upload->do_upload('bukti_pembayaran');
         $hasil = $this->upload->data();
 
-        $order_bukti = $this->order_bukti->where('orders_noid', $orders_noid)->get();
+
         $konfirmasi_array = array(
             'orders_bukti_nama_rek' => $this->input->post('rek_atasnama'),
             'orders_bukti_no_rek' => $this->input->post('nomor_rekening'),
@@ -127,23 +128,19 @@ class Konfirmasi extends MY_Controller
         );
 
         if ($order_bukti) {
-
             // update
-            $konfirmasi = $this->order_bukti->update($konfirmasi_array, 'orders_noid');
-
-            if ($konfirmasi) {
-                $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 3));
-            }
+            $this->order_bukti->update($konfirmasi_array, 'orders_noid');
+            $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 3));
+            redirect('checkout/' . $this->uri->segment(2) . '/sukses');
         } else {
             // insert
-            $konfirmasi = $this->order_bukti->insert($konfirmasi_array);
+            $this->order_bukti->insert($konfirmasi_array);
 
-            if ($konfirmasi) {
-                $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 3));
-            }
+            $this->order->where('orders_noid', $orders_noid)->update(array('orders_status' => 3));
+            redirect('checkout/' . $this->uri->segment(2) . '/sukses');
         }
 
-        redirect('checkout/' . $this->uri->segment(2) . '/sukses');
+
     }
 
     public function sukses()
@@ -226,8 +223,6 @@ class Konfirmasi extends MY_Controller
         $order = $this->order->where('orders_noid', $this->uri->segment(2))->get();
         if ($order->orders_status == 3) {
             $this->load->view('Konfirmasi_sukses', $this->data);
-        } else {
-            redirect('checkout/' . $this->uri->segment(2) . '/konfirmasi_pembayaran');
         }
     }
 }

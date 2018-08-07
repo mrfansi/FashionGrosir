@@ -100,6 +100,7 @@ include "layout/Menu.php";
                 <input type="hidden" name="orders_noid" value="<?= $orders->orders_noid; ?>">
                 <input type="hidden" name="nomor_order" value="<?= $this->uri->segment(2); ?>">
                 <h6>Pilih Metode Pengiriman</h6>
+                <?php $count = 0; ?>
                 <?php foreach ($pengiriman as $k1): ?>
                     <?php $nama = $k1->name; ?>
                     <?php foreach ($k1->costs as $k2): ?>
@@ -107,18 +108,21 @@ include "layout/Menu.php";
                         <?php foreach ($k2->cost as $k3): ?>
                             <?php $biaya = $k3->value; ?>
                             <?php $estimasi = $k3->etd; ?>
+
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="pengiriman" id="pengiriman"
+                                <input class="form-check-input" type="radio" name="pengiriman"
+                                       id="pengiriman-<?= $biaya; ?>"
                                        data-deskripsi="<?= $deskripsi; ?>"
                                        data-biaya="<?= $biaya; ?>"
                                        data-estimasi="<?= $estimasi; ?>"
                                        data-nama="<?= $nama; ?>"
                                        value="1" required>
-                                <label class="form-check-label" for="pengiriman">
+                                <label class="form-check-label" for="pengiriman-<?= $biaya; ?>">
                                     <?= $nama . ' - ' . $deskripsi . ' (' . $estimasi . ' hari) ('; ?> <span
                                             id="rupiah"><?= $biaya; ?></span>)
                                 </label>
                             </div>
+                            <?php $count += 1; ?>
                         <?php endforeach; ?>
                     <?php endforeach; ?>
                 <?php endforeach; ?>
@@ -134,9 +138,10 @@ include "layout/Menu.php";
 
                                 <input class="form-check-input" type="radio"
                                        data-id="<?= $bank->bank_kode; ?>"
-                                       name="bank" id="bank"
+                                       name="bank" id="bank-<?= $bank->bank_kode; ?>"
                                        value="1" required>
-                                <label class="form-check-label" for="bank"><?= $name; ?></label>
+                                <label class="form-check-label"
+                                       for="bank-<?= $bank->bank_kode; ?>"><?= $name; ?></label>
 
                             </div>
                         <?php endforeach; ?>
@@ -156,7 +161,7 @@ include "layout/Menu.php";
             </form>
         </div>
         <script>
-            $('[id="pengiriman"]').change(function () {
+            $('[id^="pengiriman"]').change(function () {
                 var data = $(this);
                 var deskripsi = data.attr('data-deskripsi');
                 var biaya = data.attr('data-biaya');
@@ -171,7 +176,7 @@ include "layout/Menu.php";
                 )
             });
 
-            $('[id="bank"]').change(function () {
+            $('[id^="bank"]').change(function () {
                 var data = $(this);
                 var id = data.attr('data-id');
                 $.when(
