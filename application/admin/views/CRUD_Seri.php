@@ -45,13 +45,14 @@ if ($submit == 'Ubah') {
 
     <div class="form-group">
         <label for="">Item yang dipilih</label>
-        <div class="table-responsive">
+        <div class="table-responsive" id="selected-table">
             <table class="table table-sm">
                 <thead>
                 <tr>
                     <th scope="col">Kode Item</th>
                     <th scope="col">Warna</th>
                     <th scope="col">Ukuran</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -181,9 +182,22 @@ if ($submit == 'Ubah') {
             }
         })
         .on('click', 'tr', function () {
-            $(this).find('input[type="checkbox"]').click();
-            $(this).find('')
+            $(this).find('input[type="checkbox"]').prop('checked', true);
+            var tr = $(this).remove().clone(),
+                selectedtable = $('#selected-table');
+
+            tr.find('td:first').remove();
+            selectedtable.find('tbody').append(tr);
 
         });
+
+    $('#selected-table')
+        .on('click', 'tr', function () {
+            var tr = $(this).remove().clone(),
+                tblseri = $('#tbl_seri');
+
+
+        })
+
 
 </script>

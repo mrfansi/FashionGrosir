@@ -3,8 +3,8 @@ $url = site_url('item/simpan_detil');
 if ($submit == 'Ubah') {
     $id = $item_detil->item_detil_kode;
     $warna = $item_detil->w_kode;
-    $ukuran = $item_detil->u_kode;
-    $seri = $item_detil->s_kode;
+    $ukuran = $item_detil->item_detil_ukuran;
+//    $seri = $item_detil->s_kode;
 } else if ($submit == 'Simpan') {
     $id = $kode;
     $warna = '';
@@ -29,18 +29,16 @@ if ($submit == 'Ubah') {
             <label for="ukuran">Ukuran</label>
             <select name="ukuran" id="ukuran" class="form-control small" required>
                 <option value="" disabled>Pilih Ukuran</option>
-                <?php foreach ($this->ukuran->get_all() as $katukuran): ?>
-                    <option value="<?= $katukuran->u_kode; ?>" <?= $ukuran != '' && $ukuran == $katukuran->u_kode ? 'selected' : ''; ?> ><?= $katukuran->u_nama; ?></option>
-                <?php endforeach; ?>
-            </select>
-        </div>
-        <div class="col form-group">
-            <label for="seri">Seri</label>
-            <select name="seri" id="seri" class="form-control small">
-                <option value="0">None</option>
-                <?php foreach ($this->seri->get_all() as $katseri): ?>
-                    <option value="<?= $katseri->s_kode; ?>" <?= $seri != '' && $seri == $katseri->s_kode ? 'selected' : ''; ?> ><?= $katseri->s_nama; ?></option>
-                <?php endforeach; ?>
+                <option value="S" <?= $ukuran == "S" ? "selected" : ""; ?> >S</option>
+                <option value="M" <?= $ukuran == "M" ? "selected" : ""; ?>>M</option>
+                <option value="L" <?= $ukuran == "L" ? "selected" : ""; ?>>L</option>
+                <option value="XL" <?= $ukuran == "XL" ? "selected" : ""; ?>>XL</option>
+                <option value="XXL" <?= $ukuran == "XXL" ? "selected" : ""; ?>>XXL</option>
+                <!--                --><?php //foreach ($this->ukuran->get_all() as $katukuran): ?>
+                <!--                    <option value="--><? //= $katukuran->u_kode; ?><!--" -->
+                <? //= $ukuran != '' && $ukuran == $katukuran->u_kode ? 'selected' : ''; ?><!-- >-->
+                <? //= $katukuran->u_nama; ?><!--</option>-->
+                <!--                --><?php //endforeach; ?>
             </select>
         </div>
     </div>
