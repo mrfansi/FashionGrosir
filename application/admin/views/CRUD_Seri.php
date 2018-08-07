@@ -16,6 +16,7 @@ if ($submit == 'Ubah') {
     #tbl_seri_wrapper {
         padding-left: 0;
         padding-right: 0;
+        background-color: white;
     }
 </style>
 <form action="<?= $url; ?>" method="post" enctype="multipart/form-data">
