@@ -29,8 +29,8 @@ class Seri extends MY_Controller
 
     public function index()
     {
-        $this->data->title = $this->data->brandname . ' | Nomor Seri';
-        $this->data->title_page = 'Nomor Seri';
+        $this->data->title = $this->data->brandname . ' | Item Grosir';
+        $this->data->title_page = 'Item Grosir';
         $this->data->total_seri = $this->seri->count_rows();
         $this->data->seris = $this->seri->get_all();
         $this->load->view('Seri', $this->data);
@@ -38,7 +38,7 @@ class Seri extends MY_Controller
 
     public function tambah()
     {
-        $this->data->title = $this->data->brandname . ' | Nomor Seri > Tambah';
+        $this->data->title = $this->data->brandname . ' | Item Grosir > Tambah';
         $this->data->submit = 'Simpan';
         $this->data->kode = $this->seri->guid();
 
@@ -69,7 +69,7 @@ class Seri extends MY_Controller
 
     public function ubah($id)
     {
-        $this->data->title = $this->data->brandname . ' | Nomor Seri > Ubah';
+        $this->data->title = $this->data->brandname . ' | Item Grosir > Ubah';
         $this->data->submit = 'Ubah';
         $this->data->kode = $id;
         $this->data->seris = $this->seri->where('s_kode', $id)->get();
@@ -112,12 +112,12 @@ class Seri extends MY_Controller
             // update
             $seri_update = $this->seri->update($seri_array, 's_kode');
             if ($seri_update) {
-                $this->data->berhasil = 'Nomor Seri berhasil diperbarui.';
+                $this->data->berhasil = 'Item Grosir berhasil diperbarui.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('seri');
             } else {
-                $this->data->gagal = 'Nomor Seri gagal diperbarui.';
+                $this->data->gagal = 'Item Grosir gagal diperbarui.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('seri');
@@ -140,12 +140,12 @@ class Seri extends MY_Controller
             // insert
             $seri_insert = $this->seri->insert($seri_array);
             if ($seri_insert) {
-                $this->data->berhasil = 'Nomor Seri berhasil dibuat.';
+                $this->data->berhasil = 'Item Grosir berhasil dibuat.';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('seri');
             } else {
-                $this->data->gagal = 'Nomor Seri gagal dibuat.';
+                $this->data->gagal = 'Item Grosir gagal dibuat.';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('seri');
@@ -159,7 +159,7 @@ class Seri extends MY_Controller
 
         if ($item_seri)
         {
-            $this->data->gagal = 'Nomor Seri tidak boleh dihapus karena masih digunakan.';
+            $this->data->gagal = 'Item Grosir tidak boleh dihapus karena masih digunakan.';
             $this->session->set_flashdata('gagal', $this->data->gagal);
 
             redirect('seri');
@@ -168,12 +168,12 @@ class Seri extends MY_Controller
         {
             $seri = $this->seri->where('s_kode', $id)->delete();
             if ($seri) {
-                $this->data->berhasil = 'Nomor Seri berhasil dihapus';
+                $this->data->berhasil = 'Item Grosir berhasil dihapus';
                 $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
                 redirect('seri');
             } else {
-                $this->data->gagal = 'Nomor Seri gagal dihapus';
+                $this->data->gagal = 'Item Grosir gagal dihapus';
                 $this->session->set_flashdata('gagal', $this->data->gagal);
 
                 redirect('seri');
