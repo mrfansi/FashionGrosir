@@ -22,7 +22,7 @@ class Seri extends MY_Controller
             'field' => 's_nama',
             'title' => 'title',
             'table' => 'seri',
-            'id' => 's_id',
+            'id' => 'seri_id',
         );
         $this->load->library('slug', $config);
     }

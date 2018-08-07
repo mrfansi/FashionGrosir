@@ -10,10 +10,16 @@ class Seri_m extends MY_Model {
     public function __construct()
     {
         $this->table = 'seri';
-        $this->primary_key = 's_id';
-        $this->protected = array('s_id','created_at','update_at');
+        $this->primary_key = 'seri_id';
+        $this->protected = array('seri_id', 'created_at', 'update_at');
         $this->timestamps = TRUE;
         $this->soft_deletes = FALSE;
+        $this->has_many['seri_detil'] = array(
+            'foreign_model' => 'Seri_detil_m',
+            'foreign_table' => 'seri_detil',
+            'foreign_key' => 'seri_kode',
+            'local_key' => 'seri_kode'
+        );
         parent::__construct();
     }
 
