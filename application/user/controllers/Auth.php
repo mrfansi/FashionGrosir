@@ -199,7 +199,7 @@ class Auth extends MY_Controller
                 'pengguna_password' => $password
             ))->get();
 
-            if ($user) {
+            if ($user && $user->pengguna_tipe == 1 || $user->pengguna_tipe == 2) {
                 // Update IP Address
                 $this->pengguna->where(array(
                     'pengguna_email' => $email,
