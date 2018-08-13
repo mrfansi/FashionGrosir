@@ -66,7 +66,7 @@
                         "i_kode": '<?= $i_kode ?>'
                     },
                     success: function (data) {
-                        $('#viewimage').html(data);
+                        window.location.reload();
                     }
                 });
             })

@@ -28,8 +28,7 @@ class Upload extends MY_Controller
         $files = array();
         $counter = count($_FILES['images']['size']);
         echo $counter;
-        for($i=0; $i < $counter ; $i++)
-        {
+        for ($i = 0; $i < $counter; $i++) {
             // cek update
             $img = $this->item_img->where(array('i_kode' => $this->input->post('i_kode'), 'ii_default' => 1))->get();
 
@@ -39,18 +38,18 @@ class Upload extends MY_Controller
                 $default = 0;
             }
 
-            $_FILES['image']['name']= $_FILES['images']['name'][$i];
-            $_FILES['image']['type']= $_FILES['images']['type'][$i];
-            $_FILES['image']['tmp_name']= $_FILES['images']['tmp_name'][$i];
-            $_FILES['image']['error']= $_FILES['images']['error'][$i];
-            $_FILES['image']['size']= $_FILES['images']['size'][$i];
+            $_FILES['image']['name'] = $_FILES['images']['name'][$i];
+            $_FILES['image']['type'] = $_FILES['images']['type'][$i];
+            $_FILES['image']['tmp_name'] = $_FILES['images']['tmp_name'][$i];
+            $_FILES['image']['error'] = $_FILES['images']['error'][$i];
+            $_FILES['image']['size'] = $_FILES['images']['size'][$i];
 
             //upload an image options
             $config = array();
             $config['upload_path'] = './upload';
             $config['allowed_types'] = 'jpg|jpeg|png';
-            $config['max_size']      = '0';
-            $config['overwrite']     = TRUE;
+            $config['max_size'] = '0';
+            $config['overwrite'] = TRUE;
             $config['encrypt_name'] = TRUE;
 
             $this->load->library('upload', $config);
@@ -58,12 +57,12 @@ class Upload extends MY_Controller
             $files[] = $this->upload->data();
 
             $data = array(
-                'ii_kode'       => $this->item_img->guid(),
-                'ii_nama'       => $files[$i]['file_name'],
-                'ii_url'       => $files[$i]['file_name'],
+                'ii_kode' => $this->item_img->guid(),
+                'ii_nama' => $files[$i]['file_name'],
+                'ii_url' => $files[$i]['file_name'],
                 'ii_default' => $default,
                 'ii_type' => $files[$i]['image_type'],
-                'i_kode'        => $this->input->post('i_kode')
+                'i_kode' => $this->input->post('i_kode')
             );
 
             // insert
@@ -154,8 +153,8 @@ class Upload extends MY_Controller
 
         // insert
         $this->item_img->insert($data);
-
-        echo 'Gambar berhasil diupload';
+        $this->data->berhasil = 'Foto Item berhasil diperbarui.';
+        $this->session->set_flashdata('berhasil', $this->data->berhasil);
 
     }
 
