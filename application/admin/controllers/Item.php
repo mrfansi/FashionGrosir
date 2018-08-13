@@ -303,8 +303,7 @@ class Item extends MY_Controller
             ->where('item_detil_kode', $id)
             ->update(array(
                 'w_kode' => $this->input->post('warna'),
-                'u_kode' => $this->input->post('ukuran'),
-                's_kode' => $this->input->post('seri')
+                'item_detil_ukuran' => $this->input->post('ukuran'),
             ));
 
         if ($item_detil) {
