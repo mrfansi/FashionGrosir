@@ -34,7 +34,7 @@ if ($submit == 'Ubah') {
                 <option value="L" <?= $ukuran == "L" ? "selected" : ""; ?>>L</option>
                 <option value="XL" <?= $ukuran == "XL" ? "selected" : ""; ?>>XL</option>
                 <option value="XXL" <?= $ukuran == "XXL" ? "selected" : ""; ?>>XXL</option>
-                <option value="ALL" <?= $ukuran == "ALL" ? "selected" : ""; ?>>XXL</option>
+                <option value="ALL" <?= $ukuran == "ALL" ? "selected" : ""; ?>>ALL</option>
                 <!--                --><?php //foreach ($this->ukuran->get_all() as $katukuran): ?>
                 <!--                    <option value="--><? //= $katukuran->u_kode; ?><!--" -->
                 <? //= $ukuran != '' && $ukuran == $katukuran->u_kode ? 'selected' : ''; ?><!-- >-->
