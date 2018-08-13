@@ -171,7 +171,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                                     <table class="table table-bordered table-responsive-md">
                                         <tbody>
                                         <tr>
-                                            <th class="c-order-table-konfirmasi pl-4">Nama Produk</th>
+                                            <th class="c-order-table-konfirmasi pl-4 text-center">Nama Produk</th>
                                             <th class="text-center">Qty</th>
                                             <th class="text-center">Harga Satuan</th>
                                             <th class="text-center">Total Harga</th>
@@ -179,7 +179,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
 
                                         <?php foreach ($orders->order_detil as $detil): ?>
                                             <tr>
-                                                <td><p class="c-cart-productname ml-5"><a href="<?= base_url('Detil'); ?>"><?= $item_detil($detil->item_detil_kode)->item->i_nama; ?></a></p></td>
+                                                <td class="text-center"><span class="c-price-cart-3"><?= $item_detil($detil->item_detil_kode)->item->i_nama; ?></td>
                                                 <td class="text-center"><span class="c-price-cart-3"><?= $detil->orders_detil_qty; ?></span></td>
                                                 <td class="text-center"><span id="rupiah"
                                                                               class="c-price-cart-3"><?= $detil->orders_detil_harga; ?></span>

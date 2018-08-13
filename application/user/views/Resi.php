@@ -70,7 +70,7 @@ include "layout/Menu.php";
                                     <tr>
                                         <td><?= $resi->artikel_judul; ?></td>
                                         <td><?= $resi->created_at; ?></td>
-                                        <td><a class="btn btn-lg f-button-font"<?= site_url('resi/' . $resi->artikel_url . '/detil'); ?>">Lihat</a>
+                                        <td><a class="btn btn-primary r-btn-pink" href="<?= site_url('resi/' . $resi->artikel_url . '/detil'); ?>">Lihat</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

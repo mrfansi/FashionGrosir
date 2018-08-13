@@ -102,11 +102,7 @@ include "layout/Menu.php";
                                     <td class="align-middle">
                                         <a class="btn btn-primary r-btn-pink text-center"
                                            href="<?= site_url('riwayat/' . $order->orders_noid . '/detil'); ?>">
-                                            Detail
-                                        </a>
-                                        <a class="btn btn-primary r-btn-pink text-center"
-                                           href="<?= site_url('riwayat/' . $order->orders_noid . '/detil'); ?>">
-                                              Invoice
+                                            Invoice
                                         </a>
                                     </td>
                                 </tr>
