@@ -87,7 +87,10 @@ class Auth extends MY_Controller
             array(
                 'field' => 'notelp',
                 'label' => 'No. Telp',
-                'rules' => 'required|integer|is_unique[pengguna.pengguna_telp]'
+                'rules' => 'required|integer|is_unique[pengguna.pengguna_telp]',
+                'errors' => array(
+                    'is_unique' => 'Mohon maaf no telp sudah digunakan. Silahkan pilih no telp lain.'
+                )
             ),
             array(
                 'field' => 'password',
