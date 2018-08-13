@@ -11,7 +11,7 @@
         </fileTransfer>
       </webServer>
       <webServer id="54275fab-7726-4836-a2f4-5e1e3d1e1b21" name="Fashion Grosir Live" url="http://fashiongrosir-ind.com">
-        <fileTransfer host="fashiongrosir-ind.com" port="21" rootFolder="/public_html">
+        <fileTransfer host="fashiongrosir-ind.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

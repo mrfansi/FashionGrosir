@@ -79,7 +79,10 @@ class Auth extends MY_Controller
             array(
                 'field' => 'email',
                 'label' => 'E-mail',
-                'rules' => 'required|valid_email|is_unique[pengguna.pengguna_email]'
+                'rules' => 'required|valid_email|is_unique[pengguna.pengguna_email]',
+                'errors' => array(
+                    'is_unique' => 'Mohon maaf E-mail sudah digunakan. Silahkan pilih E-mail lain.'
+                )
             ),
             array(
                 'field' => 'notelp',
