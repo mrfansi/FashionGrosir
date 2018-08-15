@@ -194,7 +194,54 @@ $total = $biaya_subtotal + $biaya_pengiriman;
                                 </div>
                             </div>
                         </div>
-                        <hr>
+                        <div class="row justify-content-end mt-3">
+                            <div class="col-lg-6 col-md-12 f-font-troli">
+                                <div class="container-fluid">
+                                    <h5>Perhitungan Harga</h5>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
+                                            <h6>Sub Total</h6>
+                                        </div>
+                                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
+                                            <div class="row">
+                                                <div class="col-lg col-md-6 col-sm-7 col">
+                                                    <h5 id="rupiah"
+                                                        class="card-title f-sub-total"><?= $biaya_subtotal; ?></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
+                                            <h6>Biaya Pengiriman</h6>
+                                        </div>
+                                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
+                                            <div class="row">
+                                                <div class="col-lg col-md-6 col-sm-7 col">
+                                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $biaya_pengiriman; ?></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
+                                            <h6>Total</h6>
+                                        </div>
+                                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
+                                            <div class="row">
+                                                <div class="col-lg col-md-6 col-sm-7 col">
+                                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $total; ?></h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mt-5">
                         <!-- END KONTEN ATAS -->
 
                         <!--  START KONTEN BAWAH -->
@@ -269,50 +316,7 @@ $total = $biaya_subtotal + $biaya_pengiriman;
 
             <!-- KOTAK KANAN -->
 
-            <div class="col-lg-6 col-md-12 f-font-troli">
-                <div class="border f-border-padding f-radius">
-                    <h5>Perhitungan Harga</h5>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                            <h6>Sub Total</h6>
-                        </div>
-                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
-                            <div class="row">
-                                <div class="col-lg col-md-6 col-sm-7 col">
-                                    <h5 id="rupiah"
-                                        class="card-title f-sub-total"><?= $biaya_subtotal; ?></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                            <h6>Biaya Pengiriman</h6>
-                        </div>
-                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
-                            <div class="row">
-                                <div class="col-lg col-md-6 col-sm-7 col">
-                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $biaya_pengiriman; ?></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-7 col-6">
-                            <h6>Total</h6>
-                        </div>
-                        <div class="col-md-6 col-md-6 col-sm-5 col-6">
-                            <div class="row">
-                                <div class="col-lg col-md-6 col-sm-7 col">
-                                    <h5 id="rupiah" class="card-title f-sub-total"><?= $total; ?></h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
     <!-- End Content -->
