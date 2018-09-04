@@ -46,9 +46,11 @@ class Item_m extends MY_Model
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
 
-    public function select_sum_qty()
+    public function select_pencarian($where_like)
     {
+        $query = $this->db->query("SELECT * FROM item WHERE i_nama LIKE '%$where_like%';");
 
+        return $query->result();
     }
 
     public function select_sum_qty_where($id)
