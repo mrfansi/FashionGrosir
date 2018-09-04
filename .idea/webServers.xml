@@ -2,20 +2,20 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="1b1e136b-eea1-43f5-8790-47481866053c" name="FashionGrosir" url="http://dev.eazy-dev.xyz/FashionGrosir/">
-        <fileTransfer host="dev.eazy-dev.xyz" port="2211" rootFolder="/fashiongrosir" accessType="SFTP">
-          <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" />
-          </advancedOptions>
-          <option name="port" value="2211" />
-        </fileTransfer>
-      </webServer>
       <webServer id="54275fab-7726-4836-a2f4-5e1e3d1e1b21" name="Fashion Grosir Live" url="http://fashiongrosir-ind.com">
         <fileTransfer host="fashiongrosir-ind.com" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
           <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="ac25b43c-a532-41ee-8e46-49511dd74033" name="fashion.bukaide.com" url="http://fashion.bukaide.com">
+        <fileTransfer host="fashion.bukaide.com" port="22" rootFolder="/home/fashion/public_html" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
     </option>
