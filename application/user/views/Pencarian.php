@@ -27,7 +27,8 @@ include "layout/Menu.php";
                     <?php $stok = $qty($cari->i_kode); ?>
                     <?php if ($stok > 1): ?>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3">
-                            <div class="thumbnail">
+                            <div class="thumbnail"
+                                 data-url="<?= site_url('produk-terbaru/' . $terbaru->i_url . '/detil'); ?>">
                                 <?php if ($item_img($cari->i_kode) != NULL): ?>
                                     <img class="img-fluid"
                                          src="data:<?= $item_img($cari->i_kode)->ii_type . ';base64,' . (base64_encode($item_img($cari->i_kode)->ii_data)); ?>"
@@ -36,7 +37,9 @@ include "layout/Menu.php";
                                     <img class="img-fluid" src="<?= base_url('assets/img/noimg.png'); ?>"
                                          alt="No Image">
                                 <?php endif; ?>
-                                <h4 id="title"><?= $cari->i_nama; ?></h4>
+                                <div class="col-12 col-md-12 col-sm-12 text-center">
+                                    <h6 id="title" class="mt-2"><?= $cari->i_nama; ?></h6>
+                                </div>
                                 <div class="ratings">
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
@@ -44,24 +47,14 @@ include "layout/Menu.php";
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star-empty"></span>
                                 </div>
-                                <p tooltip title="<?= $cari->i_deskripsi; ?>"
-                                   id="title"><?= $cari->i_deskripsi; ?></p>
-                                <hr class="line">
-                                <div class="row">
-                                    <div class="col-md-7 col-sm-7">
-                                        <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
-                                            <p id="rupiah" class="mt-1 price"><?= $cari->i_hrg_vip; ?></p>
-                                        <?php else: ?>
-                                            <p id="rupiah"
-                                               class="mt-1 align-middle price"><?= $cari->i_hrg_reseller; ?></p>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="col-md-5 col-sm-5">
-                                        <a class="btn btn-primary btn-sm r-btn-pink right"
-                                           href="<?= site_url('produk-terbaru/item/' . $cari->i_url . '/detil'); ?>">
-                                            <i class="fa fa-shopping-cart"></i> Beli
-                                        </a>
-                                    </div>
+                                <hr class="mb-2 mt-0">
+                                <div class="col-12 col-md-12 col-sm-12 text-center">
+                                    <?php if (isset($_SESSION['tipe']) && $_SESSION['tipe'] == '1'): ?>
+                                        <p id="rupiah" class="mt-1 price"><?= $cari->i_hrg_vip; ?></p>
+                                    <?php else: ?>
+                                        <p id="rupiah"
+                                           class="mt-1 align-middle price"><?= $cari->i_hrg_reseller; ?></p>
+                                    <?php endif; ?>
 
                                 </div>
                             </div>
