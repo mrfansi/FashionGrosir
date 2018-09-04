@@ -30,8 +30,8 @@ include "layout/Menu.php";
                             <div class="thumbnail">
                                 <?php if ($item_img($cari->i_kode) != NULL): ?>
                                     <img class="img-fluid"
-                                         src="<?= base_url('upload/' . $item_img($cari->i_kode)->ii_nama); ?>"
-                                         alt="<?= $item_img($cari->i_kode)->ii_nama; ?>">
+                                         src="data:<?= $item_img($cari->i_kode)->ii_type . ';base64,' . (base64_encode($item_img($cari->i_kode)->ii_data)); ?>"
+                                         alt="<?= $item_img($cari->i_kode)->ii_kode; ?>">
                                 <?php else: ?>
                                     <img class="img-fluid" src="<?= base_url('assets/img/noimg.png'); ?>"
                                          alt="No Image">

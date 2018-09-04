@@ -32,7 +32,8 @@ include "layout/Menu.php";
                      data-height="400">
                     <?php if ($item_img_all($item->i_kode) != NULL): ?>
                         <?php foreach ($item_img_all($item->i_kode) as $img): ?>
-                            <img src="<?= base_url('upload/' . $img->ii_nama); ?>" class="card-img-top">
+                            <img src="data:<?= $img->ii_type . ';base64,' . (base64_encode($img->ii_data)); ?>"
+                                 class="card-img-top">
                         <?php endforeach; ?>
                     <?php else: ?>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"

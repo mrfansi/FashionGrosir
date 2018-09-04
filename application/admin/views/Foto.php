@@ -34,7 +34,7 @@
                     <div class="col-md-6 col-lg-4">
                         <div class="card border-0 transform-on-hover">
                             <a class="lightbox" href="#">
-                                <img src=data:<?= $img->ii_type . ';base64,' . (base64_encode($img->ii_data)); ?>
+                                <img src="data:<?= $img->ii_type . ';base64,' . (base64_encode($img->ii_data)); ?>"
                                      alt="Card Image"
                                      class="card-img-top">
                             </a>
