@@ -26,7 +26,7 @@
                             <img src="data:<?= $item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode)->ii_type . ';base64,' . (base64_encode($item_img($item_detil($pop_cart->item_detil_kode)->item->i_kode)->ii_data)); ?>"
                                  width="50" height="50">
                         <?php else: ?>
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
+                            <img src="<?= base_url('assets/img/noimage.jpg'); ?>"
                                  alt="" width="50" height="50">
                         <?php endif; ?>
                     </td>

@@ -77,7 +77,7 @@ include "layout/Slide.php";
                                                      alt="<?= $item_img($terbaru->i_kode)->ii_kode; ?>">
                                             <?php else: ?>
                                                 <img class="img-fluid"
-                                                     src="https://upload.wikimedia.org/wikipedia/commons/archive/a/ac/20121003093557%21No_image_available.svg"
+                                                     src="<?= base_url('assets/img/noimage.jpg'); ?>"
                                                      alt="No Image">
                                             <?php endif; ?>
                                         </div>
