@@ -21,7 +21,7 @@ p {
 .thumbnail {
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
-    padding: 15px;
+    padding: 5px;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: 0;
