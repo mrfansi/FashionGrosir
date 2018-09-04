@@ -135,8 +135,9 @@ include "layout/Menu.php";
                     <div class="image mx-auto d-block">
 
                         <?php if ($item_img($hot->i_kode) != NULL): ?>
-                            <img class="img-fluid" src="<?= base_url('upload/' . $item_img($hot->i_kode)->ii_nama); ?>"
-                                 alt="<?= $item_img($hot->i_kode)->ii_nama; ?>">
+                            <img class="img-fluid"
+                                 src="data:<?= $item_img($hot->i_kode)->ii_type . ';base64,' . (base64_encode($item_img($hot->i_kode)->ii_data)); ?>"
+                                 alt="<?= $item_img($hot->i_kode)->ii_kode; ?>">
                         <?php else: ?>
                             <img class="img-fluid"
                                  src="<?= base_url('assets/img/noimage.jpg'); ?>"
