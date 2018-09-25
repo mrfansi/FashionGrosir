@@ -402,6 +402,7 @@ include "layout/Menu.php";
         $('#check_dropship').change(function () {
             if (this.checked) {
                 $('[id=pengirim]').show();
+                $('#row_nama_alamat').hide();
             } else {
                 $('[id=pengirim]').hide();
             }
@@ -411,6 +412,7 @@ include "layout/Menu.php";
             if (this.checked) {
                 $('#lanjutbtn').prop('type', 'submit').removeAttr("data-toggle").removeAttr("data-target");
                 $('#row_nama_alamat').show();
+                $('[id=pengirim]').hide();
             } else {
                 $('#lanjutbtn').prop('type', 'button').attr("data-toggle",'modal').attr("data-target",'#lanjut');
                 $('#row_nama_alamat').hide();
