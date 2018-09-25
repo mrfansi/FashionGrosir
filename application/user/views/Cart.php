@@ -186,7 +186,6 @@ include "layout/Menu.php";
                                                         <?php endif; ?>
                                                         <div class="media-body mb-3">
                                                             <h6 class="mt-0"><?= $item_detil($cart->item_detil_kode)->item->i_nama; ?></h6>
-                                                            <p class="text-justify"><?= $item_detil($cart->item_detil_kode)->item->i_deskripsi; ?></p>
                                                         </div>
                                                     </div>
                                                 </div>

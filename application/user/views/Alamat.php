@@ -102,7 +102,7 @@ include "layout/Menu.php";
                     <input type="hidden" name="alamat_simpan" id="alamat_simpan">
                     <div class="row form-group">
                         <div class="col-lg-12 col-sm-12">
-                            <div class="form-check">
+                            <div class="form-check" id="trchkOptions" >
                                 <input class="form-check-input" type="checkbox" name="alamat_exist" value="true" id="alamat_exist">
                                 <label class="form-check-label" for="alamat_exist">
                                     Pilih dari alamat yang sudah ada
@@ -112,7 +112,7 @@ include "layout/Menu.php";
                     </div>
                     <div class="row form-group">
                         <div class="col">
-                            <div class="form-check">
+                            <div class="form-check" id="trchkOptions" >
                                 <input class="form-check-input" type="checkbox" value="true" id="check_dropship">
                                 <label class="form-check-label" for="check_dropship">
                                     Dropshipper
@@ -227,6 +227,24 @@ include "layout/Menu.php";
         </div>
     </div>
     <!-- Script File -->
+
+    <script type="text/javascript">
+        $(function(){
+            var chks = $("#trchkOptions  input[type=checkbox]");
+            chks.on("change", function(){
+                if(this.checked){ //console.log(this.checked);
+                    var me = this;
+                    chks.each(function(i){ //console.log(me.id);
+                        if(me.id !== this.id){ //console.log(i.id);
+                            $(this).prop("checked",false);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+
     <script>
         $(document).ready(function () {
             $('#provinsi').select2({
