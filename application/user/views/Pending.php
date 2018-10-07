@@ -67,7 +67,9 @@ include "layout/Menu.php";
                             </tr>
                             </thead>
                             <tbody>
+
                             <?php foreach ($orders as $order): ?>
+                            <?php if ($order->orders_status != 6): ?>
                                 <tr>
                                     <td class="align-middle text-danger">
                                        <div class="r-font-list"><?= $order->orders_noid; ?></div>
@@ -132,7 +134,12 @@ include "layout/Menu.php";
                                         <?php endif; ?>
                                     </td>
                                 </tr>
+                                <?php else: ?>
+                                    <i></i>
+                                <?php endif; ?>
                             <?php endforeach; ?>
+
+
                             </tbody>
                         </table>
                     </div>
